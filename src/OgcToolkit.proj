@@ -1,0 +1,33 @@
+<Project
+  DefaultTargets="Rebuild"
+  xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+  ToolsVersion="4.0"
+>
+
+  <PropertyGroup>
+    <ProjectName Condition="'$(ProjectName)'==''">$(MSBuildProjectName)</ProjectName>
+    <WindowsSdkVersion>v7.1</WindowsSdkVersion>
+    <UnitTests>False</UnitTests>
+  </PropertyGroup>
+
+
+  <!-- Projects -->
+  <ItemDefinitionGroup>
+    <Projects>
+      <Configuration>Release</Configuration>
+      <Platform>Any CPU</Platform>
+      <Constants>TRACE</Constants>
+      <Library>true</Library>
+      <Published>true</Published>
+      <Released>true</Released>
+    </Projects>
+  </ItemDefinitionGroup>
+
+  <ItemGroup>
+    <Projects Include="OgcToolkit.sln" />
+  </ItemGroup>
+
+  <!-- Import external targets -->
+  <Import Project="$(MSBuildProjectDirectory)\build\OgcToolkit.Common.targets" />
+
+</Project>
