@@ -7,7 +7,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Servic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSample", "WebSample\WebSample.csproj", "{C0A42819-821E-4FD9-9C67-EF54BA49DB42}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Tests", "Services\Services.Tests\Services.Tests.csproj", "{EEC124DB-4DFB-4497-A6DA-3A7DF790BA31}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{14F81423-A879-477F-BB47-5981BFB63A1D}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		OgcToolkit.dev.vsmdi = OgcToolkit.dev.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = OgcToolkit.dev.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -25,6 +37,10 @@ Global
 		{C0A42819-821E-4FD9-9C67-EF54BA49DB42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0A42819-821E-4FD9-9C67-EF54BA49DB42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0A42819-821E-4FD9-9C67-EF54BA49DB42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEC124DB-4DFB-4497-A6DA-3A7DF790BA31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEC124DB-4DFB-4497-A6DA-3A7DF790BA31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEC124DB-4DFB-4497-A6DA-3A7DF790BA31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEC124DB-4DFB-4497-A6DA-3A7DF790BA31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

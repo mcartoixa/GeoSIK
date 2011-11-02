@@ -1,55 +1,55 @@
 ﻿using System;
 using System.Xml.Serialization;
-using OgcToolkit.Services;
+using OgcToolkit.Services.Ows;
 
 namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
 {
     partial class GetCapabilities:
-        IOwsRequest
+        IRequest
     {
 
         [XmlIgnore]
-        string IOwsRequest.Version
+        string IRequest.Version
         {
             get { return null; }
         }
 
         [XmlIgnore]
-        string IOwsRequest.Service
+        string IRequest.Service
         {
             get { return this.Content.service; }
         }
     }
 
     partial class DescribeRecord:
-        IOwsRequest
+        IRequest
     {
 
         [XmlIgnore]
-        string IOwsRequest.Version
+        string IRequest.Version
         {
             get { return Content.version; }
         }
 
         [XmlIgnore]
-        string IOwsRequest.Service
+        string IRequest.Service
         {
             get { return Content.service; }
         }
     }
 
     partial class GetRecordById:
-        IOwsRequest
+        IRequest
     {
 
         [XmlIgnore]
-        string IOwsRequest.Version
+        string IRequest.Version
         {
             get { return Content.version; }
         }
 
         [XmlIgnore]
-        string IOwsRequest.Service
+        string IRequest.Service
         {
             get { return Content.service; }
         }

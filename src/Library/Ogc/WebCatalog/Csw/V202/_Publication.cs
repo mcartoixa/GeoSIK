@@ -2405,6 +2405,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         }
     }
 
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
     public sealed class ResultType
     {
 
@@ -2808,6 +2809,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
     ///       specified (Record).
     /// </para>
     /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
     public sealed class TypeNameListType
     {
 
@@ -3087,6 +3089,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
     ///         are defined in an application profile.
     /// </para>
     /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
     public sealed class ElementSetType
     {
 

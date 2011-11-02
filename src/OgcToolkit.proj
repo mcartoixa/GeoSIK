@@ -17,14 +17,16 @@
       <Configuration>Release</Configuration>
       <Platform>Any CPU</Platform>
       <Constants>TRACE</Constants>
-      <Library>true</Library>
-      <Published>true</Published>
-      <Released>true</Released>
+      <Library>True</Library>
+      <Published>True</Published>
+      <Released>True</Released>
     </Projects>
   </ItemDefinitionGroup>
 
   <ItemGroup>
-    <Projects Include="OgcToolkit.sln" />
+    <Projects Include="OgcToolkit.sln">
+      <PartCoverExclude>[OgcToolkit]OgcToolkit.DublinCore.*;[OgcToolkit]OgcToolkit.Iso.*;[OgcToolkit]OgcToolkit.Ogc.*;[OgcToolkit]OgcToolkit.W3.*"</PartCoverExclude>
+    </Projects>
   </ItemGroup>
 
   <!-- Import external targets -->

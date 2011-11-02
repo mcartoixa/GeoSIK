@@ -118,7 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="record" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Ogc\WebCatalog\Csw\V202\record.xsd;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="http___www_isotc211_org_2005_gmd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Iso\Ts19139\Gmd\http___www.isotc211.org_2005_gmd.xsd;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="http___www_opengis_net_cat_csw_2_0_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Ogc\WebCatalog\Csw\V202\http___www.opengis.net_cat_csw_2.0.2.xsd;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

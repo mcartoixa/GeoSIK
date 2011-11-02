@@ -10,6 +10,7 @@
   <UsingTask AssemblyFile="$(IsogeoMSBuildTasksLib)" TaskName="Isogeo.Build.Tasks.FxCop" />
   <UsingTask AssemblyFile="$(IsogeoMSBuildTasksLib)" TaskName="Isogeo.Build.Tasks.MSTest" />
   <UsingTask AssemblyFile="$(IsogeoMSBuildTasksLib)" TaskName="Isogeo.Build.Tasks.NuGetInstall" />
+  <UsingTask AssemblyFile="$(IsogeoMSBuildTasksLib)" TaskName="Isogeo.Build.Tasks.PartCover" />
   <UsingTask AssemblyFile="$(IsogeoMSBuildTasksLib)" TaskName="Isogeo.Build.Tasks.SetEnvironmentFromBatch" />
   <UsingTask AssemblyFile="$(IsogeoMSBuildTasksLib)" TaskName="Isogeo.Build.Tasks.SetEnvironmentVariable" />
   <UsingTask AssemblyFile="$(IsogeoMSBuildTasksLib)" TaskName="Isogeo.Build.Tasks.XmlSchemasValidate" />

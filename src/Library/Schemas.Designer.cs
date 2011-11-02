@@ -61,21 +61,38 @@ namespace OgcToolkit {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;
-        ///&lt;xsd:schema id=&quot;csw-record&quot;
-        ///   targetNamespace=&quot;http://www.opengis.net/cat/csw/2.0.2&quot;
-        ///   xmlns:csw=&quot;http://www.opengis.net/cat/csw/2.0.2&quot;
-        ///   xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;
-        ///   xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot;
-        ///   xmlns:dct=&quot;http://purl.org/dc/terms/&quot; xmlns:ows=&quot;http://www.opengis.net/ows&quot;
-        ///   elementFormDefault=&quot;qualified&quot; version=&quot;2.0.2 2010-01-22&quot;&gt;
-        ///   &lt;xsd:annotation&gt;
-        ///      &lt;xsd:appinfo&gt;
-        ///         &lt;dc:identifier xmlns:dc=&quot;http://purl.org/dc/ [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;xs:schema id=&quot;gmd_MD_Metadata&quot;
+        ///    targetNamespace=&quot;http://www.isotc211.org/2005/gmd&quot;
+        ///    elementFormDefault=&quot;qualified&quot;
+        ///    xmlns=&quot;http://www.isotc211.org/2005/gmd&quot;
+        ///    xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;
+        ///&gt;
+        ///  &lt;xs:include schemaLocation=&quot;http://www.isotc211.org/2005/gmd/gmd.xsd&quot; /&gt;
+        ///&lt;/xs:schema&gt;
+        ///.
         /// </summary>
-        public static string record {
+        public static string http___www_isotc211_org_2005_gmd {
             get {
-                return ResourceManager.GetString("record", resourceCulture);
+                return ResourceManager.GetString("http___www_isotc211_org_2005_gmd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;xs:schema id=&quot;csw_Record&quot;
+        ///    targetNamespace=&quot;http://www.opengis.net/cat/csw/2.0.2&quot;
+        ///    elementFormDefault=&quot;qualified&quot;
+        ///    xmlns=&quot;http://www.opengis.net/cat/csw/2.0.2&quot;
+        ///    xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;
+        ///&gt;
+        ///  &lt;xs:include schemaLocation=&quot;http://schemas.opengis.net/csw/2.0.2/record.xsd&quot; /&gt;
+        ///&lt;/xs:schema&gt;
+        ///.
+        /// </summary>
+        public static string http___www_opengis_net_cat_csw_2_0_2 {
+            get {
+                return ResourceManager.GetString("http___www_opengis_net_cat_csw_2_0_2", resourceCulture);
             }
         }
     }

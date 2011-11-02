@@ -1906,6 +1906,7 @@ namespace OgcToolkit.Ogc.Ows.V100
     /// XML encoded identifier of a standard MIME type, possibly a parameterized MIME type. 
     /// </para>
     /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
     public sealed class MimeType
     {
 
@@ -1923,6 +1924,7 @@ namespace OgcToolkit.Ogc.Ows.V100
     /// Specification version for OWS operation. The string value shall contain one x.y.z "version" value (e.g., "2.1.3"). A version number shall contain three non-negative integers separated by decimal points, in the form "x.y.z". The integers y and z shall not exceed 99. Each version shall be for the Implementation Specification (document) and the associated XML Schemas to which requested operations will conform. An Implementation Specification version normally specifies XML Schemas against which an XML encoded operation response must conform and should be validated. See Version negotiation subclause for more information. 
     /// </para>
     /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
     public sealed class VersionType
     {
 
@@ -2417,6 +2419,7 @@ namespace OgcToolkit.Ogc.Ows.V100
     /// This type is adapted from DirectPositionType and doubleList of GML 3.1. The adaptations include omission of all the attributes, since the needed information is included in the BoundingBoxType. 
     /// </para>
     /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
     public sealed class PositionType
     {
 
@@ -2506,6 +2509,7 @@ namespace OgcToolkit.Ogc.Ows.V100
     ///b)  If the bounding box is continuous across the value discontinuity but is not continuous clear around the Earth, then some non-normal value can be used if specified for a specific OWS use of the WGS84BoundingBoxType. For more information, see Subclauses 10.4.5 and C.13. 
     /// </para>
     /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
     public sealed class PositionType2D
     {
 
@@ -5297,6 +5301,7 @@ namespace OgcToolkit.Ogc.Ows.V100
     /// Service type identifier, where the string value is the OWS type abbreviation, such as "WMS" or "WFS". 
     /// </para>
     /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
     public sealed class ServiceType
     {
 
@@ -5585,6 +5590,7 @@ namespace OgcToolkit.Ogc.Ows.V100
     /// Service metadata document version, having values that are "increased" whenever any change is made in service metadata document. Values are selected by each server, and are always opaque to clients. See updateSequence parameter use subclause for more information. 
     /// </para>
     /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
     public sealed class UpdateSequenceType
     {
 
@@ -9447,6 +9453,7 @@ namespace OgcToolkit.Ogc.Ows.V100
         }
     }
 
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
     public class LinqToXsdTypeManager: ILinqToXsdTypeManager
     {
 

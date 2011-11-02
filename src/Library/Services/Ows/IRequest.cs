@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace OgcToolkit.Services
+namespace OgcToolkit.Services.Ows
 {
 
-    public interface IOwsRequest:
+    public interface IRequest:
         IXmlSerializable
     {
         [XmlIgnore]

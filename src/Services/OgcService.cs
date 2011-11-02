@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,12 @@ namespace OgcToolkit.Services
     public abstract class OgcService
     {
 
-        protected virtual void CheckParameters(IOwsRequest request)
+        protected void CheckRequest(Ows.IRequest request)
         {
+            Debug.Assert(request!=null);
+            if (request==null)
+                throw new ArgumentNullException("request");
+
             if (request.Service!=ServiceName)
                 throw new OwsException(OwsExceptionCode.NoApplicableCode);
 

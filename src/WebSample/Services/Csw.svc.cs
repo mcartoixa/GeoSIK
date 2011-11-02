@@ -37,6 +37,6 @@ namespace OgcToolkit.WebSample.Services
             throw new NotImplementedException();
         }
 
-        private Csw202.Discovery _Implementation=new Csw202.Discovery();
+        private Discovery _Implementation=new Discovery();
     }
 }

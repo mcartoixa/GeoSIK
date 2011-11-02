@@ -50,18 +50,13 @@ It must be used with MSBuild 4.0.
     <UnitTestsSuffix Condition="'$(UnitTestsSuffix)'==''">.Tests</UnitTestsSuffix>
     <SetEnvironmentArguments Condition="'$(SetEnvironmentArguments)'==''">/x64 /Release /2008</SetEnvironmentArguments>
 
-    <TeamBuild>False</TeamBuild>
-    <TeamBuild Condition="'$(TfsCollectionUri)'!=''">True</TeamBuild>
-    <LocalBuild>True</LocalBuild>
-    <LocalBuild Condition="'$(TfsCollectionUri)'!=''">False</LocalBuild>
-
     <!-- Tools paths -->
     <BuildToolsPath Condition="'$(BuildToolsPath)'==''">$(MSBuildThisFileDirectory)</BuildToolsPath>
     <NuGetToolPath Condition="'$(NuGetToolPath)'==''">$(BuildToolsPath)\NuGet.exe</NuGetToolPath>
 
     <!-- Output paths -->
-    <BinOutputPath>$(RootPath)\binaries\</BinOutputPath>
-    <DocOutputPath>$(RootPath)\documentation\</DocOutputPath>
+    <BinOutputPath>$(RootPath)\bin\</BinOutputPath>
+    <DocOutputPath>$(RootPath)\doc\</DocOutputPath>
     <TmpOutputPath>$(InputPath)\tmp\</TmpOutputPath>
 
     <TmpBinOutputPath>$(TmpOutputPath)bin\</TmpBinOutputPath>
@@ -196,7 +191,6 @@ It must be used with MSBuild 4.0.
   <Target Name="Tests" DependsOnTargets="$(TestsDependsOn)" />
 
   <Target Name="InternalTests"
-    Condition="$(UnitTests)"
     Outputs="$(TestsOutputPath)%(Projects.Filename)\dummy.txt"
   >
     <!-- Build the tests -->
@@ -220,40 +214,34 @@ It must be used with MSBuild 4.0.
       <TestedAssemblies Condition="Exists('%(AllAssemblies.RootDir)%(AllAssemblies.Directory)%(AllAssemblies.Filename)$(UnitTestsSuffix).dll')" Include="@(AllAssemblies)" />
     </ItemGroup>
 
-    <!-- Create a MSTest settings file -->
+    <!-- Create a xunit project file: it's the only way to test multiple assemblies in a single run -->
     <Copy
-      SourceFiles="$(BuildToolsPath)\Build.testsettings"
-      DestinationFiles="$(_OutDir)Build.testsettings"
+      SourceFiles="$(MSBuildThisFileDirectory)\Empty.xunit"
+      DestinationFiles="$(TestedItemOutputPath)\$(ProjectFilename).xunit"
       OverwriteReadOnlyFiles="true"
     />
     <ItemGroup>
-      <CodeCoverageConfiguration Include="&lt;Configuration&gt;&lt;CodeCoverage&gt;&lt;Regular&gt;"/>
-      <CodeCoverageConfiguration Include="&lt;CodeCoverageItem binaryFile=&quot;%(TestedAssemblies.Filename)%(TestedAssemblies.Extension)&quot; pdbFile=&quot;%(TestedAssemblies.Filename).pdb&quot; /&gt;"/>
-      <CodeCoverageConfiguration Include="&lt;/Regular&gt;&lt;/CodeCoverage&gt;&lt;/Configuration&gt;"/>
+      <XUnitAssemblies Include="&lt;assembly filename=&quot;$(TestedItemOutputPath)\%(TestAssemblies.Filename)%(TestAssemblies.Extension)&quot; shadow-copy=&quot;false&quot;&gt;&lt;output type=&quot;xml&quot; filename=&quot;$(TmpOutputPath)$(ProjectFilename)_%(TestAssemblies.Filename).xunit-results.xml&quot; /&gt;&lt;/assembly&gt;" />
     </ItemGroup>
     <XmlPoke
-      XmlInputPath="$(_OutDir)Build.testsettings"
-      Namespaces="&lt;Namespace Prefix='tt' Uri='http://microsoft.com/schemas/VisualStudio/TeamTest/2010' /&gt;"
-      Query="/tt:TestSettings/tt:Execution/tt:AgentRule/tt:DataCollectors/tt:DataCollector[@uri='datacollector://microsoft/CodeCoverage/1.0']"
-      Value="@(CodeCoverageConfiguration->'%(Identity)', '')"
+      XmlInputPath="$(TestedItemOutputPath)\$(ProjectFilename).xunit"
+      Query="/xunit/assemblies"
+      Value="@(XUnitAssemblies->'%(Identity)', '')"
     />
 
-    <!-- Runs the tests -->
-    <PropertyGroup>
-      <_Flavor Condition="$(TeamBuild)">%(Projects.Configuration)</_Flavor>
-      <_Platform Condition="$(TeamBuild)">%(Projects.Platform)</_Platform>
-    </PropertyGroup>
-    <MSTest
-      Containers="@(TestAssemblies)"
-      SearchPathRoot="$(_OutDir)"
-      Settings="$(_OutDir)Build.testsettings"
-      ResultsFileRoot="$(TestsOutputPath)"
-      NoResults="$(LocalBuild)"
-      TeamCollectionUri="$(TfsCollectionUri)"
-      TeamBuildUri="$(TfsBuildUri)"
-      TeamProject="$(TfsProject)"
-      Flavor="$(_Flavor)"
-      Platform="$(_Platform)"
+    <!-- Tests + code coverage -->
+    <ItemGroup>
+      <PartCoverInclude Include="@(TestedAssemblies->'[%(Filename)]*')" />
+      <PartCoverExclude Include="@(TestAssemblies->'[%(Filename)]*');@(TestedAssemblies->'[%(Filename)]*.Resources.*');@(TestedAssemblies->'[%(Filename)]*.NamespaceDoc')" />
+    </ItemGroup>
+    <PartCover Condition="'@(TestAssemblies)'!=''"
+      Target="$(InputPath)\lib\xUnit\xunit.console.clr4.x86.exe"
+      TargetArgs="&quot;$(TestedItemOutputPath)\$(ProjectFilename).xunit&quot; /silent"
+      TargetWorkingDir="$(TestedItemOutputPath)"
+      Include="@(PartCoverInclude)"
+      Exclude="[xunit.*]*$(ProjectPartCoverExclude);@(PartCoverExclude)"
+      Output="$(TmpOutputPath)$(ProjectFilename).partcover-results.xml"
+      ToolsVersion="4.0"
     />
   </Target>
 
@@ -264,11 +252,14 @@ It must be used with MSBuild 4.0.
 
   <!-- Performs a code analysis the project -->
   <PropertyGroup>
-    <AnalysisDependsOn>Prepare;BeforeAnalysis;InternalAnalysis;AfterAnalysis</AnalysisDependsOn>
+    <AnalysisDependsOn>Prepare;BeforeAnalysis;InternalStats;InternalAnalysis;AfterAnalysis</AnalysisDependsOn>
   </PropertyGroup>
   <Target Name="Analysis" DependsOnTargets="$(AnalysisDependsOn)" />
 
   <Target Name="InternalAnalysis" DependsOnTargets="InternalAnalysisCompile">
+    <PropertyGroup>
+      <FxCopResultsFile>$(TmpOutputPath)fxcop-results.xml</FxCopResultsFile>
+    </PropertyGroup>
     <ItemGroup>
       <AnalysisDependencies Include="$(InputPath)\lib\**\*.dll" />
       <AnalysisDependencies Include="$(InputPath)\packages\**\*.dll" />
@@ -330,6 +321,17 @@ It must be used with MSBuild 4.0.
     >
       <Output TaskParameter="TargetOutputs" ItemName="AnalysisOutputs" />
     </MSBuild>
+  </Target>
+
+  <Target Name="InternalStats">
+    <PropertyGroup>
+      <ClocResultsFile>$(TmpOutputPath)cloc-results.xml</ClocResultsFile>
+    </PropertyGroup>
+    <Exec
+      Command="&quot;$(MSBuildThisFileDirectory)\cloc.exe&quot; $(InputPath) --exclude-dir=bin,doc,lib,obj,tmp,GeneratedCode --3 --quiet --progress-rate=0 --xml --report_file=&quot;$(ClocResultsFile)&quot;"
+      WorkingDirectory="$(InputPath)"
+      YieldDuringToolExecution="True"
+    />
   </Target>
 
   <Target Name="BeforeAnalysis" />

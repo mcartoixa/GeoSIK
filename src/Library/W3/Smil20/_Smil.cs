@@ -14,6 +14,7 @@ namespace OgcToolkit.W3.Smil20
     using OgcToolkit.Ogc.Gml.V311;
 
 
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
     public sealed class nonNegativeDecimalType
     {
 
@@ -740,6 +741,7 @@ namespace OgcToolkit.W3.Smil20
         }
     }
 
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
     public sealed class syncBehaviorType
     {
 
@@ -755,6 +757,7 @@ namespace OgcToolkit.W3.Smil20
         }
     }
 
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
     public sealed class syncBehaviorDefaultType
     {
 
@@ -770,6 +773,7 @@ namespace OgcToolkit.W3.Smil20
         }
     }
 
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
     public sealed class restartTimingType
     {
 
@@ -785,6 +789,7 @@ namespace OgcToolkit.W3.Smil20
         }
     }
 
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
     public sealed class restartDefaultType
     {
 
@@ -800,6 +805,7 @@ namespace OgcToolkit.W3.Smil20
         }
     }
 
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
     public sealed class fillTimingAttrsType
     {
 
@@ -817,6 +823,7 @@ namespace OgcToolkit.W3.Smil20
         }
     }
 
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
     public sealed class fillDefaultType
     {
 
