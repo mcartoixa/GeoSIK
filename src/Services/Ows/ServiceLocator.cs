@@ -14,22 +14,18 @@ namespace OgcToolkit.Services.Ows
     public sealed class ServiceLocator
     {
 
-        private ServiceLocator() { }
-
-        public static ServiceLocator Instance
+        public ServiceLocator():
+            this(Assembly.GetExecutingAssembly())
         {
-            get
-            {
-                if (_Instance==null)
-                    lock (syncRoot)
-                        if (_Instance==null)
-                        {
-                            _Instance=new ServiceLocator();
-                            _Instance.FindServices();
-                        }
+        }
 
-                return _Instance;
-            }
+        public ServiceLocator(Assembly assembly)
+        {
+            Debug.Assert(assembly!=null);
+            if (assembly==null)
+                throw new ArgumentNullException("assembly");
+
+            _Assembly=assembly;
         }
 
         /// <summary>Invokes the OWS service referenced in the specified <paramref name="parameters" />.</summary>
@@ -64,7 +60,7 @@ namespace OgcToolkit.Services.Ows
             return InvokeService(parameters, service, version, request);
         }
 
-        public IXmlSerializable InvokeService(IOwsRequest request)
+        public IXmlSerializable InvokeService(IRequest request)
         {
             Debug.Assert(request!=null);
             if (request==null)
@@ -89,6 +85,8 @@ namespace OgcToolkit.Services.Ows
 
         private IXmlSerializable InvokeService(object input, string service, string version, string request)
         {
+            FindServices();
+
             if (!_Services.ContainsKey(service))
                 throw new OwsException(OwsExceptionCode.OperationNotSupported) {
                     Locator=OgcService.ServiceParameter // should be service ?
@@ -135,8 +133,7 @@ namespace OgcToolkit.Services.Ows
             if (_Services==null)
             {
                 _Services=new Dictionary<string, Dictionary<string, Type>>();
-                Assembly assembly=Assembly.GetExecutingAssembly();
-                foreach (Type t in assembly.GetExportedTypes())
+                foreach (Type t in _Assembly.GetExportedTypes())
                     foreach (OwsDescriptionAttribute a in t.GetCustomAttributes(typeof(OwsDescriptionAttribute), false)) {
                         if (!_Services.ContainsKey(a.Service))
                             _Services.Add(a.Service, new Dictionary<string, Type>());
@@ -146,22 +143,18 @@ namespace OgcToolkit.Services.Ows
             }
         }
 
-        private void FindRequestTypes()
+        public static Type[] GetRequestTypes(ICustomAttributeProvider knownTypeAttributeTarget)
         {
             if (_RequestTypes==null)
             {
                 _RequestTypes=new List<Type>();
-                Assembly assembly=Assembly.GetAssembly(typeof(IOwsRequest));
+                Assembly assembly=Assembly.GetAssembly(typeof(IRequest));
                 foreach (Type t in assembly.GetExportedTypes())
-                    if (t.GetInterface(typeof(IOwsRequest).FullName)!=null)
+                    if (t.GetInterface(typeof(IRequest).FullName)!=null)
                         _RequestTypes.Add(t);
             }
-        }
 
-        public static Type[] GetRequestTypes(ICustomAttributeProvider knownTypeAttributeTarget)
-        {
-            Instance.FindRequestTypes();
-            return Instance._RequestTypes.ToArray();
+            return _RequestTypes.ToArray();
         }
 
         /// <summary>Normalizes all the specified <paramref name="parameters" />.</summary>
@@ -195,9 +188,26 @@ namespace OgcToolkit.Services.Ows
             return false;
         }
 
-        private Dictionary<string, Dictionary<string, Type>> _Services;
-        private List<Type> _RequestTypes;
+        internal static ServiceLocator Instance
+        {
+            get
+            {
+                if (_Instance==null)
+                    lock (syncRoot)
+                        if (_Instance==null)
+                        {
+                            _Instance=new ServiceLocator();
+                            _Instance.FindServices();
+                        }
 
+                return _Instance;
+            }
+        }
+
+        private Assembly _Assembly;
+        private Dictionary<string, Dictionary<string, Type>> _Services;
+
+        private static List<Type> _RequestTypes;
         private static volatile ServiceLocator _Instance;
         private static object syncRoot=new object();
     }

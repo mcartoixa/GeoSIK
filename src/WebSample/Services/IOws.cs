@@ -29,6 +29,6 @@ namespace OgcToolkit.WebSample.Services
         [OperationContract]
         [FaultContract(typeof(Ows100.ExceptionReport), Name="TestExceptionName")]
         [WebInvoke(Method="POST", UriTemplate="", BodyStyle=WebMessageBodyStyle.Bare, RequestFormat=WebMessageFormat.Xml, ResponseFormat=WebMessageFormat.Xml)]
-        Message Execute(OgcToolkit.Services.IOwsRequest request);
+        Message Execute(OgcToolkit.Services.Ows.IRequest request);
     }
 }

@@ -1313,6 +1313,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         }
     }
 
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
     public sealed class SortOrderType
     {
 
@@ -1590,6 +1591,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         }
     }
 
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
     public sealed class GeometryOperandType
     {
 
@@ -1880,6 +1882,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         }
     }
 
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
     public sealed class SpatialOperatorNameType
     {
 
@@ -2184,6 +2187,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         }
     }
 
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
     public sealed class ComparisonOperatorType
     {
 

@@ -26,7 +26,7 @@ namespace OgcToolkit.WebSample
                 var sb=new StringBuilder();
                 using (var xw=XmlWriter.Create(sb))
                 {
-                    IXmlSerializable response=OgcToolkit.Services.Ows.ServiceLocator.Instance.InvokeService(parameters);
+                    IXmlSerializable response=Services.Ows.ServiceLocatorInstance.InvokeService(parameters);
                     response.WriteXml(xw);
                 }
                 _Label1.Text=HttpUtility.HtmlEncode(sb.ToString());

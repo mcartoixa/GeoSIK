@@ -38,6 +38,9 @@
     <AssemblyOriginatorKeyFile>..\build\OgcToolkit.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Irony">
+      <HintPath>..\lib\Irony\Irony.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceModel" />
@@ -57,6 +60,14 @@
     <Compile Include="..\Version.cs">
       <Link>Properties\Version.cs</Link>
     </Compile>
+    <Compile Include="Iso\Ts19139\Gco\CharacterString.cs" />
+    <Compile Include="Iso\Ts19139\Gco\_Gco.cs" />
+    <Compile Include="Iso\Ts19139\Gmd\_Gmd.cs" />
+    <Compile Include="Iso\Ts19139\Gsr\_Gsr.cs" />
+    <Compile Include="Iso\Ts19139\Gss\_Gss.cs" />
+    <Compile Include="Iso\Ts19139\Gts\_Gts.cs" />
+    <Compile Include="Ogc\Gml\V321\_Gml.cs" />
+    <Compile Include="Ogc\WebCatalog\Ccql\CcqlGrammar.cs" />
     <Compile Include="DublinCore\Elements\V11\_Elements.cs" />
     <Compile Include="DublinCore\Terms\_Terms.cs" />
     <Compile Include="Ogc\Filter\V110\_Filter.cs" />
@@ -82,7 +93,10 @@
     <None Include="..\build\OgcToolkit.snk">
       <Link>OgcToolkit.snk</Link>
     </None>
-    <None Include="Ogc\WebCatalog\Csw\V202\record.xsd">
+    <None Include="Iso\Ts19139\Gmd\http___www.isotc211.org_2005_gmd.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Ogc\WebCatalog\Csw\V202\http___www.opengis.net_cat_csw_2.0.2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
@@ -93,6 +107,7 @@
       <LastGenOutput>Schemas.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

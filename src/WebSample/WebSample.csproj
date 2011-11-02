@@ -151,6 +151,7 @@
     <Compile Include="Services\Csw.svc.cs">
       <DependentUpon>Csw.svc</DependentUpon>
     </Compile>
+    <Compile Include="Services\Discovery.cs" />
     <Compile Include="Services\ICsw.cs" />
     <Compile Include="Services\IOws.cs" />
     <Compile Include="Services\Ows.svc.cs">
