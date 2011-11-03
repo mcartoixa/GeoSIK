@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections.Specialized;
 using Xunit;
 using Xunit.Extensions;
 
 namespace OgcToolkit.Services.Csw.V202.Tests
 {
 
-    public class DiscoveryTests
+    public partial class DiscoveryTests
     {
 
         [Theory]
@@ -16,4 +17,5 @@ namespace OgcToolkit.Services.Csw.V202.Tests
             Assert.Equal<string>(expected, result);
         }
     }
+
 }

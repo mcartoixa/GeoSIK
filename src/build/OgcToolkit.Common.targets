@@ -328,7 +328,7 @@ It must be used with MSBuild 4.0.
       <ClocResultsFile>$(TmpOutputPath)cloc-results.xml</ClocResultsFile>
     </PropertyGroup>
     <Exec
-      Command="&quot;$(MSBuildThisFileDirectory)\cloc.exe&quot; $(InputPath) --exclude-dir=bin,doc,lib,obj,tmp,GeneratedCode --3 --quiet --progress-rate=0 --xml --report_file=&quot;$(ClocResultsFile)&quot;"
+      Command="&quot;$(MSBuildThisFileDirectory)\cloc.exe&quot; $(InputPath) --exclude-dir=bin,build,doc,lib,obj,tmp,GeneratedCode --not-match-f=^_ --3 --quiet --progress-rate=0 --xml --report_file=&quot;$(ClocResultsFile)&quot;"
       WorkingDirectory="$(InputPath)"
       YieldDuringToolExecution="True"
     />

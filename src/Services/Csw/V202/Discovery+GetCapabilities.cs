@@ -53,11 +53,6 @@ namespace OgcToolkit.Services.Csw.V202
                 throw new OwsException(OwsExceptionCode.VersionNegotiationFailed);
         }
 
-        protected virtual void OnGetCapabilities()
-        {
-
-        }
-
         protected virtual Filter.Filter_Capabilities CreateCapabilitiesFilterCapabilitiesSection()
         {
             var ret=new Filter.Filter_Capabilities() {
@@ -117,7 +112,7 @@ namespace OgcToolkit.Services.Csw.V202
             Ows100.Operation describeRecord=CreateOperation("DescribeRecord", GetEndPoints());
             if (describeRecord!=null)
             {
-                //TODO: Namespaces are hard coded there...
+                //TODO: Namespaces are hardcoded here...
                 describeRecord.Untyped.Add(
                     new XAttribute(XNamespace.Xmlns+"csw", "http://www.opengis.net/cat/csw/2.0.2"),
                     new XAttribute(XNamespace.Xmlns+"gmd", "http://www.isotc211.org/2005/gmd")

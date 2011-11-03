@@ -53,6 +53,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Xml.Schema.Linq">
@@ -77,6 +78,7 @@
     <Compile Include="..\..\Version.cs">
       <Link>Properties\Version.cs</Link>
     </Compile>
+    <Compile Include="Csw\V202\Discovery+GetRecords.cs" />
     <Compile Include="Csw\V202\Discovery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
