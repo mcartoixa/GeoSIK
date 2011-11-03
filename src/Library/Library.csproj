@@ -80,6 +80,7 @@
       <DependentUpon>Schemas.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\Csw\V202\Interfaces.cs" />
+    <Compile Include="Services\Ows\OwsRequestEventArgs.cs" />
     <Compile Include="Services\Ows\V100\IOgcService.cs" />
     <Compile Include="Services\Ows\IRequest.cs" />
     <Compile Include="Services\OwsException.cs" />

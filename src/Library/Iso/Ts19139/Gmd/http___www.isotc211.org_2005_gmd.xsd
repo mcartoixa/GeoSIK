@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="gmd_MD_Metadata"
+    targetNamespace="http://www.isotc211.org/2005/gmd"
+    elementFormDefault="qualified"
+    xmlns="http://www.isotc211.org/2005/gmd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:include schemaLocation="http://www.isotc211.org/2005/gmd/gmd.xsd" />
+</xs:schema>

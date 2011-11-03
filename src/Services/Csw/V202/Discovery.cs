@@ -40,7 +40,7 @@ namespace OgcToolkit.Services.Csw.V202
             CheckGetCapabilitiesRequest(request);
 
             // When sections is specified but empty, the abbreviated version of GetCapabilities should be returned
-            // cf. [Test csw:csw-2.0.2-GetCapabilities-tc7.1]
+            // cf. [OGC CITE TEAMEngine csw:csw-2.0.2-GetCapabilities-tc7.1]
             bool returnAll=((request.Content.Sections==null) || request.Content.Sections.Section.Contains("All"));
 
             var ret=new Capabilities();
@@ -90,58 +90,14 @@ namespace OgcToolkit.Services.Csw.V202
         {
             CheckDescribeRecordRequest(request);
 
-            // We will use the 'csw' prefix
-            var ret=new DescribeRecordResponse();
-            ret.Untyped.Add(
-                new XAttribute(XNamespace.Xmlns+"csw", "http://www.opengis.net/cat/csw/2.0.2")
-            );
+            var response=_ProcessDescribeRecord(request);
 
-            // Get the names of record types
-            List<XName> names=_SupportedRecordTypesInstances.Select<IXMetaData, XName>(m => m.SchemaName).ToList<XName>();
-            if ((request.TypeName!=null) && (request.TypeName.Count>0))
-            {
-                names.Clear();
+            var args=new Ows.OwsRequestEventArgs<DescribeRecord, DescribeRecordResponse>(request, response);
+            OnProcessDescribeRecord(args);
 
-                // We should be able to write foreach (XmlQualifiedName xqn in request.TypeName) { }
-                // But type names cannot be retrieved as XmlQualifiedName: there are prefixes instead of namespaces
-                // So we take the long way via XElement
-                var typeNamesElements=from el in request.Untyped.Descendants()
-                              where el.Name=="{http://www.opengis.net/cat/csw/2.0.2}TypeName"
-                              select el;
-                foreach (XElement tne in typeNamesElements)
-                {
-                    string[] tn=tne.Value.Split(new char[] { ':' }, 2);
-                    string name=tn[0];
-                    XNamespace @namespace=tne.GetDefaultNamespace();
-                    if (tn.Length>1)
-                    {
-                        name=tn[1];
-                        @namespace=tne.GetNamespaceOfPrefix(tn[0]);
-                    }
+            Debug.Assert(args.Response!=null);
 
-                    // Check the name is a supported type
-                    if (!_SupportedRecordTypesInstances.Any<IXMetaData>(m => (m.GetType().Name==name) && (m.SchemaName.Namespace==@namespace)))
-                        break;
-
-                    names.Add(string.Concat("{", @namespace, "}", name));
-                }
-            }
-
-            // Create the csw:schemaComponents
-            var componentTypes=new List<SchemaComponentType>(request.TypeName.Count);
-            foreach (XName name in names)
-            {
-                var recordComponentType=new SchemaComponentType() {
-                    schemaLanguage=XmlSchemaLanguageUri,
-                    targetNamespace=new Uri(name.NamespaceName)
-                };
-                recordComponentType.Untyped.Add(GetRecordSchema(name.Namespace).Root);
-                componentTypes.Add(recordComponentType);
-            }
-            if (componentTypes.Count>0)
-                ret.SchemaComponent=componentTypes;
-
-            return ret;
+            return args.Response;
         }
 
         public GetDomainResponse GetDomain(GetDomain request)
@@ -203,7 +159,7 @@ namespace OgcToolkit.Services.Csw.V202
         protected const string MaxRecordsParameter="maxrecords";
         protected const string NamespaceParameter="namespace";
         protected const string OutputFormatParameter="outputformat";
-        protected const string OutputSchemaParametere="outputschema";
+        protected const string OutputSchemaParameter="outputschema";
         protected const string RequestIdParameter="requestid";
         protected const string ResultTypeParameter="resulttype";
         protected const string StartPositionParameter="startposition";
@@ -211,7 +167,7 @@ namespace OgcToolkit.Services.Csw.V202
         protected const string TypeNamesParameter="typenames";
         protected const string SchemaLanguageParameter="schemalanguage";
 
-        private static readonly Regex _NamespacesRegEx=new Regex(@"^xmlns\((?<PREFIX>\w+=)?(?<URL>.+)\)$", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.ExplicitCapture);
+        private static readonly Regex _NamespacesRegEx=new Regex(@"^xmlns\(((?<PREFIX>\w+)=)?(?<URL>.+)\)$", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.ExplicitCapture);
         private static readonly Regex _InvalidFileNameCharsRegEx=new Regex(@"\W", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         private static readonly IXMetaData[] _SupportedRecordTypesInstances=new IXMetaData[] { new Record(), new Gmd.MD_Metadata() };
 
