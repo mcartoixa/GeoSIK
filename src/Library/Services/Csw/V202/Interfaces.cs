@@ -20,7 +20,9 @@ namespace OgcToolkit.Services.Csw.V202
 
         [OperationContract]
         [FaultContract(typeof(Ows100.ExceptionReport))]
-        Csw202.GetRecordsResponse GetRecords(Csw202.GetRecords request);
+        [ServiceKnownType(typeof(Csw202.GetRecordsResponse))]
+        [ServiceKnownType(typeof(Csw202.Acknowledgement))]
+        Csw202.IGetRecordsResponse GetRecords(Csw202.GetRecords request);
 
         [OperationContract]
         [FaultContract(typeof(Ows100.ExceptionReport))]

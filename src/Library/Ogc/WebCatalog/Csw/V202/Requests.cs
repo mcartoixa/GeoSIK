@@ -38,6 +38,23 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         }
     }
 
+    partial class GetRecords:
+        IRequest
+    {
+
+        [XmlIgnore]
+        string IRequest.Version
+        {
+            get { return Content.version; }
+        }
+
+        [XmlIgnore]
+        string IRequest.Service
+        {
+            get { return Content.service; }
+        }
+    }
+
     partial class GetRecordById:
         IRequest
     {

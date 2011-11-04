@@ -4,12 +4,19 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using System.ServiceModel.Web;
 
 namespace OgcToolkit.Services
 {
 
     public abstract class OgcService
     {
+
+        public OgcService()
+        {
+            RequestCulture=CultureInfo.CurrentCulture;
+        }
 
         protected void CheckRequest(Ows.IRequest request)
         {
@@ -24,6 +31,12 @@ namespace OgcToolkit.Services
                 throw new OwsException(OwsExceptionCode.VersionNegotiationFailed);
         }
 
+        public CultureInfo RequestCulture
+        {
+            get;
+            set;
+        }
+
         protected abstract string ServiceName { get; }
         protected abstract string ServiceVersion { get; }
 
@@ -34,7 +47,5 @@ namespace OgcToolkit.Services
         internal const string VersionParameter="version";
         internal const string AcceptVersionsParameter="acceptversions";
         internal const string SectionsParameter="sections";
-
-        protected const string XmlSchemaNamespace="http://www.w3.org/2001/XMLSchema";
     }
 }

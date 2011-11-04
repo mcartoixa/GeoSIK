@@ -17,9 +17,9 @@ namespace OgcToolkit.WebSample.Services
             return _Implementation.GetCapabilities(request);
         }
 
-        public Ogc.WebCatalog.Csw.V202.GetRecordsResponse GetRecords(Ogc.WebCatalog.Csw.V202.GetRecords request)
+        public Ogc.WebCatalog.Csw.V202.IGetRecordsResponse GetRecords(Ogc.WebCatalog.Csw.V202.GetRecords request)
         {
-            throw new NotImplementedException();
+            return _Implementation.GetRecords(request);
         }
 
         public Ogc.WebCatalog.Csw.V202.DescribeRecordResponse DescribeRecord(Ogc.WebCatalog.Csw.V202.DescribeRecord request)

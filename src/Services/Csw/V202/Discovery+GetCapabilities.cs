@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,44 @@ namespace OgcToolkit.Services.Csw.V202
     partial class Discovery
     {
 
+        public Capabilities GetCapabilities(NameValueCollection parameters)
+        {
+            Debug.Assert(parameters!=null);
+            if (parameters==null)
+                throw new ArgumentNullException("parameters");
+
+            return GetCapabilities(CreateGetCapabilitiesRequestFromParameters(parameters));
+        }
+
+        public Capabilities GetCapabilities(GetCapabilities request)
+        {
+            // Do not call CheckRequest(request);
+            CheckGetCapabilitiesRequest(request);
+
+            // When sections is specified but empty, the abbreviated version of GetCapabilities should be returned
+            // cf. [OGC CITE TEAMEngine csw:csw-2.0.2-GetCapabilities-tc7.1]
+            bool returnAll=((request.Content.Sections==null) || request.Content.Sections.Section.Contains("All"));
+
+            var ret=new Capabilities();
+            ret.Filter_Capabilities=CreateCapabilitiesFilterCapabilitiesSection();
+
+            if (returnAll||(request.Content.Sections.Section.Contains("OperationsMetadata")))
+            {
+                Ows100.OperationsMetadata om=CreateCapabilitiesOperationsMetadataSection();
+                if (om!=null)
+                    ret.Content.OperationsMetadata=om;
+            }
+
+            if (returnAll||(request.Content.Sections.Section.Contains("ServiceProvider")))
+                ret.Content.ServiceProvider=CreateCapabilitiesServiceProviderSection();
+
+            if (returnAll||(request.Content.Sections.Section.Contains("ServiceIdentification")))
+                ret.Content.ServiceIdentification=CreateCapabilitiesServiceIdentificationSection();
+
+            ret.Content.version=Version;
+            return ret;
+        }
+
         protected virtual GetCapabilities CreateGetCapabilitiesRequestFromParameters(NameValueCollection parameters)
         {
             var request=new GetCapabilities();
@@ -25,8 +64,7 @@ namespace OgcToolkit.Services.Csw.V202
             {
                 IList<string> ver=string.Join(",", versions).Split(',').Where<string>(s => !string.IsNullOrWhiteSpace(s)).ToList<string>();
                 if (ver.Count>0)
-                    request.Content.AcceptVersions=new Ows100.AcceptVersionsType()
-                    {
+                    request.Content.AcceptVersions=new Ows100.AcceptVersionsType() {
                         Version=ver
                     };
             }
@@ -37,8 +75,7 @@ namespace OgcToolkit.Services.Csw.V202
             if (sections!=null)
             {
                 IList<string> sec=string.Join(",", sections).Split(',').Where<string>(s => !string.IsNullOrWhiteSpace(s)).ToList<string>();
-                request.Content.Sections=new Ows100.SectionsType()
-                {
+                request.Content.Sections=new Ows100.SectionsType() {
                     Section=sec
                 };
             }
@@ -87,7 +124,7 @@ namespace OgcToolkit.Services.Csw.V202
                 }
             };
             ret.Untyped.Add(
-                new XAttribute(XNamespace.Xmlns+"gml", "http://www.opengis.net/gml")
+                new XAttribute(XNamespace.Xmlns+"gml", Namespaces.OgcGml)
             );
 
             return ret;
@@ -114,8 +151,8 @@ namespace OgcToolkit.Services.Csw.V202
             {
                 //TODO: Namespaces are hardcoded here...
                 describeRecord.Untyped.Add(
-                    new XAttribute(XNamespace.Xmlns+"csw", "http://www.opengis.net/cat/csw/2.0.2"),
-                    new XAttribute(XNamespace.Xmlns+"gmd", "http://www.isotc211.org/2005/gmd")
+                    new XAttribute(XNamespace.Xmlns+"csw", Namespaces.OgcWebCatalogCswV202),
+                    new XAttribute(XNamespace.Xmlns+"gmd", Namespaces.IsoTs19139Gmd)
                 );
                 describeRecord.Parameter=new Ows100.DomainType[] {
                     new Ows100.DomainType() {
