@@ -10,6 +10,7 @@ using Xml.Schema.Linq;
 namespace OgcToolkit.Services.Ows
 {
 
+#pragma warning disable 3024
     /// <summary>Handles arguments for an OWS request processing related event.</summary>
     /// <typeparam name="TRequest">The type of the request being processed.</typeparam>
     /// <typeparam name="TResponse">The type of the response to the <typeparamref name="TRequest" /> being processed.</typeparam>
@@ -60,5 +61,6 @@ namespace OgcToolkit.Services.Ows
 
         private TResponse _Response;
     }
+#pragma warning restore 3024
 
 }

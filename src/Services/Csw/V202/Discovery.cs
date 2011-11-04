@@ -26,80 +26,6 @@ namespace OgcToolkit.Services.Csw.V202
         IDiscovery
     {
 
-        public Capabilities GetCapabilities(NameValueCollection parameters)
-        {
-            Debug.Assert(parameters!=null);
-            if (parameters==null)
-                throw new ArgumentNullException("parameters");
-
-            return GetCapabilities(CreateGetCapabilitiesRequestFromParameters(parameters));
-        }
-
-        public Capabilities GetCapabilities(GetCapabilities request)
-        {
-            CheckGetCapabilitiesRequest(request);
-
-            // When sections is specified but empty, the abbreviated version of GetCapabilities should be returned
-            // cf. [OGC CITE TEAMEngine csw:csw-2.0.2-GetCapabilities-tc7.1]
-            bool returnAll=((request.Content.Sections==null) || request.Content.Sections.Section.Contains("All"));
-
-            var ret=new Capabilities();
-            ret.Filter_Capabilities=CreateCapabilitiesFilterCapabilitiesSection();
-
-            if (returnAll || (request.Content.Sections.Section.Contains("OperationsMetadata")))
-            {
-                Ows100.OperationsMetadata om=CreateCapabilitiesOperationsMetadataSection();
-                if (om!=null)
-                    ret.Content.OperationsMetadata=om;
-            }
-
-            if (returnAll || (request.Content.Sections.Section.Contains("ServiceProvider")))
-                ret.Content.ServiceProvider=CreateCapabilitiesServiceProviderSection();
-
-            if (returnAll || (request.Content.Sections.Section.Contains("ServiceIdentification")))
-                ret.Content.ServiceIdentification=CreateCapabilitiesServiceIdentificationSection();
-
-            ret.Content.version=Version;
-            return ret;
-        }
-
-        public GetRecordsResponse GetRecords(NameValueCollection parameters)
-        {
-            Debug.Assert(parameters!=null);
-            if (parameters==null)
-                throw new ArgumentNullException("parameters");
-
-            return GetRecords(CreateGetRecordsRequestFromParameters(parameters));
-        }
-
-        public GetRecordsResponse GetRecords(GetRecords request)
-        {
-            throw new NotImplementedException();
-        }
-
-        public DescribeRecordResponse DescribeRecord(NameValueCollection parameters)
-        {
-            Debug.Assert(parameters!=null);
-            if (parameters==null)
-                throw new ArgumentNullException("parameters");
-
-            return DescribeRecord(CreateDescribeRecordRequestFromParameters(parameters));
-        }
-
-        public DescribeRecordResponse DescribeRecord(DescribeRecord request)
-        {
-            CheckDescribeRecordRequest(request);
-
-            var response=_ProcessDescribeRecord(request);
-
-            var args=new Ows.OwsRequestEventArgs<DescribeRecord, DescribeRecordResponse>(request, response);
-            OnProcessDescribeRecord(args);
-
-            Debug.Assert(args.Response!=null);
-
-            return args.Response;
-        }
-
         public GetDomainResponse GetDomain(GetDomain request)
         {
             throw new NotImplementedException();
@@ -137,6 +63,33 @@ namespace OgcToolkit.Services.Csw.V202
             return _InvalidFileNameCharsRegEx.Replace(@namespace, "_");
         }
 
+        internal static XName GetXmlNameFromString(string value, XElement parent)
+        {
+            Debug.Assert(parent!=null);
+            if (parent==null)
+                throw new ArgumentNullException("parent");
+
+            string[] ne=value.Split(new char[] { ':' }, 2);
+            string name=ne[0];
+            if (ne.Length>1)
+            {
+                name=ne[1];
+                XNamespace @namespace=parent.GetNamespaceOfPrefix(ne[0]);
+                if (@namespace==null)
+                    throw new XmlException(
+                        string.Format(
+                            CultureInfo.CurrentCulture,
+                            SR.CouldNotFindNamespaceFromPrefix,
+                            ne[0]
+                        )
+                    );
+
+                return XName.Get(name, @namespace.NamespaceName);
+            }
+
+            return XName.Get(name);
+        }
+
         protected override string ServiceName
         {
             get { return Service; }
@@ -149,8 +102,8 @@ namespace OgcToolkit.Services.Csw.V202
 
         protected abstract string ProviderName { get; }
 
-        protected static readonly Uri XmlSchemaLanguageUri=new Uri(XmlSchemaNamespace);
-        protected static readonly Uri StrangeXmlSchemaLanguageUri=new Uri("http://www.w3.org/XML/Schema");
+        protected static readonly Uri XmlSchemaLanguageUri=new Uri(Namespaces.XmlSchemaNamespace);
+        protected static readonly Uri StrangeXmlSchemaLanguageUri=new Uri(Namespaces.StrangeXmlSchemaNamespace);
 
         protected const string ConstraintParameter="constraint";
         protected const string ConstraintLanguageParameter="constraintlanguage";

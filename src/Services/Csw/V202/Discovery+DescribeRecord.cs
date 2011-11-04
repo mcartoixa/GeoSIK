@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -13,6 +14,30 @@ namespace OgcToolkit.Services.Csw.V202
 {
     partial class Discovery
     {
+
+        public DescribeRecordResponse DescribeRecord(NameValueCollection parameters)
+        {
+            Debug.Assert(parameters!=null);
+            if (parameters==null)
+                throw new ArgumentNullException("parameters");
+
+            return DescribeRecord(CreateDescribeRecordRequestFromParameters(parameters));
+        }
+
+        public DescribeRecordResponse DescribeRecord(DescribeRecord request)
+        {
+            CheckRequest(request);
+            CheckDescribeRecordRequest(request);
+
+            var response=_ProcessDescribeRecord(request);
+
+            var args=new Ows.OwsRequestEventArgs<DescribeRecord, DescribeRecordResponse>(request, response);
+            OnProcessDescribeRecord(args);
+
+            Debug.Assert(args.Response!=null);
+
+            return args.Response;
+        }
 
         protected virtual DescribeRecord CreateDescribeRecordRequestFromParameters(NameValueCollection parameters)
         {
@@ -32,27 +57,42 @@ namespace OgcToolkit.Services.Csw.V202
                                 Locator=NamespaceParameter
                             };
 
-                        request.Untyped.Add(
-                            new XAttribute(XNamespace.Xmlns+m.Groups["PREFIX"].Value, m.Groups["URL"])
-                        );
+                        string prefix=m.Groups["PREFIX"].Value;
+                        string url=m.Groups["URL"].Value;
+                        if (!string.IsNullOrEmpty(prefix))
+                            request.Untyped.Add(
+                                new XAttribute(XNamespace.Xmlns+prefix, url)
+                            );
+                        else
+                            request.Untyped.Add(
+                                new XAttribute("xmlns", url)
+                            );
                     }
             }
 
             // [OCG 07-006r1 §10.6.4.2]
-            string[] typeNames=parameters.GetValues(TypeNameParameter);
-            if (typeNames!=null)
+            string[] typeName=parameters.GetValues(TypeNameParameter);
+            if (typeName!=null)
             {
-                IList<string> tnp=string.Join(",", typeNames).Split(',').Where<string>(s => !string.IsNullOrWhiteSpace(s)).ToList<string>();
+                IList<string> tnp=string.Join(",", typeName).Split(',').Where<string>(s => !string.IsNullOrWhiteSpace(s)).ToList<string>();
                 var rtn=new List<XmlQualifiedName>(tnp.Count);
                 foreach (string tn in tnp)
                 {
-                    string[] nameElements=tn.Split(new char[] { ':' }, 2);
-                    if (nameElements.Length>1)
-                        rtn.Add(new XmlQualifiedName(nameElements[0], nameElements[1]));
-                    else
-                        rtn.Add(new XmlQualifiedName(nameElements[0]));
+                    try
+                    {
+                        // Works because we have already parsed the namespaces
+                        XName name=GetXmlNameFromString(tn, request.Untyped);
+                        rtn.Add(string.IsNullOrEmpty(name.NamespaceName) ? new XmlQualifiedName(name.LocalName) : new XmlQualifiedName(name.LocalName, name.NamespaceName));
+                    } catch (XmlException xex)
+                    {
+                        throw new OwsException(OwsExceptionCode.InvalidParameterValue, xex.Message, xex) {
+                            Locator=TypeNamesParameter
+                        };
+                    }
                 }
-                request.Content.TypeName=rtn;
+
+                if (rtn.Count>0)
+                    request.TypeName=rtn;
             }
 
             // [OCG 07-006r1 §10.6.4.3]
@@ -78,16 +118,14 @@ namespace OgcToolkit.Services.Csw.V202
 
         protected virtual void CheckDescribeRecordRequest(DescribeRecord request)
         {
-            CheckRequest(request);
-
-            if ((request.outputFormat!=null) && (Array.IndexOf<string>(XmlMimeTypes, request.outputFormat)<0))
+            if ((request.outputFormat==null) || (Array.IndexOf<string>(XmlMimeTypes, request.outputFormat)<0))
                 throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
                     Locator=OutputFormatParameter
                 };
 
             // The schemaLanguage property is initialized to the strange "http://www.w3.org/XML/Schema" namespace by default, so we have to consider it valid...
             Uri[] schemaNamespaces=new Uri[] { XmlSchemaLanguageUri, StrangeXmlSchemaLanguageUri };
-            if ((request.schemaLanguage!=null) && (Array.IndexOf<Uri>(schemaNamespaces, request.schemaLanguage)<0))
+            if ((request.schemaLanguage==null) || (Array.IndexOf<Uri>(schemaNamespaces, request.schemaLanguage)<0))
                 throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
                     Locator=SchemaLanguageParameter
                 };

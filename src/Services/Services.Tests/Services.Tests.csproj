@@ -78,6 +78,7 @@
     <Compile Include="..\..\Version.cs">
       <Link>Properties\Version.cs</Link>
     </Compile>
+    <Compile Include="Csw\V202\Discovery+DescribeRecord.cs" />
     <Compile Include="Csw\V202\Discovery+GetRecords.cs" />
     <Compile Include="Csw\V202\Discovery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
