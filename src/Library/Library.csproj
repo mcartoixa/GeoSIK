@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>3024</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>3024</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -67,6 +69,27 @@
     <Compile Include="Iso\Ts19139\Gsr\_Gsr.cs" />
     <Compile Include="Iso\Ts19139\Gss\_Gss.cs" />
     <Compile Include="Iso\Ts19139\Gts\_Gts.cs" />
+    <Compile Include="Ogc\Filter\V110\And.cs" />
+    <Compile Include="Ogc\Filter\V110\Add.cs" />
+    <Compile Include="Ogc\Filter\V110\Div.cs" />
+    <Compile Include="Ogc\Filter\V110\Mul.cs" />
+    <Compile Include="Ogc\Filter\V110\Sub.cs" />
+    <Compile Include="Ogc\Filter\V110\IBinaryOperator.cs" />
+    <Compile Include="Ogc\Filter\V110\PropertyIsGreaterThanOrEqualTo.cs" />
+    <Compile Include="Ogc\Filter\V110\PropertyIsLessThanOrEqualTo.cs" />
+    <Compile Include="Ogc\Filter\V110\PropertyIsGreaterThan.cs" />
+    <Compile Include="Ogc\Filter\V110\PropertyIsLessThan.cs" />
+    <Compile Include="Ogc\Filter\V110\Filter.cs" />
+    <Compile Include="Ogc\Filter\V110\FilterQueryable.cs" />
+    <Compile Include="Ogc\Filter\V110\IBinaryComparisonOperator.cs" />
+    <Compile Include="Ogc\Filter\V110\IBinaryLogicalOperator.cs" />
+    <Compile Include="Ogc\Filter\V110\Or.cs" />
+    <Compile Include="Ogc\Filter\V110\PropertyIsEqualTo.cs" />
+    <Compile Include="Ogc\Filter\V110\PropertyIsNotEqualTo.cs" />
+    <Compile Include="Ogc\Filter\V110\SortBy.cs" />
+    <Compile Include="Ogc\Filter\XPathTypeContext.cs" />
+    <Compile Include="Ogc\Filter\XPathTypeNavigator.cs" />
+    <Compile Include="Ogc\Filter\XPathTypeNode.cs" />
     <Compile Include="Ogc\Gml\V321\_Gml.cs" />
     <Compile Include="Ogc\WebCatalog\Ccql\CcqlGrammar.cs" />
     <Compile Include="DublinCore\Elements\V11\_Elements.cs" />
@@ -79,6 +102,7 @@
     <Compile Include="Ogc\WebCatalog\Csw\V202\Acknowledgement.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\GetRecordsResponse.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\IGetRecordsResponse.cs" />
+    <Compile Include="Services\Csw\V202\IRecord.cs" />
     <Compile Include="Schemas.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

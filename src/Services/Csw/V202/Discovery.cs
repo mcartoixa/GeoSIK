@@ -107,18 +107,22 @@ namespace OgcToolkit.Services.Csw.V202
 
         protected const string ConstraintParameter="constraint";
         protected const string ConstraintLanguageParameter="constraintlanguage";
+        protected const string DistributedSearchParameter="distributedsearch";
         protected const string ElementNameParameter="elementname";
         protected const string ElementSetNameParameter="elementsetname";
+        protected const string HopCountParameter="hopcount";
         protected const string MaxRecordsParameter="maxrecords";
         protected const string NamespaceParameter="namespace";
         protected const string OutputFormatParameter="outputformat";
         protected const string OutputSchemaParameter="outputschema";
         protected const string RequestIdParameter="requestid";
+        protected const string ResponseHandlerParameter="responsehandler";
         protected const string ResultTypeParameter="resulttype";
+        protected const string SchemaLanguageParameter="schemalanguage";
+        protected const string SortByParameter="sortby";
         protected const string StartPositionParameter="startposition";
         protected const string TypeNameParameter="typename";
         protected const string TypeNamesParameter="typenames";
-        protected const string SchemaLanguageParameter="schemalanguage";
 
         private static readonly Regex _NamespacesRegEx=new Regex(@"^xmlns\(((?<PREFIX>\w+)=)?(?<URL>.+)\)$", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.ExplicitCapture);
         private static readonly Regex _InvalidFileNameCharsRegEx=new Regex(@"\W", RegexOptions.Compiled | RegexOptions.CultureInvariant);

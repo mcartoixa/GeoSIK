@@ -12,8 +12,10 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using Common.Logging;
 using Xml.Schema.Linq;
 using OgcToolkit.Ogc.WebCatalog.Csw.V202;
+using Filter110=OgcToolkit.Ogc.Filter.V110;
 using Ows100=OgcToolkit.Ogc.Ows.V100;
 
 namespace OgcToolkit.Services.Csw.V202
@@ -54,7 +56,9 @@ namespace OgcToolkit.Services.Csw.V202
             // Asynchronous processing
             if ((request.ResponseHandler!=null) && (request.ResponseHandler.Count>0))
             {
-                task.ContinueWith(_SendRecordsResponse);
+                task
+                    .ContinueWith(_SendRecordsResponse)
+                    .ContinueWith(_LogAsynchronousExceptions, TaskContinuationOptions.OnlyOnFaulted);
                 task.Start();
 
                 var echo=new EchoedRequestType();
@@ -66,7 +70,7 @@ namespace OgcToolkit.Services.Csw.V202
                 };
             }
 
-            //// Synchronous processing
+            // Synchronous processing
             using (task)
             {
                 task.RunSynchronously();
@@ -274,7 +278,7 @@ namespace OgcToolkit.Services.Csw.V202
                     query.Constraint=new Constraint();
                     try
                     {
-                        // We cannot use XElement.Parse() because of likely use of namespaces
+                        // We cannot use XElement.Parse() because of the likely use of namespaces (and prefixes)
                         XmlParserContext context=new XmlParserContext(null, namespaceManager, null, XmlSpace.None);
                         using (var r=new XmlTextReader(constraint, XmlNodeType.Element, context))
                         {
@@ -300,9 +304,88 @@ namespace OgcToolkit.Services.Csw.V202
                 }
             }
 
-            //TODO: distributedSearch parameter
-            //TODO: hopCount parameter
-            //TODO: responseHandler parameter
+            // [OCG 07-006r1 §10.8.4.12]
+            string[] sortBy=parameters.GetValues(SortByParameter);
+            if (sortBy!=null)
+            {
+                IList<string> sbList=string.Join(",", sortBy).Split(',').Where<string>(s => !string.IsNullOrWhiteSpace(s)).ToList<string>();
+                var sptList=new List<Filter110.SortPropertyType>(sbList.Count);
+                foreach (string sb in sbList)
+                {
+                    string pn=sb;
+                    string so=null;
+                    if (sb.EndsWith(":A", StringComparison.OrdinalIgnoreCase))
+                    {
+                        pn=sb.Substring(0, sb.Length-2);
+                        so="ASC";
+                    } else if (sb.EndsWith(":D", StringComparison.OrdinalIgnoreCase))
+                    {
+                        pn=sb.Substring(0, sb.Length-2);
+                        so="DESC";
+                    }
+
+                    var spt=new Filter110.SortPropertyType() {
+                        PropertyName=new Filter110.PropertyName()
+                    };
+                    if (so!=null)
+                        spt.SortOrder=so;
+                    spt.PropertyName.Untyped.SetValue(pn);
+                    sptList.Add(spt);
+                }
+
+                query.SortBy=new Filter110.SortBy() {
+                    SortProperty=sptList
+                };
+            }
+
+            // [OCG 07-006r1 §10.8.4.13]
+            bool isDistributedSearch=false;
+            string distributedSearch=parameters[DistributedSearchParameter];
+            if (!string.IsNullOrEmpty(distributedSearch))
+                try
+                {
+                    isDistributedSearch=bool.Parse(distributedSearch);
+                } catch (FormatException fex)
+                {
+                    throw new OwsException(OwsExceptionCode.InvalidParameterValue, fex) {
+                        Locator=DistributedSearchParameter
+                    };
+                }
+
+            string hopCount=parameters[HopCountParameter];
+            if (!string.IsNullOrEmpty(hopCount))
+                try
+                {
+                    if (isDistributedSearch)
+                        request.DistributedSearch=new DistributedSearchType() {
+                            hopCount=uint.Parse(hopCount, CultureInfo.InvariantCulture)
+                        };
+                } catch (FormatException fex)
+                {
+                    throw new OwsException(OwsExceptionCode.InvalidParameterValue, fex) {
+                        Locator=HopCountParameter
+                    };
+                } catch (OverflowException oex)
+                {
+                    throw new OwsException(OwsExceptionCode.InvalidParameterValue, oex) {
+                        Locator=HopCountParameter
+                    };
+                }
+            else if (isDistributedSearch)
+                request.DistributedSearch=new DistributedSearchType();
+
+            // [OCG 07-006r1 §10.8.4.14]
+            string responseHandler=parameters[ResponseHandlerParameter];
+            if (!string.IsNullOrEmpty(responseHandler))
+                try
+                {
+                    request.ResponseHandler=new Uri[] { new Uri(responseHandler) };
+                } catch (UriFormatException ufex)
+                {
+                    throw new OwsException(OwsExceptionCode.InvalidParameterValue, ufex) {
+                        Locator=ResponseHandlerParameter
+                    };
+                }
 
             return request;
         }
@@ -318,6 +401,20 @@ namespace OgcToolkit.Services.Csw.V202
                 throw new OwsException(OwsExceptionCode.MissingParameterValue) {
                     Locator=TypeNamesParameter
                 };
+
+            // We should be able to use foreach (Uri uri in request.ResponseHandler) here...
+            var rh=from el in request.Untyped.Descendants()
+                   where el.Name=="{http://www.opengis.net/cat/csw/2.0.2}ResponseHandler"
+                   select new Uri(el.Value);
+            // Check that uris are absolute...
+            var invrh=from uri in rh
+                      where !uri.IsAbsoluteUri
+                      select uri;
+            if (invrh.Any<Uri>())
+                throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
+                    Locator=ResponseHandlerParameter
+                };
+
 
             //TODO: implement additional checks
 
@@ -362,6 +459,12 @@ namespace OgcToolkit.Services.Csw.V202
                 };
             }
 
+            if (response==null)
+            {
+                Logger.Warn("No response to handle");
+                return;
+            }
+
             byte[] binResponse=new byte[0];
             using (var ms=new MemoryStream())
             {
@@ -370,13 +473,20 @@ namespace OgcToolkit.Services.Csw.V202
                 binResponse=ms.ToArray();
             }
 
-            foreach (Uri uri in request.ResponseHandler)
+            // We should be able to use foreach (Uri uri in request.ResponseHandler) here...
+            var rh=from el in request.Untyped.Descendants()
+                   where el.Name=="{http://www.opengis.net/cat/csw/2.0.2}ResponseHandler"
+                   select new Uri(el.Value);
+            foreach (Uri uri in rh)
             {
                 switch (uri.Scheme)
                 {
                 case "ftp":
                     {
-                        FtpWebRequest ftpreq=(FtpWebRequest)WebRequest.Create(uri);
+                        Uri ftpuri=uri.IsFile ? uri : new Uri(uri, string.Concat(request.requestId.Host, ".xml"));
+                        Logger.Info(m => m("Opening FTP connection to {0}", ftpuri));
+
+                        FtpWebRequest ftpreq=(FtpWebRequest)WebRequest.Create(ftpuri);
                         ftpreq.Method=WebRequestMethods.Ftp.UploadFile;
                         ftpreq.ContentLength=binResponse.Length;
 
@@ -390,6 +500,12 @@ namespace OgcToolkit.Services.Csw.V202
                     break;
                 }
             }
+        }
+
+        private void _LogAsynchronousExceptions(Task task)
+        {
+            if (task.Exception!=null)
+                Logger.Error("An exception occured during an asynchronous operation", task.Exception);
         }
 
         protected virtual void OnProcessGetRecords(Ows.OwsRequestEventArgs<GetRecords, GetRecordsResponse> e)

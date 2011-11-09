@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -248,7 +249,7 @@ namespace OgcToolkit.Services.Csw.V202.Tests
             }
 
             [Theory]
-            [InlineData("namespace=xmlns(ogc=http%3A%2F%2Fwww.opengis.net%2Fogc)&constraintLanguage=FILTER&constraint=%3Cogc:Filter%3E%3Cogc:Not%3E%3Cogc:PropertyIsEqualTo%3E%3Cogc:PropertyName%3Eprop1%3C/ogc:PropertyName%3E%3Cogc:Literal%3E10%3C/ogc:Literal%3E%3C/ogc:PropertyIsEqualTo%3E%3C/ogc:Not%3E%3C/ogc:Filter%3E&typeNames=Dummy", "prop1!=10")]
+            [InlineData("namespace=xmlns(ogc=http%3A%2F%2Fwww.opengis.net%2Fogc)&constraintLanguage=FILTER&constraint=%3Cogc%3AFilter%3E%3Cogc%3ANot%3E%3Cogc%3APropertyIsEqualTo%3E%3Cogc%3APropertyName%3Eprop1%3C/ogc%3APropertyName%3E%3Cogc%3ALiteral%3E10%3C/ogc%3ALiteral%3E%3C/ogc%3APropertyIsEqualTo%3E%3C/ogc%3ANot%3E%3C/ogc%3AFilter%3E&typeNames=Dummy", "prop1!=10")]
             public void CreateRequestFromParameters_ShouldParseValidFilterConstraint(string query, string expected)
             {
                 var discovery=new Mock<GetRecordsDiscoveryAccessor>();
@@ -258,6 +259,101 @@ namespace OgcToolkit.Services.Csw.V202.Tests
 
                 // Should check the inner XML too...
                 Assert.NotNull(((Query)request.AbstractQuery).Constraint.Filter);
+            }
+
+            [Theory]
+            //[InlineData("typeNames=Dummy", 0)]
+            [InlineData("sortBy=dummy&typeNames=Dummy", 1)]
+            [InlineData("sortBy=dummy%3AA&typeNames=Dummy", 1)]
+            [InlineData("sortBy=dummy%3AD&typeNames=Dummy", 1)]
+            [InlineData("sortBy=dummy%3AA,dummy%3AD,dummy&typeNames=Dummy", 3)]
+            public void CreateRequestFromParameters_ShouldParseValidSortBy(string query, int expected)
+            {
+                var discovery=new Mock<GetRecordsDiscoveryAccessor>();
+                var parameters=HttpUtility.ParseQueryString(query);
+
+                var request=discovery.Object.CreateGetRecordsRequestFromParameters(parameters);
+
+                // Should check the inner XML too...
+                if (expected>0)
+                {
+                    Assert.NotNull(((Query)request.AbstractQuery).SortBy);
+                    Assert.Equal<int>(expected, ((Query)request.AbstractQuery).SortBy.SortProperty.Count);
+                } else
+                    Assert.Null(((Query)request.AbstractQuery).SortBy);
+            }
+
+            [Theory]
+            [InlineData("typeNames=Dummy", false)]
+            [InlineData("distributedSearch=FALSE&typeNames=Dummy", false)]
+            [InlineData("distributedSearch=TRUE&typeNames=Dummy", true)]
+            public void CreateRequestFromParameters_ShouldParseValidDistributedSearch(string query, bool expected)
+            {
+                var discovery=new Mock<GetRecordsDiscoveryAccessor>();
+                var parameters=HttpUtility.ParseQueryString(query);
+
+                var request=discovery.Object.CreateGetRecordsRequestFromParameters(parameters);
+
+                // LinqToXsd bug?
+                //if (expected)
+                //    Assert.NotNull<decimal>(expected, request.DistributedSearch);
+                //else
+                //    Assert.Null<decimal>(expected, request.DistributedSearch);
+
+                var dc=from el in request.Untyped.Descendants()
+                       where el.Name=="{http://www.opengis.net/cat/csw/2.0.2}DistributedSearch"
+                       select el;
+                Assert.Equal<int>(expected ? 1 : 0, dc.Count<XElement>());
+            }
+
+            [Theory]
+            [InlineData("hopCount=1&distributedSearch=TRUE&typeNames=Dummy", 1)]
+            [InlineData("hopCount=10&distributedSearch=TRUE&typeNames=Dummy", 10)]
+            [InlineData("hopCount=12345&distributedSearch=TRUE&typeNames=Dummy", 12345)]
+            public void CreateRequestFromParameters_ShouldParseValidHopCount(string query, int expected)
+            {
+                var discovery=new Mock<GetRecordsDiscoveryAccessor>();
+                var parameters=HttpUtility.ParseQueryString(query);
+
+                var request=discovery.Object.CreateGetRecordsRequestFromParameters(parameters);
+
+                // LinqToXsd bug?
+                //Assert.Equal<decimal>(expected, request.DistributedSearch.hopCount);
+
+                var hc=from el in request.Untyped.Descendants()
+                       where el.Name=="{http://www.opengis.net/cat/csw/2.0.2}DistributedSearch"
+                       select el.Attribute("hopCount").Value;
+                Assert.Equal<int>(1, hc.Count<string>());
+                Assert.Equal<int>(expected, int.Parse(hc.First<string>(), CultureInfo.InvariantCulture));
+            }
+
+            [Theory]
+            [InlineData("typeNames=Dummy", null)]
+            [InlineData("responseHandler=http%3A%2F%2Fwww.dummy.xxx&typeNames=Dummy", "http://www.dummy.xxx")]
+            [InlineData("responseHandler=urn%3Adummy&typeNames=Dummy", "urn:dummy")]
+            public void CreateRequestFromParameters_ShouldParseValidResponseHandler(string query, string expected)
+            {
+                var discovery=new Mock<GetRecordsDiscoveryAccessor>();
+                var parameters=HttpUtility.ParseQueryString(query);
+
+                var request=discovery.Object.CreateGetRecordsRequestFromParameters(parameters);
+
+                if (expected!=null)
+                {
+                    var exUri=new Uri(expected);
+
+                    // LinqToXsd bug?
+                    //Assert.Equal<int>(1, request.ResponseHandler.Count);
+                    //Assert.Contains<Uri>(exUri, request.ResponseHandler);
+
+                    var handlers=from el in request.Untyped.Descendants()
+                                 where el.Name=="{http://www.opengis.net/cat/csw/2.0.2}ResponseHandler"
+                                 select new Uri(el.Value);
+                    Assert.Equal<int>(1, handlers.Count<Uri>());
+                    Assert.Contains<Uri>(exUri, handlers);
+
+                } else
+                    Assert.Empty(request.ResponseHandler);
             }
 
             [Theory]
@@ -290,6 +386,12 @@ namespace OgcToolkit.Services.Csw.V202.Tests
             [InlineData("constraint=prop1!%3D10&typeNames=Dummy")]
             [InlineData("constraintLanguage=DUMMY&constraint=prop1!%3D10&typeNames=Dummy")]
             [InlineData("constraintLanguage=FILTER&constraint=prop1!%3D10&typeNames=Dummy")]
+            // distributedSearch
+            [InlineData("distributedSearch=dummy&typeNames=Dummy")]
+            // hopCount
+            [InlineData("hopCount=dummy&distributedSearch=TRUE&typeNames=Dummy")]
+            // responseHandler
+            [InlineData("responseHandler=dummy&typeNames=Dummy")]
             public void CreateRequestFromParameters_ShouldThrowOnInvalidParameters(string query)
             {
                 var discovery=new Mock<GetRecordsDiscoveryAccessor>();
