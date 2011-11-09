@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.ServiceModel.Web;
+using Common.Logging;
 
 namespace OgcToolkit.Services
 {
@@ -16,6 +17,7 @@ namespace OgcToolkit.Services
         public OgcService()
         {
             RequestCulture=CultureInfo.CurrentCulture;
+            _Logger=LogManager.GetCurrentClassLogger();
         }
 
         protected void CheckRequest(Ows.IRequest request)
@@ -37,8 +39,18 @@ namespace OgcToolkit.Services
             set;
         }
 
+        protected ILog Logger
+        {
+            get
+            {
+                return _Logger;
+            }
+        }
+
         protected abstract string ServiceName { get; }
         protected abstract string ServiceVersion { get; }
+
+        private ILog _Logger;
 
         protected static readonly string[] XmlMimeTypes=new string[] { "application/xml", "text/xml" };
 

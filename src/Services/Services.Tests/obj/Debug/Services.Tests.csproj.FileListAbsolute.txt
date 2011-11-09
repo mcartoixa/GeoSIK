@@ -17,3 +17,4 @@ C:\Users\mathieu.cartoixa.HQ\Documents\src\OgcToolkit\Work\src\Services\Services
 C:\Users\mathieu.cartoixa.HQ\Documents\src\OgcToolkit\Work\src\Services\Services.Tests\bin\Debug\xunit.extensions.xml
 C:\Users\mathieu.cartoixa.HQ\Documents\src\OgcToolkit\Work\src\Services\Services.Tests\obj\Debug\OgcToolkit.Services.Tests.dll
 C:\Users\mathieu.cartoixa.HQ\Documents\src\OgcToolkit\Work\src\Services\Services.Tests\obj\Debug\OgcToolkit.Services.Tests.pdb
+C:\Users\mathieu.cartoixa.HQ\Documents\src\OgcToolkit\Work\src\Services\Services.Tests\bin\Debug\Common.Logging.dll
