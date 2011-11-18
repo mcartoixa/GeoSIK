@@ -38,17 +38,17 @@ namespace OgcToolkit.Services.Csw.V202
             var ret=new Capabilities();
             ret.Filter_Capabilities=CreateCapabilitiesFilterCapabilitiesSection();
 
-            if (returnAll||(request.Content.Sections.Section.Contains("OperationsMetadata")))
+            if (returnAll || (request.Content.Sections.Section.Contains("OperationsMetadata")))
             {
                 Ows100.OperationsMetadata om=CreateCapabilitiesOperationsMetadataSection();
                 if (om!=null)
                     ret.Content.OperationsMetadata=om;
             }
 
-            if (returnAll||(request.Content.Sections.Section.Contains("ServiceProvider")))
+            if (returnAll || (request.Content.Sections.Section.Contains("ServiceProvider")))
                 ret.Content.ServiceProvider=CreateCapabilitiesServiceProviderSection();
 
-            if (returnAll||(request.Content.Sections.Section.Contains("ServiceIdentification")))
+            if (returnAll || (request.Content.Sections.Section.Contains("ServiceIdentification")))
                 ret.Content.ServiceIdentification=CreateCapabilitiesServiceIdentificationSection();
 
             ret.Content.version=Version;

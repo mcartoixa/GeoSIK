@@ -12,10 +12,14 @@ using System.Xml.XPath;
 namespace OgcToolkit.Ogc.Filter
 {
 
+    /// <summary>Handles a node for a <see cref="XPathTypeNavigator" /> navigator.</summary>
     internal class XPathTypeNode
     {
 
-        internal XPathTypeNode(Type root, XPathTypeContext context):
+        /// <summary>Creates a new instance of the <see cref="XPathTypeNode" /> class that will act as a root node.</summary>
+        /// <param name="root"></param>
+        /// <param name="context"></param>
+        internal protected XPathTypeNode(Type root, XPathTypeContext context):
             this(root, null, null, context)
         {
 
@@ -36,10 +40,17 @@ namespace OgcToolkit.Ogc.Filter
             _Context=context;
         }
 
+        /// <summary>Creates an <see cref="Expression" /> from the current node and the specified <paramref name="parameter" />.</summary>
+        /// <param name="parameter">A parameter that represents an instance of the root node, which is the furthest <see cref="Parent" /> from the current node.</param>
+        /// <returns>The expression that gives access to the current node.</returns>
+        /// <remarks>
+        ///   <para></para>
+        /// </remarks>
         public Expression CreateExpression(ParameterExpression parameter)
         {
             Expression prop=parameter;
-            if (_Parent!=null)
+
+            if ((_Parent!=null) && !(_Parent is XPathTypeRootNode))
                 prop=_Parent.CreateExpression(parameter);
 
             if (_MemberInfo!=null)
@@ -48,30 +59,15 @@ namespace OgcToolkit.Ogc.Filter
             return prop;
         }
 
-        public XPathTypeNode[] Attributes
-        {
-            get
-            {
-                GetChildren();
-                return _AttributesChildren;
-            }
-        }
-
-        public XPathTypeNode[] Elements
-        {
-            get
-            {
-                GetChildren();
-                return _ElementsChildren;
-            }
-        }
-
         private void GetChildren()
         {
             if ((_AttributesChildren==null) || (_ElementsChildren==null))
             {
                 // Attributes dont't have children
-                if (NodeType==XmlNodeType.Attribute)
+                if (
+                    (NodeType==XmlNodeType.Attribute) ||
+                    (Type.GetTypeCode(_Node)!=TypeCode.Object)
+                )
                 {
                     _AttributesChildren=new XPathTypeNode[0];
                     _ElementsChildren=new XPathTypeNode[0];
@@ -111,6 +107,24 @@ namespace OgcToolkit.Ogc.Filter
 
                 _AttributesChildren=ac.ToArray<XPathTypeNode>();
                 _ElementsChildren=ec.ToArray<XPathTypeNode>();
+            }
+        }
+
+        public virtual XPathTypeNode[] Attributes
+        {
+            get
+            {
+                GetChildren();
+                return _AttributesChildren;
+            }
+        }
+
+        public virtual XPathTypeNode[] Elements
+        {
+            get
+            {
+                GetChildren();
+                return _ElementsChildren;
             }
         }
 
@@ -167,13 +181,13 @@ namespace OgcToolkit.Ogc.Filter
                     switch (NodeType)
                     {
                     case XmlNodeType.Attribute:
-                        foreach (XmlAttributeAttribute xaa in _NodeAttributes)
+                        foreach (XmlAttributeAttribute xaa in NodeAttributes)
                             if (!string.IsNullOrEmpty(xaa.AttributeName))
                                 return xaa.AttributeName;
                         break;
                     case XmlNodeType.Element:
                     default:
-                        foreach (XmlElementAttribute xea in _NodeAttributes)
+                        foreach (XmlElementAttribute xea in NodeAttributes)
                             if (!string.IsNullOrEmpty(xea.ElementName))
                                 return xea.ElementName;
                         break;
@@ -182,7 +196,7 @@ namespace OgcToolkit.Ogc.Filter
                     return _MemberInfo.Name;
                 } else
                 {
-                    foreach (XmlRootAttribute xra in _NodeAttributes)
+                    foreach (XmlRootAttribute xra in NodeAttributes)
                         if (!string.IsNullOrEmpty(xra.ElementName))
                             return xra.ElementName;
 
@@ -213,20 +227,20 @@ namespace OgcToolkit.Ogc.Filter
                     switch (NodeType)
                     {
                     case XmlNodeType.Attribute:
-                        foreach (XmlAttributeAttribute xaa in _NodeAttributes)
+                        foreach (XmlAttributeAttribute xaa in NodeAttributes)
                             if (!string.IsNullOrEmpty(xaa.AttributeName))
                                 return xaa.Namespace;
                         break;
                     case XmlNodeType.Element:
                     default:
-                        foreach (XmlElementAttribute xea in _NodeAttributes)
+                        foreach (XmlElementAttribute xea in NodeAttributes)
                             if (!string.IsNullOrEmpty(xea.ElementName))
                                 return xea.Namespace;
                         break;
                     }
                 } else
                 {
-                    foreach (XmlRootAttribute xra in _NodeAttributes)
+                    foreach (XmlRootAttribute xra in NodeAttributes)
                         if (!string.IsNullOrEmpty(xra.ElementName))
                             return xra.Namespace;
                 }
@@ -266,6 +280,14 @@ namespace OgcToolkit.Ogc.Filter
                     return fi.FieldType;
 
                 throw new InvalidOperationException();
+            }
+        }
+
+        protected XPathTypeContext Context
+        {
+            get
+            {
+                return _Context;
             }
         }
 
