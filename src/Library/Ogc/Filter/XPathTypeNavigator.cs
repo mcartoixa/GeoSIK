@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq.Expressions;
@@ -26,7 +27,7 @@ namespace OgcToolkit.Ogc.Filter
                 throw new ArgumentNullException("root");
 
             _Context=new XPathTypeContext(namespaceManager);
-            _Root=new XPathTypeNode(root, _Context);
+            _Root=new XPathTypeRootNode(root, _Context);
             _Current=_Root;
         }
 
@@ -111,7 +112,10 @@ namespace OgcToolkit.Ogc.Filter
             if (index<0)
                 return false;
 
-            XPathTypeNode[] elements=_Current.Elements;
+            if (_Current.Parent==null)
+                return false;
+
+            XPathTypeNode[] elements=_Current.Parent.Elements;
             if (++index>=elements.Length)
                 return false;
 
@@ -128,7 +132,10 @@ namespace OgcToolkit.Ogc.Filter
             if (index<0)
                 return false;
 
-            XPathTypeNode[] attributes=_Current.Attributes;
+            if (_Current.Parent==null)
+                return false;
+
+            XPathTypeNode[] attributes=_Current.Parent.Attributes;
             if (++index>=attributes.Length)
                 return false;
 
@@ -159,7 +166,10 @@ namespace OgcToolkit.Ogc.Filter
             if (index<0)
                 return false;
 
-            XPathTypeNode[] elements=_Current.Elements;
+            if (_Current.Parent==null)
+                return false;
+
+            XPathTypeNode[] elements=_Current.Parent.Elements;
             if (--index<0)
                 return false;
 
@@ -167,9 +177,59 @@ namespace OgcToolkit.Ogc.Filter
             return true;
         }
 
+        public override void MoveToRoot()
+        {
+            _Current=_Root;
+        }
+
+        public XPathNodeIterator Select(string xpath, bool mayRootPathBeImplied)
+        {
+            return Select(XPathExpression.Compile(xpath), mayRootPathBeImplied);
+        }
+
+        public XPathNodeIterator Select(string xpath, IXmlNamespaceResolver resolver, bool mayRootPathBeImplied)
+        {
+            return Select(XPathExpression.Compile(xpath, resolver), mayRootPathBeImplied);
+        }
+
+        public XPathNodeIterator Select(XPathExpression expr, bool mayRootPathBeImplied)
+        {
+            // [OCG 07-006r1 §10.8.4.11]
+            if (mayRootPathBeImplied)
+            {
+                var xptn=Clone();
+                xptn.MoveToRoot();
+                xptn.MoveToFirstChild();
+                var xpni=xptn.Select(expr);
+                if (xpni.Count>0)
+                    return xpni;
+            }
+
+            return base.Select(expr);
+        }
+
         public override string BaseURI
         {
-            get { return string.Empty; }
+            get
+            {
+                return string.Empty;
+            }
+        }
+
+        public override bool HasAttributes
+        {
+            get
+            {
+                return _Current.Attributes.Length>0;
+            }
+        }
+
+        public override bool HasChildren
+        {
+            get
+            {
+                return _Current.Elements.Length>0;
+            }
         }
 
         public override bool IsEmptyElement

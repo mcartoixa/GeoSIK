@@ -7,6 +7,7 @@ using System.Xml.XPath;
 
 namespace OgcToolkit.Ogc.Filter
 {
+
     internal class XPathTypeContext
     {
 

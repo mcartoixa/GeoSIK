@@ -8,8 +8,7 @@ namespace OgcToolkit.Services.Csw.V202
 {
 
     /// <summary>Interface implemented by a record type.</summary>
-    public interface IRecord:
-        IXPathNavigable
+    public interface IRecord
     {
     }
 }

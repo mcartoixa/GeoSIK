@@ -64,7 +64,10 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ogc\Filter\XPathTypeRootNode.cs" />
     <Compile Include="Ogc\Filter\V110\Filter.cs" />
+    <Compile Include="Ogc\Filter\XPathTypeNavigator.cs" />
+    <Compile Include="Ogc\Filter\XPathTypeNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -116,7 +116,7 @@ namespace OgcToolkit.Ogc.Filter.V110
             if (pn!=null)
             {
                 XPathTypeNavigator xptn=new XPathTypeNavigator(elementType, namespaceManager);
-                XPathNodeIterator xpni=xptn.Select(pn.Untyped.Value);
+                XPathNodeIterator xpni=xptn.Select(pn.Untyped.Value, namespaceManager, true);
                 Debug.Assert(xpni.Count==1);
                 foreach (XPathTypeNavigator n in xpni)
                     return n.CreateExpression(parameters[0]);

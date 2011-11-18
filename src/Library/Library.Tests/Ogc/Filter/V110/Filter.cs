@@ -17,7 +17,7 @@ namespace OgcToolkit.Ogc.Filter.V110.Tests
         [Fact]
         public void CreateLambda_ShouldParseSimpleStringConstraint()
         {
-            const string constraint="<ogc:PropertyIsEqualTo><ogc:PropertyName>String</ogc:PropertyName><ogc:Literal>10</ogc:Literal></ogc:PropertyIsEqualTo>";
+            const string constraint="<ogc:PropertyIsEqualTo><ogc:PropertyName>/SimpleType/String</ogc:PropertyName><ogc:Literal>10</ogc:Literal></ogc:PropertyIsEqualTo>";
 
             var namespaceManager=new XmlNamespaceManager(new NameTable());
             namespaceManager.AddNamespace(string.Empty, "http://www.opengis.net/ogc");

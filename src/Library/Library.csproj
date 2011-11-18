@@ -90,6 +90,7 @@
     <Compile Include="Ogc\Filter\XPathTypeContext.cs" />
     <Compile Include="Ogc\Filter\XPathTypeNavigator.cs" />
     <Compile Include="Ogc\Filter\XPathTypeNode.cs" />
+    <Compile Include="Ogc\Filter\XPathTypeRootNode.cs" />
     <Compile Include="Ogc\Gml\V321\_Gml.cs" />
     <Compile Include="Ogc\WebCatalog\Ccql\CcqlGrammar.cs" />
     <Compile Include="DublinCore\Elements\V11\_Elements.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="Namespaces.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\Acknowledgement.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\GetRecordsResponse.cs" />
+    <Compile Include="Services\Csw\V202\IBriefRecord.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\IGetRecordsResponse.cs" />
     <Compile Include="Services\Csw\V202\IRecord.cs" />
     <Compile Include="Schemas.Designer.cs">
