@@ -217,14 +217,14 @@ It must be used with MSBuild 4.0.
     <!-- Create a xunit project file: it's the only way to test multiple assemblies in a single run -->
     <Copy
       SourceFiles="$(MSBuildThisFileDirectory)\Empty.xunit"
-      DestinationFiles="$(TestedItemOutputPath)\$(ProjectFilename).xunit"
+      DestinationFiles="$(_OutDir)\$(ProjectFilename).xunit"
       OverwriteReadOnlyFiles="true"
     />
     <ItemGroup>
-      <XUnitAssemblies Include="&lt;assembly filename=&quot;$(TestedItemOutputPath)\%(TestAssemblies.Filename)%(TestAssemblies.Extension)&quot; shadow-copy=&quot;false&quot;&gt;&lt;output type=&quot;xml&quot; filename=&quot;$(TmpOutputPath)$(ProjectFilename)_%(TestAssemblies.Filename).xunit-results.xml&quot; /&gt;&lt;/assembly&gt;" />
+      <XUnitAssemblies Include="&lt;assembly filename=&quot;$(_OutDir)\%(TestAssemblies.Filename)%(TestAssemblies.Extension)&quot; shadow-copy=&quot;false&quot;&gt;&lt;output type=&quot;xml&quot; filename=&quot;$(TmpOutputPath)$(ProjectFilename)_%(TestAssemblies.Filename).xunit-results.xml&quot; /&gt;&lt;/assembly&gt;" />
     </ItemGroup>
     <XmlPoke
-      XmlInputPath="$(TestedItemOutputPath)\$(ProjectFilename).xunit"
+      XmlInputPath="$(_OutDir)\$(ProjectFilename).xunit"
       Query="/xunit/assemblies"
       Value="@(XUnitAssemblies->'%(Identity)', '')"
     />
@@ -235,9 +235,9 @@ It must be used with MSBuild 4.0.
       <PartCoverExclude Include="@(TestAssemblies->'[%(Filename)]*');@(TestedAssemblies->'[%(Filename)]*.Resources.*');@(TestedAssemblies->'[%(Filename)]*.NamespaceDoc')" />
     </ItemGroup>
     <PartCover Condition="'@(TestAssemblies)'!=''"
-      Target="$(InputPath)\lib\xUnit\xunit.console.clr4.x86.exe"
-      TargetArgs="&quot;$(TestedItemOutputPath)\$(ProjectFilename).xunit&quot; /silent"
-      TargetWorkingDir="$(TestedItemOutputPath)"
+      Target="$(InputPath)\lib\xunit\xunit.console.clr4.x86.exe"
+      TargetArgs="&quot;$(_OutDir)\$(ProjectFilename).xunit&quot; /silent"
+      TargetWorkingDir="$(_OutDir)"
       Include="@(PartCoverInclude)"
       Exclude="[xunit.*]*$(ProjectPartCoverExclude);@(PartCoverExclude)"
       Output="$(TmpOutputPath)$(ProjectFilename).partcover-results.xml"
@@ -328,7 +328,7 @@ It must be used with MSBuild 4.0.
       <ClocResultsFile>$(TmpOutputPath)cloc-results.xml</ClocResultsFile>
     </PropertyGroup>
     <Exec
-      Command="&quot;$(MSBuildThisFileDirectory)\cloc.exe&quot; $(InputPath) --exclude-dir=bin,build,doc,lib,obj,tmp,GeneratedCode --not-match-f=^_ --3 --quiet --progress-rate=0 --xml --report_file=&quot;$(ClocResultsFile)&quot;"
+      Command="&quot;$(MSBuildThisFileDirectory)\cloc.exe&quot; $(InputPath) --exclude-dir=bin,build,doc,lib,obj,tmp,GeneratedCode --exclude-ext=csproj,sln --not-match-f=^_ --3 --quiet --progress-rate=0 --xml --report_file=&quot;$(ClocResultsFile)&quot;"
       WorkingDirectory="$(InputPath)"
       YieldDuringToolExecution="True"
     />

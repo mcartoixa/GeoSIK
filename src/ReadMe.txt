@@ -1,12 +1,15 @@
 PREREQUISITES
 -------------
 
-- Microsoft .NET Framework 4.0
-- Microsoft Windows SDK 7.1
-- MSBuild.Community.Tasks 1.3
-- FxCop 10.0
-- PartCover .NET 4.0 <http://github.com/sawilde/partcover.net4>
-- SQL Server Express 2008 R2
+-Build:
+	* Microsoft .NET Framework 4.0
+	* Microsoft Windows SDK 7.1
+	* MSBuild.Community.Tasks 1.3
+	* FxCop 10.0
+	* PartCover .NET 4.0.2 <http://github.com/sawilde/partcover.net4>
+
+- Development:
+	* SQL Server Express 2008 R2
 
 
 
@@ -21,9 +24,13 @@ build.bat
 DEVELOPMENT
 -----------
 
-- Serialization objects found in the Library project have been generated with LinqToXsd <http://linqtoxsd.codeplex.com/> with a command line like the following:
+- Build the project once (build.bat) before any development: NuGet packages will automatically be updated in your repository.
+
+- Serialization:
+	* Serialization objects found in the Library project have been generated with LinqToXsd <http://linqtoxsd.codeplex.com/> with a command line like the following:
 LinqToXsd.exe iso\19139\20070417\gmd\gmd.xsd /config:LinqToXsd.config.xml /enableServiceReference
-- LinqToXsd configuration looks like the following:
+	* Original XML schemas can be found online at <http://schemas.opengis.net/>.
+	* LinqToXsd configuration looks like the following:
 <Configuration xmlns="http://www.microsoft.com/xml/schema/linq">
   <Namespaces>
     <Namespace Schema="http://www.opengis.net/gml" Clr="OgcToolkit.Ogc.Gml.V311" />
@@ -43,6 +50,6 @@ LinqToXsd.exe iso\19139\20070417\gmd\gmd.xsd /config:LinqToXsd.config.xml /enabl
     <Namespace Schema="http://purl.org/dc/terms/" Clr="OgcToolkit.DublinCore.Terms" />
   </Namespaces>
 </Configuration>
-- Code generation has not been made part of the build as:
-	. Generation is somewhat buggy and some generated objects have been manually tweaked.
-	. Sometimes the schemas themselves have been tweaked for the generation to work...
+	* Code generation has not been made part of the build as:
+		. Generation is somewhat buggy and some generated objects have been manually tweaked.
+		. Sometimes the schemas themselves have been tweaked for the generation to work...
