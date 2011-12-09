@@ -7,7 +7,6 @@
   <PropertyGroup>
     <ProjectName Condition="'$(ProjectName)'==''">$(MSBuildProjectName)</ProjectName>
     <WindowsSdkVersion>v7.1</WindowsSdkVersion>
-    <UnitTests>False</UnitTests>
   </PropertyGroup>
 
 
