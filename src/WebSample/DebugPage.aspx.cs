@@ -12,7 +12,7 @@ using System.Xml.Serialization;
 
 namespace OgcToolkit.WebSample
 {
-    public partial class Debug: System.Web.UI.Page
+    public partial class DebugPage: System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

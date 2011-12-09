@@ -44,6 +44,9 @@
       <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.SqlServer.Types, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\lib\SqlServer\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -69,6 +72,7 @@
     <Compile Include="Csw\V202\Discovery+GetCapabilities.cs" />
     <Compile Include="Csw\V202\Discovery+GetRecords.cs" />
     <Compile Include="Csw\V202\Discovery.cs" />
+    <Compile Include="OgcRequestProcessor.cs" />
     <Compile Include="OgcService.cs" />
     <Compile Include="OwsDescriptionAttribute.cs" />
     <Compile Include="Ows\ErrorHandler.cs" />

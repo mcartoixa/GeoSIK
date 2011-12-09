@@ -13,7 +13,8 @@ namespace OgcToolkit.Ogc.Filter.V110
     /// <remarks>
     ///   <para>It seems that for the OGC, binary really means more than 2...</para>
     /// </remarks>
-    public interface IBinaryLogicalOperator
+    public interface IBinaryLogicalOperator:
+        IExpressionBuilder
     {
 
         IList<comparisonOps> comparisonOps { get; }

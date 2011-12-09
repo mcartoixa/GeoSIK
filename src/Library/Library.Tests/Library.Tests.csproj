@@ -64,6 +64,9 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ogc\Filter\V110\PropertyIsEqualTo.cs" />
+    <Compile Include="Ogc\Filter\V110\PropertyIsGreaterThan.cs" />
+    <Compile Include="Ogc\Filter\V110\PropertyIsLike.cs" />
     <Compile Include="Ogc\Filter\XPathTypeRootNode.cs" />
     <Compile Include="Ogc\Filter\V110\Filter.cs" />
     <Compile Include="Ogc\Filter\XPathTypeNavigator.cs" />

@@ -26,12 +26,14 @@ namespace OgcToolkit.Services.Csw.V202.Tests
             [InlineData("Namespace=xmlns(dum1=http%3A%2F%2Fwww.dummy1.xxx%2F),xmlns(dum2=http%3A%2F%2Fwww.dummy2.xxx%2F)", "dum1;http://www.dummy1.xxx/,dum2;http://www.dummy2.xxx/")]
             [InlineData("Namespace=xmlns(dum1=http%3A%2F%2Fwww.dummy1.xxx%2F),xmlns(http%3A%2F%2Fwww.dummy.xxx%2F),xmlns(dum2=http%3A%2F%2Fwww.dummy2.xxx%2F)", ";http://www.dummy.xxx/,dum1;http://www.dummy1.xxx/,dum2;http://www.dummy2.xxx/")]
             [InlineData("dummy=dummy&Namespace=xmlns(dum=http%3A%2F%2Fwww.dummy.xxx%2F)&dummy=dummy", "dum;http://www.dummy.xxx/")]
-            public void CreateRequestFromParameters_ShouldParseValidNamespace(string query, string expected)
+            public void CreateRequest_ShouldParseValidNamespace(string query, string expected)
             {
-                var discovery=new Mock<DescibeRecordDiscoveryAccessor>();
+                var discovery=new Mock<Discovery>();
+                var processor=new DescribeRecordProcessorAccessor(discovery.Object);
+
                 var parameters=HttpUtility.ParseQueryString(query);
 
-                var request=discovery.Object.CreateDescribeRecordRequestFromParameters(parameters);
+                var request=processor.CreateRequest(parameters);
 
                 if (expected!=null)
                 {
@@ -58,12 +60,14 @@ namespace OgcToolkit.Services.Csw.V202.Tests
             [InlineData("namespace=xmlns(dum=urn%3Adummy)&typeName=dum%3ADummy", "{urn:dummy}Dummy")]
             [InlineData("typeName=dum%3ADummy&namespace=xmlns(dum=urn%3Adummy)", "{urn:dummy}Dummy")]
             [InlineData("namespace=xmlns(dum=urn%3Adummy)&typeName=dum%3ADummy1,dum%3ADummy2", "{urn:dummy}Dummy1,{urn:dummy}Dummy2")]
-            public void CreateRequestFromParameters_ShouldParseValidTypeNames(string query, string expected)
+            public void CreateRequest_ShouldParseValidTypeNames(string query, string expected)
             {
-                var discovery=new Mock<DescibeRecordDiscoveryAccessor>();
+                var discovery=new Mock<Discovery>();
+                var processor=new DescribeRecordProcessorAccessor(discovery.Object);
+
                 var parameters=HttpUtility.ParseQueryString(query);
 
-                var request=discovery.Object.CreateDescribeRecordRequestFromParameters(parameters);
+                var request=processor.CreateRequest(parameters);
 
                 if (expected!=null)
                 {
@@ -92,12 +96,14 @@ namespace OgcToolkit.Services.Csw.V202.Tests
             [InlineData("dummy=dummy", "application/xml")]
             [InlineData("outputFormat=application%2Fxml", "application/xml")]
             [InlineData("outputFormat=text%2Fxml", "text/xml")]
-            public void CreateRequestFromParameters_ShouldParseValidOutputFormat(string query, string expected)
+            public void CreateRequest_ShouldParseValidOutputFormat(string query, string expected)
             {
-                var discovery=new Mock<DescibeRecordDiscoveryAccessor>();
+                var discovery=new Mock<Discovery>();
+                var processor=new DescribeRecordProcessorAccessor(discovery.Object);
+
                 var parameters=HttpUtility.ParseQueryString(query);
 
-                var request=discovery.Object.CreateDescribeRecordRequestFromParameters(parameters);
+                var request=processor.CreateRequest(parameters);
 
                 Assert.Equal<string>(expected, request.outputFormat);
             }
@@ -106,12 +112,14 @@ namespace OgcToolkit.Services.Csw.V202.Tests
             [InlineData("dummy=dummy", Namespaces.StrangeXmlSchemaNamespace)]
             [InlineData("schemaLanguage=http%3A%2F%2Fwww.dummy.xxx", "http://www.dummy.xxx")]
             [InlineData("schemaLanguage=urn%3Adummy", "urn:dummy")]
-            public void CreateRequestFromParameters_ShouldParseValidSchemaLanguage(string query, string expected)
+            public void CreateRequest_ShouldParseValidSchemaLanguage(string query, string expected)
             {
-                var discovery=new Mock<DescibeRecordDiscoveryAccessor>();
+                var discovery=new Mock<Discovery>();
+                var processor=new DescribeRecordProcessorAccessor(discovery.Object);
+
                 var parameters=HttpUtility.ParseQueryString(query);
 
-                var request=discovery.Object.CreateDescribeRecordRequestFromParameters(parameters);
+                var request=processor.CreateRequest(parameters);
 
                 if (expected!=null)
                 {
@@ -129,51 +137,63 @@ namespace OgcToolkit.Services.Csw.V202.Tests
             // outputFormat: values are validated at the GetRecords processing level
             // schemaLanguage
             [InlineData("schemaLanguage=dummy")]
-            public void CreateRequestFromParameters_ShouldThrowOnInvalidParameters(string query)
+            public void CreateRequest_ShouldThrowOnInvalidParameters(string query)
             {
-                var discovery=new Mock<DescibeRecordDiscoveryAccessor>();
+                var discovery=new Mock<Discovery>();
+                var processor=new DescribeRecordProcessorAccessor(discovery.Object);
+
                 var parameters=HttpUtility.ParseQueryString(query);
 
-                Assert.Throws<OwsException>(() => discovery.Object.CreateDescribeRecordRequestFromParameters(parameters));
+                Assert.Throws<OwsException>(() => processor.CreateRequest(parameters));
             }
 
             [Theory]
             [InlineData("dummy")]
             public void CheckRequest_ShouldThrowWhenOutputFormatIsInvalid(string format)
             {
-                var discovery=new Mock<DescibeRecordDiscoveryAccessor>();
-                var request=new DescribeRecord() {
+                var discovery=new Mock<Discovery>();
+                var processor=new DescribeRecordProcessorAccessor(discovery.Object);
+
+                var request=new DescribeRecord()
+                {
                     outputFormat=format
                 };
 
-                Assert.Throws<OwsException>(() => discovery.Object.CheckDescribeRecordRequest(request));
+                Assert.Throws<OwsException>(() => processor.CheckRequest(request));
             }
 
             [Theory]
             [InlineData("urn:dummy")]
             public void CheckRequest_ShouldThrowWhenSchemaLanguageIsInvalid(string language)
             {
-                var discovery=new Mock<DescibeRecordDiscoveryAccessor>();
+                var discovery=new Mock<Discovery>();
+                var processor=new DescribeRecordProcessorAccessor(discovery.Object);
+
                 var request=new DescribeRecord() {
                     schemaLanguage=(language!=null ? new Uri(language) : null)
                 };
 
-                Assert.Throws<OwsException>(() => discovery.Object.CheckDescribeRecordRequest(request));
+                Assert.Throws<OwsException>(() => processor.CheckRequest(request));
             }
         }
 
         // Gives access to protected methods
-        public abstract class DescibeRecordDiscoveryAccessor:
-            Discovery
+        public class DescribeRecordProcessorAccessor:
+            Discovery.DescribeRecordProcessorBase
         {
-            public new DescribeRecord CreateDescribeRecordRequestFromParameters(NameValueCollection parameters)
+
+            public DescribeRecordProcessorAccessor(Discovery service):
+                base(service)
+            {}
+
+            public new void CheckRequest(DescribeRecord request)
             {
-                return base.CreateDescribeRecordRequestFromParameters(parameters);
+                base.CheckRequest(request);
             }
 
-            public new void CheckDescribeRecordRequest(DescribeRecord request)
+            public new DescribeRecord CreateRequest(NameValueCollection parameters)
             {
-                base.CheckDescribeRecordRequest(request);
+                return base.CreateRequest(parameters);
             }
         }
     }

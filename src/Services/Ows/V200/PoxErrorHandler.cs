@@ -10,7 +10,7 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using Ows100=OgcToolkit.Ogc.Ows.V100; //TODO: upgrade to v2.0.0
+using Ows100=OgcToolkit.Ogc.Ows.V100; //TODO: should be v2.0.0
 
 namespace OgcToolkit.Services.Ows.V200
 {

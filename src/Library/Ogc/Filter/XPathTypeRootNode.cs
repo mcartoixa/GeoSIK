@@ -21,27 +21,36 @@ namespace OgcToolkit.Ogc.Filter
         internal protected XPathTypeRootNode(Type root, XPathTypeContext context):
             base(root, context)
         {
-            _Elements=new XPathTypeNode[] { new XPathTypeNode(Node, null, this, Context) };
+            _ElementChildrenNodes=new XPathTypeNode[] { new XPathTypeNode(Node, null, this, Context) };
         }
 
-        public override XPathTypeNode[] Attributes
+        public override XPathTypeNode[] AttributeChildrenNodes
         {
             get
             {
-                return _Attributes;
+                return _AttributeChildrenNodes;
             }
         }
 
-        public override XPathTypeNode[] Elements
+        public override XPathTypeNode[] ElementChildrenNodes
         {
             get
             {
-                return _Elements;
+                return _ElementChildrenNodes;
             }
         }
 
-        private static XPathTypeNode[] _Attributes=new XPathTypeNode[0];
+        public override XPathTypeNode[] IgnoredChildrenNodes
+        {
+            get
+            {
+                return _IgnoredChildrenNodes;
+            }
+        }
 
-        private XPathTypeNode[] _Elements;
+        private static XPathTypeNode[] _AttributeChildrenNodes=new XPathTypeNode[0];
+        private static XPathTypeNode[] _IgnoredChildrenNodes=new XPathTypeNode[0];
+
+        private XPathTypeNode[] _ElementChildrenNodes;
     }
 }

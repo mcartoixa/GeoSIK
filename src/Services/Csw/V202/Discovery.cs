@@ -26,6 +26,36 @@ namespace OgcToolkit.Services.Csw.V202
         IDiscovery
     {
 
+        public Capabilities GetCapabilities(NameValueCollection parameters)
+        {
+            return CreateGetCapabilitiesProcessor().Process(parameters);
+        }
+
+        public Capabilities GetCapabilities(GetCapabilities request)
+        {
+            return CreateGetCapabilitiesProcessor().Process(request);
+        }
+
+        public DescribeRecordResponse DescribeRecord(NameValueCollection parameters)
+        {
+            return CreateDescribeRecordProcessor().Process(parameters);
+        }
+
+        public DescribeRecordResponse DescribeRecord(DescribeRecord request)
+        {
+            return CreateDescribeRecordProcessor().Process(request);
+        }
+
+        public IGetRecordsResponse GetRecords(NameValueCollection parameters)
+        {
+            return CreateGetRecordsProcessor().Process(parameters);
+        }
+
+        public IGetRecordsResponse GetRecords(GetRecords request)
+        {
+            return CreateGetRecordsProcessor().Process(request);
+        }
+
         public GetDomainResponse GetDomain(GetDomain request)
         {
             throw new NotImplementedException();
@@ -50,6 +80,33 @@ namespace OgcToolkit.Services.Csw.V202
             CheckRequest(request);
 
             throw new NotImplementedException();
+        }
+
+        protected virtual GetCapabilitiesProcessorBase CreateGetCapabilitiesProcessor()
+        {
+            return new GetCapabilitiesProcessorBase(this);
+        }
+
+        protected virtual DescribeRecordProcessorBase CreateDescribeRecordProcessor()
+        {
+            return new DescribeRecordProcessorBase(this);
+        }
+
+        protected virtual GetRecordsProcessorBase CreateGetRecordsProcessor()
+        {
+            return new GetRecordsProcessorBase(this);
+        }
+
+        public virtual IEnumerable<IXMetaData> GetSupportedRecordTypes()
+        {
+            return _SupportedRecordTypesInstances;
+        }
+
+        protected abstract IQueryable GetRecordsSource(IEnumerable<XName> typeNames);
+
+        protected virtual IOperatorImplementationProvider GetOperatorImplementationProvider()
+        {
+            return null;
         }
 
         private static XDocument GetRecordSchema(XNamespace ns)
@@ -90,17 +147,17 @@ namespace OgcToolkit.Services.Csw.V202
             return XName.Get(name);
         }
 
-        protected override string ServiceName
+        public override string ServiceName
         {
             get { return Service; }
         }
 
-        protected override string ServiceVersion
+        public override string ServiceVersion
         {
             get { return Version; }
         }
 
-        protected abstract string ProviderName { get; }
+        public abstract string ProviderName { get; }
 
         protected static readonly Uri XmlSchemaLanguageUri=new Uri(Namespaces.XmlSchemaNamespace);
         protected static readonly Uri StrangeXmlSchemaLanguageUri=new Uri(Namespaces.StrangeXmlSchemaNamespace);
@@ -126,7 +183,7 @@ namespace OgcToolkit.Services.Csw.V202
 
         private static readonly Regex _NamespacesRegEx=new Regex(@"^xmlns\(((?<PREFIX>\w+)=)?(?<URL>.+)\)$", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.ExplicitCapture);
         private static readonly Regex _InvalidFileNameCharsRegEx=new Regex(@"\W", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private static readonly IXMetaData[] _SupportedRecordTypesInstances=new IXMetaData[] { new Record(), new Gmd.MD_Metadata() };
+        private static readonly IXMetaData[] _SupportedRecordTypesInstances=new IXMetaData[] { new Record()/*, new Gmd.MD_Metadata()*/ };
 
         public const string Service="CSW";
         public const string Version="2.0.2";

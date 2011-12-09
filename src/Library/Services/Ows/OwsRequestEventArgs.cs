@@ -19,8 +19,6 @@ namespace OgcToolkit.Services.Ows
         where TRequest:
             IRequest
         where TResponse:
-            XTypedElement,
-            IXMetaData,
             IXmlSerializable
     {
 
