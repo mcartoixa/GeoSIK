@@ -104,9 +104,9 @@ namespace OgcToolkit.Services.Ows
             } else
                 t=s[s.Keys.Max<string>()]; // latest version
 
-            IEnumerable<MethodInfo> requests=t.
-                FindMembers(MemberTypes.Method, BindingFlags.Instance | BindingFlags.Public, _ServiceRequestFilter, request.ToUpperInvariant()).
-                Cast<MethodInfo>();
+            IEnumerable<MethodInfo> requests=t
+                .FindMembers(MemberTypes.Method, BindingFlags.Instance | BindingFlags.Public, _ServiceRequestFilter, request.ToUpperInvariant())
+                .Cast<MethodInfo>();
             foreach (MethodInfo r in requests)
             {
                 ParameterInfo[] pia=r.GetParameters();
@@ -118,7 +118,20 @@ namespace OgcToolkit.Services.Ows
                     {
                         var oex=tiex.InnerException as OwsException;
                         if (oex!=null)
-                            throw oex;
+                            throw new OwsException(oex.Code, oex);
+
+                        if (tiex.InnerException!=null)
+                            throw new OwsException(OwsExceptionCode.NoApplicableCode, tiex.InnerException);
+
+                        throw new OwsException(OwsExceptionCode.NoApplicableCode, tiex);
+                    } catch (NotSupportedException nsex)
+                    {
+                        throw new OwsException(OwsExceptionCode.OperationNotSupported, nsex) {
+                            Locator=request
+                        };
+                    } catch (Exception ex)
+                    {
+                        throw new OwsException(OwsExceptionCode.NoApplicableCode, ex);
                     }
             }
 

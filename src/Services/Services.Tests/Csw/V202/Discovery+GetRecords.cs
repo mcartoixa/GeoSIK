@@ -28,12 +28,14 @@ namespace OgcToolkit.Services.Csw.V202.Tests
             [InlineData("Namespace=xmlns(dum1=http%3A%2F%2Fwww.dummy1.xxx%2F),xmlns(dum2=http%3A%2F%2Fwww.dummy2.xxx%2F)&typeNames=Dummy", "dum1;http://www.dummy1.xxx/,dum2;http://www.dummy2.xxx/")]
             [InlineData("Namespace=xmlns(dum1=http%3A%2F%2Fwww.dummy1.xxx%2F),xmlns(http%3A%2F%2Fwww.dummy.xxx%2F),xmlns(dum2=http%3A%2F%2Fwww.dummy2.xxx%2F)&typeNames=Dummy", ";http://www.dummy.xxx/,dum1;http://www.dummy1.xxx/,dum2;http://www.dummy2.xxx/")]
             [InlineData("dummy=dummy&Namespace=xmlns(dum=http%3A%2F%2Fwww.dummy.xxx%2F)&dummy=dummy&typeNames=Dummy", "dum;http://www.dummy.xxx/")]
-            public void CreateRequestFromParameters_ShouldParseValidNamespace(string query, string expected)
+            public void CreateRequest_ShouldParseValidNamespace(string query, string expected)
             {
-                var discovery=new Mock<GetRecordsDiscoveryAccessor>();
+                var discovery=new Mock<Discovery>();
+                var processor=new GetRecordsProcessorAccessor(discovery.Object);
+
                 var parameters=HttpUtility.ParseQueryString(query);
 
-                var request=discovery.Object.CreateGetRecordsRequestFromParameters(parameters);
+                var request=processor.CreateRequest(parameters);
 
                 if (expected!=null)
                 {
@@ -61,12 +63,14 @@ namespace OgcToolkit.Services.Csw.V202.Tests
             [InlineData("requestId=http%3A%2F%2Fwww.dummy.xxx%2F&typeNames=Dummy", "http://www.dummy.xxx/")]
             [InlineData("dummy=dummy&requestid=http%3A%2F%2Fwww.dummy.xxx%2Ftest&typeNames=Dummy", "http://www.dummy.xxx/test")]
             [InlineData("requestId=urn%3Auuid%3Ace8627a0-685c-11db-bd13-0800200c9a66&dummy=dummy&typeNames=Dummy", "urn:uuid:ce8627a0-685c-11db-bd13-0800200c9a66")]
-            public void CreateRequestFromParameters_ShouldParseValidRequestId(string query, string expected)
+            public void CreateRequest_ShouldParseValidRequestId(string query, string expected)
             {
-                var discovery=new Mock<GetRecordsDiscoveryAccessor>();
+                var discovery=new Mock<Discovery>();
+                var processor=new GetRecordsProcessorAccessor(discovery.Object);
+
                 var parameters=HttpUtility.ParseQueryString(query);
 
-                var request=discovery.Object.CreateGetRecordsRequestFromParameters(parameters);
+                var request=processor.CreateRequest(parameters);
 
                 if (expected!=null)
                 {
@@ -81,12 +85,14 @@ namespace OgcToolkit.Services.Csw.V202.Tests
             [InlineData("resultType=hits&typeNames=Dummy", "hits")]
             [InlineData("resultType=results&typeNames=Dummy", "results")]
             [InlineData("resultType=validate&typeNames=Dummy", "validate")]
-            public void CreateRequestFromParameters_ShouldParseValidResultType(string query, string expected)
+            public void CreateRequest_ShouldParseValidResultType(string query, string expected)
             {
-                var discovery=new Mock<GetRecordsDiscoveryAccessor>();
+                var discovery=new Mock<Discovery>();
+                var processor=new GetRecordsProcessorAccessor(discovery.Object);
+
                 var parameters=HttpUtility.ParseQueryString(query);
 
-                var request=discovery.Object.CreateGetRecordsRequestFromParameters(parameters);
+                var request=processor.CreateRequest(parameters);
 
                 Assert.Equal<string>(expected, request.resultType);
             }
@@ -95,12 +101,14 @@ namespace OgcToolkit.Services.Csw.V202.Tests
             [InlineData("typeNames=Dummy", "application/xml")]
             [InlineData("outputFormat=application%2Fxml&typeNames=Dummy", "application/xml")]
             [InlineData("outputFormat=text%2Fxml&typeNames=Dummy", "text/xml")]
-            public void CreateRequestFromParameters_ShouldParseValidOutputFormat(string query, string expected)
+            public void CreateRequest_ShouldParseValidOutputFormat(string query, string expected)
             {
-                var discovery=new Mock<GetRecordsDiscoveryAccessor>();
+                var discovery=new Mock<Discovery>();
+                var processor=new GetRecordsProcessorAccessor(discovery.Object);
+
                 var parameters=HttpUtility.ParseQueryString(query);
 
-                var request=discovery.Object.CreateGetRecordsRequestFromParameters(parameters);
+                var request=processor.CreateRequest(parameters);
 
                 Assert.Equal<string>(expected, request.outputFormat);
             }
@@ -109,12 +117,14 @@ namespace OgcToolkit.Services.Csw.V202.Tests
             [InlineData("typeNames=Dummy", null)]
             [InlineData("outputSchema=http%3A%2F%2Fwww.dummy.xxx&typeNames=Dummy", "http://www.dummy.xxx")]
             [InlineData("outputSchema=urn%3Aoasis%3Anames%3Atc%3Aebxml-regrep%3Arim%3Axsd%3A2.5&typeNames=Dummy", "urn:oasis:names:tc:ebxml-regrep:rim:xsd:2.5")]
-            public void CreateRequestFromParameters_ShouldParseValidOutputSchema(string query, string expected)
+            public void CreateRequest_ShouldParseValidOutputSchema(string query, string expected)
             {
-                var discovery=new Mock<GetRecordsDiscoveryAccessor>();
+                var discovery=new Mock<Discovery>();
+                var processor=new GetRecordsProcessorAccessor(discovery.Object);
+
                 var parameters=HttpUtility.ParseQueryString(query);
 
-                var request=discovery.Object.CreateGetRecordsRequestFromParameters(parameters);
+                var request=processor.CreateRequest(parameters);
 
                 if (expected!=null)
                 {
@@ -129,12 +139,14 @@ namespace OgcToolkit.Services.Csw.V202.Tests
             [InlineData("startPosition=1&typeNames=Dummy", 1)]
             [InlineData("startPosition=10&typeNames=Dummy", 10)]
             [InlineData("startPosition=12345&typeNames=Dummy", 12345)]
-            public void CreateRequestFromParameters_ShouldParseValidStartPosition(string query, int expected)
+            public void CreateRequest_ShouldParseValidStartPosition(string query, int expected)
             {
-                var discovery=new Mock<GetRecordsDiscoveryAccessor>();
+                var discovery=new Mock<Discovery>();
+                var processor=new GetRecordsProcessorAccessor(discovery.Object);
+
                 var parameters=HttpUtility.ParseQueryString(query);
 
-                var request=discovery.Object.CreateGetRecordsRequestFromParameters(parameters);
+                var request=processor.CreateRequest(parameters);
 
                 Assert.Equal<decimal>(expected, request.startPosition);
             }
@@ -144,12 +156,14 @@ namespace OgcToolkit.Services.Csw.V202.Tests
             [InlineData("maxRecords=1&typeNames=Dummy", 1)]
             [InlineData("maxRecords=10&typeNames=Dummy", 10)]
             [InlineData("maxRecords=12345&typeNames=Dummy", 12345)]
-            public void CreateRequestFromParameters_ShouldParseValidMaxRecords(string query, int expected)
+            public void CreateRequest_ShouldParseValidMaxRecords(string query, int expected)
             {
-                var discovery=new Mock<GetRecordsDiscoveryAccessor>();
+                var discovery=new Mock<Discovery>();
+                var processor=new GetRecordsProcessorAccessor(discovery.Object);
+
                 var parameters=HttpUtility.ParseQueryString(query);
 
-                var request=discovery.Object.CreateGetRecordsRequestFromParameters(parameters);
+                var request=processor.CreateRequest(parameters);
 
                 Assert.Equal<decimal>(expected, request.maxRecords);
             }
@@ -159,12 +173,14 @@ namespace OgcToolkit.Services.Csw.V202.Tests
             [InlineData("namespace=xmlns(dum=urn%3Adummy)&typeNames=dum%3ADummy", "{urn:dummy}Dummy")]
             [InlineData("typeNames=dum%3ADummy&namespace=xmlns(dum=urn%3Adummy)", "{urn:dummy}Dummy")]
             [InlineData("namespace=xmlns(dum=urn%3Adummy)&typeNames=dum%3ADummy1,dum%3ADummy2", "{urn:dummy}Dummy1,{urn:dummy}Dummy2")]
-            public void CreateRequestFromParameters_ShouldParseValidTypeNames(string query, string expected)
+            public void CreateRequest_ShouldParseValidTypeNames(string query, string expected)
             {
-                var discovery=new Mock<GetRecordsDiscoveryAccessor>();
+                var discovery=new Mock<Discovery>();
+                var processor=new GetRecordsProcessorAccessor(discovery.Object);
+
                 var parameters=HttpUtility.ParseQueryString(query);
 
-                var request=discovery.Object.CreateGetRecordsRequestFromParameters(parameters);
+                var request=processor.CreateRequest(parameters);
 
                 if (expected!=null)
                 {
@@ -191,12 +207,14 @@ namespace OgcToolkit.Services.Csw.V202.Tests
             [Theory]
             [InlineData("elementName=Dummy&typeNames=Dummy", "Dummy")]
             [InlineData("namespace=xmlns(dum=urn%3Adummy)&elementName=dum%3ADummy&typeNames=Dummy", "{urn:dummy}Dummy")]
-            public void CreateRequestFromParameters_ShouldParseValidElementName(string query, string expected)
+            public void CreateRequest_ShouldParseValidElementName(string query, string expected)
             {
-                var discovery=new Mock<GetRecordsDiscoveryAccessor>();
+                var discovery=new Mock<Discovery>();
+                var processor=new GetRecordsProcessorAccessor(discovery.Object);
+
                 var parameters=HttpUtility.ParseQueryString(query);
 
-                var request=discovery.Object.CreateGetRecordsRequestFromParameters(parameters);
+                var request=processor.CreateRequest(parameters);
 
                 if (expected!=null)
                 {
@@ -226,36 +244,42 @@ namespace OgcToolkit.Services.Csw.V202.Tests
             [InlineData("elementSetName=brief&typeNames=Dummy", "brief")]
             [InlineData("elementSetName=summary&typeNames=Dummy", "summary")]
             [InlineData("elementSetName=full&typeNames=Dummy", "full")]
-            public void CreateRequestFromParameters_ShouldParseValidElementSetName(string query, string expected)
+            public void CreateRequest_ShouldParseValidElementSetName(string query, string expected)
             {
-                var discovery=new Mock<GetRecordsDiscoveryAccessor>();
+                var discovery=new Mock<Discovery>();
+                var processor=new GetRecordsProcessorAccessor(discovery.Object);
+
                 var parameters=HttpUtility.ParseQueryString(query);
 
-                var request=discovery.Object.CreateGetRecordsRequestFromParameters(parameters);
+                var request=processor.CreateRequest(parameters);
 
                 Assert.Equal<string>(expected, ((Query)request.AbstractQuery).ElementSetName.TypedValue);
             }
 
             [Theory]
             [InlineData("constraintLanguage=CQL_TEXT&constraint=prop1!%3D10&typeNames=Dummy", "prop1!=10")]
-            public void CreateRequestFromParameters_ShouldParseValidCqlConstraint(string query, string expected)
+            public void CreateRequest_ShouldParseValidCqlConstraint(string query, string expected)
             {
-                var discovery=new Mock<GetRecordsDiscoveryAccessor>();
+                var discovery=new Mock<Discovery>();
+                var processor=new GetRecordsProcessorAccessor(discovery.Object);
+
                 var parameters=HttpUtility.ParseQueryString(query);
 
-                var request=discovery.Object.CreateGetRecordsRequestFromParameters(parameters);
+                var request=processor.CreateRequest(parameters);
 
                 Assert.Equal<string>(expected, ((Query)request.AbstractQuery).Constraint.CqlText);
             }
 
             [Theory]
             [InlineData("namespace=xmlns(ogc=http%3A%2F%2Fwww.opengis.net%2Fogc)&constraintLanguage=FILTER&constraint=%3Cogc%3AFilter%3E%3Cogc%3ANot%3E%3Cogc%3APropertyIsEqualTo%3E%3Cogc%3APropertyName%3Eprop1%3C/ogc%3APropertyName%3E%3Cogc%3ALiteral%3E10%3C/ogc%3ALiteral%3E%3C/ogc%3APropertyIsEqualTo%3E%3C/ogc%3ANot%3E%3C/ogc%3AFilter%3E&typeNames=Dummy", "prop1!=10")]
-            public void CreateRequestFromParameters_ShouldParseValidFilterConstraint(string query, string expected)
+            public void CreateRequest_ShouldParseValidFilterConstraint(string query, string expected)
             {
-                var discovery=new Mock<GetRecordsDiscoveryAccessor>();
+                var discovery=new Mock<Discovery>();
+                var processor=new GetRecordsProcessorAccessor(discovery.Object);
+
                 var parameters=HttpUtility.ParseQueryString(query);
 
-                var request=discovery.Object.CreateGetRecordsRequestFromParameters(parameters);
+                var request=processor.CreateRequest(parameters);
 
                 // Should check the inner XML too...
                 Assert.NotNull(((Query)request.AbstractQuery).Constraint.Filter);
@@ -267,12 +291,14 @@ namespace OgcToolkit.Services.Csw.V202.Tests
             [InlineData("sortBy=dummy%3AA&typeNames=Dummy", 1)]
             [InlineData("sortBy=dummy%3AD&typeNames=Dummy", 1)]
             [InlineData("sortBy=dummy%3AA,dummy%3AD,dummy&typeNames=Dummy", 3)]
-            public void CreateRequestFromParameters_ShouldParseValidSortBy(string query, int expected)
+            public void CreateRequest_ShouldParseValidSortBy(string query, int expected)
             {
-                var discovery=new Mock<GetRecordsDiscoveryAccessor>();
+                var discovery=new Mock<Discovery>();
+                var processor=new GetRecordsProcessorAccessor(discovery.Object);
+
                 var parameters=HttpUtility.ParseQueryString(query);
 
-                var request=discovery.Object.CreateGetRecordsRequestFromParameters(parameters);
+                var request=processor.CreateRequest(parameters);
 
                 // Should check the inner XML too...
                 if (expected>0)
@@ -287,12 +313,14 @@ namespace OgcToolkit.Services.Csw.V202.Tests
             [InlineData("typeNames=Dummy", false)]
             [InlineData("distributedSearch=FALSE&typeNames=Dummy", false)]
             [InlineData("distributedSearch=TRUE&typeNames=Dummy", true)]
-            public void CreateRequestFromParameters_ShouldParseValidDistributedSearch(string query, bool expected)
+            public void CreateRequest_ShouldParseValidDistributedSearch(string query, bool expected)
             {
-                var discovery=new Mock<GetRecordsDiscoveryAccessor>();
+                var discovery=new Mock<Discovery>();
+                var processor=new GetRecordsProcessorAccessor(discovery.Object);
+
                 var parameters=HttpUtility.ParseQueryString(query);
 
-                var request=discovery.Object.CreateGetRecordsRequestFromParameters(parameters);
+                var request=processor.CreateRequest(parameters);
 
                 // LinqToXsd bug?
                 //if (expected)
@@ -310,12 +338,14 @@ namespace OgcToolkit.Services.Csw.V202.Tests
             [InlineData("hopCount=1&distributedSearch=TRUE&typeNames=Dummy", 1)]
             [InlineData("hopCount=10&distributedSearch=TRUE&typeNames=Dummy", 10)]
             [InlineData("hopCount=12345&distributedSearch=TRUE&typeNames=Dummy", 12345)]
-            public void CreateRequestFromParameters_ShouldParseValidHopCount(string query, int expected)
+            public void CreateRequest_ShouldParseValidHopCount(string query, int expected)
             {
-                var discovery=new Mock<GetRecordsDiscoveryAccessor>();
+                var discovery=new Mock<Discovery>();
+                var processor=new GetRecordsProcessorAccessor(discovery.Object);
+
                 var parameters=HttpUtility.ParseQueryString(query);
 
-                var request=discovery.Object.CreateGetRecordsRequestFromParameters(parameters);
+                var request=processor.CreateRequest(parameters);
 
                 // LinqToXsd bug?
                 //Assert.Equal<decimal>(expected, request.DistributedSearch.hopCount);
@@ -331,12 +361,14 @@ namespace OgcToolkit.Services.Csw.V202.Tests
             [InlineData("typeNames=Dummy", null)]
             [InlineData("responseHandler=http%3A%2F%2Fwww.dummy.xxx&typeNames=Dummy", "http://www.dummy.xxx")]
             [InlineData("responseHandler=urn%3Adummy&typeNames=Dummy", "urn:dummy")]
-            public void CreateRequestFromParameters_ShouldParseValidResponseHandler(string query, string expected)
+            public void CreateRequest_ShouldParseValidResponseHandler(string query, string expected)
             {
-                var discovery=new Mock<GetRecordsDiscoveryAccessor>();
+                var discovery=new Mock<Discovery>();
+                var processor=new GetRecordsProcessorAccessor(discovery.Object);
+
                 var parameters=HttpUtility.ParseQueryString(query);
 
-                var request=discovery.Object.CreateGetRecordsRequestFromParameters(parameters);
+                var request=processor.CreateRequest(parameters);
 
                 if (expected!=null)
                 {
@@ -392,23 +424,30 @@ namespace OgcToolkit.Services.Csw.V202.Tests
             [InlineData("hopCount=dummy&distributedSearch=TRUE&typeNames=Dummy")]
             // responseHandler
             [InlineData("responseHandler=dummy&typeNames=Dummy")]
-            public void CreateRequestFromParameters_ShouldThrowOnInvalidParameters(string query)
+            public void CreateRequest_ShouldThrowOnInvalidParameters(string query)
             {
-                var discovery=new Mock<GetRecordsDiscoveryAccessor>();
+                var discovery=new Mock<Discovery>();
+                var processor=new GetRecordsProcessorAccessor(discovery.Object);
+
                 var parameters=HttpUtility.ParseQueryString(query);
 
-                Assert.Throws<OwsException>(() => discovery.Object.CreateGetRecordsRequestFromParameters(parameters));
+                Assert.Throws<OwsException>(() => processor.CreateRequest(parameters));
             }
 
         }
 
         // Gives access to protected methods
-        public abstract class GetRecordsDiscoveryAccessor:
-            Discovery
+        public class GetRecordsProcessorAccessor:
+            Discovery.GetRecordsProcessorBase
         {
-            public new GetRecords CreateGetRecordsRequestFromParameters(NameValueCollection parameters)
+
+            public GetRecordsProcessorAccessor(Discovery service):
+                base(service)
+            {}
+
+            public new GetRecords CreateRequest(NameValueCollection parameters)
             {
-                return base.CreateGetRecordsRequestFromParameters(parameters);
+                return base.CreateRequest(parameters);
             }
         }
     }

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Csw202TestData" Class="RecordsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|Csw202TestData.mdf;Integrated Security=True;MultipleActiveResultSets=True;User Instance=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="RecordsSource" Provider="System.Data.SqlClient" />
+  <Table Name="[Ogc.Csw].Records" Member="Records">
+    <Type Name="Record">
+      <Column Name="Identifier" Type="System.String" DbType="VarChar(45)" IsPrimaryKey="true" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Format" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Relation" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
+      <Column Name="Spatial" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Coverage" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Function Name="[Ogc.Filter].Geometry_STDisjoint" Method="Geometry_STDisjoint" IsComposable="true">
+    <Parameter Name="geom1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Parameter Name="geom2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

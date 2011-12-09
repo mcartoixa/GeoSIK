@@ -20,7 +20,7 @@ namespace OgcToolkit.Services
             _Logger=LogManager.GetCurrentClassLogger();
         }
 
-        protected void CheckRequest(Ows.IRequest request)
+        internal protected void CheckRequest(Ows.IRequest request)
         {
             Debug.Assert(request!=null);
             if (request==null)
@@ -39,7 +39,7 @@ namespace OgcToolkit.Services
             set;
         }
 
-        protected ILog Logger
+        public ILog Logger
         {
             get
             {
@@ -47,8 +47,8 @@ namespace OgcToolkit.Services
             }
         }
 
-        protected abstract string ServiceName { get; }
-        protected abstract string ServiceVersion { get; }
+        public abstract string ServiceName { get; }
+        public abstract string ServiceVersion { get; }
 
         private ILog _Logger;
 

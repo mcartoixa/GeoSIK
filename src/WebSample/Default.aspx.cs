@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -12,6 +13,12 @@ namespace OgcToolkit.WebSample
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void _RecordDataSource_ContextCreating(object sender, EntityDataSourceContextCreatingEventArgs e)
+        {
+            //var context=new Models.CodeFirst.RecordContext("RecordsSource");
+            //e.Context=((IObjectContextAdapter)context).ObjectContext;
         }
     }
 }

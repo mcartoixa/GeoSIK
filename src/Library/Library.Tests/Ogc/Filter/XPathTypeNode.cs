@@ -21,13 +21,13 @@ namespace OgcToolkit.Ogc.Filter.Tests
         [InlineData(typeof(Version), 0, 6)]
         public void Constructor_ShouldCommonRootTypesHaveValidSingleChildElement(Type root, int expectedAttributes, int expectedElements)
         {
-            var node=new XPathTypeRootNode(root, new XPathTypeContext()).Elements[0];
+            var node=new XPathTypeRootNode(root, new XPathTypeContext()).ElementChildrenNodes[0];
 
-            Assert.NotNull(node.Attributes);
-            Assert.Equal<int>(expectedAttributes, node.Attributes.Length);
+            Assert.NotNull(node.AttributeChildrenNodes);
+            Assert.Equal<int>(expectedAttributes, node.AttributeChildrenNodes.Length);
 
-            Assert.NotNull(node.Elements);
-            Assert.Equal<int>(expectedElements, node.Elements.Length);
+            Assert.NotNull(node.ElementChildrenNodes);
+            Assert.Equal<int>(expectedElements, node.ElementChildrenNodes.Length);
 
             Assert.Equal<int>(0, node.Index);
             Assert.Equal<string>(root.Name, node.LocalName);
@@ -44,13 +44,13 @@ namespace OgcToolkit.Ogc.Filter.Tests
         [InlineData(typeof(Csw202.IBriefRecord), Namespaces.OgcWebCatalogCswV202, "csw:Record", 0, 3)]
         public void Constructor_ShouldXmlRootTypesHaveValidSingleChildElement(Type root, string expectedNamespace, string expectedName, int expectedAttributes, int expectedElements)
         {
-            var node=new XPathTypeRootNode(root, new XPathTypeContext(RecordsNamespacesManager)).Elements[0];
+            var node=new XPathTypeRootNode(root, new XPathTypeContext(RecordsNamespacesManager)).ElementChildrenNodes[0];
 
-            Assert.NotNull(node.Attributes);
-            Assert.Equal<int>(expectedAttributes, node.Attributes.Length);
+            Assert.NotNull(node.AttributeChildrenNodes);
+            Assert.Equal<int>(expectedAttributes, node.AttributeChildrenNodes.Length);
 
-            Assert.NotNull(node.Elements);
-            Assert.Equal<int>(expectedElements, node.Elements.Length);
+            Assert.NotNull(node.ElementChildrenNodes);
+            Assert.Equal<int>(expectedElements, node.ElementChildrenNodes.Length);
 
             Assert.Equal<int>(0, node.Index);
             Assert.Equal<string>(expectedName.Substring(expectedName.LastIndexOf(':')+1), node.LocalName);

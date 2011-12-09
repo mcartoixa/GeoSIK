@@ -21,11 +21,11 @@ namespace OgcToolkit.Ogc.Filter.Tests
         {
             var node=new XPathTypeRootNode(root, new XPathTypeContext());
 
-            Assert.NotNull(node.Attributes);
-            Assert.Equal<int>(0, node.Attributes.Length);
+            Assert.NotNull(node.AttributeChildrenNodes);
+            Assert.Equal<int>(0, node.AttributeChildrenNodes.Length);
 
-            Assert.NotNull(node.Elements);
-            Assert.Equal<int>(1, node.Elements.Length);
+            Assert.NotNull(node.ElementChildrenNodes);
+            Assert.Equal<int>(1, node.ElementChildrenNodes.Length);
 
             Assert.Equal<int>(-1, node.Index);
             Assert.Equal<string>(root.Name, node.LocalName);
@@ -44,11 +44,11 @@ namespace OgcToolkit.Ogc.Filter.Tests
         {
             var node=new XPathTypeRootNode(root, new XPathTypeContext(XPathTypeNodeTests.RecordsNamespacesManager));
 
-            Assert.NotNull(node.Attributes);
-            Assert.Equal<int>(0, node.Attributes.Length);
+            Assert.NotNull(node.AttributeChildrenNodes);
+            Assert.Equal<int>(0, node.AttributeChildrenNodes.Length);
 
-            Assert.NotNull(node.Elements);
-            Assert.Equal<int>(1, node.Elements.Length);
+            Assert.NotNull(node.ElementChildrenNodes);
+            Assert.Equal<int>(1, node.ElementChildrenNodes.Length);
 
             Assert.Equal<int>(-1, node.Index);
             Assert.Equal<string>(expectedName.Substring(expectedName.LastIndexOf(':')+1), node.LocalName);

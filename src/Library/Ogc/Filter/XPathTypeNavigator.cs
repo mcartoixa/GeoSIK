@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq.Expressions;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Xml;
 using System.Xml.XPath;
@@ -43,9 +44,9 @@ namespace OgcToolkit.Ogc.Filter
             return new XPathTypeNavigator(this);
         }
 
-        public Expression CreateExpression(ParameterExpression parameter)
+        public Expression CreateExpression(ParameterExpression parameter, Type expectedType=null)
         {
-            return _Current.CreateExpression(parameter);
+            return _Current.CreateExpression(parameter, expectedType);
         }
 
         public override bool IsSamePosition(XPathNavigator other)
@@ -72,7 +73,7 @@ namespace OgcToolkit.Ogc.Filter
             if ((NodeType!=XPathNodeType.Root) && (NodeType!=XPathNodeType.Element))
                 return false;
 
-            XPathTypeNode[] attributes=_Current.Attributes;
+            XPathTypeNode[] attributes=_Current.AttributeChildrenNodes;
             if (attributes.Length<1)
                 return false;
 
@@ -85,7 +86,7 @@ namespace OgcToolkit.Ogc.Filter
             if ((NodeType!=XPathNodeType.Root) && (NodeType!=XPathNodeType.Element))
                 return false;
 
-            XPathTypeNode[] elements=_Current.Elements;
+            XPathTypeNode[] elements=_Current.ElementChildrenNodes;
             if (elements.Length<1)
                 return false;
 
@@ -115,7 +116,7 @@ namespace OgcToolkit.Ogc.Filter
             if (_Current.Parent==null)
                 return false;
 
-            XPathTypeNode[] elements=_Current.Parent.Elements;
+            XPathTypeNode[] elements=_Current.Parent.ElementChildrenNodes;
             if (++index>=elements.Length)
                 return false;
 
@@ -135,7 +136,7 @@ namespace OgcToolkit.Ogc.Filter
             if (_Current.Parent==null)
                 return false;
 
-            XPathTypeNode[] attributes=_Current.Parent.Attributes;
+            XPathTypeNode[] attributes=_Current.Parent.AttributeChildrenNodes;
             if (++index>=attributes.Length)
                 return false;
 
@@ -169,7 +170,7 @@ namespace OgcToolkit.Ogc.Filter
             if (_Current.Parent==null)
                 return false;
 
-            XPathTypeNode[] elements=_Current.Parent.Elements;
+            XPathTypeNode[] elements=_Current.Parent.ElementChildrenNodes;
             if (--index<0)
                 return false;
 
@@ -208,6 +209,11 @@ namespace OgcToolkit.Ogc.Filter
             return base.Select(expr);
         }
 
+        public object GetValue(object instance)
+        {
+            return _Current.GetValue(instance);
+        }
+
         public override string BaseURI
         {
             get
@@ -220,7 +226,7 @@ namespace OgcToolkit.Ogc.Filter
         {
             get
             {
-                return _Current.Attributes.Length>0;
+                return _Current.AttributeChildrenNodes.Length>0;
             }
         }
 
@@ -228,7 +234,7 @@ namespace OgcToolkit.Ogc.Filter
         {
             get
             {
-                return _Current.Elements.Length>0;
+                return _Current.ElementChildrenNodes.Length>0;
             }
         }
 
@@ -318,6 +324,5 @@ namespace OgcToolkit.Ogc.Filter
         private XPathTypeNode _Root;
         private XPathTypeNode _Current;
         private XPathTypeContext _Context;
-
     }
 }

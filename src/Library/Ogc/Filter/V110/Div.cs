@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Xml;
 
 namespace OgcToolkit.Ogc.Filter.V110
 {
@@ -11,6 +12,11 @@ namespace OgcToolkit.Ogc.Filter.V110
     partial class Div:
         IBinaryOperator
     {
+
+        protected override Type GetExpressionStaticType(ExpressionBuilderParameters parameters)
+        {
+            return base.GetExpressionStaticType(parameters) ?? typeof(decimal);
+        }
 
         Func<Expression, Expression, BinaryExpression> IBinaryOperator.OperatorExpression
         {

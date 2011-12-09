@@ -12,12 +12,12 @@ namespace OgcToolkit.Ogc.Filter.V110
     public static class FilterQueryable
     {
 
-        public static IQueryable<T> Where<T>(this IQueryable<T> source, Filter filter, XmlNamespaceManager namespaceManager)
+        public static IQueryable<T> Where<T>(this IQueryable<T> source, Filter filter, XmlNamespaceManager namespaceManager=null, bool mayRootPathBeImplied=false, IOperatorImplementationProvider operatorImplementationProvider=null)
         {
-            return (IQueryable<T>)Where((IQueryable)source, filter, namespaceManager);
+            return (IQueryable<T>)Where((IQueryable)source, filter, namespaceManager, mayRootPathBeImplied, operatorImplementationProvider);
         }
 
-        public static IQueryable Where(this IQueryable source, Filter filter, XmlNamespaceManager namespaceManager)
+        public static IQueryable Where(this IQueryable source, Filter filter, XmlNamespaceManager namespaceManager=null, bool mayRootPathBeImplied=false, IOperatorImplementationProvider operatorImplementationProvider=null)
         {
             Debug.Assert(source!=null);
             if (source==null)
@@ -26,7 +26,7 @@ namespace OgcToolkit.Ogc.Filter.V110
             if (filter==null)
                 throw new ArgumentNullException("filter");
 
-            LambdaExpression lambda=filter.CreateLambda(source.ElementType, namespaceManager);
+            LambdaExpression lambda=filter.CreateLambda(source, namespaceManager, mayRootPathBeImplied, operatorImplementationProvider);
             return source.Provider.CreateQuery(
                 Expression.Call(
                     typeof(Queryable),

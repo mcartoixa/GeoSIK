@@ -10,7 +10,7 @@
 namespace OgcToolkit.WebSample {
     
     
-    public partial class Debug {
+    public partial class DebugPage {
         
         /// <summary>
         /// Button1 control.

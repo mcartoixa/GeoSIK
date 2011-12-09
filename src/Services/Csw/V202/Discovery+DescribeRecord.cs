@@ -15,182 +15,161 @@ namespace OgcToolkit.Services.Csw.V202
     partial class Discovery
     {
 
-        public DescribeRecordResponse DescribeRecord(NameValueCollection parameters)
+        public class DescribeRecordProcessorBase:
+            OgcRequestProcessor<DescribeRecord, DescribeRecordResponse>
         {
-            Debug.Assert(parameters!=null);
-            if (parameters==null)
-                throw new ArgumentNullException("parameters");
 
-            return DescribeRecord(CreateDescribeRecordRequestFromParameters(parameters));
-        }
-
-        public DescribeRecordResponse DescribeRecord(DescribeRecord request)
-        {
-            CheckRequest(request);
-            CheckDescribeRecordRequest(request);
-
-            var response=_ProcessDescribeRecord(request);
-
-            var args=new Ows.OwsRequestEventArgs<DescribeRecord, DescribeRecordResponse>(request, response);
-            OnProcessDescribeRecord(args);
-
-            Debug.Assert(args.Response!=null);
-
-            return args.Response;
-        }
-
-        protected virtual DescribeRecord CreateDescribeRecordRequestFromParameters(NameValueCollection parameters)
-        {
-            var request=new DescribeRecord();
-
-            // [OCG 07-006r1 §10.6.4.1]
-            string[] namespaces=parameters.GetValues(NamespaceParameter);
-            if (namespaces!=null)
+            public DescribeRecordProcessorBase(Discovery service):
+                base(service)
             {
-                IList<string> nspList=string.Join(",", namespaces).Split(',').Where<string>(s => !string.IsNullOrWhiteSpace(s)).ToList<string>();
-                foreach (string nsp in nspList)
-                    if (!string.IsNullOrEmpty(nsp))
-                    {
-                        Match m=_NamespacesRegEx.Match(nsp);
-                        if (!m.Success)
-                            throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
-                                Locator=NamespaceParameter
-                            };
-
-                        string prefix=m.Groups["PREFIX"].Value;
-                        string url=m.Groups["URL"].Value;
-                        if (!string.IsNullOrEmpty(prefix))
-                            request.Untyped.Add(
-                                new XAttribute(XNamespace.Xmlns+prefix, url)
-                            );
-                        else
-                            request.Untyped.Add(
-                                new XAttribute("xmlns", url)
-                            );
-                    }
             }
 
-            // [OCG 07-006r1 §10.6.4.2]
-            string[] typeName=parameters.GetValues(TypeNameParameter);
-            if (typeName!=null)
+            protected override DescribeRecord CreateRequest(NameValueCollection parameters)
             {
-                IList<string> tnp=string.Join(",", typeName).Split(',').Where<string>(s => !string.IsNullOrWhiteSpace(s)).ToList<string>();
-                var rtn=new List<XmlQualifiedName>(tnp.Count);
-                foreach (string tn in tnp)
+                var request=new DescribeRecord();
+
+                // [OCG 07-006r1 §10.6.4.1]
+                string[] namespaces=parameters.GetValues(NamespaceParameter);
+                if (namespaces!=null)
                 {
+                    IList<string> nspList=string.Join(",", namespaces).Split(',').Where<string>(s => !string.IsNullOrWhiteSpace(s)).ToList<string>();
+                    foreach (string nsp in nspList)
+                        if (!string.IsNullOrEmpty(nsp))
+                        {
+                            Match m=_NamespacesRegEx.Match(nsp);
+                            if (!m.Success)
+                                throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
+                                    Locator=NamespaceParameter
+                                };
+
+                            string prefix=m.Groups["PREFIX"].Value;
+                            string url=m.Groups["URL"].Value;
+                            if (!string.IsNullOrEmpty(prefix))
+                                request.Untyped.Add(
+                                    new XAttribute(XNamespace.Xmlns+prefix, url)
+                                );
+                            else
+                                request.Untyped.Add(
+                                    new XAttribute("xmlns", url)
+                                );
+                        }
+                }
+
+                // [OCG 07-006r1 §10.6.4.2]
+                string[] typeName=parameters.GetValues(TypeNameParameter);
+                if (typeName!=null)
+                {
+                    IList<string> tnp=string.Join(",", typeName).Split(',').Where<string>(s => !string.IsNullOrWhiteSpace(s)).ToList<string>();
+                    var rtn=new List<XmlQualifiedName>(tnp.Count);
+                    foreach (string tn in tnp)
+                    {
+                        try
+                        {
+                            // Works because we have already parsed the namespaces
+                            XName name=GetXmlNameFromString(tn, request.Untyped);
+                            rtn.Add(string.IsNullOrEmpty(name.NamespaceName)?new XmlQualifiedName(name.LocalName):new XmlQualifiedName(name.LocalName, name.NamespaceName));
+                        } catch (XmlException xex)
+                        {
+                            throw new OwsException(OwsExceptionCode.InvalidParameterValue, xex.Message, xex) {
+                                Locator=TypeNamesParameter
+                            };
+                        }
+                    }
+
+                    if (rtn.Count>0)
+                        request.TypeName=rtn;
+                }
+
+                // [OCG 07-006r1 §10.6.4.3]
+                string outputFormat=parameters[OutputFormatParameter];
+                if (!string.IsNullOrEmpty(outputFormat))
+                    request.outputFormat=outputFormat;
+
+                // [OCG 07-006r1 §10.6.4.4]
+                string schemaLanguage=parameters[SchemaLanguageParameter];
+                if (!string.IsNullOrEmpty(schemaLanguage))
                     try
                     {
-                        // Works because we have already parsed the namespaces
-                        XName name=GetXmlNameFromString(tn, request.Untyped);
-                        rtn.Add(string.IsNullOrEmpty(name.NamespaceName) ? new XmlQualifiedName(name.LocalName) : new XmlQualifiedName(name.LocalName, name.NamespaceName));
-                    } catch (XmlException xex)
+                        request.schemaLanguage=new Uri(schemaLanguage);
+                    } catch (UriFormatException ufex)
                     {
-                        throw new OwsException(OwsExceptionCode.InvalidParameterValue, xex.Message, xex) {
-                            Locator=TypeNamesParameter
+                        throw new OwsException(OwsExceptionCode.InvalidParameterValue, ufex) {
+                            Locator=SchemaLanguageParameter
                         };
                     }
-                }
 
-                if (rtn.Count>0)
-                    request.TypeName=rtn;
+                return request;
             }
 
-            // [OCG 07-006r1 §10.6.4.3]
-            string outputFormat=parameters[OutputFormatParameter];
-            if (!string.IsNullOrEmpty(outputFormat))
-                request.outputFormat=outputFormat;
+            protected override void CheckRequest(DescribeRecord request)
+            {
+                base.CheckRequest(request);
 
-            // [OCG 07-006r1 §10.6.4.4]
-            string schemaLanguage=parameters[SchemaLanguageParameter];
-            if (!string.IsNullOrEmpty(schemaLanguage))
-                try
-                {
-                    request.schemaLanguage=new Uri(schemaLanguage);
-                } catch (UriFormatException ufex)
-                {
-                    throw new OwsException(OwsExceptionCode.InvalidParameterValue, ufex) {
+                if ((request.outputFormat==null) || (Array.IndexOf<string>(XmlMimeTypes, request.outputFormat)<0))
+                    throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
+                        Locator=OutputFormatParameter
+                    };
+
+                // The schemaLanguage property is initialized to the strange "http://www.w3.org/XML/Schema" namespace by default, so we have to consider it valid...
+                Uri[] schemaNamespaces=new Uri[] { XmlSchemaLanguageUri, StrangeXmlSchemaLanguageUri };
+                if ((request.schemaLanguage==null) || (Array.IndexOf<Uri>(schemaNamespaces, request.schemaLanguage)<0))
+                    throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
                         Locator=SchemaLanguageParameter
                     };
-                }
+            }
 
-            return request;
-        }
-
-        protected virtual void CheckDescribeRecordRequest(DescribeRecord request)
-        {
-            if ((request.outputFormat==null) || (Array.IndexOf<string>(XmlMimeTypes, request.outputFormat)<0))
-                throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
-                    Locator=OutputFormatParameter
-                };
-
-            // The schemaLanguage property is initialized to the strange "http://www.w3.org/XML/Schema" namespace by default, so we have to consider it valid...
-            Uri[] schemaNamespaces=new Uri[] { XmlSchemaLanguageUri, StrangeXmlSchemaLanguageUri };
-            if ((request.schemaLanguage==null) || (Array.IndexOf<Uri>(schemaNamespaces, request.schemaLanguage)<0))
-                throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
-                    Locator=SchemaLanguageParameter
-                };
-        }
-
-        private DescribeRecordResponse _ProcessDescribeRecord(DescribeRecord request)
-        {
-            var ret=new DescribeRecordResponse();
-
-            // Get the names of record types
-            List<XName> names=_SupportedRecordTypesInstances.Select<IXMetaData, XName>(m => m.SchemaName).ToList<XName>();
-            if ((request.TypeName!=null) && (request.TypeName.Count>0))
+            protected override DescribeRecordResponse ProcessRequest(DescribeRecord request)
             {
-                names.Clear();
+                var ret=new DescribeRecordResponse();
 
-                // We should be able to write foreach (XmlQualifiedName xqn in request.TypeName) { }
-                // But type names cannot be retrieved as XmlQualifiedName: there are prefixes instead of namespaces
-                // So we take the long way via XElement
-                var typeNamesElements=from el in request.Untyped.Descendants()
-                                      where el.Name=="{http://www.opengis.net/cat/csw/2.0.2}TypeName"
-                                      select el;
-                foreach (XElement tne in typeNamesElements)
+                // Get the names of record types
+                List<XName> names=((Discovery)Service).GetSupportedRecordTypes().Select<IXMetaData, XName>(m => m.SchemaName).ToList<XName>();
+                if ((request.TypeName!=null) && (request.TypeName.Count>0))
                 {
-                    string[] tn=tne.Value.Split(new char[] { ':' }, 2);
-                    string name=tn[0];
-                    XNamespace @namespace=tne.GetDefaultNamespace();
-                    if (tn.Length>1)
+                    names.Clear();
+
+                    // We should be able to write foreach (XmlQualifiedName xqn in request.TypeName) { }
+                    // But type names cannot be retrieved as XmlQualifiedName: there are prefixes instead of namespaces
+                    // So we take the long way via XElement
+                    var typeNamesElements=from el in request.Untyped.Descendants()
+                                          where el.Name=="{http://www.opengis.net/cat/csw/2.0.2}TypeName"
+                                          select el;
+                    foreach (XElement tne in typeNamesElements)
                     {
-                        name=tn[1];
-                        @namespace=tne.GetNamespaceOfPrefix(tn[0]);
+                        string[] tn=tne.Value.Split(new char[] { ':' }, 2);
+                        string name=tn[0];
+                        XNamespace @namespace=tne.GetDefaultNamespace();
+                        if (tn.Length>1)
+                        {
+                            name=tn[1];
+                            @namespace=tne.GetNamespaceOfPrefix(tn[0]);
+                        }
+
+                        // Check the name is a supported type
+                        if (!((Discovery)Service).GetSupportedRecordTypes().Any<IXMetaData>(m => (m.GetType().Name==name) && (m.SchemaName.Namespace==@namespace)))
+                            break;
+
+                        names.Add(string.Concat("{", @namespace, "}", name));
                     }
-
-                    // Check the name is a supported type
-                    if (!_SupportedRecordTypesInstances.Any<IXMetaData>(m => (m.GetType().Name==name) && (m.SchemaName.Namespace==@namespace)))
-                        break;
-
-                    names.Add(string.Concat("{", @namespace, "}", name));
                 }
-            }
 
-            // Create the csw:schemaComponents
-            var componentTypes=new List<SchemaComponentType>(request.TypeName.Count);
-            foreach (XName name in names)
-            {
-                var recordComponentType=new SchemaComponentType()
+                // Create the csw:schemaComponents
+                var componentTypes=new List<SchemaComponentType>(request.TypeName.Count);
+                foreach (XName name in names)
                 {
-                    schemaLanguage=XmlSchemaLanguageUri,
-                    targetNamespace=new Uri(name.NamespaceName)
-                };
-                recordComponentType.Untyped.Add(GetRecordSchema(name.Namespace).Root);
-                componentTypes.Add(recordComponentType);
+                    var recordComponentType=new SchemaComponentType() {
+                        schemaLanguage=XmlSchemaLanguageUri,
+                        targetNamespace=new Uri(name.NamespaceName)
+                    };
+                    recordComponentType.Untyped.Add(GetRecordSchema(name.Namespace).Root);
+                    componentTypes.Add(recordComponentType);
+                }
+                if (componentTypes.Count>0)
+                    ret.SchemaComponent=componentTypes;
+
+                return ret;
             }
-            if (componentTypes.Count>0)
-                ret.SchemaComponent=componentTypes;
-
-            return ret;
         }
 
-        protected virtual void OnProcessDescribeRecord(Ows.OwsRequestEventArgs<DescribeRecord, DescribeRecordResponse> e)
-        {
-            var eh=ProcessDescribeRecord;
-            if (eh!=null)
-                eh(this, e);
-        }
-
-        public event EventHandler<Ows.OwsRequestEventArgs<DescribeRecord, DescribeRecordResponse>> ProcessDescribeRecord;
     }
 }

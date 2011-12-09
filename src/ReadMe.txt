@@ -6,6 +6,7 @@ PREREQUISITES
 - MSBuild.Community.Tasks 1.3
 - FxCop 10.0
 - PartCover .NET 4.0 <http://github.com/sawilde/partcover.net4>
+- SQL Server Express 2008 R2
 
 
 
