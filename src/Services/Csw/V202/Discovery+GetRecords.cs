@@ -428,6 +428,10 @@ namespace OgcToolkit.Services.Csw.V202
                 if (request.requestId!=null)
                     ret.RequestId=request.requestId;
 
+                ret.SearchStatus=new RequestStatusType() {
+                    timestamp=DateTime.UtcNow
+                };
+
                 var query=request.Content.AbstractQuery as Query;
 
                 var namespaceManager=new XmlNamespaceManager(new NameTable());
@@ -462,22 +466,26 @@ namespace OgcToolkit.Services.Csw.V202
                         records=records.Where(query.Constraint, namespaceManager, mayRootPathBeImplied, ((Discovery)Service).GetOperatorImplementationProvider());
                 }
 
+                int recordsMatched=records.Count();
                 if (string.CompareOrdinal(request.resultType, "hits")==0)
                 {
                     ret.SearchResults=new SearchResultsType() {
-                        numberOfRecordsMatched=records.Count()
+                        numberOfRecordsMatched=recordsMatched,
+                        numberOfRecordsReturned=0,
+                        nextRecord=Math.Min(1, recordsMatched)
                     };
                     return ret;
                 }
+
 
                 // Order by
                 bool ordered=false;
                 if (query!=null)
                 {
                     //if (query.SortBy!=null)
-                    if (query.Untyped.Descendants("{http://www.opengis.net/cat/csw/2.0.2}SortBy").Any<XElement>())
+                    if (query.Untyped.Descendants("{http://www.opengis.net/ogc}SortBy").Any<XElement>())
                     {
-                        records=Filter110.FilterQueryable.OrderBy(records, query.SortBy, namespaceManager);
+                        records=Filter110.FilterQueryable.OrderBy(records, query.SortBy, namespaceManager, mayRootPathBeImplied);
                         ordered=true;
                     }
                 }
@@ -517,9 +525,13 @@ namespace OgcToolkit.Services.Csw.V202
                 var arl=results.OfType<AbstractRecord>();
                 var xsl=results.Except<IXmlSerializable>(arl.Cast<IXmlSerializable>());
 
+                int recordsReturned=results.Count<IXmlSerializable>();
+                int nextRecord=Convert.ToInt32(request.startPosition+recordsReturned);
                 ret.SearchResults=new SearchResultsType() {
                     AbstractRecord=arl.ToList<AbstractRecord>(),
-                    numberOfRecordsReturned=results.Count<IXmlSerializable>()
+                    numberOfRecordsMatched=recordsMatched,
+                    numberOfRecordsReturned=recordsReturned,
+                    nextRecord=(nextRecord>recordsMatched ? 0 : nextRecord)
                 };
 
                 XmlWriterSettings xws=new XmlWriterSettings();

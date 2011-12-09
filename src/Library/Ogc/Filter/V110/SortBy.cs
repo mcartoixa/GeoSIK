@@ -12,7 +12,7 @@ namespace OgcToolkit.Ogc.Filter.V110
     partial class SortBy
     {
 
-        internal Expression CreateExpression(Type elementType, Expression query, XmlNamespaceManager namespaceManager)
+        internal Expression CreateExpression(Type elementType, Expression query, XmlNamespaceManager namespaceManager, bool mayRootPathBeImplied=false)
         {
             XPathTypeNavigator xptn=new XPathTypeNavigator(elementType, namespaceManager);
 
@@ -22,8 +22,9 @@ namespace OgcToolkit.Ogc.Filter.V110
                 ParameterExpression arg=Expression.Parameter(elementType);
                 Expression selector=null;
 
-                XPathNodeIterator xpni=xptn.Clone().Select(spt.PropertyName.Untyped.Value);
+                XPathNodeIterator xpni=((XPathTypeNavigator)xptn.Clone()).Select(spt.PropertyName.Untyped.Value, namespaceManager, mayRootPathBeImplied);
                 Debug.Assert(xpni.Count==1);
+
                 foreach (XPathTypeNavigator n in xpni)
                     selector=n.CreateExpression(arg);
 
@@ -32,8 +33,9 @@ namespace OgcToolkit.Ogc.Filter.V110
                     OrderMethodName(spt.SortOrder, first),
                     new Type[] { elementType, selector.Type },
                     query,
-                    Expression.Quote(selector)
+                    Expression.Quote(Expression.Lambda(selector, arg))
                 );
+
                 first=false;
             }
 

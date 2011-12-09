@@ -38,19 +38,19 @@ namespace OgcToolkit.Ogc.Filter.V110
             );
         }
 
-        public static IQueryable<T> OrderBy<T>(this IQueryable<T> source, SortBy ordering, XmlNamespaceManager namespaceManager)
+        public static IQueryable<T> OrderBy<T>(this IQueryable<T> source, SortBy ordering, XmlNamespaceManager namespaceManager, bool mayRootPathBeImplied=false)
         {
-            return (IQueryable<T>)OrderBy((IQueryable)source, ordering, namespaceManager);
+            return (IQueryable<T>)OrderBy((IQueryable)source, ordering, namespaceManager, mayRootPathBeImplied);
         }
 
-        public static IQueryable OrderBy(this IQueryable source, SortBy ordering, XmlNamespaceManager namespaceManager)
+        public static IQueryable OrderBy(this IQueryable source, SortBy ordering, XmlNamespaceManager namespaceManager, bool mayRootPathBeImplied=false)
         {
             if (source==null)
                 throw new ArgumentNullException("source");
             if (ordering==null)
                 throw new ArgumentNullException("ordering");
 
-            Expression query=ordering.CreateExpression(source.ElementType, source.Expression, namespaceManager);
+            Expression query=ordering.CreateExpression(source.ElementType, source.Expression, namespaceManager, mayRootPathBeImplied);
             return source.Provider.CreateQuery(query);
         }
     }
