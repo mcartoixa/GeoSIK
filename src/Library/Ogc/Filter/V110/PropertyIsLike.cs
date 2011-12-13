@@ -30,9 +30,11 @@ namespace OgcToolkit.Ogc.Filter.V110
             // Custom implementation
             if (parameters.OperatorImplementationProvider!=null)
             {
-                object instance;
                 object[] pa=new object[] { null, pattern, ec.Value, matchCase };
-                MethodInfo method=parameters.OperatorImplementationProvider.GetImplementation("Like", new Type[] { typeof(string), typeof(string), typeof(char), typeof(bool) }, ref pa, out instance);
+
+                object instance;
+                MethodInfo method=parameters.OperatorImplementationProvider.GetImplementation(OperationNames.Like, new Type[] { typeof(string), typeof(string), typeof(char), typeof(bool) }, ref pa, out instance);
+
                 if (method!=null)
                 {
                     Expression op=null;
@@ -41,23 +43,27 @@ namespace OgcToolkit.Ogc.Filter.V110
                             Expression.Constant(instance),
                             method,
                             ((IExpressionBuilder)PropertyName).CreateExpression(parameters, expectedStaticType),
-                            Expression.Constant(pattern),
-                            Expression.Constant(ec.Value, typeof(char)),
-                            Expression.Constant(matchCase, typeof(bool))
+                            Expression.Constant(pa[1], pa[1].GetType()),
+                            Expression.Constant(pa[2], pa[2]!=null ? pa[2].GetType() : typeof(char)),
+                            Expression.Constant(pa[3], pa[3].GetType())
                         );
                     else
                         op=Expression.Call(
                             method,
                             ((IExpressionBuilder)PropertyName).CreateExpression(parameters, expectedStaticType),
-                            Expression.Constant(pattern),
-                            Expression.Constant(ec.Value, typeof(char)),
-                            Expression.Constant(matchCase, typeof(bool))
+                            Expression.Constant(pa[1], pa[1].GetType()),
+                            Expression.Constant(pa[2], pa[2]!=null ? pa[2].GetType() : typeof(char)),
+                            Expression.Constant(pa[3], pa[3].GetType())
                         );
 
-                    return Expression.Equal(
-                        op,
-                        Expression.Constant(1, typeof(int))
-                    );
+                    Type rt=Nullable.GetUnderlyingType(method.ReturnType) ?? method.ReturnType;
+                    if (method.ReturnType==typeof(bool))
+                        return Expression.IsTrue(op);
+                    else
+                        return Expression.Equal(
+                            op,
+                            Expression.Constant(Convert.ChangeType(true, rt), method.ReturnType)
+                        );
                 }
             }
 
