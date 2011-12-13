@@ -7,6 +7,7 @@ using Microsoft.SqlServer.Types;
 namespace OgcToolkit.Ogc.Gml.V311
 {
 
+#pragma warning disable 3009
     partial class MultiPoint
     {
 
@@ -20,4 +21,5 @@ namespace OgcToolkit.Ogc.Gml.V311
             sink.EndGeometry();
         }
     }
+#pragma warning restore 3009
 }

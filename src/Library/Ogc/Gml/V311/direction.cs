@@ -6,7 +6,7 @@ using Xml.Schema.Linq;
 namespace OgcToolkit.Ogc.Gml.V311
 {
 
-#pragma warning disable 3003
+#pragma warning disable 3003, 3009
     partial class direction
     {
 
@@ -39,5 +39,5 @@ namespace OgcToolkit.Ogc.Gml.V311
             }
         );
     }
-#pragma warning restore 3003
+#pragma warning restore 3003, 3009
 }

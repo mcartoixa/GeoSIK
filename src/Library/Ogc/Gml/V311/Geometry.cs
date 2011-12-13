@@ -8,6 +8,7 @@ using Microsoft.SqlServer.Types;
 namespace OgcToolkit.Ogc.Gml.V311
 {
 
+#pragma warning disable 3008, 3009
     partial class _Geometry:
         IGeometryProvider
     {
@@ -34,4 +35,5 @@ namespace OgcToolkit.Ogc.Gml.V311
             }
         }
     }
+#pragma warning restore 3008, 3009
 }

@@ -9,6 +9,7 @@ using System.Xml;
 namespace OgcToolkit.Ogc.Filter.V110
 {
 
+#pragma warning disable 3009
     partial class Function
     {
 
@@ -17,4 +18,5 @@ namespace OgcToolkit.Ogc.Filter.V110
             throw new NotSupportedException();
         }
     }
+#pragma warning restore 3009
 }

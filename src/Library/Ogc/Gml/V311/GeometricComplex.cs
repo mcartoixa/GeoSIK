@@ -7,6 +7,7 @@ using Microsoft.SqlServer.Types;
 namespace OgcToolkit.Ogc.Gml.V311
 {
 
+#pragma warning disable 3009
     partial class GeometricComplex
     {
 
@@ -15,4 +16,5 @@ namespace OgcToolkit.Ogc.Gml.V311
             throw new NotImplementedException();
         }
     }
+#pragma warning restore 3009
 }

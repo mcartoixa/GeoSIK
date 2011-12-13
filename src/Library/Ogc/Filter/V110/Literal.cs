@@ -12,6 +12,7 @@ using Microsoft.SqlServer.Types;
 namespace OgcToolkit.Ogc.Filter.V110
 {
 
+#pragma warning disable 3009
     partial class Literal
     {
 
@@ -92,4 +93,5 @@ namespace OgcToolkit.Ogc.Filter.V110
             return null;
         }
     }
+#pragma warning restore 3009
 }

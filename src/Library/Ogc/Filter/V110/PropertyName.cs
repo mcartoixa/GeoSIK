@@ -11,6 +11,7 @@ using System.Xml.XPath;
 namespace OgcToolkit.Ogc.Filter.V110
 {
 
+#pragma warning disable 3009
     partial class PropertyName
     {
 
@@ -50,4 +51,5 @@ namespace OgcToolkit.Ogc.Filter.V110
 
         private XPathTypeNavigator _Navigator;
     }
+#pragma warning restore 3009
 }

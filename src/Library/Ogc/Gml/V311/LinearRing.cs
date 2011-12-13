@@ -7,6 +7,7 @@ using Microsoft.SqlServer.Types;
 namespace OgcToolkit.Ogc.Gml.V311
 {
 
+#pragma warning disable 3009
     partial class LinearRing
     {
 
@@ -17,4 +18,5 @@ namespace OgcToolkit.Ogc.Gml.V311
                 sink.AddLine(posList.TypedValue[i], posList.TypedValue[i+1], null, null);
         }
     }
+#pragma warning restore 3009
 }
