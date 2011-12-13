@@ -6,6 +6,7 @@ using System.Text;
 namespace OgcToolkit.Ogc.Filter.V110
 {
 
+#pragma warning disable 3009
     partial class Contains:
         IBinarySpatialOperator
     {
@@ -23,4 +24,5 @@ namespace OgcToolkit.Ogc.Filter.V110
             get { return OperationNames.Contains; }
         }
     }
+#pragma warning restore 3009
 }

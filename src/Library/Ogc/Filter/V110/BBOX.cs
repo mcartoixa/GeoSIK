@@ -11,6 +11,7 @@ using Microsoft.SqlServer.Types;
 namespace OgcToolkit.Ogc.Filter.V110
 {
 
+#pragma warning disable 3009
     partial class BBOX:
         IExpressionBuilder
     {
@@ -60,4 +61,5 @@ namespace OgcToolkit.Ogc.Filter.V110
             throw new NotSupportedException();
         }
     }
+#pragma warning restore 3009
 }

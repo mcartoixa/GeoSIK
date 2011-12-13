@@ -8,6 +8,7 @@ using System.Xml;
 namespace OgcToolkit.Ogc.Filter.V110
 {
 
+#pragma warning disable 3009
     partial class PropertyIsGreaterThanOrEqualTo:
         IBinaryComparisonOperator
     {
@@ -20,4 +21,5 @@ namespace OgcToolkit.Ogc.Filter.V110
             }
         }
     }
+#pragma warning restore 3009
 }

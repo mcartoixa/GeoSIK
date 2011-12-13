@@ -12,6 +12,7 @@ using Xml.Schema.Linq;
 namespace OgcToolkit.Ogc.Filter.V110
 {
 
+#pragma warning disable 3009
     partial class spatialOps:
         IExpressionBuilder
     {
@@ -135,4 +136,5 @@ namespace OgcToolkit.Ogc.Filter.V110
             return GetExpressionStaticType(parameters);
         }
     }
+#pragma warning restore 3009
 }

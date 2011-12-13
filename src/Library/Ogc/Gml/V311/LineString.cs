@@ -7,6 +7,7 @@ using Microsoft.SqlServer.Types;
 namespace OgcToolkit.Ogc.Gml.V311
 {
 
+#pragma warning disable 3009
     partial class LineString
     {
 
@@ -36,4 +37,5 @@ namespace OgcToolkit.Ogc.Gml.V311
             }
         }
     }
+#pragma warning restore 3009
 }

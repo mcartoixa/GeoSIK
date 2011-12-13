@@ -210,21 +210,21 @@ It must be used with MSBuild 4.0.
     />
     <ItemGroup>
       <TestAssemblies Condition="Exists('$(_OutDir)')" Include="$(_OutDir)*$(UnitTestsSuffix).dll" />
-      <AllAssemblies Condition="Exists('$(_OutDir)')" Include="$(_OutDir)*.dll;$(_OutDir)\*.exe" />
+      <AllAssemblies Condition="Exists('$(_OutDir)')" Include="$(_OutDir)*.dll;$(_OutDir)*.exe" />
       <TestedAssemblies Condition="Exists('%(AllAssemblies.RootDir)%(AllAssemblies.Directory)%(AllAssemblies.Filename)$(UnitTestsSuffix).dll')" Include="@(AllAssemblies)" />
     </ItemGroup>
 
     <!-- Create a xunit project file: it's the only way to test multiple assemblies in a single run -->
     <Copy
       SourceFiles="$(MSBuildThisFileDirectory)\Empty.xunit"
-      DestinationFiles="$(_OutDir)\$(ProjectFilename).xunit"
+      DestinationFiles="$(_OutDir)$(ProjectFilename).xunit"
       OverwriteReadOnlyFiles="true"
     />
     <ItemGroup>
-      <XUnitAssemblies Include="&lt;assembly filename=&quot;$(_OutDir)\%(TestAssemblies.Filename)%(TestAssemblies.Extension)&quot; shadow-copy=&quot;false&quot;&gt;&lt;output type=&quot;xml&quot; filename=&quot;$(TmpOutputPath)$(ProjectFilename)_%(TestAssemblies.Filename).xunit-results.xml&quot; /&gt;&lt;/assembly&gt;" />
+      <XUnitAssemblies Include="&lt;assembly filename=&quot;$(_OutDir)%(TestAssemblies.Filename)%(TestAssemblies.Extension)&quot; shadow-copy=&quot;false&quot;&gt;&lt;output type=&quot;xml&quot; filename=&quot;$(TmpOutputPath)$(ProjectFilename)_%(TestAssemblies.Filename).xunit-results.xml&quot; /&gt;&lt;/assembly&gt;" />
     </ItemGroup>
     <XmlPoke
-      XmlInputPath="$(_OutDir)\$(ProjectFilename).xunit"
+      XmlInputPath="$(_OutDir)$(ProjectFilename).xunit"
       Query="/xunit/assemblies"
       Value="@(XUnitAssemblies->'%(Identity)', '')"
     />
@@ -236,7 +236,7 @@ It must be used with MSBuild 4.0.
     </ItemGroup>
     <PartCover Condition="'@(TestAssemblies)'!=''"
       Target="$(InputPath)\lib\xunit\xunit.console.clr4.x86.exe"
-      TargetArgs="&quot;$(_OutDir)\$(ProjectFilename).xunit&quot; /silent"
+      TargetArgs="&quot;$(_OutDir)$(ProjectFilename).xunit&quot; /silent"
       TargetWorkingDir="$(_OutDir)"
       Include="@(PartCoverInclude)"
       Exclude="[xunit.*]*$(ProjectPartCoverExclude);@(PartCoverExclude)"

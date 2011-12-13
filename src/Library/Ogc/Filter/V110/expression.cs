@@ -11,6 +11,7 @@ using Xml.Schema.Linq;
 namespace OgcToolkit.Ogc.Filter.V110
 {
 
+#pragma warning disable 3009
     partial class expression:
         IExpressionBuilder
     {
@@ -78,4 +79,5 @@ namespace OgcToolkit.Ogc.Filter.V110
 
         private ILog _Logger;
     }
+#pragma warning restore 3009
 }

@@ -10,6 +10,7 @@ using Microsoft.SqlServer.Types;
 namespace OgcToolkit.Ogc.Ows.V100
 {
 
+#pragma warning disable 3009
     partial class BoundingBox:
         IGeometryProvider
     {
@@ -82,6 +83,6 @@ namespace OgcToolkit.Ogc.Ows.V100
                     );
             }
         }
-
     }
+#pragma warning restore 3009
 }
