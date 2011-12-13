@@ -15,8 +15,13 @@ namespace OgcToolkit.Ogc.Filter
 
     /// <summary>Handles a node for a <see cref="XPathTypeNavigator" /> navigator.</summary>
     internal class XPathTypeNode:
+        ICloneable,
         IComparer<XPathTypeNode>
     {
+
+        protected XPathTypeNode()
+        {
+        }
 
         /// <summary>Creates a new instance of the <see cref="XPathTypeNode" /> class that will act as a root node.</summary>
         /// <param name="root"></param>
@@ -127,6 +132,32 @@ namespace OgcToolkit.Ogc.Filter
             return ret;
         }
 
+        public virtual XPathTypeNode Clone()
+        {
+            var ret=new XPathTypeNode();
+
+            ret._AttributeChildrenNodes=AttributeChildrenNodes;
+            ret._Context=_Context;
+            ret._ElementChildrenNodes=ElementChildrenNodes;
+            ret._IgnoredChildrenNodes=IgnoredChildrenNodes;
+            ret._MemberInfo=_MemberInfo;
+            ret._MetadataMemberInfos=_MetadataMemberInfos;
+            ret._MetadataNodes=_MetadataNodes;
+            ret._Node=_Node;
+            ret._NodeAttributes=NodeAttributes.ToList<Attribute>();
+            ret._Parent=_Parent;
+            ret._ValueMemberInfo=ValueMemberInfo;
+
+            return ret;
+        }
+
+        public XPathTypeNode Copy(XPathTypeContext context)
+        {
+            XPathTypeNode ret=Clone();
+            ret._Context=context;
+            return ret;
+        }
+
         private void GetChildren()
         {
             if ((_AttributeChildrenNodes==null) || (_ElementChildrenNodes==null) || (_IgnoredChildrenNodes==null))
@@ -153,7 +184,7 @@ namespace OgcToolkit.Ogc.Filter
                     if (type==null)
                         continue;
 
-                    XPathTypeNode node=new XPathTypeNode(type, mi, this, _Context);
+                    XPathTypeNode node=XPathTypeNodeProvider.Instance.GetNode(type, mi, this, _Context);
 
                     // XmlIgnore ?
                     if (node.NodeAttributes.Any<Attribute>(a => a is XmlIgnoreAttribute))
@@ -184,6 +215,11 @@ namespace OgcToolkit.Ogc.Filter
                 _ElementChildrenNodes=ec.OrderBy<XPathTypeNode, XPathTypeNode>(n => n, this).ToArray<XPathTypeNode>();
                 _IgnoredChildrenNodes=ic.ToArray<XPathTypeNode>();
             }
+        }
+
+        object ICloneable.Clone()
+        {
+            return Clone();
         }
 
         int IComparer<XPathTypeNode>.Compare(XPathTypeNode x, XPathTypeNode y)
@@ -368,7 +404,7 @@ namespace OgcToolkit.Ogc.Filter
             get
             {
                 StringBuilder ret=new StringBuilder(LocalName);
-                string prefix=_Context.NamespaceManager.LookupPrefix(Namespace);
+                string prefix=_Context.NamespaceResolver.LookupPrefix(Namespace);
                 if (!string.IsNullOrEmpty(prefix))
                     ret.Insert(0, string.Concat(prefix, ":"));
 

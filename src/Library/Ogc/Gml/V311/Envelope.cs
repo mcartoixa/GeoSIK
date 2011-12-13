@@ -10,6 +10,7 @@ using Microsoft.SqlServer.Types;
 namespace OgcToolkit.Ogc.Gml.V311
 {
 
+#pragma warning disable 3009
     partial class Envelope:
         IGeometryProvider
     {
@@ -20,7 +21,7 @@ namespace OgcToolkit.Ogc.Gml.V311
             {
                 if ((lowerCorner==null) || (lowerCorner.TypedValue==null))
                     return null;
-                if ((upperCorner==null)||(upperCorner.TypedValue==null))
+                if ((upperCorner==null) || (upperCorner.TypedValue==null))
                     return null;
 
                 Debug.Assert(lowerCorner.TypedValue.Count==2);
@@ -89,4 +90,5 @@ namespace OgcToolkit.Ogc.Gml.V311
             }
         }
     }
+#pragma warning restore 3009
 }
