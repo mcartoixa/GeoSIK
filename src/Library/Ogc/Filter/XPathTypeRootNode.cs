@@ -15,6 +15,10 @@ namespace OgcToolkit.Ogc.Filter
         XPathTypeNode
     {
 
+        protected XPathTypeRootNode()
+        {
+        }
+
         /// <summary>Creates a new instance of the <see cref="XPathTypeRootNode" /> class that will act as a root node.</summary>
         /// <param name="root"></param>
         /// <param name="context"></param>
@@ -22,6 +26,15 @@ namespace OgcToolkit.Ogc.Filter
             base(root, context)
         {
             _ElementChildrenNodes=new XPathTypeNode[] { new XPathTypeNode(Node, null, this, Context) };
+        }
+
+        public override XPathTypeNode Clone()
+        {
+            XPathTypeRootNode ret=new XPathTypeRootNode();
+
+            ret._ElementChildrenNodes=ElementChildrenNodes;
+
+            return ret;
         }
 
         public override XPathTypeNode[] AttributeChildrenNodes

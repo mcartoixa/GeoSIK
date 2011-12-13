@@ -10,6 +10,6 @@ namespace OgcToolkit
     public interface IGeometryProvider
     {
 
-        SqlGeometry Geometry { get; set; }
+        SqlGeometry Geometry { get; }
     }
 }

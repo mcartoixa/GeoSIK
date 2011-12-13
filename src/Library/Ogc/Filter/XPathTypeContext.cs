@@ -15,22 +15,22 @@ namespace OgcToolkit.Ogc.Filter
         {
         }
 
-        public XPathTypeContext(XmlNamespaceManager namespaceManager)
+        public XPathTypeContext(IXmlNamespaceResolver namespaceResolver)
         {
-            _NamespaceManager=namespaceManager;
+            _NamespaceResolver=namespaceResolver;
         }
 
-        public XmlNamespaceManager NamespaceManager
+        public IXmlNamespaceResolver NamespaceResolver
         {
             get
             {
-                if (_NamespaceManager==null)
-                    _NamespaceManager=new XmlNamespaceManager(new NameTable());
+                if (_NamespaceResolver==null)
+                    _NamespaceResolver=new XmlNamespaceManager(new NameTable());
 
-                return _NamespaceManager;
+                return _NamespaceResolver;
             }
         }
 
-        private XmlNamespaceManager _NamespaceManager;
+        private IXmlNamespaceResolver _NamespaceResolver;
     }
 }

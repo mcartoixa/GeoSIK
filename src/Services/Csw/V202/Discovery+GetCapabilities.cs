@@ -117,11 +117,26 @@ namespace OgcToolkit.Services.Csw.V202
                     Spatial_Capabilities=new Filter.Spatial_CapabilitiesType() {
                         GeometryOperands=new Filter.GeometryOperandsType() {
                                 GeometryOperand=new string[] {
-                                "gml:Envelope"
+                                "gml:Envelope",
+                                "gml:Point",
+                                "gml:LineString",
+                                "gml:Polygon"
                             }
                         },
                         SpatialOperators=new Filter.SpatialOperatorsType() {
-                            SpatialOperator=new Filter.SpatialOperatorType[] { new Filter.SpatialOperatorType() { name="BBOX" } }
+                            SpatialOperator=new Filter.SpatialOperatorType[] {
+                                new Filter.SpatialOperatorType() { name="BBOX" },
+                                new Filter.SpatialOperatorType() { name="Equals" },
+                                new Filter.SpatialOperatorType() { name="Disjoint" },
+                                new Filter.SpatialOperatorType() { name="Touches" },
+                                new Filter.SpatialOperatorType() { name="Within" },
+                                new Filter.SpatialOperatorType() { name="Overlaps" },
+                                new Filter.SpatialOperatorType() { name="Crosses" },
+                                new Filter.SpatialOperatorType() { name="Intersects" },
+                                new Filter.SpatialOperatorType() { name="Contains" },
+                                new Filter.SpatialOperatorType() { name="DWithin" },
+                                new Filter.SpatialOperatorType() { name="Beyond" }
+                            }
                         }
                     }
                 };

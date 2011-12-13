@@ -18,20 +18,15 @@ namespace OgcToolkit.Ogc.Filter.V110
         // BBOX is !geometry.STDisjoint(envelope)
         protected override Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType)
         {
-            byte[] envelope=null;
-            using (var ms=new MemoryStream())
-                using (var bw=new BinaryWriter(ms))
-                {
-                    Envelope.Geometry.Write(bw);
-                    envelope=ms.ToArray();
-                }
+            SqlGeometry envelope=Envelope.Geometry;
 
             // Custom implementation
             if (parameters.OperatorImplementationProvider!=null)
             {
-                object instance;
                 object[] pa=new object[] { null, envelope };
-                MethodInfo binaryMethod=parameters.OperatorImplementationProvider.GetImplementation("STDisjoint", new Type[] { typeof(byte[]), typeof(byte[]) }, ref pa, out instance);
+
+                object instance;
+                MethodInfo binaryMethod=parameters.OperatorImplementationProvider.GetImplementation(OperationNames.Disjoint, new Type[] { typeof(SqlGeometry), typeof(SqlGeometry) }, ref pa, out instance);
                 Debug.Assert(pa.Length==2);
 
                 if (binaryMethod!=null)
@@ -50,12 +45,15 @@ namespace OgcToolkit.Ogc.Filter.V110
                             ((IExpressionBuilder)PropertyName).CreateExpression(parameters, pa[1].GetType()),
                             Expression.Constant(pa[1])
                         );
-                    
+
                     Type rt=Nullable.GetUnderlyingType(binaryMethod.ReturnType) ?? binaryMethod.ReturnType;
-                    return Expression.Equal(
-                        op,
-                        Expression.Constant(Convert.ChangeType(1, rt), binaryMethod.ReturnType)
-                    );
+                    if (binaryMethod.ReturnType==typeof(bool))
+                        return Expression.IsFalse(op);
+                    else
+                        return Expression.NotEqual(
+                            op,
+                            Expression.Constant(Convert.ChangeType(true, rt), binaryMethod.ReturnType)
+                        );
                 }
             }
 

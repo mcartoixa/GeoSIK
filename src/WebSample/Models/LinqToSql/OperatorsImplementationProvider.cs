@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Linq;
 using System.Data.Objects.DataClasses;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Web;
@@ -31,10 +32,50 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
 
             switch (operatorName)
             {
-            case "STDisjoint":
-                values=values.Select<object, object>(v => v!=null ? new Binary((byte[])v) : null).ToArray<object>();
+            case OperationNames.Contains:
+                values=values.Select<object, object>(v => v!=null ? GetBinary((SqlGeometry)v) : null).ToArray<object>();
+                return typeof(RecordsDataContext).GetMethod("Geometry_STContains", new Type[] { typeof(Binary), typeof(Binary) });
+            case OperationNames.Crosses:
+                values=values.Select<object, object>(v => v!=null ? GetBinary((SqlGeometry)v) : null).ToArray<object>();
+                return typeof(RecordsDataContext).GetMethod("Geometry_STCrosses", new Type[] { typeof(Binary), typeof(Binary) });
+            case OperationNames.Disjoint:
+                values=values.Select<object, object>(v => v!=null ? GetBinary((SqlGeometry)v) : null).ToArray<object>();
                 return typeof(RecordsDataContext).GetMethod("Geometry_STDisjoint", new Type[] { typeof(Binary), typeof(Binary) });
+            case OperationNames.Distance:
+                values=values.Select<object, object>(v => v!=null ? GetBinary((SqlGeometry)v) : null).ToArray<object>();
+                return typeof(RecordsDataContext).GetMethod("Geometry_STDistance", new Type[] { typeof(Binary), typeof(Binary) });
+            case OperationNames.Equal:
+                values=values.Select<object, object>(v => v!=null ? GetBinary((SqlGeometry)v) : null).ToArray<object>();
+                return typeof(RecordsDataContext).GetMethod("Geometry_STEquals", new Type[] { typeof(Binary), typeof(Binary) });
+            case OperationNames.Intersects:
+                values=values.Select<object, object>(v => v!=null ? GetBinary((SqlGeometry)v) : null).ToArray<object>();
+                return typeof(RecordsDataContext).GetMethod("Geometry_STIntersects", new Type[] { typeof(Binary), typeof(Binary) });
+            case OperationNames.Overlaps:
+                values=values.Select<object, object>(v => v!=null ? GetBinary((SqlGeometry)v) : null).ToArray<object>();
+                return typeof(RecordsDataContext).GetMethod("Geometry_STOverlaps", new Type[] { typeof(Binary), typeof(Binary) });
+            case OperationNames.Touches:
+                values=values.Select<object, object>(v => v!=null ? GetBinary((SqlGeometry)v) : null).ToArray<object>();
+                return typeof(RecordsDataContext).GetMethod("Geometry_STTouches", new Type[] { typeof(Binary), typeof(Binary) });
+            case OperationNames.Within:
+                values=values.Select<object, object>(v => v!=null ? GetBinary((SqlGeometry)v) : null).ToArray<object>();
+                return typeof(RecordsDataContext).GetMethod("Geometry_STWithin", new Type[] { typeof(Binary), typeof(Binary) });
             }
+
+            return ret;
+        }
+
+        private static Binary GetBinary(SqlGeometry geometry)
+        {
+            if (geometry==null)
+                return null;
+
+            Binary ret=null;
+            using (var ms=new MemoryStream())
+                using (var bw=new BinaryWriter(ms))
+                {
+                    geometry.Write(bw);
+                    ret=new Binary(ms.ToArray());
+                }
 
             return ret;
         }

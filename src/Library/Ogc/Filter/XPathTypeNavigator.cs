@@ -21,14 +21,14 @@ namespace OgcToolkit.Ogc.Filter
         {
         }
 
-        public XPathTypeNavigator(Type root, XmlNamespaceManager namespaceManager)
+        public XPathTypeNavigator(Type root, IXmlNamespaceResolver namespaceResolver)
         {
             Debug.Assert(root!=null);
             if (root==null)
                 throw new ArgumentNullException("root");
 
-            _Context=new XPathTypeContext(namespaceManager);
-            _Root=new XPathTypeRootNode(root, _Context);
+            _Context=new XPathTypeContext(namespaceResolver);
+            _Root=XPathTypeNodeProvider.Instance.GetRootNode(root, _Context);
             _Current=_Root;
         }
 
@@ -183,6 +183,11 @@ namespace OgcToolkit.Ogc.Filter
             _Current=_Root;
         }
 
+        public override XPathNodeIterator Select(string xpath)
+        {
+            return Select(XPathExpression.Compile(xpath, _Context.NamespaceResolver));
+        }
+
         public XPathNodeIterator Select(string xpath, bool mayRootPathBeImplied)
         {
             return Select(XPathExpression.Compile(xpath), mayRootPathBeImplied);
@@ -266,7 +271,11 @@ namespace OgcToolkit.Ogc.Filter
         {
             get
             {
-                return _Context.NamespaceManager.NameTable;
+                var xnp=_Context.NamespaceResolver as XmlNamespaceManager;
+                if (xnp!=null)
+                    return xnp.NameTable;
+
+                return null;
             }
         }
 
@@ -301,7 +310,7 @@ namespace OgcToolkit.Ogc.Filter
         {
             get
             {
-                return _Context.NamespaceManager.LookupPrefix(NamespaceURI);
+                return _Context.NamespaceResolver.LookupPrefix(NamespaceURI);
             }
         }
 

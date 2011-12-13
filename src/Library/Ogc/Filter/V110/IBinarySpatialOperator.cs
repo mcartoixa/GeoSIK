@@ -10,7 +10,9 @@ namespace OgcToolkit.Ogc.Filter.V110
     public interface IBinarySpatialOperator
     {
 
-        PropertyName PropertyName { get; set; }
-        Gml311.Envelope Envelope { get; set; }
+        IList<PropertyName> PropertyName { get; }
+        Gml311._Geometry Geometry { get; }
+        Gml311.Envelope Envelope { get; }
+        string Operation { get; }
     }
 }

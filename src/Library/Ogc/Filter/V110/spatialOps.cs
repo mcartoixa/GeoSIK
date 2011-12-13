@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 using System.Xml;
 using Microsoft.SqlServer.Types;
@@ -20,11 +21,99 @@ namespace OgcToolkit.Ogc.Filter.V110
             var bsop=this as IBinarySpatialOperator;
             if (bsop!=null)
             {
-                Expression pnex=((IExpressionBuilder)bsop.PropertyName).CreateExpression(parameters, typeof(SqlGeometry));
 
-                if (bsop.Envelope!=null)
+                // Custom implementation
+                if (parameters.OperatorImplementationProvider!=null)
                 {
+                    object[] pa=new object[] { null, null };
+                    if (bsop.Envelope!=null)
+                        pa=new object[] { null, bsop.Envelope.Geometry };
+                    else if (bsop.Geometry!=null)
+                        pa=new object[] { null, bsop.Geometry.Geometry };
 
+                    object instance;
+                    MethodInfo binaryMethod=parameters.OperatorImplementationProvider.GetImplementation(bsop.Operation, new Type[] { typeof(SqlGeometry), typeof(SqlGeometry) }, ref pa, out instance);
+                    Debug.Assert(pa.Length==2);
+
+                    if (binaryMethod!=null)
+                    {
+                        Type gt=typeof(SqlGeometry);
+                        Expression gex=null;
+
+                        // 2nd parameter is a constant ?
+                        if (pa[1]!=null)
+                        {
+                            gt=pa[1].GetType();
+                            gex=Expression.Constant(pa[1]);
+                        }
+
+                        // 2nd parameter is a property ?
+                        if ((gex==null) && (bsop.PropertyName.Count>1))
+                            gex=((IExpressionBuilder)bsop.PropertyName[1]).CreateExpression(parameters, gt);
+
+                        Expression op=null;
+                        if (instance!=null)
+                            op=Expression.Call(
+                                Expression.Constant(instance),
+                                binaryMethod,
+                                ((IExpressionBuilder)bsop.PropertyName[0]).CreateExpression(parameters, gt),
+                                gex
+                            );
+                        else
+                            op=Expression.Call(
+                                binaryMethod,
+                                ((IExpressionBuilder)bsop.PropertyName[0]).CreateExpression(parameters, gt),
+                                gex
+                            );
+
+                        Type rt=Nullable.GetUnderlyingType(binaryMethod.ReturnType) ?? binaryMethod.ReturnType;
+                        if (binaryMethod.ReturnType==typeof(bool))
+                            return Expression.IsTrue(op);
+                        else
+                            return Expression.Equal(
+                                op,
+                                Expression.Constant(Convert.ChangeType(true, rt), binaryMethod.ReturnType)
+                            );
+                    }
+                }
+            }
+
+            var dbop=this as IDistanceBufferOperator;
+            if (dbop!=null)
+            {
+
+                // Custom implementation
+                if (parameters.OperatorImplementationProvider!=null)
+                {
+                    object[] pa=new object[] { null, dbop.Geometry.Geometry };
+
+                    object instance;
+                    MethodInfo binaryMethod=parameters.OperatorImplementationProvider.GetImplementation(OperationNames.Distance, new Type[] { typeof(SqlGeometry), typeof(SqlGeometry) }, ref pa, out instance);
+                    Debug.Assert(pa.Length==2);
+
+                    if (binaryMethod!=null)
+                    {
+                        Expression op=null;
+                        if (instance!=null)
+                            op=Expression.Call(
+                                Expression.Constant(instance),
+                                binaryMethod,
+                                ((IExpressionBuilder)dbop.PropertyName).CreateExpression(parameters, pa[1].GetType()),
+                                Expression.Constant(pa[1])
+                            );
+                        else
+                            op=Expression.Call(
+                                binaryMethod,
+                                ((IExpressionBuilder)dbop.PropertyName).CreateExpression(parameters, pa[1].GetType()),
+                                Expression.Constant(pa[1])
+                            );
+
+                        Type rt=Nullable.GetUnderlyingType(binaryMethod.ReturnType) ?? binaryMethod.ReturnType;
+                        return dbop.OperatorExpression(
+                            op,
+                            Expression.Constant(Convert.ChangeType(dbop.Distance, rt), binaryMethod.ReturnType)
+                        );
+                    }
                 }
             }
 
