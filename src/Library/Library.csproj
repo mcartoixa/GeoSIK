@@ -189,7 +189,9 @@
     </Compile>
     <Compile Include="Services\Csw\V202\CoreQueryableAttribute.cs" />
     <Compile Include="Services\Csw\V202\RecordConverter.cs" />
+    <Compile Include="Services\Csw\V202\XPathQueryableIterator.cs" />
     <Compile Include="Services\Csw\V202\XPathQueryableNavigator.cs" />
+    <Compile Include="Services\Csw\V202\XPathQueryableNode.cs" />
     <Compile Include="Services\Csw\V202\XPathQueryableNodeProvider.cs" />
     <Compile Include="Services\EnumerableExtensions.cs" />
     <Compile Include="Services\Ows\OwsRequestEventArgs.cs" />

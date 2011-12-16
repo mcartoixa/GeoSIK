@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Xml;
@@ -14,21 +15,52 @@ namespace OgcToolkit.Services.Csw.V202
     {
 
         public XPathQueryableNavigator(Type root):
-            base(root)
-        {}
+            this(root, null)
+        { }
 
         public XPathQueryableNavigator(Type root, IXmlNamespaceResolver namespaceResolver):
-            base(root, namespaceResolver)
-        {}
+            base(root, namespaceResolver, new Filter.XPathTypeContext(XPathQueryableNodeProvider.Instance, namespaceResolver))
+        {
+        }
+
+        protected XPathQueryableNavigator(XPathQueryableNavigator other):
+            base(other)
+        {
+            _Queryables=other.Queryables;
+        }
+
+        public override XPathNavigator Clone()
+        {
+            return new XPathQueryableNavigator(this);
+        }
 
         public override XPathNodeIterator Select(XPathExpression expr)
         {
-            if (_Queryables.ContainsKey(expr.Expression))
-                return _Queryables[expr.Expression];
+            if (Queryables.ContainsKey(expr.Expression))
+                return new XPathQueryableIterator(Queryables[expr.Expression]);
 
-            return Select(expr);
+            return base.Select(expr);
         }
 
-        private Dictionary<string, XPathNodeIterator> _Queryables=new Dictionary<string, XPathNodeIterator>();
+        protected Dictionary<string, IList<XPathNavigator>> Queryables
+        {
+            get
+            {
+                if (_Queryables==null)
+                {
+                    _Queryables=new Dictionary<string, IList<XPathNavigator>>();
+                    foreach (Filter.XPathTypeNode xptn in Root.ElementChildrenNodes)
+                    {
+                        var xpqn=xptn as XPathQueryableNode;
+                        if (xpqn!=null)
+                            xpqn.InitQueryables(this, _Queryables);
+                    }
+                }
+
+                return _Queryables;
+            }
+        }
+
+        private Dictionary<string, IList<XPathNavigator>> _Queryables;
     }
 }

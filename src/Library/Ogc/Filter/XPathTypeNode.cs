@@ -502,20 +502,20 @@ namespace OgcToolkit.Ogc.Filter
             }
         }
 
-        internal IEnumerable<Attribute> NodeAttributes
+        internal virtual IEnumerable<Attribute> NodeAttributes
         {
             get
             {
                 if (_NodeAttributes==null)
                 {
-                    if (_MetadataMemberInfos!=null)
+                    if (MetadataMemberInfos!=null)
                     {
-                        _NodeAttributes=new List<Attribute>(_MetadataMemberInfos.SelectMany<MemberInfo, Attribute>(t => t.GetCustomAttributes(typeof(XmlRootAttribute), true).Cast<Attribute>()));
-                        _NodeAttributes.AddRange(_MetadataMemberInfos.SelectMany<MemberInfo, Attribute>(t => t.GetCustomAttributes(typeof(XmlElementAttribute), true).Cast<Attribute>()));
-                        _NodeAttributes.AddRange(_MetadataMemberInfos.SelectMany<MemberInfo, Attribute>(t => t.GetCustomAttributes(typeof(XmlAttributeAttribute), true).Cast<Attribute>()));
-                        _NodeAttributes.AddRange(_MetadataMemberInfos.SelectMany<MemberInfo, Attribute>(t => t.GetCustomAttributes(typeof(XmlTextAttribute), true).Cast<Attribute>()));
+                        _NodeAttributes=new List<Attribute>(MetadataMemberInfos.SelectMany<MemberInfo, Attribute>(m => m.GetCustomAttributes(typeof(XmlRootAttribute), true).Cast<Attribute>()));
+                        _NodeAttributes.AddRange(MetadataMemberInfos.SelectMany<MemberInfo, Attribute>(m => m.GetCustomAttributes(typeof(XmlElementAttribute), true).Cast<Attribute>()));
+                        _NodeAttributes.AddRange(MetadataMemberInfos.SelectMany<MemberInfo, Attribute>(m => m.GetCustomAttributes(typeof(XmlAttributeAttribute), true).Cast<Attribute>()));
+                        _NodeAttributes.AddRange(MetadataMemberInfos.SelectMany<MemberInfo, Attribute>(m => m.GetCustomAttributes(typeof(XmlTextAttribute), true).Cast<Attribute>()));
                     } else
-                        _NodeAttributes=_MetadataNodes
+                        _NodeAttributes=MetadataNodes
                             .SelectMany<Type, Attribute>(t => t.GetCustomAttributes(typeof(XmlRootAttribute), true).Cast<Attribute>())
                             .ToList<Attribute>();
                 }
