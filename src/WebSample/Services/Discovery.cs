@@ -128,7 +128,7 @@ namespace OgcToolkit.WebSample.Services
             return new GetCapabilitiesProcessor(this);
         }
 
-        protected override IQueryable GetRecordsSource(IEnumerable<XName> typeNames)
+        protected override IQueryable GetRecordsSource(Uri outputSchema)
         {
             return RecordContext.Records;
         }

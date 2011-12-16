@@ -43,6 +43,7 @@
   <ItemGroup>
     <Reference Include="Common.Logging">
       <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Irony">
       <HintPath>..\lib\Irony\Irony.dll</HintPath>
@@ -54,6 +55,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
@@ -63,6 +65,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="Xml.Schema.Linq">
       <HintPath>..\packages\LinqToXsd.2.0.2\lib\Xml.Schema.Linq.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +76,9 @@
       <Link>Properties\Version.cs</Link>
     </Compile>
     <Compile Include="IGeometryProvider.cs" />
+    <Compile Include="Ogc\Filter\IXPathTypeNodeProvider.cs" />
+    <Compile Include="Ogc\Filter\ExpressionBuilderParameter.cs" />
+    <Compile Include="Ogc\Filter\IExpressionBuilder.cs" />
     <Compile Include="Ogc\Filter\V110\Beyond.cs" />
     <Compile Include="Ogc\Filter\V110\Contains.cs" />
     <Compile Include="Ogc\Filter\V110\DWithin.cs" />
@@ -124,7 +130,6 @@
     <Compile Include="Ogc\Filter\V110\expression.cs" />
     <Compile Include="Ogc\Filter\V110\Function.cs" />
     <Compile Include="Ogc\Filter\V110\IBinarySpatialOperator.cs" />
-    <Compile Include="Ogc\Filter\V110\IExpressionBuilder.cs" />
     <Compile Include="Ogc\Filter\V110\Literal.cs" />
     <Compile Include="Ogc\Filter\V110\logicOps.cs" />
     <Compile Include="Ogc\Filter\V110\Mul.cs" />
@@ -155,7 +160,6 @@
     <Compile Include="Ogc\Gml\V311\Envelope.cs" />
     <Compile Include="Ogc\Gml\V321\_Gml.cs" />
     <Compile Include="Ogc\Ows\V100\BoundingBox.cs" />
-    <Compile Include="Ogc\WebCatalog\Ccql\CcqlGrammar.cs" />
     <Compile Include="DublinCore\Elements\V11\_Elements.cs" />
     <Compile Include="DublinCore\Terms\_Terms.cs" />
     <Compile Include="Ogc\Filter\V110\_Filter.cs" />
@@ -163,6 +167,8 @@
     <Compile Include="Ogc\Gml\V311\_Gml.cs" />
     <Compile Include="Ogc\Ows\V100\_Ows.cs" />
     <Compile Include="Namespaces.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\CqlGrammar.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\CqlQueryable.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\Acknowledgement.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\GetRecordById.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\GetRecords.cs" />
@@ -170,8 +176,8 @@
     <Compile Include="Ogc\WebCatalog\Csw\V202\GetCapabilities.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\GetRecordsResponse.cs" />
     <Compile Include="OperationNames.cs" />
+    <Compile Include="Services\Csw\V202\CoreQueryable.cs" />
     <Compile Include="Services\Csw\V202\QueryableExtensions.cs" />
-    <Compile Include="Services\Csw\V202\IBriefRecord.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\IGetRecordsResponse.cs" />
     <Compile Include="Services\Csw\V202\IDiscovery.cs" />
     <Compile Include="Services\Csw\V202\IPublication.cs" />
@@ -181,7 +187,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Schemas.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\Csw\V202\CoreQueryableAttribute.cs" />
     <Compile Include="Services\Csw\V202\RecordConverter.cs" />
+    <Compile Include="Services\Csw\V202\XPathQueryableNavigator.cs" />
+    <Compile Include="Services\Csw\V202\XPathQueryableNodeProvider.cs" />
     <Compile Include="Services\EnumerableExtensions.cs" />
     <Compile Include="Services\Ows\OwsRequestEventArgs.cs" />
     <Compile Include="Services\Ows\V100\IOgcService.cs" />

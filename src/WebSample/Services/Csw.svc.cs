@@ -34,7 +34,7 @@ namespace OgcToolkit.WebSample.Services
 
         public Ogc.WebCatalog.Csw.V202.GetRecordByIdResponse GetRecordById(Ogc.WebCatalog.Csw.V202.GetRecordById request)
         {
-            throw new NotImplementedException();
+            return _Implementation.GetRecordById(request);
         }
 
         private Discovery _Implementation=new Discovery();

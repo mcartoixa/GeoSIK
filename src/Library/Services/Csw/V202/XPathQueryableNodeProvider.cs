@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using OgcToolkit.Ogc.Filter;
 
-namespace OgcToolkit.Ogc.Filter
+namespace OgcToolkit.Services.Csw.V202
 {
 
-    internal class XPathTypeNodeProvider:
+    internal class XPathQueryableNodeProvider:
         IXPathTypeNodeProvider
     {
 
-        private XPathTypeNodeProvider()
+        private XPathQueryableNodeProvider()
         {
         }
 
         public XPathTypeNode GetNode(Type node, MemberInfo memberInfo, XPathTypeNode parent, XPathTypeContext context)
         {
-            if ((parent==null)&&(memberInfo==null))
+            if ((parent==null) && (memberInfo==null))
                 return GetRootNode(node, context);
 
             return new XPathTypeNode(node, memberInfo, parent, context);
@@ -33,7 +34,7 @@ namespace OgcToolkit.Ogc.Filter
             return ret;
         }
 
-        public static XPathTypeNodeProvider Instance
+        public static XPathQueryableNodeProvider Instance
         {
             get
             {
@@ -43,6 +44,6 @@ namespace OgcToolkit.Ogc.Filter
 
         private Dictionary<Type, XPathTypeRootNode> _RootNodes=new Dictionary<Type, XPathTypeRootNode>();
 
-        private static readonly Lazy<XPathTypeNodeProvider> _Instance=new Lazy<XPathTypeNodeProvider>(() => new XPathTypeNodeProvider());
+        private static readonly Lazy<XPathQueryableNodeProvider> _Instance=new Lazy<XPathQueryableNodeProvider>(() => new XPathQueryableNodeProvider());
     }
 }

@@ -33,7 +33,7 @@ namespace OgcToolkit.Services.Csw.V202
             IQueryable ret=source;
             //if (constraint.Filter!=null)
             if (constraint.Untyped.Descendants("{http://www.opengis.net/ogc}Filter").Any<XElement>())
-                ret=Filter110.FilterQueryable.Where(ret, constraint.Filter, namespaceManager, mayRootPathBeImplied, operatorImplementationProvider);
+                ret=Filter110.FilterQueryable.Where(ret, constraint.Filter, namespaceManager, mayRootPathBeImplied, operatorImplementationProvider, (t, r) => new XPathQueryableNavigator(t, r));
             //if (!string.IsNullOrEmpty(constraint.CqlText))
             //    ret=Filter110.FilterQueryable.Where(ret, constraint.Filter, namespaceManager, mayRootPathBeImplied);
 

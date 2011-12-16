@@ -27,8 +27,8 @@ namespace OgcToolkit.Ogc.Filter
             if (root==null)
                 throw new ArgumentNullException("root");
 
-            _Context=new XPathTypeContext(namespaceResolver);
-            _Root=XPathTypeNodeProvider.Instance.GetRootNode(root, _Context);
+            _Context=new XPathTypeContext(XPathTypeNodeProvider.Instance, namespaceResolver);
+            _Root=_Context.NodeProvider.GetRootNode(root, _Context);
             _Current=_Root;
         }
 
@@ -188,17 +188,17 @@ namespace OgcToolkit.Ogc.Filter
             return Select(XPathExpression.Compile(xpath, _Context.NamespaceResolver));
         }
 
-        public XPathNodeIterator Select(string xpath, bool mayRootPathBeImplied)
+        public virtual XPathNodeIterator Select(string xpath, bool mayRootPathBeImplied)
         {
             return Select(XPathExpression.Compile(xpath), mayRootPathBeImplied);
         }
 
-        public XPathNodeIterator Select(string xpath, IXmlNamespaceResolver resolver, bool mayRootPathBeImplied)
+        public virtual XPathNodeIterator Select(string xpath, IXmlNamespaceResolver resolver, bool mayRootPathBeImplied)
         {
             return Select(XPathExpression.Compile(xpath, resolver), mayRootPathBeImplied);
         }
 
-        public XPathNodeIterator Select(XPathExpression expr, bool mayRootPathBeImplied)
+        public virtual XPathNodeIterator Select(XPathExpression expr, bool mayRootPathBeImplied)
         {
             // [OCG 07-006r1 §10.8.4.11]
             if (mayRootPathBeImplied)

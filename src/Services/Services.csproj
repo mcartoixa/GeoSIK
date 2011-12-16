@@ -43,6 +43,7 @@
   <ItemGroup>
     <Reference Include="Common.Logging">
       <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.SqlServer.Types, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
@@ -60,6 +61,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Xml.Schema.Linq">
       <HintPath>..\packages\LinqToXsd.2.0.2\lib\Xml.Schema.Linq.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +71,7 @@
     <Compile Include="..\Version.cs">
       <Link>Properties\Version.cs</Link>
     </Compile>
+    <Compile Include="Csw\V202\Discovery+GetRecordById.cs" />
     <Compile Include="Csw\V202\Discovery+DescribeRecord.cs" />
     <Compile Include="Csw\V202\Discovery+GetCapabilities.cs" />
     <Compile Include="Csw\V202\Discovery+GetRecords.cs" />
@@ -95,7 +98,6 @@
     <None Include="..\build\OgcToolkit.snk">
       <Link>OgcToolkit.snk</Link>
     </None>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

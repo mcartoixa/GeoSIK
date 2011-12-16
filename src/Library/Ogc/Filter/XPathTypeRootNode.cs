@@ -37,6 +37,11 @@ namespace OgcToolkit.Ogc.Filter
             return ret;
         }
 
+        protected override void GetChildren()
+        {
+            // Do nothing
+        }
+
         public override XPathTypeNode[] AttributeChildrenNodes
         {
             get

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Xml;
@@ -11,11 +12,15 @@ namespace OgcToolkit.Ogc.Filter
     internal class XPathTypeContext
     {
 
-        public XPathTypeContext()
+        public XPathTypeContext(IXPathTypeNodeProvider nodeProvider)
         {
+            Debug.Assert(nodeProvider!=null);
+
+            NodeProvider=nodeProvider;
         }
 
-        public XPathTypeContext(IXmlNamespaceResolver namespaceResolver)
+        public XPathTypeContext(IXPathTypeNodeProvider typeNodeProvider, IXmlNamespaceResolver namespaceResolver):
+            this(typeNodeProvider)
         {
             _NamespaceResolver=namespaceResolver;
         }
@@ -29,6 +34,12 @@ namespace OgcToolkit.Ogc.Filter
 
                 return _NamespaceResolver;
             }
+        }
+
+        internal IXPathTypeNodeProvider NodeProvider
+        {
+            get;
+            private set;
         }
 
         private IXmlNamespaceResolver _NamespaceResolver;
