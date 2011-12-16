@@ -17,7 +17,7 @@
       <Platform>Any CPU</Platform>
       <Constants>TRACE</Constants>
       <Library>True</Library>
-      <Published>True</Published>
+      <Packaged>True</Packaged>
       <Released>True</Released>
     </Projects>
   </ItemDefinitionGroup>

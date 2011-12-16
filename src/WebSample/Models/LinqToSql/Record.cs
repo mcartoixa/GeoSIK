@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using DataAnnotations=System.ComponentModel.DataAnnotations;
+using System.Data.Linq;
+using System.Data.Linq.Mapping;
 using System.IO;
 using System.Linq;
-using System.ComponentModel.DataAnnotations;
 using System.Web;
 using System.Xml;
 using System.Xml.Serialization;
@@ -12,7 +14,7 @@ using Csw202Service=OgcToolkit.Services.Csw.V202;
 namespace OgcToolkit.WebSample.Models.LinqToSql
 {
 
-    [MetadataType(typeof(RecordMetaData))]
+    [DataAnnotations.MetadataType(typeof(RecordMetaData))]
     [XmlRoot("Record", Namespace=Namespaces.OgcWebCatalogCswV202, IsNullable=false)]
     partial class Record:
         Csw202Service.IRecord
@@ -29,6 +31,7 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
         partial void OnSubjectSchemeChanged();
 
         [XmlElement("subject", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=2, IsNullable=false)]
+        [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Subject)]
         public RecordSubject RecordSubject
         {
             get
@@ -40,6 +43,7 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
         }
 
         [XmlElement("BoundingBox", Namespace=Namespaces.OgcOws, Order=8, IsNullable=false)]
+        [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.BoundingBox)]
         public SqlGeometry BoundingBox
         {
             get
@@ -72,7 +76,19 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
             }
         }
 
-        [global::System.Data.Linq.Mapping.ColumnAttribute(DbType="NVarChar(512)")]
+        [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Crs)]
+        public string BoundingBoxCrs
+        {
+            get
+            {
+                if ((BoundingBox==null) || BoundingBox.STSrid.IsNull)
+                    return null;
+
+                return new Srid(BoundingBox.STSrid.Value).Crs.ToString();
+            }
+        }
+
+        [Column(DbType="NVarChar(512)")]
         private string Subject
         {
             get
@@ -92,7 +108,7 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
             }
         }
 
-        [global::System.Data.Linq.Mapping.ColumnAttribute(DbType="VarChar(256)")]
+        [Column(DbType="VarChar(256)")]
         private string SubjectScheme
         {
             get
@@ -137,24 +153,27 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
     {
 
         [XmlElement("identifier", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=0, IsNullable=false)]
+        [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Identifier)]
         public string Identifier { get; set; }
 
         [XmlElement("title", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=1, IsNullable=false)]
+        [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Title)]
         public string Title { get; set; }
 
-        [XmlElement("subject", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=2, IsNullable=false)]
-        public RecordSubject Subject { get; set; }
-
         [XmlElement("abstract", Namespace=Namespaces.DublinCoreTerms, DataType="string", Order=3, IsNullable=false)]
+        [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Abstract)]
         public string Abstract { get; set; }
 
         [XmlElement("date", Namespace=Namespaces.DublinCoreElementsV11, DataType="date", Order=4)]
+        [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Modified)]
         public DateTime? Date { get; set; }
 
         [XmlElement("type", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=5, IsNullable=false)]
+        [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Type)]
         public string Type { get; set; }
 
         [XmlElement("format", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=6, IsNullable=false)]
+        [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Format)]
         public string Format { get; set; }
 
         [XmlElement("spatial", Namespace=Namespaces.DublinCoreTerms, DataType="string", Order=7, IsNullable=false)]
@@ -162,9 +181,10 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
 
         [XmlIgnore]
         [XmlElement("BoundingBox", Namespace=Namespaces.OgcOws)] // Mandatory synonym: will be used by LINQ to SQL requests instead of BoundingBox...
-        public byte[] Coverage { get; set; }
+        public Binary Coverage { get; set; }
 
         [XmlElement("relation", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=9, IsNullable=false)]
+        [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Association)]
         public string RelationId { get; set; }
     }
 }

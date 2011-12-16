@@ -14,9 +14,9 @@ namespace OgcToolkit.Ogc.Filter.V110
     partial class SortBy
     {
 
-        internal Expression CreateExpression(Type elementType, Expression query, XmlNamespaceManager namespaceManager, bool mayRootPathBeImplied=false)
+        internal Expression CreateExpression(Type elementType, Expression query, XmlNamespaceManager namespaceManager, bool mayRootPathBeImplied=false, Func<Type, IXmlNamespaceResolver, XPathTypeNavigator> navigatorCreator=null)
         {
-            XPathTypeNavigator xptn=new XPathTypeNavigator(elementType, namespaceManager);
+            XPathTypeNavigator xptn=(navigatorCreator!=null ? navigatorCreator(elementType, namespaceManager) : new XPathTypeNavigator(elementType, namespaceManager));
 
             bool first=true;
             foreach (SortPropertyType spt in SortProperty)

@@ -21,7 +21,7 @@ It must be used with MSBuild 4.0.
         - The platform to use to compile the project.
    * %(Library): [required]
         - true if the project generates a reusable library, or else false.
-   * %(Published): [required]
+   * %(Packaged): [required]
         - true if the generated binaries are to be published, or else false.
    * %(Released): [required]
         - true if the generated binaries are to be released, or else false.
@@ -115,7 +115,7 @@ It must be used with MSBuild 4.0.
     </ItemGroup>
     <Exec
       Condition="'@(PackageConfigFiles)'!=''"
-      Command="&quot;$(NuGetToolPath)&quot; install &quot;%(PackageConfigFiles.Identity)&quot; -o packages"
+      Command="&quot;$(NuGetToolPath)&quot; install &quot;%(PackageConfigFiles.Identity)&quot; -OutputDirectory packages"
       WorkingDirectory="$(InputPath)"
       YieldDuringToolExecution="True"
     />
@@ -341,11 +341,11 @@ It must be used with MSBuild 4.0.
 
   <!-- Packages the projects -->
   <PropertyGroup>
-    <PublishDependsOn>Prepare;BeforePackage;InternalPackagePrepare;InternalPackage;AfterPackage</PublishDependsOn>
+    <PackageDependsOn>Prepare;BeforePackage;InternalPackagePrepare;InternalPackageNuGet;InternalPackageOthers;AfterPackage</PackageDependsOn>
   </PropertyGroup>
   <Target
     Name="Package"
-    DependsOnTargets="$(PublishDependsOn)"
+    DependsOnTargets="$(PackageDependsOn)"
   />
 
   <Target Name="InternalPackagePrepare"
@@ -421,7 +421,48 @@ It must be used with MSBuild 4.0.
   </Target>
 
   <Target
-    Name="InternalPackage"
+    Name="InternalPackageNuGet"
+    Outputs="$(TmpOutBinOutputPath)%(Projects.Filename)_%(Projects.Platform)_%(Projects.Configuration).zip"
+  >
+    <PropertyGroup>
+      <ProjectsFileName>%(Projects.FileName)</ProjectsFileName>
+      <ProjectsConfiguration>%(Projects.Configuration)</ProjectsConfiguration>
+      <ProjectsPlatform>%(Projects.Platform)</ProjectsPlatform>
+
+      <PackageInputBaseDir Condition="Exists('$(TmpBinOutputPath)%(Projects.FileName)\%(Projects.Configuration)\%(Projects.Platform)\_PublishedWebsites')">$(TmpBinOutputPath)%(Projects.FileName)\%(Projects.Configuration)\%(Projects.Platform)\_PublishedWebsites\</PackageInputBaseDir>
+      <PackageInputBaseDir Condition="'$(PackageInputBaseDir)'==''">$(TmpBinOutputPath)%(Projects.FileName)\%(Projects.Configuration)\%(Projects.Platform)\</PackageInputBaseDir>
+    </PropertyGroup>
+    <ItemGroup>
+      <PackagedItems
+        Include="$(PackageInputBaseDir)**\*.*"
+        Exclude="$(PackageInputBaseDir)**\*.pdb;$(PackageInputBaseDir)**\*.map;$(PackageInputBaseDir)**\CodeContracts\**\*.*"
+      />
+      <SymbolItems Include="$(PackageInputBaseDir)**\*.pdb" Exclude="$(PackageInputBaseDir)**\CodeContracts\**\*.*" />
+    </ItemGroup>
+
+    <Move
+      Condition="%(Projects.Packaged) And Exists('%(Projects.Filename).nuspec')"
+      SourceFiles="@(PackagedItems)"
+      DestinationFiles="@(PackagedItems->'$(PackageInputBaseDir)lib\%(RecursiveDir)%(Filename)%(Extension)')"
+    />
+    <Copy
+      Condition="%(Projects.Packaged) And Exists('%(Projects.Filename).nuspec')"
+      SourceFiles="$(ProjectsFileName).nuspec"
+      DestinationFiles="$(PackageInputBaseDir)$(ProjectsFileName).nuspec"
+      OverwriteReadOnlyFiles="true"
+    />
+
+    <MakeDir Directories="$(TmpOutBinOutputPath)" />
+    <Exec
+      Condition="%(Projects.Packaged) And Exists('%(Projects.Filename).nuspec')"
+      Command="&quot;$(NuGetToolPath)&quot; pack &quot;$(PackageInputBaseDir)$(ProjectsFileName).nuspec&quot; -OutputDirectory &quot;$(TmpOutBinOutputPath).&quot;"
+      WorkingDirectory="$(InputPath)"
+      YieldDuringToolExecution="True"
+    />
+  </Target>
+
+  <Target
+    Name="InternalPackageOthers"
     Outputs="$(TmpOutBinOutputPath)%(Projects.Filename)_%(Projects.Platform)_%(Projects.Configuration).zip"
   >
     <PropertyGroup>
@@ -441,14 +482,14 @@ It must be used with MSBuild 4.0.
     </ItemGroup>
 
     <Copy
-      Condition="%(Projects.Packaged) And %(Projects.Library)"
+      Condition="%(Projects.Packaged) And !Exists('%(Projects.Filename).nuspec') And %(Projects.Library)"
       SourceFiles="@(PackagedItems)"
       DestinationFiles="@(PackagedItems->'$(TmpOutBinOutputPath)$(ProjectsFileName)_$(ProjectsPlatform)_$(ProjectsConfiguration)\%(RecursiveDir)%(Filename)%(Extension)')"
       OverwriteReadOnlyFiles="true"
       SkipUnchangedFiles="true"
     />
     <Zip
-      Condition="%(Projects.Packaged) And !%(Projects.Library)"
+      Condition="%(Projects.Packaged) And !Exists('%(Projects.Filename).nuspec') And !%(Projects.Library)"
       Files="@(PackagedItems)"
       ZipFileName="$(TmpOutBinOutputPath)$(ProjectsFileName)_$(ProjectsPlatform)_$(ProjectsConfiguration).zip"
       WorkingDirectory="$(PackageInputBaseDir)"
@@ -456,7 +497,7 @@ It must be used with MSBuild 4.0.
     />
 
     <Copy
-      Condition="%(Projects.Packaged)"
+      Condition="%(Projects.Packaged) And !Exists('%(Projects.Filename).nuspec')"
       SourceFiles="@(SymbolItems)"
       DestinationFiles="@(SymbolItems->'$(TmpOutPdbOutputPath)$(ProjectsFileName)_$(ProjectsPlatform)_$(ProjectsConfiguration)\%(RecursiveDir)%(Filename)%(Extension)')"
       OverwriteReadOnlyFiles="true"

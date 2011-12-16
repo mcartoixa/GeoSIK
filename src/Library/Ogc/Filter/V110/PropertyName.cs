@@ -17,21 +17,21 @@ namespace OgcToolkit.Ogc.Filter.V110
 
         protected override Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType)
         {
-            return GetNavigator(parameters.ElementType, parameters.NamespaceManager, parameters.MayRootPathBeImplied)
+            return GetNavigator(parameters)
                 .CreateExpression(parameters.Parameters[0], expectedStaticType);
         }
 
         protected override Type GetExpressionStaticType(ExpressionBuilderParameters parameters)
         {
-            return GetNavigator(parameters.ElementType, parameters.NamespaceManager, parameters.MayRootPathBeImplied).Type;
+            return GetNavigator(parameters).Type;
         }
 
-        protected XPathTypeNavigator GetNavigator(Type elementType, XmlNamespaceManager namespaceManager, bool mayRootPathBeImplied)
+        private XPathTypeNavigator GetNavigator(ExpressionBuilderParameters parameters)
         {
             if (_Navigator==null)
             {
-                XPathTypeNavigator xptn=new XPathTypeNavigator(elementType, namespaceManager);
-                XPathNodeIterator xpni=xptn.Select(Untyped.Value, namespaceManager, true);
+                XPathTypeNavigator xptn=parameters.CreateNavigator();
+                XPathNodeIterator xpni=xptn.Select(Untyped.Value, parameters.NamespaceResolver, true);
                 while (xpni.MoveNext())
                     _Navigator=xpni.Current as XPathTypeNavigator;
 

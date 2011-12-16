@@ -63,23 +63,12 @@ namespace OgcToolkit.Services.Csw.V202
 
         public GetRecordByIdResponse GetRecordById(NameValueCollection parameters)
         {
-            Debug.Assert(parameters!=null);
-            if (parameters==null)
-                throw new ArgumentNullException("parameters");
-
-            var request=new GetRecordById()
-            {
-
-            };
-
-            return GetRecordById(request);
+            return CreateGetRecordByIdProcessor().Process(parameters);
         }
 
         public GetRecordByIdResponse GetRecordById(GetRecordById request)
         {
-            CheckRequest(request);
-
-            throw new NotImplementedException();
+            return CreateGetRecordByIdProcessor().Process(request);
         }
 
         protected virtual GetCapabilitiesProcessorBase CreateGetCapabilitiesProcessor()
@@ -97,12 +86,17 @@ namespace OgcToolkit.Services.Csw.V202
             return new GetRecordsProcessorBase(this);
         }
 
+        protected virtual GetRecordByIdProcessorBase CreateGetRecordByIdProcessor()
+        {
+            return new GetRecordByIdProcessorBase(this);
+        }
+
         public virtual IEnumerable<IXMetaData> GetSupportedRecordTypes()
         {
             return _SupportedRecordTypesInstances;
         }
 
-        protected abstract IQueryable GetRecordsSource(IEnumerable<XName> typeNames);
+        protected abstract IQueryable GetRecordsSource(Uri outputSchema);
 
         protected virtual IOperatorImplementationProvider GetOperatorImplementationProvider()
         {
@@ -168,6 +162,7 @@ namespace OgcToolkit.Services.Csw.V202
         protected const string ElementNameParameter="elementname";
         protected const string ElementSetNameParameter="elementsetname";
         protected const string HopCountParameter="hopcount";
+        protected const string IdParameter="id";
         protected const string MaxRecordsParameter="maxrecords";
         protected const string NamespaceParameter="namespace";
         protected const string OutputFormatParameter="outputformat";

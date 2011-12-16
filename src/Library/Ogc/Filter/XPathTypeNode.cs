@@ -29,7 +29,6 @@ namespace OgcToolkit.Ogc.Filter
         internal protected XPathTypeNode(Type root, XPathTypeContext context):
             this(root, null, null, context)
         {
-
         }
 
         internal XPathTypeNode(Type node, MemberInfo memberInfo, XPathTypeNode parent, XPathTypeContext context)
@@ -158,7 +157,7 @@ namespace OgcToolkit.Ogc.Filter
             return ret;
         }
 
-        private void GetChildren()
+        protected virtual void GetChildren()
         {
             if ((_AttributeChildrenNodes==null) || (_ElementChildrenNodes==null) || (_IgnoredChildrenNodes==null))
             {
@@ -184,7 +183,7 @@ namespace OgcToolkit.Ogc.Filter
                     if (type==null)
                         continue;
 
-                    XPathTypeNode node=XPathTypeNodeProvider.Instance.GetNode(type, mi, this, _Context);
+                    XPathTypeNode node=_Context.NodeProvider.GetNode(type, mi, this, _Context);
 
                     // XmlIgnore ?
                     if (node.NodeAttributes.Any<Attribute>(a => a is XmlIgnoreAttribute))

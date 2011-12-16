@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using Irony.Parsing;
 
-namespace OgcToolkit.Ogc.WebCatalog.Ccql
+namespace OgcToolkit.Ogc.WebCatalog.Cql
 {
 
-    [Language("CCQL", "1.0", "OGC Common Catalogue Query Language 1.0 grammar")]
-    public class CcqlGrammar:
+    [Language("CQL", "1.0", "OGC Common Catalogue Query Language 1.0 grammar")]
+    public class CqlGrammar:
         Grammar
     {
-        public CcqlGrammar():
+        public CqlGrammar():
             base(true)
         {
             GrammarComments="OGC Common Catalogue Query Language grammar as defined in [OGC 07-006r1 §6.2.2].";

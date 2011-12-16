@@ -6,21 +6,16 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Xml;
+using System.Xml.XPath;
 
-namespace OgcToolkit.Ogc.Filter.V110
+namespace OgcToolkit.Ogc.Filter
 {
 
-    public interface IExpressionBuilder
+    public sealed class ExpressionBuilderParameters:
+        IXPathNavigable
     {
 
-        Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType);
-        Type GetExpressionStaticType(ExpressionBuilderParameters parameters);
-    }
-
-    public class ExpressionBuilderParameters
-    {
-
-        public ExpressionBuilderParameters(ParameterExpression[] parameters, IQueryProvider queryProvider, Type elementType, XmlNamespaceManager namespaceManager, bool mayRootPathBeImplied, IOperatorImplementationProvider operatorImplementationProvider)
+        public ExpressionBuilderParameters(ParameterExpression[] parameters, IQueryProvider queryProvider, Type elementType, IXmlNamespaceResolver namespaceResolver, bool mayRootPathBeImplied, IOperatorImplementationProvider operatorImplementationProvider, Func<Type, IXmlNamespaceResolver, XPathTypeNavigator> navigatorCreator=null)
         {
             Debug.Assert(parameters!=null);
             if (parameters==null)
@@ -46,9 +41,23 @@ namespace OgcToolkit.Ogc.Filter.V110
             Parameters=parameters;
             ElementType=elementType;
             QueryProvider=queryProvider;
-            NamespaceManager=namespaceManager;
+            NamespaceResolver=namespaceResolver;
             MayRootPathBeImplied=mayRootPathBeImplied;
             OperatorImplementationProvider=operatorImplementationProvider;
+            NavigatorCreator=navigatorCreator;
+        }
+
+        public XPathTypeNavigator CreateNavigator()
+        {
+            if (NavigatorCreator!=null)
+                return NavigatorCreator(ElementType, NamespaceResolver);
+
+            return new XPathTypeNavigator(ElementType, NamespaceResolver);
+        }
+
+        XPathNavigator IXPathNavigable.CreateNavigator()
+        {
+            return CreateNavigator();
         }
 
         public ParameterExpression[] Parameters
@@ -69,7 +78,7 @@ namespace OgcToolkit.Ogc.Filter.V110
             private set;
         }
 
-        public XmlNamespaceManager NamespaceManager
+        public IXmlNamespaceResolver NamespaceResolver
         {
             get;
             private set;
@@ -82,6 +91,12 @@ namespace OgcToolkit.Ogc.Filter.V110
         }
 
         public IOperatorImplementationProvider OperatorImplementationProvider
+        {
+            get;
+            private set;
+        }
+
+        public Func<Type, IXmlNamespaceResolver, XPathTypeNavigator> NavigatorCreator
         {
             get;
             private set;

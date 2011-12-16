@@ -454,7 +454,7 @@ namespace OgcToolkit.Services.Csw.V202
 
                 bool mayRootPathBeImplied=false;
 
-                IQueryable records=((Discovery)Service).GetRecordsSource(typeNames);
+                IQueryable records=((Discovery)Service).GetRecordsSource(request.outputSchema);
 
                 // Where
                 if (query!=null)
@@ -522,8 +522,8 @@ namespace OgcToolkit.Services.Csw.V202
                 // Performs the query
                 results=results.ToArray<IXmlSerializable>();
 
+                // Core Record types
                 var arl=results.OfType<AbstractRecord>();
-                var xsl=results.Except<IXmlSerializable>(arl.Cast<IXmlSerializable>());
 
                 int recordsReturned=results.Count<IXmlSerializable>();
                 int nextRecord=Convert.ToInt32(request.startPosition+recordsReturned);
@@ -533,6 +533,9 @@ namespace OgcToolkit.Services.Csw.V202
                     numberOfRecordsReturned=recordsReturned,
                     nextRecord=(nextRecord>recordsMatched ? 0 : nextRecord)
                 };
+
+                // Other types
+                var xsl=results.Except<IXmlSerializable>(arl.Cast<IXmlSerializable>());
 
                 XmlWriterSettings xws=new XmlWriterSettings();
                 xws.Indent=false;
