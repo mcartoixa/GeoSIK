@@ -33,6 +33,8 @@ namespace OgcToolkit.Services.Csw.V202
         internal CoreQueryable(string name, Type type):
             base()
         {
+            Name=name;
+            QueryableType=type;
         }
 
         public static CoreQueryable GetFromName(string name)

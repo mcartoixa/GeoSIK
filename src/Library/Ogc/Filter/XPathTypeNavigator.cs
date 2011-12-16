@@ -21,18 +21,23 @@ namespace OgcToolkit.Ogc.Filter
         {
         }
 
-        public XPathTypeNavigator(Type root, IXmlNamespaceResolver namespaceResolver)
+        public XPathTypeNavigator(Type root, IXmlNamespaceResolver namespaceResolver):
+            this(root, namespaceResolver, null)
+        {
+        }
+
+        internal XPathTypeNavigator(Type root, IXmlNamespaceResolver namespaceResolver, XPathTypeContext context)
         {
             Debug.Assert(root!=null);
             if (root==null)
                 throw new ArgumentNullException("root");
 
-            _Context=new XPathTypeContext(XPathTypeNodeProvider.Instance, namespaceResolver);
+            _Context=context ?? new XPathTypeContext(XPathTypeNodeProvider.Instance, namespaceResolver);
             _Root=_Context.NodeProvider.GetRootNode(root, _Context);
             _Current=_Root;
         }
 
-        private XPathTypeNavigator(XPathTypeNavigator other)
+        protected XPathTypeNavigator(XPathTypeNavigator other)
         {
             _Context=other._Context;
             _Root=other._Root;
@@ -66,6 +71,11 @@ namespace OgcToolkit.Ogc.Filter
 
             _Current=xptn._Current;
             return true;
+        }
+
+        internal void MoveTo(XPathTypeNode node)
+        {
+            _Current=node;
         }
 
         public override bool MoveToFirstAttribute()
@@ -327,6 +337,14 @@ namespace OgcToolkit.Ogc.Filter
             get
             {
                 throw new NotSupportedException();
+            }
+        }
+
+        internal XPathTypeNode Root
+        {
+            get
+            {
+                return _Root;
             }
         }
 

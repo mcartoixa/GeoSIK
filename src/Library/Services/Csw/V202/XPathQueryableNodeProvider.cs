@@ -21,7 +21,7 @@ namespace OgcToolkit.Services.Csw.V202
             if ((parent==null) && (memberInfo==null))
                 return GetRootNode(node, context);
 
-            return new XPathTypeNode(node, memberInfo, parent, context);
+            return new XPathQueryableNode(node, memberInfo, parent, context);
         }
 
         public XPathTypeRootNode GetRootNode(Type root, XPathTypeContext context)

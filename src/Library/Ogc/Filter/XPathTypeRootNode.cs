@@ -25,7 +25,7 @@ namespace OgcToolkit.Ogc.Filter
         internal protected XPathTypeRootNode(Type root, XPathTypeContext context):
             base(root, context)
         {
-            _ElementChildrenNodes=new XPathTypeNode[] { new XPathTypeNode(Node, null, this, Context) };
+            _ElementChildrenNodes=new XPathTypeNode[] { context.NodeProvider.GetNode(Node, null, this, Context) };
         }
 
         public override XPathTypeNode Clone()
