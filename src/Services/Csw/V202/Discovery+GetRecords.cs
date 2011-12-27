@@ -178,7 +178,7 @@ namespace OgcToolkit.Services.Csw.V202
                         Locator=TypeNamesParameter
                     };
 
-                // This cannot be null at this point
+                // This can never be null at this point
                 Query query=(Query)request.Content.AbstractQuery;
 
                 // [OCG 07-006r1 §10.8.4.9]
@@ -276,8 +276,7 @@ namespace OgcToolkit.Services.Csw.V202
                             so="DESC";
                         }
 
-                        var spt=new Filter110.SortPropertyType()
-                        {
+                        var spt=new Filter110.SortPropertyType() {
                             PropertyName=new Filter110.PropertyName()
                         };
                         if (so!=null)

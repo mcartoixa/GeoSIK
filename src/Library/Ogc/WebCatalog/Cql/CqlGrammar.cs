@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
+using System.Xml;
+using System.Xml.XPath;
 using Irony.Parsing;
+using Csw202=OgcToolkit.Services.Csw.V202;
 
 namespace OgcToolkit.Ogc.WebCatalog.Cql
 {
@@ -12,6 +16,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql
     public class CqlGrammar:
         Grammar
     {
+
         public CqlGrammar():
             base(true)
         {
@@ -60,23 +65,22 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql
             var LessThanOrEqualsOperator=ToTerm("<=");
 
             // Non terminals
-            var optional_not=new NonTerminal("optional not", Empty | NOT);
+            var optional_not=new NonTerminal(OptionalNotName, Empty|NOT);
 
-            var attribute_name=new NonTerminal("attribute name");
-            var search_condition=new NonTerminal("search condition");
-            var boolean_value_expression=new NonTerminal("boolean value expression");
-            var boolean_term=new NonTerminal("boolean term");
-            var boolean_factor=new NonTerminal("boolean factor");
-            var boolean_primary=new NonTerminal("boolean primary");
+            var attribute_name=new NonTerminal(AttributeNameName);
+            var search_condition=new NonTerminal(SearchConditionName);
+            var boolean_value_expression=new NonTerminal(BooleanValueExpressionName);
+            var boolean_term=new NonTerminal(BooleanTermName);
+            var boolean_factor=new NonTerminal(BooleanFactorName);
+            var boolean_primary=new NonTerminal(BooleanPrimaryName);
             var predicate=new NonTerminal("predicate");
             var temporal_predicate=new NonTerminal("temporal predicate");
             var date_time_expression=new NonTerminal("date-time expression");
             var existence_predicate=new NonTerminal("existence predicate");
-            var comparison_predicate=new NonTerminal("comparison predicate");
+            var comparison_predicate=new NonTerminal(ComparisonPredicateName);
             var text_predicate=new NonTerminal("text predicate");
             var null_predicate=new NonTerminal("null predicate");
             var comp_op=new NonTerminal("comp op", EqualsOperator | NotEqualsOperator | LessThanOperator | GreaterThanOperator | LessThanOrEqualsOperator | GreaterThanOrEqualsOperator);
-            //var classification_predicate=new NonTerminal("classification_predicate");
             var general_literal=new NonTerminal("general literal");
             var boolean_literal=new NonTerminal("boolean literal", TRUE | FALSE | UNKNOWN);
             var datetime_expression=new NonTerminal("date-time expression");
@@ -121,7 +125,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql
             var southboundlongitude=new NonTerminal("SouthBoundLongitude", numeric_literal);
 
             var date_time=new RegexBasedTerminal(name: "date-time", pattern: @"(?<fulldate>(?<dateyear>\d{4})-(?<datemonth>\d{2})-(?<dateday>\d{2}))T(?<UTCtime>(?<timehour>\d{2}):(?<timeminute>\d{2}):(?<timesecond>\d{2}(\.\d+)?)Z)");
-            var duration=new RegexBasedTerminal(name : "period", pattern : @"P((?<duryear>\d+)Y)?((?<durmonth>\d+)M)?((?<durday>\d+)D)?(T((?<durhour>\d+)H)?((?<durminute>\d+)M)?((?<dursecond>\d+)S)?)?");
+            var duration=new RegexBasedTerminal(name: "period", pattern: @"P((?<duryear>\d+)Y)?((?<durmonth>\d+)M)?((?<durday>\d+)D)?(T((?<durhour>\d+)H)?((?<durminute>\d+)M)?((?<dursecond>\d+)S)?)?");
             var date_time_period=new NonTerminal("date-time period");
 
             attribute_name.Rule=MakePlusRule(attribute_name, period, identifier);
@@ -131,11 +135,11 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql
             boolean_term.Rule=MakePlusRule(boolean_term, AND, boolean_factor);
             boolean_factor.Rule=optional_not + boolean_primary;
             boolean_primary.Rule=predicate | routine_invocation | (left_paren + search_condition + right_paren);
-            predicate.Rule=comparison_predicate | text_predicate | null_predicate | temporal_predicate | /*classification_predicate | */existence_predicate;
+            predicate.Rule=comparison_predicate | text_predicate | null_predicate | temporal_predicate | existence_predicate;
             temporal_predicate.Rule=(attribute_name + "BEFORE" + date_time_expression) | (attribute_name + "BEFORE" + "OR" + "DURING" + date_time_expression) | (attribute_name + "DURING" + date_time_period) | (attribute_name + "DURING" + "OR" + "AFTER" + date_time_period) | (attribute_name + "AFTER" + date_time_expression);
             date_time_expression.Rule=date_time | date_time_period;
             existence_predicate.Rule=(attribute_name + EXISTS) | (attribute_name + DOESNOTEXIST);
-            comparison_predicate.Rule=attribute_name + comp_op + numeric_literal;
+            comparison_predicate.Rule=attribute_name + comp_op + general_literal;
             text_predicate.Rule=attribute_name + optional_not + LIKE + string_literal;
             null_predicate.Rule=attribute_name + "IS" + optional_not + NULL;
             general_literal.Rule=numeric_literal | string_literal | boolean_literal | datetime_expression | geometry_literal;
@@ -175,19 +179,77 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql
             envelope_tagged_text.Rule=ToTerm("ENVELOPE") + envelope_text;
             envelope_text.Rule=Empty | left_paren + westboundlongitude + comma + eastboundlongitude + comma + northboundlongitude + comma + southboundlongitude + right_paren;
 
-            date_time_period.Rule=(date_time + "/" + date_time) | (date_time + "/" + duration ) | (duration + "/" + date_time);
+            date_time_period.Rule=(date_time + "/" + date_time) | (date_time + "/" + duration) | (duration + "/" + date_time);
             datetime_expression.Rule=date_time | date_time_period;
 
             // Grammar
             Delimiters="\"%&'()*+,-./:;<=>?[]^_|{}";
             MarkMemberSelect(":");
             MarkPunctuation(left_paren, right_paren, period, comma);
-            MarkTransient(comp_op, datetime_expression, optional_not, predicate, search_condition);
+            MarkTransient(boolean_primary, comp_op, datetime_expression, optional_not, predicate, search_condition);
             RegisterOperators(10, EqualsOperator, GreaterThanOperator, GreaterThanOrEqualsOperator, LessThanOperator, LessThanOrEqualsOperator);
             RegisterOperators(3, NOT);
             RegisterOperators(2, OR);
             RegisterOperators(1, AND);
             Root=search_condition;
         }
+
+        internal static LambdaExpression CreateLambda(IQueryable source, ParseTree queryTree, XmlNamespaceManager namespaceManager, bool mayRootPathBeImplied, IOperatorImplementationProvider operatorImplementationProvider)
+        {
+            ParameterExpression[] parameters=new ParameterExpression[] {
+                Expression.Parameter(source.ElementType)
+            };
+
+            var ebp=new Filter.ExpressionBuilderParameters(parameters, source.Provider, source.ElementType, namespaceManager, mayRootPathBeImplied, operatorImplementationProvider, (t, r) => new Csw202.XPathQueryableNavigator(t, r));
+
+            return Expression.Lambda(CreateExpression(queryTree.Root, ebp, typeof(bool)), parameters);
+        }
+
+        private static Expression CreateExpression(ParseTreeNode node, Filter.ExpressionBuilderParameters parameters, Type expectedType)
+        {
+            Expression ret=null;
+
+            switch (node.Term.Name)
+            {
+            case AttributeNameName:
+                Filter.XPathTypeNavigator xptn=parameters.CreateNavigator();
+                XPathNodeIterator xpni=xptn.Select(node.ChildNodes[0].Token.Text, parameters.NamespaceResolver, true);
+                while (xpni.MoveNext())
+                    return ((Filter.XPathTypeNavigator)xpni.Current).CreateExpression(parameters.Parameters[0], expectedType);
+                throw new InvalidOperationException();
+            case BooleanFactorName:
+                if (node.ChildNodes[0].Term.Name==OptionalNotName)
+                    return Expression.Not(CreateExpression(node.ChildNodes[1], parameters, typeof(bool)));
+                return CreateExpression(node.ChildNodes[0], parameters, typeof(bool));
+            case BooleanTermName:
+                ret=CreateExpression(node.ChildNodes[0], parameters, typeof(bool));
+                for (int i=1; i<node.ChildNodes.Count; ++i)
+                    ret=Expression.And(ret, CreateExpression(node.ChildNodes[i], parameters, typeof(bool)));
+                return ret;
+            case BooleanValueExpressionName:
+                ret=CreateExpression(node.ChildNodes[0], parameters, typeof(bool));
+                for (int i=1; i<node.ChildNodes.Count; ++i)
+                    ret=Expression.Or(ret, CreateExpression(node.ChildNodes[i], parameters, typeof(bool)));
+                return ret;
+            //case ComparisonPredicateName:
+            }
+
+            throw new NotImplementedException(
+                string.Format(
+                    CultureInfo.CurrentCulture,
+                    SR.CqlTermNotImplementedException,
+                    node.Term.Name
+                )
+            );
+        }
+
+        private const string AttributeNameName="attribute name";
+        private const string BooleanFactorName="boolean factor";
+        private const string BooleanPrimaryName="boolean primary";
+        private const string BooleanTermName="boolean term";
+        private const string BooleanValueExpressionName="boolean value expression";
+        private const string ComparisonPredicateName="comparison predicate";
+        private const string OptionalNotName="optional not";
+        private const string SearchConditionName="search condition";
     }
 }

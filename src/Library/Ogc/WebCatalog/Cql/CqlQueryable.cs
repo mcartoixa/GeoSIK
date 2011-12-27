@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Xml;
+using Common.Logging;
 using Irony.Parsing;
 
 namespace OgcToolkit.Ogc.WebCatalog.Cql
@@ -28,20 +30,56 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql
                 throw new ArgumentNullException("constraint");
 
             var parser=new Parser(LanguageData);
-            parser.Parse(constraint);
+            ParseTree tree=parser.Parse(constraint);
 
-            //LambdaExpression lambda=filter.CreateLambda(source, namespaceManager, mayRootPathBeImplied, operatorImplementationProvider);
-            //return source.Provider.CreateQuery(
-            //    Expression.Call(
-            //        typeof(Queryable),
-            //        "Where",
-            //        new Type[] { source.ElementType },
-            //        source.Expression,
-            //        Expression.Quote(lambda)
-            //    )
-            //);
-            throw new NotImplementedException();
+            if (tree.ParserMessages.Count>0)
+            {
+                var logger=LogManager.GetCurrentClassLogger();
+                var exl=new List<Exception>();
+
+                foreach (ParserMessage pm in tree.ParserMessages)
+                    switch (pm.Level)
+                    {
+                    case ParserErrorLevel.Error:
+                        logger.Error(m => m("({0},{1}): {2}", pm.Location.Line, pm.Location.Column, pm.Message));
+                        exl.Add(
+                            new ArgumentException(
+                                string.Format(
+                                    parser.Context.Culture,
+                                    "({0},{1}): {2}: {3}",
+                                    pm.Location.Line,
+                                    pm.Location.Column,
+                                    pm.Level,
+                                    pm.Message
+                                ),
+                                "constraint"
+                            )
+                        );
+                        break;
+                    case ParserErrorLevel.Info:
+                        logger.Info(m => m("({0},{1}): {2}", pm.Location.Line, pm.Location.Column, pm.Message));
+                        break;
+                    default:
+                        logger.Warn(m => m("({0},{1}): {2}", pm.Location.Line, pm.Location.Column, pm.Message));
+                        break;
+                    }
+
+                if (exl.Count>0)
+                    throw new AggregateException(exl);
+            }
+
+            LambdaExpression lambda=CqlGrammar.CreateLambda(source, tree, namespaceManager, mayRootPathBeImplied, operatorImplementationProvider);
+            return source.Provider.CreateQuery(
+                Expression.Call(
+                    typeof(Queryable),
+                    "Where",
+                    new Type[] { source.ElementType },
+                    source.Expression,
+                    Expression.Quote(lambda)
+                )
+            );
         }
+
 
         private static LanguageData LanguageData
         {
