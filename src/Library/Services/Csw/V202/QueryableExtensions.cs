@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
+using Cql=OgcToolkit.Ogc.WebCatalog.Cql;
 using Csw202=OgcToolkit.Ogc.WebCatalog.Csw.V202;
 using Filter110=OgcToolkit.Ogc.Filter.V110;
 
@@ -31,11 +32,13 @@ namespace OgcToolkit.Services.Csw.V202
                 throw new ArgumentNullException("constraint");
 
             IQueryable ret=source;
+
             //if (constraint.Filter!=null)
             if (constraint.Untyped.Descendants("{http://www.opengis.net/ogc}Filter").Any<XElement>())
                 ret=Filter110.FilterQueryable.Where(ret, constraint.Filter, namespaceManager, mayRootPathBeImplied, operatorImplementationProvider, (t, r) => new XPathQueryableNavigator(t, r));
-            //if (!string.IsNullOrEmpty(constraint.CqlText))
-            //    ret=Filter110.FilterQueryable.Where(ret, constraint.Filter, namespaceManager, mayRootPathBeImplied);
+
+            if (!string.IsNullOrEmpty(constraint.CqlText))
+                ret=Cql.CqlQueryable.Where(ret, constraint.CqlText, namespaceManager, mayRootPathBeImplied, operatorImplementationProvider);
 
             return ret;
         }

@@ -162,7 +162,7 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
 
         [XmlElement("abstract", Namespace=Namespaces.DublinCoreTerms, DataType="string", Order=3, IsNullable=false)]
         [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Abstract)]
-        public string Abstract { get; set; }
+        public string Description { get; set; }
 
         [XmlElement("date", Namespace=Namespaces.DublinCoreElementsV11, DataType="date", Order=4)]
         [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Modified)]

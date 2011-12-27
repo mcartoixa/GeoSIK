@@ -120,6 +120,9 @@
   <data name="ArrayShouldHaveElementsException" xml:space="preserve">
     <value>The array should have at least {0} elements ({1} elements found)</value>
   </data>
+  <data name="CqlTermNotImplementedException" xml:space="preserve">
+    <value>The CQL term "{0}" has not been implemented</value>
+  </data>
   <data name="InvalidPropertyNameExpressionException" xml:space="preserve">
     <value>Invalid PropertyName expression: "{0}"</value>
   </data>

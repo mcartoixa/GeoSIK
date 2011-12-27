@@ -64,8 +64,6 @@ namespace OgcToolkit.Services
             if (ex!=null)
             {
                 ret.Add(ex.Message);
-                if (ex.InnerException!=null)
-                    ret.AddRange(_GetExceptionText(ex.InnerException));
 
                 var aex=ex as AggregateException;
                 if (aex!=null)
@@ -73,7 +71,8 @@ namespace OgcToolkit.Services
                     var faex=aex.Flatten();
                     foreach (Exception e in faex.InnerExceptions)
                         ret.AddRange(_GetExceptionText(e));
-                }
+                } else if (ex.InnerException!=null)
+                    ret.AddRange(_GetExceptionText(ex.InnerException));
             }
 
             return ret;

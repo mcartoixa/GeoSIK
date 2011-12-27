@@ -70,6 +70,15 @@ namespace OgcToolkit {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The CQL term &quot;{0}&quot; has not been implemented.
+        /// </summary>
+        internal static string CqlTermNotImplementedException {
+            get {
+                return ResourceManager.GetString("CqlTermNotImplementedException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid PropertyName expression: &quot;{0}&quot;.
         /// </summary>
         internal static string InvalidPropertyNameExpressionException {
