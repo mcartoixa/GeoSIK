@@ -68,7 +68,12 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql
                     throw new AggregateException(exl);
             }
 
-            LambdaExpression lambda=CqlGrammar.CreateLambda(source, tree, namespaceManager, mayRootPathBeImplied, operatorImplementationProvider);
+            var parameters=new ParameterExpression[] {
+                Expression.Parameter(source.ElementType)
+            };
+            var ebp=new ExpressionBuilderParameters(parameters, source.Provider, source.ElementType, namespaceManager, mayRootPathBeImplied, operatorImplementationProvider);
+
+            LambdaExpression lambda=Expression.Lambda(((Ast.IExpressionBuilder)tree.Root.AstNode).CreateExpression(ebp, typeof(bool)), parameters);
             return source.Provider.CreateQuery(
                 Expression.Call(
                     typeof(Queryable),
@@ -86,7 +91,32 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql
             get
             {
                 if (_LanguageData==null)
+                {
                     _LanguageData=new LanguageData(new CqlGrammar());
+
+                    if (_LanguageData.Errors.Count>0)
+                    {
+                        var logger=LogManager.GetCurrentClassLogger();
+                        foreach (GrammarError ge in _LanguageData.Errors)
+                            switch (ge.Level)
+                            {
+                            case GrammarErrorLevel.InternalError:
+                            case GrammarErrorLevel.Error:
+                                logger.Error(m => m(ge.Message));
+                                break;
+                            case GrammarErrorLevel.Info:
+                                logger.Info(m => m(ge.Message));
+                                break;
+                            case GrammarErrorLevel.NoError:
+                                logger.Trace(m => m(ge.Message));
+                                break;
+                            default:
+                                logger.Warn(m => m(ge.Message));
+                                break;
+                            }
+                    }
+                }
+
                 return _LanguageData;
             }
         }
