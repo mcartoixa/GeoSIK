@@ -177,10 +177,17 @@
     <Compile Include="Ogc\WebCatalog\Cql\Ast\DateTimeLiteralNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\DateTimePeriodNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\DurationLiteralNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\ExistencePredicateNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\ExpressionBuilderUtils.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\GeometryLiteralNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\GeoOperatorRoutineNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\IExpressionBuilder.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\NotKeywordNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\NullPredicateNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\OperatorNameNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\RelativeGeoOperatorRoutineNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\TemporalPredicateNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\ToleranceNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\CqlGrammar.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\CqlQueryable.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\ExpressionBuilderParameter.cs" />

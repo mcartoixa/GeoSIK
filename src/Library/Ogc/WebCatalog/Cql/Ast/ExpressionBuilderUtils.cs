@@ -45,7 +45,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
                         );
 
 
-                    Type rt=Nullable.GetUnderlyingType(method.ReturnType)??method.ReturnType;
+                    Type rt=Nullable.GetUnderlyingType(method.ReturnType) ?? method.ReturnType;
                     if (method.ReturnType==typeof(bool))
                         return Expression.IsTrue(op);
                     else

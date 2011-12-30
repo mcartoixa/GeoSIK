@@ -48,26 +48,63 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql
             var right_paren=ToTerm(")", "right paren");
             var period=ToTerm(".", "period");
             var comma=ToTerm(",", "comma");
-            var AND=ToTerm("AND");
-            var OR=ToTerm("OR");
-            var NOT=ToTerm("NOT");
+
             var TRUE=ToTerm("TRUE");
             var FALSE=ToTerm("FALSE");
-            var LIKE=ToTerm("LIKE");
-            var NULL=ToTerm("NULL");
             var UNKNOWN=ToTerm("UNKNOWN");
-            var EXISTS=ToTerm("EXISTS");
+            var NULL=ToTerm("NULL");
+
+            var AFTER=ToTerm("AFTER");
+            var AND=ToTerm("AND");
+            var BEFORE=ToTerm("BEFORE");
+            var BEYOND=ToTerm("BEYOND");
+            var CONTAINS=ToTerm("CONTAINS");
+            var CROSSES=ToTerm("CROSSES");
+            var DISJOINT=ToTerm("DISJOINT");
             var DOESNOTEXIST=ToTerm("DOESNOTEXIST");
-            var equals_operator=ToTerm("=");
-            var greater_than_operator=ToTerm(">");
-            var less_than_operator=ToTerm("<");
-            var not_equals_operator=ToTerm("<>");
-            var greater_than_or_equals_operator=ToTerm(">=");
-            var less_than_or_equals_operator=ToTerm("<=");
+            var DURING=ToTerm("DURING");
+            var DWITHIN=ToTerm("DWITHIN");
+            var EQUALS=ToTerm("EQUALS", "Equal");
+            var EXISTS=ToTerm("EXISTS");
+            var INTERSECTS=ToTerm("INTERSECTS");
+            var LIKE=ToTerm("LIKE");
+            var NOT=ToTerm("NOT");
+            var OR=ToTerm("OR");
+            var OVERLAPS=ToTerm("OVERLAPS");
+            var RELATE=ToTerm("RELATE");
+            var TOUCHES=ToTerm("TOUCHES");
+            var WITHIN=ToTerm("WITHIN");
+
+            var equals_operator=ToTerm("=", "equals operator");
+            var greater_than_operator=ToTerm(">", "greater than operator");
+            var less_than_operator=ToTerm("<", "less than operator");
+            var not_equals_operator=ToTerm("<>", "not equals operator");
+            var greater_than_or_equals_operator=ToTerm(">=", "greater than or equals operator");
+            var less_than_or_equals_operator=ToTerm("<=", "less than or equals operator");
             var date_time=new RegexBasedTerminal(name: "date-time", pattern: @"(?<fulldate>(?<dateyear>\d{4})-(?<datemonth>\d{2})-(?<dateday>\d{2}))T(?<UTCtime>(?<timehour>\d{2}):(?<timeminute>\d{2}):(?<timesecond>\d{2}(\.\d+)?)Z)");
             var duration=new RegexBasedTerminal(name: "duration", pattern: @"P((?<duryear>\d+)Y)?((?<durmonth>\d+)M)?((?<durday>\d+)D)?(T((?<durhour>\d+)H)?((?<durminute>\d+)M)?((?<dursecond>\d+)S)?)?");
 
+            AFTER.AstNodeType=typeof(Ast.OperatorNameNode);
+            AND.AstNodeType=typeof(Ast.OperatorNameNode);
+            BEFORE.AstNodeType=typeof(Ast.OperatorNameNode);
+            BEYOND.AstNodeType=typeof(Ast.OperatorNameNode);
+            CONTAINS.AstNodeType=typeof(Ast.OperatorNameNode);
+            CROSSES.AstNodeType=typeof(Ast.OperatorNameNode);
+            DISJOINT.AstNodeType=typeof(Ast.OperatorNameNode);
+            DURING.AstNodeType=typeof(Ast.OperatorNameNode);
+            DOESNOTEXIST.AstNodeType=typeof(Ast.OperatorNameNode);
+            DURING.AstNodeType=typeof(Ast.OperatorNameNode);
+            DWITHIN.AstNodeType=typeof(Ast.OperatorNameNode);
+            EQUALS.AstNodeType=typeof(Ast.OperatorNameNode);
+            EXISTS.AstNodeType=typeof(Ast.OperatorNameNode);
+            INTERSECTS.AstNodeType=typeof(Ast.OperatorNameNode);
+            LIKE.AstNodeType=typeof(Ast.OperatorNameNode);
             NOT.AstNodeType=typeof(Ast.NotKeywordNode);
+            OR.AstNodeType=typeof(Ast.OperatorNameNode);
+            OVERLAPS.AstNodeType=typeof(Ast.OperatorNameNode);
+            TOUCHES.AstNodeType=typeof(Ast.OperatorNameNode);
+            WITHIN.AstNodeType=typeof(Ast.OperatorNameNode);
+
             date_time.AstNodeType=typeof(Ast.DateTimeLiteralNode);
             duration.AstNodeType=typeof(Ast.DurationLiteralNode);
 
@@ -83,25 +120,26 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql
             var predicate=new NonTerminal("predicate");
             var temporal_predicate=new NonTerminal("temporal predicate") { AstNodeType=typeof(Ast.TemporalPredicateNode) };
             var date_time_expression=new NonTerminal("date-time expression");
-            var existence_predicate=new NonTerminal("existence predicate");
+            var existence_predicate=new NonTerminal("existence predicate") { AstNodeType=typeof(Ast.ExistencePredicateNode) };
             var comparison_predicate=new NonTerminal("comparison predicate") { AstNodeType=typeof(Ast.ComparisonPredicateNode) };
             var text_predicate=new NonTerminal("text predicate");
-            var null_predicate=new NonTerminal("null predicate");
+            var null_predicate=new NonTerminal("null predicate") { AstNodeType=typeof(Ast.NullPredicateNode) };
             var comp_op=new NonTerminal("comp op", equals_operator | not_equals_operator | less_than_operator | greater_than_operator | less_than_or_equals_operator | greater_than_or_equals_operator);
             var general_literal=new NonTerminal("general literal");
+            var literal=new NonTerminal("literal");
             var boolean_literal=new NonTerminal("boolean literal", TRUE | FALSE | UNKNOWN);
             var routine_invocation=new NonTerminal("routine invocation");
-            var geoop_routine=new NonTerminal("geoop routine");
-            var relgeoop_routine=new NonTerminal("relgeoop routine");
+            var geoop_routine=new NonTerminal("geoop routine") { AstNodeType=typeof(Ast.GeoOperatorRoutineNode) };
+            var relgeoop_routine=new NonTerminal("relgeoop routine") { AstNodeType=typeof(Ast.RelativeGeoOperatorRoutineNode) };
             var routine=new NonTerminal("routine");
             var geoop_name=new NonTerminal("geoop name");
             var relgeoop_name=new NonTerminal("relgeoop name");
             var argument=new NonTerminal("argument");
             var positional_arguments=new NonTerminal("positional arguments");
-            var tolerance=new NonTerminal("tolerance");
+            var tolerance=new NonTerminal("tolerance") { AstNodeType=typeof(Ast.ToleranceNode) };
             var distance_units=new NonTerminal("distance units");
 
-            var geometry_literal=new NonTerminal("geometry literal");
+            var geometry_literal=new NonTerminal("geometry literal") { AstNodeType=typeof(Ast.GeometryLiteralNode) };
             var geometry_literal_series=new NonTerminal("geometry literal series");
             var point_tagged_text=new NonTerminal("Point Tagged Text");
             var linestring_tagged_text=new NonTerminal("LineString Tagged Text");
@@ -141,17 +179,18 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql
             boolean_factor.Rule=optional_not + boolean_primary;
             boolean_primary.Rule=predicate | routine_invocation | (left_paren + search_condition + right_paren);
             predicate.Rule=comparison_predicate | text_predicate | null_predicate | temporal_predicate | existence_predicate;
-            temporal_predicate.Rule=(attribute_name + "BEFORE" + date_time_expression) | (attribute_name + "BEFORE" + "OR" + "DURING" + date_time_period) | (attribute_name + "DURING" + date_time_period) | (attribute_name + "DURING" + "OR" + "AFTER" + date_time_period) | (attribute_name + "AFTER" + date_time_expression);
+            temporal_predicate.Rule=(attribute_name + BEFORE + date_time_expression) | (attribute_name + BEFORE + OR + DURING + date_time_period) | (attribute_name + DURING + date_time_period) | (attribute_name + DURING + OR + AFTER + date_time_period) | (attribute_name + AFTER + date_time_expression);
             date_time_expression.Rule=date_time | date_time_period;
             existence_predicate.Rule=(attribute_name + EXISTS) | (attribute_name + DOESNOTEXIST);
-            comparison_predicate.Rule=attribute_name + comp_op + general_literal;
+            comparison_predicate.Rule=attribute_name + comp_op + literal;
             text_predicate.Rule=attribute_name + optional_not + LIKE + string_literal;
             null_predicate.Rule=attribute_name + "IS" + optional_not + NULL;
-            general_literal.Rule=numeric_literal | string_literal | boolean_literal | date_time_expression | geometry_literal;
-            routine_invocation.Rule=geoop_routine | relgeoop_routine | routine;
-            geoop_name.Rule=ToTerm("EQUALS") | "DISJOINT" | "INTERSECTS" | "TOUCHES" | "CROSSES" | "WITHIN" | "CONTAINS" | "OVERLAPS" | "RELATE";
-            relgeoop_name.Rule=ToTerm("DWITHIN") | "BEYOND";
-            argument.Rule=general_literal | attribute_name;
+            general_literal.Rule=string_literal | boolean_literal | date_time_expression | geometry_literal;
+            literal.Rule=numeric_literal | general_literal;
+            routine_invocation.Rule=geoop_routine|relgeoop_routine|routine;
+            geoop_name.Rule=EQUALS | DISJOINT | INTERSECTS | TOUCHES | CROSSES | WITHIN | CONTAINS | OVERLAPS | RELATE;
+            relgeoop_name.Rule=DWITHIN | BEYOND;
+            argument.Rule=literal | attribute_name;
             positional_arguments.Rule=MakePlusRule(positional_arguments, comma, argument);
             geoop_routine.Rule=geoop_name + left_paren + attribute_name + comma + geometry_literal + right_paren;
             relgeoop_routine.Rule=relgeoop_name + left_paren + attribute_name + comma + geometry_literal + comma + tolerance + right_paren;
@@ -199,6 +238,9 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql
             OperatorMappings.Add(OR.Text, ExpressionType.OrElse, 2);
             OperatorMappings.Add(AND.Text, ExpressionType.AndAlso, 1);
 
+            OperatorMappings.Add(BEYOND.Text, ExpressionType.GreaterThanOrEqual, 0);
+            OperatorMappings.Add(DWITHIN.Text, ExpressionType.LessThanOrEqual, 0);
+
             // Grammar
             DefaultIdentifierNodeType=typeof(IdentifierNode);
             DefaultLiteralNodeType=typeof(LiteralValueNode);
@@ -206,7 +248,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql
             Delimiters="\"%&'()*+,-./:;<=>?[]^_|{}";
             MarkMemberSelect(":");
             MarkPunctuation(left_paren, right_paren, period, comma);
-            MarkTransient(argument, boolean_primary, comp_op, date_time_expression, general_literal, geometry_literal, optional_not, predicate, search_condition);
+            MarkTransient(argument, boolean_primary, comp_op, date_time_expression, general_literal, geometry_literal, geoop_name, literal, optional_not, predicate, relgeoop_name, search_condition);
 
             Root=search_condition;
             LanguageFlags=LanguageFlags.CreateAst;
