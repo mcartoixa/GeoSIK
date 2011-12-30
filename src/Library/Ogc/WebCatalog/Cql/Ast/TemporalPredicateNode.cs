@@ -24,11 +24,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
 
             StringBuilder sb=new StringBuilder();
             for (int i=1; i<treeNode.MappedChildNodes.Count-1; ++i)
-            {
-                string s=treeNode.MappedChildNodes[i].Token.ValueString;
-                sb.Append(s.Substring(0, 1).ToUpperInvariant());
-                sb.Append(s.Substring(1).ToLowerInvariant());
-            }
+                sb.Append(((OperatorNameNode)treeNode.MappedChildNodes[i].AstNode).Name);
             _OperatorName=sb.ToString();
 
             _DateTimeExpression=AddChild("", treeNode.MappedChildNodes[treeNode.MappedChildNodes.Count-1]);

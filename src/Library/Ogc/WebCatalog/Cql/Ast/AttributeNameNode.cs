@@ -14,7 +14,7 @@ using Csw202=OgcToolkit.Services.Csw.V202;
 namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
 {
 
-#pragma warning disable 3001, 3009
+#pragma warning disable 3001, 3003, 3009
     public class AttributeNameNode:
         AstNode,
         IExpressionBuilder
@@ -71,8 +71,16 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
             return _Navigator;
         }
 
+        public IdentifierNode Identifier
+        {
+            get
+            {
+                return _Identifier;
+            }
+        }
+
         private IdentifierNode _Identifier;
         private Csw202.XPathQueryableNavigator _Navigator;
     }
-#pragma warning restore 3001, 3009
+#pragma warning restore 3001, 3003, 3009
 }

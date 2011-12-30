@@ -10,15 +10,24 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
 {
 
 #pragma warning disable 3009
-    public class NotKeywordNode:
-        OperatorNameNode
+    public class OperatorNameNode:
+        AstNode
     {
 
         public override void Init(ParsingContext context, ParseTreeNode treeNode)
         {
             base.Init(context, treeNode);
 
-            AsString="Not";
+            string n=treeNode.Term.ToString();
+            Name=string.Concat(n.Substring(0, 1).ToUpperInvariant(), n.Substring(1).ToLowerInvariant());
+
+            AsString=Name;
+        }
+
+        public string Name
+        {
+            get;
+            private set;
         }
     }
 #pragma warning restore 3009
