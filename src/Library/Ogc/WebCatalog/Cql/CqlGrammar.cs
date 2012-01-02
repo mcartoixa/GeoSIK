@@ -102,6 +102,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql
             NOT.AstNodeType=typeof(Ast.NotKeywordNode);
             OR.AstNodeType=typeof(Ast.OperatorNameNode);
             OVERLAPS.AstNodeType=typeof(Ast.OperatorNameNode);
+            //RELATE.AstNodeType=typeof(Ast.OperatorNameNode);
             TOUCHES.AstNodeType=typeof(Ast.OperatorNameNode);
             WITHIN.AstNodeType=typeof(Ast.OperatorNameNode);
 
@@ -122,12 +123,12 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql
             var date_time_expression=new NonTerminal("date-time expression");
             var existence_predicate=new NonTerminal("existence predicate") { AstNodeType=typeof(Ast.ExistencePredicateNode) };
             var comparison_predicate=new NonTerminal("comparison predicate") { AstNodeType=typeof(Ast.ComparisonPredicateNode) };
-            var text_predicate=new NonTerminal("text predicate");
+            var text_predicate=new NonTerminal("text predicate") { AstNodeType=typeof(Ast.TextPredicateNode) };
             var null_predicate=new NonTerminal("null predicate") { AstNodeType=typeof(Ast.NullPredicateNode) };
             var comp_op=new NonTerminal("comp op", equals_operator | not_equals_operator | less_than_operator | greater_than_operator | less_than_or_equals_operator | greater_than_or_equals_operator);
             var general_literal=new NonTerminal("general literal");
             var literal=new NonTerminal("literal");
-            var boolean_literal=new NonTerminal("boolean literal", TRUE | FALSE | UNKNOWN);
+            var boolean_literal=new NonTerminal("boolean literal", TRUE | FALSE | UNKNOWN) { AstNodeType=typeof(Ast.BooleanLiteralNode) };
             var routine_invocation=new NonTerminal("routine invocation");
             var geoop_routine=new NonTerminal("geoop routine") { AstNodeType=typeof(Ast.GeoOperatorRoutineNode) };
             var relgeoop_routine=new NonTerminal("relgeoop routine") { AstNodeType=typeof(Ast.RelativeGeoOperatorRoutineNode) };
@@ -187,7 +188,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql
             null_predicate.Rule=attribute_name + "IS" + optional_not + NULL;
             general_literal.Rule=string_literal | boolean_literal | date_time_expression | geometry_literal;
             literal.Rule=numeric_literal | general_literal;
-            routine_invocation.Rule=geoop_routine|relgeoop_routine|routine;
+            routine_invocation.Rule=geoop_routine | relgeoop_routine | routine;
             geoop_name.Rule=EQUALS | DISJOINT | INTERSECTS | TOUCHES | CROSSES | WITHIN | CONTAINS | OVERLAPS | RELATE;
             relgeoop_name.Rule=DWITHIN | BEYOND;
             argument.Rule=literal | attribute_name;
