@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
@@ -38,7 +39,7 @@ namespace OgcToolkit.Ogc.Filter
             if (elementType==null)
                 throw new ArgumentNullException("elementType");
 
-            Parameters=parameters;
+            Parameters=new ReadOnlyCollection<ParameterExpression>(parameters);
             ElementType=elementType;
             QueryProvider=queryProvider;
             NamespaceResolver=namespaceResolver;
@@ -60,7 +61,7 @@ namespace OgcToolkit.Ogc.Filter
             return CreateNavigator();
         }
 
-        public ParameterExpression[] Parameters
+        public ReadOnlyCollection<ParameterExpression> Parameters
         {
             get;
             private set;

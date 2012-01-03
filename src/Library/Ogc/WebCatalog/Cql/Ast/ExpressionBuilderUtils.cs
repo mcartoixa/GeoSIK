@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -51,7 +52,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
                     else
                         return Expression.Equal(
                             op,
-                            Expression.Constant(Convert.ChangeType(true, rt), method.ReturnType)
+                            Expression.Constant(Convert.ChangeType(true, rt, CultureInfo.InvariantCulture), method.ReturnType)
                         );
                 }
             }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Linq;
 using System.Data.Linq.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -71,7 +72,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
                         return Expression.MakeBinary(
                             _OptionalNot!=null ? ExpressionType.NotEqual : ExpressionType.Equal,
                             ret,
-                            Expression.Constant(Convert.ChangeType(true, rt), method.ReturnType)
+                            Expression.Constant(Convert.ChangeType(true, rt, CultureInfo.InvariantCulture), method.ReturnType)
                         );
                 }
             }

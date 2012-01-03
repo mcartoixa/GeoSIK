@@ -15,10 +15,13 @@ namespace OgcToolkit.Services
         Exception
     {
 
-        private OwsException():
+        public OwsException():
             base()
-        {
-        }
+        {}
+
+        public OwsException(string message):
+            base(message)
+        {}
 
         public OwsException(OwsExceptionCode code):
             this(code, _GetMessageFromCode(code))
@@ -32,7 +35,7 @@ namespace OgcToolkit.Services
 
         public OwsException(OwsExceptionCode code, Exception innerException):
             this(code, _GetMessageFromCode(code), innerException)
-        { }
+        {}
 
         public OwsException(OwsExceptionCode code, string message, Exception innerException):
             base(message, innerException)
@@ -42,8 +45,7 @@ namespace OgcToolkit.Services
 
         protected OwsException(SerializationInfo info, StreamingContext context):
             base(info, context)
-        {
-        }
+        {}
 
         public static explicit operator Ows100.ExceptionReport(OwsException ex)
         {
