@@ -38,11 +38,11 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql
                     UnicodeCategory.DecimalDigitNumber //Nd
                 }
             );
-            var digit_literal=new FixedLengthLiteral("digit", 1, TypeCode.Byte);
+            //var digit_literal=new FixedLengthLiteral("digit", 1, TypeCode.Byte);
             var numeric_literal=new NumberLiteral("numeric literal", NumberOptions.AllowSign);
             var unsigned_numeric_literal=new NumberLiteral("unsigned numeric literal", NumberOptions.None);
-            var integer_literal=new NumberLiteral("integer literal", NumberOptions.IntOnly | NumberOptions.NoDotAfterInt);
-            var character_literal=new StringLiteral("character literal", "'", StringOptions.IsChar | StringOptions.AllowsDoubledQuote);
+            //var integer_literal=new NumberLiteral("integer literal", NumberOptions.IntOnly | NumberOptions.NoDotAfterInt);
+            //var character_literal=new StringLiteral("character literal", "'", StringOptions.IsChar | StringOptions.AllowsDoubledQuote);
             var string_literal=new StringLiteral("string literal", "'", StringOptions.AllowsDoubledQuote);
             var left_paren=ToTerm("(", "left paren");
             var right_paren=ToTerm(")", "right paren");

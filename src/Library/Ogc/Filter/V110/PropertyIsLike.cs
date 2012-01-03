@@ -62,7 +62,7 @@ namespace OgcToolkit.Ogc.Filter.V110
                     else
                         return Expression.Equal(
                             op,
-                            Expression.Constant(Convert.ChangeType(true, rt), method.ReturnType)
+                            Expression.Constant(Convert.ChangeType(true, rt, CultureInfo.InvariantCulture), method.ReturnType)
                         );
                 }
             }

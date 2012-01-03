@@ -6,7 +6,8 @@ using System.Text;
 namespace OgcToolkit.Services
 {
 
-    public class OwsDescriptionAttribute:
+    [AttributeUsage(AttributeTargets.Class)]
+    public sealed class OwsDescriptionAttribute:
         Attribute
     {
 
@@ -19,13 +20,13 @@ namespace OgcToolkit.Services
         public string Service
         {
             get;
-            set;
+            private set;
         }
 
         public string Version
         {
             get;
-            set;
+            private set;
         }
     }
 }

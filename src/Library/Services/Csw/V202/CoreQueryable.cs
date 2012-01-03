@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,21 +11,6 @@ namespace OgcToolkit.Services.Csw.V202
 
     public class CoreQueryable
     {
-        static CoreQueryable()
-        {
-            _Queryables=new Dictionary<string, CoreQueryable>(11);
-            _Queryables.Add(Subject.Name, Subject);
-            _Queryables.Add(Title.Name, Title);
-            _Queryables.Add(Abstract.Name, Abstract);
-            _Queryables.Add(AnyText.Name, AnyText);
-            _Queryables.Add(Format.Name, Format);
-            _Queryables.Add(Identifier.Name, Identifier);
-            _Queryables.Add(Modified.Name, Modified);
-            _Queryables.Add(Type.Name, Type);
-            _Queryables.Add(BoundingBox.Name, BoundingBox);
-            _Queryables.Add(Crs.Name, Crs);
-            _Queryables.Add(Association.Name, Association);
-        }
 
         private CoreQueryable()
         {
@@ -47,6 +33,23 @@ namespace OgcToolkit.Services.Csw.V202
             return _Queryables.ContainsKey(name);
         }
 
+        private static Dictionary<string, CoreQueryable> InitQueryables()
+        {
+            var ret=new Dictionary<string, CoreQueryable>(11);
+            ret.Add(Subject.Name, Subject);
+            ret.Add(Title.Name, Title);
+            ret.Add(Abstract.Name, Abstract);
+            ret.Add(AnyText.Name, AnyText);
+            ret.Add(Format.Name, Format);
+            ret.Add(Identifier.Name, Identifier);
+            ret.Add(Modified.Name, Modified);
+            ret.Add(Type.Name, Type);
+            ret.Add(BoundingBox.Name, BoundingBox);
+            ret.Add(Crs.Name, Crs);
+            ret.Add(Association.Name, Association);
+            return ret;
+        }
+
         public string Name
         {
             get;
@@ -59,18 +62,29 @@ namespace OgcToolkit.Services.Csw.V202
             private set;
         }
 
-        private static readonly Dictionary<string, CoreQueryable> _Queryables;
+        private static Dictionary<string, CoreQueryable> _Queryables=InitQueryables();
 
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification="This is an immutable type")]
         public static readonly CoreQueryable Subject=new CoreQueryable(CoreQueryableNames.Subject, typeof(string));
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification="This is an immutable type")]
         public static readonly CoreQueryable Title=new CoreQueryable(CoreQueryableNames.Title, typeof(string));
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification="This is an immutable type")]
         public static readonly CoreQueryable Abstract=new CoreQueryable(CoreQueryableNames.Abstract, typeof(string));
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification="This is an immutable type")]
         public static readonly CoreQueryable AnyText=new CoreQueryable(CoreQueryableNames.AnyText, typeof(string));
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification="This is an immutable type")]
         public static readonly CoreQueryable Format=new CoreQueryable(CoreQueryableNames.Format, typeof(string));
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification="This is an immutable type")]
         public static readonly CoreQueryable Identifier=new CoreQueryable(CoreQueryableNames.Identifier, typeof(Uri));
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification="This is an immutable type")]
         public static readonly CoreQueryable Modified=new CoreQueryable(CoreQueryableNames.Modified, typeof(DateTime));
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification="This is an immutable type")]
         public static readonly CoreQueryable Type=new CoreQueryable(CoreQueryableNames.Type, typeof(string));
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification="This is an immutable type")]
         public static readonly CoreQueryable BoundingBox=new CoreQueryable(CoreQueryableNames.BoundingBox, typeof(SqlGeometry));
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification="This is an immutable type")]
         public static readonly CoreQueryable Crs=new CoreQueryable(CoreQueryableNames.Crs, typeof(string));
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification="This is an immutable type")]
         public static readonly CoreQueryable Association=new CoreQueryable(CoreQueryableNames.Association, typeof(string));
     }
 

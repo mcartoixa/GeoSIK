@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -65,7 +66,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
                     Expression.MakeBinary(
                         _OperatorExpression,
                         dop,
-                        Expression.Constant(Convert.ChangeType(_Tolerance.Value, drt), method.ReturnType)
+                        Expression.Constant(Convert.ChangeType(_Tolerance.Value, drt, CultureInfo.InvariantCulture), method.ReturnType)
                     );
                 }
             }

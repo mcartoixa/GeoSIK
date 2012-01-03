@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
@@ -53,7 +54,7 @@ namespace OgcToolkit.Ogc.Filter.V110
                     else
                         return Expression.NotEqual(
                             op,
-                            Expression.Constant(Convert.ChangeType(true, rt), binaryMethod.ReturnType)
+                            Expression.Constant(Convert.ChangeType(true, rt, CultureInfo.InvariantCulture), binaryMethod.ReturnType)
                         );
                 }
             }

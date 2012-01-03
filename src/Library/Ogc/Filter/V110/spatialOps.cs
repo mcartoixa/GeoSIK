@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -73,7 +74,7 @@ namespace OgcToolkit.Ogc.Filter.V110
                         else
                             return Expression.Equal(
                                 op,
-                                Expression.Constant(Convert.ChangeType(true, rt), binaryMethod.ReturnType)
+                                Expression.Constant(Convert.ChangeType(true, rt, CultureInfo.InvariantCulture), binaryMethod.ReturnType)
                             );
                     }
                 }
@@ -112,7 +113,7 @@ namespace OgcToolkit.Ogc.Filter.V110
                         Type rt=Nullable.GetUnderlyingType(binaryMethod.ReturnType) ?? binaryMethod.ReturnType;
                         return dbop.OperatorExpression(
                             op,
-                            Expression.Constant(Convert.ChangeType(dbop.Distance, rt), binaryMethod.ReturnType)
+                            Expression.Constant(Convert.ChangeType(dbop.Distance, rt, CultureInfo.InvariantCulture), binaryMethod.ReturnType)
                         );
                     }
                 }
