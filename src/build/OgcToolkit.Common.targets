@@ -582,4 +582,67 @@ It must be used with MSBuild 4.0.
 
   <Target Name="BeforeDocument" />
   <Target Name="AfterDocument" />
+
+
+  <Target
+    Name="UpdateVersion"
+    Condition="'$(CCNetLabel)'!=''"
+    DependsOnTargets="InternalUpdateVersion;InternalUpdateVersionNetFiles;InternalUpdateVersionNuSpecFiles"
+  />
+
+  <Target Name="InternalUpdateVersion">
+    <VersionInfo Version="$(CCNetLabel)">
+      <Output TaskParameter="Major" PropertyName="VersionMajor" />
+      <Output TaskParameter="Minor" PropertyName="VersionMinor" />
+      <Output TaskParameter="Build" PropertyName="VersionBuild" />
+      <Output TaskParameter="Revision" PropertyName="VersionRevision" />
+    </VersionInfo>
+
+    <Version Major="$(VersionMajor)" Minor="$(VersionMinor)" RevisionType="Automatic" BuildType="Automatic">
+      <Output TaskParameter="Build" PropertyName="AutoVersionBuild" />
+      <Output TaskParameter="Revision" PropertyName="AutoVersionRevision" />
+    </Version>
+  </Target>
+
+  <Target
+    Name="InternalUpdateVersionNetFiles"
+    Condition="Exists('Version.cs')"
+  >
+    <FileUpdate
+      Files="Version.cs"
+      Regex="(?&lt;=AssemblyVersion\W{2})[\d\.]+(?=\W{2})"
+      ReplacementText="$(VersionMajor).$(VersionMinor).$(AutoVersionBuild).$(AutoVersionRevision)"
+    />
+    <FileUpdate
+      Files="Version.cs"
+      Regex="(?&lt;=AssemblyInformationalVersion\W{2})[\d\.]+(?=\W{2})"
+      ReplacementText="$(VersionMajor).$(VersionMinor).$(VersionBuild).$(VersionRevision)"
+    />
+    <FileUpdate
+      Files="Version.cs"
+      Regex="(?&lt;=AssemblyFileVersion\W{2})[\d\.]+(?=\W{2})"
+      ReplacementText="$(VersionMajor).$(VersionMinor).$(VersionBuild).$(VersionRevision)"
+    />
+  </Target>
+
+  <Target
+    Name="InternalUpdateVersionNuSpecFiles"
+    Outputs="%(Projects.Filename).nuspec"
+  >
+    <XmlUpdate
+      Condition="Exists('%(Projects.Filename).nuspec')"
+      XmlFileName="%(Projects.Filename).nuspec"
+      XPath="/package/metadata/version"
+      Value="$(VersionMajor).$(VersionMinor).$(VersionBuild).$(VersionRevision)"
+    />
+  </Target>
+
+
+
+  <!-- Commits the changes -->
+  <Target
+    Name="CommitChanges"
+    Condition="'$(BuildType)'=='Release' And '$(CCNetLabel)'!=''"
+    DependsOnTargets="UpdateVersion"
+  />
 </Project>
