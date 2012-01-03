@@ -52,7 +52,7 @@ It must be used with MSBuild 4.0.
 
     <!-- Tools paths -->
     <BuildToolsPath Condition="'$(BuildToolsPath)'==''">$(MSBuildThisFileDirectory)</BuildToolsPath>
-    <NuGetToolPath Condition="'$(NuGetToolPath)'==''">$(BuildToolsPath)\NuGet.exe</NuGetToolPath>
+    <NuGetToolPath Condition="'$(NuGetToolPath)'==''">$(InputPath)\.nuget\NuGet.exe</NuGetToolPath>
 
     <!-- Output paths -->
     <BinOutputPath>$(RootPath)\bin\</BinOutputPath>
@@ -91,7 +91,7 @@ It must be used with MSBuild 4.0.
 
   <!-- Prepares the build -->
   <PropertyGroup>
-    <PrepareDependsOn>BeforePrepare;PrepareEnvironment;PrepareOutput;PrepareDependencies;AfterPrepare</PrepareDependsOn>
+    <PrepareDependsOn>BeforePrepare;PrepareEnvironment;PrepareOutput;AfterPrepare</PrepareDependsOn>
   </PropertyGroup>
   <Target Name="Prepare" DependsOnTargets="$(PrepareDependsOn)" />
 
@@ -106,18 +106,6 @@ It must be used with MSBuild 4.0.
       BatchArguments="$(SetEnvironmentArguments)"
       EnableDelayedExpansion="True"
       EnableExtensions="True"
-    />
-  </Target>
-
-  <Target Name="PrepareDependencies">
-    <ItemGroup>
-      <PackageConfigFiles Include="**/packages.config" />
-    </ItemGroup>
-    <Exec
-      Condition="'@(PackageConfigFiles)'!=''"
-      Command="&quot;$(NuGetToolPath)&quot; install &quot;%(PackageConfigFiles.Identity)&quot; -OutputDirectory packages"
-      WorkingDirectory="$(InputPath)"
-      YieldDuringToolExecution="True"
     />
   </Target>
 
