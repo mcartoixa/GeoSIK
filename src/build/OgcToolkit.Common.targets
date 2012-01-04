@@ -227,7 +227,7 @@ It must be used with MSBuild 4.0.
       TargetArgs="&quot;$(_OutDir)$(ProjectFilename).xunit&quot; /silent"
       TargetWorkingDir="$(_OutDir)"
       Include="@(PartCoverInclude)"
-      Exclude="[xunit.*]*$(ProjectPartCoverExclude);@(PartCoverExclude)"
+      Exclude="[xunit.*]*;$(ProjectPartCoverExclude);@(PartCoverExclude)"
       Output="$(TmpOutputPath)$(ProjectFilename).partcover-results.xml"
       ToolsVersion="4.0"
     />

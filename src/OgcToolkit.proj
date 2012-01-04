@@ -24,7 +24,7 @@
 
   <ItemGroup>
     <Projects Include="OgcToolkit.sln">
-      <PartCoverExclude>[OgcToolkit]OgcToolkit.DublinCore.*;[OgcToolkit]OgcToolkit.Iso.*;[OgcToolkit]OgcToolkit.Ogc.*;[OgcToolkit]OgcToolkit.W3.*"</PartCoverExclude>
+      <PartCoverExclude>[OgcToolkit]OgcToolkit.DublinCore.*;[OgcToolkit]OgcToolkit.Iso.*;[OgcToolkit]OgcToolkit.Ogc.Filter.*;[OgcToolkit]OgcToolkit.Ogc.Gml.*;[OgcToolkit]OgcToolkit.Ogc.Ows.*;[OgcToolkit]OgcToolkit.Ogc.WebCatalog.Csw.*;[OgcToolkit]OgcToolkit.W3.*"</PartCoverExclude>
     </Projects>
   </ItemGroup>
 
