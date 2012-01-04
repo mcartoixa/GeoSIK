@@ -316,7 +316,7 @@ It must be used with MSBuild 4.0.
       <ClocResultsFile>$(TmpOutputPath)cloc-results.xml</ClocResultsFile>
     </PropertyGroup>
     <Exec
-      Command="&quot;$(MSBuildThisFileDirectory)\cloc.exe&quot; $(InputPath) --exclude-dir=bin,build,doc,lib,obj,tmp,GeneratedCode --exclude-ext=csproj,sln --not-match-f=^_ --3 --quiet --progress-rate=0 --xml --report_file=&quot;$(ClocResultsFile)&quot;"
+      Command="&quot;$(MSBuildThisFileDirectory)\cloc.exe&quot; $(InputPath) --exclude-dir=bin,build,doc,lib,obj,tmp,GeneratedCode --exclude-ext=csproj,sln --not-match-f=&quot;(^jquery.*|.*?min\.js$|^_)&quot; --3 --quiet --progress-rate=0 --xml --report_file=&quot;$(ClocResultsFile)&quot;"
       WorkingDirectory="$(InputPath)"
       YieldDuringToolExecution="True"
     />
@@ -419,31 +419,33 @@ It must be used with MSBuild 4.0.
 
       <PackageInputBaseDir Condition="Exists('$(TmpBinOutputPath)%(Projects.FileName)\%(Projects.Configuration)\%(Projects.Platform)\_PublishedWebsites')">$(TmpBinOutputPath)%(Projects.FileName)\%(Projects.Configuration)\%(Projects.Platform)\_PublishedWebsites\</PackageInputBaseDir>
       <PackageInputBaseDir Condition="'$(PackageInputBaseDir)'==''">$(TmpBinOutputPath)%(Projects.FileName)\%(Projects.Configuration)\%(Projects.Platform)\</PackageInputBaseDir>
+      <PackageTmpOutDir>$(IntermediateOutputPath)pack\%(Projects.FileName)\%(Projects.Configuration)\%(Projects.Platform)\</PackageTmpOutDir>
     </PropertyGroup>
     <ItemGroup>
       <PackagedItems
         Include="$(PackageInputBaseDir)**\*.*"
-        Exclude="$(PackageInputBaseDir)**\*.pdb;$(PackageInputBaseDir)**\*.map;$(PackageInputBaseDir)**\CodeContracts\**\*.*"
+        Exclude="$(PackageInputBaseDir)**\*.pdb;$(PackageInputBaseDir)**\CodeContracts\**\*.*"
       />
       <SymbolItems Include="$(PackageInputBaseDir)**\*.pdb" Exclude="$(PackageInputBaseDir)**\CodeContracts\**\*.*" />
     </ItemGroup>
 
+    <MakeDir Directories="$(PackageTmpOutDir)lib" />
     <Move
       Condition="%(Projects.Packaged) And Exists('%(Projects.Filename).nuspec')"
       SourceFiles="@(PackagedItems)"
-      DestinationFiles="@(PackagedItems->'$(PackageInputBaseDir)lib\%(RecursiveDir)%(Filename)%(Extension)')"
+      DestinationFiles="@(PackagedItems->'$(PackageTmpOutDir)lib\%(RecursiveDir)%(Filename)%(Extension)')"
     />
     <Copy
       Condition="%(Projects.Packaged) And Exists('%(Projects.Filename).nuspec')"
       SourceFiles="$(ProjectsFileName).nuspec"
-      DestinationFiles="$(PackageInputBaseDir)$(ProjectsFileName).nuspec"
+      DestinationFiles="$(PackageTmpOutDir)$(ProjectsFileName).nuspec"
       OverwriteReadOnlyFiles="true"
     />
 
     <MakeDir Directories="$(TmpOutBinOutputPath)" />
     <Exec
       Condition="%(Projects.Packaged) And Exists('%(Projects.Filename).nuspec')"
-      Command="&quot;$(NuGetToolPath)&quot; pack &quot;$(PackageInputBaseDir)$(ProjectsFileName).nuspec&quot; -OutputDirectory &quot;$(TmpOutBinOutputPath).&quot;"
+      Command="&quot;$(NuGetToolPath)&quot; pack &quot;$(PackageTmpOutDir)$(ProjectsFileName).nuspec&quot; -OutputDirectory &quot;$(TmpOutBinOutputPath).&quot;"
       WorkingDirectory="$(InputPath)"
       YieldDuringToolExecution="True"
     />
