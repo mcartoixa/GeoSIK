@@ -6,7 +6,7 @@ PREREQUISITES
 	* Microsoft Windows SDK 7.1
 	* MSBuild.Community.Tasks 1.3
 	* FxCop 10.0
-	* OpenCover 2.0 <https://github.com/sawilde/opencover>
+	* PartCover .NET4 <https://github.com/sawilde/partcover.net4>
 
 - Development:
 	* SQL Server Express 2008 R2
