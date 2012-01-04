@@ -33,21 +33,20 @@ namespace OgcToolkit.Services.Csw.V202
             return _Queryables.ContainsKey(name);
         }
 
-        private static Dictionary<string, CoreQueryable> InitQueryables()
+        static CoreQueryable()
         {
-            var ret=new Dictionary<string, CoreQueryable>(11);
-            ret.Add(Subject.Name, Subject);
-            ret.Add(Title.Name, Title);
-            ret.Add(Abstract.Name, Abstract);
-            ret.Add(AnyText.Name, AnyText);
-            ret.Add(Format.Name, Format);
-            ret.Add(Identifier.Name, Identifier);
-            ret.Add(Modified.Name, Modified);
-            ret.Add(Type.Name, Type);
-            ret.Add(BoundingBox.Name, BoundingBox);
-            ret.Add(Crs.Name, Crs);
-            ret.Add(Association.Name, Association);
-            return ret;
+            _Queryables=new Dictionary<string, CoreQueryable>(11);
+            _Queryables.Add(Subject.Name, Subject);
+            _Queryables.Add(Title.Name, Title);
+            _Queryables.Add(Abstract.Name, Abstract);
+            _Queryables.Add(AnyText.Name, AnyText);
+            _Queryables.Add(Format.Name, Format);
+            _Queryables.Add(Identifier.Name, Identifier);
+            _Queryables.Add(Modified.Name, Modified);
+            _Queryables.Add(Type.Name, Type);
+            _Queryables.Add(BoundingBox.Name, BoundingBox);
+            _Queryables.Add(Crs.Name, Crs);
+            _Queryables.Add(Association.Name, Association);
         }
 
         public string Name
@@ -62,7 +61,7 @@ namespace OgcToolkit.Services.Csw.V202
             private set;
         }
 
-        private static Dictionary<string, CoreQueryable> _Queryables=InitQueryables();
+        private static Dictionary<string, CoreQueryable> _Queryables;
 
         [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification="This is an immutable type")]
         public static readonly CoreQueryable Subject=new CoreQueryable(CoreQueryableNames.Subject, typeof(string));
