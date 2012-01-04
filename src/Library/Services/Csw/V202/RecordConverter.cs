@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Xml;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Xml.XPath;
 using Microsoft.SqlServer.Types;
@@ -86,6 +87,9 @@ namespace OgcToolkit.Services.Csw.V202
                 recordType=typeof(Csw202.Record);
 
             var ret=Activator.CreateInstance(recordType) as Csw202.AbstractRecord;
+            ret.Untyped.Add(
+                new XAttribute(XNamespace.Xmlns+_NamespaceManager.LookupPrefix(Namespaces.DublinCoreElementsV11), Namespaces.DublinCoreElementsV11)
+            );
 
             var xptn=new Filter.XPathTypeNavigator(record.GetType());
             foreach (string element in elements)

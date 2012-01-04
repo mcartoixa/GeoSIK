@@ -152,6 +152,8 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
 		
 		private System.Data.Linq.Binary _Coverage;
 		
+		private string _AnyText;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -174,6 +176,8 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
     partial void OnSpatialChanged();
     partial void OnCoverageChanging(System.Data.Linq.Binary value);
     partial void OnCoverageChanged();
+    partial void OnAnyTextChanging(string value);
+    partial void OnAnyTextChanged();
     #endregion
 		
 		public Record()
@@ -357,6 +361,26 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
 					this._Coverage = value;
 					this.SendPropertyChanged("Coverage");
 					this.OnCoverageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AnyText", DbType="NVarChar(MAX)")]
+		public string AnyText
+		{
+			get
+			{
+				return this._AnyText;
+			}
+			set
+			{
+				if ((this._AnyText != value))
+				{
+					this.OnAnyTextChanging(value);
+					this.SendPropertyChanging();
+					this._AnyText = value;
+					this.SendPropertyChanged("AnyText");
+					this.OnAnyTextChanged();
 				}
 			}
 		}

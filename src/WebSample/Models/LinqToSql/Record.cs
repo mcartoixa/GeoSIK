@@ -186,5 +186,9 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
         [XmlElement("relation", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=9, IsNullable=false)]
         [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Association)]
         public string RelationId { get; set; }
+
+        [XmlElement("AnyText", Namespace=Namespaces.OgcWebCatalogCswV202, DataType="string", Order=10, IsNullable=false)]
+        [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.AnyText)]
+        public string AnyText { get; set; }
     }
 }

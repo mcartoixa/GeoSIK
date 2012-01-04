@@ -11,6 +11,7 @@
       <Column Name="Relation" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
       <Column Name="Spatial" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Coverage" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="AnyText" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="[Ogc.Filter].Geometry_STDisjoint" Method="Geometry_STDisjoint" IsComposable="true">
