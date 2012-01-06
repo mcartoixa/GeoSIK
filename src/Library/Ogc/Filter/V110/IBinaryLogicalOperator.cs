@@ -30,17 +30,17 @@ namespace OgcToolkit.Ogc.Filter.V110
 
         public static IEnumerable<XTypedElement> GetLogicalElements(this Or op)
         {
-            return GetLogicalElements(op, op.Untyped.Descendants());
+            return GetLogicalElements(op, op.Untyped.Elements());
         }
 
         public static IEnumerable<XTypedElement> GetLogicalElements(this And op)
         {
-            return GetLogicalElements(op, op.Untyped.Descendants());
+            return GetLogicalElements(op, op.Untyped.Elements());
         }
 
         public static IEnumerable<XTypedElement> GetLogicalElements(this IBinaryLogicalOperator op)
         {
-            return GetLogicalElements(op, ((XTypedElement)op).Untyped.Descendants());
+            return GetLogicalElements(op, ((XTypedElement)op).Untyped.Elements());
         }
 
         private static IEnumerable<XTypedElement> GetLogicalElements(IBinaryLogicalOperator op, IEnumerable<XElement> descendants)
@@ -53,15 +53,16 @@ namespace OgcToolkit.Ogc.Filter.V110
             {
                 if ((op.comparisonOps!=null) && (op.comparisonOps.Count>icmp) && (d.Name==op.comparisonOps[icmp].Untyped.Name))
                     yield return op.comparisonOps[icmp++];
-                if ((op.spatialOps!=null) && (op.spatialOps.Count>ispa) && (d.Name==op.spatialOps[ispa].Untyped.Name))
+                else if ((op.spatialOps!=null) && (op.spatialOps.Count>ispa) && (d.Name==op.spatialOps[ispa].Untyped.Name))
                     yield return op.spatialOps[ispa++];
-                if ((op.logicOps!=null) && (op.logicOps.Count>ilog) && (d.Name==op.logicOps[ilog].Untyped.Name))
+                else if ((op.logicOps!=null) && (op.logicOps.Count>ilog) && (d.Name==op.logicOps[ilog].Untyped.Name))
                     yield return op.logicOps[ilog++];
-                if ((op.Function!=null) && (op.Function.Count>ifun) && (d.Name==op.Function[ifun].Untyped.Name))
+                else if ((op.Function!=null) && (op.Function.Count>ifun) && (d.Name==op.Function[ifun].Untyped.Name))
                     yield return op.Function[ifun++];
+                else
+                    throw new InvalidOperationException();
             }
 
-            throw new InvalidOperationException();
         }
     }
 }

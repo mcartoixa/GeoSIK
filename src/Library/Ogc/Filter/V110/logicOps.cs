@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -64,8 +65,14 @@ namespace OgcToolkit.Ogc.Filter.V110
                 var eb=e as IExpressionBuilder;
                 if (eb!=null)
                     yield return eb.CreateExpression(parameters, expectedStaticType);
-
-                throw new InvalidOperationException("Unrecognized filter element");
+                else
+                    throw new NotSupportedException(
+                        string.Format(
+                            CultureInfo.CurrentCulture,
+                            SR.UnsupportedFilterElement,
+                            e.GetType().Name
+                        )
+                    );
             }
         }
 
@@ -76,8 +83,14 @@ namespace OgcToolkit.Ogc.Filter.V110
                 var eb=e as IExpressionBuilder;
                 if (eb!=null)
                     yield return eb.GetExpressionStaticType(parameters);
-
-                throw new InvalidOperationException("Unrecognized filter element");
+                else
+                    throw new NotSupportedException(
+                        string.Format(
+                            CultureInfo.CurrentCulture,
+                            SR.UnsupportedFilterElement,
+                            e.GetType().Name
+                        )
+                    );
             }
         }
     }

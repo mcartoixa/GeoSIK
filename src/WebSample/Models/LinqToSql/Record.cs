@@ -164,9 +164,9 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
         [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Abstract)]
         public string Description { get; set; }
 
-        [XmlElement("date", Namespace=Namespaces.DublinCoreElementsV11, DataType="date", Order=4)]
+        [XmlElement("date", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=4)]
         [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Modified)]
-        public DateTime? Date { get; set; }
+        public string Date { get; set; }
 
         [XmlElement("type", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=5, IsNullable=false)]
         [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Type)]

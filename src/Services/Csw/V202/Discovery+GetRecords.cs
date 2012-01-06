@@ -356,7 +356,7 @@ namespace OgcToolkit.Services.Csw.V202
                     };
 
                 // We should be able to use foreach (Uri uri in request.ResponseHandler) here...
-                var rh=from el in request.Untyped.Descendants()
+                var rh=from el in request.Untyped.Elements()
                        where el.Name=="{http://www.opengis.net/cat/csw/2.0.2}ResponseHandler"
                        select new Uri(el.Value);
                 // Check that uris are absolute...
@@ -503,7 +503,7 @@ namespace OgcToolkit.Services.Csw.V202
                 // Results
                 IEnumerable<IXmlSerializable> results=null;
                 //if ((query.ElementSetName!=null) && !string.IsNullOrEmpty(query.ElementSetName.TypedValue))
-                if ((query!=null) && query.Untyped.Descendants("{http://www.opengis.net/cat/csw/2.0.2}ElementSetName").Any<XElement>() && !string.IsNullOrEmpty(query.ElementSetName.TypedValue))
+                if ((query!=null) && query.Untyped.Elements("{http://www.opengis.net/cat/csw/2.0.2}ElementSetName").Any<XElement>() && !string.IsNullOrEmpty(query.ElementSetName.TypedValue))
                 {
                     results=records.StaticCast<IRecord>()
                         .Select<IRecord, IXmlSerializable>(r => r.GetConverter(namespaceManager).Convert(r, query.ElementSetName.TypedValue));

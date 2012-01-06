@@ -86,5 +86,14 @@ namespace OgcToolkit {
                 return ResourceManager.GetString("InvalidPropertyNameExpressionException", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filter element &quot;{0}&quot; is not supported.
+        /// </summary>
+        internal static string UnsupportedFilterElement {
+            get {
+                return ResourceManager.GetString("UnsupportedFilterElement", resourceCulture);
+            }
+        }
     }
 }

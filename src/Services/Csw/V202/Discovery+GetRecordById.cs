@@ -2,20 +2,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using System.Xml.XPath;
 using Common.Logging;
 using Xml.Schema.Linq;
 using OgcToolkit.Ogc.WebCatalog.Csw.V202;
 using Filter110=OgcToolkit.Ogc.Filter.V110;
 using Ows100=OgcToolkit.Ogc.Ows.V100;
+using CqlQueryable=OgcToolkit.Ogc.WebCatalog.Cql.CqlQueryable;
 
 namespace OgcToolkit.Services.Csw.V202
 {
@@ -88,6 +92,19 @@ namespace OgcToolkit.Services.Csw.V202
                         Locator=OutputFormatParameter
                     };
 
+                if ((request.Id==null) || (request.Id.Count==0))
+                    throw new OwsException(OwsExceptionCode.MissingParameterValue) {
+                        Locator=IdParameter
+                    };
+
+                //if (request.ElementSetName!=null)
+                if (!request.Untyped.Elements("{http://www.opengis.net/cat/csw/2.0.2}ElementSetName").Any<XElement>() || string.IsNullOrEmpty(request.ElementSetName.TypedValue))
+                    request.ElementSetName=new ElementSetName(
+                        new ElementSetNameType() {
+                            TypedValue="summary"
+                        }
+                    );
+
                 //TODO: implement additional checks
             }
 
@@ -108,16 +125,7 @@ namespace OgcToolkit.Services.Csw.V202
                 namespaces.ToList().ForEach(n => namespaceManager.AddNamespace(n.Prefix, n.Uri));
 
                 IQueryable records=((Discovery)Service).GetRecordsSource(null);
-
-                // Where
-                //if (query!=null)
-                //{
-                //    mayRootPathBeImplied=(typeNames.Length<2);
-
-                //    //if (query.Constraint!=null)
-                //    if (query.Untyped.Descendants("{http://www.opengis.net/cat/csw/2.0.2}Constraint").Any<XElement>())
-                //        records=records.Where(query.Constraint, namespaceManager, mayRootPathBeImplied, ((Discovery)Service).GetOperatorImplementationProvider());
-                //}
+                records=Where(records, request.Id, namespaceManager, ((Discovery)Service).GetOperatorImplementationProvider());
 
                 // Performs the query
                 IEnumerable<IXmlSerializable> results=records.StaticCast<IRecord>()
@@ -148,7 +156,74 @@ namespace OgcToolkit.Services.Csw.V202
 
                 return ret;
             }
-        }
 
+            protected virtual TypeConverter GetIdentifierUriConverter(Type destinationType)
+            {
+                return new UriTypeConverter();
+            }
+
+            internal IQueryable Where(IQueryable source, IEnumerable<Uri> ids, XmlNamespaceManager namespaceManager=null, IOperatorImplementationProvider operatorImplementationProvider=null)
+            {
+                var parameters=new ParameterExpression[] {
+                    Expression.Parameter(source.ElementType)
+                };
+
+                var xpqn=new XPathQueryableNavigator(source.ElementType, namespaceManager);
+                XPathNodeIterator xpni=xpqn.Select(CoreQueryable.Identifier.Name, namespaceManager);
+                if (xpni.MoveNext())
+                {
+                    var idn=(XPathQueryableNavigator)xpni.Current;
+                    Type idType=idn.Type;
+                    TypeConverter converter=GetIdentifierUriConverter(idType);
+
+                    // Convert ids from Uris to identifier type
+                    var up=Expression.Parameter(typeof(Uri));
+                    var conex=Expression.Lambda(
+                        typeof(Func<,>).MakeGenericType(typeof(Uri), idType),
+                        Expression.Convert(
+                            Expression.Call(
+                                Expression.Constant(converter),
+                                "ConvertTo",
+                                null,
+                                up,
+                                Expression.Constant(idType)
+                            ),
+                            idType
+                        ),
+                        up
+                    );
+                    Expression convertedIds=Expression.Call(
+                        typeof(Enumerable),
+                        "Select",
+                        new Type[] { typeof(Uri), idType },
+                        Expression.Constant(ids),
+                        conex
+                    );
+
+                    // Creates the Where clause
+                    LambdaExpression lambda=Expression.Lambda(
+                        Expression.Call(
+                            typeof(Enumerable),
+                            "Contains",
+                            new Type[] { idType },
+                            convertedIds,
+                            idn.CreateExpression(parameters[0])
+                        ),
+                        parameters
+                    );
+                    return source.Provider.CreateQuery(
+                        Expression.Call(
+                            typeof(Queryable),
+                            "Where",
+                            new Type[] { source.ElementType },
+                            source.Expression,
+                            Expression.Quote(lambda)
+                        )
+                    );
+                }
+
+                throw new InvalidOperationException();
+            }
+        }
     }
 }

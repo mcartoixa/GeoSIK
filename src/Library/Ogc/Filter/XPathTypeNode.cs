@@ -59,7 +59,6 @@ namespace OgcToolkit.Ogc.Filter
                         .ToArray<MemberInfo>();
                 else
                     _MetadataMemberInfos=new MemberInfo[] { memberInfo };
-
             }
         }
 

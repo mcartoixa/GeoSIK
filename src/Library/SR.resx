@@ -126,4 +126,7 @@
   <data name="InvalidPropertyNameExpressionException" xml:space="preserve">
     <value>Invalid PropertyName expression: "{0}"</value>
   </data>
+  <data name="UnsupportedFilterElement" xml:space="preserve">
+    <value>Filter element "{0}" is not supported</value>
+  </data>
 </root>
