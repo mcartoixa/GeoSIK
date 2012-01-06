@@ -73,7 +73,6 @@ namespace OgcToolkit.Ogc.Filter.V110
                                 subexpr[1]
                             );
 
-
                         Type rt=Nullable.GetUnderlyingType(method.ReturnType)??method.ReturnType;
                         if (method.ReturnType==typeof(bool))
                             return Expression.IsTrue(op);

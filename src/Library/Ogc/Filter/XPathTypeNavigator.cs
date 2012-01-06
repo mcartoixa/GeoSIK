@@ -211,12 +211,18 @@ namespace OgcToolkit.Ogc.Filter
         public virtual XPathNodeIterator Select(XPathExpression expr, bool mayRootPathBeImplied)
         {
             // [OCG 07-006r1 §10.8.4.11]
-            if (mayRootPathBeImplied)
+            if (mayRootPathBeImplied && !expr.Expression.StartsWith("//", StringComparison.OrdinalIgnoreCase))
             {
                 var xptn=Clone();
+                var ex=expr;
+                if (ex.Expression.StartsWith("/", StringComparison.OrdinalIgnoreCase))
+                {
+                    ex=Compile(ex.Expression.Substring(1));
+                    ex.SetContext(_Context.NamespaceResolver);
+                }
                 xptn.MoveToRoot();
                 xptn.MoveToFirstChild();
-                var xpni=xptn.Select(expr);
+                var xpni=xptn.Select(ex);
                 if (xpni.Count>0)
                     return xpni;
             }
