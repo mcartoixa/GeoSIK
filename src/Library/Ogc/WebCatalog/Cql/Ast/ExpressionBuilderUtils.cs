@@ -57,12 +57,24 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
                 }
             }
 
-            // Standard implementation
-            return Expression.MakeBinary(
-                exType,
-                left.CreateExpression(parameters, subtype),
-                Expression.Constant(right, subtype)
-            );
+            if ((subtype==typeof(string)) && (exType!=ExpressionType.Equal) && (exType!=ExpressionType.NotEqual))
+                // string comparisons require CompareTo
+                return Expression.MakeBinary(
+                    exType,
+                    Expression.Call(
+                        left.CreateExpression(parameters, subtype),
+                        typeof(string).GetMethod("CompareTo", new Type[] { typeof(string) }),
+                        Expression.Constant(right, subtype)
+                    ),
+                    Expression.Constant(0, typeof(int))
+                );
+            else
+                // Standard implementation
+                return Expression.MakeBinary(
+                    exType,
+                    left.CreateExpression(parameters, subtype),
+                    Expression.Constant(right, subtype)
+                );
         }
     }
 }

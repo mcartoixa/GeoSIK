@@ -29,7 +29,11 @@ namespace OgcToolkit.Ogc.Filter.V110
                     .Select<expression, Expression>(e => ((IExpressionBuilder)e).CreateExpression(parameters, st))
                     .ToArray<Expression>();
                 Debug.Assert(subexpr.Length==2);
-                return bop.OperatorExpression(subexpr[0], subexpr[1]);
+                return Expression.MakeBinary(
+                    bop.OperatorExpressionType,
+                    subexpr[0],
+                    subexpr[1]
+                );
             }
 
             throw new NotSupportedException();

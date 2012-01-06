@@ -118,7 +118,9 @@ namespace OgcToolkit.Services.Ows
                     {
                         var oex=tiex.InnerException as OwsException;
                         if (oex!=null)
-                            throw new OwsException(oex.Code, oex);
+                            throw new OwsException(oex.Code, oex) {
+                                Locator=oex.Locator
+                            };
 
                         if (tiex.InnerException!=null)
                             throw new OwsException(OwsExceptionCode.NoApplicableCode, tiex.InnerException);
