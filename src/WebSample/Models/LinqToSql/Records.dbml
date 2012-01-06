@@ -5,7 +5,7 @@
       <Column Name="Identifier" Type="System.String" DbType="VarChar(45)" IsPrimaryKey="true" CanBeNull="true" />
       <Column Name="Title" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
       <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Date" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="Type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Format" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Relation" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />

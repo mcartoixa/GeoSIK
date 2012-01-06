@@ -140,7 +140,7 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
 		
 		private string _Description;
 		
-		private System.Nullable<System.DateTime> _Date;
+		private string _Date;
 		
 		private string _Type;
 		
@@ -164,7 +164,7 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
     partial void OnTitleChanged();
     partial void OnDescriptionChanging(string value);
     partial void OnDescriptionChanged();
-    partial void OnDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateChanging(string value);
     partial void OnDateChanged();
     partial void OnTypeChanging(string value);
     partial void OnTypeChanged();
@@ -245,8 +245,8 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
-		public System.Nullable<System.DateTime> Date
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="VarChar(10)")]
+		public string Date
 		{
 			get
 			{

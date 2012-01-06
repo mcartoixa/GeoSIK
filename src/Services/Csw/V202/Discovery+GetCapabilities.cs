@@ -190,6 +190,13 @@ namespace OgcToolkit.Services.Csw.V202
                     operations.Add(getRecords);
                 }
 
+                Ows100.Operation getRecordById=CreateOperation("GetRecordById", GetEndPoints());
+                if (getRecordById!=null)
+                {
+
+                    operations.Add(getRecordById);
+                }
+
 
                 if (operations.Count>0)
                     return new Ows100.OperationsMetadata()
