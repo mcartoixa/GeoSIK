@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using LinqExpressionType=System.Linq.Expressions.ExpressionType;
 
 namespace OgcToolkit.Ogc.Filter.V110
 {
@@ -12,6 +13,6 @@ namespace OgcToolkit.Ogc.Filter.V110
 
         IList<expression> expression { get; }
 
-        Func<Expression, Expression, BinaryExpression> OperatorExpression { get; }
+        LinqExpressionType OperatorExpressionType { get; }
     }
 }
