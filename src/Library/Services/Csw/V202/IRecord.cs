@@ -16,9 +16,6 @@ namespace OgcToolkit.Services.Csw.V202
     {
 
         IRecordConverter GetConverter(XmlNamespaceManager namespaceManager);
-
-        string Id { get; }
-        SqlGeometry BoundingBox { get; }
     }
 
     public interface IRecordConverter

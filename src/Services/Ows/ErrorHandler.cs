@@ -26,8 +26,14 @@ namespace OgcToolkit.Services.Ows
 
         public void ProvideFault(Exception error, MessageVersion version, ref Message fault)
         {
-            var fex=error as FaultException;
+            var aex=error as AggregateException;
+            if (aex!=null)
+                if (aex.InnerExceptions.Count>1)
+                    error=new OwsException(OwsExceptionCode.NoApplicableCode, _Reason, error);
+                else
+                    error=aex.InnerExceptions[0];
 
+            var fex=error as FaultException;
             if (fex==null)
             {
                 if (error is NotImplementedException)

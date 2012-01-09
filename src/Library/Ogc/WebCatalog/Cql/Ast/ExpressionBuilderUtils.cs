@@ -45,7 +45,6 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
                             Expression.Constant(pa[1], st)
                         );
 
-
                     Type rt=Nullable.GetUnderlyingType(method.ReturnType) ?? method.ReturnType;
                     if (method.ReturnType==typeof(bool))
                         return Expression.IsTrue(op);
@@ -57,14 +56,15 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
                 }
             }
 
-            if ((subtype==typeof(string)) && (exType!=ExpressionType.Equal) && (exType!=ExpressionType.NotEqual))
-                // string comparisons require CompareTo
+            if (subtype==typeof(string))
+                // string comparisons require Compare
                 return Expression.MakeBinary(
                     exType,
                     Expression.Call(
+                        typeof(string).GetMethod("Compare", new Type[] { typeof(string), typeof(string), typeof(StringComparison) }),
                         left.CreateExpression(parameters, subtype),
-                        typeof(string).GetMethod("CompareTo", new Type[] { typeof(string) }),
-                        Expression.Constant(right, subtype)
+                        Expression.Constant(right, subtype),
+                        Expression.Constant(StringComparison.CurrentCulture)
                     ),
                     Expression.Constant(0, typeof(int))
                 );

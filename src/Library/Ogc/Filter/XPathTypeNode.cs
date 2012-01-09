@@ -176,7 +176,7 @@ namespace OgcToolkit.Ogc.Filter
                 var ec=new List<XPathTypeNode>();
                 var ic=new List<XPathTypeNode>();
 
-                foreach (MemberInfo mi in _Node.GetMembers(BindingFlags.Public | BindingFlags.Instance))
+                foreach (MemberInfo mi in _Node.GetMembers(BindingFlags.Instance | BindingFlags.Public))
                 {
                     Type type=GetMemberType(mi);
                     if (type==null)
@@ -460,6 +460,9 @@ namespace OgcToolkit.Ogc.Filter
         {
             get
             {
+                if (_ValueMemberInfo!=null)
+                    return GetMemberType(_ValueMemberInfo);
+
                 if (_MemberInfo==null)
                     return _Node;
 

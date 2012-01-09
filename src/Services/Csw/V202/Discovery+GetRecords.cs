@@ -478,24 +478,16 @@ namespace OgcToolkit.Services.Csw.V202
 
 
                 // Order by
-                bool ordered=false;
                 if (query!=null)
                 {
                     //if (query.SortBy!=null)
                     if (query.Untyped.Descendants("{http://www.opengis.net/ogc}SortBy").Any<XElement>())
-                    {
                         records=Filter110.FilterQueryable.OrderBy(records, query.SortBy, namespaceManager, mayRootPathBeImplied);
-                        ordered=true;
-                    }
                 }
 
-                // Paging must be done after the sort
+                // Paging must be done after a sort
                 if (request.startPosition>1)
-                {
-                    if (!ordered)
-                        records=(IQueryable)records.StaticCast<IRecord>().OrderBy<IRecord, string>(r => r.Id);
                     records=records.Skip(Convert.ToInt32(request.startPosition)-1);
-                }
 
                 if (request.maxRecords>=0)
                     records=records.Take(Convert.ToInt32(request.maxRecords));
