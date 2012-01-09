@@ -30,9 +30,6 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertRecord(Record instance);
-    partial void UpdateRecord(Record instance);
-    partial void DeleteRecord(Record instance);
     #endregion
 		
 		public RecordsDataContext() : 
@@ -129,14 +126,14 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="[Ogc.Csw].Records")]
-	public partial class Record : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class Record
 	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private string _Identifier;
 		
 		private string _Title;
+		
+		private string _Subject;
 		
 		private string _Description;
 		
@@ -154,38 +151,11 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
 		
 		private string _AnyText;
 		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdentifierChanging(string value);
-    partial void OnIdentifierChanged();
-    partial void OnTitleChanging(string value);
-    partial void OnTitleChanged();
-    partial void OnDescriptionChanging(string value);
-    partial void OnDescriptionChanged();
-    partial void OnDateChanging(string value);
-    partial void OnDateChanged();
-    partial void OnTypeChanging(string value);
-    partial void OnTypeChanged();
-    partial void OnFormatChanging(string value);
-    partial void OnFormatChanged();
-    partial void OnRelationChanging(string value);
-    partial void OnRelationChanged();
-    partial void OnSpatialChanging(string value);
-    partial void OnSpatialChanged();
-    partial void OnCoverageChanging(System.Data.Linq.Binary value);
-    partial void OnCoverageChanged();
-    partial void OnAnyTextChanging(string value);
-    partial void OnAnyTextChanged();
-    #endregion
-		
 		public Record()
 		{
-			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Identifier", DbType="VarChar(45)", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Identifier", DbType="VarChar(45)")]
 		public string Identifier
 		{
 			get
@@ -196,11 +166,7 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
 			{
 				if ((this._Identifier != value))
 				{
-					this.OnIdentifierChanging(value);
-					this.SendPropertyChanging();
 					this._Identifier = value;
-					this.SendPropertyChanged("Identifier");
-					this.OnIdentifierChanged();
 				}
 			}
 		}
@@ -216,11 +182,23 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
 			{
 				if ((this._Title != value))
 				{
-					this.OnTitleChanging(value);
-					this.SendPropertyChanging();
 					this._Title = value;
-					this.SendPropertyChanged("Title");
-					this.OnTitleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Subject", DbType="NVarChar(512)")]
+		public string Subject
+		{
+			get
+			{
+				return this._Subject;
+			}
+			set
+			{
+				if ((this._Subject != value))
+				{
+					this._Subject = value;
 				}
 			}
 		}
@@ -236,11 +214,7 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
 			{
 				if ((this._Description != value))
 				{
-					this.OnDescriptionChanging(value);
-					this.SendPropertyChanging();
 					this._Description = value;
-					this.SendPropertyChanged("Description");
-					this.OnDescriptionChanged();
 				}
 			}
 		}
@@ -256,11 +230,7 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
 			{
 				if ((this._Date != value))
 				{
-					this.OnDateChanging(value);
-					this.SendPropertyChanging();
 					this._Date = value;
-					this.SendPropertyChanged("Date");
-					this.OnDateChanged();
 				}
 			}
 		}
@@ -276,11 +246,7 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
 			{
 				if ((this._Type != value))
 				{
-					this.OnTypeChanging(value);
-					this.SendPropertyChanging();
 					this._Type = value;
-					this.SendPropertyChanged("Type");
-					this.OnTypeChanged();
 				}
 			}
 		}
@@ -296,11 +262,7 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
 			{
 				if ((this._Format != value))
 				{
-					this.OnFormatChanging(value);
-					this.SendPropertyChanging();
 					this._Format = value;
-					this.SendPropertyChanged("Format");
-					this.OnFormatChanged();
 				}
 			}
 		}
@@ -316,11 +278,7 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
 			{
 				if ((this._Relation != value))
 				{
-					this.OnRelationChanging(value);
-					this.SendPropertyChanging();
 					this._Relation = value;
-					this.SendPropertyChanged("Relation");
-					this.OnRelationChanged();
 				}
 			}
 		}
@@ -336,11 +294,7 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
 			{
 				if ((this._Spatial != value))
 				{
-					this.OnSpatialChanging(value);
-					this.SendPropertyChanging();
 					this._Spatial = value;
-					this.SendPropertyChanged("Spatial");
-					this.OnSpatialChanged();
 				}
 			}
 		}
@@ -356,11 +310,7 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
 			{
 				if ((this._Coverage != value))
 				{
-					this.OnCoverageChanging(value);
-					this.SendPropertyChanging();
 					this._Coverage = value;
-					this.SendPropertyChanged("Coverage");
-					this.OnCoverageChanged();
 				}
 			}
 		}
@@ -376,32 +326,8 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
 			{
 				if ((this._AnyText != value))
 				{
-					this.OnAnyTextChanging(value);
-					this.SendPropertyChanging();
 					this._AnyText = value;
-					this.SendPropertyChanged("AnyText");
-					this.OnAnyTextChanged();
 				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

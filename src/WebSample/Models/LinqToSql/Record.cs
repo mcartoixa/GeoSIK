@@ -25,23 +25,6 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
             return new Csw202Service.RecordConverter(namespaceManager);
         }
 
-        partial void OnSubjectChanging(string value);
-        partial void OnSubjectChanged();
-        partial void OnSubjectSchemeChanging(string value);
-        partial void OnSubjectSchemeChanged();
-
-        [XmlElement("subject", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=2, IsNullable=false)]
-        [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Subject)]
-        public RecordSubject RecordSubject
-        {
-            get
-            {
-                if (_RecordSubject==null)
-                    _RecordSubject=new RecordSubject();
-                return _RecordSubject;
-            }
-        }
-
         [XmlElement("BoundingBox", Namespace=Namespaces.OgcOws, Order=8, IsNullable=false)]
         [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.BoundingBox)]
         public SqlGeometry BoundingBox
@@ -87,67 +70,18 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
                 return new Srid(BoundingBox.STSrid.Value).Crs.ToString();
             }
         }
-
-        [Column(DbType="NVarChar(512)")]
-        private string Subject
-        {
-            get
-            {
-                return RecordSubject.Subject;
-            }
-            set
-            {
-                if ((RecordSubject.Subject!=value))
-                {
-                    this.OnSubjectChanging(value);
-                    this.SendPropertyChanging();
-                    RecordSubject.Subject=value;
-                    this.SendPropertyChanged("Subject");
-                    this.OnSubjectChanged();
-                }
-            }
-        }
-
-        [Column(DbType="VarChar(256)")]
-        private string SubjectScheme
-        {
-            get
-            {
-                return RecordSubject.Subject;
-            }
-            set
-            {
-                if ((RecordSubject.Subject!=value))
-                {
-                    this.OnSubjectSchemeChanging(value);
-                    this.SendPropertyChanging();
-                    RecordSubject.SubjectScheme=value;
-                    this.SendPropertyChanged("SubjectScheme");
-                    this.OnSubjectSchemeChanged();
-                }
-            }
-        }
-
-        string Csw202Service.IRecord.Id
-        {
-            get
-            {
-                return Identifier;
-            }
-        }
-
-        private RecordSubject _RecordSubject;
     }
 
-    public class RecordSubject
-    {
+    /* Linq to SQL does not handle complex types... */
+    //public class RecordSubject
+    //{
 
-        [XmlText(typeof(string), DataType="string")]
-        public string Subject { get; set; }
+    //    [XmlText(typeof(string), DataType="string")]
+    //    public string Subject { get; set; }
 
-        [XmlAttribute("scheme")]
-        public string SubjectScheme { get; set; }
-    }
+    //    [XmlAttribute("scheme")]
+    //    public string SubjectScheme { get; set; }
+    //}
 
     public class RecordMetaData
     {
@@ -159,6 +93,10 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
         [XmlElement("title", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=1, IsNullable=false)]
         [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Title)]
         public string Title { get; set; }
+
+        [XmlElement("subject", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=2, IsNullable=false)]
+        [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Subject)]
+        public string Subject { get; set; }
 
         [XmlElement("abstract", Namespace=Namespaces.DublinCoreTerms, DataType="string", Order=3, IsNullable=false)]
         [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Abstract)]
