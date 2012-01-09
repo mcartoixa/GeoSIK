@@ -166,15 +166,34 @@ namespace OgcToolkit.Services.Csw.V202
                 Ows100.Operation describeRecord=CreateOperation("DescribeRecord", GetEndPoints());
                 if (describeRecord!=null)
                 {
-                    //TODO: Namespaces are hardcoded here...
-                    describeRecord.Untyped.Add(
-                        new XAttribute(XNamespace.Xmlns+"csw", Namespaces.OgcWebCatalogCswV202),
-                        new XAttribute(XNamespace.Xmlns+"gmd", Namespaces.IsoTs19139Gmd)
-                    );
+                    IEnumerable<IXMetaData> supportedTypes=((Discovery)Service).GetSupportedRecordTypes();
+
+                    // Creates prefixes for supported records namespaces
+                    int n=0;
+                    foreach (IXMetaData st in supportedTypes)
+                    {
+                        string p=describeRecord.Untyped.GetPrefixOfNamespace(st.SchemaName.Namespace);
+                        if (string.IsNullOrEmpty(p))
+                        {
+                            string ns=null;
+                            do
+                            {
+                                ns=string.Format(
+                                    CultureInfo.InvariantCulture,
+                                    "ns{0}",
+                                    n++
+                                );
+                            } while (describeRecord.Untyped.GetNamespaceOfPrefix(ns)!=null);
+                            describeRecord.Untyped.Add(
+                                new XAttribute(XNamespace.Xmlns+ns, st.SchemaName.Namespace)
+                            );
+                        }
+                    }
+
                     describeRecord.Parameter=new Ows100.DomainType[] {
                     new Ows100.DomainType() {
                         name=TypeNameParameter,
-                        Value=_SupportedRecordTypesInstances
+                        Value=supportedTypes
                             .Select<IXMetaData, string>(
                                 m => string.Concat(describeRecord.Untyped.GetPrefixOfNamespace(m.SchemaName.Namespace), ":", m.GetType().Name)
                             ).ToList<string>()

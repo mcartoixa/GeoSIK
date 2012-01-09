@@ -5,7 +5,9 @@ using System.Linq;
 using System.ServiceModel.Web;
 using System.Xml.Linq;
 using System.Web;
+using Xml.Schema.Linq;
 using OgcToolkit.Services;
+using Csw202=OgcToolkit.Ogc.WebCatalog.Csw.V202;
 using Ows100=OgcToolkit.Ogc.Ows.V100;
 
 namespace OgcToolkit.WebSample.Services
@@ -128,9 +130,14 @@ namespace OgcToolkit.WebSample.Services
             return new GetCapabilitiesProcessor(this);
         }
 
+        public override IEnumerable<IXMetaData> GetSupportedRecordTypes()
+        {
+            return _SupportedRecordTypesInstances;
+        }
+
         protected override IQueryable GetRecordsSource(Uri outputSchema)
         {
-            return RecordContext.Records;
+            return RecordContext.MFRecords;
         }
 
         //protected override IOperatorImplementationProvider GetOperatorImplementationProvider()
@@ -140,8 +147,13 @@ namespace OgcToolkit.WebSample.Services
 
         protected override IOperatorImplementationProvider GetOperatorImplementationProvider()
         {
-            return new Models.LinqToSql.OperatorsImplementationProvider(RecordContext);
+            return null;
         }
+
+        //protected override IOperatorImplementationProvider GetOperatorImplementationProvider()
+        //{
+        //    return new Models.LinqToSql.OperatorsImplementationProvider(RecordContext);
+        //}
 
         public override string ProviderName
         {
@@ -159,20 +171,32 @@ namespace OgcToolkit.WebSample.Services
         //    }
         //}
 
-        protected Models.LinqToSql.RecordsDataContext RecordContext
+        protected Models.ModelFirst.MFConceptualEntities RecordContext
         {
             get
             {
                 if (_RecordContext==null)
-                    _RecordContext=new Models.LinqToSql.RecordsDataContext();
+                    _RecordContext=new Models.ModelFirst.MFConceptualEntities();
 
                 return _RecordContext;
             }
         }
 
-        //private Models.CodeFirst.RecordContext _RecordContext;
-        private Models.LinqToSql.RecordsDataContext _RecordContext;
+        //protected Models.LinqToSql.RecordsDataContext RecordContext
+        //{
+        //    get
+        //    {
+        //        if (_RecordContext==null)
+        //            _RecordContext=new Models.LinqToSql.RecordsDataContext();
 
+        //        return _RecordContext;
+        //    }
+        //}
+
+        //private Models.CodeFirst.RecordContext _RecordContext;
+        private Models.ModelFirst.MFConceptualEntities _RecordContext;
+        //private Models.LinqToSql.RecordsDataContext _RecordContext;
+        private static readonly IXMetaData[] _SupportedRecordTypesInstances=new IXMetaData[] { new Csw202.Record()/*, new Gmd.MD_Metadata()*/ };
     }
 
 }

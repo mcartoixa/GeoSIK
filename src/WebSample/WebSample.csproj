@@ -176,6 +176,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Records.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\ModelFirst\MFRecord.cs" />
+    <Compile Include="Models\ModelFirst\RecordsModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecordsModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Csw.svc.cs">
       <DependentUpon>Csw.svc</DependentUpon>
@@ -183,7 +189,6 @@
     <Compile Include="Services\Discovery.cs" />
     <Compile Include="Services\ICsw.cs" />
     <Compile Include="Services\IOws.cs" />
-    <Compile Include="Models\CodeFirst\OperatorsImplementationProvider.cs" />
     <Compile Include="Services\Ows.svc.cs">
       <DependentUpon>Ows.svc</DependentUpon>
     </Compile>
@@ -195,9 +200,7 @@
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\ModelFirst\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Account\Web.config" />
     <Content Include="Site.Master" />
@@ -224,6 +227,10 @@
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>Records.designer.cs</LastGenOutput>
     </None>
+    <EntityDeploy Include="Models\ModelFirst\RecordsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RecordsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

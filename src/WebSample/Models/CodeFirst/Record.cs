@@ -14,16 +14,18 @@ using Csw202Service=OgcToolkit.Services.Csw.V202;
 namespace OgcToolkit.WebSample.Models.CodeFirst
 {
 
-    public class RecordContext:
+    /* Code first does not support the call of custom stored procedures with LINQ... */
+
+    public class CFRecordContext:
         DbContext
     {
 
-        public RecordContext(string nameOrConnectionString):
+        public CFRecordContext(string nameOrConnectionString):
             base(nameOrConnectionString)
         {
         }
 
-        public DbSet<Record> Records { get; set; }
+        public DbSet<CFRecord> Records { get; set; }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -37,7 +39,7 @@ namespace OgcToolkit.WebSample.Models.CodeFirst
 
     [Table("Records", Schema="Ogc.Csw")]
     [XmlRoot("Record", Namespace=Namespaces.OgcWebCatalogCswV202, IsNullable=false)]
-    public class Record:
+    public class CFRecord:
         Csw202Service.IRecord
     {
 
@@ -125,9 +127,9 @@ namespace OgcToolkit.WebSample.Models.CodeFirst
         //[ForeignKey("Id")]
         //public virtual Record Relation { get; set; }
 
-        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        //[XmlElement("AnyText", Namespace=Namespaces.OgcWebCatalogCswV202, DataType="string", Order=9, IsNullable=false)]
-        //public string AnyText { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [XmlElement("AnyText", Namespace=Namespaces.OgcWebCatalogCswV202, DataType="string", Order=9, IsNullable=false)]
+        public string AnyText { get; set; }
     }
 
     [ComplexType]
