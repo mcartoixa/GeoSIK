@@ -97,6 +97,14 @@ namespace OgcToolkit.Services.Csw.V202
                         Locator=IdParameter
                     };
 
+                if (request.outputSchema==null)
+                    request.outputSchema=new Uri(Namespaces.OgcWebCatalogCswV202);
+
+                if (!((Discovery)Service).GetSupportedRecordTypes().Select<IXMetaData, XNamespace>(s => s.SchemaName.Namespace).Contains<XNamespace>(request.outputSchema.ToString()))
+                    throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
+                        Locator=OutputSchemaParameter
+                    };
+
                 //if (request.ElementSetName!=null)
                 if (!request.Untyped.Elements("{http://www.opengis.net/cat/csw/2.0.2}ElementSetName").Any<XElement>() || string.IsNullOrEmpty(request.ElementSetName.TypedValue))
                     request.ElementSetName=new ElementSetName(

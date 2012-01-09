@@ -355,6 +355,14 @@ namespace OgcToolkit.Services.Csw.V202
                         Locator=TypeNamesParameter
                     };
 
+                if (request.outputSchema==null)
+                    request.outputSchema=new Uri(Namespaces.OgcWebCatalogCswV202);
+
+                if (!((Discovery)Service).GetSupportedRecordTypes().Select<IXMetaData, XNamespace>(s => s.SchemaName.Namespace).Contains<XNamespace>(request.outputSchema.ToString()))
+                    throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
+                        Locator=OutputSchemaParameter
+                    };
+
                 // We should be able to use foreach (Uri uri in request.ResponseHandler) here...
                 var rh=from el in request.Untyped.Elements()
                        where el.Name=="{http://www.opengis.net/cat/csw/2.0.2}ResponseHandler"
