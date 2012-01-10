@@ -25,10 +25,11 @@ namespace OgcToolkit.Ogc.Filter.V110
             // Custom implementation
             if (parameters.OperatorImplementationProvider!=null)
             {
+                Type[] arguments=new Type[] { typeof(SqlGeometry), typeof(SqlGeometry) };
                 object[] pa=new object[] { null, envelope };
 
                 object instance;
-                MethodInfo binaryMethod=parameters.OperatorImplementationProvider.GetImplementation(OperationNames.Disjoint, new Type[] { typeof(SqlGeometry), typeof(SqlGeometry) }, ref pa, out instance);
+                MethodInfo binaryMethod=parameters.OperatorImplementationProvider.GetImplementation(OperationNames.Disjoint, ref arguments, ref pa, out instance);
                 Debug.Assert(pa.Length==2);
 
                 if (binaryMethod!=null)
@@ -38,14 +39,14 @@ namespace OgcToolkit.Ogc.Filter.V110
                         op=Expression.Call(
                             Expression.Constant(instance),
                             binaryMethod,
-                            ((IExpressionBuilder)PropertyName).CreateExpression(parameters, pa[1].GetType()),
-                            Expression.Constant(pa[1])
+                            ((IExpressionBuilder)PropertyName).CreateExpression(parameters, arguments[0]),
+                            Expression.Constant(pa[1], arguments[1])
                         );
                     else
                         op=Expression.Call(
                             binaryMethod,
-                            ((IExpressionBuilder)PropertyName).CreateExpression(parameters, pa[1].GetType()),
-                            Expression.Constant(pa[1])
+                            ((IExpressionBuilder)PropertyName).CreateExpression(parameters, arguments[0]),
+                            Expression.Constant(pa[1], arguments[1])
                         );
 
                     Type rt=Nullable.GetUnderlyingType(binaryMethod.ReturnType) ?? binaryMethod.ReturnType;

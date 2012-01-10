@@ -55,7 +55,7 @@ namespace OgcToolkit.Ogc.Filter.V110
                     }
 
                     object instance;
-                    MethodInfo method=parameters.OperatorImplementationProvider.GetImplementation(bcop.OperatorExpressionType.ToString(), pt, ref pa, out instance);
+                    MethodInfo method=parameters.OperatorImplementationProvider.GetImplementation(bcop.OperatorExpressionType.ToString(), ref pt, ref pa, out instance);
                     if (method!=null)
                     {
                         Debug.Assert(pa.Length==pt.Length);

@@ -30,10 +30,11 @@ namespace OgcToolkit.Ogc.Filter.V110
             // Custom implementation
             if (parameters.OperatorImplementationProvider!=null)
             {
+                Type[] arguments=new Type[] { typeof(string), typeof(string), typeof(char?), typeof(bool?) };
                 object[] pa=new object[] { null, pattern, ec, matchCase };
 
                 object instance;
-                MethodInfo method=parameters.OperatorImplementationProvider.GetImplementation(OperationNames.Like, new Type[] { typeof(string), typeof(string), typeof(char?), typeof(bool?) }, ref pa, out instance);
+                MethodInfo method=parameters.OperatorImplementationProvider.GetImplementation(OperationNames.Like, ref arguments, ref pa, out instance);
 
                 if (method!=null)
                 {
@@ -43,17 +44,17 @@ namespace OgcToolkit.Ogc.Filter.V110
                             Expression.Constant(instance),
                             method,
                             ((IExpressionBuilder)PropertyName).CreateExpression(parameters, expectedStaticType),
-                            Expression.Constant(pa[1], pa[1].GetType()),
-                            Expression.Constant(pa[2], pa[2]!=null ? pa[2].GetType() : typeof(char?)),
-                            Expression.Constant(pa[3], pa[3]!=null ? pa[3].GetType() : typeof(bool?))
+                            Expression.Constant(pa[1], arguments[1]),
+                            Expression.Constant(pa[2], arguments[2]),
+                            Expression.Constant(pa[3], arguments[3])
                         );
                     else
                         op=Expression.Call(
                             method,
                             ((IExpressionBuilder)PropertyName).CreateExpression(parameters, expectedStaticType),
-                            Expression.Constant(pa[1], pa[1].GetType()),
-                            Expression.Constant(pa[2], pa[2]!=null ? pa[2].GetType() : typeof(char?)),
-                            Expression.Constant(pa[3], pa[3]!=null ? pa[3].GetType() : typeof(bool?))
+                            Expression.Constant(pa[1], arguments[1]),
+                            Expression.Constant(pa[2], arguments[2]),
+                            Expression.Constant(pa[3], arguments[3])
                         );
 
                     Type rt=Nullable.GetUnderlyingType(method.ReturnType) ?? method.ReturnType;

@@ -15,6 +15,7 @@ namespace OgcToolkit
         public const string Equal="Equal";
         public const string Intersects="Intersects";
         public const string Like="Like";
+        public const string NotEqual="NotEqual";
         public const string Overlaps="Overlaps";
         public const string Relate="Relate";
         public const string Touches="Touches";

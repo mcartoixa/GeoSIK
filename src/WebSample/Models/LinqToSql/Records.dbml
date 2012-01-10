@@ -60,4 +60,23 @@
     <Parameter Name="geom2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
     <Return Type="System.Double" />
   </Function>
+  <Function Name="[Ogc.Filter].String_Equals" Method="String_Equals" IsComposable="true">
+    <Parameter Name="string1" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="string2" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="comparison" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="[Ogc.Filter].String_NotEqual" Method="String_NotEqual" IsComposable="true">
+    <Parameter Name="string1" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="string2" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="comparison" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="[Ogc.Filter].String_Like" Method="String_Like" IsComposable="true">
+    <Parameter Name="string" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="pattern" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="escape" Type="System.Char" DbType="NChar(1)" />
+    <Parameter Name="comparison" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>

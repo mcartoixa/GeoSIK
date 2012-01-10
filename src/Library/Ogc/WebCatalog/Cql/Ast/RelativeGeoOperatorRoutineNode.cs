@@ -38,28 +38,29 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
             // Custom implementation
             if (parameters.OperatorImplementationProvider!=null)
             {
+                Type[] arguments=new Type[] { typeof(SqlGeometry), typeof(SqlGeometry) };
                 object[] pa=new object[] { null, _GeometryLiteral.Value };
 
                 object instance;
-                MethodInfo method=parameters.OperatorImplementationProvider.GetImplementation(OperationNames.Distance, new Type[] { typeof(SqlGeometry), typeof(SqlGeometry) }, ref pa, out instance);
+                MethodInfo method=parameters.OperatorImplementationProvider.GetImplementation(OperationNames.Distance, ref arguments, ref pa, out instance);
                 if (method!=null)
                 {
+                    Debug.Assert(arguments.Length==2);
                     Debug.Assert(pa.Length==2);
-                    Type st=(pa[1]!=null ? pa[1].GetType() : typeof(SqlGeometry)); // Parameter types may have been changed
 
                     Expression dop=null;
                     if (instance!=null)
                         dop=Expression.Call(
                             Expression.Constant(instance),
                             method,
-                            _AttributeName.CreateExpression(parameters, st),
-                            Expression.Constant(pa[1], st)
+                            _AttributeName.CreateExpression(parameters, arguments[0]),
+                            Expression.Constant(pa[1], arguments[1])
                         );
                     else
                         dop=Expression.Call(
                             method,
-                            _AttributeName.CreateExpression(parameters, st),
-                            Expression.Constant(pa[1], st)
+                            _AttributeName.CreateExpression(parameters, arguments[0]),
+                            Expression.Constant(pa[1], arguments[1])
                         );
 
                     Type drt=Nullable.GetUnderlyingType(method.ReturnType) ?? method.ReturnType;
