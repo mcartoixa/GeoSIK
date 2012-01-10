@@ -15,8 +15,7 @@ namespace OgcToolkit.Ogc.Filter
 
     /// <summary>Handles a node for a <see cref="XPathTypeNavigator" /> navigator.</summary>
     internal class XPathTypeNode:
-        ICloneable,
-        IComparer<XPathTypeNode>
+        ICloneable
     {
 
         protected XPathTypeNode()
@@ -209,8 +208,8 @@ namespace OgcToolkit.Ogc.Filter
                     }
                 }
 
-                _AttributeChildrenNodes=ac.OrderBy<XPathTypeNode, XPathTypeNode>(n => n, this).ToArray<XPathTypeNode>();
-                _ElementChildrenNodes=ec.OrderBy<XPathTypeNode, XPathTypeNode>(n => n, this).ToArray<XPathTypeNode>();
+                _AttributeChildrenNodes=ac.ToArray<XPathTypeNode>();
+                _ElementChildrenNodes=ec.OrderBy<XPathTypeNode, int>(n => n.Order).ToArray<XPathTypeNode>();
                 _IgnoredChildrenNodes=ic.ToArray<XPathTypeNode>();
             }
         }
@@ -218,41 +217,6 @@ namespace OgcToolkit.Ogc.Filter
         object ICloneable.Clone()
         {
             return Clone();
-        }
-
-        int IComparer<XPathTypeNode>.Compare(XPathTypeNode x, XPathTypeNode y)
-        {
-            if ((x==null) && (y==null))
-                return 0;
-
-            if (x==null)
-                return -1;
-            if (y==null)
-                return 1;
-
-            if (object.ReferenceEquals(x, y))
-                return 0;
-
-            if (x.NodeType!=y.NodeType)
-                throw new InvalidOperationException();
-
-            var xea=x.NodeAttributes.OfType<XmlElementAttribute>().FirstOrDefault<XmlElementAttribute>();
-            var yea=y.NodeAttributes.OfType<XmlElementAttribute>().FirstOrDefault<XmlElementAttribute>();
-
-            if (((xea==null) || (xea.Order<0)) && (yea!=null) && (yea.Order>=0))
-                return 1;
-
-            if (((yea==null) || (yea.Order<0)) && (xea!=null) && (xea.Order>=0))
-                return -1;
-
-            if ((xea!=null) && (xea.Order>=0) && (yea!=null) && (yea.Order>=0))
-            {
-                int ret=Math.Sign(xea.Order-yea.Order);
-                if (ret!=0)
-                    return ret;
-            }
-
-            return string.CompareOrdinal(x.Name, y.Name);
         }
 
         private static Type GetMemberType(MemberInfo member)
@@ -485,6 +449,17 @@ namespace OgcToolkit.Ogc.Filter
             get
             {
                 return _Context;
+            }
+        }
+
+        protected int Order
+        {
+            get
+            {
+                int ret=NodeAttributes.OfType<XmlElementAttribute>().Select<XmlElementAttribute, int>(a => a.Order).DefaultIfEmpty<int>(-1).Max();
+                if (ret<0)
+                    return int.MaxValue;
+                return ret;
             }
         }
 

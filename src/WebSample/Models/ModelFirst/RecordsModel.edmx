@@ -5,13 +5,44 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="OgcToolkit.WebSample.Models.ModelFirst.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-        <EntityContainer Name="MFStorageEntities">
-          <EntitySet Name="MFRecords" EntityType="OgcToolkit.WebSample.Models.ModelFirst.Store.MFRecords" store:Type="Views" Schema="Ogc.Csw" Table="Records" />
-          <AssociationSet Name="FK_Record_Relation" Association="OgcToolkit.WebSample.Models.ModelFirst.Store.FK_Record_Relation">
-            <End Role="Records" EntitySet="MFRecords" />
-            <End Role="Records1" EntitySet="MFRecords" />
-          </AssociationSet>
+        <EntityContainer Name="OgcToolkitWebSampleModelsModelFirstStoreContainer">
+          <EntitySet Name="Records" EntityType="OgcToolkit.WebSample.Models.ModelFirst.Store.Records" store:Type="Views" store:Schema="Ogc.Csw" store:Name="Records">
+            <DefiningQuery>SELECT 
+      [Records].[Identifier] AS [Identifier], 
+      [Records].[Title] AS [Title], 
+      [Records].[Subject] AS [Subject], 
+      [Records].[SubjectScheme] AS [SubjectScheme], 
+      [Records].[Description] AS [Description], 
+      [Records].[Date] AS [Date], 
+      [Records].[Type] AS [Type], 
+      [Records].[Format] AS [Format], 
+      [Records].[Relation] AS [Relation], 
+      [Records].[Spatial] AS [Spatial], 
+      [Records].[Coverage] AS [Coverage], 
+      [Records].[AnyText] AS [AnyText]
+      FROM [Ogc.Csw].[Records] AS [Records]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'C:\USERS\MATHIEU.CARTOIXA.HQ\DOCUMENTS\SRC\OGCTOOLKIT\WORK\SRC\WEBSAMPLE\APP_DATA\CSW202TESTDATA.MDF.Ogc.Csw.Records' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Records">
+          <Key>
+            <PropertyRef Name="Identifier" />
+          </Key>
+          <Property Name="Identifier" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="Title" Type="nvarchar" MaxLength="256" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="512" />
+          <Property Name="SubjectScheme" Type="varchar" MaxLength="256" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Date" Type="varchar" MaxLength="10" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="Format" Type="varchar" MaxLength="50" />
+          <Property Name="Relation" Type="varchar" MaxLength="45" />
+          <Property Name="Spatial" Type="varchar" MaxLength="50" />
+          <Property Name="Coverage" Type="varbinary(max)" />
+          <Property Name="AnyText" Type="nvarchar(max)" StoreGeneratedPattern="Computed" />
+        </EntityType>
         <Function Name="Geometry_STContains" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
           <Parameter Name="geom1" Type="varbinary(max)" Mode="In" />
           <Parameter Name="geom2" Type="varbinary(max)" Mode="In" />
@@ -48,37 +79,7 @@
           <Parameter Name="geom1" Type="varbinary(max)" Mode="In" />
           <Parameter Name="geom2" Type="varbinary(max)" Mode="In" />
         </Function>
-      <EntityType Name="MFRecords">
-        <Key>
-          <PropertyRef Name="Identifier" />
-        </Key>
-        <Property Name="Identifier" Type="varchar" MaxLength="45" Nullable="false" />
-        <Property Name="Title" Type="nvarchar" MaxLength="256" />
-        <Property Name="Subject" Type="nvarchar" MaxLength="512" />
-        <Property Name="SubjectScheme" Type="varchar" MaxLength="256" />
-        <Property Name="Description" Type="nvarchar(max)" />
-        <Property Name="Date" Type="varchar" MaxLength="10" />
-        <Property Name="Type" Type="varchar" MaxLength="50" />
-        <Property Name="Format" Type="varchar" MaxLength="50" />
-        <Property Name="Relation" Type="varchar" MaxLength="45" />
-        <Property Name="Spatial" Type="varchar" MaxLength="50" />
-        <Property Name="Coverage" Type="varbinary(max)" />
-        <Property Name="AnyText" Type="nvarchar(max)" />
-      </EntityType>
-        <Association Name="FK_Record_Relation">
-          <End Role="Records" Type="OgcToolkit.WebSample.Models.ModelFirst.Store.MFRecords" Multiplicity="0..1" />
-          <End Role="Records1" Type="OgcToolkit.WebSample.Models.ModelFirst.Store.MFRecords" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Records">
-              <PropertyRef Name="Identifier" />
-            </Principal>
-            <Dependent Role="Records1">
-              <PropertyRef Name="Relation" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="OgcToolkit.WebSample.Models.ModelFirst" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -95,6 +96,7 @@
           </Key>
           <Property Name="Identifier" Type="String" MaxLength="45" Unicode="false" FixedLength="false" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Subject" Type="OgcToolkit.WebSample.Models.ModelFirst.MFRecordSubject" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Date" Type="String" />
           <Property Name="Type" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
@@ -105,7 +107,6 @@
           <Property Name="AnyText" Type="String" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Records1" Relationship="OgcToolkit.WebSample.Models.ModelFirst.FK_Record_Relation" FromRole="Records" ToRole="Records1" />
           <NavigationProperty Name="Records2" Relationship="OgcToolkit.WebSample.Models.ModelFirst.FK_Record_Relation" FromRole="Records1" ToRole="Records" />
-          <Property Name="Subject" Type="OgcToolkit.WebSample.Models.ModelFirst.MFRecordSubject" Nullable="false" />
         </EntityType>
         <Association Name="FK_Record_Relation">
           <End Role="Records" Type="OgcToolkit.WebSample.Models.ModelFirst.MFRecord" Multiplicity="0..1" />
@@ -128,8 +129,8 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MFStorageEntities" CdmEntityContainer="MFConceptualEntities">
-          <EntitySetMapping Name="MFRecords"><EntityTypeMapping TypeName="OgcToolkit.WebSample.Models.ModelFirst.MFRecord"><MappingFragment StoreEntitySet="MFRecords">
+        <EntityContainerMapping StorageEntityContainer="OgcToolkitWebSampleModelsModelFirstStoreContainer" CdmEntityContainer="MFConceptualEntities">
+          <EntitySetMapping Name="MFRecords"><EntityTypeMapping TypeName="OgcToolkit.WebSample.Models.ModelFirst.MFRecord"><MappingFragment StoreEntitySet="Records">
             <ScalarProperty Name="Identifier" ColumnName="Identifier" />
             <ScalarProperty Name="Title" ColumnName="Title" />
             <ScalarProperty Name="Description" ColumnName="Description" />
