@@ -26,12 +26,15 @@ namespace OgcToolkit.Services.Csw.V202
         protected XPathQueryableNavigator(XPathQueryableNavigator other):
             base(other)
         {
-            _Queryables=other.Queryables;
+            _Queryables=other._Queryables;
         }
 
         public override XPathNavigator Clone()
         {
-            return new XPathQueryableNavigator(this);
+            var ret=new XPathQueryableNavigator(this);
+            if (ret._Queryables==null)
+                ret._Queryables=Queryables;
+            return ret;
         }
 
         public override XPathNodeIterator Select(XPathExpression expr)

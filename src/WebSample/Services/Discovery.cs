@@ -147,7 +147,7 @@ namespace OgcToolkit.WebSample.Services
 
         protected override IOperatorImplementationProvider GetOperatorImplementationProvider()
         {
-            return null;
+            return new Models.ModelFirst.OperatorsImplementationProvider();
         }
 
         //protected override IOperatorImplementationProvider GetOperatorImplementationProvider()

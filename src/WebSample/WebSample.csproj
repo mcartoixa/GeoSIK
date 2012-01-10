@@ -177,6 +177,7 @@
       <DependentUpon>Records.dbml</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelFirst\MFRecord.cs" />
+    <Compile Include="Models\ModelFirst\OperatorsImplementationProvider.cs" />
     <Compile Include="Models\ModelFirst\RecordsModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
