@@ -101,7 +101,7 @@ namespace OgcToolkit.WebSample.Models.ModelFirst
         public string Spatial { get; set; }
 
         [XmlIgnore]
-        [XmlElement("BoundingBox", Namespace=Namespaces.OgcOws)] // Mandatory synonym: will be used by LINQ to SQL requests instead of BoundingBox...
+        [XmlElement("BoundingBox", Namespace=Namespaces.OgcOws)] // Mandatory synonym: will be used by LINQ to Entities requests instead of BoundingBox...
         public byte[] Coverage { get; set; }
 
         [XmlElement("relation", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=9, IsNullable=false)]

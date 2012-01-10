@@ -79,6 +79,22 @@
           <Parameter Name="geom1" Type="varbinary(max)" Mode="In" />
           <Parameter Name="geom2" Type="varbinary(max)" Mode="In" />
         </Function>
+        <Function Name="String_Equals" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="string1" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="string2" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="comparison" Type="int" Mode="In" />
+        </Function>
+        <Function Name="String_Like" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="string" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="pattern" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="escape" Type="nchar" Mode="In" />
+          <Parameter Name="comparison" Type="int" Mode="In" />
+        </Function>
+        <Function Name="String_NotEqual" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="string1" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="string2" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="comparison" Type="int" Mode="In" />
+        </Function>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>

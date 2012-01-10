@@ -123,6 +123,24 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
 		{
 			return ((System.Nullable<double>)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), geom1, geom2).ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="[Ogc.Filter].String_Equals", IsComposable=true)]
+		public System.Nullable<int> String_Equals([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string string1, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string string2, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> comparison)
+		{
+			return ((System.Nullable<int>)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), string1, string2, comparison).ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="[Ogc.Filter].String_NotEqual", IsComposable=true)]
+		public System.Nullable<int> String_NotEqual([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string string1, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string string2, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> comparison)
+		{
+			return ((System.Nullable<int>)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), string1, string2, comparison).ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="[Ogc.Filter].String_Like", IsComposable=true)]
+		public System.Nullable<int> String_Like([global::System.Data.Linq.Mapping.ParameterAttribute(Name="string", DbType="NVarChar(MAX)")] string @string, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string pattern, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NChar(1)")] System.Nullable<char> escape, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> comparison)
+		{
+			return ((System.Nullable<int>)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), @string, pattern, escape, comparison).ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="[Ogc.Csw].Records")]

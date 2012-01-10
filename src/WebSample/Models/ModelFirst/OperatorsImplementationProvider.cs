@@ -18,7 +18,7 @@ namespace OgcToolkit.WebSample.Models.ModelFirst
         {
         }
 
-        MethodInfo IOperatorImplementationProvider.GetImplementation(string operatorName, Type[] arguments, ref object[] values, out object instance)
+        MethodInfo IOperatorImplementationProvider.GetImplementation(string operatorName, ref Type[] arguments, ref object[] values, out object instance)
         {
             MethodInfo ret=null;
             instance=null;
@@ -26,36 +26,71 @@ namespace OgcToolkit.WebSample.Models.ModelFirst
             switch (operatorName)
             {
             case OperationNames.Contains:
+                arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
                 values=values.Select<object, object>(v => GetBinary((SqlGeometry)v)).ToArray<object>();
-                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTContains", new Type[] { typeof(byte[]), typeof(byte[]) });
+                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTContains", arguments);
             case OperationNames.Crosses:
+                arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
                 values=values.Select<object, object>(v => GetBinary((SqlGeometry)v)).ToArray<object>();
-                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTCrosses", new Type[] { typeof(byte[]), typeof(byte[]) });
+                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTCrosses", arguments);
             case OperationNames.Disjoint:
+                arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
                 values=values.Select<object, object>(v => GetBinary((SqlGeometry)v)).ToArray<object>();
-                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTDisjoint", new Type[] { typeof(byte[]), typeof(byte[]) });
+                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTDisjoint", arguments);
             case OperationNames.Distance:
+                arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
                 values=values.Select<object, object>(v => GetBinary((SqlGeometry)v)).ToArray<object>();
-                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTDistance", new Type[] { typeof(byte[]), typeof(byte[]) });
+                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTDistance", arguments);
             case OperationNames.Equal:
-                if ((arguments.Length==2) && (arguments[1])==typeof(SqlGeometry))
+                if ((arguments.Length==2) && (arguments[1]==typeof(SqlGeometry)))
                 {
+                    arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
                     values=values.Select<object, object>(v => GetBinary((SqlGeometry)v)).ToArray<object>();
-                    return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTEquals", new Type[] { typeof(byte[]), typeof(byte[]) });
+                    return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTEquals", arguments);
+                }
+                if ((arguments.Length==3) && (arguments[2]==typeof(StringComparison)))
+                {
+                    // Comparisons are case insensitive by default: use them
+                    if (IsCaseSensitive((StringComparison)values[2]))
+                    {
+                        arguments=new Type[] { typeof(string), typeof(string), typeof(int) };
+                        values=new object[] { values[0], values[1], (int)((StringComparison)values[2]) };
+                        return typeof(OperatorsImplementationProvider).GetMethod("StringEquals", arguments);
+                    }
                 }
                 break;
             case OperationNames.Intersects:
+                arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
                 values=values.Select<object, object>(v => GetBinary((SqlGeometry)v)).ToArray<object>();
-                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTIntersects", new Type[] { typeof(byte[]), typeof(byte[]) });
+                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTIntersects", arguments);
+            case OperationNames.Like:
+                arguments=new Type[] { typeof(string), typeof(string), typeof(string), typeof(int) };
+                values=new object[] { values[0], values[1], values[2].ToString(), ((bool)values[3] ? (int)StringComparison.CurrentCulture : (int)StringComparison.CurrentCultureIgnoreCase) };
+                return typeof(OperatorsImplementationProvider).GetMethod("StringLike", arguments);
+            case OperationNames.NotEqual:
+                if ((arguments.Length==3) && (arguments[2]==typeof(StringComparison)))
+                {
+                    // Comparisons are case insensitive by default: use them
+                    if (IsCaseSensitive((StringComparison)values[2]))
+                    {
+                        arguments=new Type[] { typeof(string), typeof(string), typeof(int) };
+                        values=new object[] { values[0], values[1], (int)((StringComparison)values[2]) };
+                        return typeof(OperatorsImplementationProvider).GetMethod("StringNotEqual", arguments);
+                    }
+                }
+                break;
             case OperationNames.Overlaps:
+                arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
                 values=values.Select<object, object>(v => GetBinary((SqlGeometry)v)).ToArray<object>();
-                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTOverlaps", new Type[] { typeof(byte[]), typeof(byte[]) });
+                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTOverlaps", arguments);
             case OperationNames.Touches:
+                arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
                 values=values.Select<object, object>(v => GetBinary((SqlGeometry)v)).ToArray<object>();
-                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTTouches", new Type[] { typeof(byte[]), typeof(byte[]) });
+                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTTouches", arguments);
             case OperationNames.Within:
+                arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
                 values=values.Select<object, object>(v => GetBinary((SqlGeometry)v)).ToArray<object>();
-                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTWithin", new Type[] { typeof(byte[]), typeof(byte[]) });
+                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTWithin", arguments);
             }
 
             return ret;
@@ -176,6 +211,37 @@ namespace OgcToolkit.WebSample.Models.ModelFirst
 
             var ret=g1.STWithin(g2).ToSqlInt32();
             return (ret.IsNull ? (int?)null : ret.Value);
+        }
+
+        [EdmFunction("OgcToolkit.WebSample.Models.ModelFirst.Store", "String_Equals")]
+        public static int? StringEquals(string string1, string string2, int comparison)
+        {
+            if (string1==null)
+                return null;
+
+            var ret=string1.Equals(string2, (StringComparison)comparison);
+            return Convert.ToInt32(ret);
+        }
+
+        [EdmFunction("OgcToolkit.WebSample.Models.ModelFirst.Store", "String_Like")]
+        public static int? StringLike(string @string, string pattern, string escape, int comparison)
+        {
+            throw new NotSupportedException();
+        }
+
+        [EdmFunction("OgcToolkit.WebSample.Models.ModelFirst.Store", "String_NotEqual")]
+        public static int? StringNotEqual(string string1, string string2, int comparison)
+        {
+            if (string1==null)
+                return null;
+
+            var ret=!string1.Equals(string2, (StringComparison)comparison);
+            return Convert.ToInt32(ret);
+        }
+
+        private static bool IsCaseSensitive(StringComparison comparison)
+        {
+            return (comparison==StringComparison.CurrentCulture) || (comparison==StringComparison.InvariantCulture) || (comparison==StringComparison.Ordinal);
         }
 
         private static byte[] GetBinary(SqlGeometry geometry)

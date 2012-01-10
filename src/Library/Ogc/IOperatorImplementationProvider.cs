@@ -10,6 +10,6 @@ namespace OgcToolkit
     public interface IOperatorImplementationProvider
     {
 
-        MethodInfo GetImplementation(string operatorName, Type[] arguments, ref object[] values, out object instance);
+        MethodInfo GetImplementation(string operatorName, ref Type[] arguments, ref object[] values, out object instance);
     }
 }

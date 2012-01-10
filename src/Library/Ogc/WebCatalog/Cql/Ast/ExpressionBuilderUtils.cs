@@ -21,28 +21,29 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
             // Custom implementation
             if (parameters.OperatorImplementationProvider!=null)
             {
+                Type[] arguments=new Type[] { subtype, subtype };
                 object[] pa=new object[] { null, right };
 
                 object instance;
-                MethodInfo method=parameters.OperatorImplementationProvider.GetImplementation(exType.ToString(), new Type[] { subtype, subtype }, ref pa, out instance);
+                MethodInfo method=parameters.OperatorImplementationProvider.GetImplementation(exType.ToString(), ref arguments, ref pa, out instance);
                 if (method!=null)
                 {
+                    Debug.Assert(arguments.Length==2);
                     Debug.Assert(pa.Length==2);
-                    Type st=(pa[1]!=null ? pa[1].GetType() : subtype); // Parameter types may have been changed
 
                     Expression op=null;
                     if (instance!=null)
                         op=Expression.Call(
                             Expression.Constant(instance),
                             method,
-                            left.CreateExpression(parameters, st),
-                            Expression.Constant(pa[1], st)
+                            left.CreateExpression(parameters, arguments[0]),
+                            Expression.Constant(pa[1], arguments[1])
                         );
                     else
                         op=Expression.Call(
                             method,
-                            left.CreateExpression(parameters, st),
-                            Expression.Constant(pa[1], st)
+                            left.CreateExpression(parameters, arguments[0]),
+                            Expression.Constant(pa[1], arguments[1])
                         );
 
                     Type rt=Nullable.GetUnderlyingType(method.ReturnType) ?? method.ReturnType;
