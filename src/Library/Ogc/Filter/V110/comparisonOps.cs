@@ -88,7 +88,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
                         Type rt=Nullable.GetUnderlyingType(method.ReturnType) ?? method.ReturnType;
                         if (method.ReturnType==typeof(bool))
-                            op;
+                            return op;
                         else
                             return Expression.Equal(
                                 op,
