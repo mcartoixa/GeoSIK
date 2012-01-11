@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -38,6 +39,7 @@ namespace OgcToolkit
             {
                 return new Uri(ToString());
             }
+            [SuppressMessage("Microsoft.Usage", "CA2208:InstantiateArgumentExceptionsCorrectly", Justification="value is the indeed the name of the parameter.")]
             private set
             {
                 if (value==null)
@@ -47,7 +49,7 @@ namespace OgcToolkit
                 if (!m.Success)
                     throw new ArgumentException("value");
 
-                Value=Convert.ToInt32(m.Groups["VALUE"].Value);
+                Value=Convert.ToInt32(m.Groups["VALUE"].Value, CultureInfo.InvariantCulture);
             }
         }
 

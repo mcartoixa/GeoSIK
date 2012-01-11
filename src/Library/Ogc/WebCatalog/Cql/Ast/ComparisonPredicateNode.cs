@@ -13,7 +13,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
 {
 
 #pragma warning disable 3009
-    public class ComparisonPredicateNode:
+    public sealed class ComparisonPredicateNode:
         BinaryOperationNode,
         IExpressionBuilder
     {

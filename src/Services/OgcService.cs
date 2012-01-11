@@ -14,7 +14,7 @@ namespace OgcToolkit.Services
     public abstract class OgcService
     {
 
-        public OgcService()
+        protected OgcService()
         {
             RequestCulture=CultureInfo.CurrentCulture;
             _Logger=LogManager.GetCurrentClassLogger();
