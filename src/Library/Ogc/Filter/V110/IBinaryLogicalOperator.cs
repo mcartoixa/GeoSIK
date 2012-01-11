@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -17,9 +18,13 @@ namespace OgcToolkit.Ogc.Filter.V110
         IExpressionBuilder
     {
 
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId="comparison", Justification="Interface to be implemented by generated code")]
         IList<comparisonOps> comparisonOps { get; }
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId="spatial", Justification="Interface to be implemented by generated code")]
         IList<spatialOps> spatialOps { get; }
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId="logic", Justification="Interface to be implemented by generated code")]
         IList<logicOps> logicOps { get; }
+        [SuppressMessage("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", MessageId="Function", Justification="Interface to be implemented by generated code")]
         IList<Function> Function { get; }
 
         Func<Expression, Expression, BinaryExpression> OperatorExpression { get; }

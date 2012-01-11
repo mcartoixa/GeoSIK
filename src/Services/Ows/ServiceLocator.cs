@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -158,6 +159,7 @@ namespace OgcToolkit.Services.Ows
             }
         }
 
+        [SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId="knownTypeAttributeTarget", Justification="Required to be used as a ServiceKnownTypeAttribute parameter")]
         public static Type[] GetRequestTypes(ICustomAttributeProvider knownTypeAttributeTarget)
         {
             if (_RequestTypes==null)
@@ -180,7 +182,9 @@ namespace OgcToolkit.Services.Ows
         /// <list type="bullet">
         ///   <item><description>all the keys are lower cased.</description></item>
         /// </list>
-        /// </para></remarks>
+        /// </para>
+        /// </remarks>
+        [SuppressMessage("Microsoft.Globalization", "CA1308:NormalizeStringsToUppercase")]
         internal static NameValueCollection NormalizeParameters(NameValueCollection parameters)
         {
             var ret=new NameValueCollection(parameters.Count);

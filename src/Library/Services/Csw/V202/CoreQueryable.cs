@@ -12,6 +12,23 @@ namespace OgcToolkit.Services.Csw.V202
     public class CoreQueryable
     {
 
+        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
+        static CoreQueryable()
+        {
+            _Queryables=new Dictionary<string, CoreQueryable>(11);
+            _Queryables.Add(Subject.Name, Subject);
+            _Queryables.Add(Title.Name, Title);
+            _Queryables.Add(Abstract.Name, Abstract);
+            _Queryables.Add(AnyText.Name, AnyText);
+            _Queryables.Add(Format.Name, Format);
+            _Queryables.Add(Identifier.Name, Identifier);
+            _Queryables.Add(Modified.Name, Modified);
+            _Queryables.Add(Type.Name, Type);
+            _Queryables.Add(BoundingBox.Name, BoundingBox);
+            _Queryables.Add(Crs.Name, Crs);
+            _Queryables.Add(Association.Name, Association);
+        }
+
         private CoreQueryable()
         {
         }
@@ -31,22 +48,6 @@ namespace OgcToolkit.Services.Csw.V202
         public static bool IsValidName(string name)
         {
             return _Queryables.ContainsKey(name);
-        }
-
-        static CoreQueryable()
-        {
-            _Queryables=new Dictionary<string, CoreQueryable>(11);
-            _Queryables.Add(Subject.Name, Subject);
-            _Queryables.Add(Title.Name, Title);
-            _Queryables.Add(Abstract.Name, Abstract);
-            _Queryables.Add(AnyText.Name, AnyText);
-            _Queryables.Add(Format.Name, Format);
-            _Queryables.Add(Identifier.Name, Identifier);
-            _Queryables.Add(Modified.Name, Modified);
-            _Queryables.Add(Type.Name, Type);
-            _Queryables.Add(BoundingBox.Name, BoundingBox);
-            _Queryables.Add(Crs.Name, Crs);
-            _Queryables.Add(Association.Name, Association);
         }
 
         public string Name

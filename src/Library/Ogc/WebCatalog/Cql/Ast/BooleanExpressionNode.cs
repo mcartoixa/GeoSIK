@@ -35,14 +35,14 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
             return ret;
         }
 
-        protected Type GetExpressionStaticType(ExpressionBuilderParameters parameters)
+        protected static Type GetExpressionStaticType()
         {
             return typeof(bool);
         }
 
         Type IExpressionBuilder.GetExpressionStaticType(ExpressionBuilderParameters parameters)
         {
-            return GetExpressionStaticType(parameters);
+            return GetExpressionStaticType();
         }
 
         protected override object DoEvaluate(ScriptThread thread)

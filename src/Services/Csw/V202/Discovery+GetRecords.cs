@@ -490,7 +490,7 @@ namespace OgcToolkit.Services.Csw.V202
                 {
                     //if (query.SortBy!=null)
                     if (query.Untyped.Descendants("{http://www.opengis.net/ogc}SortBy").Any<XElement>())
-                        records=Filter110.FilterQueryable.OrderBy(records, query.SortBy, namespaceManager, mayRootPathBeImplied);
+                        records=Filter110.FilterQueryable.OrderBy(records, query.SortBy, namespaceManager, mayRootPathBeImplied, (t, r) => new XPathQueryableNavigator(t, r));
                 }
 
                 // Paging must be done after a sort
