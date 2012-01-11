@@ -9,7 +9,8 @@ using System.Text.RegularExpressions;
 namespace OgcToolkit
 {
 
-    public struct Srid
+    public struct Srid:
+        IEquatable<Srid>
     {
 
         public Srid(int value)
@@ -17,11 +18,22 @@ namespace OgcToolkit
             _Value=value;
         }
 
-        public static Srid CreateFromCrs(Uri crs)
+        public override bool Equals(object obj)
         {
-            return new Srid() {
-                Crs=crs
-            };
+            if (!(obj is Srid))
+                return false;
+
+            return Equals((Srid)obj);
+        }
+
+        public bool Equals(Srid other)
+        {
+            return other.Value==Value;
+        }
+
+        public override int GetHashCode()
+        {
+            return _Value.GetHashCode();
         }
 
         public override string ToString()
@@ -33,6 +45,22 @@ namespace OgcToolkit
             );
         }
 
+        public static Srid CreateFromCrs(Uri crs)
+        {
+            return new Srid() {
+                Crs=crs
+            };
+        }
+
+        public static bool operator==(Srid idl, Srid idr)
+        {
+            return idl.Equals(idr);
+        }
+
+        public static bool operator!=(Srid idl, Srid idr)
+        {
+            return !idl.Equals(idr);
+        }   
         public Uri Crs
         {
             get

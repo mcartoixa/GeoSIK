@@ -7,11 +7,11 @@ namespace OgcToolkit.Services.Csw.V202
 {
 
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, Inherited=true, AllowMultiple=true)]
-    public class CoreQueryableAttribute:
+    public sealed class CoreQueryableAttribute:
         Attribute
     {
 
-        public CoreQueryableAttribute(CoreQueryable queryable)
+        private CoreQueryableAttribute(CoreQueryable queryable)
         {
             Queryable=queryable;
         }
@@ -24,7 +24,7 @@ namespace OgcToolkit.Services.Csw.V202
         public CoreQueryable Queryable
         {
             get;
-            set;
+            private set;
         }
     }
 }
