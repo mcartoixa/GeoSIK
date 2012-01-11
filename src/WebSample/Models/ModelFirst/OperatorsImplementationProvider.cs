@@ -64,9 +64,16 @@ namespace OgcToolkit.WebSample.Models.ModelFirst
                 values=values.Select<object, object>(v => GetBinary((SqlGeometry)v)).ToArray<object>();
                 return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTIntersects", arguments);
             case OperationNames.Like:
-                arguments=new Type[] { typeof(string), typeof(string), typeof(string), typeof(int) };
-                values=new object[] { values[0], values[1], values[2].ToString(), ((bool)values[3] ? (int)StringComparison.CurrentCulture : (int)StringComparison.CurrentCultureIgnoreCase) };
-                return typeof(OperatorsImplementationProvider).GetMethod("StringLike", arguments);
+                {
+                    StringComparison comparison=((bool)values[3] ? StringComparison.CurrentCulture : StringComparison.CurrentCultureIgnoreCase);
+                    arguments=new Type[] { typeof(string), typeof(string), typeof(string), typeof(int) };
+                    values=new object[] { values[0], values[1], (values[2]!=null ? values[2].ToString() : null), (int)comparison };
+
+                    if ((comparison==StringComparison.CurrentCultureIgnoreCase) && (values[2]==null))
+                        return typeof(OperatorsImplementationProvider).GetMethod("StringCILike", arguments);
+
+                    return typeof(OperatorsImplementationProvider).GetMethod("StringLike", arguments);
+                }
             case OperationNames.NotEqual:
                 if ((arguments.Length==3) && (arguments[2]==typeof(StringComparison)))
                 {
@@ -225,6 +232,12 @@ namespace OgcToolkit.WebSample.Models.ModelFirst
 
         [EdmFunction("OgcToolkit.WebSample.Models.ModelFirst.Store", "String_Like")]
         public static int? StringLike(string @string, string pattern, string escape, int comparison)
+        {
+            throw new NotSupportedException();
+        }
+
+        [EdmFunction("OgcToolkit.WebSample.Models.ModelFirst", "StringCILike")]
+        public static bool StringCILike(string @string, string pattern, string escape, int comparison)
         {
             throw new NotSupportedException();
         }

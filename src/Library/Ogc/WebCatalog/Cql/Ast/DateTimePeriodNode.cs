@@ -22,18 +22,18 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
             AstNode en=AddChild("to", treeNode.MappedChildNodes[2]);
 
             var dtsn=sn as DateTimeLiteralNode;
+            var dten=en as DateTimeLiteralNode;
             if (dtsn!=null)
             {
                 _StartDate=dtsn.Value;
 
-                var dten=en as DateTimeLiteralNode;
                 if (dten!=null)
                     _EndDate=dten.Value;
                 else
                     _EndDate=_StartDate+((DurationLiteralNode)en).Value;
             } else
             {
-                _EndDate=((DateTimeLiteralNode)en).Value;
+                _EndDate=dten.Value;
                 _StartDate=_EndDate-((DurationLiteralNode)sn).Value;
             }
 

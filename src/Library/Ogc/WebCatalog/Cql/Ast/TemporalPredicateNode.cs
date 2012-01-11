@@ -11,7 +11,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
 {
 
 #pragma warning disable 3001, 3009
-    public class TemporalPredicateNode:
+    public sealed class TemporalPredicateNode:
         AstNode,
         IExpressionBuilder
     {

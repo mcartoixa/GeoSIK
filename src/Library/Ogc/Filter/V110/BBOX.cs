@@ -51,7 +51,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
                     Type rt=Nullable.GetUnderlyingType(binaryMethod.ReturnType) ?? binaryMethod.ReturnType;
                     if (binaryMethod.ReturnType==typeof(bool))
-                        return Expression.IsFalse(op);
+                        return Expression.Negate(op);
                     else
                         return Expression.NotEqual(
                             op,

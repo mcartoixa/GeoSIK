@@ -24,7 +24,7 @@ namespace OgcToolkit.Ogc.Filter.V110
             Debug.Assert(Literal!=null);
             Debug.Assert((escapeChar==null) || (escapeChar.Length<=1));
 
-            char? ec=(escapeChar.Length>0 ? (char?)escapeChar[0] : null);
+            char? ec=(!string.IsNullOrEmpty(escapeChar) ? (char?)escapeChar[0] : null);
             string pattern=TranslateToSqlLikePattern(Literal.Untyped.Value, wildCard, singleChar, ec);
 
             // Custom implementation
@@ -59,7 +59,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
                     Type rt=Nullable.GetUnderlyingType(method.ReturnType) ?? method.ReturnType;
                     if (method.ReturnType==typeof(bool))
-                        return Expression.IsTrue(op);
+                        return op;
                     else
                         return Expression.Equal(
                             op,

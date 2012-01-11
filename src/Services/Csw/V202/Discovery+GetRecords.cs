@@ -405,7 +405,7 @@ namespace OgcToolkit.Services.Csw.V202
                 );
 
                 // Asynchronous processing
-                if ((request.ResponseHandler!=null)&&(request.ResponseHandler.Count>0))
+                if ((request.ResponseHandler!=null) && (request.ResponseHandler.Count>0))
                 {
                     task
                         .ContinueWith(_SendRecordsResponse)
@@ -601,8 +601,8 @@ namespace OgcToolkit.Services.Csw.V202
                     {
                     case "ftp":
                         {
-                            Uri ftpuri=uri.IsFile?uri:new Uri(uri, string.Concat(request.requestId.Host, ".xml"));
-                            Service.Logger.Info(m => m("Opening FTP connection to {0}", ftpuri));
+                            Uri ftpuri=uri.IsFile ? uri  :new Uri(uri, string.Concat(request.requestId.Host, ".xml"));
+                            Service.Logger.Info(CultureInfo.InvariantCulture, m => m("Opening FTP connection to {0}", ftpuri));
 
                             FtpWebRequest ftpreq=(FtpWebRequest)WebRequest.Create(ftpuri);
                             ftpreq.Method=WebRequestMethods.Ftp.UploadFile;

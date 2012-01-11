@@ -15,7 +15,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
 {
 
 #pragma warning disable 3001, 3009
-    public class GeoOperatorRoutineNode:
+    public sealed class GeoOperatorRoutineNode:
         AstNode,
         IExpressionBuilder
     {
@@ -63,7 +63,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
 
                     Type rt=Nullable.GetUnderlyingType(method.ReturnType) ?? method.ReturnType;
                     if (method.ReturnType==typeof(bool))
-                        return Expression.IsTrue(op);
+                        return op;
                     else
                         return Expression.Equal(
                             op,

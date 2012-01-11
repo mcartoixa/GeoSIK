@@ -41,7 +41,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql
                     switch (pm.Level)
                     {
                     case ParserErrorLevel.Error:
-                        logger.Error(m => m("({0},{1}): {2}", pm.Location.Line, pm.Location.Column, pm.Message));
+                        logger.Error(CultureInfo.InvariantCulture, m => m("({0},{1}): {2}", pm.Location.Line, pm.Location.Column, pm.Message));
                         exl.Add(
                             new ArgumentException(
                                 string.Format(
@@ -57,10 +57,10 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql
                         );
                         break;
                     case ParserErrorLevel.Info:
-                        logger.Info(m => m("({0},{1}): {2}", pm.Location.Line, pm.Location.Column, pm.Message));
+                        logger.Info(CultureInfo.InvariantCulture, m => m("({0},{1}): {2}", pm.Location.Line, pm.Location.Column, pm.Message));
                         break;
                     default:
-                        logger.Warn(m => m("({0},{1}): {2}", pm.Location.Line, pm.Location.Column, pm.Message));
+                        logger.Warn(CultureInfo.InvariantCulture, m => m("({0},{1}): {2}", pm.Location.Line, pm.Location.Column, pm.Message));
                         break;
                     }
 
@@ -102,16 +102,16 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql
                             {
                             case GrammarErrorLevel.InternalError:
                             case GrammarErrorLevel.Error:
-                                logger.Error(m => m(ge.Message));
+                                logger.Error(CultureInfo.InvariantCulture, m => m(ge.Message));
                                 break;
                             case GrammarErrorLevel.Info:
-                                logger.Info(m => m(ge.Message));
+                                logger.Info(CultureInfo.InvariantCulture, m => m(ge.Message));
                                 break;
                             case GrammarErrorLevel.NoError:
-                                logger.Trace(m => m(ge.Message));
+                                logger.Trace(CultureInfo.InvariantCulture, m => m(ge.Message));
                                 break;
                             default:
-                                logger.Warn(m => m(ge.Message));
+                                logger.Warn(CultureInfo.InvariantCulture, m => m(ge.Message));
                                 break;
                             }
                     }

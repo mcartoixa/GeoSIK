@@ -68,7 +68,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
 
                     Type rt=Nullable.GetUnderlyingType(method.ReturnType) ?? method.ReturnType;
                     if (method.ReturnType==typeof(bool))
-                        return (_OptionalNot!=null ? Expression.IsFalse(ret) : ret);
+                        return (_OptionalNot!=null ? Expression.Negate(ret) : ret);
                     else
                         return Expression.MakeBinary(
                             _OptionalNot!=null ? ExpressionType.NotEqual : ExpressionType.Equal,
@@ -89,7 +89,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
             if (ret!=null)
             {
                 if (_OptionalNot!=null)
-                    ret=Expression.IsFalse(ret);
+                    ret=Expression.Negate(ret);
                 return ret;
             }
 

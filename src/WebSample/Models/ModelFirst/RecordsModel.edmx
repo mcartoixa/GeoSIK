@@ -95,7 +95,8 @@
           <Parameter Name="string2" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="comparison" Type="int" Mode="In" />
         </Function>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="OgcToolkit.WebSample.Models.ModelFirst" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -140,28 +141,41 @@
           <Property Type="String" Name="Subject" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="SubjectScheme" MaxLength="256" FixedLength="false" Unicode="false" />
         </ComplexType>
+        <Function Name="StringCILike" ReturnType="Edm.Boolean">
+          <Parameter Name="expression" Type="Edm.String" />
+          <Parameter Name="pattern" Type="Edm.String" />
+          <Parameter Name="unused1" Type="Edm.String" />
+          <Parameter Name="unused2" Type="Edm.Int32" />
+          <DefiningExpression>
+            expression LIKE pattern
+          </DefiningExpression>
+        </Function>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="OgcToolkitWebSampleModelsModelFirstStoreContainer" CdmEntityContainer="MFConceptualEntities">
-          <EntitySetMapping Name="MFRecords"><EntityTypeMapping TypeName="OgcToolkit.WebSample.Models.ModelFirst.MFRecord"><MappingFragment StoreEntitySet="Records">
-            <ScalarProperty Name="Identifier" ColumnName="Identifier" />
-            <ScalarProperty Name="Title" ColumnName="Title" />
-            <ScalarProperty Name="Description" ColumnName="Description" />
-            <ScalarProperty Name="Date" ColumnName="Date" />
-            <ScalarProperty Name="Type" ColumnName="Type" />
-            <ScalarProperty Name="Format" ColumnName="Format" />
-            <ScalarProperty Name="Relation" ColumnName="Relation" />
-            <ScalarProperty Name="Spatial" ColumnName="Spatial" />
-            <ScalarProperty Name="Coverage" ColumnName="Coverage" />
-            <ScalarProperty Name="AnyText" ColumnName="AnyText" />
+          <EntitySetMapping Name="MFRecords">
+            <EntityTypeMapping TypeName="OgcToolkit.WebSample.Models.ModelFirst.MFRecord">
+              <MappingFragment StoreEntitySet="Records">
+                <ScalarProperty Name="Identifier" ColumnName="Identifier" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Format" ColumnName="Format" />
+                <ScalarProperty Name="Relation" ColumnName="Relation" />
+                <ScalarProperty Name="Spatial" ColumnName="Spatial" />
+                <ScalarProperty Name="Coverage" ColumnName="Coverage" />
+                <ScalarProperty Name="AnyText" ColumnName="AnyText" />
                 <ComplexProperty Name="Subject">
                   <ScalarProperty Name="SubjectScheme" ColumnName="SubjectScheme" />
                   <ScalarProperty Name="Subject" ColumnName="Subject" />
                 </ComplexProperty>
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
