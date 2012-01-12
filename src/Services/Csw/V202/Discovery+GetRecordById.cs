@@ -185,7 +185,7 @@ namespace OgcToolkit.Services.Csw.V202
                     TypeConverter converter=GetIdentifierUriConverter(idType);
 
                     // Convert ids from Uris to identifier type
-                    var up=Expression.Parameter(typeof(Uri));
+                    var urip=Expression.Parameter(typeof(Uri));
                     var conex=Expression.Lambda(
                         typeof(Func<,>).MakeGenericType(typeof(Uri), idType),
                         Expression.Convert(
@@ -193,20 +193,25 @@ namespace OgcToolkit.Services.Csw.V202
                                 Expression.Constant(converter),
                                 "ConvertTo",
                                 null,
-                                up,
+                                urip,
                                 Expression.Constant(idType)
                             ),
                             idType
                         ),
-                        up
+                        urip
                     );
-                    Expression convertedIds=Expression.Call(
-                        typeof(Enumerable),
-                        "Select",
-                        new Type[] { typeof(Uri), idType },
-                        Expression.Constant(ids),
-                        conex
-                    );
+                    var urilistp=Expression.Parameter(typeof(IEnumerable<Uri>));
+                    var convertids=Expression.Lambda(
+                        Expression.Call(
+                            typeof(Enumerable),
+                            "Select",
+                            new Type[] { typeof(Uri), idType },
+                            Expression.Constant(ids),
+                            conex
+                        ),
+                        urilistp
+                    ).Compile();
+                    var convertedIds=convertids.DynamicInvoke(ids);
 
                     // Creates the Where clause
                     LambdaExpression lambda=Expression.Lambda(
@@ -214,7 +219,7 @@ namespace OgcToolkit.Services.Csw.V202
                             typeof(Enumerable),
                             "Contains",
                             new Type[] { idType },
-                            convertedIds,
+                            Expression.Constant(convertedIds),
                             idn.CreateExpression(parameters[0])
                         ),
                         parameters

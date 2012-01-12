@@ -16,7 +16,8 @@ namespace OgcToolkit
         public const string OgcFilterV110="http://www.opengis.net/ogc";
         public const string OgcGml="http://www.opengis.net/gml";
         public const string OgcOws="http://www.opengis.net/ows";
-        public const string StrangeXmlSchemaNamespace="http://www.w3.org/XML/Schema";
+        public const string XLinkNamespace="http://www.w3.org/1999/xlink";
         public const string XmlSchemaNamespace="http://www.w3.org/2001/XMLSchema";
+        public const string StrangeXmlSchemaNamespace="http://www.w3.org/XML/Schema";
     }
 }
