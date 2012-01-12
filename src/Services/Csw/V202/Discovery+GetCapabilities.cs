@@ -78,11 +78,23 @@ namespace OgcToolkit.Services.Csw.V202
                 {
                     Ows100.OperationsMetadata om=CreateOperationsMetadataSection();
                     if (om!=null)
+                    {
+                        ret.Untyped.Add(
+                            new XAttribute(XNamespace.Xmlns+"xl", Namespaces.XLinkNamespace)
+                        );
                         ret.Content.OperationsMetadata=om;
+                    }
                 }
 
                 if (returnAll || (request.Content.Sections.Section.Contains("ServiceProvider")))
+                {
+                    string xl=ret.Untyped.GetPrefixOfNamespace(Namespaces.XLinkNamespace);
+                    if (string.IsNullOrEmpty(xl))
+                        ret.Untyped.Add(
+                            new XAttribute(XNamespace.Xmlns+"xl", Namespaces.XLinkNamespace)
+                        );
                     ret.Content.ServiceProvider=CreateServiceProviderSection();
+                }
 
                 if (returnAll || (request.Content.Sections.Section.Contains("ServiceIdentification")))
                     ret.Content.ServiceIdentification=CreateServiceIdentificationSection();
@@ -140,6 +152,7 @@ namespace OgcToolkit.Services.Csw.V202
                         }
                     }
                 };
+
                 ret.Untyped.Add(
                     new XAttribute(XNamespace.Xmlns+"gml", Namespaces.OgcGml)
                 );
@@ -155,11 +168,11 @@ namespace OgcToolkit.Services.Csw.V202
                 if (getCapabilities!=null)
                 {
                     getCapabilities.Parameter=new Ows100.DomainType[] {
-                    new Ows100.DomainType() {
-                        name=SectionsParameter,
-                        Value=new string[] { "ServiceIdentification", "ServiceProvider", "OperationsMetadata", "Filter_Capabilities" }
-                    }
-                };
+                        new Ows100.DomainType() {
+                            name=SectionsParameter,
+                            Value=new string[] { "ServiceIdentification", "ServiceProvider", "OperationsMetadata", "Filter_Capabilities" }
+                        }
+                    };
                     operations.Add(getCapabilities);
                 }
 
@@ -191,20 +204,65 @@ namespace OgcToolkit.Services.Csw.V202
                     }
 
                     describeRecord.Parameter=new Ows100.DomainType[] {
-                    new Ows100.DomainType() {
-                        name=TypeNameParameter,
-                        Value=supportedTypes
-                            .Select<IXMetaData, string>(
-                                m => string.Concat(describeRecord.Untyped.GetPrefixOfNamespace(m.SchemaName.Namespace), ":", m.GetType().Name)
-                            ).ToList<string>()
-                    }
-                };
+                        new Ows100.DomainType() {
+                            name=Discovery.OutputFormatParameter,
+                            Value=OgcService.XmlMimeTypes
+                        },
+                        new Ows100.DomainType() {
+                            name=TypeNameParameter,
+                            Value=supportedTypes
+                                .Select<IXMetaData, string>(
+                                    m => string.Concat(describeRecord.Untyped.GetPrefixOfNamespace(m.SchemaName.Namespace), ":", m.GetType().Name)
+                                ).ToArray<string>()
+                        }
+                    };
                     operations.Add(describeRecord);
                 }
 
                 Ows100.Operation getRecords=CreateOperation("GetRecords", GetEndPoints());
                 if (getRecords!=null)
                 {
+                    IEnumerable<IXMetaData> supportedTypes=((Discovery)Service).GetSupportedRecordTypes();
+
+                    // Creates prefixes for supported records namespaces
+                    int n=0;
+                    foreach (IXMetaData st in supportedTypes)
+                    {
+                        string p=getRecords.Untyped.GetPrefixOfNamespace(st.SchemaName.Namespace);
+                        if (string.IsNullOrEmpty(p))
+                        {
+                            string ns=null;
+                            do
+                            {
+                                ns=string.Format(
+                                    CultureInfo.InvariantCulture,
+                                    "ns{0}",
+                                    n++
+                                );
+                            } while (getRecords.Untyped.GetNamespaceOfPrefix(ns)!=null);
+                            getRecords.Untyped.Add(
+                                new XAttribute(XNamespace.Xmlns+ns, st.SchemaName.Namespace)
+                            );
+                        }
+                    }
+                    var parameters=new Ows100.DomainType[] {
+                        new Ows100.DomainType() {
+                            name=OutputFormatParameter,
+                            Value=OgcService.XmlMimeTypes
+                        },
+                        new Ows100.DomainType() {
+                            name=OutputSchemaParameter,
+                            Value=supportedTypes.Select<IXMetaData, string>(m => m.SchemaName.NamespaceName).ToArray<string>()
+                        },
+                        new Ows100.DomainType() {
+                            name=TypeNameParameter,
+                            Value=supportedTypes
+                                .Select<IXMetaData, string>(
+                                    m => string.Concat(getRecords.Untyped.GetPrefixOfNamespace(m.SchemaName.Namespace), ":", m.GetType().Name)
+                                ).ToArray<string>()
+                        }
+                    };
+                    getRecords.Parameter=parameters;
 
                     operations.Add(getRecords);
                 }
@@ -212,6 +270,17 @@ namespace OgcToolkit.Services.Csw.V202
                 Ows100.Operation getRecordById=CreateOperation("GetRecordById", GetEndPoints());
                 if (getRecordById!=null)
                 {
+                    var parameters=new Ows100.DomainType[] {
+                        new Ows100.DomainType() {
+                            name=OutputFormatParameter,
+                            Value=OgcService.XmlMimeTypes
+                        },
+                        new Ows100.DomainType() {
+                            name=OutputSchemaParameter,
+                            Value=((Discovery)Service).GetSupportedRecordTypes().Select<IXMetaData, string>(m => m.SchemaName.NamespaceName).ToArray<string>()
+                        }
+                    };
+                    getRecordById.Parameter=parameters;
 
                     operations.Add(getRecordById);
                 }

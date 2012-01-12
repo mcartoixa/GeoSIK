@@ -389,6 +389,8 @@ namespace OgcToolkit.Services.Csw.V202
 
             public override IGetRecordsResponse Process(GetRecords request)
             {
+                CheckRequest(request);
+
                 var task=new Task<IGetRecordsResponse>(
                     r => {
                         GetRecords req=(GetRecords)r;
@@ -482,8 +484,21 @@ namespace OgcToolkit.Services.Csw.V202
                         nextRecord=Math.Min(1, recordsMatched)
                     };
                     return ret;
-                }
+                } else if (string.CompareOrdinal(request.resultType, "validate")==0)
+                {
+                    var echo=new EchoedRequestType();
+                    echo.Untyped.Add(request.Untyped);
 
+                    var r=new Acknowledgement() {
+                        EchoedRequest=echo,
+                        timeStamp=DateTime.UtcNow
+                    };
+                    if (request.requestId!=null)
+                        r.RequestId=request.requestId;
+                    else
+                        r.RequestId=new Uri(string.Concat("urn:uuid:", Guid.NewGuid().ToString("D", CultureInfo.InvariantCulture)));
+                    return r;
+                }
 
                 // Order by
                 if (query!=null)
@@ -601,7 +616,7 @@ namespace OgcToolkit.Services.Csw.V202
                     {
                     case "ftp":
                         {
-                            Uri ftpuri=uri.IsFile ? uri  :new Uri(uri, string.Concat(request.requestId.Host, ".xml"));
+                            Uri ftpuri=uri.IsFile ? uri : new Uri(uri, string.Concat(request.requestId.Host, ".xml"));
                             Service.Logger.Info(CultureInfo.InvariantCulture, m => m("Opening FTP connection to {0}", ftpuri));
 
                             FtpWebRequest ftpreq=(FtpWebRequest)WebRequest.Create(ftpuri);
