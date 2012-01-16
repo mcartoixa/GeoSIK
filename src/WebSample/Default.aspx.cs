@@ -14,11 +14,5 @@ namespace OgcToolkit.WebSample
         {
 
         }
-
-        protected void _RecordDataSource_ContextCreating(object sender, EntityDataSourceContextCreatingEventArgs e)
-        {
-            //var context=new Models.CodeFirst.RecordContext("RecordsSource");
-            //e.Context=((IObjectContextAdapter)context).ObjectContext;
-        }
     }
 }
