@@ -15,7 +15,9 @@ namespace OgcToolkit.Ogc.Filter.Tests
 
         [Theory]
         [InlineData(typeof(TestRecordType), "dc:identifier")]
+        [InlineData(typeof(TestRecordType), "/dc:identifier")]
         [InlineData(typeof(TestRecordType), "dc:title")]
+        [InlineData(typeof(TestRecordType), "/dc:title")]
         [InlineData(typeof(TestRecordType), "csw:Record")]
         [InlineData(typeof(TestRecordType), "/csw:Record")]
         [InlineData(typeof(TestRecordType), "/csw:Record/dc:title")]
@@ -31,6 +33,7 @@ namespace OgcToolkit.Ogc.Filter.Tests
 
         [Theory]
         [InlineData(typeof(TestRecordType), "dc:dummy")]
+        [InlineData(typeof(TestRecordType), "/dc:dummy")]
         [InlineData(typeof(TestRecordType), "csw:dummy")]
         [InlineData(typeof(TestRecordType), "/csw:dummy")]
         [InlineData(typeof(TestRecordType), "/csw:Record/dc:dummy")]

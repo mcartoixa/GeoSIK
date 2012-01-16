@@ -358,7 +358,7 @@ namespace OgcToolkit.Services.Csw.V202
                 if (request.outputSchema==null)
                     request.outputSchema=new Uri(Namespaces.OgcWebCatalogCswV202);
 
-                if (!((Discovery)Service).GetSupportedRecordTypes().Select<IXMetaData, XNamespace>(s => s.SchemaName.Namespace).Contains<XNamespace>(request.outputSchema.ToString()))
+                if (!((Discovery)Service).SupportedRecordTypes.Select<IXMetaData, XNamespace>(s => s.SchemaName.Namespace).Contains<XNamespace>(request.outputSchema.ToString()))
                     throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
                         Locator=OutputSchemaParameter
                     };
@@ -475,6 +475,13 @@ namespace OgcToolkit.Services.Csw.V202
                         records=records.Where(query.Constraint, namespaceManager, mayRootPathBeImplied, ((Discovery)Service).GetOperatorImplementationProvider());
                 }
 
+                if (Service.Logger.IsDebugEnabled)
+                {
+                    string t=records.ToTraceString();
+                    if (!string.IsNullOrEmpty(t))
+                        Service.Logger.Debug(t);
+                }
+
                 int recordsMatched=records.Count();
                 if (string.CompareOrdinal(request.resultType, "hits")==0)
                 {
@@ -514,6 +521,13 @@ namespace OgcToolkit.Services.Csw.V202
 
                 if (request.maxRecords>=0)
                     records=records.Take(Convert.ToInt32(request.maxRecords));
+
+                if (Service.Logger.IsDebugEnabled)
+                {
+                    string t=records.ToTraceString();
+                    if (!string.IsNullOrEmpty(t))
+                        Service.Logger.Debug(t);
+                }
 
                 // Results
                 IEnumerable<IXmlSerializable> results=null;
@@ -640,7 +654,6 @@ namespace OgcToolkit.Services.Csw.V202
                 if (task.Exception!=null)
                     Service.Logger.Error("An exception occured during an asynchronous operation", task.Exception);
             }
-
         }
 
     }

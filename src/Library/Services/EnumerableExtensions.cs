@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 
 namespace OgcToolkit.Services
@@ -61,6 +62,15 @@ namespace OgcToolkit.Services
                     Expression.Constant(count, typeof(int))
                 )
             );
+        }
+
+        internal static string ToTraceString(this IQueryable source)
+        {
+            MethodInfo ttsmi=source.GetType().GetMethod("ToTraceString");
+            if (ttsmi!=null)
+                return (string)ttsmi.Invoke(source, null);
+
+            return null;
         }
     }
 }

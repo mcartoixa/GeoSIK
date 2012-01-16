@@ -130,9 +130,12 @@ namespace OgcToolkit.WebSample.Services
             return new GetCapabilitiesProcessor(this);
         }
 
-        public override IEnumerable<IXMetaData> GetSupportedRecordTypes()
+        public override IEnumerable<IXMetaData> SupportedRecordTypes
         {
-            return _SupportedRecordTypesInstances;
+            get
+            {
+                return _SupportedRecordTypesInstances;
+            }
         }
 
         protected override IQueryable GetRecordsSource(Uri outputSchema)

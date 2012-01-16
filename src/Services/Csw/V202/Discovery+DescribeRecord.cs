@@ -123,7 +123,7 @@ namespace OgcToolkit.Services.Csw.V202
                 var ret=new DescribeRecordResponse();
 
                 // Get the names of record types
-                List<XName> names=((Discovery)Service).GetSupportedRecordTypes().Select<IXMetaData, XName>(m => m.SchemaName).ToList<XName>();
+                List<XName> names=((Discovery)Service).SupportedRecordTypes.Select<IXMetaData, XName>(m => m.SchemaName).ToList<XName>();
                 if ((request.TypeName!=null) && (request.TypeName.Count>0))
                 {
                     names.Clear();
@@ -146,7 +146,7 @@ namespace OgcToolkit.Services.Csw.V202
                         }
 
                         // Check the name is a supported type
-                        if (!((Discovery)Service).GetSupportedRecordTypes().Any<IXMetaData>(m => (m.GetType().Name==name) && (m.SchemaName.Namespace==@namespace)))
+                        if (!((Discovery)Service).SupportedRecordTypes.Any<IXMetaData>(m => (m.GetType().Name==name) && (m.SchemaName.Namespace==@namespace)))
                             break;
 
                         names.Add(string.Concat("{", @namespace, "}", name));

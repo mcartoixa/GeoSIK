@@ -91,12 +91,15 @@ namespace OgcToolkit.Services.Csw.V202
             return new GetRecordByIdProcessorBase(this);
         }
 
-        public virtual IEnumerable<IXMetaData> GetSupportedRecordTypes()
-        {
-            return _SupportedRecordTypesInstances;
-        }
-
         protected abstract IQueryable GetRecordsSource(Uri outputSchema);
+
+        public virtual IEnumerable<IXMetaData> SupportedRecordTypes
+        {
+            get
+            {
+                return _SupportedRecordTypesInstances;
+            }
+        }
 
         protected virtual IOperatorImplementationProvider GetOperatorImplementationProvider()
         {
@@ -178,7 +181,7 @@ namespace OgcToolkit.Services.Csw.V202
 
         private static readonly Regex _NamespacesRegEx=new Regex(@"^xmlns\(((?<PREFIX>\w+)=)?(?<URL>.+)\)$", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.ExplicitCapture);
         private static readonly Regex _InvalidFileNameCharsRegEx=new Regex(@"\W", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private static readonly IXMetaData[] _SupportedRecordTypesInstances=new IXMetaData[] { new Record()/*, new Gmd.MD_Metadata()*/ };
+        private static readonly IXMetaData[] _SupportedRecordTypesInstances=new IXMetaData[] { new Record() };
 
         public const string Service="CSW";
         public const string Version="2.0.2";
