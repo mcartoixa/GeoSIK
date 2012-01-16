@@ -100,7 +100,7 @@ namespace OgcToolkit.Services.Csw.V202
                 if (request.outputSchema==null)
                     request.outputSchema=new Uri(Namespaces.OgcWebCatalogCswV202);
 
-                if (!((Discovery)Service).GetSupportedRecordTypes().Select<IXMetaData, XNamespace>(s => s.SchemaName.Namespace).Contains<XNamespace>(request.outputSchema.ToString()))
+                if (!((Discovery)Service).SupportedRecordTypes.Select<IXMetaData, XNamespace>(s => s.SchemaName.Namespace).Contains<XNamespace>(request.outputSchema.ToString()))
                     throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
                         Locator=OutputSchemaParameter
                     };
@@ -134,6 +134,13 @@ namespace OgcToolkit.Services.Csw.V202
 
                 IQueryable records=((Discovery)Service).GetRecordsSource(null);
                 records=Where(records, request.Id, namespaceManager, ((Discovery)Service).GetOperatorImplementationProvider());
+
+                if (Service.Logger.IsDebugEnabled)
+                {
+                    string t=records.ToTraceString();
+                    if (!string.IsNullOrEmpty(t))
+                        Service.Logger.Debug(t);
+                }
 
                 // Performs the query
                 IEnumerable<IXmlSerializable> results=records.StaticCast<IRecord>()

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
@@ -42,6 +43,8 @@ namespace OgcToolkit.Services
 
         public virtual TResponse Process(TRequest request)
         {
+            Service.Logger.Trace(CultureInfo.InvariantCulture, m => m("Request processing started"));
+
             CheckRequest(request);
 
             TResponse ret=ProcessRequest(request);
@@ -50,6 +53,7 @@ namespace OgcToolkit.Services
             OnProcessed(args);
 
             Debug.Assert(args.Response!=null);
+            Service.Logger.Trace(CultureInfo.InvariantCulture, m => m("Request processing finished"));
             return args.Response;
         }
 

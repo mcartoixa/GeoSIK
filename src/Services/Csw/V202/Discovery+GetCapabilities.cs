@@ -179,7 +179,7 @@ namespace OgcToolkit.Services.Csw.V202
                 Ows100.Operation describeRecord=CreateOperation("DescribeRecord", GetEndPoints());
                 if (describeRecord!=null)
                 {
-                    IEnumerable<IXMetaData> supportedTypes=((Discovery)Service).GetSupportedRecordTypes();
+                    IEnumerable<IXMetaData> supportedTypes=((Discovery)Service).SupportedRecordTypes;
 
                     // Creates prefixes for supported records namespaces
                     int n=0;
@@ -222,7 +222,7 @@ namespace OgcToolkit.Services.Csw.V202
                 Ows100.Operation getRecords=CreateOperation("GetRecords", GetEndPoints());
                 if (getRecords!=null)
                 {
-                    IEnumerable<IXMetaData> supportedTypes=((Discovery)Service).GetSupportedRecordTypes();
+                    IEnumerable<IXMetaData> supportedTypes=((Discovery)Service).SupportedRecordTypes;
 
                     // Creates prefixes for supported records namespaces
                     int n=0;
@@ -277,7 +277,7 @@ namespace OgcToolkit.Services.Csw.V202
                         },
                         new Ows100.DomainType() {
                             name=OutputSchemaParameter,
-                            Value=((Discovery)Service).GetSupportedRecordTypes().Select<IXMetaData, string>(m => m.SchemaName.NamespaceName).ToArray<string>()
+                            Value=((Discovery)Service).SupportedRecordTypes.Select<IXMetaData, string>(m => m.SchemaName.NamespaceName).ToArray<string>()
                         }
                     };
                     getRecordById.Parameter=parameters;
@@ -391,7 +391,7 @@ namespace OgcToolkit.Services.Csw.V202
                     }
                 }
 
-                if ((getMethods.Count>0)||(postMethods.Count>0))
+                if ((getMethods.Count>0) || (postMethods.Count>0))
                 {
                     ret=new Ows100.Operation() {
                         name=operationName,

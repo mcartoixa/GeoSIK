@@ -97,8 +97,8 @@ namespace OgcToolkit.Ogc.Filter.Tests
         [XmlElement("abstract", Namespace=Namespaces.DublinCoreTerms, DataType="string", Order=3, IsNullable=false)]
         public string Description { get; set; }
 
-        [XmlElement("date", Namespace=Namespaces.DublinCoreElementsV11, DataType="date", Order=4)]
-        public DateTime? Date { get; set; }
+        [XmlElement("date", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=4)]
+        public string Date { get; set; }
 
         [XmlElement("type", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=5, IsNullable=false)]
         public string Type { get; set; }
