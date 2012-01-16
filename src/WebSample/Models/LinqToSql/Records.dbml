@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Csw202TestData" Class="RecordsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|Csw202TestData.mdf;Integrated Security=True;MultipleActiveResultSets=True;User Instance=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="RecordsSource" Provider="System.Data.SqlClient" />
+  <Table Name="[Ogc.Csw].Records" Member="Records">
+    <Type Name="Record">
+      <Column Name="Identifier" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Subject" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Date" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Format" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Relation" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
+      <Column Name="Spatial" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Coverage" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="AnyText" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="[Ogc.Filter].Geometry_STDisjoint" Method="Geometry_STDisjoint" IsComposable="true">
+    <Parameter Name="geom1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Parameter Name="geom2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="[Ogc.Filter].Geometry_STContains" Method="Geometry_STContains" IsComposable="true">
+    <Parameter Name="geom1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Parameter Name="geom2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="[Ogc.Filter].Geometry_STWithin" Method="Geometry_STWithin" IsComposable="true">
+    <Parameter Name="geom1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Parameter Name="geom2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="[Ogc.Filter].Geometry_STCrosses" Method="Geometry_STCrosses" IsComposable="true">
+    <Parameter Name="geom1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Parameter Name="geom2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="[Ogc.Filter].Geometry_STEquals" Method="Geometry_STEquals" IsComposable="true">
+    <Parameter Name="geom1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Parameter Name="geom2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="[Ogc.Filter].Geometry_STIntersects" Method="Geometry_STIntersects" IsComposable="true">
+    <Parameter Name="geom1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Parameter Name="geom2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="[Ogc.Filter].Geometry_STOverlaps" Method="Geometry_STOverlaps" IsComposable="true">
+    <Parameter Name="geom1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Parameter Name="geom2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="[Ogc.Filter].Geometry_STTouches" Method="Geometry_STTouches" IsComposable="true">
+    <Parameter Name="geom1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Parameter Name="geom2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="[Ogc.Filter].Geometry_STDistance" Method="Geometry_STDistance" IsComposable="true">
+    <Parameter Name="geom1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Parameter Name="geom2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Return Type="System.Double" />
+  </Function>
+  <Function Name="[Ogc.Filter].String_Equals" Method="String_Equals" IsComposable="true">
+    <Parameter Name="string1" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="string2" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="comparison" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="[Ogc.Filter].String_NotEqual" Method="String_NotEqual" IsComposable="true">
+    <Parameter Name="string1" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="string2" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="comparison" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="[Ogc.Filter].String_Like" Method="String_Like" IsComposable="true">
+    <Parameter Name="string" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="pattern" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="escape" Type="System.Char" DbType="NChar(1)" />
+    <Parameter Name="comparison" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

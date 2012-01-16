@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>OgcToolkit</id>
+    <version>1.0</version>
+    <authors>Isogeo</authors>
+    <owners>Isogeo</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Libraries that allow the use OGC standards in .NET applications, and makes the implementation of standard OGC web services easier.</description>
+    <copyright>Copyright © 2012 Isogeo</copyright>
+    <tags>OGC Geographical Standards Library Isogeo CSW</tags>
+    <dependencies>
+      <dependency id="Common.Logging" version="2.0.0" />
+      <dependency id="LinqToXsd" version="2.0.2" />
+    </dependencies>
+    <references>
+      <reference file="Irony.dll" />
+      <reference file="Irony.Interpreter.dll" />
+      <reference file="OgcToolkit.dll" />
+      <reference file="OgcToolkit.Services.dll" />
+    </references>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations" />
+      <frameworkAssembly assemblyName="System.Data.Linq" />
+      <frameworkAssembly assemblyName="System.ServiceModel" />
+      <frameworkAssembly assemblyName="System.ServiceModel.Web" />
+      <frameworkAssembly assemblyName="System.Xml.Linq" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

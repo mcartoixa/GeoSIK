@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3915ADD6-5F33-4452-89EA-8906518E2128}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OgcToolkit</RootNamespace>
+    <AssemblyName>OgcToolkit</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\src\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>3024</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>3024</NoWarn>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\build\OgcToolkit.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common.Logging">
+      <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Irony">
+      <HintPath>..\lib\Irony\Irony.dll</HintPath>
+    </Reference>
+    <Reference Include="Irony.Interpreter">
+      <HintPath>..\lib\Irony\Irony.Interpreter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\lib\SqlServer\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Xml.Schema.Linq">
+      <HintPath>..\packages\LinqToXsd.2.0.2\lib\Xml.Schema.Linq.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Version.cs">
+      <Link>Properties\Version.cs</Link>
+    </Compile>
+    <Compile Include="IGeometryProvider.cs" />
+    <Compile Include="Ogc\Filter\IXPathTypeNodeProvider.cs" />
+    <Compile Include="Ogc\Filter\ExpressionBuilderParameter.cs" />
+    <Compile Include="Ogc\Filter\IExpressionBuilder.cs" />
+    <Compile Include="Ogc\Filter\V110\Beyond.cs" />
+    <Compile Include="Ogc\Filter\V110\Contains.cs" />
+    <Compile Include="Ogc\Filter\V110\DWithin.cs" />
+    <Compile Include="Ogc\Filter\V110\IDistanceBufferOperator.cs" />
+    <Compile Include="Ogc\Filter\V110\Intersects.cs" />
+    <Compile Include="Ogc\Filter\V110\Crosses.cs" />
+    <Compile Include="Ogc\Filter\V110\Overlaps.cs" />
+    <Compile Include="Ogc\Filter\V110\Within.cs" />
+    <Compile Include="Ogc\Filter\V110\Disjoint.cs" />
+    <Compile Include="Ogc\Filter\V110\Equals.cs" />
+    <Compile Include="Ogc\Filter\V110\Touches.cs" />
+    <Compile Include="Ogc\Filter\XPathTypeNodeProvider.cs" />
+    <Compile Include="Ogc\Gml\V311\CompositeCurve.cs" />
+    <Compile Include="Ogc\Gml\V311\CompositeSurface.cs" />
+    <Compile Include="Ogc\Gml\V311\CompositeSolid.cs" />
+    <Compile Include="Ogc\Gml\V311\GeometricComplex.cs" />
+    <Compile Include="Ogc\Gml\V311\MultiLineString.cs" />
+    <Compile Include="Ogc\Gml\V311\MultiPolygon.cs" />
+    <Compile Include="Ogc\Gml\V311\MultiSolid.cs" />
+    <Compile Include="Ogc\Gml\V311\MultiSurface.cs" />
+    <Compile Include="Ogc\Gml\V311\MultiCurve.cs" />
+    <Compile Include="Ogc\Gml\V311\MultiGeometry.cs" />
+    <Compile Include="Ogc\Gml\V311\MultiPoint.cs" />
+    <Compile Include="Ogc\Gml\V311\RectifiedGrid.cs" />
+    <Compile Include="Ogc\Gml\V311\Grid.cs" />
+    <Compile Include="Ogc\Gml\V311\Ring.cs" />
+    <Compile Include="Ogc\Gml\V311\LinearRing.cs" />
+    <Compile Include="Ogc\Gml\V311\Solid.cs" />
+    <Compile Include="Ogc\Gml\V311\OrientableSurface.cs" />
+    <Compile Include="Ogc\Gml\V311\OrientableCurve.cs" />
+    <Compile Include="Ogc\Gml\V311\Curve.cs" />
+    <Compile Include="Ogc\Gml\V311\Geometry.cs" />
+    <Compile Include="Ogc\Gml\V311\LineString.cs" />
+    <Compile Include="Ogc\Gml\V311\Point.cs" />
+    <Compile Include="Ogc\Gml\V311\Polygon.cs" />
+    <Compile Include="Ogc\Gml\V311\Surface.cs" />
+    <Compile Include="Ogc\IOperatorImplementationProvider.cs" />
+    <Compile Include="Iso\Ts19139\Gco\CharacterString.cs" />
+    <Compile Include="Iso\Ts19139\Gco\_Gco.cs" />
+    <Compile Include="Iso\Ts19139\Gmd\_Gmd.cs" />
+    <Compile Include="Iso\Ts19139\Gsr\_Gsr.cs" />
+    <Compile Include="Iso\Ts19139\Gss\_Gss.cs" />
+    <Compile Include="Iso\Ts19139\Gts\_Gts.cs" />
+    <Compile Include="Ogc\Filter\V110\And.cs" />
+    <Compile Include="Ogc\Filter\V110\Add.cs" />
+    <Compile Include="Ogc\Filter\V110\BBOX.cs" />
+    <Compile Include="Ogc\Filter\V110\comparisonOps.cs" />
+    <Compile Include="Ogc\Filter\V110\Div.cs" />
+    <Compile Include="Ogc\Filter\V110\expression.cs" />
+    <Compile Include="Ogc\Filter\V110\Function.cs" />
+    <Compile Include="Ogc\Filter\V110\IBinarySpatialOperator.cs" />
+    <Compile Include="Ogc\Filter\V110\Literal.cs" />
+    <Compile Include="Ogc\Filter\V110\logicOps.cs" />
+    <Compile Include="Ogc\Filter\V110\Mul.cs" />
+    <Compile Include="Ogc\Filter\V110\Not.cs" />
+    <Compile Include="Ogc\Filter\V110\PropertyIsBetween.cs" />
+    <Compile Include="Ogc\Filter\V110\PropertyIsLike.cs" />
+    <Compile Include="Ogc\Filter\V110\PropertyIsNull.cs" />
+    <Compile Include="Ogc\Filter\V110\PropertyName.cs" />
+    <Compile Include="Ogc\Filter\V110\spatialOps.cs" />
+    <Compile Include="Ogc\Filter\V110\Sub.cs" />
+    <Compile Include="Ogc\Filter\V110\IBinaryOperator.cs" />
+    <Compile Include="Ogc\Filter\V110\PropertyIsGreaterThanOrEqualTo.cs" />
+    <Compile Include="Ogc\Filter\V110\PropertyIsLessThanOrEqualTo.cs" />
+    <Compile Include="Ogc\Filter\V110\PropertyIsGreaterThan.cs" />
+    <Compile Include="Ogc\Filter\V110\PropertyIsLessThan.cs" />
+    <Compile Include="Ogc\Filter\V110\Filter.cs" />
+    <Compile Include="Ogc\Filter\V110\FilterQueryable.cs" />
+    <Compile Include="Ogc\Filter\V110\IBinaryComparisonOperator.cs" />
+    <Compile Include="Ogc\Filter\V110\IBinaryLogicalOperator.cs" />
+    <Compile Include="Ogc\Filter\V110\Or.cs" />
+    <Compile Include="Ogc\Filter\V110\PropertyIsEqualTo.cs" />
+    <Compile Include="Ogc\Filter\V110\PropertyIsNotEqualTo.cs" />
+    <Compile Include="Ogc\Filter\V110\SortBy.cs" />
+    <Compile Include="Ogc\Filter\XPathTypeContext.cs" />
+    <Compile Include="Ogc\Filter\XPathTypeNavigator.cs" />
+    <Compile Include="Ogc\Filter\XPathTypeNode.cs" />
+    <Compile Include="Ogc\Filter\XPathTypeRootNode.cs" />
+    <Compile Include="Ogc\Gml\V311\Envelope.cs" />
+    <Compile Include="Ogc\Gml\V321\_Gml.cs" />
+    <Compile Include="Ogc\Ows\V100\BoundingBox.cs" />
+    <Compile Include="DublinCore\Elements\V11\_Elements.cs" />
+    <Compile Include="DublinCore\Terms\_Terms.cs" />
+    <Compile Include="Ogc\Filter\V110\_Filter.cs" />
+    <Compile Include="Ogc\Gml\V311\direction.cs" />
+    <Compile Include="Ogc\Gml\V311\_Gml.cs" />
+    <Compile Include="Ogc\Ows\V100\_Ows.cs" />
+    <Compile Include="Namespaces.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\AttributeNameNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\BooleanExpressionNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\BooleanFactorNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\BooleanLiteralNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\ComparisonPredicateNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\DateTimeLiteralNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\DateTimePeriodNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\DurationLiteralNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\ExistencePredicateNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\ExpressionBuilderUtils.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\GeometryLiteralNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\GeoOperatorRoutineNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\IExpressionBuilder.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\NotKeywordNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\NullPredicateNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\OperatorNameNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\RelativeGeoOperatorRoutineNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\TemporalPredicateNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\TextPredicateNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\ToleranceNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\CqlGrammar.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\CqlQueryable.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\ExpressionBuilderParameter.cs" />
+    <Compile Include="Ogc\WebCatalog\Csw\V202\Acknowledgement.cs" />
+    <Compile Include="Ogc\WebCatalog\Csw\V202\GetRecordById.cs" />
+    <Compile Include="Ogc\WebCatalog\Csw\V202\GetRecords.cs" />
+    <Compile Include="Ogc\WebCatalog\Csw\V202\DescribeRecord.cs" />
+    <Compile Include="Ogc\WebCatalog\Csw\V202\GetCapabilities.cs" />
+    <Compile Include="Ogc\WebCatalog\Csw\V202\GetRecordsResponse.cs" />
+    <Compile Include="OperationNames.cs" />
+    <Compile Include="Services\Csw\V202\CoreQueryable.cs" />
+    <Compile Include="Services\Csw\V202\QueryableExtensions.cs" />
+    <Compile Include="Ogc\WebCatalog\Csw\V202\IGetRecordsResponse.cs" />
+    <Compile Include="Services\Csw\V202\IDiscovery.cs" />
+    <Compile Include="Services\Csw\V202\IPublication.cs" />
+    <Compile Include="Services\Csw\V202\IRecord.cs" />
+    <Compile Include="Schemas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Schemas.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Csw\V202\CoreQueryableAttribute.cs" />
+    <Compile Include="Services\Csw\V202\RecordConverter.cs" />
+    <Compile Include="Services\Csw\V202\XPathQueryableIterator.cs" />
+    <Compile Include="Services\Csw\V202\XPathQueryableNavigator.cs" />
+    <Compile Include="Services\Csw\V202\XPathQueryableNode.cs" />
+    <Compile Include="Services\Csw\V202\XPathQueryableNodeProvider.cs" />
+    <Compile Include="Services\EnumerableExtensions.cs" />
+    <Compile Include="Services\Ows\OwsRequestEventArgs.cs" />
+    <Compile Include="Services\Ows\V100\IOgcService.cs" />
+    <Compile Include="Services\Ows\IRequest.cs" />
+    <Compile Include="Services\OwsException.cs" />
+    <Compile Include="Ogc\WebCatalog\Csw\V202\_Publication.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Srid.cs" />
+    <Compile Include="W3\Smil20\Language\_Language.cs" />
+    <Compile Include="W3\Smil20\_Smil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\build\OgcToolkit.snk">
+      <Link>OgcToolkit.snk</Link>
+    </None>
+    <None Include="Iso\Ts19139\Gmd\http___www.isotc211.org_2005_gmd.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Ogc\WebCatalog\Csw\V202\http___www.opengis.net_cat_csw_2.0.2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Schemas.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Schemas.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SR.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
