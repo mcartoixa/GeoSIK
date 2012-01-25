@@ -27,11 +27,11 @@ namespace OgcToolkit.Ogc.Filter.V110
             Type st=typeof(bool);
             Expression body=null;
             if (logicOps!=null)
-                body=((IExpressionBuilder)logicOps).CreateExpression(ebp, st);
+                body=logicOps.CreateExpression(ebp, st, null);
             else if (comparisonOps!=null)
-                body=((IExpressionBuilder)comparisonOps).CreateExpression(ebp, st);
+                body=comparisonOps.CreateExpression(ebp, st, null);
             else if (spatialOps!=null)
-                body=((IExpressionBuilder)spatialOps).CreateExpression(ebp, st);
+                body=spatialOps.CreateExpression(ebp, st, null);
 
             if (body==null)
                 throw new InvalidOperationException("Invalid filter definition");

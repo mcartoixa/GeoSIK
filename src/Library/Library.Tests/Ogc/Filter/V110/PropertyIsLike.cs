@@ -43,7 +43,7 @@ namespace OgcToolkit.Ogc.Filter.V110.Tests
         [InlineData(@"*TE?\*ST?", "*", "?", '\\', @"%TE_\*ST_")]
         public void TranslateToSqlLikePattern_ShouldReturnTranslatedPattern(string input, string wildCard, string singleChar, char? escapeChar, string expected)
         {
-            string pattern=PropertyIsLike.TranslateToSqlLikePattern(input, wildCard, singleChar, escapeChar);
+            string pattern=PropertyIsLike.PropertyIsLikeExpressionCreator.TranslateToSqlLikePattern(input, wildCard, singleChar, escapeChar);
 
             Assert.Equal<string>(expected, pattern);
         }

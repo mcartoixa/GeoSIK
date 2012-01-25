@@ -67,24 +67,58 @@ namespace OgcToolkit.Ogc.Filter
         /// <remarks>
         ///   <para></para>
         /// </remarks>
-        public Expression CreateExpression(ParameterExpression parameter, Type expectedType=null)
+        public Expression CreateExpression(ParameterExpression parameter, Type expectedType=null, Func<Expression, Expression> expressionCreator=null)
         {
-            Expression ret=CreateExpressionBase(parameter);
+            LinkedList<XPathTypeNode> path=GetNodePath();
+            path.RemoveFirst(); // This is the root, represented by the parameter
 
-            GetChildren();
-            if (_ValueMemberInfo!=null)
-                ret=Expression.PropertyOrField(ret, _ValueMemberInfo.Name);
+            XPathTypeNode node=path.First.Value;
+            path.RemoveFirst();
+            return node.CreateNodeExpression(parameter, path, expectedType, expressionCreator, new Stack<ParameterExpression>());
+        }
 
-            var mex=(MemberExpression)ret;
-            Type exType=GetMemberType(mex.Member);
+        internal protected virtual Expression CreateNodeExpression(Expression baseExpression, LinkedList<XPathTypeNode> path, Type expectedType, Func<Expression, Expression> expressionCreator, Stack<ParameterExpression> innerParams)
+        {
+            Expression ret=Expression.PropertyOrField(baseExpression, MemberInfo.Name);
 
-            // Find synonyms
-            if ((expectedType!=null) && (exType!=expectedType) && (_Parent!=null))
+            if (path.First==null)
             {
-                IEnumerable<XPathTypeNode> xptnc=_Parent.IgnoredChildrenNodes.Where<XPathTypeNode>(n => (n.MemberInfo!=null) && (GetMemberType(n.MemberInfo)==expectedType) && (n.LocalName==LocalName) && (n.Namespace==Namespace));
+                if (ValueMemberInfo!=null)
+                    ret=Expression.PropertyOrField(ret, ValueMemberInfo.Name);
+
+                ret=GetSynonymExpression((MemberExpression)ret, expectedType);
+
+                if ((expressionCreator==null) && (innerParams.Count>0))
+                    throw new InvalidOperationException("Trying to create an expression to an element that is inside a collection.");
+
+                if (innerParams.Count>0)
+                {
+                    ParameterExpression param=innerParams.Pop();
+                    return expressionCreator(param);
+                }
+
+                if (expressionCreator!=null)
+                    return expressionCreator(ret);
+
+                return ret;
+            }
+
+            XPathTypeNode node=path.First.Value;
+            path.RemoveFirst();
+            return node.CreateNodeExpression(ret, path, expectedType, expressionCreator, innerParams);
+        }
+
+        protected MemberExpression GetSynonymExpression(MemberExpression current, Type expectedType)
+        {
+            MemberExpression ret=current;
+
+            Type exType=GetMemberType(current.Member);
+            if ((expectedType!=null) && (exType!=expectedType) && (Parent!=null))
+            {
+                IEnumerable<XPathTypeNode> xptnc=Parent.IgnoredChildrenNodes.Where<XPathTypeNode>(n => (n.MemberInfo!=null) && (GetMemberType(n.MemberInfo)==expectedType) && (n.LocalName==LocalName) && (n.Namespace==Namespace));
                 foreach (XPathTypeNode xptn in xptnc)
                 {
-                    ret=Expression.PropertyOrField(mex.Expression, xptn.MemberInfo.Name);
+                    ret=Expression.PropertyOrField(current.Expression, xptn.MemberInfo.Name);
                     break;
                 }
             }
@@ -96,14 +130,28 @@ namespace OgcToolkit.Ogc.Filter
         {
             object ret=GetValueBase(instance);
 
-            GetChildren();
-            if ((ret!=null) && (_ValueMemberInfo!=null))
-                ret=GetMemberValue(ret, _ValueMemberInfo);
+            if ((ret!=null) && (ValueMemberInfo!=null))
+                ret=GetMemberValue(ret, ValueMemberInfo);
 
             return ret;
         }
 
-        protected virtual Expression CreateExpressionBase(ParameterExpression parameter)
+        /// <summary>Gets an ordered list of the nodes from the root to the current node.</summary>
+        /// <returns>The ordered list of the nodes from the root to the current node.</returns>
+        private LinkedList<XPathTypeNode> GetNodePath()
+        {
+            LinkedList<XPathTypeNode> ret=null;
+
+            if ((_Parent==null) || (_Parent is XPathTypeRootNode))
+                ret=new LinkedList<XPathTypeNode>();
+            else
+                ret=_Parent.GetNodePath();
+
+            ret.AddLast(this);
+            return ret;
+        }
+
+        internal protected virtual Expression CreateExpressionBase(ParameterExpression parameter)
         {
             Expression prop=parameter;
 
@@ -159,7 +207,7 @@ namespace OgcToolkit.Ogc.Filter
         {
             if ((_AttributeChildrenNodes==null) || (_ElementChildrenNodes==null) || (_IgnoredChildrenNodes==null))
             {
-                // Attributes and simple types dont't have children nodes
+                // Attributes simple types dont't have children nodes
                 if (
                     (NodeType==XmlNodeType.Attribute) ||
                     (Type.GetTypeCode(_Node)!=TypeCode.Object)
@@ -219,7 +267,7 @@ namespace OgcToolkit.Ogc.Filter
             return Clone();
         }
 
-        private static Type GetMemberType(MemberInfo member)
+        protected virtual Type GetMemberType(MemberInfo member)
         {
             Type ret=null;
 

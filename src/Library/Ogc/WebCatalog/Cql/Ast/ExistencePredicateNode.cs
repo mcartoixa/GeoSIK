@@ -27,7 +27,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
 
         }
 
-        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType)
+        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator)
         {
             if (!_Result.HasValue)
             {

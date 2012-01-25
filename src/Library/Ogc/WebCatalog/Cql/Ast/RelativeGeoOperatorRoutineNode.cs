@@ -20,6 +20,38 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
         IExpressionBuilder
     {
 
+        internal class RelativeGeoExpressionCreator:
+            ExpressionCreator<RelativeGeoOperatorRoutineNode>
+        {
+
+            public RelativeGeoExpressionCreator(RelativeGeoOperatorRoutineNode op):
+                base(op)
+            {
+            }
+
+            protected override Expression CreateStandardExpression(IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)
+            {
+                throw new NotSupportedException("Only custom implementations are supported");
+            }
+
+            protected override string GetCustomImplementationName(List<Type> paramTypes, List<object> paramValues)
+            {
+                return OperationNames.Distance;
+            }
+
+            protected override Expression CreateCustomExpression(MethodInfo method, object instance, IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)
+            {
+                Expression op=base.CreateCustomExpression(method, instance, subexpr, parameters, subType);
+
+                Type rt=Nullable.GetUnderlyingType(method.ReturnType) ?? method.ReturnType;
+                return Expression.MakeBinary(
+                    Node._OperatorExpression,
+                    op,
+                    Expression.Constant(Convert.ChangeType(Node._Tolerance.Value, rt, CultureInfo.InvariantCulture), method.ReturnType)
+                );
+            }
+        }
+
         public override void Init(ParsingContext context, ParseTreeNode treeNode)
         {
             base.Init(context, treeNode);
@@ -28,51 +60,19 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
 
             _AttributeName=(AttributeNameNode)AddChild("", treeNode.MappedChildNodes[1]);
             _GeometryLiteral=(GeometryLiteralNode)AddChild("", treeNode.MappedChildNodes[2]);
-            _Tolerance=(ToleranceNode)AddChild("", treeNode.MappedChildNodes[3]);
+            _Tolerance=(ToleranceNode)treeNode.MappedChildNodes[3].AstNode;
 
             AsString=((OperatorNameNode)treeNode.MappedChildNodes[0].AstNode).Name;
         }
 
-        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType)
+        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator)
         {
-            // Custom implementation
-            if (parameters.OperatorImplementationProvider!=null)
-            {
-                Type[] arguments=new Type[] { typeof(SqlGeometry), typeof(SqlGeometry) };
-                object[] pa=new object[] { null, _GeometryLiteral.Value };
+            return GetExpressionCreator().CreateExpression(parameters);
+        }
 
-                object instance;
-                MethodInfo method=parameters.OperatorImplementationProvider.GetImplementation(OperationNames.Distance, ref arguments, ref pa, out instance);
-                if (method!=null)
-                {
-                    Debug.Assert(arguments.Length==2);
-                    Debug.Assert(pa.Length==2);
-
-                    Expression dop=null;
-                    if (instance!=null)
-                        dop=Expression.Call(
-                            Expression.Constant(instance),
-                            method,
-                            _AttributeName.CreateExpression(parameters, arguments[0]),
-                            Expression.Constant(pa[1], arguments[1])
-                        );
-                    else
-                        dop=Expression.Call(
-                            method,
-                            _AttributeName.CreateExpression(parameters, arguments[0]),
-                            Expression.Constant(pa[1], arguments[1])
-                        );
-
-                    Type drt=Nullable.GetUnderlyingType(method.ReturnType) ?? method.ReturnType;
-                    Expression.MakeBinary(
-                        _OperatorExpression,
-                        dop,
-                        Expression.Constant(Convert.ChangeType(_Tolerance.Value, drt, CultureInfo.InvariantCulture), method.ReturnType)
-                    );
-                }
-            }
-
-            throw new NotSupportedException();
+        internal protected virtual IExpressionCreator GetExpressionCreator()
+        {
+            return new RelativeGeoExpressionCreator(this);
         }
 
         Type IExpressionBuilder.GetExpressionStaticType(ExpressionBuilderParameters parameters)

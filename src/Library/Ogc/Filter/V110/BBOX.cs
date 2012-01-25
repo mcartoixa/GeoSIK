@@ -17,50 +17,56 @@ namespace OgcToolkit.Ogc.Filter.V110
         IExpressionBuilder
     {
 
-        // BBOX is !geometry.STDisjoint(envelope)
-        protected override Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType)
+        internal class BboxExpressionCreator:
+            ExpressionCreator<BBOX>
         {
-            SqlGeometry envelope=Envelope.Geometry;
 
-            // Custom implementation
-            if (parameters.OperatorImplementationProvider!=null)
+            public BboxExpressionCreator(BBOX op):
+                base(op)
             {
-                Type[] arguments=new Type[] { typeof(SqlGeometry), typeof(SqlGeometry) };
-                object[] pa=new object[] { null, envelope };
-
-                object instance;
-                MethodInfo binaryMethod=parameters.OperatorImplementationProvider.GetImplementation(OperationNames.Disjoint, ref arguments, ref pa, out instance);
-                Debug.Assert(pa.Length==2);
-
-                if (binaryMethod!=null)
-                {
-                    Expression op=null;
-                    if (instance!=null)
-                        op=Expression.Call(
-                            Expression.Constant(instance),
-                            binaryMethod,
-                            ((IExpressionBuilder)PropertyName).CreateExpression(parameters, arguments[0]),
-                            Expression.Constant(pa[1], arguments[1])
-                        );
-                    else
-                        op=Expression.Call(
-                            binaryMethod,
-                            ((IExpressionBuilder)PropertyName).CreateExpression(parameters, arguments[0]),
-                            Expression.Constant(pa[1], arguments[1])
-                        );
-
-                    Type rt=Nullable.GetUnderlyingType(binaryMethod.ReturnType) ?? binaryMethod.ReturnType;
-                    if (binaryMethod.ReturnType==typeof(bool))
-                        return Expression.Negate(op);
-                    else
-                        return Expression.NotEqual(
-                            op,
-                            Expression.Constant(Convert.ChangeType(true, rt, CultureInfo.InvariantCulture), binaryMethod.ReturnType)
-                        );
-                }
+                _Envelope=op.Envelope.Geometry;
             }
 
-            throw new NotSupportedException();
+            protected override Expression CreateStandardExpression(IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)
+            {
+                throw new NotSupportedException();
+            }
+
+            protected override string GetCustomImplementationName(List<Type> paramTypes, List<object> paramValues)
+            {
+                paramTypes.Add(typeof(SqlGeometry));
+                paramValues.Add(_Envelope);
+
+                return OperationNames.Disjoint;
+            }
+
+            protected override Expression CreateCustomExpression(MethodInfo method, object instance, IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)
+            {
+                Expression op=base.CreateCustomExpression(method, instance, subexpr, parameters, subType);
+
+                Type rt=Nullable.GetUnderlyingType(method.ReturnType) ?? method.ReturnType;
+                if (method.ReturnType==typeof(bool))
+                    return Expression.Negate(op);
+                else
+                    return Expression.NotEqual(
+                        op,
+                        Expression.Constant(Convert.ChangeType(true, rt, CultureInfo.InvariantCulture), method.ReturnType)
+                    );
+            }
+
+            protected override IEnumerator<IExpressionBuilder> GetEnumerator()
+            {
+                var ret=new List<IExpressionBuilder>(1);
+                ret.Add(FilterElement.PropertyName);
+                return ret.GetEnumerator();
+            }
+
+            private SqlGeometry _Envelope;
+        }
+
+        internal protected override IExpressionCreator GetExpressionCreator()
+        {
+            return new BboxExpressionCreator(this);
         }
     }
 #pragma warning restore 3009

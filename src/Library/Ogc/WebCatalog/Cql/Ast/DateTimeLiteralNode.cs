@@ -13,40 +13,24 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
 
 #pragma warning disable 3001, 3009
     public class DateTimeLiteralNode:
-        AstNode
+        LiteralNode<DateTime>
     {
 
         public override void Init(ParsingContext context, ParseTreeNode treeNode)
         {
             base.Init(context, treeNode);
 
-            _Value=XmlConvert.ToDateTime(treeNode.Token.ValueString, XmlDateTimeSerializationMode.RoundtripKind);
             AsString=string.Format(
                 CultureInfo.InvariantCulture,
                 "{0:G} (date time)",
-                _Value
+                Value
             );
         }
 
-        protected override object DoEvaluate(ScriptThread thread)
+        protected override DateTime InitValue(ParsingContext context, ParseTreeNode treeNode)
         {
-            return _Value;
+            return XmlConvert.ToDateTime(treeNode.Token.ValueString, XmlDateTimeSerializationMode.RoundtripKind);
         }
-
-        public override bool IsConstant()
-        {
-            return true;
-        }
-
-        public DateTime Value
-        {
-            get
-            {
-                return _Value;
-            }
-        }
-
-        private DateTime _Value;
     }
 #pragma warning restore 3001, 3009
 }

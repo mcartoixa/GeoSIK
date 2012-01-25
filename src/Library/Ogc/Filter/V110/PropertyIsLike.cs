@@ -18,118 +18,127 @@ namespace OgcToolkit.Ogc.Filter.V110
     partial class PropertyIsLike
     {
 
-        protected override Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType)
+        internal class PropertyIsLikeExpressionCreator:
+            ExpressionCreator<PropertyIsLike>
         {
-            Debug.Assert(PropertyName!=null);
-            Debug.Assert(Literal!=null);
-            Debug.Assert((escapeChar==null) || (escapeChar.Length<=1));
 
-            char? ec=(!string.IsNullOrEmpty(escapeChar) ? (char?)escapeChar[0] : null);
-            string pattern=TranslateToSqlLikePattern(Literal.Untyped.Value, wildCard, singleChar, ec);
-
-            // Custom implementation
-            if (parameters.OperatorImplementationProvider!=null)
+            public PropertyIsLikeExpressionCreator(PropertyIsLike op):
+                base(op)
             {
-                Type[] arguments=new Type[] { typeof(string), typeof(string), typeof(char?), typeof(bool?) };
-                object[] pa=new object[] { null, pattern, ec, matchCase };
+                _EscapeChar=(!string.IsNullOrEmpty(op.escapeChar) ? (char?)op.escapeChar[0] : null);
+                _Pattern=TranslateToSqlLikePattern(op.Literal.Untyped.Value, op.wildCard, op.singleChar, _EscapeChar);
+                _MatchCase=op.matchCase;
+            }
 
-                object instance;
-                MethodInfo method=parameters.OperatorImplementationProvider.GetImplementation(OperationNames.Like, ref arguments, ref pa, out instance);
-
-                if (method!=null)
+            protected override Expression CreateStandardExpression(IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)
+            {
+                // LINQ to SQL. Case sensitivity depends on database configuration
+                if (parameters.QueryProvider is ITable)
                 {
-                    Expression op=null;
-                    if (instance!=null)
-                        op=Expression.Call(
-                            Expression.Constant(instance),
-                            method,
-                            ((IExpressionBuilder)PropertyName).CreateExpression(parameters, expectedStaticType),
-                            Expression.Constant(pa[1], arguments[1]),
-                            Expression.Constant(pa[2], arguments[2]),
-                            Expression.Constant(pa[3], arguments[3])
-                        );
-                    else
-                        op=Expression.Call(
-                            method,
-                            ((IExpressionBuilder)PropertyName).CreateExpression(parameters, expectedStaticType),
-                            Expression.Constant(pa[1], arguments[1]),
-                            Expression.Constant(pa[2], arguments[2]),
-                            Expression.Constant(pa[3], arguments[3])
-                        );
+                    List<Expression> pars=new List<Expression>(subexpr);
+                    pars.Add(Expression.Constant(_Pattern));
 
-                    Type rt=Nullable.GetUnderlyingType(method.ReturnType) ?? method.ReturnType;
-                    if (method.ReturnType==typeof(bool))
-                        return op;
-                    else
-                        return Expression.Equal(
-                            op,
-                            Expression.Constant(Convert.ChangeType(true, rt, CultureInfo.InvariantCulture), method.ReturnType)
+                    if (_EscapeChar.HasValue)
+                    {
+                        pars.Add(Expression.Constant(_EscapeChar.Value, typeof(char)));
+                        return Expression.Call(
+                            typeof(SqlMethods).GetMethod("Like", new Type[] { typeof(string), typeof(string), typeof(char) }),
+                            pars
                         );
+                    } else
+                        return Expression.Call(
+                            typeof(SqlMethods).GetMethod("Like", new Type[] { typeof(string), typeof(string) }),
+                            pars
+                        );
+                }
+
+                throw new NotSupportedException();
+            }
+
+            protected override string GetCustomImplementationName(List<Type> paramTypes, List<object> paramValues)
+            {
+                paramTypes.Add(typeof(string));
+                paramValues.Add(_Pattern);
+
+                paramTypes.Add(typeof(char?));
+                paramValues.Add(_EscapeChar);
+
+                paramTypes.Add(typeof(bool?));
+                paramValues.Add(_MatchCase);
+
+                return OperationNames.Like;
+            }
+
+            protected override Expression CreateCustomExpression(MethodInfo method, object instance, IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)
+            {
+                Expression op=base.CreateCustomExpression(method, instance, subexpr, parameters, subType);
+
+                Type rt=Nullable.GetUnderlyingType(method.ReturnType) ?? method.ReturnType;
+                if (method.ReturnType==typeof(bool))
+                    return op;
+                else
+                    return Expression.Equal(
+                        op,
+                        Expression.Constant(Convert.ChangeType(true, rt, CultureInfo.InvariantCulture), method.ReturnType)
+                    );
+            }
+
+            protected override IEnumerator<IExpressionBuilder> GetEnumerator()
+            {
+                var ret=new List<IExpressionBuilder>(1);
+                ret.Add(FilterElement.PropertyName);
+                return ret.GetEnumerator();
+            }
+
+            internal static string TranslateToSqlLikePattern(string input, string wildCard, string singleChar, char? escapeChar)
+            {
+                if ((wildCard=="%") && (singleChar=="_"))
+                    return input;
+
+                if (escapeChar.HasValue)
+                {
+                    string translator=string.Format(
+                        CultureInfo.InvariantCulture,
+                        @"(?<!{2})((?<WILD>{0})|(?<SINGLE>{1}))",
+                        Regex.Escape(wildCard),
+                        Regex.Escape(singleChar),
+                        Regex.Escape(escapeChar.Value.ToString())
+                    );
+                    return Regex.Replace(input, translator, _PatternTranslator, RegexOptions.CultureInvariant | RegexOptions.ExplicitCapture | RegexOptions.Singleline);
+                } else
+                {
+                    string translator=string.Format(
+                        CultureInfo.InvariantCulture,
+                        @"((?<WILD>{0})|(?<SINGLE>{1}))",
+                        Regex.Escape(wildCard),
+                        Regex.Escape(singleChar)
+                    );
+                    return Regex.Replace(input, translator, _PatternTranslator, RegexOptions.CultureInvariant | RegexOptions.ExplicitCapture | RegexOptions.Singleline);
                 }
             }
 
-            // LINQ to SQL. Case sensitivity depends on database configuration
-            if (parameters.QueryProvider is ITable)
+            private static string _PatternTranslator(Match m)
             {
-                if (ec.HasValue)
-                {
-                    return Expression.Call(
-                        typeof(SqlMethods).GetMethod("Like", new Type[] { typeof(string), typeof(string), typeof(char) }),
-                        ((IExpressionBuilder)PropertyName).CreateExpression(parameters, expectedStaticType),
-                        Expression.Constant(pattern),
-                        Expression.Constant(ec.Value, typeof(char))
-                    );
-                } else
-                    return Expression.Call(
-                        typeof(SqlMethods).GetMethod("Like", new Type[] { typeof(string), typeof(string) }),
-                        ((IExpressionBuilder)PropertyName).CreateExpression(parameters, expectedStaticType),
-                        Expression.Constant(pattern)
-                    );
+                Group wild=m.Groups["WILD"];
+                if (wild.Success)
+                    return "%";
+
+                Group single=m.Groups["SINGLE"];
+                if (single.Success)
+                    return "_";
+
+                return m.Value;
             }
 
-            throw new NotImplementedException();
+            private string _Pattern;
+            private char? _EscapeChar;
+            private bool _MatchCase;
         }
 
-        internal static string TranslateToSqlLikePattern(string input, string wildCard, string singleChar, char? escapeChar)
+        internal protected override IExpressionCreator GetExpressionCreator()
         {
-            if ((wildCard=="%") && (singleChar=="_"))
-                return input;
-
-            if (escapeChar.HasValue)
-            {
-                string translator=string.Format(
-                    CultureInfo.InvariantCulture,
-                    @"(?<!{2})((?<WILD>{0})|(?<SINGLE>{1}))",
-                    Regex.Escape(wildCard),
-                    Regex.Escape(singleChar),
-                    Regex.Escape(escapeChar.Value.ToString())
-                );
-                return Regex.Replace(input, translator, _PatternTranslator, RegexOptions.CultureInvariant | RegexOptions.ExplicitCapture | RegexOptions.Singleline);
-            } else
-            {
-                string translator=string.Format(
-                    CultureInfo.InvariantCulture,
-                    @"((?<WILD>{0})|(?<SINGLE>{1}))",
-                    Regex.Escape(wildCard),
-                    Regex.Escape(singleChar)
-                );
-                return Regex.Replace(input, translator, _PatternTranslator, RegexOptions.CultureInvariant | RegexOptions.ExplicitCapture | RegexOptions.Singleline);
-            }
+            return new PropertyIsLikeExpressionCreator(this);
         }
-
-        private static string _PatternTranslator(Match m)
-        {
-            Group wild=m.Groups["WILD"];
-            if (wild.Success)
-                return "%";
-
-            Group single=m.Groups["SINGLE"];
-            if (single.Success)
-                return "_";
-
-            return m.Value;
-        }
-
     }
 #pragma warning restore 3009
 }

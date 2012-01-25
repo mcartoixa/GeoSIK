@@ -15,13 +15,17 @@ namespace OgcToolkit.Ogc.Filter.V110
     partial class PropertyName
     {
 
-        protected override Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType)
+        internal protected override Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator)
         {
+            // We only want literals in this case
+            if (operatorCreator==null)
+                return null;
+
             return GetNavigator(parameters)
-                .CreateExpression(parameters.Parameters[0], expectedStaticType);
+                .CreateExpression(parameters.Parameters[0], expectedStaticType, operatorCreator);
         }
 
-        protected override Type GetExpressionStaticType(ExpressionBuilderParameters parameters)
+        internal protected override Type GetExpressionStaticType(ExpressionBuilderParameters parameters)
         {
             return GetNavigator(parameters).Type;
         }

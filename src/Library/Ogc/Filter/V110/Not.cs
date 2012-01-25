@@ -4,31 +4,39 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Xml;
+using LinqExpressionType=System.Linq.Expressions.ExpressionType;
 
 namespace OgcToolkit.Ogc.Filter.V110
 {
 
 #pragma warning disable 3009
-    partial class Not
+    partial class Not:
+        IBinaryLogicalOperator // I know it's not binary, but it should work anyway...
     {
 
-        protected override Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType)
+        IList<comparisonOps> IBinaryLogicalOperator.comparisonOps
         {
-            Type st=typeof(bool);
-            Expression subexpr=null;
-            if (logicOps!=null)
-                subexpr=((IExpressionBuilder)logicOps).CreateExpression(parameters, st);
-            else if (comparisonOps!=null)
-                subexpr=((IExpressionBuilder)comparisonOps).CreateExpression(parameters, st);
-            else if (spatialOps!=null)
-                subexpr=((IExpressionBuilder)spatialOps).CreateExpression(parameters, st);
-            else if (Function!=null)
-                subexpr=((IExpressionBuilder)Function).CreateExpression(parameters, st);
+            get { return comparisonOps!=null ? new comparisonOps[] { comparisonOps } : new comparisonOps[0]; }
+        }
 
-            if (subexpr==null)
-                throw new InvalidOperationException("Invalid binary logical operator content");
+        IList<spatialOps> IBinaryLogicalOperator.spatialOps
+        {
+            get { return spatialOps!=null ? new spatialOps[] { spatialOps } : new spatialOps[0]; }
+        }
 
-            return Expression.Not(subexpr);
+        IList<logicOps> IBinaryLogicalOperator.logicOps
+        {
+            get { return logicOps!=null ? new logicOps[] { logicOps } : new logicOps[0]; }
+        }
+
+        IList<Function> IBinaryLogicalOperator.Function
+        {
+            get { return Function!=null ? new Function[] { Function } : new Function[0]; }
+        }
+
+        LinqExpressionType IBinaryLogicalOperator.OperatorExpressionType
+        {
+            get { return LinqExpressionType.Not; }
         }
     }
 #pragma warning restore 3009

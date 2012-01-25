@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Xml;
+using LinqExpressionType=System.Linq.Expressions.ExpressionType;
 
 namespace OgcToolkit.Ogc.Filter.V110
 {
@@ -13,11 +14,11 @@ namespace OgcToolkit.Ogc.Filter.V110
         IBinaryLogicalOperator
     {
 
-        Func<Expression, Expression, BinaryExpression> IBinaryLogicalOperator.OperatorExpression
+        LinqExpressionType IBinaryLogicalOperator.OperatorExpressionType
         {
             get
             {
-                return Expression.AndAlso;
+                return LinqExpressionType.And;
             }
         }
     }

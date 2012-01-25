@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -13,9 +14,15 @@ namespace OgcToolkit.Ogc.Filter.V110
     partial class Function
     {
 
-        protected override Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType)
+        internal protected override IExpressionCreator GetExpressionCreator()
         {
-            throw new NotSupportedException();
+            throw new NotSupportedException(
+                string.Format(
+                    CultureInfo.CurrentCulture,
+                    SR.UnsupportedFilterElement,
+                    GetType().Name
+                )
+            );
         }
     }
 #pragma warning restore 3009

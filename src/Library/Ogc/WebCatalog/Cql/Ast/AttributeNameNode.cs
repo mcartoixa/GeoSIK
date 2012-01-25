@@ -27,10 +27,14 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
             _Identifier=AddChild("Id", treeNode.MappedChildNodes[0]) as IdentifierNode;
         }
 
-        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType)
+        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator)
         {
+            // We only want literals in this case
+            if (operatorCreator==null)
+                return null;
+
             return GetNavigator(parameters)
-                .CreateExpression(parameters.Parameters[0], expectedStaticType);
+                .CreateExpression(parameters.Parameters[0], expectedStaticType, operatorCreator);
         }
 
         public Type GetExpressionStaticType(ExpressionBuilderParameters parameters)

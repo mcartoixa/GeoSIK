@@ -49,9 +49,9 @@ namespace OgcToolkit.Ogc.Filter
             return new XPathTypeNavigator(this);
         }
 
-        public Expression CreateExpression(ParameterExpression parameter, Type expectedType=null)
+        public Expression CreateExpression(ParameterExpression parameter, Type expectedType=null, Func<Expression, Expression> expressionCreator=null)
         {
-            return _Current.CreateExpression(parameter, expectedType);
+            return _Current.CreateExpression(parameter, expectedType, expressionCreator);
         }
 
         public override bool IsSamePosition(XPathNavigator other)
@@ -256,6 +256,14 @@ namespace OgcToolkit.Ogc.Filter
             get
             {
                 return _Current.ElementChildrenNodes.Length>0;
+            }
+        }
+
+        public bool IsList
+        {
+            get
+            {
+                return _Current is XPathTypeEnumerableNode;
             }
         }
 

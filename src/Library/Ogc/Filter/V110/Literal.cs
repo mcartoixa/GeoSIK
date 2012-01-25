@@ -16,8 +16,10 @@ namespace OgcToolkit.Ogc.Filter.V110
     partial class Literal
     {
 
-        protected override Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType)
+        internal protected override Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator)
         {
+            Expression ret=null;
+
             if (expectedStaticType!=null)
             {
                 object value=Untyped.Value;
@@ -80,14 +82,22 @@ namespace OgcToolkit.Ogc.Filter.V110
                     break;
                 }
 
-                return Expression.Constant(value, expectedStaticType);
+                ret=Expression.Constant(value, expectedStaticType);
             }
 
-            Logger.Info(m => m("Literal \"{0}\" will be interpreted as a string by default", Untyped.Value));
-            return Expression.Constant(Untyped.Value);
+            if (ret==null)
+            {
+                Logger.Info(m => m("The literal \"{0}\" will be interpreted as a string by default", Untyped.Value));
+                ret=Expression.Constant(Untyped.Value);
+            }
+
+            if (operatorCreator!=null)
+                return operatorCreator(ret);
+
+            return ret;
         }
 
-        protected override Type GetExpressionStaticType(ExpressionBuilderParameters parameters)
+        internal protected override Type GetExpressionStaticType(ExpressionBuilderParameters parameters)
         {
             // Cannot decide at this time
             return null;

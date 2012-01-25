@@ -20,6 +20,40 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
         IExpressionBuilder
     {
 
+        internal class GeoOperatorExpressionCreator:
+            ExpressionCreator<GeoOperatorRoutineNode>
+        {
+
+            public GeoOperatorExpressionCreator(GeoOperatorRoutineNode op):
+                base(op)
+            {
+            }
+
+            protected override Expression CreateStandardExpression(IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)
+            {
+                throw new NotSupportedException("Only custom implementations are supported");
+            }
+
+            protected override string GetCustomImplementationName(List<Type> paramTypes, List<object> paramValues)
+            {
+                return Node._OperatorName;
+            }
+
+            protected override Expression CreateCustomExpression(MethodInfo method, object instance, IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)
+            {
+                Expression op=base.CreateCustomExpression(method, instance, subexpr, parameters, subType);
+
+                Type rt=Nullable.GetUnderlyingType(method.ReturnType) ?? method.ReturnType;
+                if (method.ReturnType==typeof(bool))
+                    return op;
+                else
+                    return Expression.Equal(
+                        op,
+                        Expression.Constant(Convert.ChangeType(true, rt, CultureInfo.InvariantCulture), method.ReturnType)
+                    );
+            }
+        }
+
         public override void Init(ParsingContext context, ParseTreeNode treeNode)
         {
             base.Init(context, treeNode);
@@ -31,48 +65,14 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
             AsString=_OperatorName;
         }
 
-        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType)
+        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator)
         {
-            // Custom implementation
-            if (parameters.OperatorImplementationProvider!=null)
-            {
-                Type[] arguments=new Type[] { typeof(SqlGeometry), typeof(SqlGeometry) };
-                object[] pa=new object[] { null, _GeometryLiteral.Value };
+            return GetExpressionCreator().CreateExpression(parameters);
+        }
 
-                object instance;
-                MethodInfo method=parameters.OperatorImplementationProvider.GetImplementation(_OperatorName, ref arguments, ref pa, out instance);
-                if (method!=null)
-                {
-                    Debug.Assert(pa.Length==2);
-
-                    Expression op=null;
-                    if (instance!=null)
-                        op=Expression.Call(
-                            Expression.Constant(instance),
-                            method,
-                            _AttributeName.CreateExpression(parameters, arguments[0]),
-                            Expression.Constant(pa[1], arguments[1])
-                        );
-                    else
-                        op=Expression.Call(
-                            method,
-                            _AttributeName.CreateExpression(parameters, arguments[0]),
-                            Expression.Constant(pa[1], arguments[1])
-                        );
-
-
-                    Type rt=Nullable.GetUnderlyingType(method.ReturnType) ?? method.ReturnType;
-                    if (method.ReturnType==typeof(bool))
-                        return op;
-                    else
-                        return Expression.Equal(
-                            op,
-                            Expression.Constant(Convert.ChangeType(true, rt, CultureInfo.InvariantCulture), method.ReturnType)
-                        );
-                }
-            }
-
-            throw new NotSupportedException();
+        private IExpressionCreator GetExpressionCreator()
+        {
+            return new GeoOperatorExpressionCreator(this);
         }
 
         Type IExpressionBuilder.GetExpressionStaticType(ExpressionBuilderParameters parameters)

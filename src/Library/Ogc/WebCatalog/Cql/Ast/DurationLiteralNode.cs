@@ -13,40 +13,24 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
 
 #pragma warning disable 3001, 3009
     public class DurationLiteralNode:
-        AstNode
+        LiteralNode<TimeSpan>
     {
 
         public override void Init(ParsingContext context, ParseTreeNode treeNode)
         {
             base.Init(context, treeNode);
 
-            _Value=XmlConvert.ToTimeSpan(treeNode.Token.ValueString);
             AsString=string.Format(
                 CultureInfo.InvariantCulture,
                 "{0:G} (duration)",
-                _Value
+                Value
             );
         }
 
-        protected override object DoEvaluate(ScriptThread thread)
+        protected override TimeSpan InitValue(ParsingContext context, ParseTreeNode treeNode)
         {
-            return _Value;
+            return XmlConvert.ToTimeSpan(treeNode.Token.ValueString);
         }
-
-        public override bool IsConstant()
-        {
-            return true;
-        }
-
-        public TimeSpan Value
-        {
-            get
-            {
-                return _Value;
-            }
-        }
-
-        private TimeSpan _Value;
     }
 #pragma warning restore 3001, 3009
 }

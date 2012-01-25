@@ -192,6 +192,7 @@ namespace OgcToolkit.Services.Csw.V202
                     TypeConverter converter=GetIdentifierUriConverter(idType);
 
                     // Convert ids from Uris to identifier type
+                    // urip => (idType)converter.ConvertTo(urip, idType)
                     var urip=Expression.Parameter(typeof(Uri));
                     var conex=Expression.Lambda(
                         typeof(Func<,>).MakeGenericType(typeof(Uri), idType),
@@ -207,6 +208,7 @@ namespace OgcToolkit.Services.Csw.V202
                         ),
                         urip
                     );
+                    // var convertedIds=ids.Select<Uri, idType>(uri => (idType)converter.ConvertTo(uri, idType))
                     var urilistp=Expression.Parameter(typeof(IEnumerable<Uri>));
                     var convertids=Expression.Lambda(
                         Expression.Call(
