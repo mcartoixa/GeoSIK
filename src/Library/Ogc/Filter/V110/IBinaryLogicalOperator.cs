@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Xml.Linq;
 using Xml.Schema.Linq;
+using LinqExpressionType=System.Linq.Expressions.ExpressionType;
 
 namespace OgcToolkit.Ogc.Filter.V110
 {
@@ -27,47 +28,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         [SuppressMessage("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", MessageId="Function", Justification="Interface to be implemented by generated code")]
         IList<Function> Function { get; }
 
-        Func<Expression, Expression, BinaryExpression> OperatorExpression { get; }
+        LinqExpressionType OperatorExpressionType { get; }
     }
 
-    internal static class BinaryLogicalOperatorExtensions
-    {
-
-        public static IEnumerable<XTypedElement> GetLogicalElements(this Or op)
-        {
-            return GetLogicalElements(op, op.Untyped.Elements());
-        }
-
-        public static IEnumerable<XTypedElement> GetLogicalElements(this And op)
-        {
-            return GetLogicalElements(op, op.Untyped.Elements());
-        }
-
-        public static IEnumerable<XTypedElement> GetLogicalElements(this IBinaryLogicalOperator op)
-        {
-            return GetLogicalElements(op, ((XTypedElement)op).Untyped.Elements());
-        }
-
-        private static IEnumerable<XTypedElement> GetLogicalElements(IBinaryLogicalOperator op, IEnumerable<XElement> descendants)
-        {
-            var ret=new List<XTypedElement>();
-            int icmp, ispa, ilog, ifun;
-            icmp=ispa=ilog=ifun=0;
-
-            foreach (XElement d in descendants)
-            {
-                if ((op.comparisonOps!=null) && (op.comparisonOps.Count>icmp) && (d.Name==op.comparisonOps[icmp].Untyped.Name))
-                    yield return op.comparisonOps[icmp++];
-                else if ((op.spatialOps!=null) && (op.spatialOps.Count>ispa) && (d.Name==op.spatialOps[ispa].Untyped.Name))
-                    yield return op.spatialOps[ispa++];
-                else if ((op.logicOps!=null) && (op.logicOps.Count>ilog) && (d.Name==op.logicOps[ilog].Untyped.Name))
-                    yield return op.logicOps[ilog++];
-                else if ((op.Function!=null) && (op.Function.Count>ifun) && (d.Name==op.Function[ifun].Untyped.Name))
-                    yield return op.Function[ifun++];
-                else
-                    throw new InvalidOperationException();
-            }
-
-        }
-    }
 }

@@ -18,116 +18,97 @@ namespace OgcToolkit.Ogc.Filter.V110
         IExpressionBuilder
     {
 
-        protected virtual Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType)
+        internal class BinaryComparisonExpressionCreator:
+            ExpressionCreator<IBinaryComparisonOperator>
         {
-            var bcop=this as IBinaryComparisonOperator;
-            if (bcop!=null)
+
+            public BinaryComparisonExpressionCreator(IBinaryComparisonOperator op):
+                base(op)
             {
-                if (bcop.expression==null)
-                    throw new InvalidOperationException();
+            }
 
-                Type[] subtypes=bcop.expression
-                    .Select<expression, Type>(e => ((IExpressionBuilder)e).GetExpressionStaticType(parameters))
-                    .Where<Type>(t => t!=null)
-                    .ToArray<Type>();
-                //TODO: probably needs more checking on other subtypes there...
-                Type subtype=(subtypes.Length>0 ? subtypes[0] : null);
-
-                Expression[] subexpr=bcop.expression
-                    .Select<expression, Expression>(e => ((IExpressionBuilder)e).CreateExpression(parameters, subtype))
-                    .ToArray<Expression>();
-                Debug.Assert(subexpr.Length==2);
-
-                // Custom implementation
-                if (parameters.OperatorImplementationProvider!=null)
-                {
-                    List<object> pal=subexpr
-                        .Select<Expression, object>(e => (e.NodeType==LinqExpressionType.Constant ? ((ConstantExpression)e).Value : null))
-                        .ToList<object>();
-                    object[] pa=new object[] { pal[0], pal[1] };
-                    Type[] pt=new Type[] { subtype, subtype };
-
-                    // String comparisons can be case (in)sensitive
-                    if (subtype==typeof(string))
-                    {
-                        pa=new object[] { pal[0], pal[1], (bcop.matchCase ? StringComparison.CurrentCulture : StringComparison.CurrentCultureIgnoreCase) };
-                        pt=new Type[] { subtype, subtype, typeof(StringComparison) };
-                    }
-
-                    object instance;
-                    MethodInfo method=parameters.OperatorImplementationProvider.GetImplementation(bcop.OperatorExpressionType.ToString(), ref pt, ref pa, out instance);
-                    if (method!=null)
-                    {
-                        Debug.Assert(pa.Length==pt.Length);
-                        object sto=pa.FirstOrDefault<object>(p => p!=null);
-                        Type st=(sto!=null ? sto.GetType() : subtype); // Parameter types may have been changed
-
-                        if (st!=subtype)
-                            subexpr=bcop.expression
-                                .Select<expression, Expression>(e => ((IExpressionBuilder)e).CreateExpression(parameters, st))
-                                .ToArray<Expression>();
-
-                        List<Expression> paex=new List<Expression>(3);
-                        paex.Add(subexpr[0]);
-                        paex.Add(subexpr[1]);
-                        if ((pa.Length>2) && (pa[2]!=null))
-                            paex.Add(Expression.Constant(pa[2]));
-
-                        Expression op=null;
-                        if (instance!=null)
-                            op=Expression.Call(
-                                Expression.Constant(instance),
-                                method,
-                                paex
-                            );
-                        else
-                            op=Expression.Call(
-                                method,
-                                paex
-                            );
-
-                        Type rt=Nullable.GetUnderlyingType(method.ReturnType) ?? method.ReturnType;
-                        if (method.ReturnType==typeof(bool))
-                            return op;
-                        else
-                            return Expression.Equal(
-                                op,
-                                Expression.Constant(Convert.ChangeType(true, rt, CultureInfo.InvariantCulture), method.ReturnType)
-                            );
-                    }
-                }
-
-                if (subtype==typeof(string))
+            protected override Expression CreateStandardExpression(IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)
+            {
+                if (subType==typeof(string))
                     // string comparisons require Compare
                     return Expression.MakeBinary(
-                        bcop.OperatorExpressionType,
+                        FilterElement.OperatorExpressionType,
                         Expression.Call(
                             typeof(string).GetMethod("Compare", new Type[] { typeof(string), typeof(string), typeof(StringComparison) }),
-                            subexpr[0],
-                            subexpr[1],
-                            Expression.Constant(bcop.matchCase ? StringComparison.CurrentCulture : StringComparison.CurrentCultureIgnoreCase)
+                            subexpr.ElementAt<Expression>(0),
+                            subexpr.ElementAt<Expression>(1),
+                            Expression.Constant(FilterElement.matchCase ? StringComparison.CurrentCulture : StringComparison.CurrentCultureIgnoreCase)
                         ),
                         Expression.Constant(0, typeof(int))
                     );
                 else
                     return Expression.MakeBinary(
-                        bcop.OperatorExpressionType,
-                        subexpr[0],
-                        subexpr[1]
+                        FilterElement.OperatorExpressionType,
+                        subexpr.ElementAt<Expression>(0),
+                        subexpr.ElementAt<Expression>(1)
                     );
             }
 
-            throw new NotSupportedException();
+            protected override string GetCustomImplementationName(List<Type> paramTypes, List<object> paramValues)
+            {
+                if (paramTypes[0]==typeof(string))
+                {
+                    paramTypes.Add(typeof(StringComparison));
+                    paramValues.Add(FilterElement.matchCase ? StringComparison.CurrentCulture : StringComparison.CurrentCultureIgnoreCase);
+                }
+
+                return FilterElement.OperatorExpressionType.ToString();
+            }
+
+            protected override Expression CreateCustomExpression(MethodInfo method, object instance, IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)
+            {
+                Expression op=base.CreateCustomExpression(method, instance, subexpr, parameters, subType);
+
+                Type rt=Nullable.GetUnderlyingType(method.ReturnType) ?? method.ReturnType;
+                if (method.ReturnType==typeof(bool))
+                    return op;
+                else
+                    return Expression.Equal(
+                        op,
+                        Expression.Constant(Convert.ChangeType(true, rt, CultureInfo.InvariantCulture), method.ReturnType)
+                    );
+            }
+
+            protected override IEnumerator<IExpressionBuilder> GetEnumerator()
+            {
+                Debug.Assert(FilterElement.expression.Count==2);
+                return FilterElement.expression.GetEnumerator();
+            }
         }
 
-        protected virtual Type GetExpressionStaticType(ExpressionBuilderParameters parameters)
+        internal protected virtual Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator)
+        {
+            return GetExpressionCreator().CreateExpression(parameters);
+        }
+
+        internal protected virtual Type GetExpressionStaticType(ExpressionBuilderParameters parameters)
         {
             return typeof(bool);
         }
 
-        Expression IExpressionBuilder.CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType)
+        internal protected virtual IExpressionCreator GetExpressionCreator()
         {
-            return CreateExpression(parameters, expectedStaticType);
+            var bcop=this as IBinaryComparisonOperator;
+            if (bcop!=null)
+                return new BinaryComparisonExpressionCreator(bcop);
+
+            throw new NotSupportedException(
+                string.Format(
+                    CultureInfo.CurrentCulture,
+                    SR.UnsupportedFilterElement,
+                    GetType().Name
+                )
+            );
+        }
+
+        Expression IExpressionBuilder.CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator)
+        {
+            return CreateExpression(parameters, expectedStaticType, operatorCreator);
         }
 
         Type IExpressionBuilder.GetExpressionStaticType(ExpressionBuilderParameters parameters)

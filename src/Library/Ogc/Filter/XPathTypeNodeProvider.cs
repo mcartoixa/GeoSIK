@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -17,8 +18,22 @@ namespace OgcToolkit.Ogc.Filter
 
         public XPathTypeNode GetNode(Type node, MemberInfo memberInfo, XPathTypeNode parent, XPathTypeContext context)
         {
-            if ((parent==null)&&(memberInfo==null))
+            if ((parent==null) && (memberInfo==null))
                 return GetRootNode(node, context);
+
+            if (node!=typeof(string)) // string implements IEnumerable<char>
+            {
+                Type entype=node.GetInterface("IEnumerable`1");
+                if (entype!=null)
+                {
+                    Debug.Assert(entype.IsGenericType);
+
+                    Type[] intypes=entype.GetGenericArguments();
+                    Debug.Assert(intypes.Length==1);
+
+                    return new XPathTypeEnumerableNode(intypes[0], memberInfo, parent, context);
+                }
+            }
 
             return new XPathTypeNode(node, memberInfo, parent, context);
         }

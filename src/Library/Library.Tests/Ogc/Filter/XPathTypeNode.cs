@@ -42,7 +42,7 @@ namespace OgcToolkit.Ogc.Filter.Tests
         }
 
         [Theory]
-        [InlineData(typeof(TestRecordType), Namespaces.OgcWebCatalogCswV202, "csw:Record", 0, 8)]
+        [InlineData(typeof(TestRecordType), Namespaces.OgcWebCatalogCswV202, "csw:Record", 0, 9)]
         public void Constructor_ShouldXmlRootTypesHaveValidSingleChildElement(Type root, string expectedNamespace, string expectedName, int expectedAttributes, int expectedElements)
         {
             var node=new XPathTypeRootNode(root, new XPathTypeContext(XPathTypeNodeProvider.Instance, RecordsNamespacesManager)).ElementChildrenNodes[0];
@@ -94,6 +94,9 @@ namespace OgcToolkit.Ogc.Filter.Tests
         [XmlElement("title", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=1, IsNullable=false)]
         public string Title { get; set; }
 
+        [XmlElement("subject", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=2, IsNullable=false)]
+        public IList<string> Subject { get; set; }
+
         [XmlElement("abstract", Namespace=Namespaces.DublinCoreTerms, DataType="string", Order=3, IsNullable=false)]
         public string Description { get; set; }
 
@@ -110,6 +113,6 @@ namespace OgcToolkit.Ogc.Filter.Tests
         public string Spatial { get; set; }
 
         [XmlElement("relation", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=9, IsNullable=false)]
-        public string RelationId { get; set; }
+        public string Relation { get; set; }
     }
 }

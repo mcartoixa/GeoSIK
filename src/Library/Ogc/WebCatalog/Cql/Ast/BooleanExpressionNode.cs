@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 using Irony.Interpreter;
 using Irony.Interpreter.Ast;
@@ -16,6 +18,71 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
         IExpressionBuilder
     {
 
+        internal class BooleanExpressionCreator:
+            ExpressionCreator<BooleanExpressionNode>
+        {
+
+            public BooleanExpressionCreator(BooleanExpressionNode op):
+                base(op)
+            {
+            }
+
+            protected override Expression CreateStandardExpression(IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)
+            {
+                Expression ret=null;
+                foreach (Expression ex in subexpr)
+                {
+                    if (ret!=null)
+                        ret=Expression.MakeBinary(
+                            Node.ExpressionType,
+                            ret,
+                            ex
+                        );
+                    else
+                        ret=ex;
+                }
+                return ret;
+            }
+
+            protected override string GetCustomImplementationName(List<Type> paramTypes, List<object> paramValues)
+            {
+                return Node.ExpressionType.ToString();
+            }
+
+            protected override Expression CreateCustomExpression(MethodInfo method, object instance, IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)
+            {
+                Expression ret=null;
+                foreach (Expression exp in subexpr)
+                {
+                    if (ret!=null)
+                    {
+                        if (instance!=null)
+                            ret=Expression.Call(
+                                Expression.Constant(instance),
+                                method,
+                                ret,
+                                exp
+                            );
+                        else
+                            ret=Expression.Call(
+                                method,
+                                ret,
+                                exp
+                            );
+
+                        Type rt=Nullable.GetUnderlyingType(method.ReturnType) ?? method.ReturnType;
+                        if (method.ReturnType!=typeof(bool))
+                            ret=Expression.Equal(
+                                ret,
+                                Expression.Constant(Convert.ChangeType(true, rt, CultureInfo.InvariantCulture), method.ReturnType)
+                            );
+                    } else
+                        ret=exp;
+                }
+                return ret;
+            }
+        }
+
         public override void Init(ParsingContext context, ParseTreeNode treeNode)
         {
             base.Init(context, treeNode);
@@ -26,13 +93,9 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
             AsString=ExpressionType.ToString();
         }
 
-        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType)
+        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator)
         {
-            Expression ret=((IExpressionBuilder)ChildNodes[0]).CreateExpression(parameters, typeof(bool));
-            for (int i=1; i<ChildNodes.Count; ++i)
-                ret=Expression.MakeBinary(ExpressionType, ret, ((IExpressionBuilder)ChildNodes[i]).CreateExpression(parameters, typeof(bool)));
-
-            return ret;
+            return GetExpressionCreator().CreateExpression(parameters);
         }
 
         protected static Type GetExpressionStaticType()
@@ -55,6 +118,11 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
 
             thread.CurrentNode=Parent;
             return ret;
+        }
+
+        internal protected virtual IExpressionCreator GetExpressionCreator()
+        {
+            return new BooleanExpressionCreator(this);
         }
 
         private OperatorImplementation _LastUsed;

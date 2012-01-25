@@ -14,7 +14,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         IBinaryOperator
     {
 
-        protected override Type GetExpressionStaticType(ExpressionBuilderParameters parameters)
+        internal protected override Type GetExpressionStaticType(ExpressionBuilderParameters parameters)
         {
             return base.GetExpressionStaticType(parameters) ?? typeof(decimal);
         }

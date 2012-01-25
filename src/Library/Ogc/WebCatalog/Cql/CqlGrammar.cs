@@ -244,7 +244,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql
 
             // Grammar
             DefaultIdentifierNodeType=typeof(IdentifierNode);
-            DefaultLiteralNodeType=typeof(LiteralValueNode);
+            DefaultLiteralNodeType=typeof(Ast.DefaultLiteralNode);
             DefaultNodeType=typeof(NotSupportedNode);
             Delimiters="\"%&'()*+,-./:;<=>?[]^_|{}";
             MarkMemberSelect(":");

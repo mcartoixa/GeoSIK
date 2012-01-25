@@ -7,7 +7,8 @@ using Gml311=OgcToolkit.Ogc.Gml.V311;
 namespace OgcToolkit.Ogc.Filter.V110
 {
 
-    public interface IBinarySpatialOperator
+    public interface IBinarySpatialOperator:
+        IExpressionBuilder
     {
 
         IList<PropertyName> PropertyName { get; }

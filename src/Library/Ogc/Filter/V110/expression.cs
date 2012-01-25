@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -16,30 +18,42 @@ namespace OgcToolkit.Ogc.Filter.V110
         IExpressionBuilder
     {
 
-        protected virtual Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType)
+        internal class BinaryExpressionCreator:
+            ExpressionCreator<IBinaryOperator>
         {
-            var bop=this as IBinaryOperator;
-            if (bop!=null)
-            {
-                if (bop.expression==null)
-                    throw new InvalidOperationException();
 
-                Type st=GetExpressionStaticType(parameters);
-                Expression[] subexpr=bop.expression
-                    .Select<expression, Expression>(e => ((IExpressionBuilder)e).CreateExpression(parameters, st))
-                    .ToArray<Expression>();
-                Debug.Assert(subexpr.Length==2);
+            public BinaryExpressionCreator(IBinaryOperator op):
+                base(op)
+            {
+            }
+
+            protected override Expression CreateStandardExpression(IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)
+            {
                 return Expression.MakeBinary(
-                    bop.OperatorExpressionType,
-                    subexpr[0],
-                    subexpr[1]
+                    FilterElement.OperatorExpressionType,
+                    subexpr.ElementAt<Expression>(0),
+                    subexpr.ElementAt<Expression>(1)
                 );
             }
 
-            throw new NotSupportedException();
+            protected override string GetCustomImplementationName(List<Type> paramTypes, List<object> paramValues)
+            {
+                return FilterElement.OperatorExpressionType.ToString();
+            }
+
+            protected override IEnumerator<IExpressionBuilder> GetEnumerator()
+            {
+                Debug.Assert(FilterElement.expression.Count==2);
+                return FilterElement.expression.GetEnumerator();
+            }
         }
 
-        protected virtual Type GetExpressionStaticType(ExpressionBuilderParameters parameters)
+        internal protected virtual Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator=null)
+        {
+            return GetExpressionCreator().CreateExpression(parameters);
+        }
+
+        internal protected virtual Type GetExpressionStaticType(ExpressionBuilderParameters parameters)
         {
             var bop=this as IBinaryOperator;
             if (bop!=null)
@@ -59,6 +73,20 @@ namespace OgcToolkit.Ogc.Filter.V110
             return null;
         }
 
+        internal protected virtual IExpressionCreator GetExpressionCreator()
+        {
+            var bop=this as IBinaryOperator;
+            if (bop!=null)
+                return new BinaryExpressionCreator(bop);
+
+            throw new NotSupportedException(
+                string.Format(
+                    CultureInfo.CurrentCulture,
+                    SR.UnsupportedFilterElement,
+                    GetType().Name
+                )
+            );
+        }
 
         protected ILog Logger
         {
@@ -71,9 +99,9 @@ namespace OgcToolkit.Ogc.Filter.V110
             }
         }
 
-        Expression IExpressionBuilder.CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType)
+        Expression IExpressionBuilder.CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator)
         {
-            return CreateExpression(parameters, expectedStaticType);
+            return CreateExpression(parameters, expectedStaticType, operatorCreator);
         }
 
         Type IExpressionBuilder.GetExpressionStaticType(ExpressionBuilderParameters parameters)

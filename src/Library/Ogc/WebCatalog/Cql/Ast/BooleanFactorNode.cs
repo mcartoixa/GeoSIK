@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 using Irony.Interpreter;
 using Irony.Interpreter.Ast;
@@ -16,32 +18,100 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
         IExpressionBuilder
     {
 
+        internal class BooleanExpressionCreator:
+            ExpressionCreator<BooleanFactorNode>
+        {
+
+            public BooleanExpressionCreator(BooleanFactorNode op):
+                base(op)
+            {
+            }
+
+            protected override Expression CreateStandardExpression(IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)
+            {
+                Expression ret=null;
+                foreach (Expression ex in subexpr)
+                {
+                    if (ret!=null)
+                        ret=Expression.MakeBinary(
+                            Node.ExpressionType,
+                            ret,
+                            ex
+                        );
+                    else
+                        ret=ex;
+                }
+                return ret;
+            }
+
+            protected override string GetCustomImplementationName(List<Type> paramTypes, List<object> paramValues)
+            {
+                return Node.ExpressionType.ToString();
+            }
+
+            protected override Expression CreateCustomExpression(MethodInfo method, object instance, IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)
+            {
+                Expression ret=null;
+                foreach (Expression exp in subexpr)
+                {
+                    if (ret!=null)
+                    {
+                        if (instance!=null)
+                            ret=Expression.Call(
+                                Expression.Constant(instance),
+                                method,
+                                ret,
+                                exp
+                            );
+                        else
+                            ret=Expression.Call(
+                                method,
+                                ret,
+                                exp
+                            );
+
+                        Type rt=Nullable.GetUnderlyingType(method.ReturnType)??method.ReturnType;
+                        if (method.ReturnType!=typeof(bool))
+                            ret=Expression.Equal(
+                                ret,
+                                Expression.Constant(Convert.ChangeType(true, rt, CultureInfo.InvariantCulture), method.ReturnType)
+                            );
+                    } else
+                        ret=exp;
+                }
+                return ret;
+            }
+        }
+
+        public BooleanFactorNode()
+        {
+            ExpressionType=ExpressionType.Not;
+        }
+
         public override void Init(ParsingContext context, ParseTreeNode treeNode)
         {
             base.Init(context, treeNode);
 
             foreach (ParseTreeNode ptn in treeNode.MappedChildNodes)
             {
-                AstNode node=AddChild("", ptn);
+                AstNode node=(AstNode)ptn.AstNode;
 
                 var on=node as NotKeywordNode;
                 if (on!=null)
                     _OptionalNot=on;
                 else
-                    _Primary=node;
+                    _Primary=AddChild("", ptn);
             }
 
             AsString="(boolean factor)";
         }
 
-        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType)
+        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator)
         {
-            Expression ret=((IExpressionBuilder)_Primary).CreateExpression(parameters, typeof(bool));
-
             if (_OptionalNot!=null)
-                ret=Expression.Not(ret);
-
-            return ret;
+                return GetExpressionCreator().CreateExpression(parameters);
+            else
+                return ((IExpressionBuilder)_Primary).CreateExpression(parameters, expectedStaticType, null);
         }
 
         Type IExpressionBuilder.GetExpressionStaticType(ExpressionBuilderParameters parameters)
@@ -59,6 +129,11 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
 
             thread.CurrentNode=Parent;
             return ret;
+        }
+
+        private IExpressionCreator GetExpressionCreator()
+        {
+            return new BooleanExpressionCreator(this);
         }
 
         private NotKeywordNode _OptionalNot;

@@ -81,6 +81,7 @@
       <Link>Properties\Version.cs</Link>
     </Compile>
     <Compile Include="IGeometryProvider.cs" />
+    <Compile Include="Ogc\Filter\ExpressionCreator.cs" />
     <Compile Include="Ogc\Filter\IXPathTypeNodeProvider.cs" />
     <Compile Include="Ogc\Filter\ExpressionBuilderParameter.cs" />
     <Compile Include="Ogc\Filter\IExpressionBuilder.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Ogc\Filter\V110\Disjoint.cs" />
     <Compile Include="Ogc\Filter\V110\Equals.cs" />
     <Compile Include="Ogc\Filter\V110\Touches.cs" />
+    <Compile Include="Ogc\Filter\XPathTypeEnumerableNode.cs" />
     <Compile Include="Ogc\Filter\XPathTypeNodeProvider.cs" />
     <Compile Include="Ogc\Gml\V311\CompositeCurve.cs" />
     <Compile Include="Ogc\Gml\V311\CompositeSurface.cs" />
@@ -176,15 +178,17 @@
     <Compile Include="Ogc\WebCatalog\Cql\Ast\BooleanExpressionNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\BooleanFactorNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\BooleanLiteralNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\CombinedExpressionCreator.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\ComparisonPredicateNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\DateTimeLiteralNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\DateTimePeriodNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\DefaultLiteralNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\DurationLiteralNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\ExistencePredicateNode.cs" />
-    <Compile Include="Ogc\WebCatalog\Cql\Ast\ExpressionBuilderUtils.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\GeometryLiteralNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\GeoOperatorRoutineNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\IExpressionBuilder.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\LiteralNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\NotKeywordNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\NullPredicateNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\OperatorNameNode.cs" />
@@ -195,6 +199,7 @@
     <Compile Include="Ogc\WebCatalog\Cql\CqlGrammar.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\CqlQueryable.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\ExpressionBuilderParameter.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\ExpressionCreator.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\Acknowledgement.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\GetRecordById.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\GetRecords.cs" />

@@ -73,7 +73,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql
             };
             var ebp=new ExpressionBuilderParameters(parameters, source.Provider, source.ElementType, namespaceManager, mayRootPathBeImplied, operatorImplementationProvider);
 
-            LambdaExpression lambda=Expression.Lambda(((Ast.IExpressionBuilder)tree.Root.AstNode).CreateExpression(ebp, typeof(bool)), parameters);
+            LambdaExpression lambda=Expression.Lambda(((Ast.IExpressionBuilder)tree.Root.AstNode).CreateExpression(ebp, typeof(bool), null), parameters);
             return source.Provider.CreateQuery(
                 Expression.Call(
                     typeof(Queryable),

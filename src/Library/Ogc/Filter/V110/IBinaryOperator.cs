@@ -9,7 +9,8 @@ using LinqExpressionType=System.Linq.Expressions.ExpressionType;
 namespace OgcToolkit.Ogc.Filter.V110
 {
 
-    public interface IBinaryOperator
+    public interface IBinaryOperator:
+        IExpressionBuilder
     {
 
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId="expression", Justification="Interface to be implemented by generated code")]

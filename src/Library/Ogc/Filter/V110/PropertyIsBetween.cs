@@ -1,30 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 using System.Xml;
+using LinqExpressionType=System.Linq.Expressions.ExpressionType;
 
 namespace OgcToolkit.Ogc.Filter.V110
 {
 
 #pragma warning disable 3009
-    partial class PropertyIsBetween
+    partial class PropertyIsBetween:
+        IBinaryLogicalOperator
     {
 
-        protected override Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType)
+        internal protected override  IExpressionCreator GetExpressionCreator()
         {
-            Type st=((IExpressionBuilder)expression).GetExpressionStaticType(parameters);
+            return new logicOps.BinaryLogicalExpressionCreator(this);
+        }
 
-            Expression ex=((IExpressionBuilder)expression).CreateExpression(parameters, st);
-            Expression lbex=((IExpressionBuilder)LowerBoundary.expression).CreateExpression(parameters, st);
-            Expression ubex=((IExpressionBuilder)UpperBoundary.expression).CreateExpression(parameters, st);
+        IList<comparisonOps> IBinaryLogicalOperator.comparisonOps
+        {
+            get
+            {
+                return new comparisonOps[] {
+                    new PropertyIsGreaterThanOrEqualTo() {
+                        expression=new expression[] { expression, LowerBoundary.expression}
+                    },
+                    new PropertyIsLessThanOrEqualTo() {
+                        expression=new expression[] { expression, UpperBoundary.expression}
+                    }
+                };
+            }
+        }
 
-            return Expression.And(
-                Expression.GreaterThanOrEqual(ex, lbex),
-                Expression.LessThanOrEqual(ex, ubex)
-            );
+        IList<spatialOps> IBinaryLogicalOperator.spatialOps
+        {
+            get { return new List<spatialOps>(); }
+        }
+
+        IList<logicOps> IBinaryLogicalOperator.logicOps
+        {
+            get { return new List<logicOps>(); }
+        }
+
+        IList<Function> IBinaryLogicalOperator.Function
+        {
+            get { return new List<Function>(); }
+        }
+
+        LinqExpressionType IBinaryLogicalOperator.OperatorExpressionType
+        {
+            get { return LinqExpressionType.And; }
         }
     }
 #pragma warning restore 3009

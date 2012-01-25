@@ -10,7 +10,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
     public interface IExpressionBuilder
     {
 
-        Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType);
+        Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator);
         Type GetExpressionStaticType(ExpressionBuilderParameters parameters);
     }
 }

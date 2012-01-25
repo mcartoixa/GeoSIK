@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 using Irony.Interpreter;
 using Irony.Interpreter.Ast;
@@ -16,6 +18,52 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
         IExpressionBuilder
     {
 
+        internal class DateComparisonExpressionCreator:
+            ExpressionCreator<TemporalPredicateNode>
+        {
+
+            public DateComparisonExpressionCreator(TemporalPredicateNode op, DateTime date, ExpressionType expressionType):
+                base(op)
+            {
+                _ExpressionType=expressionType;
+                _Date=date;
+            }
+
+            protected override Expression CreateStandardExpression(IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)
+            {
+                return Expression.MakeBinary(
+                    _ExpressionType,
+                    subexpr.ElementAt<Expression>(0),
+                    Expression.Constant(_Date)
+                );
+            }
+
+            protected override string GetCustomImplementationName(List<Type> paramTypes, List<object> paramValues)
+            {
+                paramTypes.Add(typeof(DateTime));
+                paramValues.Add(_Date);
+
+                return _ExpressionType.ToString();
+            }
+
+            protected override Expression CreateCustomExpression(MethodInfo method, object instance, IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)
+            {
+                Expression op=base.CreateCustomExpression(method, instance, subexpr, parameters, subType);
+
+                Type rt=Nullable.GetUnderlyingType(method.ReturnType) ?? method.ReturnType;
+                if (method.ReturnType==typeof(bool))
+                    return op;
+                else
+                    return Expression.Equal(
+                        op,
+                        Expression.Constant(Convert.ChangeType(true, rt, CultureInfo.InvariantCulture), method.ReturnType)
+                    );
+            }
+
+            private ExpressionType _ExpressionType;
+            private DateTime _Date;
+        }
+
         public override void Init(ParsingContext context, ParseTreeNode treeNode)
         {
             base.Init(context, treeNode);
@@ -27,12 +75,17 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
                 sb.Append(((OperatorNameNode)treeNode.MappedChildNodes[i].AstNode).Name);
             _OperatorName=sb.ToString();
 
-            _DateTimeExpression=AddChild("", treeNode.MappedChildNodes[treeNode.MappedChildNodes.Count-1]);
+            _DateTimeExpression=(AstNode)treeNode.MappedChildNodes[treeNode.MappedChildNodes.Count-1].AstNode;
 
             AsString=_OperatorName;
         }
 
-        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType)
+        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator)
+        {
+            return GetExpressionCreator().CreateExpression(parameters);
+        }
+
+        private IExpressionCreator GetExpressionCreator()
         {
             switch (_OperatorName)
             {
@@ -40,28 +93,30 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
                 {
                     var dtln=_DateTimeExpression as DateTimeLiteralNode;
                     if (dtln!=null)
-                        return ExpressionBuilderUtils.CreateComparisonExpression(parameters, ExpressionType.GreaterThan, _AttributeName, dtln.Value);
+                        return new DateComparisonExpressionCreator(this, dtln.Value, ExpressionType.GreaterThan);
                     else
-                        return ExpressionBuilderUtils.CreateComparisonExpression(parameters, ExpressionType.GreaterThan, _AttributeName, ((DateTimePeriodNode)_DateTimeExpression).EndDate);
+                        return new DateComparisonExpressionCreator(this, ((DateTimePeriodNode)_DateTimeExpression).EndDate, ExpressionType.GreaterThan);
                 }
             case AfterOrDuringOperatorName:
-                return ExpressionBuilderUtils.CreateComparisonExpression(parameters, ExpressionType.GreaterThanOrEqual, _AttributeName, ((DateTimePeriodNode)_DateTimeExpression).StartDate);
+                return new DateComparisonExpressionCreator(this, ((DateTimePeriodNode)_DateTimeExpression).StartDate, ExpressionType.GreaterThanOrEqual);
             case BeforeOperatorName:
                 {
                     var dtln=_DateTimeExpression as DateTimeLiteralNode;
                     if (dtln!=null)
-                        return ExpressionBuilderUtils.CreateComparisonExpression(parameters, ExpressionType.LessThan, _AttributeName, dtln.Value);
+                        return new DateComparisonExpressionCreator(this, dtln.Value, ExpressionType.LessThan);
                     else
-                        return ExpressionBuilderUtils.CreateComparisonExpression(parameters, ExpressionType.LessThan, _AttributeName, ((DateTimePeriodNode)_DateTimeExpression).StartDate);
+                        return new DateComparisonExpressionCreator(this, ((DateTimePeriodNode)_DateTimeExpression).StartDate, ExpressionType.GreaterThan);
                 }
             case BeforeOrDuringOperatorName:
-                return ExpressionBuilderUtils.CreateComparisonExpression(parameters, ExpressionType.LessThanOrEqual, _AttributeName, ((DateTimePeriodNode)_DateTimeExpression).EndDate);
+                return new DateComparisonExpressionCreator(this, ((DateTimePeriodNode)_DateTimeExpression).EndDate, ExpressionType.LessThanOrEqual);
             case DuringOperatorName:
-                {
-                    var l=ExpressionBuilderUtils.CreateComparisonExpression(parameters, ExpressionType.GreaterThanOrEqual, _AttributeName, ((DateTimePeriodNode)_DateTimeExpression).StartDate);
-                    var r=ExpressionBuilderUtils.CreateComparisonExpression(parameters, ExpressionType.LessThanOrEqual, _AttributeName, ((DateTimePeriodNode)_DateTimeExpression).EndDate);
-                    return Expression.AndAlso(l, r);
-                }
+                return new CombinedExpressionCreator(
+                    new IExpressionCreator[] {
+                        new DateComparisonExpressionCreator(this, ((DateTimePeriodNode)_DateTimeExpression).StartDate, ExpressionType.GreaterThanOrEqual),
+                        new DateComparisonExpressionCreator(this, ((DateTimePeriodNode)_DateTimeExpression).EndDate, ExpressionType.LessThanOrEqual),
+                    },
+                    ExpressionType.AndAlso
+                );
             }
 
             throw new NotSupportedException();

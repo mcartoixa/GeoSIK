@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 using System.Xml;
 using System.Xml.XPath;
@@ -14,18 +16,59 @@ namespace OgcToolkit.Ogc.Filter.V110
     partial class PropertyIsNull
     {
 
-        protected override Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType)
+        internal class PropertyIsNullExpressionCreator:
+            ExpressionCreator<PropertyIsNull>
         {
-            Debug.Assert(PropertyName!=null);
 
-            Type st=((IExpressionBuilder)PropertyName).GetExpressionStaticType(parameters);
-            return Expression.Equal(
-                ((IExpressionBuilder)PropertyName).CreateExpression(parameters, st),
-                Expression.Constant(
-                    null,
-                    st
-                )
-            );
+            public PropertyIsNullExpressionCreator(PropertyIsNull op):
+                base(op)
+            {
+            }
+
+            protected override Expression CreateStandardExpression(IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)
+            {
+                List<Expression> pars=new List<Expression>(subexpr);
+                pars.Add(Expression.Constant(null, subType));
+
+                return Expression.Equal(
+                    pars[0],
+                    pars[1]
+                );
+            }
+
+            protected override string GetCustomImplementationName(List<Type> paramTypes, List<object> paramValues)
+            {
+                paramTypes.Add(paramTypes[0]);
+                paramValues.Add(null);
+
+                return OperationNames.Equal;
+            }
+
+            protected override Expression CreateCustomExpression(MethodInfo method, object instance, IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)
+            {
+                Expression op=base.CreateCustomExpression(method, instance, subexpr, parameters, subType);
+
+                Type rt=Nullable.GetUnderlyingType(method.ReturnType) ?? method.ReturnType;
+                if (method.ReturnType==typeof(bool))
+                    return op;
+                else
+                    return Expression.Equal(
+                        op,
+                        Expression.Constant(Convert.ChangeType(true, rt, CultureInfo.InvariantCulture), method.ReturnType)
+                    );
+            }
+
+            protected override IEnumerator<IExpressionBuilder> GetEnumerator()
+            {
+                var ret=new List<IExpressionBuilder>(1);
+                ret.Add(FilterElement.PropertyName);
+                return ret.GetEnumerator();
+            }
+        }
+
+        internal protected override IExpressionCreator GetExpressionCreator()
+        {
+            return new PropertyIsNullExpressionCreator(this);
         }
     }
 #pragma warning restore 3009
