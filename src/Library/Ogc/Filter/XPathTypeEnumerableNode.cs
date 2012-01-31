@@ -21,7 +21,7 @@ namespace OgcToolkit.Ogc.Filter
         {
         }
 
-        internal protected override Expression CreateNodeExpression(Expression baseExpression, LinkedList<XPathTypeNode> path, Type expectedType, Func<Expression, Expression> expressionCreator, Stack<ParameterExpression> innerParams)
+        internal protected override Expression CreateNodeExpression(Expression baseExpression, LinkedList<XPathTypeNode> path, Type expectedType, Func<Expression, ParameterExpression, Expression> expressionCreator, Stack<ParameterExpression> innerParams)
         {
             Expression enuex=Expression.PropertyOrField(baseExpression, MemberInfo.Name);
             LambdaExpression oplex=null;
@@ -36,20 +36,21 @@ namespace OgcToolkit.Ogc.Filter
                 if (ValueMemberInfo!=null)
                     select=Expression.PropertyOrField(param, ValueMemberInfo.Name);
 
-                select=GetSynonymExpression((MemberExpression)select, expectedType);
+                //select=GetSynonymExpression((MemberExpression)select, expectedType);
 
                 // We only want an expression to the collection
                 if (expressionCreator==null)
                     return select;
 
-                oplex=Expression.Lambda(expressionCreator(select));
+                oplex=Expression.Lambda(expressionCreator(select, param), param);
             } else
             {
                 innerParams.Push(param);
 
                 XPathTypeNode node=path.First.Value;
                 path.RemoveFirst();
-                oplex=Expression.Lambda(node.CreateNodeExpression(param, path, expectedType, expressionCreator, innerParams));
+
+                oplex=Expression.Lambda(node.CreateNodeExpression(param, path, expectedType, expressionCreator, innerParams), param);
             }
 
             return Expression.Call(

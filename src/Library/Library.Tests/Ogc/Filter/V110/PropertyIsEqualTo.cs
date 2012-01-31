@@ -37,8 +37,10 @@ namespace OgcToolkit.Ogc.Filter.V110.Tests
         [Theory]
         [InlineData(11, "10")]
         [InlineData(20, "10")]
-        public void Filter_ShouldFindStringConstraint(int number, string selection)
+        public void Filter_ShouldFindStringConstraintInSimpleNode(int number, string selection)
         {
+            // WHERE /SimpleType/String==selection
+            // simpleTypes.String==selection
             string constraint=string.Format(
                 CultureInfo.InvariantCulture,
                 "<ogc:PropertyIsEqualTo><ogc:PropertyName>/SimpleType/String</ogc:PropertyName><ogc:Literal>{0}</ogc:Literal></ogc:PropertyIsEqualTo>",
@@ -50,6 +52,69 @@ namespace OgcToolkit.Ogc.Filter.V110.Tests
 
             Assert.Equal<int>(1, selected.Count<FilterTests.SimpleType>());
             Assert.Equal<string>(selection, selected.First<FilterTests.SimpleType>().String);
+        }
+
+        [Theory]
+        [InlineData(11, 10)]
+        [InlineData(20, 10)]
+        public void Filter_ShouldFindIntegerConstraintInSimpleNode(int number, int selection)
+        {
+            // WHERE /SimpleType/Integer==selection
+            // simpleTypes.Integer==selection
+            string constraint=string.Format(
+                CultureInfo.InvariantCulture,
+                "<ogc:PropertyIsEqualTo><ogc:PropertyName>/SimpleType/Integer</ogc:PropertyName><ogc:Literal>{0}</ogc:Literal></ogc:PropertyIsEqualTo>",
+                selection
+            );
+
+            var Filter=FilterTests.CreateFilter(constraint);
+            var selected=FilterTests.CreateCollection(number).AsQueryable<FilterTests.SimpleType>().Where<FilterTests.SimpleType>(Filter);
+
+            Assert.Equal<int>(1, selected.Count<FilterTests.SimpleType>());
+            Assert.Equal<int>(selection, selected.First<FilterTests.SimpleType>().Integer);
+        }
+
+        [Theory]
+        [InlineData(11, 10, 1)]
+        [InlineData(20, 10, 10)]
+        public void Filter_ShouldFindIntegerConstraintInEnumerableNode(int number, int selection, int expectedNumber)
+        {
+            // WHERE /SimpleType/IntegerList==selection
+            // simpleTypes.IntegerList.Any<int>(i => i==selection)
+            string constraint=string.Format(
+                CultureInfo.InvariantCulture,
+                "<ogc:PropertyIsEqualTo><ogc:PropertyName>/SimpleType/IntegerList</ogc:PropertyName><ogc:Literal>{0}</ogc:Literal></ogc:PropertyIsEqualTo>",
+                selection
+            );
+
+            var Filter=FilterTests.CreateFilter(constraint);
+            var selected=FilterTests.CreateCollection(number).AsQueryable<FilterTests.SimpleType>().Where<FilterTests.SimpleType>(Filter);
+
+            Assert.Equal<int>(expectedNumber, selected.Count<FilterTests.SimpleType>());
+            foreach (FilterTests.SimpleType t in selected)
+                Assert.True(t.IntegerList.Contains<int>(selection));
+        }
+
+        [Theory]
+        [InlineData(11, 10, 0)]
+        [InlineData(12, 10, 1)]
+        [InlineData(20, 10, 9)]
+        public void Filter_ShouldFindIntegerConstraintInComplexEnumerableNode(int number, int selection, int expectedNumber)
+        {
+            // WHERE /SimpleType/PreviousList/Integer==selection
+            // simpleTypes.PreviousList.Any<SimpleType>(t => t.Integer==selection)
+            string constraint=string.Format(
+                CultureInfo.InvariantCulture,
+                "<ogc:PropertyIsEqualTo><ogc:PropertyName>/SimpleType/PreviousList/Integer</ogc:PropertyName><ogc:Literal>{0}</ogc:Literal></ogc:PropertyIsEqualTo>",
+                selection
+            );
+
+            var Filter=FilterTests.CreateFilter(constraint);
+            var selected=FilterTests.CreateCollection(number).AsQueryable<FilterTests.SimpleType>().Where<FilterTests.SimpleType>(Filter);
+
+            Assert.Equal<int>(expectedNumber, selected.Count<FilterTests.SimpleType>());
+            foreach (FilterTests.SimpleType t in selected)
+                Assert.True(t.PreviousList.Any<FilterTests.SimpleType>(p => p.Integer==selection));
         }
     }
 }

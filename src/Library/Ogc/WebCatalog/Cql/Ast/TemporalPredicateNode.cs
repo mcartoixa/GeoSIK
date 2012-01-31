@@ -88,7 +88,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
         {
             base.Init(context, treeNode);
 
-            _AttributeName=(AttributeNameNode)AddChild("", treeNode.MappedChildNodes[0]);
+            AddChild("", treeNode.MappedChildNodes[0]);
 
             StringBuilder sb=new StringBuilder();
             for (int i=1; i<treeNode.MappedChildNodes.Count-1; ++i)
@@ -100,7 +100,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
             AsString=_OperatorName;
         }
 
-        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator)
+        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, ParameterExpression, Expression> operatorCreator)
         {
             return GetExpressionCreator().CreateExpression(parameters);
         }
@@ -153,7 +153,6 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
         internal const string BeforeOrDuringOperatorName="BeforeOrDuring";
         internal const string DuringOperatorName="During";
 
-        private AttributeNameNode _AttributeName;
         private AstNode _DateTimeExpression;
         private string _OperatorName;
     }

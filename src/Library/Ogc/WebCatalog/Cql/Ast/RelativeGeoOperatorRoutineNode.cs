@@ -78,14 +78,14 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
 
             _OperatorExpression=context.GetOperatorExpressionType(treeNode.MappedChildNodes[0].FindTokenAndGetText());
 
-            _AttributeName=(AttributeNameNode)AddChild("", treeNode.MappedChildNodes[1]);
-            _GeometryLiteral=(GeometryLiteralNode)AddChild("", treeNode.MappedChildNodes[2]);
+            AddChild("", treeNode.MappedChildNodes[1]);
+            AddChild("", treeNode.MappedChildNodes[2]);
             _Tolerance=(ToleranceNode)treeNode.MappedChildNodes[3].AstNode;
 
             AsString=((OperatorNameNode)treeNode.MappedChildNodes[0].AstNode).Name;
         }
 
-        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator)
+        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, ParameterExpression, Expression> operatorCreator)
         {
             return GetExpressionCreator().CreateExpression(parameters);
         }
@@ -101,8 +101,6 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
         }
 
         private ExpressionType _OperatorExpression;
-        private AttributeNameNode _AttributeName;
-        private GeometryLiteralNode _GeometryLiteral;
         private ToleranceNode _Tolerance;
     }
 #pragma warning restore 3001, 3009

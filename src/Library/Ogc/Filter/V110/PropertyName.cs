@@ -35,7 +35,7 @@ namespace OgcToolkit.Ogc.Filter.V110
     partial class PropertyName
     {
 
-        internal protected override Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator)
+        internal protected override Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, ParameterExpression, Expression> operatorCreator)
         {
             // We only want literals in this case
             if (operatorCreator==null)
