@@ -85,13 +85,15 @@ namespace OgcToolkit.WebSample.Models.ModelFirst
                 return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTIntersects", arguments);
             case OperationNames.Like:
                 {
-                    StringComparison comparison=((bool)values[3] ? StringComparison.CurrentCulture : StringComparison.CurrentCultureIgnoreCase);
+                    StringComparison comparison=(StringComparison)values[3];
                     arguments=new Type[] { typeof(string), typeof(string), typeof(string), typeof(int) };
                     values=new object[] { values[0], values[1], (values[2]!=null ? values[2].ToString() : null), (int)comparison };
 
-                    if ((comparison==StringComparison.CurrentCultureIgnoreCase) && (values[2]==null))
+                    // case insensitive and no escape char uses ESQL
+                    if (!IsCaseSensitive(comparison) && (values[2]==null))
                         return typeof(OperatorsImplementationProvider).GetMethod("StringCILike", arguments);
 
+                    // Stored procedure by default
                     return typeof(OperatorsImplementationProvider).GetMethod("StringLike", arguments);
                 }
             case OperationNames.NotEqual:

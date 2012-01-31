@@ -19,6 +19,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -130,6 +131,98 @@ namespace OgcToolkit.Ogc.Filter.V110
             }
         }
 
+        internal sealed class UnaryLogicalExpressionCreator:
+            IExpressionCreator
+        {
+
+            public UnaryLogicalExpressionCreator(IUnaryLogicalOperator op)
+            {
+                _FilterElement=op;
+            }
+
+            public Expression CreateExpression(ExpressionBuilderParameters parameters)
+            {
+                using (IEnumerator<IExpressionBuilder> children=GetEnumerator())
+                    if (children.MoveNext() && (children.Current!=null))
+                        return CreateStandardExpression(
+                            children.Current.CreateExpression(parameters, children.Current.GetExpressionStaticType(parameters), null),
+                            parameters,
+                            _FilterElement.GetExpressionStaticType(parameters)
+                        );
+
+                return null;
+            }
+
+            private Expression CreateStandardExpression(Expression subexpr, ExpressionBuilderParameters parameters, Type subType)
+            {
+                return Expression.MakeUnary(
+                    _FilterElement.OperatorExpressionType,
+                    subexpr,
+                    null
+                );
+            }
+
+            private string GetCustomImplementationName(List<Type> paramTypes, List<object> paramValues)
+            {
+                return _FilterElement.OperatorExpressionType.ToString();
+            }
+
+            private Expression CreateCustomExpression(MethodInfo method, object instance, Expression subexpr, ExpressionBuilderParameters parameters, Type subType)
+            {
+                throw new NotSupportedException();
+                //Expression ret=null;
+
+                //if (instance!=null)
+                //    ret=Expression.Call(
+                //        Expression.Constant(instance),
+                //        method,
+                //        subexpr
+                //    );
+                //else
+                //    ret=Expression.Call(
+                //        method,
+                //        subexpr
+                //    );
+
+                //Type rt=Nullable.GetUnderlyingType(method.ReturnType)??method.ReturnType;
+                //if (method.ReturnType!=typeof(bool))
+                //    ret=Expression.Equal(
+                //        ret,
+                //        Expression.Constant(Convert.ChangeType(true, rt, CultureInfo.InvariantCulture), method.ReturnType)
+                //    );
+
+                //return ret;
+            }
+
+            private IEnumerator<IExpressionBuilder> GetEnumerator()
+            {
+                var ret=new List<IExpressionBuilder>(1);
+
+                if (_FilterElement.logicOps!=null)
+                    ret.Add(_FilterElement.logicOps);
+                else if (_FilterElement.comparisonOps!=null)
+                    ret.Add(_FilterElement.comparisonOps);
+                else if (_FilterElement.spatialOps!=null)
+                    ret.Add(_FilterElement.spatialOps);
+                else if (_FilterElement.Function!=null)
+                    ret.Add(_FilterElement.Function);
+
+                return ret.GetEnumerator();
+            }
+
+            IEnumerator<IExpressionBuilder> IEnumerable<IExpressionBuilder>.GetEnumerator()
+            {
+                return GetEnumerator();
+            }
+
+            IEnumerator IEnumerable.GetEnumerator()
+            {
+                return GetEnumerator();
+            }
+
+            private IUnaryLogicalOperator _FilterElement;
+        }
+
         internal protected virtual Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, ParameterExpression, Expression> operatorCreator)
         {
             return GetExpressionCreator().CreateExpression(parameters);
@@ -145,6 +238,10 @@ namespace OgcToolkit.Ogc.Filter.V110
             var blop=this as IBinaryLogicalOperator;
             if (blop!=null)
                 return new BinaryLogicalExpressionCreator(blop);
+
+            var ulop=this as IUnaryLogicalOperator;
+            if (ulop!=null)
+                return new UnaryLogicalExpressionCreator(ulop);
 
             throw new NotSupportedException(
                 string.Format(

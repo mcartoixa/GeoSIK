@@ -91,11 +91,14 @@ namespace OgcToolkit.WebSample.Models.LinqToSql
                 return typeof(RecordsDataContext).GetMethod("Geometry_STIntersects", arguments);
             case OperationNames.Like:
                 // LIKE is case insensitive by default: use it
-                if ((bool)values[3])
                 {
-                    arguments=new Type[] { typeof(string), typeof(string), typeof(char?), typeof(int) };
-                    values=new object[] { values[0], values[1], values[2], (int)StringComparison.CurrentCulture };
-                    return typeof(RecordsDataContext).GetMethod("String_Like", arguments);
+                    StringComparison comparison=(StringComparison)values[3];
+                    if (IsCaseSensitive(comparison))
+                    {
+                        arguments=new Type[] { typeof(string), typeof(string), typeof(char?), typeof(int) };
+                        values=new object[] { values[0], values[1], values[2], (int)comparison };
+                        return typeof(RecordsDataContext).GetMethod("String_Like", arguments);
+                    }
                 }
                 break;
             case OperationNames.NotEqual:
