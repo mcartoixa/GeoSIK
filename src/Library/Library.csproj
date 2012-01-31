@@ -87,6 +87,7 @@
     <Compile Include="Ogc\Filter\IExpressionBuilder.cs" />
     <Compile Include="Ogc\Filter\V110\Beyond.cs" />
     <Compile Include="Ogc\Filter\V110\Contains.cs" />
+    <Compile Include="Ogc\Filter\V110\IUnaryLogicalOperator.cs" />
     <Compile Include="Ogc\Filter\V110\DWithin.cs" />
     <Compile Include="Ogc\Filter\V110\IDistanceBufferOperator.cs" />
     <Compile Include="Ogc\Filter\V110\Intersects.cs" />

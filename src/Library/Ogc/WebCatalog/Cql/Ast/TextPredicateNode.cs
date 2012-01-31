@@ -76,8 +76,8 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
                 paramTypes.Add(typeof(char?));
                 paramValues.Add(null);
 
-                paramTypes.Add(typeof(bool?));
-                paramValues.Add(false);
+                paramTypes.Add(typeof(StringComparison));
+                paramValues.Add(StringComparison.CurrentCultureIgnoreCase);
 
                 return OperationNames.Like;
             }

@@ -47,7 +47,7 @@ namespace OgcToolkit.Ogc.Filter.V110
             {
                 _EscapeChar=(!string.IsNullOrEmpty(op.escapeChar) ? (char?)op.escapeChar[0] : null);
                 _Pattern=TranslateToSqlLikePattern(op.Literal.Untyped.Value, op.wildCard, op.singleChar, _EscapeChar);
-                _MatchCase=op.matchCase;
+                _MatchCase=op.matchCase ? StringComparison.CurrentCulture : StringComparison.CurrentCultureIgnoreCase;
             }
 
             protected override Expression CreateStandardExpression(IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)
@@ -83,7 +83,7 @@ namespace OgcToolkit.Ogc.Filter.V110
                 paramTypes.Add(typeof(char?));
                 paramValues.Add(_EscapeChar);
 
-                paramTypes.Add(typeof(bool?));
+                paramTypes.Add(typeof(StringComparison));
                 paramValues.Add(_MatchCase);
 
                 return OperationNames.Like;
@@ -152,7 +152,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
             private string _Pattern;
             private char? _EscapeChar;
-            private bool _MatchCase;
+            private StringComparison _MatchCase;
         }
 
         internal protected override IExpressionCreator GetExpressionCreator()
