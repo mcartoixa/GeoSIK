@@ -62,14 +62,13 @@ namespace OgcToolkit.Ogc.Filter
                         IEnumerator v=values.GetEnumerator();
                         IEnumerator t=types.GetEnumerator();
                         LinkedList<Expression> subexpr=new LinkedList<Expression>();
-                        LinkedList<Expression> opparams=new LinkedList<Expression>();
 
                         while (v.MoveNext() && t.MoveNext())
                         {
                             children.MoveNext();
                             if (v.Current==null)
                                 subexpr.AddLast(
-                                    children.Current.CreateExpression(parameters, (Type)t.Current, e => CustomCallback(children, t, v, opparams.AddLast(e), method, instance, parameters))
+                                    children.Current.CreateExpression(parameters, (Type)t.Current, (e, p) => CustomCallback(children, subexpr, t, v, e, p, method, instance, parameters))
                                 );
                             else
                                 subexpr.AddLast(Expression.Constant(v.Current, (Type)t.Current));
@@ -88,12 +87,10 @@ namespace OgcToolkit.Ogc.Filter
                 using (IEnumerator<IExpressionBuilder> children=GetEnumerator())
                 {
                     LinkedList<Expression> subexpr=new LinkedList<Expression>();
-                    LinkedList<Expression> opparams=new LinkedList<Expression>();
 
-                    // This algorithm will not work for operators that take more than 2 parameters (?) and mix collection references with plain parameters...
                     while (children.MoveNext())
                         subexpr.AddLast(
-                            children.Current.CreateExpression(parameters, subtype, e => StandardCallback(children, opparams.AddLast(e), parameters, subtype))
+                            children.Current.CreateExpression(parameters, subtype, (e, p) => StandardCallback(children, subexpr, e, p, parameters, subtype))
                         );
 
                     if (subexpr.First!=subexpr.Last)
@@ -148,36 +145,53 @@ namespace OgcToolkit.Ogc.Filter
                 }
         }
 
-        private Expression CustomCallback(IEnumerator<IExpressionBuilder> children, IEnumerator types, IEnumerator vals, LinkedListNode<Expression> inparam, MethodInfo method, object instance, ExpressionBuilderParameters parameters)
+        private Expression CustomCallback(IEnumerator<IExpressionBuilder> children, LinkedList<Expression> subexpr, IEnumerator types, IEnumerator vals, Expression basexp, ParameterExpression pexp, MethodInfo method, object instance, ExpressionBuilderParameters parameters)
         {
-            Expression ret=inparam.Value;
+            Expression ret=basexp;
 
-            if (ret is ParameterExpression)
+            if (pexp!=null)
             {
-                if (vals.MoveNext() && types.MoveNext())
+                Expression sub=null;
+                bool hasNext=vals.MoveNext() && types.MoveNext();
+                if (hasNext)
                 {
                     children.MoveNext();
                     if (vals.Current==null)
-                        ret=children.Current.CreateExpression(parameters, (Type)types.Current, e => CustomCallback(children, types, vals, inparam.List.AddLast(e), method, instance, parameters));
+                        sub=children.Current.CreateExpression(parameters, (Type)types.Current, (e, p) => CustomCallback(children, subexpr, types, vals, e, p, method, instance, parameters));
                     else
-                        ret=CustomCallback(children, types, vals, inparam.List.AddLast(Expression.Constant(vals.Current, (Type)types.Current)), method, instance, parameters);
+                        sub=CustomCallback(children, subexpr, types, vals, Expression.Constant(vals.Current, (Type)types.Current), null, method, instance, parameters);
                 } else
-                    ret=CreateCustomExpression(method, instance, inparam.List, parameters, (Type)types.Current);
+                {
+                    sub=subexpr.Last.Value;
+                    subexpr.RemoveLast();
+                }
+                ret=CreateCustomExpression(method, instance, new Expression[] { ret, sub }, parameters, (Type)types.Current);
+                if (!hasNext)
+                    subexpr.AddLast(ret);
             }
 
             return ret;
         }
 
-        private Expression StandardCallback(IEnumerator<IExpressionBuilder> children, LinkedListNode<Expression> inparam, ExpressionBuilderParameters parameters, Type expectedStaticType)
+        private Expression StandardCallback(IEnumerator<IExpressionBuilder> children, LinkedList<Expression> subexpr, Expression basexp, ParameterExpression pexp, ExpressionBuilderParameters parameters, Type expectedStaticType)
         {
-            Expression ret=inparam.Value;
+            Expression ret=basexp;
 
-            if (ret is ParameterExpression)
+            if (pexp!=null)
             {
-                if (children.MoveNext())
-                    ret=children.Current.CreateExpression(parameters, expectedStaticType, e => StandardCallback(children, inparam.List.AddLast(e), parameters, expectedStaticType));
-                else
-                    ret=CreateStandardExpression(inparam.List, parameters, expectedStaticType);
+                Expression sub=null;
+                bool hasNext=children.MoveNext();
+                if (hasNext)
+                {
+                    sub=children.Current.CreateExpression(parameters, expectedStaticType, (e, p) => StandardCallback(children, subexpr, e, p, parameters, expectedStaticType));
+                } else
+                {
+                    sub=subexpr.Last.Value;
+                    subexpr.RemoveLast();
+                }
+                ret=CreateStandardExpression(new Expression[] { ret, sub }, parameters, expectedStaticType);
+                if (!hasNext)
+                    subexpr.AddLast(ret);
             }
 
             return ret;

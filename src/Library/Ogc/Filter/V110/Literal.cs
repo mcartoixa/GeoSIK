@@ -36,7 +36,7 @@ namespace OgcToolkit.Ogc.Filter.V110
     partial class Literal
     {
 
-        internal protected override Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator)
+        internal protected override Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, ParameterExpression, Expression> operatorCreator)
         {
             Expression ret=null;
 
@@ -112,7 +112,7 @@ namespace OgcToolkit.Ogc.Filter.V110
             }
 
             if (operatorCreator!=null)
-                return operatorCreator(ret);
+                return operatorCreator(ret, null);
 
             return ret;
         }

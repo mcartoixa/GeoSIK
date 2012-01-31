@@ -79,13 +79,13 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
             base.Init(context, treeNode);
 
             _OperatorName=((OperatorNameNode)treeNode.MappedChildNodes[0].AstNode).Name;
-            _AttributeName=(AttributeNameNode)AddChild("", treeNode.MappedChildNodes[1]);
-            _GeometryLiteral=(GeometryLiteralNode)AddChild("", treeNode.MappedChildNodes[2]);
+            AddChild("", treeNode.MappedChildNodes[1]);
+            AddChild("", treeNode.MappedChildNodes[2]);
 
             AsString=_OperatorName;
         }
 
-        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator)
+        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, ParameterExpression, Expression> operatorCreator)
         {
             return GetExpressionCreator().CreateExpression(parameters);
         }
@@ -101,8 +101,6 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
         }
 
         private string _OperatorName;
-        private AttributeNameNode _AttributeName;
-        private GeometryLiteralNode _GeometryLiteral;
     }
 #pragma warning restore 3001, 3009
 }

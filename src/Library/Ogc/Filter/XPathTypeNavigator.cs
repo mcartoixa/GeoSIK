@@ -69,7 +69,7 @@ namespace OgcToolkit.Ogc.Filter
             return new XPathTypeNavigator(this);
         }
 
-        public Expression CreateExpression(ParameterExpression parameter, Type expectedType=null, Func<Expression, Expression> expressionCreator=null)
+        public Expression CreateExpression(ParameterExpression parameter, Type expectedType=null, Func<Expression, ParameterExpression, Expression> expressionCreator=null)
         {
             return _Current.CreateExpression(parameter, expectedType, expressionCreator);
         }

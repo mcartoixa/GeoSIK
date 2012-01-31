@@ -96,7 +96,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
             }
         }
 
-        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator)
+        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, ParameterExpression, Expression> operatorCreator)
         {
             return GetExpressionCreator().CreateExpression(parameters);
         }

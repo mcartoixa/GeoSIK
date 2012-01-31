@@ -68,7 +68,7 @@ namespace OgcToolkit.Ogc.Filter.V110
             }
         }
 
-        internal protected virtual Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator=null)
+        internal protected virtual Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, ParameterExpression, Expression> operatorCreator=null)
         {
             return GetExpressionCreator().CreateExpression(parameters);
         }
@@ -119,7 +119,7 @@ namespace OgcToolkit.Ogc.Filter.V110
             }
         }
 
-        Expression IExpressionBuilder.CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator)
+        Expression IExpressionBuilder.CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, ParameterExpression, Expression> operatorCreator)
         {
             return CreateExpression(parameters, expectedStaticType, operatorCreator);
         }

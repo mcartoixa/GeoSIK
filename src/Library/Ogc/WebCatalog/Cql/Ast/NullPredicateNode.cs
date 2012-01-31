@@ -86,12 +86,12 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
             var on=treeNode.MappedChildNodes[2].AstNode as NotKeywordNode;
             if (on!=null)
                 _OptionalNot=on;
-            _AttributeName=(AttributeNameNode)AddChild("", treeNode.MappedChildNodes[0]);
+            AddChild("", treeNode.MappedChildNodes[0]);
 
             AsString="IsNull";
         }
 
-        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator)
+        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, ParameterExpression, Expression> operatorCreator)
         {
             return GetExpressionCreator().CreateExpression(parameters);
         }
@@ -107,7 +107,6 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
         }
 
         private NotKeywordNode _OptionalNot;
-        private AttributeNameNode _AttributeName;
     }
 #pragma warning restore 3009
 }

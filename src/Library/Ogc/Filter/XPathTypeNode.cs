@@ -87,7 +87,7 @@ namespace OgcToolkit.Ogc.Filter
         /// <remarks>
         ///   <para></para>
         /// </remarks>
-        public Expression CreateExpression(ParameterExpression parameter, Type expectedType=null, Func<Expression, Expression> expressionCreator=null)
+        public Expression CreateExpression(ParameterExpression parameter, Type expectedType=null, Func<Expression, ParameterExpression, Expression> expressionCreator=null)
         {
             LinkedList<XPathTypeNode> path=GetNodePath();
             path.RemoveFirst(); // This is the root, represented by the parameter
@@ -97,7 +97,7 @@ namespace OgcToolkit.Ogc.Filter
             return node.CreateNodeExpression(parameter, path, expectedType, expressionCreator, new Stack<ParameterExpression>());
         }
 
-        internal protected virtual Expression CreateNodeExpression(Expression baseExpression, LinkedList<XPathTypeNode> path, Type expectedType, Func<Expression, Expression> expressionCreator, Stack<ParameterExpression> innerParams)
+        internal protected virtual Expression CreateNodeExpression(Expression baseExpression, LinkedList<XPathTypeNode> path, Type expectedType, Func<Expression, ParameterExpression, Expression> expressionCreator, Stack<ParameterExpression> innerParams)
         {
             Expression ret=Expression.PropertyOrField(baseExpression, MemberInfo.Name);
 
@@ -111,14 +111,12 @@ namespace OgcToolkit.Ogc.Filter
                 if ((expressionCreator==null) && (innerParams.Count>0))
                     throw new InvalidOperationException("Trying to create an expression to an element that is inside a collection.");
 
+                ParameterExpression p=null;
                 if (innerParams.Count>0)
-                {
-                    ParameterExpression param=innerParams.Pop();
-                    return expressionCreator(param);
-                }
+                    p=innerParams.Pop();
 
                 if (expressionCreator!=null)
-                    return expressionCreator(ret);
+                    return expressionCreator(ret, p);
 
                 return ret;
             }

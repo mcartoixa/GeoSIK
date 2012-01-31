@@ -126,7 +126,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
             AsString="(boolean factor)";
         }
 
-        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, Expression> operatorCreator)
+        public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, ParameterExpression, Expression> operatorCreator)
         {
             if (_OptionalNot!=null)
                 return GetExpressionCreator().CreateExpression(parameters);

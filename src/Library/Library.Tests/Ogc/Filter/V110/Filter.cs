@@ -54,11 +54,37 @@ namespace OgcToolkit.Ogc.Filter.V110.Tests
             return ret;
         }
 
+        /// <summary>Creates a collection of <see cref="SimpleType" /> elements to be used in tests.</summary>
+        /// <param name="number">The number of elements in the collection.</param>
+        /// <returns>The collection of <see cref="SimpleType" /> elements to be used in tests.</returns>
+        /// <remarks>
+        ///   <para>There will be <paramref name="number" /> elements in the returned collection.
+        /// Each <see cref="SimpleType" /> element is initialized according to its position <c>p</c> in the collection:
+        /// <list type="bullet">
+        ///   <item><description><see cref="SimpleType.Integer" /> is <c>p</c> represented as an <see cref="Int32" />.</description></item>
+        ///   <item><description><see cref="SimpleType.String" /> is <c>p</c> represented as a <see cref="String" />.</description></item>
+        ///   <item><description><see cref="SimpleType.IntegerList" /> is a collection of <see cref="Int32" /> elements, from <c>0</c> to <c>p</c>. It thus contains <c>p+1</c> elements.</description></item>
+        ///   <item><description><see cref="SimpleType.PreviousList" /> is a collection of the <c>p-1</c> previous elements. For the first element (<c>p=0</c>), this list is empty.</description></item>
+        /// </list>
+        /// </para>
+        /// </remarks>
         internal static IEnumerable<SimpleType> CreateCollection(int number)
         {
             var ret=new List<SimpleType>(number);
             for (int i=0; i<number; ++i)
-                ret.Add(new SimpleType() { String=i.ToString(CultureInfo.InvariantCulture), Integer=i });
+            {
+                var st=new SimpleType() {
+                    String=i.ToString(CultureInfo.InvariantCulture),
+                    Integer=i,
+                    IntegerList=new int[i+1],
+                    PreviousList=new List<SimpleType>(ret)
+                };
+
+                for (int j=0; j<=i; ++j)
+                    st.IntegerList[j]=j;
+
+                ret.Add(st);
+            }
             return ret;
         }
 
@@ -67,6 +93,8 @@ namespace OgcToolkit.Ogc.Filter.V110.Tests
 
             public string String { get; set; }
             public int Integer { get; set; }
+            public IList<int> IntegerList { get; set; }
+            public IList<SimpleType> PreviousList { get; set; }
         }
     }
 }
