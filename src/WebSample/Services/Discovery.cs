@@ -1,20 +1,20 @@
 ﻿////////////////////////////////////////////////////////////////////////////////
 //
-// This file is part of OgcToolkit.
+// This file is part of GeoSIK.
 // Copyright (C) 2012 Isogeo
 //
-// OgcToolkit is free software: you can redistribute it and/or modify
+// GeoSIK is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 2 of the License, or
 // (at your option) any later version.
 //
-// OgcToolkit is distributed in the hope that it will be useful,
+// GeoSIK is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with OgcToolkit. If not, see <http://www.gnu.org/licenses/>.
+// along with GeoSIK. If not, see <http://www.gnu.org/licenses/>.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -26,16 +26,16 @@ using System.ServiceModel.Web;
 using System.Xml.Linq;
 using System.Web;
 using Xml.Schema.Linq;
-using OgcToolkit.Services;
-using Csw202=OgcToolkit.Ogc.WebCatalog.Csw.V202;
-using Ows100=OgcToolkit.Ogc.Ows.V100;
+using GeoSik.Services;
+using Csw202=GeoSik.Ogc.WebCatalog.Csw.V202;
+using Ows100=GeoSik.Ogc.Ows.V100;
 
-namespace OgcToolkit.WebSample.Services
+namespace GeoSik.WebSample.Services
 {
 
     [OwsDescription(Discovery.Service, Discovery.Version)]
     public class Discovery:
-        OgcToolkit.Services.Csw.V202.Discovery,
+        GeoSik.Services.Csw.V202.Discovery,
         IDisposable
     {
 
@@ -98,10 +98,10 @@ namespace OgcToolkit.WebSample.Services
                     return ret;
 
                 ret.Add(
-                    new OgcToolkit.Services.OwsEndPoint() {
+                    new GeoSik.Services.OwsEndPoint() {
                         AddOperationName=false,
                         BaseUri=new Uri(baseUri, "Services/Ows.svc/"),
-                        Method=OgcToolkit.Services.OwsMethod.Get
+                        Method=GeoSik.Services.OwsMethod.Get
                     }
                 );
                 //e.EndPoints.Add(
@@ -112,10 +112,10 @@ namespace OgcToolkit.WebSample.Services
                 //    }
                 //);
                 ret.Add(
-                    new OgcToolkit.Services.OwsEndPoint() {
+                    new GeoSik.Services.OwsEndPoint() {
                         AddOperationName=true,
                         BaseUri=new Uri(baseUri, "Services/Csw.svc/xml/"),
-                        Method=OgcToolkit.Services.OwsMethod.Xml
+                        Method=GeoSik.Services.OwsMethod.Xml
                     }
                 );
 
@@ -145,7 +145,7 @@ namespace OgcToolkit.WebSample.Services
             _RecordContext=null;
         }
 
-        protected override OgcToolkit.Services.Csw.V202.Discovery.GetCapabilitiesProcessorBase CreateGetCapabilitiesProcessor()
+        protected override GeoSik.Services.Csw.V202.Discovery.GetCapabilitiesProcessorBase CreateGetCapabilitiesProcessor()
         {
             return new GetCapabilitiesProcessor(this);
         }

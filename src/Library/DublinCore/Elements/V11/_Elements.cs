@@ -1,25 +1,25 @@
 ﻿////////////////////////////////////////////////////////////////////////////////
 //
-// This file is part of OgcToolkit.
+// This file is part of GeoSIK.
 // Copyright (C) 2012 Isogeo
 //
-// OgcToolkit is free software: you can redistribute it and/or modify
+// GeoSIK is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 2 of the License, or
 // (at your option) any later version.
 //
-// OgcToolkit is distributed in the hope that it will be useful,
+// GeoSIK is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with OgcToolkit. If not, see <http://www.gnu.org/licenses/>.
+// along with GeoSIK. If not, see <http://www.gnu.org/licenses/>.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
 #pragma warning disable 108, 114, 3002, 3009
-namespace OgcToolkit.DublinCore.Elements.V11
+namespace GeoSik.DublinCore.Elements.V11
 {
     using System;
     using System.Collections;
@@ -31,7 +31,7 @@ namespace OgcToolkit.DublinCore.Elements.V11
     using System.Xml.Serialization;
     using System.Xml.Linq;
     using Xml.Schema.Linq;
-    using OgcToolkit.Ogc.Ows.V100;
+    using GeoSik.Ogc.Ows.V100;
 
 
     /// <summary>
@@ -476,7 +476,7 @@ namespace OgcToolkit.DublinCore.Elements.V11
     /// </summary>
     [XmlSchemaProviderAttribute("titleSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class title: global::OgcToolkit.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
+    public partial class title: global::GeoSik.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -651,7 +651,7 @@ namespace OgcToolkit.DublinCore.Elements.V11
     /// </summary>
     [XmlSchemaProviderAttribute("creatorSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class creator: global::OgcToolkit.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
+    public partial class creator: global::GeoSik.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -812,7 +812,7 @@ namespace OgcToolkit.DublinCore.Elements.V11
     /// </summary>
     [XmlSchemaProviderAttribute("subjectSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class subject: global::OgcToolkit.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
+    public partial class subject: global::GeoSik.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -973,7 +973,7 @@ namespace OgcToolkit.DublinCore.Elements.V11
     /// </summary>
     [XmlSchemaProviderAttribute("descriptionSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class description: global::OgcToolkit.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
+    public partial class description: global::GeoSik.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -1148,7 +1148,7 @@ namespace OgcToolkit.DublinCore.Elements.V11
     /// </summary>
     [XmlSchemaProviderAttribute("publisherSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class publisher: global::OgcToolkit.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
+    public partial class publisher: global::GeoSik.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -1309,7 +1309,7 @@ namespace OgcToolkit.DublinCore.Elements.V11
     /// </summary>
     [XmlSchemaProviderAttribute("contributorSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class contributor: global::OgcToolkit.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
+    public partial class contributor: global::GeoSik.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -1470,7 +1470,7 @@ namespace OgcToolkit.DublinCore.Elements.V11
     /// </summary>
     [XmlSchemaProviderAttribute("dateSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class date: global::OgcToolkit.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
+    public partial class date: global::GeoSik.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -1645,7 +1645,7 @@ namespace OgcToolkit.DublinCore.Elements.V11
     /// </summary>
     [XmlSchemaProviderAttribute("typeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class type: global::OgcToolkit.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
+    public partial class type: global::GeoSik.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -1806,7 +1806,7 @@ namespace OgcToolkit.DublinCore.Elements.V11
     /// </summary>
     [XmlSchemaProviderAttribute("formatSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class format: global::OgcToolkit.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
+    public partial class format: global::GeoSik.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -1981,7 +1981,7 @@ namespace OgcToolkit.DublinCore.Elements.V11
     /// </summary>
     [XmlSchemaProviderAttribute("identifierSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class identifier: global::OgcToolkit.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
+    public partial class identifier: global::GeoSik.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -2156,7 +2156,7 @@ namespace OgcToolkit.DublinCore.Elements.V11
     /// </summary>
     [XmlSchemaProviderAttribute("sourceSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class source: global::OgcToolkit.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
+    public partial class source: global::GeoSik.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -2317,7 +2317,7 @@ namespace OgcToolkit.DublinCore.Elements.V11
     /// </summary>
     [XmlSchemaProviderAttribute("languageSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class language: global::OgcToolkit.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
+    public partial class language: global::GeoSik.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -2478,7 +2478,7 @@ namespace OgcToolkit.DublinCore.Elements.V11
     /// </summary>
     [XmlSchemaProviderAttribute("relationSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class relation: global::OgcToolkit.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
+    public partial class relation: global::GeoSik.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -2653,7 +2653,7 @@ namespace OgcToolkit.DublinCore.Elements.V11
     /// </summary>
     [XmlSchemaProviderAttribute("coverageSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class coverage: global::OgcToolkit.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
+    public partial class coverage: global::GeoSik.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -2828,7 +2828,7 @@ namespace OgcToolkit.DublinCore.Elements.V11
     /// </summary>
     [XmlSchemaProviderAttribute("rightsSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class rights: global::OgcToolkit.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
+    public partial class rights: global::GeoSik.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]

@@ -1,25 +1,25 @@
 ﻿////////////////////////////////////////////////////////////////////////////////
 //
-// This file is part of OgcToolkit.
+// This file is part of GeoSIK.
 // Copyright (C) 2012 Isogeo
 //
-// OgcToolkit is free software: you can redistribute it and/or modify
+// GeoSIK is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 2 of the License, or
 // (at your option) any later version.
 //
-// OgcToolkit is distributed in the hope that it will be useful,
+// GeoSIK is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with OgcToolkit. If not, see <http://www.gnu.org/licenses/>.
+// along with GeoSIK. If not, see <http://www.gnu.org/licenses/>.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
 #pragma warning disable 3002, 3009
-namespace OgcToolkit.W3.Smil20.Language
+namespace GeoSik.W3.Smil20.Language
 {
     using System;
     using System.Collections;
@@ -31,7 +31,7 @@ namespace OgcToolkit.W3.Smil20.Language
     using System.Xml.Serialization;
     using System.Xml.Linq;
     using Xml.Schema.Linq;
-    using OgcToolkit.Ogc.Gml.V311;
+    using GeoSik.Ogc.Gml.V311;
 
 
     /// <summary>
@@ -41,7 +41,7 @@ namespace OgcToolkit.W3.Smil20.Language
     /// </summary>
     [XmlSchemaProviderAttribute("animateTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class animateType: global::OgcToolkit.W3.Smil20.animatePrototype, IXMetaData, IXmlSerializable
+    public partial class animateType: global::GeoSik.W3.Smil20.animatePrototype, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -601,7 +601,7 @@ namespace OgcToolkit.W3.Smil20.Language
     /// </summary>
     [XmlSchemaProviderAttribute("animateMotionTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class animateMotionType: global::OgcToolkit.W3.Smil20.animateMotionPrototype, IXMetaData, IXmlSerializable
+    public partial class animateMotionType: global::GeoSik.W3.Smil20.animateMotionPrototype, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -1161,7 +1161,7 @@ namespace OgcToolkit.W3.Smil20.Language
     /// </summary>
     [XmlSchemaProviderAttribute("animateColorTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class animateColorType: global::OgcToolkit.W3.Smil20.animateColorPrototype, IXMetaData, IXmlSerializable
+    public partial class animateColorType: global::GeoSik.W3.Smil20.animateColorPrototype, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -1721,7 +1721,7 @@ namespace OgcToolkit.W3.Smil20.Language
     /// </summary>
     [XmlSchemaProviderAttribute("setTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class setType: global::OgcToolkit.W3.Smil20.setPrototype, IXMetaData, IXmlSerializable
+    public partial class setType: global::GeoSik.W3.Smil20.setPrototype, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]

@@ -1,25 +1,25 @@
 ﻿////////////////////////////////////////////////////////////////////////////////
 //
-// This file is part of OgcToolkit.
+// This file is part of GeoSIK.
 // Copyright (C) 2012 Isogeo
 //
-// OgcToolkit is free software: you can redistribute it and/or modify
+// GeoSIK is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 2 of the License, or
 // (at your option) any later version.
 //
-// OgcToolkit is distributed in the hope that it will be useful,
+// GeoSIK is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with OgcToolkit. If not, see <http://www.gnu.org/licenses/>.
+// along with GeoSIK. If not, see <http://www.gnu.org/licenses/>.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
 #pragma warning disable 108, 109, 3002, 3003, 3009
-namespace OgcToolkit.Iso.Ts19139.Gmd
+namespace GeoSik.Iso.Ts19139.Gmd
 {
     using System;
     using System.Collections;
@@ -31,7 +31,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     using System.Xml.Serialization;
     using System.Xml.Linq;
     using Xml.Schema.Linq;
-    using OgcToolkit.Iso.Ts19139.Gco;
+    using GeoSik.Iso.Ts19139.Gco;
 
 
     /// <summary>
@@ -44,7 +44,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("EX_TemporalExtent_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class EX_TemporalExtent_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class EX_TemporalExtent_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -81,12 +81,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (extent)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gts.TM_Primitive_PropertyType extent
+        public GeoSik.Iso.Ts19139.Gts.TM_Primitive_PropertyType extent
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("extent", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gts.TM_Primitive_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gts.TM_Primitive_PropertyType)(x));
             }
             set
             {
@@ -137,7 +137,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("extent", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gts.TM_Primitive_PropertyType));
+            localElementDictionary.Add(XName.Get("extent", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gts.TM_Primitive_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -371,11 +371,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -447,7 +447,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("EX_VerticalExtent_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class EX_VerticalExtent_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class EX_VerticalExtent_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -484,12 +484,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (minimumValue, maximumValue, verticalCRS)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType minimumValue
+        public GeoSik.Iso.Ts19139.Gco.Real_PropertyType minimumValue
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("minimumValue", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Real_PropertyType)(x));
             }
             set
             {
@@ -505,12 +505,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (minimumValue, maximumValue, verticalCRS)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType maximumValue
+        public GeoSik.Iso.Ts19139.Gco.Real_PropertyType maximumValue
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("maximumValue", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Real_PropertyType)(x));
             }
             set
             {
@@ -526,12 +526,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (minimumValue, maximumValue, verticalCRS)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gsr.SC_CRS_PropertyType verticalCRS
+        public GeoSik.Iso.Ts19139.Gsr.SC_CRS_PropertyType verticalCRS
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("verticalCRS", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gsr.SC_CRS_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gsr.SC_CRS_PropertyType)(x));
             }
             set
             {
@@ -582,9 +582,9 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("minimumValue", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType));
-            localElementDictionary.Add(XName.Get("maximumValue", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType));
-            localElementDictionary.Add(XName.Get("verticalCRS", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gsr.SC_CRS_PropertyType));
+            localElementDictionary.Add(XName.Get("minimumValue", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Real_PropertyType));
+            localElementDictionary.Add(XName.Get("maximumValue", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Real_PropertyType));
+            localElementDictionary.Add(XName.Get("verticalCRS", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gsr.SC_CRS_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -815,11 +815,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -891,11 +891,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("EX_BoundingPolygon_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class EX_BoundingPolygon_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractEX_GeographicExtent_Type, IXMetaData, IXmlSerializable
+    public partial class EX_BoundingPolygon_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractEX_GeographicExtent_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gss.GM_Object_PropertyType> polygonField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gss.GM_Object_PropertyType> polygonField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         static Dictionary<XName, System.Type> localElementDictionary=new Dictionary<XName, System.Type>();
@@ -931,13 +931,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (extentTypeCode?, polygon+)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gss.GM_Object_PropertyType> polygon
+        public IList<GeoSik.Iso.Ts19139.Gss.GM_Object_PropertyType> polygon
         {
             get
             {
                 if ((this.polygonField==null))
                 {
-                    this.polygonField=new XTypedList<OgcToolkit.Iso.Ts19139.Gss.GM_Object_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("polygon", "http://www.isotc211.org/2005/gmd"));
+                    this.polygonField=new XTypedList<GeoSik.Iso.Ts19139.Gss.GM_Object_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("polygon", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.polygonField;
             }
@@ -950,10 +950,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.polygonField==null))
                     {
-                        this.polygonField=XTypedList<OgcToolkit.Iso.Ts19139.Gss.GM_Object_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("polygon", "http://www.isotc211.org/2005/gmd"));
+                        this.polygonField=XTypedList<GeoSik.Iso.Ts19139.Gss.GM_Object_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("polygon", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gss.GM_Object_PropertyType>(this.polygonField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gss.GM_Object_PropertyType>(this.polygonField, value);
                     }
                 }
             }
@@ -1002,8 +1002,8 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("extentTypeCode", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType));
-            localElementDictionary.Add(XName.Get("polygon", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gss.GM_Object_PropertyType));
+            localElementDictionary.Add(XName.Get("extentTypeCode", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType));
+            localElementDictionary.Add(XName.Get("polygon", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gss.GM_Object_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -1234,11 +1234,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -1310,7 +1310,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("EX_Extent_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class EX_Extent_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class EX_Extent_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -1356,12 +1356,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (description?, geographicElement*, temporalElement*, verticalElement*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType description
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType description
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("description", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -1520,7 +1520,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("description", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("description", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("geographicElement", "http://www.isotc211.org/2005/gmd"), typeof(EX_GeographicExtent_PropertyType));
             localElementDictionary.Add(XName.Get("temporalElement", "http://www.isotc211.org/2005/gmd"), typeof(EX_TemporalExtent_PropertyType));
             localElementDictionary.Add(XName.Get("verticalElement", "http://www.isotc211.org/2005/gmd"), typeof(EX_VerticalExtent_PropertyType));
@@ -1754,11 +1754,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -1830,7 +1830,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("AbstractEX_GeographicExtent_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public abstract partial class AbstractEX_GeographicExtent_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public abstract partial class AbstractEX_GeographicExtent_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -1867,12 +1867,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (extentTypeCode?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType extentTypeCode
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType extentTypeCode
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("extentTypeCode", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
             }
             set
             {
@@ -1918,7 +1918,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("extentTypeCode", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType));
+            localElementDictionary.Add(XName.Get("extentTypeCode", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -2152,11 +2152,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -2228,7 +2228,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("EX_GeographicBoundingBox_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class EX_GeographicBoundingBox_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractEX_GeographicExtent_Type, IXMetaData, IXmlSerializable
+    public partial class EX_GeographicBoundingBox_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractEX_GeographicExtent_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -2265,12 +2265,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (extentTypeCode?, westBoundLongitude, eastBoundLongitude, southBoundLatitude, northBoundLatitude)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Decimal_PropertyType westBoundLongitude
+        public GeoSik.Iso.Ts19139.Gco.Decimal_PropertyType westBoundLongitude
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("westBoundLongitude", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Decimal_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Decimal_PropertyType)(x));
             }
             set
             {
@@ -2286,12 +2286,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (extentTypeCode?, westBoundLongitude, eastBoundLongitude, southBoundLatitude, northBoundLatitude)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Decimal_PropertyType eastBoundLongitude
+        public GeoSik.Iso.Ts19139.Gco.Decimal_PropertyType eastBoundLongitude
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("eastBoundLongitude", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Decimal_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Decimal_PropertyType)(x));
             }
             set
             {
@@ -2307,12 +2307,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (extentTypeCode?, westBoundLongitude, eastBoundLongitude, southBoundLatitude, northBoundLatitude)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Decimal_PropertyType southBoundLatitude
+        public GeoSik.Iso.Ts19139.Gco.Decimal_PropertyType southBoundLatitude
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("southBoundLatitude", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Decimal_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Decimal_PropertyType)(x));
             }
             set
             {
@@ -2328,12 +2328,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (extentTypeCode?, westBoundLongitude, eastBoundLongitude, southBoundLatitude, northBoundLatitude)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Decimal_PropertyType northBoundLatitude
+        public GeoSik.Iso.Ts19139.Gco.Decimal_PropertyType northBoundLatitude
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("northBoundLatitude", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Decimal_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Decimal_PropertyType)(x));
             }
             set
             {
@@ -2384,11 +2384,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("extentTypeCode", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType));
-            localElementDictionary.Add(XName.Get("westBoundLongitude", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Decimal_PropertyType));
-            localElementDictionary.Add(XName.Get("eastBoundLongitude", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Decimal_PropertyType));
-            localElementDictionary.Add(XName.Get("southBoundLatitude", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Decimal_PropertyType));
-            localElementDictionary.Add(XName.Get("northBoundLatitude", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Decimal_PropertyType));
+            localElementDictionary.Add(XName.Get("extentTypeCode", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType));
+            localElementDictionary.Add(XName.Get("westBoundLongitude", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Decimal_PropertyType));
+            localElementDictionary.Add(XName.Get("eastBoundLongitude", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Decimal_PropertyType));
+            localElementDictionary.Add(XName.Get("southBoundLatitude", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Decimal_PropertyType));
+            localElementDictionary.Add(XName.Get("northBoundLatitude", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Decimal_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -2619,11 +2619,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -2695,7 +2695,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("EX_SpatialTemporalExtent_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class EX_SpatialTemporalExtent_Type: global::OgcToolkit.Iso.Ts19139.Gmd.EX_TemporalExtent_Type, IXMetaData, IXmlSerializable
+    public partial class EX_SpatialTemporalExtent_Type: global::GeoSik.Iso.Ts19139.Gmd.EX_TemporalExtent_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -2806,7 +2806,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("extent", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gts.TM_Primitive_PropertyType));
+            localElementDictionary.Add(XName.Get("extent", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gts.TM_Primitive_PropertyType));
             localElementDictionary.Add(XName.Get("spatialExtent", "http://www.isotc211.org/2005/gmd"), typeof(EX_GeographicExtent_PropertyType));
         }
 
@@ -3038,11 +3038,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -3111,7 +3111,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("EX_GeographicDescription_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class EX_GeographicDescription_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractEX_GeographicExtent_Type, IXMetaData, IXmlSerializable
+    public partial class EX_GeographicDescription_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractEX_GeographicExtent_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -3201,7 +3201,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("extentTypeCode", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType));
+            localElementDictionary.Add(XName.Get("extentTypeCode", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType));
             localElementDictionary.Add(XName.Get("geographicIdentifier", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
         }
 
@@ -3433,11 +3433,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -3506,7 +3506,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("RS_Identifier_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class RS_Identifier_Type: global::OgcToolkit.Iso.Ts19139.Gmd.MD_Identifier_Type, IXMetaData, IXmlSerializable
+    public partial class RS_Identifier_Type: global::GeoSik.Iso.Ts19139.Gmd.MD_Identifier_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -3540,12 +3540,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (authority?, code, codeSpace?, version?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType codeSpace
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType codeSpace
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("codeSpace", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -3561,12 +3561,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (authority?, code, codeSpace?, version?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType version
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType version
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("version", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -3618,9 +3618,9 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         private static void BuildElementDictionary()
         {
             localElementDictionary.Add(XName.Get("authority", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("code", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("codeSpace", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("version", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("code", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("codeSpace", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("version", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -3851,11 +3851,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -3924,7 +3924,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_ReferenceSystem_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_ReferenceSystem_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class MD_ReferenceSystem_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -4245,11 +4245,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -4318,7 +4318,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_Identifier_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_Identifier_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class MD_Identifier_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -4373,12 +4373,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (authority?, code)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType code
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType code
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("code", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -4430,7 +4430,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         private static void BuildElementDictionary()
         {
             localElementDictionary.Add(XName.Get("authority", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("code", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("code", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -4664,11 +4664,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -4740,7 +4740,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("AbstractRS_ReferenceSystem_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public abstract partial class AbstractRS_ReferenceSystem_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public abstract partial class AbstractRS_ReferenceSystem_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -5099,11 +5099,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -5175,7 +5175,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("CI_ResponsibleParty_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class CI_ResponsibleParty_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class CI_ResponsibleParty_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -5212,12 +5212,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (individualName?, organisationName?, positionName?, contactInfo?, role)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType individualName
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType individualName
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("individualName", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -5233,12 +5233,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (individualName?, organisationName?, positionName?, contactInfo?, role)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType organisationName
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType organisationName
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("organisationName", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -5254,12 +5254,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (individualName?, organisationName?, positionName?, contactInfo?, role)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType positionName
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType positionName
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("positionName", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -5352,9 +5352,9 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("individualName", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("organisationName", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("positionName", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("individualName", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("organisationName", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("positionName", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("contactInfo", "http://www.isotc211.org/2005/gmd"), typeof(CI_Contact_PropertyType));
             localElementDictionary.Add(XName.Get("role", "http://www.isotc211.org/2005/gmd"), typeof(CI_RoleCode_PropertyType));
         }
@@ -5587,11 +5587,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -5663,11 +5663,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("CI_Citation_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class CI_Citation_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class CI_Citation_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> alternateTitleField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> alternateTitleField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XTypedList<CI_Date_PropertyType> dateField;
@@ -5715,12 +5715,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (title, alternateTitle*, date+, edition?, editionDate?, identifier*, citedResponsibleParty*, presentationForm*, series?, otherCitationDetails?, collectiveTitle?, ISBN?, ISSN?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType title
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType title
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("title", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -5736,13 +5736,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (title, alternateTitle*, date+, edition?, editionDate?, identifier*, citedResponsibleParty*, presentationForm*, series?, otherCitationDetails?, collectiveTitle?, ISBN?, ISSN?)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> alternateTitle
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> alternateTitle
         {
             get
             {
                 if ((this.alternateTitleField==null))
                 {
-                    this.alternateTitleField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("alternateTitle", "http://www.isotc211.org/2005/gmd"));
+                    this.alternateTitleField=new XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("alternateTitle", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.alternateTitleField;
             }
@@ -5755,10 +5755,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.alternateTitleField==null))
                     {
-                        this.alternateTitleField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("alternateTitle", "http://www.isotc211.org/2005/gmd"));
+                        this.alternateTitleField=XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("alternateTitle", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.alternateTitleField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.alternateTitleField, value);
                     }
                 }
             }
@@ -5808,12 +5808,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (title, alternateTitle*, date+, edition?, editionDate?, identifier*, citedResponsibleParty*, presentationForm*, series?, otherCitationDetails?, collectiveTitle?, ISBN?, ISSN?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType edition
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType edition
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("edition", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -5829,12 +5829,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (title, alternateTitle*, date+, edition?, editionDate?, identifier*, citedResponsibleParty*, presentationForm*, series?, otherCitationDetails?, collectiveTitle?, ISBN?, ISSN?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Date_PropertyType editionDate
+        public GeoSik.Iso.Ts19139.Gco.Date_PropertyType editionDate
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("editionDate", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Date_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Date_PropertyType)(x));
             }
             set
             {
@@ -5979,12 +5979,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (title, alternateTitle*, date+, edition?, editionDate?, identifier*, citedResponsibleParty*, presentationForm*, series?, otherCitationDetails?, collectiveTitle?, ISBN?, ISSN?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType otherCitationDetails
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType otherCitationDetails
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("otherCitationDetails", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -6000,12 +6000,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (title, alternateTitle*, date+, edition?, editionDate?, identifier*, citedResponsibleParty*, presentationForm*, series?, otherCitationDetails?, collectiveTitle?, ISBN?, ISSN?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType collectiveTitle
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType collectiveTitle
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("collectiveTitle", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -6021,12 +6021,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (title, alternateTitle*, date+, edition?, editionDate?, identifier*, citedResponsibleParty*, presentationForm*, series?, otherCitationDetails?, collectiveTitle?, ISBN?, ISSN?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType ISBN
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType ISBN
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("ISBN", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -6042,12 +6042,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (title, alternateTitle*, date+, edition?, editionDate?, identifier*, citedResponsibleParty*, presentationForm*, series?, otherCitationDetails?, collectiveTitle?, ISBN?, ISSN?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType ISSN
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType ISSN
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("ISSN", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -6098,19 +6098,19 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("title", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("alternateTitle", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("title", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("alternateTitle", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("date", "http://www.isotc211.org/2005/gmd"), typeof(CI_Date_PropertyType));
-            localElementDictionary.Add(XName.Get("edition", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("editionDate", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Date_PropertyType));
+            localElementDictionary.Add(XName.Get("edition", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("editionDate", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Date_PropertyType));
             localElementDictionary.Add(XName.Get("identifier", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
             localElementDictionary.Add(XName.Get("citedResponsibleParty", "http://www.isotc211.org/2005/gmd"), typeof(CI_ResponsibleParty_PropertyType));
             localElementDictionary.Add(XName.Get("presentationForm", "http://www.isotc211.org/2005/gmd"), typeof(CI_PresentationFormCode_PropertyType));
             localElementDictionary.Add(XName.Get("series", "http://www.isotc211.org/2005/gmd"), typeof(CI_Series_PropertyType));
-            localElementDictionary.Add(XName.Get("otherCitationDetails", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("collectiveTitle", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("ISBN", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("ISSN", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("otherCitationDetails", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("collectiveTitle", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("ISBN", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("ISSN", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -6341,11 +6341,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -6417,14 +6417,14 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("CI_Address_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class CI_Address_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class CI_Address_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> deliveryPointField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> deliveryPointField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> electronicMailAddressField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> electronicMailAddressField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         static Dictionary<XName, System.Type> localElementDictionary=new Dictionary<XName, System.Type>();
@@ -6460,13 +6460,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (deliveryPoint*, city?, administrativeArea?, postalCode?, country?, electronicMailAddress*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> deliveryPoint
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> deliveryPoint
         {
             get
             {
                 if ((this.deliveryPointField==null))
                 {
-                    this.deliveryPointField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("deliveryPoint", "http://www.isotc211.org/2005/gmd"));
+                    this.deliveryPointField=new XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("deliveryPoint", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.deliveryPointField;
             }
@@ -6479,10 +6479,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.deliveryPointField==null))
                     {
-                        this.deliveryPointField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("deliveryPoint", "http://www.isotc211.org/2005/gmd"));
+                        this.deliveryPointField=XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("deliveryPoint", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.deliveryPointField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.deliveryPointField, value);
                     }
                 }
             }
@@ -6496,12 +6496,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (deliveryPoint*, city?, administrativeArea?, postalCode?, country?, electronicMailAddress*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType city
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType city
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("city", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -6517,12 +6517,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (deliveryPoint*, city?, administrativeArea?, postalCode?, country?, electronicMailAddress*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType administrativeArea
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType administrativeArea
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("administrativeArea", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -6538,12 +6538,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (deliveryPoint*, city?, administrativeArea?, postalCode?, country?, electronicMailAddress*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType postalCode
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType postalCode
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("postalCode", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -6559,12 +6559,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (deliveryPoint*, city?, administrativeArea?, postalCode?, country?, electronicMailAddress*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType country
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType country
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("country", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -6580,13 +6580,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (deliveryPoint*, city?, administrativeArea?, postalCode?, country?, electronicMailAddress*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> electronicMailAddress
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> electronicMailAddress
         {
             get
             {
                 if ((this.electronicMailAddressField==null))
                 {
-                    this.electronicMailAddressField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("electronicMailAddress", "http://www.isotc211.org/2005/gmd"));
+                    this.electronicMailAddressField=new XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("electronicMailAddress", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.electronicMailAddressField;
             }
@@ -6599,10 +6599,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.electronicMailAddressField==null))
                     {
-                        this.electronicMailAddressField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("electronicMailAddress", "http://www.isotc211.org/2005/gmd"));
+                        this.electronicMailAddressField=XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("electronicMailAddress", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.electronicMailAddressField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.electronicMailAddressField, value);
                     }
                 }
             }
@@ -6651,12 +6651,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("deliveryPoint", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("city", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("administrativeArea", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("postalCode", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("country", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("electronicMailAddress", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("deliveryPoint", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("city", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("administrativeArea", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("postalCode", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("country", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("electronicMailAddress", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -6887,11 +6887,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -6963,7 +6963,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("CI_OnlineResource_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class CI_OnlineResource_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class CI_OnlineResource_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -7021,12 +7021,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (linkage, protocol?, applicationProfile?, name?, description?, function?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType protocol
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType protocol
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("protocol", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -7042,12 +7042,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (linkage, protocol?, applicationProfile?, name?, description?, function?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType applicationProfile
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType applicationProfile
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("applicationProfile", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -7063,12 +7063,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (linkage, protocol?, applicationProfile?, name?, description?, function?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType name
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType name
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("name", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -7084,12 +7084,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (linkage, protocol?, applicationProfile?, name?, description?, function?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType description
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType description
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("description", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -7162,10 +7162,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         private static void BuildElementDictionary()
         {
             localElementDictionary.Add(XName.Get("linkage", "http://www.isotc211.org/2005/gmd"), typeof(URL_PropertyType));
-            localElementDictionary.Add(XName.Get("protocol", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("applicationProfile", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("name", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("description", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("protocol", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("applicationProfile", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("name", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("description", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("function", "http://www.isotc211.org/2005/gmd"), typeof(CI_OnLineFunctionCode_PropertyType));
         }
 
@@ -7397,11 +7397,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -7473,7 +7473,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("CI_Contact_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class CI_Contact_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class CI_Contact_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -7573,12 +7573,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (phone?, address?, onlineResource?, hoursOfService?, contactInstructions?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType hoursOfService
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType hoursOfService
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("hoursOfService", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -7594,12 +7594,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (phone?, address?, onlineResource?, hoursOfService?, contactInstructions?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType contactInstructions
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType contactInstructions
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("contactInstructions", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -7653,8 +7653,8 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             localElementDictionary.Add(XName.Get("phone", "http://www.isotc211.org/2005/gmd"), typeof(CI_Telephone_PropertyType));
             localElementDictionary.Add(XName.Get("address", "http://www.isotc211.org/2005/gmd"), typeof(CI_Address_PropertyType));
             localElementDictionary.Add(XName.Get("onlineResource", "http://www.isotc211.org/2005/gmd"), typeof(CI_OnlineResource_PropertyType));
-            localElementDictionary.Add(XName.Get("hoursOfService", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("contactInstructions", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("hoursOfService", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("contactInstructions", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -7885,11 +7885,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -7961,14 +7961,14 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("CI_Telephone_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class CI_Telephone_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class CI_Telephone_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> voiceField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> voiceField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> facsimileField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> facsimileField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         static Dictionary<XName, System.Type> localElementDictionary=new Dictionary<XName, System.Type>();
@@ -8004,13 +8004,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (voice*, facsimile*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> voice
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> voice
         {
             get
             {
                 if ((this.voiceField==null))
                 {
-                    this.voiceField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("voice", "http://www.isotc211.org/2005/gmd"));
+                    this.voiceField=new XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("voice", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.voiceField;
             }
@@ -8023,10 +8023,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.voiceField==null))
                     {
-                        this.voiceField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("voice", "http://www.isotc211.org/2005/gmd"));
+                        this.voiceField=XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("voice", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.voiceField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.voiceField, value);
                     }
                 }
             }
@@ -8040,13 +8040,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (voice*, facsimile*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> facsimile
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> facsimile
         {
             get
             {
                 if ((this.facsimileField==null))
                 {
-                    this.facsimileField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("facsimile", "http://www.isotc211.org/2005/gmd"));
+                    this.facsimileField=new XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("facsimile", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.facsimileField;
             }
@@ -8059,10 +8059,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.facsimileField==null))
                     {
-                        this.facsimileField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("facsimile", "http://www.isotc211.org/2005/gmd"));
+                        this.facsimileField=XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("facsimile", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.facsimileField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.facsimileField, value);
                     }
                 }
             }
@@ -8111,8 +8111,8 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("voice", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("facsimile", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("voice", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("facsimile", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -8343,11 +8343,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -8416,7 +8416,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("CI_Date_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class CI_Date_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class CI_Date_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -8450,12 +8450,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (date, dateType)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Date_PropertyType date
+        public GeoSik.Iso.Ts19139.Gco.Date_PropertyType date
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("date", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Date_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Date_PropertyType)(x));
             }
             set
             {
@@ -8527,7 +8527,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("date", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Date_PropertyType));
+            localElementDictionary.Add(XName.Get("date", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Date_PropertyType));
             localElementDictionary.Add(XName.Get("dateType", "http://www.isotc211.org/2005/gmd"), typeof(CI_DateTypeCode_PropertyType));
         }
 
@@ -8759,11 +8759,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -8832,7 +8832,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("CI_Series_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class CI_Series_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class CI_Series_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -8866,12 +8866,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name?, issueIdentification?, page?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType name
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType name
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("name", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -8887,12 +8887,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name?, issueIdentification?, page?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType issueIdentification
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType issueIdentification
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("issueIdentification", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -8908,12 +8908,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name?, issueIdentification?, page?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType page
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType page
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("page", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -8964,9 +8964,9 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("name", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("issueIdentification", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("page", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("name", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("issueIdentification", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("page", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -9197,11 +9197,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -9327,11 +9327,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -9457,11 +9457,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -9587,11 +9587,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -9717,11 +9717,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -9847,11 +9847,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -9923,7 +9923,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_GridSpatialRepresentation_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_GridSpatialRepresentation_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractMD_SpatialRepresentation_Type, IXMetaData, IXmlSerializable
+    public partial class MD_GridSpatialRepresentation_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractMD_SpatialRepresentation_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -9963,12 +9963,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType numberOfDimensions
+        public GeoSik.Iso.Ts19139.Gco.Integer_PropertyType numberOfDimensions
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("numberOfDimensions", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Integer_PropertyType)(x));
             }
             set
             {
@@ -10041,12 +10041,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType transformationParameterAvailability
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType transformationParameterAvailability
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("transformationParameterAvailability", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
             }
             set
             {
@@ -10097,10 +10097,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("numberOfDimensions", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType));
+            localElementDictionary.Add(XName.Get("numberOfDimensions", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Integer_PropertyType));
             localElementDictionary.Add(XName.Get("axisDimensionProperties", "http://www.isotc211.org/2005/gmd"), typeof(MD_Dimension_PropertyType));
             localElementDictionary.Add(XName.Get("cellGeometry", "http://www.isotc211.org/2005/gmd"), typeof(MD_CellGeometryCode_PropertyType));
-            localElementDictionary.Add(XName.Get("transformationParameterAvailability", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType));
+            localElementDictionary.Add(XName.Get("transformationParameterAvailability", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -10334,11 +10334,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -10410,7 +10410,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_VectorSpatialRepresentation_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_VectorSpatialRepresentation_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractMD_SpatialRepresentation_Type, IXMetaData, IXmlSerializable
+    public partial class MD_VectorSpatialRepresentation_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractMD_SpatialRepresentation_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -10774,11 +10774,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -10847,7 +10847,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("AbstractMD_SpatialRepresentation_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public abstract partial class AbstractMD_SpatialRepresentation_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public abstract partial class AbstractMD_SpatialRepresentation_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         public static explicit operator AbstractMD_SpatialRepresentation_Type(XElement xe) { return (AbstractMD_SpatialRepresentation_Type)XTypedServices.ToXTypedElement(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
@@ -11119,11 +11119,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -11192,7 +11192,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_Georeferenceable_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_Georeferenceable_Type: global::OgcToolkit.Iso.Ts19139.Gmd.MD_GridSpatialRepresentation_Type, IXMetaData, IXmlSerializable
+    public partial class MD_Georeferenceable_Type: global::GeoSik.Iso.Ts19139.Gmd.MD_GridSpatialRepresentation_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -11229,12 +11229,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability, controlPointAvailability, orientationParameterAvailability, orientationParameterDescription?, georeferencedParameters, parameterCitation*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType controlPointAvailability
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType controlPointAvailability
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("controlPointAvailability", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
             }
             set
             {
@@ -11250,12 +11250,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability, controlPointAvailability, orientationParameterAvailability, orientationParameterDescription?, georeferencedParameters, parameterCitation*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType orientationParameterAvailability
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType orientationParameterAvailability
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("orientationParameterAvailability", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
             }
             set
             {
@@ -11271,12 +11271,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability, controlPointAvailability, orientationParameterAvailability, orientationParameterDescription?, georeferencedParameters, parameterCitation*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType orientationParameterDescription
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType orientationParameterDescription
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("orientationParameterDescription", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -11292,12 +11292,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability, controlPointAvailability, orientationParameterAvailability, orientationParameterDescription?, georeferencedParameters, parameterCitation*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Record_PropertyType georeferencedParameters
+        public GeoSik.Iso.Ts19139.Gco.Record_PropertyType georeferencedParameters
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("georeferencedParameters", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Record_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Record_PropertyType)(x));
             }
             set
             {
@@ -11384,14 +11384,14 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("numberOfDimensions", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType));
+            localElementDictionary.Add(XName.Get("numberOfDimensions", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Integer_PropertyType));
             localElementDictionary.Add(XName.Get("axisDimensionProperties", "http://www.isotc211.org/2005/gmd"), typeof(MD_Dimension_PropertyType));
             localElementDictionary.Add(XName.Get("cellGeometry", "http://www.isotc211.org/2005/gmd"), typeof(MD_CellGeometryCode_PropertyType));
-            localElementDictionary.Add(XName.Get("transformationParameterAvailability", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType));
-            localElementDictionary.Add(XName.Get("controlPointAvailability", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType));
-            localElementDictionary.Add(XName.Get("orientationParameterAvailability", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType));
-            localElementDictionary.Add(XName.Get("orientationParameterDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("georeferencedParameters", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Record_PropertyType));
+            localElementDictionary.Add(XName.Get("transformationParameterAvailability", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType));
+            localElementDictionary.Add(XName.Get("controlPointAvailability", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType));
+            localElementDictionary.Add(XName.Get("orientationParameterAvailability", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType));
+            localElementDictionary.Add(XName.Get("orientationParameterDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("georeferencedParameters", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Record_PropertyType));
             localElementDictionary.Add(XName.Get("parameterCitation", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
         }
 
@@ -11623,11 +11623,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -11696,7 +11696,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_Dimension_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_Dimension_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class MD_Dimension_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -11751,12 +11751,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (dimensionName, dimensionSize, resolution?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType dimensionSize
+        public GeoSik.Iso.Ts19139.Gco.Integer_PropertyType dimensionSize
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("dimensionSize", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Integer_PropertyType)(x));
             }
             set
             {
@@ -11772,12 +11772,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (dimensionName, dimensionSize, resolution?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Measure_PropertyType resolution
+        public GeoSik.Iso.Ts19139.Gco.Measure_PropertyType resolution
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("resolution", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Measure_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Measure_PropertyType)(x));
             }
             set
             {
@@ -11829,8 +11829,8 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         private static void BuildElementDictionary()
         {
             localElementDictionary.Add(XName.Get("dimensionName", "http://www.isotc211.org/2005/gmd"), typeof(MD_DimensionNameTypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("dimensionSize", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType));
-            localElementDictionary.Add(XName.Get("resolution", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Measure_PropertyType));
+            localElementDictionary.Add(XName.Get("dimensionSize", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Integer_PropertyType));
+            localElementDictionary.Add(XName.Get("resolution", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Measure_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -12061,11 +12061,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -12134,14 +12134,14 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_Georectified_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_Georectified_Type: global::OgcToolkit.Iso.Ts19139.Gmd.MD_GridSpatialRepresentation_Type, IXMetaData, IXmlSerializable
+    public partial class MD_Georectified_Type: global::GeoSik.Iso.Ts19139.Gmd.MD_GridSpatialRepresentation_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gss.GM_Point_PropertyType> cornerPointsField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gss.GM_Point_PropertyType> cornerPointsField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> transformationDimensionMappingField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> transformationDimensionMappingField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         static Dictionary<XName, System.Type> localElementDictionary=new Dictionary<XName, System.Type>();
@@ -12174,12 +12174,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability, checkPointAvailability, checkPointDescription?, cornerPoints*, centerPoint?, pointInPixel, transformationDimensionDescription?, transformationDimensionMapping*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType checkPointAvailability
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType checkPointAvailability
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("checkPointAvailability", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
             }
             set
             {
@@ -12195,12 +12195,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability, checkPointAvailability, checkPointDescription?, cornerPoints*, centerPoint?, pointInPixel, transformationDimensionDescription?, transformationDimensionMapping*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType checkPointDescription
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType checkPointDescription
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("checkPointDescription", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -12216,13 +12216,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability, checkPointAvailability, checkPointDescription?, cornerPoints*, centerPoint?, pointInPixel, transformationDimensionDescription?, transformationDimensionMapping*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gss.GM_Point_PropertyType> cornerPoints
+        public IList<GeoSik.Iso.Ts19139.Gss.GM_Point_PropertyType> cornerPoints
         {
             get
             {
                 if ((this.cornerPointsField==null))
                 {
-                    this.cornerPointsField=new XTypedList<OgcToolkit.Iso.Ts19139.Gss.GM_Point_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("cornerPoints", "http://www.isotc211.org/2005/gmd"));
+                    this.cornerPointsField=new XTypedList<GeoSik.Iso.Ts19139.Gss.GM_Point_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("cornerPoints", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.cornerPointsField;
             }
@@ -12235,10 +12235,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.cornerPointsField==null))
                     {
-                        this.cornerPointsField=XTypedList<OgcToolkit.Iso.Ts19139.Gss.GM_Point_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("cornerPoints", "http://www.isotc211.org/2005/gmd"));
+                        this.cornerPointsField=XTypedList<GeoSik.Iso.Ts19139.Gss.GM_Point_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("cornerPoints", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gss.GM_Point_PropertyType>(this.cornerPointsField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gss.GM_Point_PropertyType>(this.cornerPointsField, value);
                     }
                 }
             }
@@ -12252,12 +12252,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability, checkPointAvailability, checkPointDescription?, cornerPoints*, centerPoint?, pointInPixel, transformationDimensionDescription?, transformationDimensionMapping*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gss.GM_Point_PropertyType centerPoint
+        public GeoSik.Iso.Ts19139.Gss.GM_Point_PropertyType centerPoint
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("centerPoint", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gss.GM_Point_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gss.GM_Point_PropertyType)(x));
             }
             set
             {
@@ -12294,12 +12294,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability, checkPointAvailability, checkPointDescription?, cornerPoints*, centerPoint?, pointInPixel, transformationDimensionDescription?, transformationDimensionMapping*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType transformationDimensionDescription
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType transformationDimensionDescription
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("transformationDimensionDescription", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -12315,13 +12315,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability, checkPointAvailability, checkPointDescription?, cornerPoints*, centerPoint?, pointInPixel, transformationDimensionDescription?, transformationDimensionMapping*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> transformationDimensionMapping
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> transformationDimensionMapping
         {
             get
             {
                 if ((this.transformationDimensionMappingField==null))
                 {
-                    this.transformationDimensionMappingField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("transformationDimensionMapping", "http://www.isotc211.org/2005/gmd"));
+                    this.transformationDimensionMappingField=new XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("transformationDimensionMapping", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.transformationDimensionMappingField;
             }
@@ -12334,10 +12334,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.transformationDimensionMappingField==null))
                     {
-                        this.transformationDimensionMappingField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("transformationDimensionMapping", "http://www.isotc211.org/2005/gmd"));
+                        this.transformationDimensionMappingField=XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("transformationDimensionMapping", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.transformationDimensionMappingField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.transformationDimensionMappingField, value);
                     }
                 }
             }
@@ -12386,17 +12386,17 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("numberOfDimensions", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType));
+            localElementDictionary.Add(XName.Get("numberOfDimensions", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Integer_PropertyType));
             localElementDictionary.Add(XName.Get("axisDimensionProperties", "http://www.isotc211.org/2005/gmd"), typeof(MD_Dimension_PropertyType));
             localElementDictionary.Add(XName.Get("cellGeometry", "http://www.isotc211.org/2005/gmd"), typeof(MD_CellGeometryCode_PropertyType));
-            localElementDictionary.Add(XName.Get("transformationParameterAvailability", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType));
-            localElementDictionary.Add(XName.Get("checkPointAvailability", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType));
-            localElementDictionary.Add(XName.Get("checkPointDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("cornerPoints", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gss.GM_Point_PropertyType));
-            localElementDictionary.Add(XName.Get("centerPoint", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gss.GM_Point_PropertyType));
+            localElementDictionary.Add(XName.Get("transformationParameterAvailability", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType));
+            localElementDictionary.Add(XName.Get("checkPointAvailability", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType));
+            localElementDictionary.Add(XName.Get("checkPointDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("cornerPoints", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gss.GM_Point_PropertyType));
+            localElementDictionary.Add(XName.Get("centerPoint", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gss.GM_Point_PropertyType));
             localElementDictionary.Add(XName.Get("pointInPixel", "http://www.isotc211.org/2005/gmd"), typeof(MD_PixelOrientationCode_PropertyType));
-            localElementDictionary.Add(XName.Get("transformationDimensionDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("transformationDimensionMapping", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("transformationDimensionDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("transformationDimensionMapping", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -12627,11 +12627,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -12700,7 +12700,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_GeometricObjects_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_GeometricObjects_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class MD_GeometricObjects_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -12755,12 +12755,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (geometricObjectType, geometricObjectCount?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType geometricObjectCount
+        public GeoSik.Iso.Ts19139.Gco.Integer_PropertyType geometricObjectCount
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("geometricObjectCount", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Integer_PropertyType)(x));
             }
             set
             {
@@ -12812,7 +12812,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         private static void BuildElementDictionary()
         {
             localElementDictionary.Add(XName.Get("geometricObjectType", "http://www.isotc211.org/2005/gmd"), typeof(MD_GeometricObjectTypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("geometricObjectCount", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType));
+            localElementDictionary.Add(XName.Get("geometricObjectCount", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Integer_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -13043,11 +13043,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -13190,11 +13190,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -13320,11 +13320,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -13450,11 +13450,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -13580,11 +13580,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -13710,11 +13710,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -13786,14 +13786,14 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_ExtendedElementInformation_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_ExtendedElementInformation_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class MD_ExtendedElementInformation_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> parentEntityField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> parentEntityField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> rationaleField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> rationaleField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XTypedList<CI_ResponsibleParty_PropertyType> sourceField;
@@ -13832,12 +13832,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, shortName?, domainCode?, definition, obligation?, condition?, dataType, maximumOccurrence?, domainValue?, parentEntity+, rule, rationale*, source+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType name
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType name
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("name", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -13853,12 +13853,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, shortName?, domainCode?, definition, obligation?, condition?, dataType, maximumOccurrence?, domainValue?, parentEntity+, rule, rationale*, source+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType shortName
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType shortName
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("shortName", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -13874,12 +13874,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, shortName?, domainCode?, definition, obligation?, condition?, dataType, maximumOccurrence?, domainValue?, parentEntity+, rule, rationale*, source+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType domainCode
+        public GeoSik.Iso.Ts19139.Gco.Integer_PropertyType domainCode
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("domainCode", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Integer_PropertyType)(x));
             }
             set
             {
@@ -13895,12 +13895,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, shortName?, domainCode?, definition, obligation?, condition?, dataType, maximumOccurrence?, domainValue?, parentEntity+, rule, rationale*, source+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType definition
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType definition
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("definition", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -13937,12 +13937,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, shortName?, domainCode?, definition, obligation?, condition?, dataType, maximumOccurrence?, domainValue?, parentEntity+, rule, rationale*, source+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType condition
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType condition
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("condition", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -13979,12 +13979,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, shortName?, domainCode?, definition, obligation?, condition?, dataType, maximumOccurrence?, domainValue?, parentEntity+, rule, rationale*, source+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType maximumOccurrence
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType maximumOccurrence
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("maximumOccurrence", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -14000,12 +14000,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, shortName?, domainCode?, definition, obligation?, condition?, dataType, maximumOccurrence?, domainValue?, parentEntity+, rule, rationale*, source+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType domainValue
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType domainValue
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("domainValue", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -14021,13 +14021,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, shortName?, domainCode?, definition, obligation?, condition?, dataType, maximumOccurrence?, domainValue?, parentEntity+, rule, rationale*, source+)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> parentEntity
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> parentEntity
         {
             get
             {
                 if ((this.parentEntityField==null))
                 {
-                    this.parentEntityField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("parentEntity", "http://www.isotc211.org/2005/gmd"));
+                    this.parentEntityField=new XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("parentEntity", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.parentEntityField;
             }
@@ -14040,10 +14040,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.parentEntityField==null))
                     {
-                        this.parentEntityField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("parentEntity", "http://www.isotc211.org/2005/gmd"));
+                        this.parentEntityField=XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("parentEntity", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.parentEntityField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.parentEntityField, value);
                     }
                 }
             }
@@ -14057,12 +14057,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, shortName?, domainCode?, definition, obligation?, condition?, dataType, maximumOccurrence?, domainValue?, parentEntity+, rule, rationale*, source+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType rule
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType rule
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("rule", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -14078,13 +14078,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, shortName?, domainCode?, definition, obligation?, condition?, dataType, maximumOccurrence?, domainValue?, parentEntity+, rule, rationale*, source+)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> rationale
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> rationale
         {
             get
             {
                 if ((this.rationaleField==null))
                 {
-                    this.rationaleField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("rationale", "http://www.isotc211.org/2005/gmd"));
+                    this.rationaleField=new XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("rationale", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.rationaleField;
             }
@@ -14097,10 +14097,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.rationaleField==null))
                     {
-                        this.rationaleField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("rationale", "http://www.isotc211.org/2005/gmd"));
+                        this.rationaleField=XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("rationale", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.rationaleField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.rationaleField, value);
                     }
                 }
             }
@@ -14185,18 +14185,18 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("name", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("shortName", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("domainCode", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType));
-            localElementDictionary.Add(XName.Get("definition", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("name", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("shortName", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("domainCode", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Integer_PropertyType));
+            localElementDictionary.Add(XName.Get("definition", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("obligation", "http://www.isotc211.org/2005/gmd"), typeof(MD_ObligationCode_PropertyType));
-            localElementDictionary.Add(XName.Get("condition", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("condition", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("dataType", "http://www.isotc211.org/2005/gmd"), typeof(MD_DatatypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("maximumOccurrence", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("domainValue", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("parentEntity", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("rule", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("rationale", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("maximumOccurrence", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("domainValue", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("parentEntity", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("rule", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("rationale", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("source", "http://www.isotc211.org/2005/gmd"), typeof(CI_ResponsibleParty_PropertyType));
         }
 
@@ -14428,11 +14428,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -14504,7 +14504,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_MetadataExtensionInformation_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_MetadataExtensionInformation_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class MD_MetadataExtensionInformation_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -14868,11 +14868,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -15013,11 +15013,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -15143,11 +15143,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -15219,14 +15219,14 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_FeatureCatalogueDescription_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_FeatureCatalogueDescription_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractMD_ContentInformation_Type, IXMetaData, IXmlSerializable
+    public partial class MD_FeatureCatalogueDescription_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractMD_ContentInformation_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> languageField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> languageField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.GenericName_PropertyType> featureTypesField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.GenericName_PropertyType> featureTypesField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XTypedList<CI_Citation_PropertyType> featureCatalogueCitationField;
@@ -15265,12 +15265,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (complianceCode?, language*, includedWithDataset, featureTypes*, featureCatalogueCitation+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType complianceCode
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType complianceCode
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("complianceCode", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
             }
             set
             {
@@ -15286,13 +15286,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (complianceCode?, language*, includedWithDataset, featureTypes*, featureCatalogueCitation+)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> language
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> language
         {
             get
             {
                 if ((this.languageField==null))
                 {
-                    this.languageField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("language", "http://www.isotc211.org/2005/gmd"));
+                    this.languageField=new XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("language", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.languageField;
             }
@@ -15305,10 +15305,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.languageField==null))
                     {
-                        this.languageField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("language", "http://www.isotc211.org/2005/gmd"));
+                        this.languageField=XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("language", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.languageField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.languageField, value);
                     }
                 }
             }
@@ -15322,12 +15322,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (complianceCode?, language*, includedWithDataset, featureTypes*, featureCatalogueCitation+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType includedWithDataset
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType includedWithDataset
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("includedWithDataset", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
             }
             set
             {
@@ -15343,13 +15343,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (complianceCode?, language*, includedWithDataset, featureTypes*, featureCatalogueCitation+)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.GenericName_PropertyType> featureTypes
+        public IList<GeoSik.Iso.Ts19139.Gco.GenericName_PropertyType> featureTypes
         {
             get
             {
                 if ((this.featureTypesField==null))
                 {
-                    this.featureTypesField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.GenericName_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("featureTypes", "http://www.isotc211.org/2005/gmd"));
+                    this.featureTypesField=new XTypedList<GeoSik.Iso.Ts19139.Gco.GenericName_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("featureTypes", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.featureTypesField;
             }
@@ -15362,10 +15362,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.featureTypesField==null))
                     {
-                        this.featureTypesField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.GenericName_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("featureTypes", "http://www.isotc211.org/2005/gmd"));
+                        this.featureTypesField=XTypedList<GeoSik.Iso.Ts19139.Gco.GenericName_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("featureTypes", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.GenericName_PropertyType>(this.featureTypesField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.GenericName_PropertyType>(this.featureTypesField, value);
                     }
                 }
             }
@@ -15450,10 +15450,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("complianceCode", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType));
-            localElementDictionary.Add(XName.Get("language", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("includedWithDataset", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType));
-            localElementDictionary.Add(XName.Get("featureTypes", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.GenericName_PropertyType));
+            localElementDictionary.Add(XName.Get("complianceCode", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType));
+            localElementDictionary.Add(XName.Get("language", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("includedWithDataset", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType));
+            localElementDictionary.Add(XName.Get("featureTypes", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.GenericName_PropertyType));
             localElementDictionary.Add(XName.Get("featureCatalogueCitation", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
         }
 
@@ -15685,11 +15685,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -15761,7 +15761,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_CoverageDescription_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_CoverageDescription_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractMD_ContentInformation_Type, IXMetaData, IXmlSerializable
+    public partial class MD_CoverageDescription_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractMD_ContentInformation_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -15801,12 +15801,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributeDescription, contentType, dimension*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.RecordType_PropertyType attributeDescription
+        public GeoSik.Iso.Ts19139.Gco.RecordType_PropertyType attributeDescription
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("attributeDescription", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.RecordType_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.RecordType_PropertyType)(x));
             }
             set
             {
@@ -15914,7 +15914,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("attributeDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.RecordType_PropertyType));
+            localElementDictionary.Add(XName.Get("attributeDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.RecordType_PropertyType));
             localElementDictionary.Add(XName.Get("contentType", "http://www.isotc211.org/2005/gmd"), typeof(MD_CoverageContentTypeCode_PropertyType));
             localElementDictionary.Add(XName.Get("dimension", "http://www.isotc211.org/2005/gmd"), typeof(MD_RangeDimension_PropertyType));
         }
@@ -16150,11 +16150,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -16226,7 +16226,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_ImageDescription_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_ImageDescription_Type: global::OgcToolkit.Iso.Ts19139.Gmd.MD_CoverageDescription_Type, IXMetaData, IXmlSerializable
+    public partial class MD_ImageDescription_Type: global::GeoSik.Iso.Ts19139.Gmd.MD_CoverageDescription_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -16263,12 +16263,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributeDescription, contentType, dimension*, illuminationElevationAngle?, illuminationAzimuthAngle?, imagingCondition?, imageQualityCode?, cloudCoverPercentage?, processingLevelCode?, compressionGenerationQuantity?, triangulationIndicator?, radiometricCalibrationDataAvailability?, cameraCalibrationInformationAvailability?, filmDistortionInformationAvailability?, lensDistortionInformationAvailability?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType illuminationElevationAngle
+        public GeoSik.Iso.Ts19139.Gco.Real_PropertyType illuminationElevationAngle
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("illuminationElevationAngle", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Real_PropertyType)(x));
             }
             set
             {
@@ -16284,12 +16284,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributeDescription, contentType, dimension*, illuminationElevationAngle?, illuminationAzimuthAngle?, imagingCondition?, imageQualityCode?, cloudCoverPercentage?, processingLevelCode?, compressionGenerationQuantity?, triangulationIndicator?, radiometricCalibrationDataAvailability?, cameraCalibrationInformationAvailability?, filmDistortionInformationAvailability?, lensDistortionInformationAvailability?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType illuminationAzimuthAngle
+        public GeoSik.Iso.Ts19139.Gco.Real_PropertyType illuminationAzimuthAngle
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("illuminationAzimuthAngle", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Real_PropertyType)(x));
             }
             set
             {
@@ -16347,12 +16347,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributeDescription, contentType, dimension*, illuminationElevationAngle?, illuminationAzimuthAngle?, imagingCondition?, imageQualityCode?, cloudCoverPercentage?, processingLevelCode?, compressionGenerationQuantity?, triangulationIndicator?, radiometricCalibrationDataAvailability?, cameraCalibrationInformationAvailability?, filmDistortionInformationAvailability?, lensDistortionInformationAvailability?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType cloudCoverPercentage
+        public GeoSik.Iso.Ts19139.Gco.Real_PropertyType cloudCoverPercentage
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("cloudCoverPercentage", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Real_PropertyType)(x));
             }
             set
             {
@@ -16389,12 +16389,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributeDescription, contentType, dimension*, illuminationElevationAngle?, illuminationAzimuthAngle?, imagingCondition?, imageQualityCode?, cloudCoverPercentage?, processingLevelCode?, compressionGenerationQuantity?, triangulationIndicator?, radiometricCalibrationDataAvailability?, cameraCalibrationInformationAvailability?, filmDistortionInformationAvailability?, lensDistortionInformationAvailability?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType compressionGenerationQuantity
+        public GeoSik.Iso.Ts19139.Gco.Integer_PropertyType compressionGenerationQuantity
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("compressionGenerationQuantity", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Integer_PropertyType)(x));
             }
             set
             {
@@ -16410,12 +16410,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributeDescription, contentType, dimension*, illuminationElevationAngle?, illuminationAzimuthAngle?, imagingCondition?, imageQualityCode?, cloudCoverPercentage?, processingLevelCode?, compressionGenerationQuantity?, triangulationIndicator?, radiometricCalibrationDataAvailability?, cameraCalibrationInformationAvailability?, filmDistortionInformationAvailability?, lensDistortionInformationAvailability?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType triangulationIndicator
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType triangulationIndicator
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("triangulationIndicator", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
             }
             set
             {
@@ -16431,12 +16431,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributeDescription, contentType, dimension*, illuminationElevationAngle?, illuminationAzimuthAngle?, imagingCondition?, imageQualityCode?, cloudCoverPercentage?, processingLevelCode?, compressionGenerationQuantity?, triangulationIndicator?, radiometricCalibrationDataAvailability?, cameraCalibrationInformationAvailability?, filmDistortionInformationAvailability?, lensDistortionInformationAvailability?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType radiometricCalibrationDataAvailability
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType radiometricCalibrationDataAvailability
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("radiometricCalibrationDataAvailability", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
             }
             set
             {
@@ -16452,12 +16452,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributeDescription, contentType, dimension*, illuminationElevationAngle?, illuminationAzimuthAngle?, imagingCondition?, imageQualityCode?, cloudCoverPercentage?, processingLevelCode?, compressionGenerationQuantity?, triangulationIndicator?, radiometricCalibrationDataAvailability?, cameraCalibrationInformationAvailability?, filmDistortionInformationAvailability?, lensDistortionInformationAvailability?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType cameraCalibrationInformationAvailability
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType cameraCalibrationInformationAvailability
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("cameraCalibrationInformationAvailability", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
             }
             set
             {
@@ -16473,12 +16473,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributeDescription, contentType, dimension*, illuminationElevationAngle?, illuminationAzimuthAngle?, imagingCondition?, imageQualityCode?, cloudCoverPercentage?, processingLevelCode?, compressionGenerationQuantity?, triangulationIndicator?, radiometricCalibrationDataAvailability?, cameraCalibrationInformationAvailability?, filmDistortionInformationAvailability?, lensDistortionInformationAvailability?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType filmDistortionInformationAvailability
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType filmDistortionInformationAvailability
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("filmDistortionInformationAvailability", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
             }
             set
             {
@@ -16494,12 +16494,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributeDescription, contentType, dimension*, illuminationElevationAngle?, illuminationAzimuthAngle?, imagingCondition?, imageQualityCode?, cloudCoverPercentage?, processingLevelCode?, compressionGenerationQuantity?, triangulationIndicator?, radiometricCalibrationDataAvailability?, cameraCalibrationInformationAvailability?, filmDistortionInformationAvailability?, lensDistortionInformationAvailability?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType lensDistortionInformationAvailability
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType lensDistortionInformationAvailability
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("lensDistortionInformationAvailability", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
             }
             set
             {
@@ -16550,21 +16550,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("attributeDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.RecordType_PropertyType));
+            localElementDictionary.Add(XName.Get("attributeDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.RecordType_PropertyType));
             localElementDictionary.Add(XName.Get("contentType", "http://www.isotc211.org/2005/gmd"), typeof(MD_CoverageContentTypeCode_PropertyType));
             localElementDictionary.Add(XName.Get("dimension", "http://www.isotc211.org/2005/gmd"), typeof(MD_RangeDimension_PropertyType));
-            localElementDictionary.Add(XName.Get("illuminationElevationAngle", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType));
-            localElementDictionary.Add(XName.Get("illuminationAzimuthAngle", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType));
+            localElementDictionary.Add(XName.Get("illuminationElevationAngle", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Real_PropertyType));
+            localElementDictionary.Add(XName.Get("illuminationAzimuthAngle", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Real_PropertyType));
             localElementDictionary.Add(XName.Get("imagingCondition", "http://www.isotc211.org/2005/gmd"), typeof(MD_ImagingConditionCode_PropertyType));
             localElementDictionary.Add(XName.Get("imageQualityCode", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
-            localElementDictionary.Add(XName.Get("cloudCoverPercentage", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType));
+            localElementDictionary.Add(XName.Get("cloudCoverPercentage", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Real_PropertyType));
             localElementDictionary.Add(XName.Get("processingLevelCode", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
-            localElementDictionary.Add(XName.Get("compressionGenerationQuantity", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType));
-            localElementDictionary.Add(XName.Get("triangulationIndicator", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType));
-            localElementDictionary.Add(XName.Get("radiometricCalibrationDataAvailability", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType));
-            localElementDictionary.Add(XName.Get("cameraCalibrationInformationAvailability", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType));
-            localElementDictionary.Add(XName.Get("filmDistortionInformationAvailability", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType));
-            localElementDictionary.Add(XName.Get("lensDistortionInformationAvailability", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType));
+            localElementDictionary.Add(XName.Get("compressionGenerationQuantity", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Integer_PropertyType));
+            localElementDictionary.Add(XName.Get("triangulationIndicator", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType));
+            localElementDictionary.Add(XName.Get("radiometricCalibrationDataAvailability", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType));
+            localElementDictionary.Add(XName.Get("cameraCalibrationInformationAvailability", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType));
+            localElementDictionary.Add(XName.Get("filmDistortionInformationAvailability", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType));
+            localElementDictionary.Add(XName.Get("lensDistortionInformationAvailability", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -16795,11 +16795,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -16863,7 +16863,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("AbstractMD_ContentInformation_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public abstract partial class AbstractMD_ContentInformation_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public abstract partial class AbstractMD_ContentInformation_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         public static explicit operator AbstractMD_ContentInformation_Type(XElement xe) { return (AbstractMD_ContentInformation_Type)XTypedServices.ToXTypedElement(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
@@ -17130,11 +17130,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -17206,7 +17206,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_RangeDimension_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_RangeDimension_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class MD_RangeDimension_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -17243,12 +17243,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (sequenceIdentifier?, descriptor?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.MemberName_PropertyType sequenceIdentifier
+        public GeoSik.Iso.Ts19139.Gco.MemberName_PropertyType sequenceIdentifier
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("sequenceIdentifier", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.MemberName_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.MemberName_PropertyType)(x));
             }
             set
             {
@@ -17264,12 +17264,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (sequenceIdentifier?, descriptor?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType descriptor
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType descriptor
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("descriptor", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -17320,8 +17320,8 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("sequenceIdentifier", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.MemberName_PropertyType));
-            localElementDictionary.Add(XName.Get("descriptor", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("sequenceIdentifier", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.MemberName_PropertyType));
+            localElementDictionary.Add(XName.Get("descriptor", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -17555,11 +17555,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -17628,7 +17628,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_Band_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_Band_Type: global::OgcToolkit.Iso.Ts19139.Gmd.MD_RangeDimension_Type, IXMetaData, IXmlSerializable
+    public partial class MD_Band_Type: global::GeoSik.Iso.Ts19139.Gmd.MD_RangeDimension_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -17662,12 +17662,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (sequenceIdentifier?, descriptor?, maxValue?, minValue?, units?, peakResponse?, bitsPerValue?, toneGradation?, scaleFactor?, offset?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType maxValue
+        public GeoSik.Iso.Ts19139.Gco.Real_PropertyType maxValue
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("maxValue", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Real_PropertyType)(x));
             }
             set
             {
@@ -17683,12 +17683,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (sequenceIdentifier?, descriptor?, maxValue?, minValue?, units?, peakResponse?, bitsPerValue?, toneGradation?, scaleFactor?, offset?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType minValue
+        public GeoSik.Iso.Ts19139.Gco.Real_PropertyType minValue
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("minValue", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Real_PropertyType)(x));
             }
             set
             {
@@ -17704,12 +17704,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (sequenceIdentifier?, descriptor?, maxValue?, minValue?, units?, peakResponse?, bitsPerValue?, toneGradation?, scaleFactor?, offset?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.UomLength_PropertyType units
+        public GeoSik.Iso.Ts19139.Gco.UomLength_PropertyType units
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("units", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.UomLength_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.UomLength_PropertyType)(x));
             }
             set
             {
@@ -17725,12 +17725,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (sequenceIdentifier?, descriptor?, maxValue?, minValue?, units?, peakResponse?, bitsPerValue?, toneGradation?, scaleFactor?, offset?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType peakResponse
+        public GeoSik.Iso.Ts19139.Gco.Real_PropertyType peakResponse
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("peakResponse", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Real_PropertyType)(x));
             }
             set
             {
@@ -17746,12 +17746,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (sequenceIdentifier?, descriptor?, maxValue?, minValue?, units?, peakResponse?, bitsPerValue?, toneGradation?, scaleFactor?, offset?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType bitsPerValue
+        public GeoSik.Iso.Ts19139.Gco.Integer_PropertyType bitsPerValue
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("bitsPerValue", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Integer_PropertyType)(x));
             }
             set
             {
@@ -17767,12 +17767,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (sequenceIdentifier?, descriptor?, maxValue?, minValue?, units?, peakResponse?, bitsPerValue?, toneGradation?, scaleFactor?, offset?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType toneGradation
+        public GeoSik.Iso.Ts19139.Gco.Integer_PropertyType toneGradation
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("toneGradation", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Integer_PropertyType)(x));
             }
             set
             {
@@ -17788,12 +17788,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (sequenceIdentifier?, descriptor?, maxValue?, minValue?, units?, peakResponse?, bitsPerValue?, toneGradation?, scaleFactor?, offset?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType scaleFactor
+        public GeoSik.Iso.Ts19139.Gco.Real_PropertyType scaleFactor
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("scaleFactor", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Real_PropertyType)(x));
             }
             set
             {
@@ -17809,12 +17809,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (sequenceIdentifier?, descriptor?, maxValue?, minValue?, units?, peakResponse?, bitsPerValue?, toneGradation?, scaleFactor?, offset?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType offset
+        public GeoSik.Iso.Ts19139.Gco.Real_PropertyType offset
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("offset", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Real_PropertyType)(x));
             }
             set
             {
@@ -17865,16 +17865,16 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("sequenceIdentifier", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.MemberName_PropertyType));
-            localElementDictionary.Add(XName.Get("descriptor", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("maxValue", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType));
-            localElementDictionary.Add(XName.Get("minValue", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType));
-            localElementDictionary.Add(XName.Get("units", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.UomLength_PropertyType));
-            localElementDictionary.Add(XName.Get("peakResponse", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType));
-            localElementDictionary.Add(XName.Get("bitsPerValue", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType));
-            localElementDictionary.Add(XName.Get("toneGradation", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType));
-            localElementDictionary.Add(XName.Get("scaleFactor", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType));
-            localElementDictionary.Add(XName.Get("offset", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType));
+            localElementDictionary.Add(XName.Get("sequenceIdentifier", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.MemberName_PropertyType));
+            localElementDictionary.Add(XName.Get("descriptor", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("maxValue", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Real_PropertyType));
+            localElementDictionary.Add(XName.Get("minValue", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Real_PropertyType));
+            localElementDictionary.Add(XName.Get("units", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.UomLength_PropertyType));
+            localElementDictionary.Add(XName.Get("peakResponse", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Real_PropertyType));
+            localElementDictionary.Add(XName.Get("bitsPerValue", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Integer_PropertyType));
+            localElementDictionary.Add(XName.Get("toneGradation", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Integer_PropertyType));
+            localElementDictionary.Add(XName.Get("scaleFactor", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Real_PropertyType));
+            localElementDictionary.Add(XName.Get("offset", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Real_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -18105,11 +18105,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -18235,11 +18235,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -18365,11 +18365,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -18441,7 +18441,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_ApplicationSchemaInformation_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_ApplicationSchemaInformation_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class MD_ApplicationSchemaInformation_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -18499,12 +18499,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, schemaLanguage, constraintLanguage, schemaAscii?, graphicsFile?, softwareDevelopmentFile?, softwareDevelopmentFileFormat?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType schemaLanguage
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType schemaLanguage
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("schemaLanguage", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -18520,12 +18520,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, schemaLanguage, constraintLanguage, schemaAscii?, graphicsFile?, softwareDevelopmentFile?, softwareDevelopmentFileFormat?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType constraintLanguage
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType constraintLanguage
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("constraintLanguage", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -18541,12 +18541,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, schemaLanguage, constraintLanguage, schemaAscii?, graphicsFile?, softwareDevelopmentFile?, softwareDevelopmentFileFormat?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType schemaAscii
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType schemaAscii
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("schemaAscii", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -18562,12 +18562,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, schemaLanguage, constraintLanguage, schemaAscii?, graphicsFile?, softwareDevelopmentFile?, softwareDevelopmentFileFormat?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Binary_PropertyType graphicsFile
+        public GeoSik.Iso.Ts19139.Gco.Binary_PropertyType graphicsFile
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("graphicsFile", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Binary_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Binary_PropertyType)(x));
             }
             set
             {
@@ -18583,12 +18583,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, schemaLanguage, constraintLanguage, schemaAscii?, graphicsFile?, softwareDevelopmentFile?, softwareDevelopmentFileFormat?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Binary_PropertyType softwareDevelopmentFile
+        public GeoSik.Iso.Ts19139.Gco.Binary_PropertyType softwareDevelopmentFile
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("softwareDevelopmentFile", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Binary_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Binary_PropertyType)(x));
             }
             set
             {
@@ -18604,12 +18604,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, schemaLanguage, constraintLanguage, schemaAscii?, graphicsFile?, softwareDevelopmentFile?, softwareDevelopmentFileFormat?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType softwareDevelopmentFileFormat
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType softwareDevelopmentFileFormat
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("softwareDevelopmentFileFormat", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -18661,12 +18661,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         private static void BuildElementDictionary()
         {
             localElementDictionary.Add(XName.Get("name", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("schemaLanguage", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("constraintLanguage", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("schemaAscii", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("graphicsFile", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Binary_PropertyType));
-            localElementDictionary.Add(XName.Get("softwareDevelopmentFile", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Binary_PropertyType));
-            localElementDictionary.Add(XName.Get("softwareDevelopmentFileFormat", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("schemaLanguage", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("constraintLanguage", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("schemaAscii", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("graphicsFile", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Binary_PropertyType));
+            localElementDictionary.Add(XName.Get("softwareDevelopmentFile", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Binary_PropertyType));
+            localElementDictionary.Add(XName.Get("softwareDevelopmentFileFormat", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -18897,11 +18897,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -18973,7 +18973,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_PortrayalCatalogueReference_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_PortrayalCatalogueReference_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class MD_PortrayalCatalogueReference_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -19315,11 +19315,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -19388,7 +19388,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("LI_ProcessStep_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class LI_ProcessStep_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class LI_ProcessStep_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -19428,12 +19428,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (description, rationale?, dateTime?, processor*, source*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType description
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType description
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("description", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -19449,12 +19449,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (description, rationale?, dateTime?, processor*, source*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType rationale
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType rationale
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("rationale", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -19470,12 +19470,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (description, rationale?, dateTime?, processor*, source*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType dateTime
+        public GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType dateTime
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType)(x));
             }
             set
             {
@@ -19598,9 +19598,9 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("description", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("rationale", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("description", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("rationale", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
             localElementDictionary.Add(XName.Get("processor", "http://www.isotc211.org/2005/gmd"), typeof(CI_ResponsibleParty_PropertyType));
             localElementDictionary.Add(XName.Get("source", "http://www.isotc211.org/2005/gmd"), typeof(LI_Source_PropertyType));
         }
@@ -19833,11 +19833,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -19906,7 +19906,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("LI_Source_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class LI_Source_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class LI_Source_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -19946,12 +19946,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (description?, scaleDenominator?, sourceReferenceSystem?, sourceCitation?, sourceExtent*, sourceStep*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType description
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType description
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("description", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -20137,7 +20137,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("description", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("description", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("scaleDenominator", "http://www.isotc211.org/2005/gmd"), typeof(MD_RepresentativeFraction_PropertyType));
             localElementDictionary.Add(XName.Get("sourceReferenceSystem", "http://www.isotc211.org/2005/gmd"), typeof(MD_ReferenceSystem_PropertyType));
             localElementDictionary.Add(XName.Get("sourceCitation", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
@@ -20373,11 +20373,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -20446,7 +20446,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("LI_Lineage_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class LI_Lineage_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class LI_Lineage_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -20486,12 +20486,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (statement?, processStep*, source*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType statement
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType statement
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("statement", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -20614,7 +20614,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("statement", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("statement", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("processStep", "http://www.isotc211.org/2005/gmd"), typeof(LI_ProcessStep_PropertyType));
             localElementDictionary.Add(XName.Get("source", "http://www.isotc211.org/2005/gmd"), typeof(LI_Source_PropertyType));
         }
@@ -20847,11 +20847,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -20923,7 +20923,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DQ_ConformanceResult_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_ConformanceResult_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_Result_Type, IXMetaData, IXmlSerializable
+    public partial class DQ_ConformanceResult_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_Result_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -20981,12 +20981,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (specification, explanation, pass)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType explanation
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType explanation
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("explanation", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -21002,12 +21002,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (specification, explanation, pass)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType pass
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType pass
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("pass", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType)(x));
             }
             set
             {
@@ -21059,8 +21059,8 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         private static void BuildElementDictionary()
         {
             localElementDictionary.Add(XName.Get("specification", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("explanation", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("pass", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType));
+            localElementDictionary.Add(XName.Get("explanation", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("pass", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -21291,11 +21291,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -21367,11 +21367,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DQ_QuantitativeResult_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_QuantitativeResult_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_Result_Type, IXMetaData, IXmlSerializable
+    public partial class DQ_QuantitativeResult_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_Result_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.Record_PropertyType> valueField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.Record_PropertyType> valueField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         static Dictionary<XName, System.Type> localElementDictionary=new Dictionary<XName, System.Type>();
@@ -21407,12 +21407,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (valueType?, valueUnit, errorStatistic?, value+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.RecordType_PropertyType valueType
+        public GeoSik.Iso.Ts19139.Gco.RecordType_PropertyType valueType
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("valueType", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.RecordType_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.RecordType_PropertyType)(x));
             }
             set
             {
@@ -21428,12 +21428,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (valueType?, valueUnit, errorStatistic?, value+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.UnitOfMeasure_PropertyType valueUnit
+        public GeoSik.Iso.Ts19139.Gco.UnitOfMeasure_PropertyType valueUnit
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("valueUnit", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.UnitOfMeasure_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.UnitOfMeasure_PropertyType)(x));
             }
             set
             {
@@ -21449,12 +21449,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (valueType?, valueUnit, errorStatistic?, value+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType errorStatistic
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType errorStatistic
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("errorStatistic", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -21470,13 +21470,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (valueType?, valueUnit, errorStatistic?, value+)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.Record_PropertyType> value
+        public IList<GeoSik.Iso.Ts19139.Gco.Record_PropertyType> value
         {
             get
             {
                 if ((this.valueField==null))
                 {
-                    this.valueField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.Record_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("value", "http://www.isotc211.org/2005/gmd"));
+                    this.valueField=new XTypedList<GeoSik.Iso.Ts19139.Gco.Record_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("value", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.valueField;
             }
@@ -21489,10 +21489,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.valueField==null))
                     {
-                        this.valueField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.Record_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("value", "http://www.isotc211.org/2005/gmd"));
+                        this.valueField=XTypedList<GeoSik.Iso.Ts19139.Gco.Record_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("value", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.Record_PropertyType>(this.valueField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.Record_PropertyType>(this.valueField, value);
                     }
                 }
             }
@@ -21541,10 +21541,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("valueType", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.RecordType_PropertyType));
-            localElementDictionary.Add(XName.Get("valueUnit", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.UnitOfMeasure_PropertyType));
-            localElementDictionary.Add(XName.Get("errorStatistic", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("value", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Record_PropertyType));
+            localElementDictionary.Add(XName.Get("valueType", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.RecordType_PropertyType));
+            localElementDictionary.Add(XName.Get("valueUnit", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.UnitOfMeasure_PropertyType));
+            localElementDictionary.Add(XName.Get("errorStatistic", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("value", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Record_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -21775,11 +21775,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -21843,7 +21843,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("AbstractDQ_Result_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public abstract partial class AbstractDQ_Result_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public abstract partial class AbstractDQ_Result_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         public static explicit operator AbstractDQ_Result_Type(XElement xe) { return (AbstractDQ_Result_Type)XTypedServices.ToXTypedElement(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
@@ -22110,11 +22110,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -22183,7 +22183,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DQ_TemporalValidity_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_TemporalValidity_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_TemporalAccuracy_Type, IXMetaData, IXmlSerializable
+    public partial class DQ_TemporalValidity_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_TemporalAccuracy_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -22252,13 +22252,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("measureIdentification", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
-            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationMethodType", "http://www.isotc211.org/2005/gmd"), typeof(DQ_EvaluationMethodTypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationProcedure", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
             localElementDictionary.Add(XName.Get("result", "http://www.isotc211.org/2005/gmd"), typeof(DQ_Result_PropertyType));
         }
 
@@ -22490,11 +22490,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -22563,7 +22563,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DQ_TemporalConsistency_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_TemporalConsistency_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_TemporalAccuracy_Type, IXMetaData, IXmlSerializable
+    public partial class DQ_TemporalConsistency_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_TemporalAccuracy_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -22632,13 +22632,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("measureIdentification", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
-            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationMethodType", "http://www.isotc211.org/2005/gmd"), typeof(DQ_EvaluationMethodTypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationProcedure", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
             localElementDictionary.Add(XName.Get("result", "http://www.isotc211.org/2005/gmd"), typeof(DQ_Result_PropertyType));
         }
 
@@ -22870,11 +22870,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -22943,7 +22943,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DQ_AccuracyOfATimeMeasurement_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_AccuracyOfATimeMeasurement_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_TemporalAccuracy_Type, IXMetaData, IXmlSerializable
+    public partial class DQ_AccuracyOfATimeMeasurement_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_TemporalAccuracy_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -23012,13 +23012,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("measureIdentification", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
-            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationMethodType", "http://www.isotc211.org/2005/gmd"), typeof(DQ_EvaluationMethodTypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationProcedure", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
             localElementDictionary.Add(XName.Get("result", "http://www.isotc211.org/2005/gmd"), typeof(DQ_Result_PropertyType));
         }
 
@@ -23250,11 +23250,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -23323,7 +23323,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DQ_QuantitativeAttributeAccuracy_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_QuantitativeAttributeAccuracy_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_ThematicAccuracy_Type, IXMetaData, IXmlSerializable
+    public partial class DQ_QuantitativeAttributeAccuracy_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_ThematicAccuracy_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -23392,13 +23392,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("measureIdentification", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
-            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationMethodType", "http://www.isotc211.org/2005/gmd"), typeof(DQ_EvaluationMethodTypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationProcedure", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
             localElementDictionary.Add(XName.Get("result", "http://www.isotc211.org/2005/gmd"), typeof(DQ_Result_PropertyType));
         }
 
@@ -23630,11 +23630,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -23703,7 +23703,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DQ_NonQuantitativeAttributeAccuracy_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_NonQuantitativeAttributeAccuracy_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_ThematicAccuracy_Type, IXMetaData, IXmlSerializable
+    public partial class DQ_NonQuantitativeAttributeAccuracy_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_ThematicAccuracy_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -23772,13 +23772,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("measureIdentification", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
-            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationMethodType", "http://www.isotc211.org/2005/gmd"), typeof(DQ_EvaluationMethodTypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationProcedure", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
             localElementDictionary.Add(XName.Get("result", "http://www.isotc211.org/2005/gmd"), typeof(DQ_Result_PropertyType));
         }
 
@@ -24010,11 +24010,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -24083,7 +24083,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DQ_ThematicClassificationCorrectness_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_ThematicClassificationCorrectness_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_ThematicAccuracy_Type, IXMetaData, IXmlSerializable
+    public partial class DQ_ThematicClassificationCorrectness_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_ThematicAccuracy_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -24152,13 +24152,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("measureIdentification", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
-            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationMethodType", "http://www.isotc211.org/2005/gmd"), typeof(DQ_EvaluationMethodTypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationProcedure", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
             localElementDictionary.Add(XName.Get("result", "http://www.isotc211.org/2005/gmd"), typeof(DQ_Result_PropertyType));
         }
 
@@ -24390,11 +24390,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -24463,7 +24463,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DQ_RelativeInternalPositionalAccuracy_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_RelativeInternalPositionalAccuracy_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_PositionalAccuracy_Type, IXMetaData, IXmlSerializable
+    public partial class DQ_RelativeInternalPositionalAccuracy_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_PositionalAccuracy_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -24532,13 +24532,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("measureIdentification", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
-            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationMethodType", "http://www.isotc211.org/2005/gmd"), typeof(DQ_EvaluationMethodTypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationProcedure", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
             localElementDictionary.Add(XName.Get("result", "http://www.isotc211.org/2005/gmd"), typeof(DQ_Result_PropertyType));
         }
 
@@ -24770,11 +24770,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -24843,7 +24843,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DQ_GriddedDataPositionalAccuracy_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_GriddedDataPositionalAccuracy_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_PositionalAccuracy_Type, IXMetaData, IXmlSerializable
+    public partial class DQ_GriddedDataPositionalAccuracy_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_PositionalAccuracy_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -24912,13 +24912,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("measureIdentification", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
-            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationMethodType", "http://www.isotc211.org/2005/gmd"), typeof(DQ_EvaluationMethodTypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationProcedure", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
             localElementDictionary.Add(XName.Get("result", "http://www.isotc211.org/2005/gmd"), typeof(DQ_Result_PropertyType));
         }
 
@@ -25150,11 +25150,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -25223,7 +25223,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DQ_AbsoluteExternalPositionalAccuracy_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_AbsoluteExternalPositionalAccuracy_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_PositionalAccuracy_Type, IXMetaData, IXmlSerializable
+    public partial class DQ_AbsoluteExternalPositionalAccuracy_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_PositionalAccuracy_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -25292,13 +25292,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("measureIdentification", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
-            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationMethodType", "http://www.isotc211.org/2005/gmd"), typeof(DQ_EvaluationMethodTypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationProcedure", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
             localElementDictionary.Add(XName.Get("result", "http://www.isotc211.org/2005/gmd"), typeof(DQ_Result_PropertyType));
         }
 
@@ -25530,11 +25530,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -25603,7 +25603,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DQ_TopologicalConsistency_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_TopologicalConsistency_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_LogicalConsistency_Type, IXMetaData, IXmlSerializable
+    public partial class DQ_TopologicalConsistency_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_LogicalConsistency_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -25672,13 +25672,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("measureIdentification", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
-            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationMethodType", "http://www.isotc211.org/2005/gmd"), typeof(DQ_EvaluationMethodTypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationProcedure", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
             localElementDictionary.Add(XName.Get("result", "http://www.isotc211.org/2005/gmd"), typeof(DQ_Result_PropertyType));
         }
 
@@ -25910,11 +25910,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -25983,7 +25983,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DQ_FormatConsistency_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_FormatConsistency_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_LogicalConsistency_Type, IXMetaData, IXmlSerializable
+    public partial class DQ_FormatConsistency_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_LogicalConsistency_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -26052,13 +26052,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("measureIdentification", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
-            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationMethodType", "http://www.isotc211.org/2005/gmd"), typeof(DQ_EvaluationMethodTypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationProcedure", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
             localElementDictionary.Add(XName.Get("result", "http://www.isotc211.org/2005/gmd"), typeof(DQ_Result_PropertyType));
         }
 
@@ -26290,11 +26290,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -26363,7 +26363,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DQ_DomainConsistency_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_DomainConsistency_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_LogicalConsistency_Type, IXMetaData, IXmlSerializable
+    public partial class DQ_DomainConsistency_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_LogicalConsistency_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -26432,13 +26432,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("measureIdentification", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
-            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationMethodType", "http://www.isotc211.org/2005/gmd"), typeof(DQ_EvaluationMethodTypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationProcedure", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
             localElementDictionary.Add(XName.Get("result", "http://www.isotc211.org/2005/gmd"), typeof(DQ_Result_PropertyType));
         }
 
@@ -26670,11 +26670,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -26743,7 +26743,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DQ_ConceptualConsistency_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_ConceptualConsistency_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_LogicalConsistency_Type, IXMetaData, IXmlSerializable
+    public partial class DQ_ConceptualConsistency_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_LogicalConsistency_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -26812,13 +26812,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("measureIdentification", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
-            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationMethodType", "http://www.isotc211.org/2005/gmd"), typeof(DQ_EvaluationMethodTypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationProcedure", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
             localElementDictionary.Add(XName.Get("result", "http://www.isotc211.org/2005/gmd"), typeof(DQ_Result_PropertyType));
         }
 
@@ -27050,11 +27050,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -27123,7 +27123,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DQ_CompletenessOmission_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_CompletenessOmission_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_Completeness_Type, IXMetaData, IXmlSerializable
+    public partial class DQ_CompletenessOmission_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_Completeness_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -27192,13 +27192,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("measureIdentification", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
-            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationMethodType", "http://www.isotc211.org/2005/gmd"), typeof(DQ_EvaluationMethodTypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationProcedure", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
             localElementDictionary.Add(XName.Get("result", "http://www.isotc211.org/2005/gmd"), typeof(DQ_Result_PropertyType));
         }
 
@@ -27430,11 +27430,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -27503,7 +27503,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DQ_CompletenessCommission_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_CompletenessCommission_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_Completeness_Type, IXMetaData, IXmlSerializable
+    public partial class DQ_CompletenessCommission_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_Completeness_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -27572,13 +27572,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("measureIdentification", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
-            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationMethodType", "http://www.isotc211.org/2005/gmd"), typeof(DQ_EvaluationMethodTypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationProcedure", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
             localElementDictionary.Add(XName.Get("result", "http://www.isotc211.org/2005/gmd"), typeof(DQ_Result_PropertyType));
         }
 
@@ -27810,11 +27810,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -27883,7 +27883,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("AbstractDQ_TemporalAccuracy_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public abstract partial class AbstractDQ_TemporalAccuracy_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_Element_Type, IXMetaData, IXmlSerializable
+    public abstract partial class AbstractDQ_TemporalAccuracy_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_Element_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -27947,13 +27947,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("measureIdentification", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
-            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationMethodType", "http://www.isotc211.org/2005/gmd"), typeof(DQ_EvaluationMethodTypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationProcedure", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
             localElementDictionary.Add(XName.Get("result", "http://www.isotc211.org/2005/gmd"), typeof(DQ_Result_PropertyType));
         }
 
@@ -28188,11 +28188,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -28261,7 +28261,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("AbstractDQ_ThematicAccuracy_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public abstract partial class AbstractDQ_ThematicAccuracy_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_Element_Type, IXMetaData, IXmlSerializable
+    public abstract partial class AbstractDQ_ThematicAccuracy_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_Element_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -28325,13 +28325,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("measureIdentification", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
-            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationMethodType", "http://www.isotc211.org/2005/gmd"), typeof(DQ_EvaluationMethodTypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationProcedure", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
             localElementDictionary.Add(XName.Get("result", "http://www.isotc211.org/2005/gmd"), typeof(DQ_Result_PropertyType));
         }
 
@@ -28566,11 +28566,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -28639,7 +28639,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("AbstractDQ_PositionalAccuracy_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public abstract partial class AbstractDQ_PositionalAccuracy_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_Element_Type, IXMetaData, IXmlSerializable
+    public abstract partial class AbstractDQ_PositionalAccuracy_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_Element_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -28703,13 +28703,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("measureIdentification", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
-            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationMethodType", "http://www.isotc211.org/2005/gmd"), typeof(DQ_EvaluationMethodTypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationProcedure", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
             localElementDictionary.Add(XName.Get("result", "http://www.isotc211.org/2005/gmd"), typeof(DQ_Result_PropertyType));
         }
 
@@ -28944,11 +28944,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -29017,7 +29017,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("AbstractDQ_LogicalConsistency_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public abstract partial class AbstractDQ_LogicalConsistency_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_Element_Type, IXMetaData, IXmlSerializable
+    public abstract partial class AbstractDQ_LogicalConsistency_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_Element_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -29081,13 +29081,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("measureIdentification", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
-            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationMethodType", "http://www.isotc211.org/2005/gmd"), typeof(DQ_EvaluationMethodTypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationProcedure", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
             localElementDictionary.Add(XName.Get("result", "http://www.isotc211.org/2005/gmd"), typeof(DQ_Result_PropertyType));
         }
 
@@ -29322,11 +29322,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -29395,7 +29395,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("AbstractDQ_Completeness_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public abstract partial class AbstractDQ_Completeness_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_Element_Type, IXMetaData, IXmlSerializable
+    public abstract partial class AbstractDQ_Completeness_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_Element_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -29459,13 +29459,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("measureIdentification", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
-            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationMethodType", "http://www.isotc211.org/2005/gmd"), typeof(DQ_EvaluationMethodTypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationProcedure", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
             localElementDictionary.Add(XName.Get("result", "http://www.isotc211.org/2005/gmd"), typeof(DQ_Result_PropertyType));
         }
 
@@ -29700,11 +29700,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -29773,14 +29773,14 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("AbstractDQ_Element_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public abstract partial class AbstractDQ_Element_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public abstract partial class AbstractDQ_Element_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> nameOfMeasureField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> nameOfMeasureField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType> dateTimeField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType> dateTimeField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XTypedList<DQ_Result_PropertyType> resultField;
@@ -29816,13 +29816,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (nameOfMeasure*, measureIdentification?, measureDescription?, evaluationMethodType?, evaluationMethodDescription?, evaluationProcedure?, dateTime*, result+)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> nameOfMeasure
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> nameOfMeasure
         {
             get
             {
                 if ((this.nameOfMeasureField==null))
                 {
-                    this.nameOfMeasureField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"));
+                    this.nameOfMeasureField=new XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.nameOfMeasureField;
             }
@@ -29835,10 +29835,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.nameOfMeasureField==null))
                     {
-                        this.nameOfMeasureField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"));
+                        this.nameOfMeasureField=XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.nameOfMeasureField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.nameOfMeasureField, value);
                     }
                 }
             }
@@ -29873,12 +29873,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (nameOfMeasure*, measureIdentification?, measureDescription?, evaluationMethodType?, evaluationMethodDescription?, evaluationProcedure?, dateTime*, result+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType measureDescription
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType measureDescription
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -29915,12 +29915,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (nameOfMeasure*, measureIdentification?, measureDescription?, evaluationMethodType?, evaluationMethodDescription?, evaluationProcedure?, dateTime*, result+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType evaluationMethodDescription
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType evaluationMethodDescription
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -29957,13 +29957,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (nameOfMeasure*, measureIdentification?, measureDescription?, evaluationMethodType?, evaluationMethodDescription?, evaluationProcedure?, dateTime*, result+)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType> dateTime
+        public IList<GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType> dateTime
         {
             get
             {
                 if ((this.dateTimeField==null))
                 {
-                    this.dateTimeField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"));
+                    this.dateTimeField=new XTypedList<GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.dateTimeField;
             }
@@ -29976,10 +29976,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.dateTimeField==null))
                     {
-                        this.dateTimeField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"));
+                        this.dateTimeField=XTypedList<GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType>(this.dateTimeField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType>(this.dateTimeField, value);
                     }
                 }
             }
@@ -30059,13 +30059,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("nameOfMeasure", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("measureIdentification", "http://www.isotc211.org/2005/gmd"), typeof(MD_Identifier_PropertyType));
-            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("measureDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationMethodType", "http://www.isotc211.org/2005/gmd"), typeof(DQ_EvaluationMethodTypeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("evaluationMethodDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("evaluationProcedure", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("dateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
             localElementDictionary.Add(XName.Get("result", "http://www.isotc211.org/2005/gmd"), typeof(DQ_Result_PropertyType));
         }
 
@@ -30300,11 +30300,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -30373,7 +30373,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DQ_DataQuality_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_DataQuality_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class DQ_DataQuality_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -30756,11 +30756,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -30829,7 +30829,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DQ_Scope_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_Scope_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class DQ_Scope_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -31212,11 +31212,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -31342,11 +31342,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -31418,11 +31418,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_Constraints_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_Constraints_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class MD_Constraints_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> useLimitationField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> useLimitationField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         static Dictionary<XName, System.Type> localElementDictionary=new Dictionary<XName, System.Type>();
@@ -31458,13 +31458,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (useLimitation*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> useLimitation
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> useLimitation
         {
             get
             {
                 if ((this.useLimitationField==null))
                 {
-                    this.useLimitationField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("useLimitation", "http://www.isotc211.org/2005/gmd"));
+                    this.useLimitationField=new XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("useLimitation", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.useLimitationField;
             }
@@ -31477,10 +31477,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.useLimitationField==null))
                     {
-                        this.useLimitationField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("useLimitation", "http://www.isotc211.org/2005/gmd"));
+                        this.useLimitationField=XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("useLimitation", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.useLimitationField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.useLimitationField, value);
                     }
                 }
             }
@@ -31529,7 +31529,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("useLimitation", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("useLimitation", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -31763,11 +31763,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -31839,7 +31839,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_LegalConstraints_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_LegalConstraints_Type: global::OgcToolkit.Iso.Ts19139.Gmd.MD_Constraints_Type, IXMetaData, IXmlSerializable
+    public partial class MD_LegalConstraints_Type: global::GeoSik.Iso.Ts19139.Gmd.MD_Constraints_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -31849,7 +31849,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         private XTypedList<MD_RestrictionCode_PropertyType> useConstraintsField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> otherConstraintsField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> otherConstraintsField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         static Dictionary<XName, System.Type> localElementDictionary=new Dictionary<XName, System.Type>();
@@ -31957,13 +31957,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (useLimitation*, accessConstraints*, useConstraints*, otherConstraints*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> otherConstraints
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> otherConstraints
         {
             get
             {
                 if ((this.otherConstraintsField==null))
                 {
-                    this.otherConstraintsField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("otherConstraints", "http://www.isotc211.org/2005/gmd"));
+                    this.otherConstraintsField=new XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("otherConstraints", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.otherConstraintsField;
             }
@@ -31976,10 +31976,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.otherConstraintsField==null))
                     {
-                        this.otherConstraintsField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("otherConstraints", "http://www.isotc211.org/2005/gmd"));
+                        this.otherConstraintsField=XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("otherConstraints", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.otherConstraintsField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.otherConstraintsField, value);
                     }
                 }
             }
@@ -32028,10 +32028,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("useLimitation", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("useLimitation", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("accessConstraints", "http://www.isotc211.org/2005/gmd"), typeof(MD_RestrictionCode_PropertyType));
             localElementDictionary.Add(XName.Get("useConstraints", "http://www.isotc211.org/2005/gmd"), typeof(MD_RestrictionCode_PropertyType));
-            localElementDictionary.Add(XName.Get("otherConstraints", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("otherConstraints", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -32262,11 +32262,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -32338,7 +32338,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_SecurityConstraints_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_SecurityConstraints_Type: global::OgcToolkit.Iso.Ts19139.Gmd.MD_Constraints_Type, IXMetaData, IXmlSerializable
+    public partial class MD_SecurityConstraints_Type: global::GeoSik.Iso.Ts19139.Gmd.MD_Constraints_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -32396,12 +32396,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (useLimitation*, classification, userNote?, classificationSystem?, handlingDescription?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType userNote
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType userNote
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("userNote", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -32417,12 +32417,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (useLimitation*, classification, userNote?, classificationSystem?, handlingDescription?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType classificationSystem
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType classificationSystem
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("classificationSystem", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -32438,12 +32438,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (useLimitation*, classification, userNote?, classificationSystem?, handlingDescription?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType handlingDescription
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType handlingDescription
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("handlingDescription", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -32494,11 +32494,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("useLimitation", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("useLimitation", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("classification", "http://www.isotc211.org/2005/gmd"), typeof(MD_ClassificationCode_PropertyType));
-            localElementDictionary.Add(XName.Get("userNote", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("classificationSystem", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("handlingDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("userNote", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("classificationSystem", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("handlingDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -32729,11 +32729,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -32859,11 +32859,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -32989,11 +32989,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -33065,11 +33065,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_Medium_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_Medium_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class MD_Medium_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType> densityField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.Real_PropertyType> densityField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XTypedList<MD_MediumFormatCode_PropertyType> mediumFormatField;
@@ -33129,13 +33129,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name?, density*, densityUnits?, volumes?, mediumFormat*, mediumNote?)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType> density
+        public IList<GeoSik.Iso.Ts19139.Gco.Real_PropertyType> density
         {
             get
             {
                 if ((this.densityField==null))
                 {
-                    this.densityField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("density", "http://www.isotc211.org/2005/gmd"));
+                    this.densityField=new XTypedList<GeoSik.Iso.Ts19139.Gco.Real_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("density", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.densityField;
             }
@@ -33148,10 +33148,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.densityField==null))
                     {
-                        this.densityField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("density", "http://www.isotc211.org/2005/gmd"));
+                        this.densityField=XTypedList<GeoSik.Iso.Ts19139.Gco.Real_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("density", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType>(this.densityField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.Real_PropertyType>(this.densityField, value);
                     }
                 }
             }
@@ -33165,12 +33165,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name?, density*, densityUnits?, volumes?, mediumFormat*, mediumNote?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType densityUnits
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType densityUnits
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("densityUnits", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -33186,12 +33186,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name?, density*, densityUnits?, volumes?, mediumFormat*, mediumNote?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType volumes
+        public GeoSik.Iso.Ts19139.Gco.Integer_PropertyType volumes
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("volumes", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Integer_PropertyType)(x));
             }
             set
             {
@@ -33243,12 +33243,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name?, density*, densityUnits?, volumes?, mediumFormat*, mediumNote?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType mediumNote
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType mediumNote
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("mediumNote", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -33300,11 +33300,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         private static void BuildElementDictionary()
         {
             localElementDictionary.Add(XName.Get("name", "http://www.isotc211.org/2005/gmd"), typeof(MD_MediumNameCode_PropertyType));
-            localElementDictionary.Add(XName.Get("density", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType));
-            localElementDictionary.Add(XName.Get("densityUnits", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("volumes", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType));
+            localElementDictionary.Add(XName.Get("density", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Real_PropertyType));
+            localElementDictionary.Add(XName.Get("densityUnits", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("volumes", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Integer_PropertyType));
             localElementDictionary.Add(XName.Get("mediumFormat", "http://www.isotc211.org/2005/gmd"), typeof(MD_MediumFormatCode_PropertyType));
-            localElementDictionary.Add(XName.Get("mediumNote", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("mediumNote", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -33535,11 +33535,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -33611,7 +33611,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_DigitalTransferOptions_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_DigitalTransferOptions_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class MD_DigitalTransferOptions_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -33651,12 +33651,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (unitsOfDistribution?, transferSize?, onLine*, offLine?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType unitsOfDistribution
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType unitsOfDistribution
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("unitsOfDistribution", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -33672,12 +33672,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (unitsOfDistribution?, transferSize?, onLine*, offLine?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType transferSize
+        public GeoSik.Iso.Ts19139.Gco.Real_PropertyType transferSize
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("transferSize", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Real_PropertyType)(x));
             }
             set
             {
@@ -33785,8 +33785,8 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("unitsOfDistribution", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("transferSize", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType));
+            localElementDictionary.Add(XName.Get("unitsOfDistribution", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("transferSize", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Real_PropertyType));
             localElementDictionary.Add(XName.Get("onLine", "http://www.isotc211.org/2005/gmd"), typeof(CI_OnlineResource_PropertyType));
             localElementDictionary.Add(XName.Get("offLine", "http://www.isotc211.org/2005/gmd"), typeof(MD_Medium_PropertyType));
         }
@@ -34019,11 +34019,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -34095,7 +34095,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_StandardOrderProcess_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_StandardOrderProcess_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class MD_StandardOrderProcess_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -34132,12 +34132,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fees?, plannedAvailableDateTime?, orderingInstructions?, turnaround?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType fees
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType fees
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("fees", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -34153,12 +34153,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fees?, plannedAvailableDateTime?, orderingInstructions?, turnaround?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType plannedAvailableDateTime
+        public GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType plannedAvailableDateTime
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("plannedAvailableDateTime", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType)(x));
             }
             set
             {
@@ -34174,12 +34174,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fees?, plannedAvailableDateTime?, orderingInstructions?, turnaround?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType orderingInstructions
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType orderingInstructions
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("orderingInstructions", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -34195,12 +34195,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fees?, plannedAvailableDateTime?, orderingInstructions?, turnaround?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType turnaround
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType turnaround
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("turnaround", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -34251,10 +34251,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("fees", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("plannedAvailableDateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
-            localElementDictionary.Add(XName.Get("orderingInstructions", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("turnaround", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("fees", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("plannedAvailableDateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("orderingInstructions", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("turnaround", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -34485,11 +34485,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -34561,7 +34561,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_Distributor_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_Distributor_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class MD_Distributor_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -35005,11 +35005,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -35081,7 +35081,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_Distribution_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_Distribution_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class MD_Distribution_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -35503,11 +35503,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -35579,7 +35579,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_Format_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_Format_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class MD_Format_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -35619,12 +35619,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, version, amendmentNumber?, specification?, fileDecompressionTechnique?, formatDistributor*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType name
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType name
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("name", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -35640,12 +35640,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, version, amendmentNumber?, specification?, fileDecompressionTechnique?, formatDistributor*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType version
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType version
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("version", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -35661,12 +35661,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, version, amendmentNumber?, specification?, fileDecompressionTechnique?, formatDistributor*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType amendmentNumber
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType amendmentNumber
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("amendmentNumber", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -35682,12 +35682,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, version, amendmentNumber?, specification?, fileDecompressionTechnique?, formatDistributor*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType specification
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType specification
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("specification", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -35703,12 +35703,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, version, amendmentNumber?, specification?, fileDecompressionTechnique?, formatDistributor*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType fileDecompressionTechnique
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType fileDecompressionTechnique
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("fileDecompressionTechnique", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -35795,11 +35795,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("name", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("version", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("amendmentNumber", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("specification", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("fileDecompressionTechnique", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("name", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("version", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("amendmentNumber", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("specification", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("fileDecompressionTechnique", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("formatDistributor", "http://www.isotc211.org/2005/gmd"), typeof(MD_Distributor_PropertyType));
         }
 
@@ -36031,11 +36031,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -36161,11 +36161,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -36291,11 +36291,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -36421,11 +36421,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -36497,7 +36497,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_MaintenanceInformation_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_MaintenanceInformation_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class MD_MaintenanceInformation_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -36507,7 +36507,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         private XTypedList<MD_ScopeDescription_PropertyType> updateScopeDescriptionField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> maintenanceNoteField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> maintenanceNoteField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XTypedList<CI_ResponsibleParty_PropertyType> contactField;
@@ -36567,12 +36567,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (maintenanceAndUpdateFrequency, dateOfNextUpdate?, userDefinedMaintenanceFrequency?, updateScope*, updateScopeDescription*, maintenanceNote*, contact*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Date_PropertyType dateOfNextUpdate
+        public GeoSik.Iso.Ts19139.Gco.Date_PropertyType dateOfNextUpdate
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("dateOfNextUpdate", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Date_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Date_PropertyType)(x));
             }
             set
             {
@@ -36588,12 +36588,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (maintenanceAndUpdateFrequency, dateOfNextUpdate?, userDefinedMaintenanceFrequency?, updateScope*, updateScopeDescription*, maintenanceNote*, contact*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gts.TM_PeriodDuration_PropertyType userDefinedMaintenanceFrequency
+        public GeoSik.Iso.Ts19139.Gts.TM_PeriodDuration_PropertyType userDefinedMaintenanceFrequency
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("userDefinedMaintenanceFrequency", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gts.TM_PeriodDuration_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gts.TM_PeriodDuration_PropertyType)(x));
             }
             set
             {
@@ -36681,13 +36681,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (maintenanceAndUpdateFrequency, dateOfNextUpdate?, userDefinedMaintenanceFrequency?, updateScope*, updateScopeDescription*, maintenanceNote*, contact*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> maintenanceNote
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> maintenanceNote
         {
             get
             {
                 if ((this.maintenanceNoteField==null))
                 {
-                    this.maintenanceNoteField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("maintenanceNote", "http://www.isotc211.org/2005/gmd"));
+                    this.maintenanceNoteField=new XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("maintenanceNote", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.maintenanceNoteField;
             }
@@ -36700,10 +36700,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.maintenanceNoteField==null))
                     {
-                        this.maintenanceNoteField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("maintenanceNote", "http://www.isotc211.org/2005/gmd"));
+                        this.maintenanceNoteField=XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("maintenanceNote", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.maintenanceNoteField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.maintenanceNoteField, value);
                     }
                 }
             }
@@ -36789,11 +36789,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         private static void BuildElementDictionary()
         {
             localElementDictionary.Add(XName.Get("maintenanceAndUpdateFrequency", "http://www.isotc211.org/2005/gmd"), typeof(MD_MaintenanceFrequencyCode_PropertyType));
-            localElementDictionary.Add(XName.Get("dateOfNextUpdate", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Date_PropertyType));
-            localElementDictionary.Add(XName.Get("userDefinedMaintenanceFrequency", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gts.TM_PeriodDuration_PropertyType));
+            localElementDictionary.Add(XName.Get("dateOfNextUpdate", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Date_PropertyType));
+            localElementDictionary.Add(XName.Get("userDefinedMaintenanceFrequency", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gts.TM_PeriodDuration_PropertyType));
             localElementDictionary.Add(XName.Get("updateScope", "http://www.isotc211.org/2005/gmd"), typeof(MD_ScopeCode_PropertyType));
             localElementDictionary.Add(XName.Get("updateScopeDescription", "http://www.isotc211.org/2005/gmd"), typeof(MD_ScopeDescription_PropertyType));
-            localElementDictionary.Add(XName.Get("maintenanceNote", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("maintenanceNote", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("contact", "http://www.isotc211.org/2005/gmd"), typeof(CI_ResponsibleParty_PropertyType));
         }
 
@@ -37025,11 +37025,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -37105,16 +37105,16 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType> attributesField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType> attributesField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType> featuresField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType> featuresField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType> featureInstancesField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType> featureInstancesField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType> attributeInstancesField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType> attributeInstancesField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         static Dictionary<XName, System.Type> localElementDictionary=new Dictionary<XName, System.Type>();
@@ -37150,13 +37150,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributes+ | features+ | featureInstances+ | attributeInstances+ | dataset | other)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType> attributes
+        public IList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType> attributes
         {
             get
             {
                 if ((this.attributesField==null))
                 {
-                    this.attributesField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("attributes", "http://www.isotc211.org/2005/gmd"));
+                    this.attributesField=new XTypedList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("attributes", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.attributesField;
             }
@@ -37169,10 +37169,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.attributesField==null))
                     {
-                        this.attributesField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("attributes", "http://www.isotc211.org/2005/gmd"));
+                        this.attributesField=XTypedList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("attributes", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this.attributesField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this.attributesField, value);
                     }
                 }
             }
@@ -37186,13 +37186,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributes+ | features+ | featureInstances+ | attributeInstances+ | dataset | other)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType> features
+        public IList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType> features
         {
             get
             {
                 if ((this.featuresField==null))
                 {
-                    this.featuresField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("features", "http://www.isotc211.org/2005/gmd"));
+                    this.featuresField=new XTypedList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("features", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.featuresField;
             }
@@ -37205,10 +37205,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.featuresField==null))
                     {
-                        this.featuresField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("features", "http://www.isotc211.org/2005/gmd"));
+                        this.featuresField=XTypedList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("features", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this.featuresField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this.featuresField, value);
                     }
                 }
             }
@@ -37222,13 +37222,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributes+ | features+ | featureInstances+ | attributeInstances+ | dataset | other)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType> featureInstances
+        public IList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType> featureInstances
         {
             get
             {
                 if ((this.featureInstancesField==null))
                 {
-                    this.featureInstancesField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("featureInstances", "http://www.isotc211.org/2005/gmd"));
+                    this.featureInstancesField=new XTypedList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("featureInstances", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.featureInstancesField;
             }
@@ -37241,10 +37241,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.featureInstancesField==null))
                     {
-                        this.featureInstancesField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("featureInstances", "http://www.isotc211.org/2005/gmd"));
+                        this.featureInstancesField=XTypedList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("featureInstances", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this.featureInstancesField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this.featureInstancesField, value);
                     }
                 }
             }
@@ -37258,13 +37258,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributes+ | features+ | featureInstances+ | attributeInstances+ | dataset | other)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType> attributeInstances
+        public IList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType> attributeInstances
         {
             get
             {
                 if ((this.attributeInstancesField==null))
                 {
-                    this.attributeInstancesField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("attributeInstances", "http://www.isotc211.org/2005/gmd"));
+                    this.attributeInstancesField=new XTypedList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("attributeInstances", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.attributeInstancesField;
             }
@@ -37277,10 +37277,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.attributeInstancesField==null))
                     {
-                        this.attributeInstancesField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("attributeInstances", "http://www.isotc211.org/2005/gmd"));
+                        this.attributeInstancesField=XTypedList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("attributeInstances", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this.attributeInstancesField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this.attributeInstancesField, value);
                     }
                 }
             }
@@ -37294,12 +37294,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributes+ | features+ | featureInstances+ | attributeInstances+ | dataset | other)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType dataset
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType dataset
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("dataset", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -37315,12 +37315,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributes+ | features+ | featureInstances+ | attributeInstances+ | dataset | other)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType other
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType other
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("other", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -37371,12 +37371,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("attributes", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType));
-            localElementDictionary.Add(XName.Get("features", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType));
-            localElementDictionary.Add(XName.Get("featureInstances", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType));
-            localElementDictionary.Add(XName.Get("attributeInstances", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType));
-            localElementDictionary.Add(XName.Get("dataset", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("other", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("attributes", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType));
+            localElementDictionary.Add(XName.Get("features", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType));
+            localElementDictionary.Add(XName.Get("featureInstances", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType));
+            localElementDictionary.Add(XName.Get("attributeInstances", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType));
+            localElementDictionary.Add(XName.Get("dataset", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("other", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -37455,11 +37455,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -37585,11 +37585,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -37715,11 +37715,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -37791,11 +37791,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("AbstractMD_Identification_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public abstract partial class AbstractMD_Identification_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public abstract partial class AbstractMD_Identification_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> creditField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> creditField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XTypedList<MD_ProgressCode_PropertyType> statusField;
@@ -37879,12 +37879,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (citation, @abstract, purpose?, credit*, status*, pointOfContact*, resourceMaintenance*, graphicOverview*, resourceFormat*, descriptiveKeywords*, resourceSpecificUsage*, resourceConstraints*, aggregationInfo*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType @abstract
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType @abstract
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("abstract", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -37900,12 +37900,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (citation, @abstract, purpose?, credit*, status*, pointOfContact*, resourceMaintenance*, graphicOverview*, resourceFormat*, descriptiveKeywords*, resourceSpecificUsage*, resourceConstraints*, aggregationInfo*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType purpose
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType purpose
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("purpose", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -37921,13 +37921,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (citation, @abstract, purpose?, credit*, status*, pointOfContact*, resourceMaintenance*, graphicOverview*, resourceFormat*, descriptiveKeywords*, resourceSpecificUsage*, resourceConstraints*, aggregationInfo*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> credit
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> credit
         {
             get
             {
                 if ((this.creditField==null))
                 {
-                    this.creditField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("credit", "http://www.isotc211.org/2005/gmd"));
+                    this.creditField=new XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("credit", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.creditField;
             }
@@ -37940,10 +37940,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.creditField==null))
                     {
-                        this.creditField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("credit", "http://www.isotc211.org/2005/gmd"));
+                        this.creditField=XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("credit", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.creditField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.creditField, value);
                     }
                 }
             }
@@ -38312,9 +38312,9 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         private static void BuildElementDictionary()
         {
             localElementDictionary.Add(XName.Get("citation", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("abstract", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("purpose", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("credit", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("abstract", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("purpose", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("credit", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("status", "http://www.isotc211.org/2005/gmd"), typeof(MD_ProgressCode_PropertyType));
             localElementDictionary.Add(XName.Get("pointOfContact", "http://www.isotc211.org/2005/gmd"), typeof(CI_ResponsibleParty_PropertyType));
             localElementDictionary.Add(XName.Get("resourceMaintenance", "http://www.isotc211.org/2005/gmd"), typeof(MD_MaintenanceInformation_PropertyType));
@@ -38557,11 +38557,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -38633,7 +38633,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_BrowseGraphic_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_BrowseGraphic_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class MD_BrowseGraphic_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -38670,12 +38670,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileName, fileDescription?, fileType?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType fileName
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType fileName
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("fileName", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -38691,12 +38691,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileName, fileDescription?, fileType?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType fileDescription
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType fileDescription
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("fileDescription", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -38712,12 +38712,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileName, fileDescription?, fileType?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType fileType
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType fileType
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("fileType", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -38768,9 +38768,9 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("fileName", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("fileDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("fileType", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("fileName", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("fileDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("fileType", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -39001,11 +39001,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -39074,7 +39074,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_DataIdentification_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_DataIdentification_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractMD_Identification_Type, IXMetaData, IXmlSerializable
+    public partial class MD_DataIdentification_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractMD_Identification_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -39084,7 +39084,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         private XTypedList<MD_Resolution_PropertyType> spatialResolutionField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> languageField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> languageField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XTypedList<MD_CharacterSetCode_PropertyType> characterSetField;
@@ -39198,13 +39198,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (citation, @abstract, purpose?, credit*, status*, pointOfContact*, resourceMaintenance*, graphicOverview*, resourceFormat*, descriptiveKeywords*, resourceSpecificUsage*, resourceConstraints*, aggregationInfo*, spatialRepresentationType*, spatialResolution*, language+, characterSet*, topicCategory*, environmentDescription?, extent*, supplementalInformation?)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> language
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> language
         {
             get
             {
                 if ((this.languageField==null))
                 {
-                    this.languageField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("language", "http://www.isotc211.org/2005/gmd"));
+                    this.languageField=new XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("language", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.languageField;
             }
@@ -39217,10 +39217,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.languageField==null))
                     {
-                        this.languageField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("language", "http://www.isotc211.org/2005/gmd"));
+                        this.languageField=XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("language", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.languageField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.languageField, value);
                     }
                 }
             }
@@ -39306,12 +39306,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (citation, @abstract, purpose?, credit*, status*, pointOfContact*, resourceMaintenance*, graphicOverview*, resourceFormat*, descriptiveKeywords*, resourceSpecificUsage*, resourceConstraints*, aggregationInfo*, spatialRepresentationType*, spatialResolution*, language+, characterSet*, topicCategory*, environmentDescription?, extent*, supplementalInformation?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType environmentDescription
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType environmentDescription
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("environmentDescription", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -39363,12 +39363,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (citation, @abstract, purpose?, credit*, status*, pointOfContact*, resourceMaintenance*, graphicOverview*, resourceFormat*, descriptiveKeywords*, resourceSpecificUsage*, resourceConstraints*, aggregationInfo*, spatialRepresentationType*, spatialResolution*, language+, characterSet*, topicCategory*, environmentDescription?, extent*, supplementalInformation?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType supplementalInformation
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType supplementalInformation
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("supplementalInformation", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -39420,9 +39420,9 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         private static void BuildElementDictionary()
         {
             localElementDictionary.Add(XName.Get("citation", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("abstract", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("purpose", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("credit", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("abstract", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("purpose", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("credit", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("status", "http://www.isotc211.org/2005/gmd"), typeof(MD_ProgressCode_PropertyType));
             localElementDictionary.Add(XName.Get("pointOfContact", "http://www.isotc211.org/2005/gmd"), typeof(CI_ResponsibleParty_PropertyType));
             localElementDictionary.Add(XName.Get("resourceMaintenance", "http://www.isotc211.org/2005/gmd"), typeof(MD_MaintenanceInformation_PropertyType));
@@ -39434,12 +39434,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             localElementDictionary.Add(XName.Get("aggregationInfo", "http://www.isotc211.org/2005/gmd"), typeof(MD_AggregateInformation_PropertyType));
             localElementDictionary.Add(XName.Get("spatialRepresentationType", "http://www.isotc211.org/2005/gmd"), typeof(MD_SpatialRepresentationTypeCode_PropertyType));
             localElementDictionary.Add(XName.Get("spatialResolution", "http://www.isotc211.org/2005/gmd"), typeof(MD_Resolution_PropertyType));
-            localElementDictionary.Add(XName.Get("language", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("language", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("characterSet", "http://www.isotc211.org/2005/gmd"), typeof(MD_CharacterSetCode_PropertyType));
             localElementDictionary.Add(XName.Get("topicCategory", "http://www.isotc211.org/2005/gmd"), typeof(MD_TopicCategoryCode_PropertyType));
-            localElementDictionary.Add(XName.Get("environmentDescription", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("environmentDescription", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("extent", "http://www.isotc211.org/2005/gmd"), typeof(EX_Extent_PropertyType));
-            localElementDictionary.Add(XName.Get("supplementalInformation", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("supplementalInformation", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -39670,11 +39670,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -39746,7 +39746,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_ServiceIdentification_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_ServiceIdentification_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractMD_Identification_Type, IXMetaData, IXmlSerializable
+    public partial class MD_ServiceIdentification_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractMD_Identification_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -39819,9 +39819,9 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         private static void BuildElementDictionary()
         {
             localElementDictionary.Add(XName.Get("citation", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
-            localElementDictionary.Add(XName.Get("abstract", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("purpose", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("credit", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("abstract", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("purpose", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("credit", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("status", "http://www.isotc211.org/2005/gmd"), typeof(MD_ProgressCode_PropertyType));
             localElementDictionary.Add(XName.Get("pointOfContact", "http://www.isotc211.org/2005/gmd"), typeof(CI_ResponsibleParty_PropertyType));
             localElementDictionary.Add(XName.Get("resourceMaintenance", "http://www.isotc211.org/2005/gmd"), typeof(MD_MaintenanceInformation_PropertyType));
@@ -40061,11 +40061,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -40134,7 +40134,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_RepresentativeFraction_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_RepresentativeFraction_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class MD_RepresentativeFraction_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -40168,12 +40168,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (denominator)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType denominator
+        public GeoSik.Iso.Ts19139.Gco.Integer_PropertyType denominator
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("denominator", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Integer_PropertyType)(x));
             }
             set
             {
@@ -40224,7 +40224,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("denominator", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType));
+            localElementDictionary.Add(XName.Get("denominator", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Integer_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -40455,11 +40455,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -40531,7 +40531,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_Usage_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_Usage_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class MD_Usage_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -40571,12 +40571,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (specificUsage, usageDateTime?, userDeterminedLimitations?, userContactInfo+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType specificUsage
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType specificUsage
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("specificUsage", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -40592,12 +40592,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (specificUsage, usageDateTime?, userDeterminedLimitations?, userContactInfo+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType usageDateTime
+        public GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType usageDateTime
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("usageDateTime", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType)(x));
             }
             set
             {
@@ -40613,12 +40613,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (specificUsage, usageDateTime?, userDeterminedLimitations?, userContactInfo+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType userDeterminedLimitations
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType userDeterminedLimitations
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("userDeterminedLimitations", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -40705,9 +40705,9 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("specificUsage", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("usageDateTime", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType));
-            localElementDictionary.Add(XName.Get("userDeterminedLimitations", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("specificUsage", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("usageDateTime", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType));
+            localElementDictionary.Add(XName.Get("userDeterminedLimitations", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("userContactInfo", "http://www.isotc211.org/2005/gmd"), typeof(CI_ResponsibleParty_PropertyType));
         }
 
@@ -40939,11 +40939,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -41015,11 +41015,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_Keywords_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_Keywords_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class MD_Keywords_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> keywordField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> keywordField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         static Dictionary<XName, System.Type> localElementDictionary=new Dictionary<XName, System.Type>();
@@ -41055,13 +41055,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (keyword+, type?, thesaurusName?)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> keyword
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> keyword
         {
             get
             {
                 if ((this.keywordField==null))
                 {
-                    this.keywordField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("keyword", "http://www.isotc211.org/2005/gmd"));
+                    this.keywordField=new XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("keyword", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.keywordField;
             }
@@ -41074,10 +41074,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.keywordField==null))
                     {
-                        this.keywordField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("keyword", "http://www.isotc211.org/2005/gmd"));
+                        this.keywordField=XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("keyword", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.keywordField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.keywordField, value);
                     }
                 }
             }
@@ -41168,7 +41168,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("keyword", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("keyword", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("type", "http://www.isotc211.org/2005/gmd"), typeof(MD_KeywordTypeCode_PropertyType));
             localElementDictionary.Add(XName.Get("thesaurusName", "http://www.isotc211.org/2005/gmd"), typeof(CI_Citation_PropertyType));
         }
@@ -41401,11 +41401,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -41469,7 +41469,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DS_Association_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DS_Association_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class DS_Association_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         public static explicit operator DS_Association_Type(XElement xe) { return XTypedServices.ToXTypedElement<DS_Association_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
@@ -41738,11 +41738,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -41814,7 +41814,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_AggregateInformation_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_AggregateInformation_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class MD_AggregateInformation_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -42204,11 +42204,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -42308,7 +42308,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             this.equivalentScale=equivalentScale;
         }
 
-        public MD_Resolution_Type(OgcToolkit.Iso.Ts19139.Gco.Distance_PropertyType distance)
+        public MD_Resolution_Type(GeoSik.Iso.Ts19139.Gco.Distance_PropertyType distance)
         {
             this.distance=distance;
         }
@@ -42342,12 +42342,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (equivalentScale | distance)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Distance_PropertyType distance
+        public GeoSik.Iso.Ts19139.Gco.Distance_PropertyType distance
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("distance", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Distance_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Distance_PropertyType)(x));
             }
             set
             {
@@ -42399,7 +42399,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         private static void BuildElementDictionary()
         {
             localElementDictionary.Add(XName.Get("equivalentScale", "http://www.isotc211.org/2005/gmd"), typeof(MD_RepresentativeFraction_PropertyType));
-            localElementDictionary.Add(XName.Get("distance", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Distance_PropertyType));
+            localElementDictionary.Add(XName.Get("distance", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Distance_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -42478,11 +42478,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -42644,11 +42644,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -42774,11 +42774,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -42904,11 +42904,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -43034,11 +43034,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -43164,11 +43164,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -43294,11 +43294,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -43424,11 +43424,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -43497,7 +43497,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("PT_FreeText_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class PT_FreeText_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class PT_FreeText_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -43627,7 +43627,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("PT_FreeText_PropertyTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class PT_FreeText_PropertyType: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType, IXMetaData, IXmlSerializable
+    public partial class PT_FreeText_PropertyType: global::GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -43716,7 +43716,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("CharacterString", "http://www.isotc211.org/2005/gco"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString));
+            localElementDictionary.Add(XName.Get("CharacterString", "http://www.isotc211.org/2005/gco"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString));
             localElementDictionary.Add(XName.Get("PT_FreeText", "http://www.isotc211.org/2005/gmd"), typeof(PT_FreeText));
         }
 
@@ -43739,7 +43739,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("PT_Locale_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class PT_Locale_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class PT_Locale_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -44104,11 +44104,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -44281,7 +44281,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("LocalisedCharacterString_PropertyTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class LocalisedCharacterString_PropertyType: global::OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType, IXMetaData, IXmlSerializable
+    public partial class LocalisedCharacterString_PropertyType: global::GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -44436,12 +44436,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (description, locale, date+, responsibleParty+, localisedString+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType description
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType description
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("description", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -44621,7 +44621,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("description", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("description", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("locale", "http://www.isotc211.org/2005/gmd"), typeof(PT_Locale_PropertyType));
             localElementDictionary.Add(XName.Get("date", "http://www.isotc211.org/2005/gmd"), typeof(CI_Date_PropertyType));
             localElementDictionary.Add(XName.Get("responsibleParty", "http://www.isotc211.org/2005/gmd"), typeof(CI_ResponsibleParty_PropertyType));
@@ -44856,11 +44856,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -44986,11 +44986,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -45116,11 +45116,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -45192,14 +45192,14 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_Metadata_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_Metadata_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class MD_Metadata_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XTypedList<MD_ScopeCode_PropertyType> hierarchyLevelField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> hierarchyLevelNameField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> hierarchyLevelNameField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XTypedList<CI_ResponsibleParty_PropertyType> contactField;
@@ -45241,13 +45241,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         private XTypedList<DS_DataSet_PropertyType> describesField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType> propertyTypeField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType> propertyTypeField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType> featureTypeField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType> featureTypeField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType> featureAttributeField;
+        private XTypedList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType> featureAttributeField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         static Dictionary<XName, System.Type> localElementDictionary=new Dictionary<XName, System.Type>();
@@ -45283,12 +45283,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileIdentifier?, language?, characterSet?, parentIdentifier?, hierarchyLevel*, hierarchyLevelName*, contact+, dateStamp, metadataStandardName?, metadataStandardVersion?, dataSetURI?, locale*, spatialRepresentationInfo*, referenceSystemInfo*, metadataExtensionInfo*, identificationInfo+, contentInfo*, distributionInfo?, dataQualityInfo*, portrayalCatalogueInfo*, metadataConstraints*, applicationSchemaInfo*, metadataMaintenance?, series*, describes*, propertyType*, featureType*, featureAttribute*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType fileIdentifier
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType fileIdentifier
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("fileIdentifier", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -45304,12 +45304,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileIdentifier?, language?, characterSet?, parentIdentifier?, hierarchyLevel*, hierarchyLevelName*, contact+, dateStamp, metadataStandardName?, metadataStandardVersion?, dataSetURI?, locale*, spatialRepresentationInfo*, referenceSystemInfo*, metadataExtensionInfo*, identificationInfo+, contentInfo*, distributionInfo?, dataQualityInfo*, portrayalCatalogueInfo*, metadataConstraints*, applicationSchemaInfo*, metadataMaintenance?, series*, describes*, propertyType*, featureType*, featureAttribute*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType language
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType language
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("language", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -45346,12 +45346,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileIdentifier?, language?, characterSet?, parentIdentifier?, hierarchyLevel*, hierarchyLevelName*, contact+, dateStamp, metadataStandardName?, metadataStandardVersion?, dataSetURI?, locale*, spatialRepresentationInfo*, referenceSystemInfo*, metadataExtensionInfo*, identificationInfo+, contentInfo*, distributionInfo?, dataQualityInfo*, portrayalCatalogueInfo*, metadataConstraints*, applicationSchemaInfo*, metadataMaintenance?, series*, describes*, propertyType*, featureType*, featureAttribute*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType parentIdentifier
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType parentIdentifier
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("parentIdentifier", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -45403,13 +45403,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileIdentifier?, language?, characterSet?, parentIdentifier?, hierarchyLevel*, hierarchyLevelName*, contact+, dateStamp, metadataStandardName?, metadataStandardVersion?, dataSetURI?, locale*, spatialRepresentationInfo*, referenceSystemInfo*, metadataExtensionInfo*, identificationInfo+, contentInfo*, distributionInfo?, dataQualityInfo*, portrayalCatalogueInfo*, metadataConstraints*, applicationSchemaInfo*, metadataMaintenance?, series*, describes*, propertyType*, featureType*, featureAttribute*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> hierarchyLevelName
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> hierarchyLevelName
         {
             get
             {
                 if ((this.hierarchyLevelNameField==null))
                 {
-                    this.hierarchyLevelNameField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("hierarchyLevelName", "http://www.isotc211.org/2005/gmd"));
+                    this.hierarchyLevelNameField=new XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("hierarchyLevelName", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.hierarchyLevelNameField;
             }
@@ -45422,10 +45422,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.hierarchyLevelNameField==null))
                     {
-                        this.hierarchyLevelNameField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("hierarchyLevelName", "http://www.isotc211.org/2005/gmd"));
+                        this.hierarchyLevelNameField=XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("hierarchyLevelName", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.hierarchyLevelNameField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType>(this.hierarchyLevelNameField, value);
                     }
                 }
             }
@@ -45475,12 +45475,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileIdentifier?, language?, characterSet?, parentIdentifier?, hierarchyLevel*, hierarchyLevelName*, contact+, dateStamp, metadataStandardName?, metadataStandardVersion?, dataSetURI?, locale*, spatialRepresentationInfo*, referenceSystemInfo*, metadataExtensionInfo*, identificationInfo+, contentInfo*, distributionInfo?, dataQualityInfo*, portrayalCatalogueInfo*, metadataConstraints*, applicationSchemaInfo*, metadataMaintenance?, series*, describes*, propertyType*, featureType*, featureAttribute*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Date_PropertyType dateStamp
+        public GeoSik.Iso.Ts19139.Gco.Date_PropertyType dateStamp
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("dateStamp", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.Date_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.Date_PropertyType)(x));
             }
             set
             {
@@ -45496,12 +45496,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileIdentifier?, language?, characterSet?, parentIdentifier?, hierarchyLevel*, hierarchyLevelName*, contact+, dateStamp, metadataStandardName?, metadataStandardVersion?, dataSetURI?, locale*, spatialRepresentationInfo*, referenceSystemInfo*, metadataExtensionInfo*, identificationInfo+, contentInfo*, distributionInfo?, dataQualityInfo*, portrayalCatalogueInfo*, metadataConstraints*, applicationSchemaInfo*, metadataMaintenance?, series*, describes*, propertyType*, featureType*, featureAttribute*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType metadataStandardName
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType metadataStandardName
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("metadataStandardName", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -45517,12 +45517,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileIdentifier?, language?, characterSet?, parentIdentifier?, hierarchyLevel*, hierarchyLevelName*, contact+, dateStamp, metadataStandardName?, metadataStandardVersion?, dataSetURI?, locale*, spatialRepresentationInfo*, referenceSystemInfo*, metadataExtensionInfo*, identificationInfo+, contentInfo*, distributionInfo?, dataQualityInfo*, portrayalCatalogueInfo*, metadataConstraints*, applicationSchemaInfo*, metadataMaintenance?, series*, describes*, propertyType*, featureType*, featureAttribute*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType metadataStandardVersion
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType metadataStandardVersion
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("metadataStandardVersion", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -45538,12 +45538,12 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileIdentifier?, language?, characterSet?, parentIdentifier?, hierarchyLevel*, hierarchyLevelName*, contact+, dateStamp, metadataStandardName?, metadataStandardVersion?, dataSetURI?, locale*, spatialRepresentationInfo*, referenceSystemInfo*, metadataExtensionInfo*, identificationInfo+, contentInfo*, distributionInfo?, dataQualityInfo*, portrayalCatalogueInfo*, metadataConstraints*, applicationSchemaInfo*, metadataMaintenance?, series*, describes*, propertyType*, featureType*, featureAttribute*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType dataSetURI
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType dataSetURI
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("dataSetURI", "http://www.isotc211.org/2005/gmd"));
-                return ((OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
+                return ((GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType)(x));
             }
             set
             {
@@ -46033,13 +46033,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileIdentifier?, language?, characterSet?, parentIdentifier?, hierarchyLevel*, hierarchyLevelName*, contact+, dateStamp, metadataStandardName?, metadataStandardVersion?, dataSetURI?, locale*, spatialRepresentationInfo*, referenceSystemInfo*, metadataExtensionInfo*, identificationInfo+, contentInfo*, distributionInfo?, dataQualityInfo*, portrayalCatalogueInfo*, metadataConstraints*, applicationSchemaInfo*, metadataMaintenance?, series*, describes*, propertyType*, featureType*, featureAttribute*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType> propertyType
+        public IList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType> propertyType
         {
             get
             {
                 if ((this.propertyTypeField==null))
                 {
-                    this.propertyTypeField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("propertyType", "http://www.isotc211.org/2005/gmd"));
+                    this.propertyTypeField=new XTypedList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("propertyType", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.propertyTypeField;
             }
@@ -46052,10 +46052,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.propertyTypeField==null))
                     {
-                        this.propertyTypeField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("propertyType", "http://www.isotc211.org/2005/gmd"));
+                        this.propertyTypeField=XTypedList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("propertyType", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this.propertyTypeField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this.propertyTypeField, value);
                     }
                 }
             }
@@ -46069,13 +46069,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileIdentifier?, language?, characterSet?, parentIdentifier?, hierarchyLevel*, hierarchyLevelName*, contact+, dateStamp, metadataStandardName?, metadataStandardVersion?, dataSetURI?, locale*, spatialRepresentationInfo*, referenceSystemInfo*, metadataExtensionInfo*, identificationInfo+, contentInfo*, distributionInfo?, dataQualityInfo*, portrayalCatalogueInfo*, metadataConstraints*, applicationSchemaInfo*, metadataMaintenance?, series*, describes*, propertyType*, featureType*, featureAttribute*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType> featureType
+        public IList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType> featureType
         {
             get
             {
                 if ((this.featureTypeField==null))
                 {
-                    this.featureTypeField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("featureType", "http://www.isotc211.org/2005/gmd"));
+                    this.featureTypeField=new XTypedList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("featureType", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.featureTypeField;
             }
@@ -46088,10 +46088,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.featureTypeField==null))
                     {
-                        this.featureTypeField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("featureType", "http://www.isotc211.org/2005/gmd"));
+                        this.featureTypeField=XTypedList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("featureType", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this.featureTypeField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this.featureTypeField, value);
                     }
                 }
             }
@@ -46105,13 +46105,13 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileIdentifier?, language?, characterSet?, parentIdentifier?, hierarchyLevel*, hierarchyLevelName*, contact+, dateStamp, metadataStandardName?, metadataStandardVersion?, dataSetURI?, locale*, spatialRepresentationInfo*, referenceSystemInfo*, metadataExtensionInfo*, identificationInfo+, contentInfo*, distributionInfo?, dataQualityInfo*, portrayalCatalogueInfo*, metadataConstraints*, applicationSchemaInfo*, metadataMaintenance?, series*, describes*, propertyType*, featureType*, featureAttribute*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType> featureAttribute
+        public IList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType> featureAttribute
         {
             get
             {
                 if ((this.featureAttributeField==null))
                 {
-                    this.featureAttributeField=new XTypedList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("featureAttribute", "http://www.isotc211.org/2005/gmd"));
+                    this.featureAttributeField=new XTypedList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this, LinqToXsdTypeManager.Instance, XName.Get("featureAttribute", "http://www.isotc211.org/2005/gmd"));
                 }
                 return this.featureAttributeField;
             }
@@ -46124,10 +46124,10 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
                 {
                     if ((this.featureAttributeField==null))
                     {
-                        this.featureAttributeField=XTypedList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("featureAttribute", "http://www.isotc211.org/2005/gmd"));
+                        this.featureAttributeField=XTypedList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("featureAttribute", "http://www.isotc211.org/2005/gmd"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this.featureAttributeField, value);
+                        XTypedServices.SetList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType>(this.featureAttributeField, value);
                     }
                 }
             }
@@ -46176,17 +46176,17 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("fileIdentifier", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("language", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("fileIdentifier", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("language", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("characterSet", "http://www.isotc211.org/2005/gmd"), typeof(MD_CharacterSetCode_PropertyType));
-            localElementDictionary.Add(XName.Get("parentIdentifier", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("parentIdentifier", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("hierarchyLevel", "http://www.isotc211.org/2005/gmd"), typeof(MD_ScopeCode_PropertyType));
-            localElementDictionary.Add(XName.Get("hierarchyLevelName", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("hierarchyLevelName", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("contact", "http://www.isotc211.org/2005/gmd"), typeof(CI_ResponsibleParty_PropertyType));
-            localElementDictionary.Add(XName.Get("dateStamp", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.Date_PropertyType));
-            localElementDictionary.Add(XName.Get("metadataStandardName", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("metadataStandardVersion", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
-            localElementDictionary.Add(XName.Get("dataSetURI", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("dateStamp", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.Date_PropertyType));
+            localElementDictionary.Add(XName.Get("metadataStandardName", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("metadataStandardVersion", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
+            localElementDictionary.Add(XName.Get("dataSetURI", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType));
             localElementDictionary.Add(XName.Get("locale", "http://www.isotc211.org/2005/gmd"), typeof(PT_Locale_PropertyType));
             localElementDictionary.Add(XName.Get("spatialRepresentationInfo", "http://www.isotc211.org/2005/gmd"), typeof(MD_SpatialRepresentation_PropertyType));
             localElementDictionary.Add(XName.Get("referenceSystemInfo", "http://www.isotc211.org/2005/gmd"), typeof(MD_ReferenceSystem_PropertyType));
@@ -46201,9 +46201,9 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             localElementDictionary.Add(XName.Get("metadataMaintenance", "http://www.isotc211.org/2005/gmd"), typeof(MD_MaintenanceInformation_PropertyType));
             localElementDictionary.Add(XName.Get("series", "http://www.isotc211.org/2005/gmd"), typeof(DS_Aggregate_PropertyType));
             localElementDictionary.Add(XName.Get("describes", "http://www.isotc211.org/2005/gmd"), typeof(DS_DataSet_PropertyType));
-            localElementDictionary.Add(XName.Get("propertyType", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType));
-            localElementDictionary.Add(XName.Get("featureType", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType));
-            localElementDictionary.Add(XName.Get("featureAttribute", "http://www.isotc211.org/2005/gmd"), typeof(OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType));
+            localElementDictionary.Add(XName.Get("propertyType", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType));
+            localElementDictionary.Add(XName.Get("featureType", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType));
+            localElementDictionary.Add(XName.Get("featureAttribute", "http://www.isotc211.org/2005/gmd"), typeof(GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -46434,11 +46434,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -46510,7 +46510,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("AbstractDS_Aggregate_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public abstract partial class AbstractDS_Aggregate_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public abstract partial class AbstractDS_Aggregate_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -46970,11 +46970,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -47046,7 +47046,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DS_DataSet_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DS_DataSet_Type: global::OgcToolkit.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    public partial class DS_DataSet_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -47428,11 +47428,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -47501,7 +47501,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DS_OtherAggregate_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DS_OtherAggregate_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDS_Aggregate_Type, IXMetaData, IXmlSerializable
+    public partial class DS_OtherAggregate_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDS_Aggregate_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -47807,11 +47807,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -47880,7 +47880,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DS_Series_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DS_Series_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDS_Aggregate_Type, IXMetaData, IXmlSerializable
+    public partial class DS_Series_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDS_Aggregate_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -48186,11 +48186,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -48259,7 +48259,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DS_Initiative_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DS_Initiative_Type: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDS_Aggregate_Type, IXMetaData, IXmlSerializable
+    public partial class DS_Initiative_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractDS_Aggregate_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -48562,11 +48562,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -48635,7 +48635,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DS_Platform_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DS_Platform_Type: global::OgcToolkit.Iso.Ts19139.Gmd.DS_Series_Type, IXMetaData, IXmlSerializable
+    public partial class DS_Platform_Type: global::GeoSik.Iso.Ts19139.Gmd.DS_Series_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -48938,11 +48938,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -49011,7 +49011,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DS_Sensor_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DS_Sensor_Type: global::OgcToolkit.Iso.Ts19139.Gmd.DS_Series_Type, IXMetaData, IXmlSerializable
+    public partial class DS_Sensor_Type: global::GeoSik.Iso.Ts19139.Gmd.DS_Series_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -49314,11 +49314,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -49387,7 +49387,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DS_ProductionSeries_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DS_ProductionSeries_Type: global::OgcToolkit.Iso.Ts19139.Gmd.DS_Series_Type, IXMetaData, IXmlSerializable
+    public partial class DS_ProductionSeries_Type: global::GeoSik.Iso.Ts19139.Gmd.DS_Series_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -49690,11 +49690,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -49763,7 +49763,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DS_StereoMate_TypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DS_StereoMate_Type: global::OgcToolkit.Iso.Ts19139.Gmd.DS_OtherAggregate_Type, IXMetaData, IXmlSerializable
+    public partial class DS_StereoMate_Type: global::GeoSik.Iso.Ts19139.Gmd.DS_OtherAggregate_Type, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -50066,11 +50066,11 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -50203,7 +50203,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (extent)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gts.TM_Primitive_PropertyType extent
+        public GeoSik.Iso.Ts19139.Gts.TM_Primitive_PropertyType extent
         {
             get
             {
@@ -50386,7 +50386,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (minimumValue, maximumValue, verticalCRS)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType minimumValue
+        public GeoSik.Iso.Ts19139.Gco.Real_PropertyType minimumValue
         {
             get
             {
@@ -50406,7 +50406,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (minimumValue, maximumValue, verticalCRS)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType maximumValue
+        public GeoSik.Iso.Ts19139.Gco.Real_PropertyType maximumValue
         {
             get
             {
@@ -50426,7 +50426,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (minimumValue, maximumValue, verticalCRS)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gsr.SC_CRS_PropertyType verticalCRS
+        public GeoSik.Iso.Ts19139.Gsr.SC_CRS_PropertyType verticalCRS
         {
             get
             {
@@ -50547,7 +50547,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("EX_BoundingPolygonSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class EX_BoundingPolygon: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractEX_GeographicExtent, IXMetaData, IXmlSerializable
+    public partial class EX_BoundingPolygon: global::GeoSik.Iso.Ts19139.Gmd.AbstractEX_GeographicExtent, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -50606,7 +50606,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (extentTypeCode?, polygon+)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gss.GM_Object_PropertyType> polygon
+        public IList<GeoSik.Iso.Ts19139.Gss.GM_Object_PropertyType> polygon
         {
             get
             {
@@ -50770,7 +50770,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (description?, geographicElement*, temporalElement*, verticalElement*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType description
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType description
         {
             get
             {
@@ -51015,7 +51015,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (extentTypeCode?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType extentTypeCode
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType extentTypeCode
         {
             get
             {
@@ -51136,7 +51136,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("EX_GeographicBoundingBoxSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class EX_GeographicBoundingBox: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractEX_GeographicExtent, IXMetaData, IXmlSerializable
+    public partial class EX_GeographicBoundingBox: global::GeoSik.Iso.Ts19139.Gmd.AbstractEX_GeographicExtent, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -51195,7 +51195,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (extentTypeCode?, westBoundLongitude, eastBoundLongitude, southBoundLatitude, northBoundLatitude)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Decimal_PropertyType westBoundLongitude
+        public GeoSik.Iso.Ts19139.Gco.Decimal_PropertyType westBoundLongitude
         {
             get
             {
@@ -51215,7 +51215,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (extentTypeCode?, westBoundLongitude, eastBoundLongitude, southBoundLatitude, northBoundLatitude)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Decimal_PropertyType eastBoundLongitude
+        public GeoSik.Iso.Ts19139.Gco.Decimal_PropertyType eastBoundLongitude
         {
             get
             {
@@ -51235,7 +51235,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (extentTypeCode?, westBoundLongitude, eastBoundLongitude, southBoundLatitude, northBoundLatitude)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Decimal_PropertyType southBoundLatitude
+        public GeoSik.Iso.Ts19139.Gco.Decimal_PropertyType southBoundLatitude
         {
             get
             {
@@ -51255,7 +51255,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (extentTypeCode?, westBoundLongitude, eastBoundLongitude, southBoundLatitude, northBoundLatitude)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Decimal_PropertyType northBoundLatitude
+        public GeoSik.Iso.Ts19139.Gco.Decimal_PropertyType northBoundLatitude
         {
             get
             {
@@ -51362,7 +51362,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("EX_SpatialTemporalExtentSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class EX_SpatialTemporalExtent: global::OgcToolkit.Iso.Ts19139.Gmd.EX_TemporalExtent, IXMetaData, IXmlSerializable
+    public partial class EX_SpatialTemporalExtent: global::GeoSik.Iso.Ts19139.Gmd.EX_TemporalExtent, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -51523,7 +51523,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("EX_GeographicDescriptionSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class EX_GeographicDescription: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractEX_GeographicExtent, IXMetaData, IXmlSerializable
+    public partial class EX_GeographicDescription: global::GeoSik.Iso.Ts19139.Gmd.AbstractEX_GeographicExtent, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -51674,7 +51674,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("RS_IdentifierSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class RS_Identifier: global::OgcToolkit.Iso.Ts19139.Gmd.MD_Identifier, IXMetaData, IXmlSerializable
+    public partial class RS_Identifier: global::GeoSik.Iso.Ts19139.Gmd.MD_Identifier, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -51723,7 +51723,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (authority?, code, codeSpace?, version?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType codeSpace
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType codeSpace
         {
             get
             {
@@ -51743,7 +51743,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (authority?, code, codeSpace?, version?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType version
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType version
         {
             get
             {
@@ -52082,7 +52082,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (authority?, code)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType code
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType code
         {
             get
             {
@@ -52458,7 +52458,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (individualName?, organisationName?, positionName?, contactInfo?, role)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType individualName
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType individualName
         {
             get
             {
@@ -52478,7 +52478,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (individualName?, organisationName?, positionName?, contactInfo?, role)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType organisationName
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType organisationName
         {
             get
             {
@@ -52498,7 +52498,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (individualName?, organisationName?, positionName?, contactInfo?, role)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType positionName
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType positionName
         {
             get
             {
@@ -52716,7 +52716,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (title, alternateTitle*, date+, edition?, editionDate?, identifier*, citedResponsibleParty*, presentationForm*, series?, otherCitationDetails?, collectiveTitle?, ISBN?, ISSN?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType title
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType title
         {
             get
             {
@@ -52736,7 +52736,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (title, alternateTitle*, date+, edition?, editionDate?, identifier*, citedResponsibleParty*, presentationForm*, series?, otherCitationDetails?, collectiveTitle?, ISBN?, ISSN?)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> alternateTitle
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> alternateTitle
         {
             get
             {
@@ -52776,7 +52776,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (title, alternateTitle*, date+, edition?, editionDate?, identifier*, citedResponsibleParty*, presentationForm*, series?, otherCitationDetails?, collectiveTitle?, ISBN?, ISSN?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType edition
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType edition
         {
             get
             {
@@ -52796,7 +52796,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (title, alternateTitle*, date+, edition?, editionDate?, identifier*, citedResponsibleParty*, presentationForm*, series?, otherCitationDetails?, collectiveTitle?, ISBN?, ISSN?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Date_PropertyType editionDate
+        public GeoSik.Iso.Ts19139.Gco.Date_PropertyType editionDate
         {
             get
             {
@@ -52896,7 +52896,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (title, alternateTitle*, date+, edition?, editionDate?, identifier*, citedResponsibleParty*, presentationForm*, series?, otherCitationDetails?, collectiveTitle?, ISBN?, ISSN?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType otherCitationDetails
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType otherCitationDetails
         {
             get
             {
@@ -52916,7 +52916,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (title, alternateTitle*, date+, edition?, editionDate?, identifier*, citedResponsibleParty*, presentationForm*, series?, otherCitationDetails?, collectiveTitle?, ISBN?, ISSN?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType collectiveTitle
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType collectiveTitle
         {
             get
             {
@@ -52936,7 +52936,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (title, alternateTitle*, date+, edition?, editionDate?, identifier*, citedResponsibleParty*, presentationForm*, series?, otherCitationDetails?, collectiveTitle?, ISBN?, ISSN?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType ISBN
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType ISBN
         {
             get
             {
@@ -52956,7 +52956,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (title, alternateTitle*, date+, edition?, editionDate?, identifier*, citedResponsibleParty*, presentationForm*, series?, otherCitationDetails?, collectiveTitle?, ISBN?, ISSN?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType ISSN
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType ISSN
         {
             get
             {
@@ -53134,7 +53134,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (deliveryPoint*, city?, administrativeArea?, postalCode?, country?, electronicMailAddress*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> deliveryPoint
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> deliveryPoint
         {
             get
             {
@@ -53154,7 +53154,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (deliveryPoint*, city?, administrativeArea?, postalCode?, country?, electronicMailAddress*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType city
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType city
         {
             get
             {
@@ -53174,7 +53174,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (deliveryPoint*, city?, administrativeArea?, postalCode?, country?, electronicMailAddress*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType administrativeArea
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType administrativeArea
         {
             get
             {
@@ -53194,7 +53194,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (deliveryPoint*, city?, administrativeArea?, postalCode?, country?, electronicMailAddress*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType postalCode
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType postalCode
         {
             get
             {
@@ -53214,7 +53214,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (deliveryPoint*, city?, administrativeArea?, postalCode?, country?, electronicMailAddress*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType country
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType country
         {
             get
             {
@@ -53234,7 +53234,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (deliveryPoint*, city?, administrativeArea?, postalCode?, country?, electronicMailAddress*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> electronicMailAddress
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> electronicMailAddress
         {
             get
             {
@@ -53432,7 +53432,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (linkage, protocol?, applicationProfile?, name?, description?, function?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType protocol
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType protocol
         {
             get
             {
@@ -53452,7 +53452,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (linkage, protocol?, applicationProfile?, name?, description?, function?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType applicationProfile
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType applicationProfile
         {
             get
             {
@@ -53472,7 +53472,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (linkage, protocol?, applicationProfile?, name?, description?, function?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType name
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType name
         {
             get
             {
@@ -53492,7 +53492,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (linkage, protocol?, applicationProfile?, name?, description?, function?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType description
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType description
         {
             get
             {
@@ -53750,7 +53750,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (phone?, address?, onlineResource?, hoursOfService?, contactInstructions?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType hoursOfService
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType hoursOfService
         {
             get
             {
@@ -53770,7 +53770,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (phone?, address?, onlineResource?, hoursOfService?, contactInstructions?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType contactInstructions
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType contactInstructions
         {
             get
             {
@@ -53948,7 +53948,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (voice*, facsimile*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> voice
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> voice
         {
             get
             {
@@ -53968,7 +53968,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (voice*, facsimile*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> facsimile
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> facsimile
         {
             get
             {
@@ -54131,7 +54131,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (date, dateType)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Date_PropertyType date
+        public GeoSik.Iso.Ts19139.Gco.Date_PropertyType date
         {
             get
             {
@@ -54314,7 +54314,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name?, issueIdentification?, page?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType name
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType name
         {
             get
             {
@@ -54334,7 +54334,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name?, issueIdentification?, page?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType issueIdentification
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType issueIdentification
         {
             get
             {
@@ -54354,7 +54354,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name?, issueIdentification?, page?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType page
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType page
         {
             get
             {
@@ -54578,21 +54578,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("CI_RoleCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class CI_RoleCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class CI_RoleCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator CI_RoleCode(XElement xe) { return XTypedServices.ToXTypedElement<CI_RoleCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator CI_RoleCode(XElement xe) { return XTypedServices.ToXTypedElement<CI_RoleCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public CI_RoleCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public CI_RoleCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public CI_RoleCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -54611,7 +54611,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -54728,27 +54728,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static CI_RoleCode Load(string xmlFile)
         {
-            return XTypedServices.Load<CI_RoleCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<CI_RoleCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static CI_RoleCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<CI_RoleCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<CI_RoleCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static CI_RoleCode Parse(string xml)
         {
-            return XTypedServices.Parse<CI_RoleCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<CI_RoleCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new CI_RoleCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new CI_RoleCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -54772,21 +54772,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("CI_PresentationFormCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class CI_PresentationFormCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class CI_PresentationFormCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator CI_PresentationFormCode(XElement xe) { return XTypedServices.ToXTypedElement<CI_PresentationFormCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator CI_PresentationFormCode(XElement xe) { return XTypedServices.ToXTypedElement<CI_PresentationFormCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public CI_PresentationFormCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public CI_PresentationFormCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public CI_PresentationFormCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -54805,7 +54805,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -54922,27 +54922,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static CI_PresentationFormCode Load(string xmlFile)
         {
-            return XTypedServices.Load<CI_PresentationFormCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<CI_PresentationFormCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static CI_PresentationFormCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<CI_PresentationFormCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<CI_PresentationFormCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static CI_PresentationFormCode Parse(string xml)
         {
-            return XTypedServices.Parse<CI_PresentationFormCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<CI_PresentationFormCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new CI_PresentationFormCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new CI_PresentationFormCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -54966,21 +54966,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("CI_OnLineFunctionCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class CI_OnLineFunctionCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class CI_OnLineFunctionCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator CI_OnLineFunctionCode(XElement xe) { return XTypedServices.ToXTypedElement<CI_OnLineFunctionCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator CI_OnLineFunctionCode(XElement xe) { return XTypedServices.ToXTypedElement<CI_OnLineFunctionCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public CI_OnLineFunctionCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public CI_OnLineFunctionCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public CI_OnLineFunctionCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -54999,7 +54999,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -55116,27 +55116,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static CI_OnLineFunctionCode Load(string xmlFile)
         {
-            return XTypedServices.Load<CI_OnLineFunctionCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<CI_OnLineFunctionCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static CI_OnLineFunctionCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<CI_OnLineFunctionCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<CI_OnLineFunctionCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static CI_OnLineFunctionCode Parse(string xml)
         {
-            return XTypedServices.Parse<CI_OnLineFunctionCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<CI_OnLineFunctionCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new CI_OnLineFunctionCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new CI_OnLineFunctionCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -55160,21 +55160,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("CI_DateTypeCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class CI_DateTypeCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class CI_DateTypeCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator CI_DateTypeCode(XElement xe) { return XTypedServices.ToXTypedElement<CI_DateTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator CI_DateTypeCode(XElement xe) { return XTypedServices.ToXTypedElement<CI_DateTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public CI_DateTypeCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public CI_DateTypeCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public CI_DateTypeCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -55193,7 +55193,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -55310,27 +55310,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static CI_DateTypeCode Load(string xmlFile)
         {
-            return XTypedServices.Load<CI_DateTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<CI_DateTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static CI_DateTypeCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<CI_DateTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<CI_DateTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static CI_DateTypeCode Parse(string xml)
         {
-            return XTypedServices.Parse<CI_DateTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<CI_DateTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new CI_DateTypeCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new CI_DateTypeCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -55359,7 +55359,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_GridSpatialRepresentationSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_GridSpatialRepresentation: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractMD_SpatialRepresentation, IXMetaData, IXmlSerializable
+    public partial class MD_GridSpatialRepresentation: global::GeoSik.Iso.Ts19139.Gmd.AbstractMD_SpatialRepresentation, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -55426,7 +55426,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType numberOfDimensions
+        public GeoSik.Iso.Ts19139.Gco.Integer_PropertyType numberOfDimensions
         {
             get
             {
@@ -55486,7 +55486,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType transformationParameterAvailability
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType transformationParameterAvailability
         {
             get
             {
@@ -55599,7 +55599,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_VectorSpatialRepresentationSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_VectorSpatialRepresentation: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractMD_SpatialRepresentation, IXMetaData, IXmlSerializable
+    public partial class MD_VectorSpatialRepresentation: global::GeoSik.Iso.Ts19139.Gmd.AbstractMD_SpatialRepresentation, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -55945,7 +55945,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_GeoreferenceableSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_Georeferenceable: global::OgcToolkit.Iso.Ts19139.Gmd.MD_GridSpatialRepresentation, IXMetaData, IXmlSerializable
+    public partial class MD_Georeferenceable: global::GeoSik.Iso.Ts19139.Gmd.MD_GridSpatialRepresentation, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -55994,7 +55994,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability, controlPointAvailability, orientationParameterAvailability, orientationParameterDescription?, georeferencedParameters, parameterCitation*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType controlPointAvailability
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType controlPointAvailability
         {
             get
             {
@@ -56014,7 +56014,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability, controlPointAvailability, orientationParameterAvailability, orientationParameterDescription?, georeferencedParameters, parameterCitation*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType orientationParameterAvailability
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType orientationParameterAvailability
         {
             get
             {
@@ -56034,7 +56034,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability, controlPointAvailability, orientationParameterAvailability, orientationParameterDescription?, georeferencedParameters, parameterCitation*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType orientationParameterDescription
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType orientationParameterDescription
         {
             get
             {
@@ -56054,7 +56054,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability, controlPointAvailability, orientationParameterAvailability, orientationParameterDescription?, georeferencedParameters, parameterCitation*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Record_PropertyType georeferencedParameters
+        public GeoSik.Iso.Ts19139.Gco.Record_PropertyType georeferencedParameters
         {
             get
             {
@@ -56243,7 +56243,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (dimensionName, dimensionSize, resolution?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType dimensionSize
+        public GeoSik.Iso.Ts19139.Gco.Integer_PropertyType dimensionSize
         {
             get
             {
@@ -56263,7 +56263,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (dimensionName, dimensionSize, resolution?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Measure_PropertyType resolution
+        public GeoSik.Iso.Ts19139.Gco.Measure_PropertyType resolution
         {
             get
             {
@@ -56379,7 +56379,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_GeorectifiedSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_Georectified: global::OgcToolkit.Iso.Ts19139.Gmd.MD_GridSpatialRepresentation, IXMetaData, IXmlSerializable
+    public partial class MD_Georectified: global::GeoSik.Iso.Ts19139.Gmd.MD_GridSpatialRepresentation, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -56428,7 +56428,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability, checkPointAvailability, checkPointDescription?, cornerPoints*, centerPoint?, pointInPixel, transformationDimensionDescription?, transformationDimensionMapping*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType checkPointAvailability
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType checkPointAvailability
         {
             get
             {
@@ -56448,7 +56448,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability, checkPointAvailability, checkPointDescription?, cornerPoints*, centerPoint?, pointInPixel, transformationDimensionDescription?, transformationDimensionMapping*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType checkPointDescription
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType checkPointDescription
         {
             get
             {
@@ -56468,7 +56468,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability, checkPointAvailability, checkPointDescription?, cornerPoints*, centerPoint?, pointInPixel, transformationDimensionDescription?, transformationDimensionMapping*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gss.GM_Point_PropertyType> cornerPoints
+        public IList<GeoSik.Iso.Ts19139.Gss.GM_Point_PropertyType> cornerPoints
         {
             get
             {
@@ -56488,7 +56488,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability, checkPointAvailability, checkPointDescription?, cornerPoints*, centerPoint?, pointInPixel, transformationDimensionDescription?, transformationDimensionMapping*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gss.GM_Point_PropertyType centerPoint
+        public GeoSik.Iso.Ts19139.Gss.GM_Point_PropertyType centerPoint
         {
             get
             {
@@ -56528,7 +56528,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability, checkPointAvailability, checkPointDescription?, cornerPoints*, centerPoint?, pointInPixel, transformationDimensionDescription?, transformationDimensionMapping*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType transformationDimensionDescription
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType transformationDimensionDescription
         {
             get
             {
@@ -56548,7 +56548,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (numberOfDimensions, axisDimensionProperties*, cellGeometry, transformationParameterAvailability, checkPointAvailability, checkPointDescription?, cornerPoints*, centerPoint?, pointInPixel, transformationDimensionDescription?, transformationDimensionMapping*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> transformationDimensionMapping
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> transformationDimensionMapping
         {
             get
             {
@@ -56717,7 +56717,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (geometricObjectType, geometricObjectCount?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType geometricObjectCount
+        public GeoSik.Iso.Ts19139.Gco.Integer_PropertyType geometricObjectCount
         {
             get
             {
@@ -56833,7 +56833,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_PixelOrientationCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_PixelOrientationCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class MD_PixelOrientationCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         public static explicit operator MD_PixelOrientationCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_PixelOrientationCode>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
@@ -56856,7 +56856,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
             set
             {
-                this.SetValueWithValidation(value, "TypedValue", global::OgcToolkit.Iso.Ts19139.Gmd.MD_PixelOrientationCode_Type.TypeDefinition);
+                this.SetValueWithValidation(value, "TypedValue", global::GeoSik.Iso.Ts19139.Gmd.MD_PixelOrientationCode_Type.TypeDefinition);
             }
         }
 
@@ -56926,21 +56926,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_TopologyLevelCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_TopologyLevelCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class MD_TopologyLevelCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator MD_TopologyLevelCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_TopologyLevelCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator MD_TopologyLevelCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_TopologyLevelCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public MD_TopologyLevelCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public MD_TopologyLevelCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public MD_TopologyLevelCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -56959,7 +56959,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -57076,27 +57076,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static MD_TopologyLevelCode Load(string xmlFile)
         {
-            return XTypedServices.Load<MD_TopologyLevelCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_TopologyLevelCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static MD_TopologyLevelCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<MD_TopologyLevelCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_TopologyLevelCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static MD_TopologyLevelCode Parse(string xml)
         {
-            return XTypedServices.Parse<MD_TopologyLevelCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<MD_TopologyLevelCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new MD_TopologyLevelCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new MD_TopologyLevelCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -57120,21 +57120,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_GeometricObjectTypeCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_GeometricObjectTypeCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class MD_GeometricObjectTypeCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator MD_GeometricObjectTypeCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_GeometricObjectTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator MD_GeometricObjectTypeCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_GeometricObjectTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public MD_GeometricObjectTypeCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public MD_GeometricObjectTypeCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public MD_GeometricObjectTypeCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -57153,7 +57153,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -57270,27 +57270,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static MD_GeometricObjectTypeCode Load(string xmlFile)
         {
-            return XTypedServices.Load<MD_GeometricObjectTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_GeometricObjectTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static MD_GeometricObjectTypeCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<MD_GeometricObjectTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_GeometricObjectTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static MD_GeometricObjectTypeCode Parse(string xml)
         {
-            return XTypedServices.Parse<MD_GeometricObjectTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<MD_GeometricObjectTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new MD_GeometricObjectTypeCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new MD_GeometricObjectTypeCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -57314,21 +57314,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_CellGeometryCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_CellGeometryCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class MD_CellGeometryCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator MD_CellGeometryCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_CellGeometryCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator MD_CellGeometryCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_CellGeometryCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public MD_CellGeometryCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public MD_CellGeometryCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public MD_CellGeometryCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -57347,7 +57347,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -57464,27 +57464,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static MD_CellGeometryCode Load(string xmlFile)
         {
-            return XTypedServices.Load<MD_CellGeometryCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_CellGeometryCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static MD_CellGeometryCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<MD_CellGeometryCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_CellGeometryCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static MD_CellGeometryCode Parse(string xml)
         {
-            return XTypedServices.Parse<MD_CellGeometryCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<MD_CellGeometryCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new MD_CellGeometryCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new MD_CellGeometryCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -57508,21 +57508,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_DimensionNameTypeCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_DimensionNameTypeCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class MD_DimensionNameTypeCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator MD_DimensionNameTypeCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_DimensionNameTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator MD_DimensionNameTypeCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_DimensionNameTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public MD_DimensionNameTypeCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public MD_DimensionNameTypeCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public MD_DimensionNameTypeCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -57541,7 +57541,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -57658,27 +57658,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static MD_DimensionNameTypeCode Load(string xmlFile)
         {
-            return XTypedServices.Load<MD_DimensionNameTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_DimensionNameTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static MD_DimensionNameTypeCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<MD_DimensionNameTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_DimensionNameTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static MD_DimensionNameTypeCode Parse(string xml)
         {
-            return XTypedServices.Parse<MD_DimensionNameTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<MD_DimensionNameTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new MD_DimensionNameTypeCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new MD_DimensionNameTypeCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -57764,7 +57764,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, shortName?, domainCode?, definition, obligation?, condition?, dataType, maximumOccurrence?, domainValue?, parentEntity+, rule, rationale*, source+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType name
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType name
         {
             get
             {
@@ -57784,7 +57784,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, shortName?, domainCode?, definition, obligation?, condition?, dataType, maximumOccurrence?, domainValue?, parentEntity+, rule, rationale*, source+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType shortName
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType shortName
         {
             get
             {
@@ -57804,7 +57804,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, shortName?, domainCode?, definition, obligation?, condition?, dataType, maximumOccurrence?, domainValue?, parentEntity+, rule, rationale*, source+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType domainCode
+        public GeoSik.Iso.Ts19139.Gco.Integer_PropertyType domainCode
         {
             get
             {
@@ -57824,7 +57824,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, shortName?, domainCode?, definition, obligation?, condition?, dataType, maximumOccurrence?, domainValue?, parentEntity+, rule, rationale*, source+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType definition
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType definition
         {
             get
             {
@@ -57864,7 +57864,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, shortName?, domainCode?, definition, obligation?, condition?, dataType, maximumOccurrence?, domainValue?, parentEntity+, rule, rationale*, source+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType condition
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType condition
         {
             get
             {
@@ -57904,7 +57904,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, shortName?, domainCode?, definition, obligation?, condition?, dataType, maximumOccurrence?, domainValue?, parentEntity+, rule, rationale*, source+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType maximumOccurrence
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType maximumOccurrence
         {
             get
             {
@@ -57924,7 +57924,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, shortName?, domainCode?, definition, obligation?, condition?, dataType, maximumOccurrence?, domainValue?, parentEntity+, rule, rationale*, source+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType domainValue
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType domainValue
         {
             get
             {
@@ -57944,7 +57944,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, shortName?, domainCode?, definition, obligation?, condition?, dataType, maximumOccurrence?, domainValue?, parentEntity+, rule, rationale*, source+)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> parentEntity
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> parentEntity
         {
             get
             {
@@ -57964,7 +57964,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, shortName?, domainCode?, definition, obligation?, condition?, dataType, maximumOccurrence?, domainValue?, parentEntity+, rule, rationale*, source+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType rule
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType rule
         {
             get
             {
@@ -57984,7 +57984,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, shortName?, domainCode?, definition, obligation?, condition?, dataType, maximumOccurrence?, domainValue?, parentEntity+, rule, rationale*, source+)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> rationale
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> rationale
         {
             get
             {
@@ -58318,7 +58318,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_ObligationCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_ObligationCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class MD_ObligationCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         public static explicit operator MD_ObligationCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_ObligationCode>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
@@ -58341,7 +58341,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
             set
             {
-                this.SetValueWithValidation(value, "TypedValue", global::OgcToolkit.Iso.Ts19139.Gmd.MD_ObligationCode_Type.TypeDefinition);
+                this.SetValueWithValidation(value, "TypedValue", global::GeoSik.Iso.Ts19139.Gmd.MD_ObligationCode_Type.TypeDefinition);
             }
         }
 
@@ -58411,21 +58411,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_DatatypeCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_DatatypeCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class MD_DatatypeCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator MD_DatatypeCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_DatatypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator MD_DatatypeCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_DatatypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public MD_DatatypeCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public MD_DatatypeCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public MD_DatatypeCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -58444,7 +58444,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -58561,27 +58561,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static MD_DatatypeCode Load(string xmlFile)
         {
-            return XTypedServices.Load<MD_DatatypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_DatatypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static MD_DatatypeCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<MD_DatatypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_DatatypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static MD_DatatypeCode Parse(string xml)
         {
-            return XTypedServices.Parse<MD_DatatypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<MD_DatatypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new MD_DatatypeCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new MD_DatatypeCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -58610,7 +58610,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_FeatureCatalogueDescriptionSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_FeatureCatalogueDescription: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractMD_ContentInformation, IXMetaData, IXmlSerializable
+    public partial class MD_FeatureCatalogueDescription: global::GeoSik.Iso.Ts19139.Gmd.AbstractMD_ContentInformation, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -58669,7 +58669,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (complianceCode?, language*, includedWithDataset, featureTypes*, featureCatalogueCitation+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType complianceCode
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType complianceCode
         {
             get
             {
@@ -58689,7 +58689,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (complianceCode?, language*, includedWithDataset, featureTypes*, featureCatalogueCitation+)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> language
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> language
         {
             get
             {
@@ -58709,7 +58709,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (complianceCode?, language*, includedWithDataset, featureTypes*, featureCatalogueCitation+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType includedWithDataset
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType includedWithDataset
         {
             get
             {
@@ -58729,7 +58729,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (complianceCode?, language*, includedWithDataset, featureTypes*, featureCatalogueCitation+)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.GenericName_PropertyType> featureTypes
+        public IList<GeoSik.Iso.Ts19139.Gco.GenericName_PropertyType> featureTypes
         {
             get
             {
@@ -58856,7 +58856,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_CoverageDescriptionSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_CoverageDescription: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractMD_ContentInformation, IXMetaData, IXmlSerializable
+    public partial class MD_CoverageDescription: global::GeoSik.Iso.Ts19139.Gmd.AbstractMD_ContentInformation, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -58923,7 +58923,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributeDescription, contentType, dimension*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.RecordType_PropertyType attributeDescription
+        public GeoSik.Iso.Ts19139.Gco.RecordType_PropertyType attributeDescription
         {
             get
             {
@@ -59076,7 +59076,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_ImageDescriptionSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_ImageDescription: global::OgcToolkit.Iso.Ts19139.Gmd.MD_CoverageDescription, IXMetaData, IXmlSerializable
+    public partial class MD_ImageDescription: global::GeoSik.Iso.Ts19139.Gmd.MD_CoverageDescription, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -59135,7 +59135,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributeDescription, contentType, dimension*, illuminationElevationAngle?, illuminationAzimuthAngle?, imagingCondition?, imageQualityCode?, cloudCoverPercentage?, processingLevelCode?, compressionGenerationQuantity?, triangulationIndicator?, radiometricCalibrationDataAvailability?, cameraCalibrationInformationAvailability?, filmDistortionInformationAvailability?, lensDistortionInformationAvailability?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType illuminationElevationAngle
+        public GeoSik.Iso.Ts19139.Gco.Real_PropertyType illuminationElevationAngle
         {
             get
             {
@@ -59155,7 +59155,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributeDescription, contentType, dimension*, illuminationElevationAngle?, illuminationAzimuthAngle?, imagingCondition?, imageQualityCode?, cloudCoverPercentage?, processingLevelCode?, compressionGenerationQuantity?, triangulationIndicator?, radiometricCalibrationDataAvailability?, cameraCalibrationInformationAvailability?, filmDistortionInformationAvailability?, lensDistortionInformationAvailability?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType illuminationAzimuthAngle
+        public GeoSik.Iso.Ts19139.Gco.Real_PropertyType illuminationAzimuthAngle
         {
             get
             {
@@ -59215,7 +59215,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributeDescription, contentType, dimension*, illuminationElevationAngle?, illuminationAzimuthAngle?, imagingCondition?, imageQualityCode?, cloudCoverPercentage?, processingLevelCode?, compressionGenerationQuantity?, triangulationIndicator?, radiometricCalibrationDataAvailability?, cameraCalibrationInformationAvailability?, filmDistortionInformationAvailability?, lensDistortionInformationAvailability?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType cloudCoverPercentage
+        public GeoSik.Iso.Ts19139.Gco.Real_PropertyType cloudCoverPercentage
         {
             get
             {
@@ -59255,7 +59255,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributeDescription, contentType, dimension*, illuminationElevationAngle?, illuminationAzimuthAngle?, imagingCondition?, imageQualityCode?, cloudCoverPercentage?, processingLevelCode?, compressionGenerationQuantity?, triangulationIndicator?, radiometricCalibrationDataAvailability?, cameraCalibrationInformationAvailability?, filmDistortionInformationAvailability?, lensDistortionInformationAvailability?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType compressionGenerationQuantity
+        public GeoSik.Iso.Ts19139.Gco.Integer_PropertyType compressionGenerationQuantity
         {
             get
             {
@@ -59275,7 +59275,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributeDescription, contentType, dimension*, illuminationElevationAngle?, illuminationAzimuthAngle?, imagingCondition?, imageQualityCode?, cloudCoverPercentage?, processingLevelCode?, compressionGenerationQuantity?, triangulationIndicator?, radiometricCalibrationDataAvailability?, cameraCalibrationInformationAvailability?, filmDistortionInformationAvailability?, lensDistortionInformationAvailability?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType triangulationIndicator
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType triangulationIndicator
         {
             get
             {
@@ -59295,7 +59295,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributeDescription, contentType, dimension*, illuminationElevationAngle?, illuminationAzimuthAngle?, imagingCondition?, imageQualityCode?, cloudCoverPercentage?, processingLevelCode?, compressionGenerationQuantity?, triangulationIndicator?, radiometricCalibrationDataAvailability?, cameraCalibrationInformationAvailability?, filmDistortionInformationAvailability?, lensDistortionInformationAvailability?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType radiometricCalibrationDataAvailability
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType radiometricCalibrationDataAvailability
         {
             get
             {
@@ -59315,7 +59315,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributeDescription, contentType, dimension*, illuminationElevationAngle?, illuminationAzimuthAngle?, imagingCondition?, imageQualityCode?, cloudCoverPercentage?, processingLevelCode?, compressionGenerationQuantity?, triangulationIndicator?, radiometricCalibrationDataAvailability?, cameraCalibrationInformationAvailability?, filmDistortionInformationAvailability?, lensDistortionInformationAvailability?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType cameraCalibrationInformationAvailability
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType cameraCalibrationInformationAvailability
         {
             get
             {
@@ -59335,7 +59335,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributeDescription, contentType, dimension*, illuminationElevationAngle?, illuminationAzimuthAngle?, imagingCondition?, imageQualityCode?, cloudCoverPercentage?, processingLevelCode?, compressionGenerationQuantity?, triangulationIndicator?, radiometricCalibrationDataAvailability?, cameraCalibrationInformationAvailability?, filmDistortionInformationAvailability?, lensDistortionInformationAvailability?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType filmDistortionInformationAvailability
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType filmDistortionInformationAvailability
         {
             get
             {
@@ -59355,7 +59355,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributeDescription, contentType, dimension*, illuminationElevationAngle?, illuminationAzimuthAngle?, imagingCondition?, imageQualityCode?, cloudCoverPercentage?, processingLevelCode?, compressionGenerationQuantity?, triangulationIndicator?, radiometricCalibrationDataAvailability?, cameraCalibrationInformationAvailability?, filmDistortionInformationAvailability?, lensDistortionInformationAvailability?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType lensDistortionInformationAvailability
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType lensDistortionInformationAvailability
         {
             get
             {
@@ -59676,7 +59676,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (sequenceIdentifier?, descriptor?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.MemberName_PropertyType sequenceIdentifier
+        public GeoSik.Iso.Ts19139.Gco.MemberName_PropertyType sequenceIdentifier
         {
             get
             {
@@ -59696,7 +59696,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (sequenceIdentifier?, descriptor?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType descriptor
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType descriptor
         {
             get
             {
@@ -59817,7 +59817,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_BandSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_Band: global::OgcToolkit.Iso.Ts19139.Gmd.MD_RangeDimension, IXMetaData, IXmlSerializable
+    public partial class MD_Band: global::GeoSik.Iso.Ts19139.Gmd.MD_RangeDimension, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -59866,7 +59866,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (sequenceIdentifier?, descriptor?, maxValue?, minValue?, units?, peakResponse?, bitsPerValue?, toneGradation?, scaleFactor?, offset?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType maxValue
+        public GeoSik.Iso.Ts19139.Gco.Real_PropertyType maxValue
         {
             get
             {
@@ -59886,7 +59886,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (sequenceIdentifier?, descriptor?, maxValue?, minValue?, units?, peakResponse?, bitsPerValue?, toneGradation?, scaleFactor?, offset?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType minValue
+        public GeoSik.Iso.Ts19139.Gco.Real_PropertyType minValue
         {
             get
             {
@@ -59906,7 +59906,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (sequenceIdentifier?, descriptor?, maxValue?, minValue?, units?, peakResponse?, bitsPerValue?, toneGradation?, scaleFactor?, offset?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.UomLength_PropertyType units
+        public GeoSik.Iso.Ts19139.Gco.UomLength_PropertyType units
         {
             get
             {
@@ -59926,7 +59926,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (sequenceIdentifier?, descriptor?, maxValue?, minValue?, units?, peakResponse?, bitsPerValue?, toneGradation?, scaleFactor?, offset?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType peakResponse
+        public GeoSik.Iso.Ts19139.Gco.Real_PropertyType peakResponse
         {
             get
             {
@@ -59946,7 +59946,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (sequenceIdentifier?, descriptor?, maxValue?, minValue?, units?, peakResponse?, bitsPerValue?, toneGradation?, scaleFactor?, offset?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType bitsPerValue
+        public GeoSik.Iso.Ts19139.Gco.Integer_PropertyType bitsPerValue
         {
             get
             {
@@ -59966,7 +59966,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (sequenceIdentifier?, descriptor?, maxValue?, minValue?, units?, peakResponse?, bitsPerValue?, toneGradation?, scaleFactor?, offset?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType toneGradation
+        public GeoSik.Iso.Ts19139.Gco.Integer_PropertyType toneGradation
         {
             get
             {
@@ -59986,7 +59986,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (sequenceIdentifier?, descriptor?, maxValue?, minValue?, units?, peakResponse?, bitsPerValue?, toneGradation?, scaleFactor?, offset?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType scaleFactor
+        public GeoSik.Iso.Ts19139.Gco.Real_PropertyType scaleFactor
         {
             get
             {
@@ -60006,7 +60006,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (sequenceIdentifier?, descriptor?, maxValue?, minValue?, units?, peakResponse?, bitsPerValue?, toneGradation?, scaleFactor?, offset?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType offset
+        public GeoSik.Iso.Ts19139.Gco.Real_PropertyType offset
         {
             get
             {
@@ -60108,21 +60108,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_CoverageContentTypeCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_CoverageContentTypeCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class MD_CoverageContentTypeCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator MD_CoverageContentTypeCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_CoverageContentTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator MD_CoverageContentTypeCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_CoverageContentTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public MD_CoverageContentTypeCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public MD_CoverageContentTypeCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public MD_CoverageContentTypeCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -60141,7 +60141,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -60258,27 +60258,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static MD_CoverageContentTypeCode Load(string xmlFile)
         {
-            return XTypedServices.Load<MD_CoverageContentTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_CoverageContentTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static MD_CoverageContentTypeCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<MD_CoverageContentTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_CoverageContentTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static MD_CoverageContentTypeCode Parse(string xml)
         {
-            return XTypedServices.Parse<MD_CoverageContentTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<MD_CoverageContentTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new MD_CoverageContentTypeCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new MD_CoverageContentTypeCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -60302,21 +60302,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_ImagingConditionCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_ImagingConditionCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class MD_ImagingConditionCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator MD_ImagingConditionCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_ImagingConditionCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator MD_ImagingConditionCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_ImagingConditionCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public MD_ImagingConditionCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public MD_ImagingConditionCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public MD_ImagingConditionCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -60335,7 +60335,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -60452,27 +60452,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static MD_ImagingConditionCode Load(string xmlFile)
         {
-            return XTypedServices.Load<MD_ImagingConditionCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_ImagingConditionCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static MD_ImagingConditionCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<MD_ImagingConditionCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_ImagingConditionCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static MD_ImagingConditionCode Parse(string xml)
         {
-            return XTypedServices.Parse<MD_ImagingConditionCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<MD_ImagingConditionCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new MD_ImagingConditionCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new MD_ImagingConditionCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -60578,7 +60578,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, schemaLanguage, constraintLanguage, schemaAscii?, graphicsFile?, softwareDevelopmentFile?, softwareDevelopmentFileFormat?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType schemaLanguage
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType schemaLanguage
         {
             get
             {
@@ -60598,7 +60598,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, schemaLanguage, constraintLanguage, schemaAscii?, graphicsFile?, softwareDevelopmentFile?, softwareDevelopmentFileFormat?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType constraintLanguage
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType constraintLanguage
         {
             get
             {
@@ -60618,7 +60618,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, schemaLanguage, constraintLanguage, schemaAscii?, graphicsFile?, softwareDevelopmentFile?, softwareDevelopmentFileFormat?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType schemaAscii
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType schemaAscii
         {
             get
             {
@@ -60638,7 +60638,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, schemaLanguage, constraintLanguage, schemaAscii?, graphicsFile?, softwareDevelopmentFile?, softwareDevelopmentFileFormat?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Binary_PropertyType graphicsFile
+        public GeoSik.Iso.Ts19139.Gco.Binary_PropertyType graphicsFile
         {
             get
             {
@@ -60658,7 +60658,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, schemaLanguage, constraintLanguage, schemaAscii?, graphicsFile?, softwareDevelopmentFile?, softwareDevelopmentFileFormat?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Binary_PropertyType softwareDevelopmentFile
+        public GeoSik.Iso.Ts19139.Gco.Binary_PropertyType softwareDevelopmentFile
         {
             get
             {
@@ -60678,7 +60678,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, schemaLanguage, constraintLanguage, schemaAscii?, graphicsFile?, softwareDevelopmentFile?, softwareDevelopmentFileFormat?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType softwareDevelopmentFileFormat
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType softwareDevelopmentFileFormat
         {
             get
             {
@@ -61019,7 +61019,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (description, rationale?, dateTime?, processor*, source*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType description
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType description
         {
             get
             {
@@ -61039,7 +61039,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (description, rationale?, dateTime?, processor*, source*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType rationale
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType rationale
         {
             get
             {
@@ -61059,7 +61059,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (description, rationale?, dateTime?, processor*, source*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType dateTime
+        public GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType dateTime
         {
             get
             {
@@ -61262,7 +61262,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (description?, scaleDenominator?, sourceReferenceSystem?, sourceCitation?, sourceExtent*, sourceStep*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType description
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType description
         {
             get
             {
@@ -61525,7 +61525,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (statement?, processStep*, source*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType statement
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType statement
         {
             get
             {
@@ -61686,7 +61686,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DQ_ConformanceResultSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_ConformanceResult: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_Result, IXMetaData, IXmlSerializable
+    public partial class DQ_ConformanceResult: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_Result, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -61765,7 +61765,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (specification, explanation, pass)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType explanation
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType explanation
         {
             get
             {
@@ -61785,7 +61785,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (specification, explanation, pass)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Boolean_PropertyType pass
+        public GeoSik.Iso.Ts19139.Gco.Boolean_PropertyType pass
         {
             get
             {
@@ -61892,7 +61892,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("DQ_QuantitativeResultSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_QuantitativeResult: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_Result, IXMetaData, IXmlSerializable
+    public partial class DQ_QuantitativeResult: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_Result, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -61951,7 +61951,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (valueType?, valueUnit, errorStatistic?, value+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.RecordType_PropertyType valueType
+        public GeoSik.Iso.Ts19139.Gco.RecordType_PropertyType valueType
         {
             get
             {
@@ -61971,7 +61971,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (valueType?, valueUnit, errorStatistic?, value+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.UnitOfMeasure_PropertyType valueUnit
+        public GeoSik.Iso.Ts19139.Gco.UnitOfMeasure_PropertyType valueUnit
         {
             get
             {
@@ -61991,7 +61991,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (valueType?, valueUnit, errorStatistic?, value+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType errorStatistic
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType errorStatistic
         {
             get
             {
@@ -62011,7 +62011,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (valueType?, valueUnit, errorStatistic?, value+)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.Record_PropertyType> value
+        public IList<GeoSik.Iso.Ts19139.Gco.Record_PropertyType> value
         {
             get
             {
@@ -62263,7 +62263,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DQ_TemporalValiditySchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_TemporalValidity: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_TemporalAccuracy, IXMetaData, IXmlSerializable
+    public partial class DQ_TemporalValidity: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_TemporalAccuracy, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -62394,7 +62394,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DQ_TemporalConsistencySchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_TemporalConsistency: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_TemporalAccuracy, IXMetaData, IXmlSerializable
+    public partial class DQ_TemporalConsistency: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_TemporalAccuracy, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -62525,7 +62525,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DQ_AccuracyOfATimeMeasurementSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_AccuracyOfATimeMeasurement: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_TemporalAccuracy, IXMetaData, IXmlSerializable
+    public partial class DQ_AccuracyOfATimeMeasurement: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_TemporalAccuracy, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -62656,7 +62656,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DQ_QuantitativeAttributeAccuracySchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_QuantitativeAttributeAccuracy: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_ThematicAccuracy, IXMetaData, IXmlSerializable
+    public partial class DQ_QuantitativeAttributeAccuracy: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_ThematicAccuracy, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -62787,7 +62787,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DQ_NonQuantitativeAttributeAccuracySchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_NonQuantitativeAttributeAccuracy: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_ThematicAccuracy, IXMetaData, IXmlSerializable
+    public partial class DQ_NonQuantitativeAttributeAccuracy: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_ThematicAccuracy, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -62918,7 +62918,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DQ_ThematicClassificationCorrectnessSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_ThematicClassificationCorrectness: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_ThematicAccuracy, IXMetaData, IXmlSerializable
+    public partial class DQ_ThematicClassificationCorrectness: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_ThematicAccuracy, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -63049,7 +63049,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DQ_RelativeInternalPositionalAccuracySchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_RelativeInternalPositionalAccuracy: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_PositionalAccuracy, IXMetaData, IXmlSerializable
+    public partial class DQ_RelativeInternalPositionalAccuracy: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_PositionalAccuracy, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -63180,7 +63180,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DQ_GriddedDataPositionalAccuracySchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_GriddedDataPositionalAccuracy: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_PositionalAccuracy, IXMetaData, IXmlSerializable
+    public partial class DQ_GriddedDataPositionalAccuracy: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_PositionalAccuracy, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -63311,7 +63311,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DQ_AbsoluteExternalPositionalAccuracySchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_AbsoluteExternalPositionalAccuracy: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_PositionalAccuracy, IXMetaData, IXmlSerializable
+    public partial class DQ_AbsoluteExternalPositionalAccuracy: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_PositionalAccuracy, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -63442,7 +63442,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DQ_TopologicalConsistencySchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_TopologicalConsistency: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_LogicalConsistency, IXMetaData, IXmlSerializable
+    public partial class DQ_TopologicalConsistency: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_LogicalConsistency, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -63573,7 +63573,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DQ_FormatConsistencySchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_FormatConsistency: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_LogicalConsistency, IXMetaData, IXmlSerializable
+    public partial class DQ_FormatConsistency: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_LogicalConsistency, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -63704,7 +63704,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DQ_DomainConsistencySchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_DomainConsistency: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_LogicalConsistency, IXMetaData, IXmlSerializable
+    public partial class DQ_DomainConsistency: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_LogicalConsistency, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -63835,7 +63835,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DQ_ConceptualConsistencySchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_ConceptualConsistency: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_LogicalConsistency, IXMetaData, IXmlSerializable
+    public partial class DQ_ConceptualConsistency: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_LogicalConsistency, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -63966,7 +63966,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DQ_CompletenessOmissionSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_CompletenessOmission: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_Completeness, IXMetaData, IXmlSerializable
+    public partial class DQ_CompletenessOmission: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_Completeness, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -64097,7 +64097,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DQ_CompletenessCommissionSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_CompletenessCommission: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_Completeness, IXMetaData, IXmlSerializable
+    public partial class DQ_CompletenessCommission: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_Completeness, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -64228,7 +64228,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("AbstractDQ_TemporalAccuracySchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public abstract partial class AbstractDQ_TemporalAccuracy: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_Element, IXMetaData, IXmlSerializable
+    public abstract partial class AbstractDQ_TemporalAccuracy: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_Element, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -64368,7 +64368,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("AbstractDQ_ThematicAccuracySchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public abstract partial class AbstractDQ_ThematicAccuracy: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_Element, IXMetaData, IXmlSerializable
+    public abstract partial class AbstractDQ_ThematicAccuracy: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_Element, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -64508,7 +64508,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("AbstractDQ_PositionalAccuracySchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public abstract partial class AbstractDQ_PositionalAccuracy: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_Element, IXMetaData, IXmlSerializable
+    public abstract partial class AbstractDQ_PositionalAccuracy: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_Element, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -64648,7 +64648,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("AbstractDQ_LogicalConsistencySchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public abstract partial class AbstractDQ_LogicalConsistency: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_Element, IXMetaData, IXmlSerializable
+    public abstract partial class AbstractDQ_LogicalConsistency: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_Element, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -64788,7 +64788,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("AbstractDQ_CompletenessSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public abstract partial class AbstractDQ_Completeness: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDQ_Element, IXMetaData, IXmlSerializable
+    public abstract partial class AbstractDQ_Completeness: global::GeoSik.Iso.Ts19139.Gmd.AbstractDQ_Element, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -64982,7 +64982,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (nameOfMeasure*, measureIdentification?, measureDescription?, evaluationMethodType?, evaluationMethodDescription?, evaluationProcedure?, dateTime*, result+)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> nameOfMeasure
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> nameOfMeasure
         {
             get
             {
@@ -65022,7 +65022,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (nameOfMeasure*, measureIdentification?, measureDescription?, evaluationMethodType?, evaluationMethodDescription?, evaluationProcedure?, dateTime*, result+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType measureDescription
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType measureDescription
         {
             get
             {
@@ -65062,7 +65062,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (nameOfMeasure*, measureIdentification?, measureDescription?, evaluationMethodType?, evaluationMethodDescription?, evaluationProcedure?, dateTime*, result+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType evaluationMethodDescription
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType evaluationMethodDescription
         {
             get
             {
@@ -65102,7 +65102,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (nameOfMeasure*, measureIdentification?, measureDescription?, evaluationMethodType?, evaluationMethodDescription?, evaluationProcedure?, dateTime*, result+)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType> dateTime
+        public IList<GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType> dateTime
         {
             get
             {
@@ -65644,21 +65644,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DQ_EvaluationMethodTypeCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DQ_EvaluationMethodTypeCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class DQ_EvaluationMethodTypeCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator DQ_EvaluationMethodTypeCode(XElement xe) { return XTypedServices.ToXTypedElement<DQ_EvaluationMethodTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator DQ_EvaluationMethodTypeCode(XElement xe) { return XTypedServices.ToXTypedElement<DQ_EvaluationMethodTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public DQ_EvaluationMethodTypeCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public DQ_EvaluationMethodTypeCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public DQ_EvaluationMethodTypeCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -65677,7 +65677,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -65794,27 +65794,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static DQ_EvaluationMethodTypeCode Load(string xmlFile)
         {
-            return XTypedServices.Load<DQ_EvaluationMethodTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<DQ_EvaluationMethodTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static DQ_EvaluationMethodTypeCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<DQ_EvaluationMethodTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<DQ_EvaluationMethodTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static DQ_EvaluationMethodTypeCode Parse(string xml)
         {
-            return XTypedServices.Parse<DQ_EvaluationMethodTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<DQ_EvaluationMethodTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new DQ_EvaluationMethodTypeCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new DQ_EvaluationMethodTypeCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -65907,7 +65907,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (useLimitation*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> useLimitation
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> useLimitation
         {
             get
             {
@@ -66033,7 +66033,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_LegalConstraintsSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_LegalConstraints: global::OgcToolkit.Iso.Ts19139.Gmd.MD_Constraints, IXMetaData, IXmlSerializable
+    public partial class MD_LegalConstraints: global::GeoSik.Iso.Ts19139.Gmd.MD_Constraints, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -66132,7 +66132,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (useLimitation*, accessConstraints*, useConstraints*, otherConstraints*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> otherConstraints
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> otherConstraints
         {
             get
             {
@@ -66239,7 +66239,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_SecurityConstraintsSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_SecurityConstraints: global::OgcToolkit.Iso.Ts19139.Gmd.MD_Constraints, IXMetaData, IXmlSerializable
+    public partial class MD_SecurityConstraints: global::GeoSik.Iso.Ts19139.Gmd.MD_Constraints, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -66318,7 +66318,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (useLimitation*, classification, userNote?, classificationSystem?, handlingDescription?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType userNote
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType userNote
         {
             get
             {
@@ -66338,7 +66338,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (useLimitation*, classification, userNote?, classificationSystem?, handlingDescription?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType classificationSystem
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType classificationSystem
         {
             get
             {
@@ -66358,7 +66358,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (useLimitation*, classification, userNote?, classificationSystem?, handlingDescription?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType handlingDescription
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType handlingDescription
         {
             get
             {
@@ -66460,21 +66460,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_ClassificationCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_ClassificationCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class MD_ClassificationCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator MD_ClassificationCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_ClassificationCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator MD_ClassificationCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_ClassificationCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public MD_ClassificationCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public MD_ClassificationCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public MD_ClassificationCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -66493,7 +66493,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -66610,27 +66610,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static MD_ClassificationCode Load(string xmlFile)
         {
-            return XTypedServices.Load<MD_ClassificationCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_ClassificationCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static MD_ClassificationCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<MD_ClassificationCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_ClassificationCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static MD_ClassificationCode Parse(string xml)
         {
-            return XTypedServices.Parse<MD_ClassificationCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<MD_ClassificationCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new MD_ClassificationCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new MD_ClassificationCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -66654,21 +66654,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_RestrictionCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_RestrictionCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class MD_RestrictionCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator MD_RestrictionCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_RestrictionCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator MD_RestrictionCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_RestrictionCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public MD_RestrictionCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public MD_RestrictionCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public MD_RestrictionCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -66687,7 +66687,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -66804,27 +66804,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static MD_RestrictionCode Load(string xmlFile)
         {
-            return XTypedServices.Load<MD_RestrictionCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_RestrictionCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static MD_RestrictionCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<MD_RestrictionCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_RestrictionCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static MD_RestrictionCode Parse(string xml)
         {
-            return XTypedServices.Parse<MD_RestrictionCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<MD_RestrictionCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new MD_RestrictionCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new MD_RestrictionCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -66930,7 +66930,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name?, density*, densityUnits?, volumes?, mediumFormat*, mediumNote?)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType> density
+        public IList<GeoSik.Iso.Ts19139.Gco.Real_PropertyType> density
         {
             get
             {
@@ -66950,7 +66950,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name?, density*, densityUnits?, volumes?, mediumFormat*, mediumNote?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType densityUnits
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType densityUnits
         {
             get
             {
@@ -66970,7 +66970,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name?, density*, densityUnits?, volumes?, mediumFormat*, mediumNote?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType volumes
+        public GeoSik.Iso.Ts19139.Gco.Integer_PropertyType volumes
         {
             get
             {
@@ -67010,7 +67010,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name?, density*, densityUnits?, volumes?, mediumFormat*, mediumNote?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType mediumNote
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType mediumNote
         {
             get
             {
@@ -67188,7 +67188,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (unitsOfDistribution?, transferSize?, onLine*, offLine?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType unitsOfDistribution
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType unitsOfDistribution
         {
             get
             {
@@ -67208,7 +67208,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (unitsOfDistribution?, transferSize?, onLine*, offLine?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Real_PropertyType transferSize
+        public GeoSik.Iso.Ts19139.Gco.Real_PropertyType transferSize
         {
             get
             {
@@ -67426,7 +67426,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fees?, plannedAvailableDateTime?, orderingInstructions?, turnaround?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType fees
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType fees
         {
             get
             {
@@ -67446,7 +67446,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fees?, plannedAvailableDateTime?, orderingInstructions?, turnaround?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType plannedAvailableDateTime
+        public GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType plannedAvailableDateTime
         {
             get
             {
@@ -67466,7 +67466,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fees?, plannedAvailableDateTime?, orderingInstructions?, turnaround?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType orderingInstructions
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType orderingInstructions
         {
             get
             {
@@ -67486,7 +67486,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fees?, plannedAvailableDateTime?, orderingInstructions?, turnaround?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType turnaround
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType turnaround
         {
             get
             {
@@ -68120,7 +68120,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, version, amendmentNumber?, specification?, fileDecompressionTechnique?, formatDistributor*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType name
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType name
         {
             get
             {
@@ -68140,7 +68140,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, version, amendmentNumber?, specification?, fileDecompressionTechnique?, formatDistributor*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType version
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType version
         {
             get
             {
@@ -68160,7 +68160,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, version, amendmentNumber?, specification?, fileDecompressionTechnique?, formatDistributor*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType amendmentNumber
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType amendmentNumber
         {
             get
             {
@@ -68180,7 +68180,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, version, amendmentNumber?, specification?, fileDecompressionTechnique?, formatDistributor*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType specification
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType specification
         {
             get
             {
@@ -68200,7 +68200,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (name, version, amendmentNumber?, specification?, fileDecompressionTechnique?, formatDistributor*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType fileDecompressionTechnique
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType fileDecompressionTechnique
         {
             get
             {
@@ -68336,21 +68336,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_DistributionUnitsSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_DistributionUnits: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class MD_DistributionUnits: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator MD_DistributionUnits(XElement xe) { return XTypedServices.ToXTypedElement<MD_DistributionUnits, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator MD_DistributionUnits(XElement xe) { return XTypedServices.ToXTypedElement<MD_DistributionUnits, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public MD_DistributionUnits() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public MD_DistributionUnits(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public MD_DistributionUnits(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -68369,7 +68369,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -68486,27 +68486,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static MD_DistributionUnits Load(string xmlFile)
         {
-            return XTypedServices.Load<MD_DistributionUnits, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_DistributionUnits, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static MD_DistributionUnits Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<MD_DistributionUnits, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_DistributionUnits, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static MD_DistributionUnits Parse(string xml)
         {
-            return XTypedServices.Parse<MD_DistributionUnits, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<MD_DistributionUnits, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new MD_DistributionUnits(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new MD_DistributionUnits(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -68530,21 +68530,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_MediumFormatCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_MediumFormatCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class MD_MediumFormatCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator MD_MediumFormatCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_MediumFormatCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator MD_MediumFormatCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_MediumFormatCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public MD_MediumFormatCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public MD_MediumFormatCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public MD_MediumFormatCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -68563,7 +68563,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -68680,27 +68680,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static MD_MediumFormatCode Load(string xmlFile)
         {
-            return XTypedServices.Load<MD_MediumFormatCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_MediumFormatCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static MD_MediumFormatCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<MD_MediumFormatCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_MediumFormatCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static MD_MediumFormatCode Parse(string xml)
         {
-            return XTypedServices.Parse<MD_MediumFormatCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<MD_MediumFormatCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new MD_MediumFormatCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new MD_MediumFormatCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -68724,21 +68724,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_MediumNameCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_MediumNameCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class MD_MediumNameCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator MD_MediumNameCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_MediumNameCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator MD_MediumNameCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_MediumNameCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public MD_MediumNameCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public MD_MediumNameCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public MD_MediumNameCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -68757,7 +68757,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -68874,27 +68874,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static MD_MediumNameCode Load(string xmlFile)
         {
-            return XTypedServices.Load<MD_MediumNameCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_MediumNameCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static MD_MediumNameCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<MD_MediumNameCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_MediumNameCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static MD_MediumNameCode Parse(string xml)
         {
-            return XTypedServices.Parse<MD_MediumNameCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<MD_MediumNameCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new MD_MediumNameCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new MD_MediumNameCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -69000,7 +69000,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (maintenanceAndUpdateFrequency, dateOfNextUpdate?, userDefinedMaintenanceFrequency?, updateScope*, updateScopeDescription*, maintenanceNote*, contact*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Date_PropertyType dateOfNextUpdate
+        public GeoSik.Iso.Ts19139.Gco.Date_PropertyType dateOfNextUpdate
         {
             get
             {
@@ -69020,7 +69020,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (maintenanceAndUpdateFrequency, dateOfNextUpdate?, userDefinedMaintenanceFrequency?, updateScope*, updateScopeDescription*, maintenanceNote*, contact*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gts.TM_PeriodDuration_PropertyType userDefinedMaintenanceFrequency
+        public GeoSik.Iso.Ts19139.Gts.TM_PeriodDuration_PropertyType userDefinedMaintenanceFrequency
         {
             get
             {
@@ -69080,7 +69080,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (maintenanceAndUpdateFrequency, dateOfNextUpdate?, userDefinedMaintenanceFrequency?, updateScope*, updateScopeDescription*, maintenanceNote*, contact*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> maintenanceNote
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> maintenanceNote
         {
             get
             {
@@ -69278,7 +69278,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributes+ | features+ | featureInstances+ | attributeInstances+ | dataset | other)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType> attributes
+        public IList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType> attributes
         {
             get
             {
@@ -69298,7 +69298,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributes+ | features+ | featureInstances+ | attributeInstances+ | dataset | other)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType> features
+        public IList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType> features
         {
             get
             {
@@ -69318,7 +69318,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributes+ | features+ | featureInstances+ | attributeInstances+ | dataset | other)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType> featureInstances
+        public IList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType> featureInstances
         {
             get
             {
@@ -69338,7 +69338,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributes+ | features+ | featureInstances+ | attributeInstances+ | dataset | other)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType> attributeInstances
+        public IList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType> attributeInstances
         {
             get
             {
@@ -69358,7 +69358,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributes+ | features+ | featureInstances+ | attributeInstances+ | dataset | other)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType dataset
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType dataset
         {
             get
             {
@@ -69378,7 +69378,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (attributes+ | features+ | featureInstances+ | attributeInstances+ | dataset | other)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType other
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType other
         {
             get
             {
@@ -69494,21 +69494,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_MaintenanceFrequencyCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_MaintenanceFrequencyCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class MD_MaintenanceFrequencyCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator MD_MaintenanceFrequencyCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_MaintenanceFrequencyCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator MD_MaintenanceFrequencyCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_MaintenanceFrequencyCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public MD_MaintenanceFrequencyCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public MD_MaintenanceFrequencyCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public MD_MaintenanceFrequencyCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -69527,7 +69527,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -69644,27 +69644,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static MD_MaintenanceFrequencyCode Load(string xmlFile)
         {
-            return XTypedServices.Load<MD_MaintenanceFrequencyCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_MaintenanceFrequencyCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static MD_MaintenanceFrequencyCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<MD_MaintenanceFrequencyCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_MaintenanceFrequencyCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static MD_MaintenanceFrequencyCode Parse(string xml)
         {
-            return XTypedServices.Parse<MD_MaintenanceFrequencyCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<MD_MaintenanceFrequencyCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new MD_MaintenanceFrequencyCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new MD_MaintenanceFrequencyCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -69688,21 +69688,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_ScopeCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_ScopeCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class MD_ScopeCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator MD_ScopeCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_ScopeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator MD_ScopeCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_ScopeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public MD_ScopeCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public MD_ScopeCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public MD_ScopeCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -69721,7 +69721,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -69838,27 +69838,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static MD_ScopeCode Load(string xmlFile)
         {
-            return XTypedServices.Load<MD_ScopeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_ScopeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static MD_ScopeCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<MD_ScopeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_ScopeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static MD_ScopeCode Parse(string xml)
         {
-            return XTypedServices.Parse<MD_ScopeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<MD_ScopeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new MD_ScopeCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new MD_ScopeCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -69971,7 +69971,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (citation, @abstract, purpose?, credit*, status*, pointOfContact*, resourceMaintenance*, graphicOverview*, resourceFormat*, descriptiveKeywords*, resourceSpecificUsage*, resourceConstraints*, aggregationInfo*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType @abstract
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType @abstract
         {
             get
             {
@@ -69991,7 +69991,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (citation, @abstract, purpose?, credit*, status*, pointOfContact*, resourceMaintenance*, graphicOverview*, resourceFormat*, descriptiveKeywords*, resourceSpecificUsage*, resourceConstraints*, aggregationInfo*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType purpose
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType purpose
         {
             get
             {
@@ -70011,7 +70011,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (citation, @abstract, purpose?, credit*, status*, pointOfContact*, resourceMaintenance*, graphicOverview*, resourceFormat*, descriptiveKeywords*, resourceSpecificUsage*, resourceConstraints*, aggregationInfo*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> credit
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> credit
         {
             get
             {
@@ -70369,7 +70369,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileName, fileDescription?, fileType?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType fileName
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType fileName
         {
             get
             {
@@ -70389,7 +70389,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileName, fileDescription?, fileType?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType fileDescription
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType fileDescription
         {
             get
             {
@@ -70409,7 +70409,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileName, fileDescription?, fileType?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType fileType
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType fileType
         {
             get
             {
@@ -70525,7 +70525,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_DataIdentificationSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_DataIdentification: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractMD_Identification, IXMetaData, IXmlSerializable
+    public partial class MD_DataIdentification: global::GeoSik.Iso.Ts19139.Gmd.AbstractMD_Identification, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -70614,7 +70614,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (citation, @abstract, purpose?, credit*, status*, pointOfContact*, resourceMaintenance*, graphicOverview*, resourceFormat*, descriptiveKeywords*, resourceSpecificUsage*, resourceConstraints*, aggregationInfo*, spatialRepresentationType*, spatialResolution*, language+, characterSet*, topicCategory*, environmentDescription?, extent*, supplementalInformation?)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> language
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> language
         {
             get
             {
@@ -70674,7 +70674,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (citation, @abstract, purpose?, credit*, status*, pointOfContact*, resourceMaintenance*, graphicOverview*, resourceFormat*, descriptiveKeywords*, resourceSpecificUsage*, resourceConstraints*, aggregationInfo*, spatialRepresentationType*, spatialResolution*, language+, characterSet*, topicCategory*, environmentDescription?, extent*, supplementalInformation?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType environmentDescription
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType environmentDescription
         {
             get
             {
@@ -70714,7 +70714,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (citation, @abstract, purpose?, credit*, status*, pointOfContact*, resourceMaintenance*, graphicOverview*, resourceFormat*, descriptiveKeywords*, resourceSpecificUsage*, resourceConstraints*, aggregationInfo*, spatialRepresentationType*, spatialResolution*, language+, characterSet*, topicCategory*, environmentDescription?, extent*, supplementalInformation?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType supplementalInformation
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType supplementalInformation
         {
             get
             {
@@ -70821,7 +70821,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_ServiceIdentificationSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_ServiceIdentification: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractMD_Identification, IXMetaData, IXmlSerializable
+    public partial class MD_ServiceIdentification: global::GeoSik.Iso.Ts19139.Gmd.AbstractMD_Identification, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -71009,7 +71009,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (denominator)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Integer_PropertyType denominator
+        public GeoSik.Iso.Ts19139.Gco.Integer_PropertyType denominator
         {
             get
             {
@@ -71187,7 +71187,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (specificUsage, usageDateTime?, userDeterminedLimitations?, userContactInfo+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType specificUsage
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType specificUsage
         {
             get
             {
@@ -71207,7 +71207,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (specificUsage, usageDateTime?, userDeterminedLimitations?, userContactInfo+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.DateTime_PropertyType usageDateTime
+        public GeoSik.Iso.Ts19139.Gco.DateTime_PropertyType usageDateTime
         {
             get
             {
@@ -71227,7 +71227,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (specificUsage, usageDateTime?, userDeterminedLimitations?, userContactInfo+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType userDeterminedLimitations
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType userDeterminedLimitations
         {
             get
             {
@@ -71425,7 +71425,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (keyword+, type?, thesaurusName?)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> keyword
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> keyword
         {
             get
             {
@@ -72029,7 +72029,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (equivalentScale | distance)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Distance_PropertyType distance
+        public GeoSik.Iso.Ts19139.Gco.Distance_PropertyType distance
         {
             get
             {
@@ -72150,7 +72150,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
     /// </summary>
     [XmlSchemaProviderAttribute("MD_TopicCategoryCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_TopicCategoryCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class MD_TopicCategoryCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         public static explicit operator MD_TopicCategoryCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_TopicCategoryCode>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
@@ -72183,7 +72183,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
             set
             {
-                this.SetValueWithValidation(value, "TypedValue", global::OgcToolkit.Iso.Ts19139.Gmd.MD_TopicCategoryCode_Type.TypeDefinition);
+                this.SetValueWithValidation(value, "TypedValue", global::GeoSik.Iso.Ts19139.Gmd.MD_TopicCategoryCode_Type.TypeDefinition);
             }
         }
 
@@ -72253,21 +72253,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_CharacterSetCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_CharacterSetCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class MD_CharacterSetCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator MD_CharacterSetCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_CharacterSetCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator MD_CharacterSetCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_CharacterSetCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public MD_CharacterSetCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public MD_CharacterSetCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public MD_CharacterSetCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -72286,7 +72286,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -72403,27 +72403,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static MD_CharacterSetCode Load(string xmlFile)
         {
-            return XTypedServices.Load<MD_CharacterSetCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_CharacterSetCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static MD_CharacterSetCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<MD_CharacterSetCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_CharacterSetCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static MD_CharacterSetCode Parse(string xml)
         {
-            return XTypedServices.Parse<MD_CharacterSetCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<MD_CharacterSetCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new MD_CharacterSetCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new MD_CharacterSetCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -72447,21 +72447,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_SpatialRepresentationTypeCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_SpatialRepresentationTypeCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class MD_SpatialRepresentationTypeCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator MD_SpatialRepresentationTypeCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_SpatialRepresentationTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator MD_SpatialRepresentationTypeCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_SpatialRepresentationTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public MD_SpatialRepresentationTypeCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public MD_SpatialRepresentationTypeCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public MD_SpatialRepresentationTypeCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -72480,7 +72480,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -72597,27 +72597,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static MD_SpatialRepresentationTypeCode Load(string xmlFile)
         {
-            return XTypedServices.Load<MD_SpatialRepresentationTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_SpatialRepresentationTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static MD_SpatialRepresentationTypeCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<MD_SpatialRepresentationTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_SpatialRepresentationTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static MD_SpatialRepresentationTypeCode Parse(string xml)
         {
-            return XTypedServices.Parse<MD_SpatialRepresentationTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<MD_SpatialRepresentationTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new MD_SpatialRepresentationTypeCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new MD_SpatialRepresentationTypeCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -72641,21 +72641,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_ProgressCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_ProgressCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class MD_ProgressCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator MD_ProgressCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_ProgressCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator MD_ProgressCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_ProgressCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public MD_ProgressCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public MD_ProgressCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public MD_ProgressCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -72674,7 +72674,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -72791,27 +72791,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static MD_ProgressCode Load(string xmlFile)
         {
-            return XTypedServices.Load<MD_ProgressCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_ProgressCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static MD_ProgressCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<MD_ProgressCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_ProgressCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static MD_ProgressCode Parse(string xml)
         {
-            return XTypedServices.Parse<MD_ProgressCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<MD_ProgressCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new MD_ProgressCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new MD_ProgressCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -72835,21 +72835,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("MD_KeywordTypeCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class MD_KeywordTypeCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class MD_KeywordTypeCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator MD_KeywordTypeCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_KeywordTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator MD_KeywordTypeCode(XElement xe) { return XTypedServices.ToXTypedElement<MD_KeywordTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public MD_KeywordTypeCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public MD_KeywordTypeCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public MD_KeywordTypeCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -72868,7 +72868,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -72985,27 +72985,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static MD_KeywordTypeCode Load(string xmlFile)
         {
-            return XTypedServices.Load<MD_KeywordTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_KeywordTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static MD_KeywordTypeCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<MD_KeywordTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<MD_KeywordTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static MD_KeywordTypeCode Parse(string xml)
         {
-            return XTypedServices.Parse<MD_KeywordTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<MD_KeywordTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new MD_KeywordTypeCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new MD_KeywordTypeCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -73029,21 +73029,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DS_AssociationTypeCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DS_AssociationTypeCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class DS_AssociationTypeCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator DS_AssociationTypeCode(XElement xe) { return XTypedServices.ToXTypedElement<DS_AssociationTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator DS_AssociationTypeCode(XElement xe) { return XTypedServices.ToXTypedElement<DS_AssociationTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public DS_AssociationTypeCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public DS_AssociationTypeCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public DS_AssociationTypeCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -73062,7 +73062,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -73179,27 +73179,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static DS_AssociationTypeCode Load(string xmlFile)
         {
-            return XTypedServices.Load<DS_AssociationTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<DS_AssociationTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static DS_AssociationTypeCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<DS_AssociationTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<DS_AssociationTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static DS_AssociationTypeCode Parse(string xml)
         {
-            return XTypedServices.Parse<DS_AssociationTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<DS_AssociationTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new DS_AssociationTypeCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new DS_AssociationTypeCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -73223,21 +73223,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DS_InitiativeTypeCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DS_InitiativeTypeCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class DS_InitiativeTypeCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator DS_InitiativeTypeCode(XElement xe) { return XTypedServices.ToXTypedElement<DS_InitiativeTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator DS_InitiativeTypeCode(XElement xe) { return XTypedServices.ToXTypedElement<DS_InitiativeTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public DS_InitiativeTypeCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public DS_InitiativeTypeCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public DS_InitiativeTypeCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -73256,7 +73256,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -73373,27 +73373,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static DS_InitiativeTypeCode Load(string xmlFile)
         {
-            return XTypedServices.Load<DS_InitiativeTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<DS_InitiativeTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static DS_InitiativeTypeCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<DS_InitiativeTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<DS_InitiativeTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static DS_InitiativeTypeCode Parse(string xml)
         {
-            return XTypedServices.Parse<DS_InitiativeTypeCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<DS_InitiativeTypeCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new DS_InitiativeTypeCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new DS_InitiativeTypeCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -73783,7 +73783,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("LocalisedCharacterStringSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class LocalisedCharacterString: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class LocalisedCharacterString: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -74007,7 +74007,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (description, locale, date+, responsibleParty+, localisedString+)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType description
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType description
         {
             get
             {
@@ -74203,21 +74203,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("LanguageCodeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class LanguageCode: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class LanguageCode: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator LanguageCode(XElement xe) { return XTypedServices.ToXTypedElement<LanguageCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator LanguageCode(XElement xe) { return XTypedServices.ToXTypedElement<LanguageCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public LanguageCode() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public LanguageCode(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public LanguageCode(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -74236,7 +74236,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -74353,27 +74353,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static LanguageCode Load(string xmlFile)
         {
-            return XTypedServices.Load<LanguageCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<LanguageCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static LanguageCode Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<LanguageCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<LanguageCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static LanguageCode Parse(string xml)
         {
-            return XTypedServices.Parse<LanguageCode, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<LanguageCode, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new LanguageCode(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new LanguageCode(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -74397,21 +74397,21 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("CountrySchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class Country: global::OgcToolkit.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    public partial class Country: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
+        private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
 
-        public static explicit operator Country(XElement xe) { return XTypedServices.ToXTypedElement<Country, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator Country(XElement xe) { return XTypedServices.ToXTypedElement<Country, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public Country() :
             base()
         {
-            SetInnerType(new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type());
+            SetInnerType(new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type());
         }
 
-        public Country(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type content) :
+        public Country(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type content) :
             base()
         {
             SetInnerType(content);
@@ -74430,7 +74430,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
             }
         }
 
-        public new OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type Content
+        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content
         {
             get
             {
@@ -74547,27 +74547,27 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
         public new static Country Load(string xmlFile)
         {
-            return XTypedServices.Load<Country, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<Country, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static Country Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<Country, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<Country, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static Country Parse(string xml)
         {
-            return XTypedServices.Parse<Country, OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<Country, GeoSik.Iso.Ts19139.Gco.CodeListValue_Type>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new Country(((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
+            return new Country(((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
+        private void SetInnerType(GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField)
         {
-            this.ContentField=((OgcToolkit.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.Iso.Ts19139.Gco.CodeListValue_Type)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -74653,7 +74653,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileIdentifier?, language?, characterSet?, parentIdentifier?, hierarchyLevel*, hierarchyLevelName*, contact+, dateStamp, metadataStandardName?, metadataStandardVersion?, dataSetURI?, locale*, spatialRepresentationInfo*, referenceSystemInfo*, metadataExtensionInfo*, identificationInfo+, contentInfo*, distributionInfo?, dataQualityInfo*, portrayalCatalogueInfo*, metadataConstraints*, applicationSchemaInfo*, metadataMaintenance?, series*, describes*, propertyType*, featureType*, featureAttribute*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType fileIdentifier
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType fileIdentifier
         {
             get
             {
@@ -74673,7 +74673,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileIdentifier?, language?, characterSet?, parentIdentifier?, hierarchyLevel*, hierarchyLevelName*, contact+, dateStamp, metadataStandardName?, metadataStandardVersion?, dataSetURI?, locale*, spatialRepresentationInfo*, referenceSystemInfo*, metadataExtensionInfo*, identificationInfo+, contentInfo*, distributionInfo?, dataQualityInfo*, portrayalCatalogueInfo*, metadataConstraints*, applicationSchemaInfo*, metadataMaintenance?, series*, describes*, propertyType*, featureType*, featureAttribute*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType language
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType language
         {
             get
             {
@@ -74713,7 +74713,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileIdentifier?, language?, characterSet?, parentIdentifier?, hierarchyLevel*, hierarchyLevelName*, contact+, dateStamp, metadataStandardName?, metadataStandardVersion?, dataSetURI?, locale*, spatialRepresentationInfo*, referenceSystemInfo*, metadataExtensionInfo*, identificationInfo+, contentInfo*, distributionInfo?, dataQualityInfo*, portrayalCatalogueInfo*, metadataConstraints*, applicationSchemaInfo*, metadataMaintenance?, series*, describes*, propertyType*, featureType*, featureAttribute*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType parentIdentifier
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType parentIdentifier
         {
             get
             {
@@ -74753,7 +74753,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileIdentifier?, language?, characterSet?, parentIdentifier?, hierarchyLevel*, hierarchyLevelName*, contact+, dateStamp, metadataStandardName?, metadataStandardVersion?, dataSetURI?, locale*, spatialRepresentationInfo*, referenceSystemInfo*, metadataExtensionInfo*, identificationInfo+, contentInfo*, distributionInfo?, dataQualityInfo*, portrayalCatalogueInfo*, metadataConstraints*, applicationSchemaInfo*, metadataMaintenance?, series*, describes*, propertyType*, featureType*, featureAttribute*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType> hierarchyLevelName
+        public IList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> hierarchyLevelName
         {
             get
             {
@@ -74793,7 +74793,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileIdentifier?, language?, characterSet?, parentIdentifier?, hierarchyLevel*, hierarchyLevelName*, contact+, dateStamp, metadataStandardName?, metadataStandardVersion?, dataSetURI?, locale*, spatialRepresentationInfo*, referenceSystemInfo*, metadataExtensionInfo*, identificationInfo+, contentInfo*, distributionInfo?, dataQualityInfo*, portrayalCatalogueInfo*, metadataConstraints*, applicationSchemaInfo*, metadataMaintenance?, series*, describes*, propertyType*, featureType*, featureAttribute*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.Date_PropertyType dateStamp
+        public GeoSik.Iso.Ts19139.Gco.Date_PropertyType dateStamp
         {
             get
             {
@@ -74813,7 +74813,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileIdentifier?, language?, characterSet?, parentIdentifier?, hierarchyLevel*, hierarchyLevelName*, contact+, dateStamp, metadataStandardName?, metadataStandardVersion?, dataSetURI?, locale*, spatialRepresentationInfo*, referenceSystemInfo*, metadataExtensionInfo*, identificationInfo+, contentInfo*, distributionInfo?, dataQualityInfo*, portrayalCatalogueInfo*, metadataConstraints*, applicationSchemaInfo*, metadataMaintenance?, series*, describes*, propertyType*, featureType*, featureAttribute*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType metadataStandardName
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType metadataStandardName
         {
             get
             {
@@ -74833,7 +74833,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileIdentifier?, language?, characterSet?, parentIdentifier?, hierarchyLevel*, hierarchyLevelName*, contact+, dateStamp, metadataStandardName?, metadataStandardVersion?, dataSetURI?, locale*, spatialRepresentationInfo*, referenceSystemInfo*, metadataExtensionInfo*, identificationInfo+, contentInfo*, distributionInfo?, dataQualityInfo*, portrayalCatalogueInfo*, metadataConstraints*, applicationSchemaInfo*, metadataMaintenance?, series*, describes*, propertyType*, featureType*, featureAttribute*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType metadataStandardVersion
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType metadataStandardVersion
         {
             get
             {
@@ -74853,7 +74853,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileIdentifier?, language?, characterSet?, parentIdentifier?, hierarchyLevel*, hierarchyLevelName*, contact+, dateStamp, metadataStandardName?, metadataStandardVersion?, dataSetURI?, locale*, spatialRepresentationInfo*, referenceSystemInfo*, metadataExtensionInfo*, identificationInfo+, contentInfo*, distributionInfo?, dataQualityInfo*, portrayalCatalogueInfo*, metadataConstraints*, applicationSchemaInfo*, metadataMaintenance?, series*, describes*, propertyType*, featureType*, featureAttribute*)
         /// </para>
         /// </summary>
-        public OgcToolkit.Iso.Ts19139.Gco.CharacterString_PropertyType dataSetURI
+        public GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType dataSetURI
         {
             get
             {
@@ -75153,7 +75153,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileIdentifier?, language?, characterSet?, parentIdentifier?, hierarchyLevel*, hierarchyLevelName*, contact+, dateStamp, metadataStandardName?, metadataStandardVersion?, dataSetURI?, locale*, spatialRepresentationInfo*, referenceSystemInfo*, metadataExtensionInfo*, identificationInfo+, contentInfo*, distributionInfo?, dataQualityInfo*, portrayalCatalogueInfo*, metadataConstraints*, applicationSchemaInfo*, metadataMaintenance?, series*, describes*, propertyType*, featureType*, featureAttribute*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType> propertyType
+        public IList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType> propertyType
         {
             get
             {
@@ -75173,7 +75173,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileIdentifier?, language?, characterSet?, parentIdentifier?, hierarchyLevel*, hierarchyLevelName*, contact+, dateStamp, metadataStandardName?, metadataStandardVersion?, dataSetURI?, locale*, spatialRepresentationInfo*, referenceSystemInfo*, metadataExtensionInfo*, identificationInfo+, contentInfo*, distributionInfo?, dataQualityInfo*, portrayalCatalogueInfo*, metadataConstraints*, applicationSchemaInfo*, metadataMaintenance?, series*, describes*, propertyType*, featureType*, featureAttribute*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType> featureType
+        public IList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType> featureType
         {
             get
             {
@@ -75193,7 +75193,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
         /// Regular expression: (fileIdentifier?, language?, characterSet?, parentIdentifier?, hierarchyLevel*, hierarchyLevelName*, contact+, dateStamp, metadataStandardName?, metadataStandardVersion?, dataSetURI?, locale*, spatialRepresentationInfo*, referenceSystemInfo*, metadataExtensionInfo*, identificationInfo+, contentInfo*, distributionInfo?, dataQualityInfo*, portrayalCatalogueInfo*, metadataConstraints*, applicationSchemaInfo*, metadataMaintenance?, series*, describes*, propertyType*, featureType*, featureAttribute*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Iso.Ts19139.Gco.ObjectReference_PropertyType> featureAttribute
+        public IList<GeoSik.Iso.Ts19139.Gco.ObjectReference_PropertyType> featureAttribute
         {
             get
             {
@@ -75752,7 +75752,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DS_OtherAggregateSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DS_OtherAggregate: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDS_Aggregate, IXMetaData, IXmlSerializable
+    public partial class DS_OtherAggregate: global::GeoSik.Iso.Ts19139.Gmd.AbstractDS_Aggregate, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -75897,7 +75897,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DS_SeriesSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DS_Series: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDS_Aggregate, IXMetaData, IXmlSerializable
+    public partial class DS_Series: global::GeoSik.Iso.Ts19139.Gmd.AbstractDS_Aggregate, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -76042,7 +76042,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DS_InitiativeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DS_Initiative: global::OgcToolkit.Iso.Ts19139.Gmd.AbstractDS_Aggregate, IXMetaData, IXmlSerializable
+    public partial class DS_Initiative: global::GeoSik.Iso.Ts19139.Gmd.AbstractDS_Aggregate, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -76173,7 +76173,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DS_PlatformSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DS_Platform: global::OgcToolkit.Iso.Ts19139.Gmd.DS_Series, IXMetaData, IXmlSerializable
+    public partial class DS_Platform: global::GeoSik.Iso.Ts19139.Gmd.DS_Series, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -76304,7 +76304,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DS_SensorSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DS_Sensor: global::OgcToolkit.Iso.Ts19139.Gmd.DS_Series, IXMetaData, IXmlSerializable
+    public partial class DS_Sensor: global::GeoSik.Iso.Ts19139.Gmd.DS_Series, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -76435,7 +76435,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DS_ProductionSeriesSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DS_ProductionSeries: global::OgcToolkit.Iso.Ts19139.Gmd.DS_Series, IXMetaData, IXmlSerializable
+    public partial class DS_ProductionSeries: global::GeoSik.Iso.Ts19139.Gmd.DS_Series, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -76566,7 +76566,7 @@ namespace OgcToolkit.Iso.Ts19139.Gmd
 
     [XmlSchemaProviderAttribute("DS_StereoMateSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DS_StereoMate: global::OgcToolkit.Iso.Ts19139.Gmd.DS_OtherAggregate, IXMetaData, IXmlSerializable
+    public partial class DS_StereoMate: global::GeoSik.Iso.Ts19139.Gmd.DS_OtherAggregate, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]

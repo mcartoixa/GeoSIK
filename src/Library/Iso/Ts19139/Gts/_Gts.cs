@@ -1,25 +1,25 @@
 ﻿////////////////////////////////////////////////////////////////////////////////
 //
-// This file is part of OgcToolkit.
+// This file is part of GeoSIK.
 // Copyright (C) 2012 Isogeo
 //
-// OgcToolkit is free software: you can redistribute it and/or modify
+// GeoSIK is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 2 of the License, or
 // (at your option) any later version.
 //
-// OgcToolkit is distributed in the hope that it will be useful,
+// GeoSIK is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with OgcToolkit. If not, see <http://www.gnu.org/licenses/>.
+// along with GeoSIK. If not, see <http://www.gnu.org/licenses/>.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
 #pragma warning disable 3002, 3009
-namespace OgcToolkit.Iso.Ts19139.Gts
+namespace GeoSik.Iso.Ts19139.Gts
 {
     using System;
     using System.Collections;
@@ -31,7 +31,7 @@ namespace OgcToolkit.Iso.Ts19139.Gts
     using System.Xml.Serialization;
     using System.Xml.Linq;
     using Xml.Schema.Linq;
-    using OgcToolkit.Iso.Ts19139.Gco;
+    using GeoSik.Iso.Ts19139.Gco;
 
 
     /// <summary>
@@ -81,12 +81,12 @@ namespace OgcToolkit.Iso.Ts19139.Gts
         /// Regular expression: (AbstractTimePrimitive)?
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V321.AbstractTimePrimitive AbstractTimePrimitive
+        public GeoSik.Ogc.Gml.V321.AbstractTimePrimitive AbstractTimePrimitive
         {
             get
             {
                 XTypedElement x=XTypedServices.ToSubstitutedXTypedElement(this, LinqToXsdTypeManager.Instance, XName.Get("AbstractTimePrimitive", "http://www.opengis.net/gml/3.2"), XName.Get("AbstractTimeGeometricPrimitive", "http://www.opengis.net/gml/3.2"), XName.Get("TimeInstant", "http://www.opengis.net/gml/3.2"), XName.Get("TimePeriod", "http://www.opengis.net/gml/3.2"), XName.Get("AbstractTimeTopologyPrimitive", "http://www.opengis.net/gml/3.2"), XName.Get("TimeNode", "http://www.opengis.net/gml/3.2"), XName.Get("TimeEdge", "http://www.opengis.net/gml/3.2"));
-                return ((OgcToolkit.Ogc.Gml.V321.AbstractTimePrimitive)(x));
+                return ((GeoSik.Ogc.Gml.V321.AbstractTimePrimitive)(x));
             }
             set
             {
@@ -253,11 +253,11 @@ namespace OgcToolkit.Iso.Ts19139.Gts
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -304,7 +304,7 @@ namespace OgcToolkit.Iso.Ts19139.Gts
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("AbstractTimePrimitive", "http://www.opengis.net/gml/3.2"), typeof(OgcToolkit.Ogc.Gml.V321.AbstractTimePrimitive));
+            localElementDictionary.Add(XName.Get("AbstractTimePrimitive", "http://www.opengis.net/gml/3.2"), typeof(GeoSik.Ogc.Gml.V321.AbstractTimePrimitive));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -387,11 +387,11 @@ namespace OgcToolkit.Iso.Ts19139.Gts
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 

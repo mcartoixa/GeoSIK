@@ -1,25 +1,25 @@
 ﻿////////////////////////////////////////////////////////////////////////////////
 //
-// This file is part of OgcToolkit.
+// This file is part of GeoSIK.
 // Copyright (C) 2012 Isogeo
 //
-// OgcToolkit is free software: you can redistribute it and/or modify
+// GeoSIK is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 2 of the License, or
 // (at your option) any later version.
 //
-// OgcToolkit is distributed in the hope that it will be useful,
+// GeoSIK is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with OgcToolkit. If not, see <http://www.gnu.org/licenses/>.
+// along with GeoSIK. If not, see <http://www.gnu.org/licenses/>.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
 #pragma warning disable 3002, 3009
-namespace OgcToolkit.Iso.Ts19139.Gss
+namespace GeoSik.Iso.Ts19139.Gss
 {
     using System;
     using System.Collections;
@@ -31,7 +31,7 @@ namespace OgcToolkit.Iso.Ts19139.Gss
     using System.Xml.Serialization;
     using System.Xml.Linq;
     using Xml.Schema.Linq;
-    using OgcToolkit.Iso.Ts19139.Gco;
+    using GeoSik.Iso.Ts19139.Gco;
 
 
     /// <summary>
@@ -78,12 +78,12 @@ namespace OgcToolkit.Iso.Ts19139.Gss
         /// Regular expression: (Point)?
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V321.Point Point
+        public GeoSik.Ogc.Gml.V321.Point Point
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("Point", "http://www.opengis.net/gml/3.2"));
-                return ((OgcToolkit.Ogc.Gml.V321.Point)(x));
+                return ((GeoSik.Ogc.Gml.V321.Point)(x));
             }
             set
             {
@@ -250,11 +250,11 @@ namespace OgcToolkit.Iso.Ts19139.Gss
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -301,7 +301,7 @@ namespace OgcToolkit.Iso.Ts19139.Gss
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("Point", "http://www.opengis.net/gml/3.2"), typeof(OgcToolkit.Ogc.Gml.V321.Point));
+            localElementDictionary.Add(XName.Get("Point", "http://www.opengis.net/gml/3.2"), typeof(GeoSik.Ogc.Gml.V321.Point));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -363,12 +363,12 @@ namespace OgcToolkit.Iso.Ts19139.Gss
         /// Regular expression: (AbstractGeometry)?
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V321.AbstractGeometry AbstractGeometry
+        public GeoSik.Ogc.Gml.V321.AbstractGeometry AbstractGeometry
         {
             get
             {
                 XTypedElement x=XTypedServices.ToSubstitutedXTypedElement(this, LinqToXsdTypeManager.Instance, XName.Get("AbstractGeometry", "http://www.opengis.net/gml/3.2"), XName.Get("AbstractGeometricPrimitive", "http://www.opengis.net/gml/3.2"), XName.Get("Point", "http://www.opengis.net/gml/3.2"), XName.Get("AbstractCurve", "http://www.opengis.net/gml/3.2"), XName.Get("LineString", "http://www.opengis.net/gml/3.2"), XName.Get("AbstractSurface", "http://www.opengis.net/gml/3.2"), XName.Get("Polygon", "http://www.opengis.net/gml/3.2"), XName.Get("Curve", "http://www.opengis.net/gml/3.2"), XName.Get("OrientableCurve", "http://www.opengis.net/gml/3.2"), XName.Get("Surface", "http://www.opengis.net/gml/3.2"), XName.Get("OrientableSurface", "http://www.opengis.net/gml/3.2"), XName.Get("PolyhedralSurface", "http://www.opengis.net/gml/3.2"), XName.Get("TriangulatedSurface", "http://www.opengis.net/gml/3.2"), XName.Get("Tin", "http://www.opengis.net/gml/3.2"), XName.Get("AbstractSolid", "http://www.opengis.net/gml/3.2"), XName.Get("Solid", "http://www.opengis.net/gml/3.2"), XName.Get("AbstractGeometricAggregate", "http://www.opengis.net/gml/3.2"), XName.Get("MultiGeometry", "http://www.opengis.net/gml/3.2"), XName.Get("MultiPoint", "http://www.opengis.net/gml/3.2"), XName.Get("MultiCurve", "http://www.opengis.net/gml/3.2"), XName.Get("MultiSurface", "http://www.opengis.net/gml/3.2"), XName.Get("MultiSolid", "http://www.opengis.net/gml/3.2"), XName.Get("GeometricComplex", "http://www.opengis.net/gml/3.2"), XName.Get("CompositeCurve", "http://www.opengis.net/gml/3.2"), XName.Get("CompositeSurface", "http://www.opengis.net/gml/3.2"), XName.Get("CompositeSolid", "http://www.opengis.net/gml/3.2"), XName.Get("Grid", "http://www.opengis.net/gml/3.2"), XName.Get("AbstractImplicitGeometry", "http://www.opengis.net/gml/3.2"), XName.Get("RectifiedGrid", "http://www.opengis.net/gml/3.2"));
-                return ((OgcToolkit.Ogc.Gml.V321.AbstractGeometry)(x));
+                return ((GeoSik.Ogc.Gml.V321.AbstractGeometry)(x));
             }
             set
             {
@@ -535,11 +535,11 @@ namespace OgcToolkit.Iso.Ts19139.Gss
             get
             {
                 XAttribute x=this.Attribute(XName.Get("nilReason", "http://www.isotc211.org/2005/gco"));
-                return XTypedServices.ParseUnionValue(x, global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                return XTypedServices.ParseUnionValue(x, global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
             set
             {
-                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::OgcToolkit.Ogc.Gml.V321.NilReasonType.TypeDefinition);
+                this.SetUnionAttribute(value, "nilReason", this, XName.Get("nilReason", "http://www.isotc211.org/2005/gco"), global::GeoSik.Ogc.Gml.V321.NilReasonType.TypeDefinition);
             }
         }
 
@@ -586,7 +586,7 @@ namespace OgcToolkit.Iso.Ts19139.Gss
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("AbstractGeometry", "http://www.opengis.net/gml/3.2"), typeof(OgcToolkit.Ogc.Gml.V321.AbstractGeometry));
+            localElementDictionary.Add(XName.Get("AbstractGeometry", "http://www.opengis.net/gml/3.2"), typeof(GeoSik.Ogc.Gml.V321.AbstractGeometry));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()

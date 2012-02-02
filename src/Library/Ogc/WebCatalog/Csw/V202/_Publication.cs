@@ -1,25 +1,25 @@
 ﻿////////////////////////////////////////////////////////////////////////////////
 //
-// This file is part of OgcToolkit.
+// This file is part of GeoSIK.
 // Copyright (C) 2012 Isogeo
 //
-// OgcToolkit is free software: you can redistribute it and/or modify
+// GeoSIK is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 2 of the License, or
 // (at your option) any later version.
 //
-// OgcToolkit is distributed in the hope that it will be useful,
+// GeoSIK is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with OgcToolkit. If not, see <http://www.gnu.org/licenses/>.
+// along with GeoSIK. If not, see <http://www.gnu.org/licenses/>.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
 #pragma warning disable 108, 114, 3002, 3003, 3005, 3009
-namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
+namespace GeoSik.Ogc.WebCatalog.Csw.V202
 {
     using System;
     using System.Collections;
@@ -31,7 +31,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
     using System.Xml.Serialization;
     using System.Xml.Linq;
     using Xml.Schema.Linq;
-    using OgcToolkit.Ogc.Ows.V100;
+    using GeoSik.Ogc.Ows.V100;
 
 
     [XmlSchemaProviderAttribute("AbstractRecordTypeSchemaProvider")]
@@ -98,11 +98,11 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
     /// </summary>
     [XmlSchemaProviderAttribute("DCMIRecordTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DCMIRecordType: global::OgcToolkit.Ogc.WebCatalog.Csw.V202.AbstractRecordType, IXMetaData, IXmlSerializable
+    public partial class DCMIRecordType: global::GeoSik.Ogc.WebCatalog.Csw.V202.AbstractRecordType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedSubstitutedList<OgcToolkit.DublinCore.Elements.V11.DCelement> DCelementField;
+        private XTypedSubstitutedList<GeoSik.DublinCore.Elements.V11.DCelement> DCelementField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         static Dictionary<XName, System.Type> localElementDictionary=new Dictionary<XName, System.Type>();
@@ -144,13 +144,13 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: ((DCelement)*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.DublinCore.Elements.V11.DCelement> DCelement
+        public IList<GeoSik.DublinCore.Elements.V11.DCelement> DCelement
         {
             get
             {
                 if ((this.DCelementField==null))
                 {
-                    this.DCelementField=new XTypedSubstitutedList<OgcToolkit.DublinCore.Elements.V11.DCelement>(this, LinqToXsdTypeManager.Instance, XName.Get("DC-element", "http://purl.org/dc/elements/1.1/"), XName.Get("abstract", "http://purl.org/dc/terms/"), XName.Get("accessRights", "http://purl.org/dc/terms/"), XName.Get("alternative", "http://purl.org/dc/terms/"), XName.Get("audience", "http://purl.org/dc/terms/"), XName.Get("available", "http://purl.org/dc/terms/"), XName.Get("bibliographicCitation", "http://purl.org/dc/terms/"), XName.Get("conformsTo", "http://purl.org/dc/terms/"), XName.Get("created", "http://purl.org/dc/terms/"), XName.Get("dateAccepted", "http://purl.org/dc/terms/"), XName.Get("dateCopyrighted", "http://purl.org/dc/terms/"), XName.Get("dateSubmitted", "http://purl.org/dc/terms/"), XName.Get("educationLevel", "http://purl.org/dc/terms/"), XName.Get("extent", "http://purl.org/dc/terms/"), XName.Get("hasFormat", "http://purl.org/dc/terms/"), XName.Get("hasPart", "http://purl.org/dc/terms/"), XName.Get("hasVersion", "http://purl.org/dc/terms/"), XName.Get("isFormatOf", "http://purl.org/dc/terms/"), XName.Get("isPartOf", "http://purl.org/dc/terms/"), XName.Get("isReferencedBy", "http://purl.org/dc/terms/"), XName.Get("isReplacedBy", "http://purl.org/dc/terms/"), XName.Get("isRequiredBy", "http://purl.org/dc/terms/"), XName.Get("issued", "http://purl.org/dc/terms/"), XName.Get("isVersionOf", "http://purl.org/dc/terms/"), XName.Get("license", "http://purl.org/dc/terms/"), XName.Get("mediator", "http://purl.org/dc/terms/"), XName.Get("medium", "http://purl.org/dc/terms/"), XName.Get("modified", "http://purl.org/dc/terms/"), XName.Get("provenance", "http://purl.org/dc/terms/"), XName.Get("references", "http://purl.org/dc/terms/"), XName.Get("replaces", "http://purl.org/dc/terms/"), XName.Get("requires", "http://purl.org/dc/terms/"), XName.Get("rightsHolder", "http://purl.org/dc/terms/"), XName.Get("spatial", "http://purl.org/dc/terms/"), XName.Get("tableOfContents", "http://purl.org/dc/terms/"), XName.Get("temporal", "http://purl.org/dc/terms/"), XName.Get("valid", "http://purl.org/dc/terms/"), XName.Get("title", "http://purl.org/dc/elements/1.1/"), XName.Get("creator", "http://purl.org/dc/elements/1.1/"), XName.Get("subject", "http://purl.org/dc/elements/1.1/"), XName.Get("description", "http://purl.org/dc/elements/1.1/"), XName.Get("publisher", "http://purl.org/dc/elements/1.1/"), XName.Get("contributor", "http://purl.org/dc/elements/1.1/"), XName.Get("date", "http://purl.org/dc/elements/1.1/"), XName.Get("type", "http://purl.org/dc/elements/1.1/"), XName.Get("format", "http://purl.org/dc/elements/1.1/"), XName.Get("identifier", "http://purl.org/dc/elements/1.1/"), XName.Get("source", "http://purl.org/dc/elements/1.1/"), XName.Get("language", "http://purl.org/dc/elements/1.1/"), XName.Get("relation", "http://purl.org/dc/elements/1.1/"), XName.Get("coverage", "http://purl.org/dc/elements/1.1/"), XName.Get("rights", "http://purl.org/dc/elements/1.1/"));
+                    this.DCelementField=new XTypedSubstitutedList<GeoSik.DublinCore.Elements.V11.DCelement>(this, LinqToXsdTypeManager.Instance, XName.Get("DC-element", "http://purl.org/dc/elements/1.1/"), XName.Get("abstract", "http://purl.org/dc/terms/"), XName.Get("accessRights", "http://purl.org/dc/terms/"), XName.Get("alternative", "http://purl.org/dc/terms/"), XName.Get("audience", "http://purl.org/dc/terms/"), XName.Get("available", "http://purl.org/dc/terms/"), XName.Get("bibliographicCitation", "http://purl.org/dc/terms/"), XName.Get("conformsTo", "http://purl.org/dc/terms/"), XName.Get("created", "http://purl.org/dc/terms/"), XName.Get("dateAccepted", "http://purl.org/dc/terms/"), XName.Get("dateCopyrighted", "http://purl.org/dc/terms/"), XName.Get("dateSubmitted", "http://purl.org/dc/terms/"), XName.Get("educationLevel", "http://purl.org/dc/terms/"), XName.Get("extent", "http://purl.org/dc/terms/"), XName.Get("hasFormat", "http://purl.org/dc/terms/"), XName.Get("hasPart", "http://purl.org/dc/terms/"), XName.Get("hasVersion", "http://purl.org/dc/terms/"), XName.Get("isFormatOf", "http://purl.org/dc/terms/"), XName.Get("isPartOf", "http://purl.org/dc/terms/"), XName.Get("isReferencedBy", "http://purl.org/dc/terms/"), XName.Get("isReplacedBy", "http://purl.org/dc/terms/"), XName.Get("isRequiredBy", "http://purl.org/dc/terms/"), XName.Get("issued", "http://purl.org/dc/terms/"), XName.Get("isVersionOf", "http://purl.org/dc/terms/"), XName.Get("license", "http://purl.org/dc/terms/"), XName.Get("mediator", "http://purl.org/dc/terms/"), XName.Get("medium", "http://purl.org/dc/terms/"), XName.Get("modified", "http://purl.org/dc/terms/"), XName.Get("provenance", "http://purl.org/dc/terms/"), XName.Get("references", "http://purl.org/dc/terms/"), XName.Get("replaces", "http://purl.org/dc/terms/"), XName.Get("requires", "http://purl.org/dc/terms/"), XName.Get("rightsHolder", "http://purl.org/dc/terms/"), XName.Get("spatial", "http://purl.org/dc/terms/"), XName.Get("tableOfContents", "http://purl.org/dc/terms/"), XName.Get("temporal", "http://purl.org/dc/terms/"), XName.Get("valid", "http://purl.org/dc/terms/"), XName.Get("title", "http://purl.org/dc/elements/1.1/"), XName.Get("creator", "http://purl.org/dc/elements/1.1/"), XName.Get("subject", "http://purl.org/dc/elements/1.1/"), XName.Get("description", "http://purl.org/dc/elements/1.1/"), XName.Get("publisher", "http://purl.org/dc/elements/1.1/"), XName.Get("contributor", "http://purl.org/dc/elements/1.1/"), XName.Get("date", "http://purl.org/dc/elements/1.1/"), XName.Get("type", "http://purl.org/dc/elements/1.1/"), XName.Get("format", "http://purl.org/dc/elements/1.1/"), XName.Get("identifier", "http://purl.org/dc/elements/1.1/"), XName.Get("source", "http://purl.org/dc/elements/1.1/"), XName.Get("language", "http://purl.org/dc/elements/1.1/"), XName.Get("relation", "http://purl.org/dc/elements/1.1/"), XName.Get("coverage", "http://purl.org/dc/elements/1.1/"), XName.Get("rights", "http://purl.org/dc/elements/1.1/"));
                 }
                 return this.DCelementField;
             }
@@ -163,10 +163,10 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
                 {
                     if ((this.DCelementField==null))
                     {
-                        this.DCelementField=XTypedSubstitutedList<OgcToolkit.DublinCore.Elements.V11.DCelement>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("DC-element", "http://purl.org/dc/elements/1.1/"), XName.Get("abstract", "http://purl.org/dc/terms/"), XName.Get("accessRights", "http://purl.org/dc/terms/"), XName.Get("alternative", "http://purl.org/dc/terms/"), XName.Get("audience", "http://purl.org/dc/terms/"), XName.Get("available", "http://purl.org/dc/terms/"), XName.Get("bibliographicCitation", "http://purl.org/dc/terms/"), XName.Get("conformsTo", "http://purl.org/dc/terms/"), XName.Get("created", "http://purl.org/dc/terms/"), XName.Get("dateAccepted", "http://purl.org/dc/terms/"), XName.Get("dateCopyrighted", "http://purl.org/dc/terms/"), XName.Get("dateSubmitted", "http://purl.org/dc/terms/"), XName.Get("educationLevel", "http://purl.org/dc/terms/"), XName.Get("extent", "http://purl.org/dc/terms/"), XName.Get("hasFormat", "http://purl.org/dc/terms/"), XName.Get("hasPart", "http://purl.org/dc/terms/"), XName.Get("hasVersion", "http://purl.org/dc/terms/"), XName.Get("isFormatOf", "http://purl.org/dc/terms/"), XName.Get("isPartOf", "http://purl.org/dc/terms/"), XName.Get("isReferencedBy", "http://purl.org/dc/terms/"), XName.Get("isReplacedBy", "http://purl.org/dc/terms/"), XName.Get("isRequiredBy", "http://purl.org/dc/terms/"), XName.Get("issued", "http://purl.org/dc/terms/"), XName.Get("isVersionOf", "http://purl.org/dc/terms/"), XName.Get("license", "http://purl.org/dc/terms/"), XName.Get("mediator", "http://purl.org/dc/terms/"), XName.Get("medium", "http://purl.org/dc/terms/"), XName.Get("modified", "http://purl.org/dc/terms/"), XName.Get("provenance", "http://purl.org/dc/terms/"), XName.Get("references", "http://purl.org/dc/terms/"), XName.Get("replaces", "http://purl.org/dc/terms/"), XName.Get("requires", "http://purl.org/dc/terms/"), XName.Get("rightsHolder", "http://purl.org/dc/terms/"), XName.Get("spatial", "http://purl.org/dc/terms/"), XName.Get("tableOfContents", "http://purl.org/dc/terms/"), XName.Get("temporal", "http://purl.org/dc/terms/"), XName.Get("valid", "http://purl.org/dc/terms/"), XName.Get("title", "http://purl.org/dc/elements/1.1/"), XName.Get("creator", "http://purl.org/dc/elements/1.1/"), XName.Get("subject", "http://purl.org/dc/elements/1.1/"), XName.Get("description", "http://purl.org/dc/elements/1.1/"), XName.Get("publisher", "http://purl.org/dc/elements/1.1/"), XName.Get("contributor", "http://purl.org/dc/elements/1.1/"), XName.Get("date", "http://purl.org/dc/elements/1.1/"), XName.Get("type", "http://purl.org/dc/elements/1.1/"), XName.Get("format", "http://purl.org/dc/elements/1.1/"), XName.Get("identifier", "http://purl.org/dc/elements/1.1/"), XName.Get("source", "http://purl.org/dc/elements/1.1/"), XName.Get("language", "http://purl.org/dc/elements/1.1/"), XName.Get("relation", "http://purl.org/dc/elements/1.1/"), XName.Get("coverage", "http://purl.org/dc/elements/1.1/"), XName.Get("rights", "http://purl.org/dc/elements/1.1/"));
+                        this.DCelementField=XTypedSubstitutedList<GeoSik.DublinCore.Elements.V11.DCelement>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("DC-element", "http://purl.org/dc/elements/1.1/"), XName.Get("abstract", "http://purl.org/dc/terms/"), XName.Get("accessRights", "http://purl.org/dc/terms/"), XName.Get("alternative", "http://purl.org/dc/terms/"), XName.Get("audience", "http://purl.org/dc/terms/"), XName.Get("available", "http://purl.org/dc/terms/"), XName.Get("bibliographicCitation", "http://purl.org/dc/terms/"), XName.Get("conformsTo", "http://purl.org/dc/terms/"), XName.Get("created", "http://purl.org/dc/terms/"), XName.Get("dateAccepted", "http://purl.org/dc/terms/"), XName.Get("dateCopyrighted", "http://purl.org/dc/terms/"), XName.Get("dateSubmitted", "http://purl.org/dc/terms/"), XName.Get("educationLevel", "http://purl.org/dc/terms/"), XName.Get("extent", "http://purl.org/dc/terms/"), XName.Get("hasFormat", "http://purl.org/dc/terms/"), XName.Get("hasPart", "http://purl.org/dc/terms/"), XName.Get("hasVersion", "http://purl.org/dc/terms/"), XName.Get("isFormatOf", "http://purl.org/dc/terms/"), XName.Get("isPartOf", "http://purl.org/dc/terms/"), XName.Get("isReferencedBy", "http://purl.org/dc/terms/"), XName.Get("isReplacedBy", "http://purl.org/dc/terms/"), XName.Get("isRequiredBy", "http://purl.org/dc/terms/"), XName.Get("issued", "http://purl.org/dc/terms/"), XName.Get("isVersionOf", "http://purl.org/dc/terms/"), XName.Get("license", "http://purl.org/dc/terms/"), XName.Get("mediator", "http://purl.org/dc/terms/"), XName.Get("medium", "http://purl.org/dc/terms/"), XName.Get("modified", "http://purl.org/dc/terms/"), XName.Get("provenance", "http://purl.org/dc/terms/"), XName.Get("references", "http://purl.org/dc/terms/"), XName.Get("replaces", "http://purl.org/dc/terms/"), XName.Get("requires", "http://purl.org/dc/terms/"), XName.Get("rightsHolder", "http://purl.org/dc/terms/"), XName.Get("spatial", "http://purl.org/dc/terms/"), XName.Get("tableOfContents", "http://purl.org/dc/terms/"), XName.Get("temporal", "http://purl.org/dc/terms/"), XName.Get("valid", "http://purl.org/dc/terms/"), XName.Get("title", "http://purl.org/dc/elements/1.1/"), XName.Get("creator", "http://purl.org/dc/elements/1.1/"), XName.Get("subject", "http://purl.org/dc/elements/1.1/"), XName.Get("description", "http://purl.org/dc/elements/1.1/"), XName.Get("publisher", "http://purl.org/dc/elements/1.1/"), XName.Get("contributor", "http://purl.org/dc/elements/1.1/"), XName.Get("date", "http://purl.org/dc/elements/1.1/"), XName.Get("type", "http://purl.org/dc/elements/1.1/"), XName.Get("format", "http://purl.org/dc/elements/1.1/"), XName.Get("identifier", "http://purl.org/dc/elements/1.1/"), XName.Get("source", "http://purl.org/dc/elements/1.1/"), XName.Get("language", "http://purl.org/dc/elements/1.1/"), XName.Get("relation", "http://purl.org/dc/elements/1.1/"), XName.Get("coverage", "http://purl.org/dc/elements/1.1/"), XName.Get("rights", "http://purl.org/dc/elements/1.1/"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.DublinCore.Elements.V11.DCelement>(this.DCelementField, value);
+                        XTypedServices.SetList<GeoSik.DublinCore.Elements.V11.DCelement>(this.DCelementField, value);
                     }
                 }
             }
@@ -215,7 +215,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("DC-element", "http://purl.org/dc/elements/1.1/"), typeof(OgcToolkit.DublinCore.Elements.V11.DCelement));
+            localElementDictionary.Add(XName.Get("DC-element", "http://purl.org/dc/elements/1.1/"), typeof(GeoSik.DublinCore.Elements.V11.DCelement));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -244,17 +244,17 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
     /// </summary>
     [XmlSchemaProviderAttribute("BriefRecordTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public sealed partial class BriefRecordType: global::OgcToolkit.Ogc.WebCatalog.Csw.V202.AbstractRecordType, IXMetaData, IXmlSerializable
+    public sealed partial class BriefRecordType: global::GeoSik.Ogc.WebCatalog.Csw.V202.AbstractRecordType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedSubstitutedList<OgcToolkit.DublinCore.Elements.V11.identifier> identifierField;
+        private XTypedSubstitutedList<GeoSik.DublinCore.Elements.V11.identifier> identifierField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedSubstitutedList<OgcToolkit.DublinCore.Elements.V11.title> titleField;
+        private XTypedSubstitutedList<GeoSik.DublinCore.Elements.V11.title> titleField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedSubstitutedList<OgcToolkit.Ogc.Ows.V100.BoundingBox> BoundingBoxField;
+        private XTypedSubstitutedList<GeoSik.Ogc.Ows.V100.BoundingBox> BoundingBoxField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         static Dictionary<XName, System.Type> localElementDictionary=new Dictionary<XName, System.Type>();
@@ -297,13 +297,13 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.DublinCore.Elements.V11.identifier> identifier
+        public IList<GeoSik.DublinCore.Elements.V11.identifier> identifier
         {
             get
             {
                 if ((this.identifierField==null))
                 {
-                    this.identifierField=new XTypedSubstitutedList<OgcToolkit.DublinCore.Elements.V11.identifier>(this, LinqToXsdTypeManager.Instance, XName.Get("identifier", "http://purl.org/dc/elements/1.1/"), XName.Get("bibliographicCitation", "http://purl.org/dc/terms/"));
+                    this.identifierField=new XTypedSubstitutedList<GeoSik.DublinCore.Elements.V11.identifier>(this, LinqToXsdTypeManager.Instance, XName.Get("identifier", "http://purl.org/dc/elements/1.1/"), XName.Get("bibliographicCitation", "http://purl.org/dc/terms/"));
                 }
                 return this.identifierField;
             }
@@ -316,10 +316,10 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
                 {
                     if ((this.identifierField==null))
                     {
-                        this.identifierField=XTypedSubstitutedList<OgcToolkit.DublinCore.Elements.V11.identifier>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("identifier", "http://purl.org/dc/elements/1.1/"), XName.Get("bibliographicCitation", "http://purl.org/dc/terms/"));
+                        this.identifierField=XTypedSubstitutedList<GeoSik.DublinCore.Elements.V11.identifier>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("identifier", "http://purl.org/dc/elements/1.1/"), XName.Get("bibliographicCitation", "http://purl.org/dc/terms/"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.DublinCore.Elements.V11.identifier>(this.identifierField, value);
+                        XTypedServices.SetList<GeoSik.DublinCore.Elements.V11.identifier>(this.identifierField, value);
                     }
                 }
             }
@@ -336,13 +336,13 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.DublinCore.Elements.V11.title> title
+        public IList<GeoSik.DublinCore.Elements.V11.title> title
         {
             get
             {
                 if ((this.titleField==null))
                 {
-                    this.titleField=new XTypedSubstitutedList<OgcToolkit.DublinCore.Elements.V11.title>(this, LinqToXsdTypeManager.Instance, XName.Get("title", "http://purl.org/dc/elements/1.1/"), XName.Get("alternative", "http://purl.org/dc/terms/"));
+                    this.titleField=new XTypedSubstitutedList<GeoSik.DublinCore.Elements.V11.title>(this, LinqToXsdTypeManager.Instance, XName.Get("title", "http://purl.org/dc/elements/1.1/"), XName.Get("alternative", "http://purl.org/dc/terms/"));
                 }
                 return this.titleField;
             }
@@ -355,10 +355,10 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
                 {
                     if ((this.titleField==null))
                     {
-                        this.titleField=XTypedSubstitutedList<OgcToolkit.DublinCore.Elements.V11.title>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("title", "http://purl.org/dc/elements/1.1/"), XName.Get("alternative", "http://purl.org/dc/terms/"));
+                        this.titleField=XTypedSubstitutedList<GeoSik.DublinCore.Elements.V11.title>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("title", "http://purl.org/dc/elements/1.1/"), XName.Get("alternative", "http://purl.org/dc/terms/"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.DublinCore.Elements.V11.title>(this.titleField, value);
+                        XTypedServices.SetList<GeoSik.DublinCore.Elements.V11.title>(this.titleField, value);
                     }
                 }
             }
@@ -372,12 +372,12 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, BoundingBox*)
         /// </para>
         /// </summary>
-        public OgcToolkit.DublinCore.Elements.V11.type type
+        public GeoSik.DublinCore.Elements.V11.type type
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("type", "http://purl.org/dc/elements/1.1/"));
-                return ((OgcToolkit.DublinCore.Elements.V11.type)(x));
+                return ((GeoSik.DublinCore.Elements.V11.type)(x));
             }
             set
             {
@@ -396,13 +396,13 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Ogc.Ows.V100.BoundingBox> BoundingBox
+        public IList<GeoSik.Ogc.Ows.V100.BoundingBox> BoundingBox
         {
             get
             {
                 if ((this.BoundingBoxField==null))
                 {
-                    this.BoundingBoxField=new XTypedSubstitutedList<OgcToolkit.Ogc.Ows.V100.BoundingBox>(this, LinqToXsdTypeManager.Instance, XName.Get("BoundingBox", "http://www.opengis.net/ows"), XName.Get("WGS84BoundingBox", "http://www.opengis.net/ows"));
+                    this.BoundingBoxField=new XTypedSubstitutedList<GeoSik.Ogc.Ows.V100.BoundingBox>(this, LinqToXsdTypeManager.Instance, XName.Get("BoundingBox", "http://www.opengis.net/ows"), XName.Get("WGS84BoundingBox", "http://www.opengis.net/ows"));
                 }
                 return this.BoundingBoxField;
             }
@@ -415,10 +415,10 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
                 {
                     if ((this.BoundingBoxField==null))
                     {
-                        this.BoundingBoxField=XTypedSubstitutedList<OgcToolkit.Ogc.Ows.V100.BoundingBox>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("BoundingBox", "http://www.opengis.net/ows"), XName.Get("WGS84BoundingBox", "http://www.opengis.net/ows"));
+                        this.BoundingBoxField=XTypedSubstitutedList<GeoSik.Ogc.Ows.V100.BoundingBox>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("BoundingBox", "http://www.opengis.net/ows"), XName.Get("WGS84BoundingBox", "http://www.opengis.net/ows"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Ogc.Ows.V100.BoundingBox>(this.BoundingBoxField, value);
+                        XTypedServices.SetList<GeoSik.Ogc.Ows.V100.BoundingBox>(this.BoundingBoxField, value);
                     }
                 }
             }
@@ -467,10 +467,10 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("identifier", "http://purl.org/dc/elements/1.1/"), typeof(OgcToolkit.DublinCore.Elements.V11.identifier));
-            localElementDictionary.Add(XName.Get("title", "http://purl.org/dc/elements/1.1/"), typeof(OgcToolkit.DublinCore.Elements.V11.title));
-            localElementDictionary.Add(XName.Get("type", "http://purl.org/dc/elements/1.1/"), typeof(OgcToolkit.DublinCore.Elements.V11.type));
-            localElementDictionary.Add(XName.Get("BoundingBox", "http://www.opengis.net/ows"), typeof(OgcToolkit.Ogc.Ows.V100.BoundingBox));
+            localElementDictionary.Add(XName.Get("identifier", "http://purl.org/dc/elements/1.1/"), typeof(GeoSik.DublinCore.Elements.V11.identifier));
+            localElementDictionary.Add(XName.Get("title", "http://purl.org/dc/elements/1.1/"), typeof(GeoSik.DublinCore.Elements.V11.title));
+            localElementDictionary.Add(XName.Get("type", "http://purl.org/dc/elements/1.1/"), typeof(GeoSik.DublinCore.Elements.V11.type));
+            localElementDictionary.Add(XName.Get("BoundingBox", "http://www.opengis.net/ows"), typeof(GeoSik.Ogc.Ows.V100.BoundingBox));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -499,35 +499,35 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
     /// </summary>
     [XmlSchemaProviderAttribute("SummaryRecordTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public sealed partial class SummaryRecordType: global::OgcToolkit.Ogc.WebCatalog.Csw.V202.AbstractRecordType, IXMetaData, IXmlSerializable
+    public sealed partial class SummaryRecordType: global::GeoSik.Ogc.WebCatalog.Csw.V202.AbstractRecordType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedSubstitutedList<OgcToolkit.DublinCore.Elements.V11.identifier> identifierField;
+        private XTypedSubstitutedList<GeoSik.DublinCore.Elements.V11.identifier> identifierField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedSubstitutedList<OgcToolkit.DublinCore.Elements.V11.title> titleField;
+        private XTypedSubstitutedList<GeoSik.DublinCore.Elements.V11.title> titleField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.DublinCore.Elements.V11.subject> subjectField;
+        private XTypedList<GeoSik.DublinCore.Elements.V11.subject> subjectField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedSubstitutedList<OgcToolkit.DublinCore.Elements.V11.format> formatField;
+        private XTypedSubstitutedList<GeoSik.DublinCore.Elements.V11.format> formatField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedSubstitutedList<OgcToolkit.DublinCore.Elements.V11.relation> relationField;
+        private XTypedSubstitutedList<GeoSik.DublinCore.Elements.V11.relation> relationField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.DublinCore.Terms.modified> modifiedField;
+        private XTypedList<GeoSik.DublinCore.Terms.modified> modifiedField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.DublinCore.Terms.@abstract> @abstractField;
+        private XTypedList<GeoSik.DublinCore.Terms.@abstract> @abstractField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedList<OgcToolkit.DublinCore.Terms.spatial> spatialField;
+        private XTypedList<GeoSik.DublinCore.Terms.spatial> spatialField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedSubstitutedList<OgcToolkit.Ogc.Ows.V100.BoundingBox> BoundingBoxField;
+        private XTypedSubstitutedList<GeoSik.Ogc.Ows.V100.BoundingBox> BoundingBoxField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         static Dictionary<XName, System.Type> localElementDictionary=new Dictionary<XName, System.Type>();
@@ -570,13 +570,13 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, subject*, format*, relation*, modified*, @abstract*, spatial*, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.DublinCore.Elements.V11.identifier> identifier
+        public IList<GeoSik.DublinCore.Elements.V11.identifier> identifier
         {
             get
             {
                 if ((this.identifierField==null))
                 {
-                    this.identifierField=new XTypedSubstitutedList<OgcToolkit.DublinCore.Elements.V11.identifier>(this, LinqToXsdTypeManager.Instance, XName.Get("identifier", "http://purl.org/dc/elements/1.1/"), XName.Get("bibliographicCitation", "http://purl.org/dc/terms/"));
+                    this.identifierField=new XTypedSubstitutedList<GeoSik.DublinCore.Elements.V11.identifier>(this, LinqToXsdTypeManager.Instance, XName.Get("identifier", "http://purl.org/dc/elements/1.1/"), XName.Get("bibliographicCitation", "http://purl.org/dc/terms/"));
                 }
                 return this.identifierField;
             }
@@ -589,10 +589,10 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
                 {
                     if ((this.identifierField==null))
                     {
-                        this.identifierField=XTypedSubstitutedList<OgcToolkit.DublinCore.Elements.V11.identifier>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("identifier", "http://purl.org/dc/elements/1.1/"), XName.Get("bibliographicCitation", "http://purl.org/dc/terms/"));
+                        this.identifierField=XTypedSubstitutedList<GeoSik.DublinCore.Elements.V11.identifier>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("identifier", "http://purl.org/dc/elements/1.1/"), XName.Get("bibliographicCitation", "http://purl.org/dc/terms/"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.DublinCore.Elements.V11.identifier>(this.identifierField, value);
+                        XTypedServices.SetList<GeoSik.DublinCore.Elements.V11.identifier>(this.identifierField, value);
                     }
                 }
             }
@@ -609,13 +609,13 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, subject*, format*, relation*, modified*, @abstract*, spatial*, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.DublinCore.Elements.V11.title> title
+        public IList<GeoSik.DublinCore.Elements.V11.title> title
         {
             get
             {
                 if ((this.titleField==null))
                 {
-                    this.titleField=new XTypedSubstitutedList<OgcToolkit.DublinCore.Elements.V11.title>(this, LinqToXsdTypeManager.Instance, XName.Get("title", "http://purl.org/dc/elements/1.1/"), XName.Get("alternative", "http://purl.org/dc/terms/"));
+                    this.titleField=new XTypedSubstitutedList<GeoSik.DublinCore.Elements.V11.title>(this, LinqToXsdTypeManager.Instance, XName.Get("title", "http://purl.org/dc/elements/1.1/"), XName.Get("alternative", "http://purl.org/dc/terms/"));
                 }
                 return this.titleField;
             }
@@ -628,10 +628,10 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
                 {
                     if ((this.titleField==null))
                     {
-                        this.titleField=XTypedSubstitutedList<OgcToolkit.DublinCore.Elements.V11.title>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("title", "http://purl.org/dc/elements/1.1/"), XName.Get("alternative", "http://purl.org/dc/terms/"));
+                        this.titleField=XTypedSubstitutedList<GeoSik.DublinCore.Elements.V11.title>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("title", "http://purl.org/dc/elements/1.1/"), XName.Get("alternative", "http://purl.org/dc/terms/"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.DublinCore.Elements.V11.title>(this.titleField, value);
+                        XTypedServices.SetList<GeoSik.DublinCore.Elements.V11.title>(this.titleField, value);
                     }
                 }
             }
@@ -645,12 +645,12 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, subject*, format*, relation*, modified*, @abstract*, spatial*, BoundingBox*)
         /// </para>
         /// </summary>
-        public OgcToolkit.DublinCore.Elements.V11.type type
+        public GeoSik.DublinCore.Elements.V11.type type
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("type", "http://purl.org/dc/elements/1.1/"));
-                return ((OgcToolkit.DublinCore.Elements.V11.type)(x));
+                return ((GeoSik.DublinCore.Elements.V11.type)(x));
             }
             set
             {
@@ -666,13 +666,13 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, subject*, format*, relation*, modified*, @abstract*, spatial*, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.DublinCore.Elements.V11.subject> subject
+        public IList<GeoSik.DublinCore.Elements.V11.subject> subject
         {
             get
             {
                 if ((this.subjectField==null))
                 {
-                    this.subjectField=new XTypedList<OgcToolkit.DublinCore.Elements.V11.subject>(this, LinqToXsdTypeManager.Instance, XName.Get("subject", "http://purl.org/dc/elements/1.1/"));
+                    this.subjectField=new XTypedList<GeoSik.DublinCore.Elements.V11.subject>(this, LinqToXsdTypeManager.Instance, XName.Get("subject", "http://purl.org/dc/elements/1.1/"));
                 }
                 return this.subjectField;
             }
@@ -685,10 +685,10 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
                 {
                     if ((this.subjectField==null))
                     {
-                        this.subjectField=XTypedList<OgcToolkit.DublinCore.Elements.V11.subject>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("subject", "http://purl.org/dc/elements/1.1/"));
+                        this.subjectField=XTypedList<GeoSik.DublinCore.Elements.V11.subject>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("subject", "http://purl.org/dc/elements/1.1/"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.DublinCore.Elements.V11.subject>(this.subjectField, value);
+                        XTypedServices.SetList<GeoSik.DublinCore.Elements.V11.subject>(this.subjectField, value);
                     }
                 }
             }
@@ -705,13 +705,13 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, subject*, format*, relation*, modified*, @abstract*, spatial*, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.DublinCore.Elements.V11.format> format
+        public IList<GeoSik.DublinCore.Elements.V11.format> format
         {
             get
             {
                 if ((this.formatField==null))
                 {
-                    this.formatField=new XTypedSubstitutedList<OgcToolkit.DublinCore.Elements.V11.format>(this, LinqToXsdTypeManager.Instance, XName.Get("format", "http://purl.org/dc/elements/1.1/"), XName.Get("extent", "http://purl.org/dc/terms/"), XName.Get("medium", "http://purl.org/dc/terms/"));
+                    this.formatField=new XTypedSubstitutedList<GeoSik.DublinCore.Elements.V11.format>(this, LinqToXsdTypeManager.Instance, XName.Get("format", "http://purl.org/dc/elements/1.1/"), XName.Get("extent", "http://purl.org/dc/terms/"), XName.Get("medium", "http://purl.org/dc/terms/"));
                 }
                 return this.formatField;
             }
@@ -724,10 +724,10 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
                 {
                     if ((this.formatField==null))
                     {
-                        this.formatField=XTypedSubstitutedList<OgcToolkit.DublinCore.Elements.V11.format>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("format", "http://purl.org/dc/elements/1.1/"), XName.Get("extent", "http://purl.org/dc/terms/"), XName.Get("medium", "http://purl.org/dc/terms/"));
+                        this.formatField=XTypedSubstitutedList<GeoSik.DublinCore.Elements.V11.format>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("format", "http://purl.org/dc/elements/1.1/"), XName.Get("extent", "http://purl.org/dc/terms/"), XName.Get("medium", "http://purl.org/dc/terms/"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.DublinCore.Elements.V11.format>(this.formatField, value);
+                        XTypedServices.SetList<GeoSik.DublinCore.Elements.V11.format>(this.formatField, value);
                     }
                 }
             }
@@ -744,13 +744,13 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, subject*, format*, relation*, modified*, @abstract*, spatial*, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.DublinCore.Elements.V11.relation> relation
+        public IList<GeoSik.DublinCore.Elements.V11.relation> relation
         {
             get
             {
                 if ((this.relationField==null))
                 {
-                    this.relationField=new XTypedSubstitutedList<OgcToolkit.DublinCore.Elements.V11.relation>(this, LinqToXsdTypeManager.Instance, XName.Get("relation", "http://purl.org/dc/elements/1.1/"), XName.Get("conformsTo", "http://purl.org/dc/terms/"), XName.Get("hasFormat", "http://purl.org/dc/terms/"), XName.Get("hasPart", "http://purl.org/dc/terms/"), XName.Get("hasVersion", "http://purl.org/dc/terms/"), XName.Get("isFormatOf", "http://purl.org/dc/terms/"), XName.Get("isPartOf", "http://purl.org/dc/terms/"), XName.Get("isReferencedBy", "http://purl.org/dc/terms/"), XName.Get("isReplacedBy", "http://purl.org/dc/terms/"), XName.Get("isRequiredBy", "http://purl.org/dc/terms/"), XName.Get("isVersionOf", "http://purl.org/dc/terms/"), XName.Get("references", "http://purl.org/dc/terms/"), XName.Get("replaces", "http://purl.org/dc/terms/"), XName.Get("requires", "http://purl.org/dc/terms/"));
+                    this.relationField=new XTypedSubstitutedList<GeoSik.DublinCore.Elements.V11.relation>(this, LinqToXsdTypeManager.Instance, XName.Get("relation", "http://purl.org/dc/elements/1.1/"), XName.Get("conformsTo", "http://purl.org/dc/terms/"), XName.Get("hasFormat", "http://purl.org/dc/terms/"), XName.Get("hasPart", "http://purl.org/dc/terms/"), XName.Get("hasVersion", "http://purl.org/dc/terms/"), XName.Get("isFormatOf", "http://purl.org/dc/terms/"), XName.Get("isPartOf", "http://purl.org/dc/terms/"), XName.Get("isReferencedBy", "http://purl.org/dc/terms/"), XName.Get("isReplacedBy", "http://purl.org/dc/terms/"), XName.Get("isRequiredBy", "http://purl.org/dc/terms/"), XName.Get("isVersionOf", "http://purl.org/dc/terms/"), XName.Get("references", "http://purl.org/dc/terms/"), XName.Get("replaces", "http://purl.org/dc/terms/"), XName.Get("requires", "http://purl.org/dc/terms/"));
                 }
                 return this.relationField;
             }
@@ -763,10 +763,10 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
                 {
                     if ((this.relationField==null))
                     {
-                        this.relationField=XTypedSubstitutedList<OgcToolkit.DublinCore.Elements.V11.relation>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("relation", "http://purl.org/dc/elements/1.1/"), XName.Get("conformsTo", "http://purl.org/dc/terms/"), XName.Get("hasFormat", "http://purl.org/dc/terms/"), XName.Get("hasPart", "http://purl.org/dc/terms/"), XName.Get("hasVersion", "http://purl.org/dc/terms/"), XName.Get("isFormatOf", "http://purl.org/dc/terms/"), XName.Get("isPartOf", "http://purl.org/dc/terms/"), XName.Get("isReferencedBy", "http://purl.org/dc/terms/"), XName.Get("isReplacedBy", "http://purl.org/dc/terms/"), XName.Get("isRequiredBy", "http://purl.org/dc/terms/"), XName.Get("isVersionOf", "http://purl.org/dc/terms/"), XName.Get("references", "http://purl.org/dc/terms/"), XName.Get("replaces", "http://purl.org/dc/terms/"), XName.Get("requires", "http://purl.org/dc/terms/"));
+                        this.relationField=XTypedSubstitutedList<GeoSik.DublinCore.Elements.V11.relation>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("relation", "http://purl.org/dc/elements/1.1/"), XName.Get("conformsTo", "http://purl.org/dc/terms/"), XName.Get("hasFormat", "http://purl.org/dc/terms/"), XName.Get("hasPart", "http://purl.org/dc/terms/"), XName.Get("hasVersion", "http://purl.org/dc/terms/"), XName.Get("isFormatOf", "http://purl.org/dc/terms/"), XName.Get("isPartOf", "http://purl.org/dc/terms/"), XName.Get("isReferencedBy", "http://purl.org/dc/terms/"), XName.Get("isReplacedBy", "http://purl.org/dc/terms/"), XName.Get("isRequiredBy", "http://purl.org/dc/terms/"), XName.Get("isVersionOf", "http://purl.org/dc/terms/"), XName.Get("references", "http://purl.org/dc/terms/"), XName.Get("replaces", "http://purl.org/dc/terms/"), XName.Get("requires", "http://purl.org/dc/terms/"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.DublinCore.Elements.V11.relation>(this.relationField, value);
+                        XTypedServices.SetList<GeoSik.DublinCore.Elements.V11.relation>(this.relationField, value);
                     }
                 }
             }
@@ -780,13 +780,13 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, subject*, format*, relation*, modified*, @abstract*, spatial*, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.DublinCore.Terms.modified> modified
+        public IList<GeoSik.DublinCore.Terms.modified> modified
         {
             get
             {
                 if ((this.modifiedField==null))
                 {
-                    this.modifiedField=new XTypedList<OgcToolkit.DublinCore.Terms.modified>(this, LinqToXsdTypeManager.Instance, XName.Get("modified", "http://purl.org/dc/terms/"));
+                    this.modifiedField=new XTypedList<GeoSik.DublinCore.Terms.modified>(this, LinqToXsdTypeManager.Instance, XName.Get("modified", "http://purl.org/dc/terms/"));
                 }
                 return this.modifiedField;
             }
@@ -799,10 +799,10 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
                 {
                     if ((this.modifiedField==null))
                     {
-                        this.modifiedField=XTypedList<OgcToolkit.DublinCore.Terms.modified>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("modified", "http://purl.org/dc/terms/"));
+                        this.modifiedField=XTypedList<GeoSik.DublinCore.Terms.modified>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("modified", "http://purl.org/dc/terms/"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.DublinCore.Terms.modified>(this.modifiedField, value);
+                        XTypedServices.SetList<GeoSik.DublinCore.Terms.modified>(this.modifiedField, value);
                     }
                 }
             }
@@ -816,13 +816,13 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, subject*, format*, relation*, modified*, @abstract*, spatial*, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.DublinCore.Terms.@abstract> @abstract
+        public IList<GeoSik.DublinCore.Terms.@abstract> @abstract
         {
             get
             {
                 if ((this.@abstractField==null))
                 {
-                    this.@abstractField=new XTypedList<OgcToolkit.DublinCore.Terms.@abstract>(this, LinqToXsdTypeManager.Instance, XName.Get("abstract", "http://purl.org/dc/terms/"));
+                    this.@abstractField=new XTypedList<GeoSik.DublinCore.Terms.@abstract>(this, LinqToXsdTypeManager.Instance, XName.Get("abstract", "http://purl.org/dc/terms/"));
                 }
                 return this.@abstractField;
             }
@@ -835,10 +835,10 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
                 {
                     if ((this.@abstractField==null))
                     {
-                        this.@abstractField=XTypedList<OgcToolkit.DublinCore.Terms.@abstract>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("abstract", "http://purl.org/dc/terms/"));
+                        this.@abstractField=XTypedList<GeoSik.DublinCore.Terms.@abstract>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("abstract", "http://purl.org/dc/terms/"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.DublinCore.Terms.@abstract>(this.@abstractField, value);
+                        XTypedServices.SetList<GeoSik.DublinCore.Terms.@abstract>(this.@abstractField, value);
                     }
                 }
             }
@@ -852,13 +852,13 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, subject*, format*, relation*, modified*, @abstract*, spatial*, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.DublinCore.Terms.spatial> spatial
+        public IList<GeoSik.DublinCore.Terms.spatial> spatial
         {
             get
             {
                 if ((this.spatialField==null))
                 {
-                    this.spatialField=new XTypedList<OgcToolkit.DublinCore.Terms.spatial>(this, LinqToXsdTypeManager.Instance, XName.Get("spatial", "http://purl.org/dc/terms/"));
+                    this.spatialField=new XTypedList<GeoSik.DublinCore.Terms.spatial>(this, LinqToXsdTypeManager.Instance, XName.Get("spatial", "http://purl.org/dc/terms/"));
                 }
                 return this.spatialField;
             }
@@ -871,10 +871,10 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
                 {
                     if ((this.spatialField==null))
                     {
-                        this.spatialField=XTypedList<OgcToolkit.DublinCore.Terms.spatial>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("spatial", "http://purl.org/dc/terms/"));
+                        this.spatialField=XTypedList<GeoSik.DublinCore.Terms.spatial>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("spatial", "http://purl.org/dc/terms/"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.DublinCore.Terms.spatial>(this.spatialField, value);
+                        XTypedServices.SetList<GeoSik.DublinCore.Terms.spatial>(this.spatialField, value);
                     }
                 }
             }
@@ -891,13 +891,13 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, subject*, format*, relation*, modified*, @abstract*, spatial*, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Ogc.Ows.V100.BoundingBox> BoundingBox
+        public IList<GeoSik.Ogc.Ows.V100.BoundingBox> BoundingBox
         {
             get
             {
                 if ((this.BoundingBoxField==null))
                 {
-                    this.BoundingBoxField=new XTypedSubstitutedList<OgcToolkit.Ogc.Ows.V100.BoundingBox>(this, LinqToXsdTypeManager.Instance, XName.Get("BoundingBox", "http://www.opengis.net/ows"), XName.Get("WGS84BoundingBox", "http://www.opengis.net/ows"));
+                    this.BoundingBoxField=new XTypedSubstitutedList<GeoSik.Ogc.Ows.V100.BoundingBox>(this, LinqToXsdTypeManager.Instance, XName.Get("BoundingBox", "http://www.opengis.net/ows"), XName.Get("WGS84BoundingBox", "http://www.opengis.net/ows"));
                 }
                 return this.BoundingBoxField;
             }
@@ -910,10 +910,10 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
                 {
                     if ((this.BoundingBoxField==null))
                     {
-                        this.BoundingBoxField=XTypedSubstitutedList<OgcToolkit.Ogc.Ows.V100.BoundingBox>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("BoundingBox", "http://www.opengis.net/ows"), XName.Get("WGS84BoundingBox", "http://www.opengis.net/ows"));
+                        this.BoundingBoxField=XTypedSubstitutedList<GeoSik.Ogc.Ows.V100.BoundingBox>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("BoundingBox", "http://www.opengis.net/ows"), XName.Get("WGS84BoundingBox", "http://www.opengis.net/ows"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Ogc.Ows.V100.BoundingBox>(this.BoundingBoxField, value);
+                        XTypedServices.SetList<GeoSik.Ogc.Ows.V100.BoundingBox>(this.BoundingBoxField, value);
                     }
                 }
             }
@@ -962,16 +962,16 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("identifier", "http://purl.org/dc/elements/1.1/"), typeof(OgcToolkit.DublinCore.Elements.V11.identifier));
-            localElementDictionary.Add(XName.Get("title", "http://purl.org/dc/elements/1.1/"), typeof(OgcToolkit.DublinCore.Elements.V11.title));
-            localElementDictionary.Add(XName.Get("type", "http://purl.org/dc/elements/1.1/"), typeof(OgcToolkit.DublinCore.Elements.V11.type));
-            localElementDictionary.Add(XName.Get("subject", "http://purl.org/dc/elements/1.1/"), typeof(OgcToolkit.DublinCore.Elements.V11.subject));
-            localElementDictionary.Add(XName.Get("format", "http://purl.org/dc/elements/1.1/"), typeof(OgcToolkit.DublinCore.Elements.V11.format));
-            localElementDictionary.Add(XName.Get("relation", "http://purl.org/dc/elements/1.1/"), typeof(OgcToolkit.DublinCore.Elements.V11.relation));
-            localElementDictionary.Add(XName.Get("modified", "http://purl.org/dc/terms/"), typeof(OgcToolkit.DublinCore.Terms.modified));
-            localElementDictionary.Add(XName.Get("abstract", "http://purl.org/dc/terms/"), typeof(OgcToolkit.DublinCore.Terms.@abstract));
-            localElementDictionary.Add(XName.Get("spatial", "http://purl.org/dc/terms/"), typeof(OgcToolkit.DublinCore.Terms.spatial));
-            localElementDictionary.Add(XName.Get("BoundingBox", "http://www.opengis.net/ows"), typeof(OgcToolkit.Ogc.Ows.V100.BoundingBox));
+            localElementDictionary.Add(XName.Get("identifier", "http://purl.org/dc/elements/1.1/"), typeof(GeoSik.DublinCore.Elements.V11.identifier));
+            localElementDictionary.Add(XName.Get("title", "http://purl.org/dc/elements/1.1/"), typeof(GeoSik.DublinCore.Elements.V11.title));
+            localElementDictionary.Add(XName.Get("type", "http://purl.org/dc/elements/1.1/"), typeof(GeoSik.DublinCore.Elements.V11.type));
+            localElementDictionary.Add(XName.Get("subject", "http://purl.org/dc/elements/1.1/"), typeof(GeoSik.DublinCore.Elements.V11.subject));
+            localElementDictionary.Add(XName.Get("format", "http://purl.org/dc/elements/1.1/"), typeof(GeoSik.DublinCore.Elements.V11.format));
+            localElementDictionary.Add(XName.Get("relation", "http://purl.org/dc/elements/1.1/"), typeof(GeoSik.DublinCore.Elements.V11.relation));
+            localElementDictionary.Add(XName.Get("modified", "http://purl.org/dc/terms/"), typeof(GeoSik.DublinCore.Terms.modified));
+            localElementDictionary.Add(XName.Get("abstract", "http://purl.org/dc/terms/"), typeof(GeoSik.DublinCore.Terms.@abstract));
+            localElementDictionary.Add(XName.Get("spatial", "http://purl.org/dc/terms/"), typeof(GeoSik.DublinCore.Terms.spatial));
+            localElementDictionary.Add(XName.Get("BoundingBox", "http://www.opengis.net/ows"), typeof(GeoSik.Ogc.Ows.V100.BoundingBox));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -1000,14 +1000,14 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
     /// </summary>
     [XmlSchemaProviderAttribute("RecordTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public sealed partial class RecordType: global::OgcToolkit.Ogc.WebCatalog.Csw.V202.DCMIRecordType, IXMetaData, IXmlSerializable
+    public sealed partial class RecordType: global::GeoSik.Ogc.WebCatalog.Csw.V202.DCMIRecordType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XTypedList<EmptyType> AnyTextField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private XTypedSubstitutedList<OgcToolkit.Ogc.Ows.V100.BoundingBox> BoundingBoxField;
+        private XTypedSubstitutedList<GeoSik.Ogc.Ows.V100.BoundingBox> BoundingBoxField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         static Dictionary<XName, System.Type> localElementDictionary=new Dictionary<XName, System.Type>();
@@ -1082,13 +1082,13 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: ((DCelement)*, AnyText*, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Ogc.Ows.V100.BoundingBox> BoundingBox
+        public IList<GeoSik.Ogc.Ows.V100.BoundingBox> BoundingBox
         {
             get
             {
                 if ((this.BoundingBoxField==null))
                 {
-                    this.BoundingBoxField=new XTypedSubstitutedList<OgcToolkit.Ogc.Ows.V100.BoundingBox>(this, LinqToXsdTypeManager.Instance, XName.Get("BoundingBox", "http://www.opengis.net/ows"), XName.Get("WGS84BoundingBox", "http://www.opengis.net/ows"));
+                    this.BoundingBoxField=new XTypedSubstitutedList<GeoSik.Ogc.Ows.V100.BoundingBox>(this, LinqToXsdTypeManager.Instance, XName.Get("BoundingBox", "http://www.opengis.net/ows"), XName.Get("WGS84BoundingBox", "http://www.opengis.net/ows"));
                 }
                 return this.BoundingBoxField;
             }
@@ -1101,10 +1101,10 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
                 {
                     if ((this.BoundingBoxField==null))
                     {
-                        this.BoundingBoxField=XTypedSubstitutedList<OgcToolkit.Ogc.Ows.V100.BoundingBox>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("BoundingBox", "http://www.opengis.net/ows"), XName.Get("WGS84BoundingBox", "http://www.opengis.net/ows"));
+                        this.BoundingBoxField=XTypedSubstitutedList<GeoSik.Ogc.Ows.V100.BoundingBox>.Initialize(this, LinqToXsdTypeManager.Instance, value, XName.Get("BoundingBox", "http://www.opengis.net/ows"), XName.Get("WGS84BoundingBox", "http://www.opengis.net/ows"));
                     } else
                     {
-                        XTypedServices.SetList<OgcToolkit.Ogc.Ows.V100.BoundingBox>(this.BoundingBoxField, value);
+                        XTypedServices.SetList<GeoSik.Ogc.Ows.V100.BoundingBox>(this.BoundingBoxField, value);
                     }
                 }
             }
@@ -1153,9 +1153,9 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("DC-element", "http://purl.org/dc/elements/1.1/"), typeof(OgcToolkit.DublinCore.Elements.V11.DCelement));
+            localElementDictionary.Add(XName.Get("DC-element", "http://purl.org/dc/elements/1.1/"), typeof(GeoSik.DublinCore.Elements.V11.DCelement));
             localElementDictionary.Add(XName.Get("AnyText", "http://www.opengis.net/cat/csw/2.0.2"), typeof(EmptyType));
-            localElementDictionary.Add(XName.Get("BoundingBox", "http://www.opengis.net/ows"), typeof(OgcToolkit.Ogc.Ows.V100.BoundingBox));
+            localElementDictionary.Add(XName.Get("BoundingBox", "http://www.opengis.net/ows"), typeof(GeoSik.Ogc.Ows.V100.BoundingBox));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -1356,7 +1356,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
     /// </summary>
     [XmlSchemaProviderAttribute("GetCapabilitiesTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class GetCapabilitiesType: global::OgcToolkit.Ogc.Ows.V100.GetCapabilitiesType, IXMetaData, IXmlSerializable
+    public partial class GetCapabilitiesType: global::GeoSik.Ogc.Ows.V100.GetCapabilitiesType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -1452,9 +1452,9 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("AcceptVersions", "http://www.opengis.net/ows"), typeof(OgcToolkit.Ogc.Ows.V100.AcceptVersionsType));
-            localElementDictionary.Add(XName.Get("Sections", "http://www.opengis.net/ows"), typeof(OgcToolkit.Ogc.Ows.V100.SectionsType));
-            localElementDictionary.Add(XName.Get("AcceptFormats", "http://www.opengis.net/ows"), typeof(OgcToolkit.Ogc.Ows.V100.AcceptFormatsType));
+            localElementDictionary.Add(XName.Get("AcceptVersions", "http://www.opengis.net/ows"), typeof(GeoSik.Ogc.Ows.V100.AcceptVersionsType));
+            localElementDictionary.Add(XName.Get("Sections", "http://www.opengis.net/ows"), typeof(GeoSik.Ogc.Ows.V100.SectionsType));
+            localElementDictionary.Add(XName.Get("AcceptFormats", "http://www.opengis.net/ows"), typeof(GeoSik.Ogc.Ows.V100.AcceptFormatsType));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -1481,7 +1481,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
     /// </summary>
     [XmlSchemaProviderAttribute("CapabilitiesTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class CapabilitiesType: global::OgcToolkit.Ogc.Ows.V100.CapabilitiesBaseType, IXMetaData, IXmlSerializable
+    public partial class CapabilitiesType: global::GeoSik.Ogc.Ows.V100.CapabilitiesBaseType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -1520,12 +1520,12 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (ServiceIdentification?, ServiceProvider?, OperationsMetadata?, Filter_Capabilities)
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Filter.V110.Filter_Capabilities Filter_Capabilities
+        public GeoSik.Ogc.Filter.V110.Filter_Capabilities Filter_Capabilities
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("Filter_Capabilities", "http://www.opengis.net/ogc"));
-                return ((OgcToolkit.Ogc.Filter.V110.Filter_Capabilities)(x));
+                return ((GeoSik.Ogc.Filter.V110.Filter_Capabilities)(x));
             }
             set
             {
@@ -1576,10 +1576,10 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("ServiceIdentification", "http://www.opengis.net/ows"), typeof(OgcToolkit.Ogc.Ows.V100.ServiceIdentification));
-            localElementDictionary.Add(XName.Get("ServiceProvider", "http://www.opengis.net/ows"), typeof(OgcToolkit.Ogc.Ows.V100.ServiceProvider));
-            localElementDictionary.Add(XName.Get("OperationsMetadata", "http://www.opengis.net/ows"), typeof(OgcToolkit.Ogc.Ows.V100.OperationsMetadata));
-            localElementDictionary.Add(XName.Get("Filter_Capabilities", "http://www.opengis.net/ogc"), typeof(OgcToolkit.Ogc.Filter.V110.Filter_Capabilities));
+            localElementDictionary.Add(XName.Get("ServiceIdentification", "http://www.opengis.net/ows"), typeof(GeoSik.Ogc.Ows.V100.ServiceIdentification));
+            localElementDictionary.Add(XName.Get("ServiceProvider", "http://www.opengis.net/ows"), typeof(GeoSik.Ogc.Ows.V100.ServiceProvider));
+            localElementDictionary.Add(XName.Get("OperationsMetadata", "http://www.opengis.net/ows"), typeof(GeoSik.Ogc.Ows.V100.OperationsMetadata));
+            localElementDictionary.Add(XName.Get("Filter_Capabilities", "http://www.opengis.net/ogc"), typeof(GeoSik.Ogc.Filter.V110.Filter_Capabilities));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -1611,7 +1611,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
     /// </summary>
     [XmlSchemaProviderAttribute("DescribeRecordTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DescribeRecordType: global::OgcToolkit.Ogc.WebCatalog.Csw.V202.RequestBaseType, IXMetaData, IXmlSerializable
+    public partial class DescribeRecordType: global::GeoSik.Ogc.WebCatalog.Csw.V202.RequestBaseType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -2099,7 +2099,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
     /// </summary>
     [XmlSchemaProviderAttribute("GetRecordsTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class GetRecordsType: global::OgcToolkit.Ogc.WebCatalog.Csw.V202.RequestBaseType, IXMetaData, IXmlSerializable
+    public partial class GetRecordsType: global::GeoSik.Ogc.WebCatalog.Csw.V202.RequestBaseType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -2602,7 +2602,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
     /// </summary>
     [XmlSchemaProviderAttribute("QueryTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class QueryType: global::OgcToolkit.Ogc.WebCatalog.Csw.V202.AbstractQueryType, IXMetaData, IXmlSerializable
+    public partial class QueryType: global::GeoSik.Ogc.WebCatalog.Csw.V202.AbstractQueryType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -2730,12 +2730,12 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: ((ElementSetName | ElementName+), Constraint?, SortBy?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Filter.V110.SortBy SortBy
+        public GeoSik.Ogc.Filter.V110.SortBy SortBy
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("SortBy", "http://www.opengis.net/ogc"));
-                return ((OgcToolkit.Ogc.Filter.V110.SortBy)(x));
+                return ((GeoSik.Ogc.Filter.V110.SortBy)(x));
             }
             set
             {
@@ -2807,7 +2807,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
             localElementDictionary.Add(XName.Get("ElementSetName", "http://www.opengis.net/cat/csw/2.0.2"), typeof(ElementSetName));
             localElementDictionary.Add(XName.Get("ElementName", "http://www.opengis.net/cat/csw/2.0.2"), typeof(System.Xml.XmlQualifiedName));
             localElementDictionary.Add(XName.Get("Constraint", "http://www.opengis.net/cat/csw/2.0.2"), typeof(Constraint));
-            localElementDictionary.Add(XName.Get("SortBy", "http://www.opengis.net/ogc"), typeof(OgcToolkit.Ogc.Filter.V110.SortBy));
+            localElementDictionary.Add(XName.Get("SortBy", "http://www.opengis.net/ogc"), typeof(GeoSik.Ogc.Filter.V110.SortBy));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -2884,7 +2884,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         {
         }
 
-        public QueryConstraintType(OgcToolkit.Ogc.Filter.V110.Filter Filter)
+        public QueryConstraintType(GeoSik.Ogc.Filter.V110.Filter Filter)
         {
             this.Filter=Filter;
         }
@@ -2902,12 +2902,12 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (Filter | CqlText)
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Filter.V110.Filter Filter
+        public GeoSik.Ogc.Filter.V110.Filter Filter
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("Filter", "http://www.opengis.net/ogc"));
-                return ((OgcToolkit.Ogc.Filter.V110.Filter)(x));
+                return ((GeoSik.Ogc.Filter.V110.Filter)(x));
             }
             set
             {
@@ -3000,7 +3000,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
 
         private static void BuildElementDictionary()
         {
-            localElementDictionary.Add(XName.Get("Filter", "http://www.opengis.net/ogc"), typeof(OgcToolkit.Ogc.Filter.V110.Filter));
+            localElementDictionary.Add(XName.Get("Filter", "http://www.opengis.net/ogc"), typeof(GeoSik.Ogc.Filter.V110.Filter));
             localElementDictionary.Add(XName.Get("CqlText", "http://www.opengis.net/cat/csw/2.0.2"), typeof(string));
         }
 
@@ -3036,7 +3036,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
             }
             set
             {
-                this.SetValueWithValidation(value, "TypedValue", global::OgcToolkit.Ogc.WebCatalog.Csw.V202.ElementSetType.TypeDefinition);
+                this.SetValueWithValidation(value, "TypedValue", global::GeoSik.Ogc.WebCatalog.Csw.V202.ElementSetType.TypeDefinition);
             }
         }
 
@@ -3755,7 +3755,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
     /// </summary>
     [XmlSchemaProviderAttribute("GetRecordByIdTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class GetRecordByIdType: global::OgcToolkit.Ogc.WebCatalog.Csw.V202.RequestBaseType, IXMetaData, IXmlSerializable
+    public partial class GetRecordByIdType: global::GeoSik.Ogc.WebCatalog.Csw.V202.RequestBaseType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -4127,7 +4127,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
     /// </summary>
     [XmlSchemaProviderAttribute("GetDomainTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class GetDomainType: global::OgcToolkit.Ogc.WebCatalog.Csw.V202.RequestBaseType, IXMetaData, IXmlSerializable
+    public partial class GetDomainType: global::GeoSik.Ogc.WebCatalog.Csw.V202.RequestBaseType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -5348,7 +5348,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
     /// </summary>
     [XmlSchemaProviderAttribute("TransactionTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class TransactionType: global::OgcToolkit.Ogc.WebCatalog.Csw.V202.RequestBaseType, IXMetaData, IXmlSerializable
+    public partial class TransactionType: global::GeoSik.Ogc.WebCatalog.Csw.V202.RequestBaseType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -6852,7 +6852,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
     /// </summary>
     [XmlSchemaProviderAttribute("HarvestTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class HarvestType: global::OgcToolkit.Ogc.WebCatalog.Csw.V202.RequestBaseType, IXMetaData, IXmlSerializable
+    public partial class HarvestType: global::GeoSik.Ogc.WebCatalog.Csw.V202.RequestBaseType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -7392,7 +7392,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
     /// </summary>
     [XmlSchemaProviderAttribute("DCMIRecordSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DCMIRecord: global::OgcToolkit.Ogc.WebCatalog.Csw.V202.AbstractRecord, IXMetaData, IXmlSerializable
+    public partial class DCMIRecord: global::GeoSik.Ogc.WebCatalog.Csw.V202.AbstractRecord, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -7465,7 +7465,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: ((DCelement)*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.DublinCore.Elements.V11.DCelement> DCelement
+        public IList<GeoSik.DublinCore.Elements.V11.DCelement> DCelement
         {
             get
             {
@@ -7576,7 +7576,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
     /// </summary>
     [XmlSchemaProviderAttribute("BriefRecordSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class BriefRecord: global::OgcToolkit.Ogc.WebCatalog.Csw.V202.AbstractRecord, IXMetaData, IXmlSerializable
+    public partial class BriefRecord: global::GeoSik.Ogc.WebCatalog.Csw.V202.AbstractRecord, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -7646,7 +7646,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.DublinCore.Elements.V11.identifier> identifier
+        public IList<GeoSik.DublinCore.Elements.V11.identifier> identifier
         {
             get
             {
@@ -7669,7 +7669,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.DublinCore.Elements.V11.title> title
+        public IList<GeoSik.DublinCore.Elements.V11.title> title
         {
             get
             {
@@ -7689,7 +7689,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, BoundingBox*)
         /// </para>
         /// </summary>
-        public OgcToolkit.DublinCore.Elements.V11.type type
+        public GeoSik.DublinCore.Elements.V11.type type
         {
             get
             {
@@ -7712,7 +7712,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Ogc.Ows.V100.BoundingBox> BoundingBox
+        public IList<GeoSik.Ogc.Ows.V100.BoundingBox> BoundingBox
         {
             get
             {
@@ -7823,7 +7823,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
     /// </summary>
     [XmlSchemaProviderAttribute("SummaryRecordSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class SummaryRecord: global::OgcToolkit.Ogc.WebCatalog.Csw.V202.AbstractRecord, IXMetaData, IXmlSerializable
+    public partial class SummaryRecord: global::GeoSik.Ogc.WebCatalog.Csw.V202.AbstractRecord, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -7893,7 +7893,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, subject*, format*, relation*, modified*, @abstract*, spatial*, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.DublinCore.Elements.V11.identifier> identifier
+        public IList<GeoSik.DublinCore.Elements.V11.identifier> identifier
         {
             get
             {
@@ -7916,7 +7916,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, subject*, format*, relation*, modified*, @abstract*, spatial*, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.DublinCore.Elements.V11.title> title
+        public IList<GeoSik.DublinCore.Elements.V11.title> title
         {
             get
             {
@@ -7936,7 +7936,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, subject*, format*, relation*, modified*, @abstract*, spatial*, BoundingBox*)
         /// </para>
         /// </summary>
-        public OgcToolkit.DublinCore.Elements.V11.type type
+        public GeoSik.DublinCore.Elements.V11.type type
         {
             get
             {
@@ -7956,7 +7956,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, subject*, format*, relation*, modified*, @abstract*, spatial*, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.DublinCore.Elements.V11.subject> subject
+        public IList<GeoSik.DublinCore.Elements.V11.subject> subject
         {
             get
             {
@@ -7979,7 +7979,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, subject*, format*, relation*, modified*, @abstract*, spatial*, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.DublinCore.Elements.V11.format> format
+        public IList<GeoSik.DublinCore.Elements.V11.format> format
         {
             get
             {
@@ -8002,7 +8002,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, subject*, format*, relation*, modified*, @abstract*, spatial*, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.DublinCore.Elements.V11.relation> relation
+        public IList<GeoSik.DublinCore.Elements.V11.relation> relation
         {
             get
             {
@@ -8022,7 +8022,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, subject*, format*, relation*, modified*, @abstract*, spatial*, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.DublinCore.Terms.modified> modified
+        public IList<GeoSik.DublinCore.Terms.modified> modified
         {
             get
             {
@@ -8042,7 +8042,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, subject*, format*, relation*, modified*, @abstract*, spatial*, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.DublinCore.Terms.@abstract> @abstract
+        public IList<GeoSik.DublinCore.Terms.@abstract> @abstract
         {
             get
             {
@@ -8062,7 +8062,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, subject*, format*, relation*, modified*, @abstract*, spatial*, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.DublinCore.Terms.spatial> spatial
+        public IList<GeoSik.DublinCore.Terms.spatial> spatial
         {
             get
             {
@@ -8085,7 +8085,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (identifier+, title+, type?, subject*, format*, relation*, modified*, @abstract*, spatial*, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Ogc.Ows.V100.BoundingBox> BoundingBox
+        public IList<GeoSik.Ogc.Ows.V100.BoundingBox> BoundingBox
         {
             get
             {
@@ -8196,7 +8196,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
     /// </summary>
     [XmlSchemaProviderAttribute("RecordSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class Record: global::OgcToolkit.Ogc.WebCatalog.Csw.V202.AbstractRecord, IXMetaData, IXmlSerializable
+    public partial class Record: global::GeoSik.Ogc.WebCatalog.Csw.V202.AbstractRecord, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -8286,7 +8286,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: ((DCelement)*, AnyText*, BoundingBox*)
         /// </para>
         /// </summary>
-        public IList<OgcToolkit.Ogc.Ows.V100.BoundingBox> BoundingBox
+        public IList<GeoSik.Ogc.Ows.V100.BoundingBox> BoundingBox
         {
             get
             {
@@ -8640,7 +8640,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (ServiceIdentification?, ServiceProvider?, OperationsMetadata?, Filter_Capabilities)
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Filter.V110.Filter_Capabilities Filter_Capabilities
+        public GeoSik.Ogc.Filter.V110.Filter_Capabilities Filter_Capabilities
         {
             get
             {
@@ -9690,7 +9690,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
     /// </summary>
     [XmlSchemaProviderAttribute("QuerySchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class Query: global::OgcToolkit.Ogc.WebCatalog.Csw.V202.AbstractQuery, IXMetaData, IXmlSerializable
+    public partial class Query: global::GeoSik.Ogc.WebCatalog.Csw.V202.AbstractQuery, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -9831,7 +9831,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: ((ElementSetName | ElementName+), Constraint?, SortBy?)
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Filter.V110.SortBy SortBy
+        public GeoSik.Ogc.Filter.V110.SortBy SortBy
         {
             get
             {
@@ -10018,7 +10018,7 @@ namespace OgcToolkit.Ogc.WebCatalog.Csw.V202
         /// Regular expression: (Filter | CqlText)
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Filter.V110.Filter Filter
+        public GeoSik.Ogc.Filter.V110.Filter Filter
         {
             get
             {

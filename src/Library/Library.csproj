@@ -8,8 +8,8 @@
     <ProjectGuid>{3915ADD6-5F33-4452-89EA-8906518E2128}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OgcToolkit</RootNamespace>
-    <AssemblyName>OgcToolkit</AssemblyName>
+    <RootNamespace>GeoSik</RootNamespace>
+    <AssemblyName>GeoSik</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
@@ -40,7 +40,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>..\build\OgcToolkit.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\build\GeoSik.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Common.Logging">
@@ -242,8 +242,8 @@
     <Compile Include="W3\Smil20\_Smil.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\build\OgcToolkit.snk">
-      <Link>OgcToolkit.snk</Link>
+    <None Include="..\build\GeoSik.snk">
+      <Link>GeoSik.snk</Link>
     </None>
     <None Include="Iso\Ts19139\Gmd\http___www.isotc211.org_2005_gmd.xsd">
       <SubType>Designer</SubType>

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OgcToolkit.WebSample
+namespace GeoSik.WebSample
 {
 
 
