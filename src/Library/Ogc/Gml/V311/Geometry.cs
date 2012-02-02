@@ -43,7 +43,7 @@ namespace OgcToolkit.Ogc.Gml.V311
                 if (srsName!=null)
                     builder.SetSrid(Srid.CreateFromCrs(srsName).Value);
                 else
-                    builder.SetSrid(0);
+                    builder.SetSrid(4326); // WGS84
 
                 Populate(builder);
 

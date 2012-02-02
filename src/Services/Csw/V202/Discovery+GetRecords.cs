@@ -365,19 +365,45 @@ namespace OgcToolkit.Services.Csw.V202
             {
                 base.CheckRequest(request);
 
+                // Initialize namespace manager
+                _NamespaceManager=new XmlNamespaceManager(new NameTable());
+                XNamespace dn=request.Untyped.GetDefaultNamespace();
+                if (dn!=XNamespace.None)
+                    _NamespaceManager.AddNamespace(string.Empty, dn.NamespaceName);
+                var namespaces=from at in request.Untyped.Attributes()
+                               where at.IsNamespaceDeclaration
+                               select new {
+                                   Prefix=at.Parent.GetPrefixOfNamespace(at.Value),
+                                   Uri=at.Value
+                               };
+                namespaces.ToList().ForEach(n => _NamespaceManager.AddNamespace(n.Prefix, n.Uri));
+
+                // Invalid output format
                 if ((request.outputFormat!=null) && (Array.IndexOf<string>(OgcService.XmlMimeTypes, request.outputFormat)<0))
                     throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
                         Locator=OutputFormatParameter
                     };
 
+                // No type name defined
                 if (!request.Content.AbstractQuery.Untyped.Attributes("typeNames").Any<XAttribute>())
                     throw new OwsException(OwsExceptionCode.MissingParameterValue) {
+                        Locator=TypeNamesParameter
+                    };
+                // Invalid type name
+                string[] typeNames=request.Content.AbstractQuery.Untyped.Attribute("typeNames").Value.Split(' ');
+                if (typeNames.Any<string>(
+                    a => !((Discovery)Service).SupportedRecordTypes.Any<IXMetaData>(
+                        m => string.Compare(string.Concat(_NamespaceManager.LookupPrefix(m.SchemaName.NamespaceName), ":", m.SchemaName.LocalName), a)==0
+                    )
+                ))
+                    throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
                         Locator=TypeNamesParameter
                     };
 
                 if (request.outputSchema==null)
                     request.outputSchema=new Uri(Namespaces.OgcWebCatalogCswV202);
 
+                // Invalid output schema
                 if (!((Discovery)Service).SupportedRecordTypes.Select<IXMetaData, XNamespace>(s => s.SchemaName.Namespace).Contains<XNamespace>(request.outputSchema.ToString()))
                     throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
                         Locator=OutputSchemaParameter
@@ -409,6 +435,9 @@ namespace OgcToolkit.Services.Csw.V202
 
             public override IGetRecordsResponse Process(GetRecords request)
             {
+                Logger.Debug(CultureInfo.InvariantCulture, m => m("Request processing started"));
+                Logger.Debug(CultureInfo.InvariantCulture, m => m("> {0}", Service.ToTraceString(request)));
+
                 CheckRequest(request);
 
                 var task=new Task<IGetRecordsResponse>(
@@ -447,7 +476,11 @@ namespace OgcToolkit.Services.Csw.V202
                 using (task)
                 {
                     task.RunSynchronously();
-                    return task.Result;
+                    IGetRecordsResponse ret=task.Result;
+
+                    Logger.Debug(CultureInfo.InvariantCulture, m => m("< {0}", Service.ToTraceString(ret)));
+                    Logger.Debug(CultureInfo.InvariantCulture, m => m("Request processing finished"));
+                    return ret;
                 }
             }
 
@@ -462,18 +495,6 @@ namespace OgcToolkit.Services.Csw.V202
                 };
 
                 var query=request.Content.AbstractQuery as Query;
-
-                var namespaceManager=new XmlNamespaceManager(new NameTable());
-                XNamespace dn=request.Untyped.GetDefaultNamespace();
-                if (dn!=XNamespace.None)
-                    namespaceManager.AddNamespace(string.Empty, dn.NamespaceName);
-                var namespaces=from at in request.Untyped.Attributes()
-                               where at.IsNamespaceDeclaration
-                               select new {
-                                   Prefix=at.Parent.GetPrefixOfNamespace(at.Value),
-                                   Uri=at.Value
-                               };
-                namespaces.ToList().ForEach(n => namespaceManager.AddNamespace(n.Prefix, n.Uri));
 
                 // Cannot seem to be able to use the query.typeNames property here...
                 var typeNames=request.Content.AbstractQuery.Untyped.Attributes("typeNames")
@@ -492,14 +513,14 @@ namespace OgcToolkit.Services.Csw.V202
 
                     //if (query.Constraint!=null)
                     if (query.Untyped.Descendants("{http://www.opengis.net/cat/csw/2.0.2}Constraint").Any<XElement>())
-                        records=records.Where(query.Constraint, namespaceManager, mayRootPathBeImplied, ((Discovery)Service).GetOperatorImplementationProvider());
+                        records=records.Where(query.Constraint, _NamespaceManager, mayRootPathBeImplied, ((Discovery)Service).GetOperatorImplementationProvider());
                 }
 
-                if (Service.Logger.IsDebugEnabled)
+                if (Logger.IsDebugEnabled)
                 {
                     string t=records.ToTraceString();
                     if (!string.IsNullOrEmpty(t))
-                        Service.Logger.Debug(t);
+                        Logger.Debug(t);
                 }
 
                 int recordsMatched=records.Count();
@@ -532,7 +553,7 @@ namespace OgcToolkit.Services.Csw.V202
                 {
                     //if (query.SortBy!=null)
                     if (query.Untyped.Descendants("{http://www.opengis.net/ogc}SortBy").Any<XElement>())
-                        records=Filter110.FilterQueryable.OrderBy(records, query.SortBy, namespaceManager, mayRootPathBeImplied, (t, r) => new XPathQueryableNavigator(t, r));
+                        records=Filter110.FilterQueryable.OrderBy(records, query.SortBy, _NamespaceManager, mayRootPathBeImplied, (t, r) => new XPathQueryableNavigator(t, r));
                 }
 
                 // Paging must be done after a sort
@@ -542,11 +563,11 @@ namespace OgcToolkit.Services.Csw.V202
                 if (request.maxRecords>=0)
                     records=records.Take(Convert.ToInt32(request.maxRecords));
 
-                if (Service.Logger.IsDebugEnabled)
+                if (Logger.IsDebugEnabled)
                 {
                     string t=records.ToTraceString();
                     if (!string.IsNullOrEmpty(t))
-                        Service.Logger.Debug(t);
+                        Logger.Debug(t);
                 }
 
                 // Results
@@ -555,17 +576,17 @@ namespace OgcToolkit.Services.Csw.V202
                 if ((query!=null) && query.Untyped.Elements("{http://www.opengis.net/cat/csw/2.0.2}ElementSetName").Any<XElement>() && !string.IsNullOrEmpty(query.ElementSetName.TypedValue))
                 {
                     results=records.StaticCast<IRecord>()
-                        .Select<IRecord, IXmlSerializable>(r => r.GetConverter(namespaceManager).Convert(r, query.ElementSetName.TypedValue));
+                        .Select<IRecord, IXmlSerializable>(r => r.GetConverter(_NamespaceManager).Convert(r, query.ElementSetName.TypedValue));
                 } else if ((query!=null) && (query.ElementName!=null) && (query.ElementName.Count>0))
                 {
                     var elementNames=from el in query.Untyped.Descendants()
                                         where el.Name=="{http://www.opengis.net/cat/csw/2.0.2}ElementName"
                                         select el.Value;
                     results=records.StaticCast<IRecord>()
-                        .Select<IRecord, IXmlSerializable>(r => r.GetConverter(namespaceManager).Convert(r, elementNames, mayRootPathBeImplied));
+                        .Select<IRecord, IXmlSerializable>(r => r.GetConverter(_NamespaceManager).Convert(r, elementNames, mayRootPathBeImplied));
                 } else
                     results=records.StaticCast<IRecord>()
-                        .Select<IRecord, IXmlSerializable>(r => r.GetConverter(namespaceManager).Convert(r, "full"));
+                        .Select<IRecord, IXmlSerializable>(r => r.GetConverter(_NamespaceManager).Convert(r, "full"));
 
                 // Performs the query
                 results=results.ToArray<IXmlSerializable>();
@@ -628,7 +649,7 @@ namespace OgcToolkit.Services.Csw.V202
 
                 if (response==null)
                 {
-                    Service.Logger.Warn("No response to handle");
+                    Logger.Warn("No response to handle");
                     return;
                 }
 
@@ -651,7 +672,7 @@ namespace OgcToolkit.Services.Csw.V202
                     case "ftp":
                         {
                             Uri ftpuri=uri.IsFile ? uri : new Uri(uri, string.Concat(request.requestId.Host, ".xml"));
-                            Service.Logger.Info(CultureInfo.InvariantCulture, m => m("Opening FTP connection to {0}", ftpuri));
+                            Logger.Info(CultureInfo.InvariantCulture, m => m("Opening FTP connection to {0}", ftpuri));
 
                             FtpWebRequest ftpreq=(FtpWebRequest)WebRequest.Create(ftpuri);
                             ftpreq.Method=WebRequestMethods.Ftp.UploadFile;
@@ -672,8 +693,10 @@ namespace OgcToolkit.Services.Csw.V202
             private void _LogAsynchronousExceptions(Task task)
             {
                 if (task.Exception!=null)
-                    Service.Logger.Error("An exception occured during an asynchronous operation", task.Exception);
+                    Logger.Error("An exception occured during an asynchronous operation", task.Exception);
             }
+
+            private XmlNamespaceManager _NamespaceManager;
         }
 
     }

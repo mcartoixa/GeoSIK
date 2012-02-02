@@ -129,4 +129,7 @@
   <data name="UnsupportedFilterElement" xml:space="preserve">
     <value>Filter element "{0}" is not supported</value>
   </data>
+  <data name="UnsupportedFormatString" xml:space="preserve">
+    <value>The "{0}" format string is not supported</value>
+  </data>
 </root>

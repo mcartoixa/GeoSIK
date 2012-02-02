@@ -155,11 +155,11 @@ namespace OgcToolkit.Services.Csw.V202
                 IQueryable records=((Discovery)Service).GetRecordsSource(null);
                 records=Where(records, request.Id, namespaceManager, ((Discovery)Service).GetOperatorImplementationProvider());
 
-                if (Service.Logger.IsDebugEnabled)
+                if (Logger.IsDebugEnabled)
                 {
                     string t=records.ToTraceString();
                     if (!string.IsNullOrEmpty(t))
-                        Service.Logger.Debug(t);
+                        Logger.Debug(t);
                 }
 
                 // Performs the query

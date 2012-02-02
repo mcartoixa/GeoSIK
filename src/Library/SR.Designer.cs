@@ -95,5 +95,14 @@ namespace OgcToolkit {
                 return ResourceManager.GetString("UnsupportedFilterElement", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The &quot;{0}&quot; format string is not supported.
+        /// </summary>
+        internal static string UnsupportedFormatString {
+            get {
+                return ResourceManager.GetString("UnsupportedFormatString", resourceCulture);
+            }
+        }
     }
 }
