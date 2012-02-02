@@ -26,6 +26,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
+using Common.Logging;
 using Xml.Schema.Linq;
 using Ows=OgcToolkit.Ogc.Ows;
 
@@ -63,7 +64,8 @@ namespace OgcToolkit.Services
 
         public virtual TResponse Process(TRequest request)
         {
-            Service.Logger.Trace(CultureInfo.InvariantCulture, m => m("Request processing started"));
+            Logger.Debug(CultureInfo.InvariantCulture, m => m("Request processing started"));
+            Logger.Debug(CultureInfo.InvariantCulture, m => m("> {0}", Service.ToTraceString(request)));
 
             CheckRequest(request);
 
@@ -73,7 +75,8 @@ namespace OgcToolkit.Services
             OnProcessed(args);
 
             Debug.Assert(args.Response!=null);
-            Service.Logger.Trace(CultureInfo.InvariantCulture, m => m("Request processing finished"));
+            Logger.Debug(CultureInfo.InvariantCulture, m => m("< {0}", Service.ToTraceString(args.Response)));
+            Logger.Debug(CultureInfo.InvariantCulture, m => m("Request processing finished"));
             return args.Response;
         }
 
@@ -90,6 +93,14 @@ namespace OgcToolkit.Services
             var eh=Processed;
             if (eh!=null)
                 eh(this, e);
+        }
+
+        protected ILog Logger
+        {
+            get
+            {
+                return Service.InternalLogger;
+            }
         }
 
         protected OgcService Service

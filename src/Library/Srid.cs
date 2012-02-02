@@ -30,7 +30,8 @@ namespace OgcToolkit
 {
 
     public struct Srid:
-        IEquatable<Srid>
+        IEquatable<Srid>,
+        IFormattable
     {
 
         public Srid(int value)
@@ -58,11 +59,37 @@ namespace OgcToolkit
 
         public override string ToString()
         {
-            return string.Format(
-                CultureInfo.InvariantCulture,
-                "urn:ogc:def:crs:EPSG::{0}",
-                Value
-            );
+            return ToString("G", CultureInfo.CurrentCulture);
+        }
+
+        public string ToString(string format, IFormatProvider formatProvider)
+        {
+            if (string.IsNullOrEmpty(format))
+                format="G";
+
+            switch (format)
+            {
+            case "G":
+                return string.Format(
+                    formatProvider,
+                    "urn:ogc:def:crs:EPSG::{0}",
+                    Value
+                );
+            case "X":
+                return string.Format(
+                    formatProvider,
+                    "urn:x-ogc:def:crs:EPSG::{0}",
+                    Value
+                );
+            default:
+                throw new FormatException(
+                    string.Format(
+                        CultureInfo.CurrentCulture,
+                        SR.UnsupportedFormatString,
+                        format
+                    )
+                );
+            }
         }
 
         public static Srid CreateFromCrs(Uri crs)
@@ -80,7 +107,8 @@ namespace OgcToolkit
         public static bool operator!=(Srid idl, Srid idr)
         {
             return !idl.Equals(idr);
-        }   
+        }
+
         public Uri Crs
         {
             get

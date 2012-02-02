@@ -51,7 +51,7 @@ namespace OgcToolkit.Ogc.Gml.V311
                 if (srsName!=null)
                     builder.SetSrid(Srid.CreateFromCrs(srsName).Value);
                 else
-                    builder.SetSrid(0);
+                    builder.SetSrid(4326); // WGS84
                 builder.BeginGeometry(OpenGisGeometryType.LineString);
                 builder.BeginFigure(lowerCorner.TypedValue[0], lowerCorner.TypedValue[1]);
                 builder.AddLine(upperCorner.TypedValue[0], upperCorner.TypedValue[1]);

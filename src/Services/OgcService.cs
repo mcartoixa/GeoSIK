@@ -23,9 +23,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.ServiceModel.Web;
 using System.Text;
 using System.Threading;
-using System.ServiceModel.Web;
+using System.Xml;
+using System.Xml.Serialization;
 using Common.Logging;
 
 namespace OgcToolkit.Services
@@ -53,13 +55,29 @@ namespace OgcToolkit.Services
                 throw new OwsException(OwsExceptionCode.VersionNegotiationFailed);
         }
 
+        internal protected string ToTraceString(IXmlSerializable xml)
+        {
+            var sb=new StringBuilder();
+            using (var xw=XmlWriter.Create(sb))
+                xml.WriteXml(xw);
+            return sb.ToString();
+        }
+
         public CultureInfo RequestCulture
         {
             get;
             set;
         }
 
-        public ILog Logger
+        protected ILog Logger
+        {
+            get
+            {
+                return _Logger;
+            }
+        }
+
+        internal protected ILog InternalLogger
         {
             get
             {
