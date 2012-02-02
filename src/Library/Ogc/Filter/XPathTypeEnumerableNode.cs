@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 
-namespace OgcToolkit.Ogc.Filter
+namespace GeoSik.Ogc.Filter
 {
 
     internal class XPathTypeEnumerableNode:

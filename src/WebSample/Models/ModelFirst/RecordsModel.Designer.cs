@@ -18,11 +18,11 @@ using System.Runtime.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("OgcToolkit.WebSample.Models.ModelFirst", "FK_Record_Relation", "Records", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(OgcToolkit.WebSample.Models.ModelFirst.MFRecord), "Records1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OgcToolkit.WebSample.Models.ModelFirst.MFRecord), true)]
+[assembly: EdmRelationshipAttribute("GeoSik.WebSample.Models.ModelFirst", "FK_Record_Relation", "Records", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeoSik.WebSample.Models.ModelFirst.MFRecord), "Records1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeoSik.WebSample.Models.ModelFirst.MFRecord), true)]
 
 #endregion
 
-namespace OgcToolkit.WebSample.Models.ModelFirst
+namespace GeoSik.WebSample.Models.ModelFirst
 {
     #region Contexts
     
@@ -108,7 +108,7 @@ namespace OgcToolkit.WebSample.Models.ModelFirst
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="OgcToolkit.WebSample.Models.ModelFirst", Name="MFRecord")]
+    [EdmEntityTypeAttribute(NamespaceName="GeoSik.WebSample.Models.ModelFirst", Name="MFRecord")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class MFRecord : EntityObject
@@ -418,18 +418,18 @@ namespace OgcToolkit.WebSample.Models.ModelFirst
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OgcToolkit.WebSample.Models.ModelFirst", "FK_Record_Relation", "Records1")]
+        [EdmRelationshipNavigationPropertyAttribute("GeoSik.WebSample.Models.ModelFirst", "FK_Record_Relation", "Records1")]
         public EntityCollection<MFRecord> Records1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<MFRecord>("OgcToolkit.WebSample.Models.ModelFirst.FK_Record_Relation", "Records1");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<MFRecord>("GeoSik.WebSample.Models.ModelFirst.FK_Record_Relation", "Records1");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<MFRecord>("OgcToolkit.WebSample.Models.ModelFirst.FK_Record_Relation", "Records1", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<MFRecord>("GeoSik.WebSample.Models.ModelFirst.FK_Record_Relation", "Records1", value);
                 }
             }
         }
@@ -440,16 +440,16 @@ namespace OgcToolkit.WebSample.Models.ModelFirst
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OgcToolkit.WebSample.Models.ModelFirst", "FK_Record_Relation", "Records")]
+        [EdmRelationshipNavigationPropertyAttribute("GeoSik.WebSample.Models.ModelFirst", "FK_Record_Relation", "Records")]
         public MFRecord Records2
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MFRecord>("OgcToolkit.WebSample.Models.ModelFirst.FK_Record_Relation", "Records").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MFRecord>("GeoSik.WebSample.Models.ModelFirst.FK_Record_Relation", "Records").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MFRecord>("OgcToolkit.WebSample.Models.ModelFirst.FK_Record_Relation", "Records").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MFRecord>("GeoSik.WebSample.Models.ModelFirst.FK_Record_Relation", "Records").Value = value;
             }
         }
         /// <summary>
@@ -461,13 +461,13 @@ namespace OgcToolkit.WebSample.Models.ModelFirst
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MFRecord>("OgcToolkit.WebSample.Models.ModelFirst.FK_Record_Relation", "Records");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MFRecord>("GeoSik.WebSample.Models.ModelFirst.FK_Record_Relation", "Records");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<MFRecord>("OgcToolkit.WebSample.Models.ModelFirst.FK_Record_Relation", "Records", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<MFRecord>("GeoSik.WebSample.Models.ModelFirst.FK_Record_Relation", "Records", value);
                 }
             }
         }
@@ -481,7 +481,7 @@ namespace OgcToolkit.WebSample.Models.ModelFirst
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmComplexTypeAttribute(NamespaceName="OgcToolkit.WebSample.Models.ModelFirst", Name="MFRecordSubject")]
+    [EdmComplexTypeAttribute(NamespaceName="GeoSik.WebSample.Models.ModelFirst", Name="MFRecordSubject")]
     [DataContractAttribute(IsReference=true)]
     [Serializable()]
     public partial class MFRecordSubject : ComplexObject

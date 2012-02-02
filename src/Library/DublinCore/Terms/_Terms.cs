@@ -1,25 +1,25 @@
 ﻿////////////////////////////////////////////////////////////////////////////////
 //
-// This file is part of OgcToolkit.
+// This file is part of GeoSIK.
 // Copyright (C) 2012 Isogeo
 //
-// OgcToolkit is free software: you can redistribute it and/or modify
+// GeoSIK is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 2 of the License, or
 // (at your option) any later version.
 //
-// OgcToolkit is distributed in the hope that it will be useful,
+// GeoSIK is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with OgcToolkit. If not, see <http://www.gnu.org/licenses/>.
+// along with GeoSIK. If not, see <http://www.gnu.org/licenses/>.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
 #pragma warning disable 108, 114, 3002, 3009
-namespace OgcToolkit.DublinCore.Terms
+namespace GeoSik.DublinCore.Terms
 {
     using System;
     using System.Collections;
@@ -31,7 +31,7 @@ namespace OgcToolkit.DublinCore.Terms
     using System.Xml.Serialization;
     using System.Xml.Linq;
     using Xml.Schema.Linq;
-    using OgcToolkit.Ogc.Ows.V100;
+    using GeoSik.Ogc.Ows.V100;
 
 
     /// <summary>
@@ -46,13 +46,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("@abstractSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class @abstract: global::OgcToolkit.DublinCore.Elements.V11.description, IXMetaData, IXmlSerializable
+    public partial class @abstract: global::GeoSik.DublinCore.Elements.V11.description, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator @abstract(XElement xe) { return XTypedServices.ToXTypedElement<@abstract, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator @abstract(XElement xe) { return XTypedServices.ToXTypedElement<@abstract, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -67,7 +67,7 @@ namespace OgcToolkit.DublinCore.Terms
         public @abstract() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public @abstract(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public @abstract(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -99,7 +99,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -153,27 +153,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static @abstract Load(string xmlFile)
         {
-            return XTypedServices.Load<@abstract, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<@abstract, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static @abstract Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<@abstract, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<@abstract, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static @abstract Parse(string xml)
         {
-            return XTypedServices.Parse<@abstract, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<@abstract, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new @abstract(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new @abstract(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -207,13 +207,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("accessRightsSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class accessRights: global::OgcToolkit.DublinCore.Elements.V11.rights, IXMetaData, IXmlSerializable
+    public partial class accessRights: global::GeoSik.DublinCore.Elements.V11.rights, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator accessRights(XElement xe) { return XTypedServices.ToXTypedElement<accessRights, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator accessRights(XElement xe) { return XTypedServices.ToXTypedElement<accessRights, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -228,7 +228,7 @@ namespace OgcToolkit.DublinCore.Terms
         public accessRights() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -241,7 +241,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public accessRights(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public accessRights(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -260,7 +260,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -314,27 +314,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static accessRights Load(string xmlFile)
         {
-            return XTypedServices.Load<accessRights, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<accessRights, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static accessRights Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<accessRights, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<accessRights, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static accessRights Parse(string xml)
         {
-            return XTypedServices.Parse<accessRights, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<accessRights, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new accessRights(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new accessRights(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -368,13 +368,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("alternativeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class alternative: global::OgcToolkit.DublinCore.Elements.V11.title, IXMetaData, IXmlSerializable
+    public partial class alternative: global::GeoSik.DublinCore.Elements.V11.title, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator alternative(XElement xe) { return XTypedServices.ToXTypedElement<alternative, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator alternative(XElement xe) { return XTypedServices.ToXTypedElement<alternative, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -389,7 +389,7 @@ namespace OgcToolkit.DublinCore.Terms
         public alternative() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -402,7 +402,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public alternative(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public alternative(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -421,7 +421,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -475,27 +475,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static alternative Load(string xmlFile)
         {
-            return XTypedServices.Load<alternative, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<alternative, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static alternative Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<alternative, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<alternative, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static alternative Parse(string xml)
         {
-            return XTypedServices.Parse<alternative, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<alternative, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new alternative(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new alternative(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -529,11 +529,11 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("audienceSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class audience: global::OgcToolkit.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
+    public partial class audience: global::GeoSik.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
         public static explicit operator audience(XElement xe) { return (audience)XTypedServices.ToXTypedElement(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
@@ -555,7 +555,7 @@ namespace OgcToolkit.DublinCore.Terms
         public audience() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -568,7 +568,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public audience(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public audience(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -590,7 +590,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -659,17 +659,17 @@ namespace OgcToolkit.DublinCore.Terms
 
         public override XTypedElement Clone()
         {
-            return new audience(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new audience(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
 
-        protected virtual void SetSubstitutionMember(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        protected virtual void SetSubstitutionMember(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
             this.ContentField=ContentField;
             base.SetSubstitutionMember(ContentField);
@@ -704,13 +704,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("availableSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class available: global::OgcToolkit.DublinCore.Elements.V11.date, IXMetaData, IXmlSerializable
+    public partial class available: global::GeoSik.DublinCore.Elements.V11.date, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator available(XElement xe) { return XTypedServices.ToXTypedElement<available, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator available(XElement xe) { return XTypedServices.ToXTypedElement<available, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -725,7 +725,7 @@ namespace OgcToolkit.DublinCore.Terms
         public available() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -738,7 +738,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public available(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public available(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -757,7 +757,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -811,27 +811,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static available Load(string xmlFile)
         {
-            return XTypedServices.Load<available, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<available, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static available Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<available, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<available, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static available Parse(string xml)
         {
-            return XTypedServices.Parse<available, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<available, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new available(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new available(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -865,13 +865,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("bibliographicCitationSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class bibliographicCitation: global::OgcToolkit.DublinCore.Elements.V11.identifier, IXMetaData, IXmlSerializable
+    public partial class bibliographicCitation: global::GeoSik.DublinCore.Elements.V11.identifier, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator bibliographicCitation(XElement xe) { return XTypedServices.ToXTypedElement<bibliographicCitation, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator bibliographicCitation(XElement xe) { return XTypedServices.ToXTypedElement<bibliographicCitation, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -886,7 +886,7 @@ namespace OgcToolkit.DublinCore.Terms
         public bibliographicCitation() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -899,7 +899,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public bibliographicCitation(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public bibliographicCitation(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -918,7 +918,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -972,27 +972,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static bibliographicCitation Load(string xmlFile)
         {
-            return XTypedServices.Load<bibliographicCitation, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<bibliographicCitation, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static bibliographicCitation Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<bibliographicCitation, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<bibliographicCitation, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static bibliographicCitation Parse(string xml)
         {
-            return XTypedServices.Parse<bibliographicCitation, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<bibliographicCitation, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new bibliographicCitation(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new bibliographicCitation(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -1026,13 +1026,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("conformsToSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class conformsTo: global::OgcToolkit.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
+    public partial class conformsTo: global::GeoSik.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator conformsTo(XElement xe) { return XTypedServices.ToXTypedElement<conformsTo, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator conformsTo(XElement xe) { return XTypedServices.ToXTypedElement<conformsTo, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -1047,7 +1047,7 @@ namespace OgcToolkit.DublinCore.Terms
         public conformsTo() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -1060,7 +1060,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public conformsTo(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public conformsTo(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -1079,7 +1079,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -1133,27 +1133,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static conformsTo Load(string xmlFile)
         {
-            return XTypedServices.Load<conformsTo, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<conformsTo, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static conformsTo Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<conformsTo, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<conformsTo, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static conformsTo Parse(string xml)
         {
-            return XTypedServices.Parse<conformsTo, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<conformsTo, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new conformsTo(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new conformsTo(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -1187,13 +1187,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("createdSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class created: global::OgcToolkit.DublinCore.Elements.V11.date, IXMetaData, IXmlSerializable
+    public partial class created: global::GeoSik.DublinCore.Elements.V11.date, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator created(XElement xe) { return XTypedServices.ToXTypedElement<created, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator created(XElement xe) { return XTypedServices.ToXTypedElement<created, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -1208,7 +1208,7 @@ namespace OgcToolkit.DublinCore.Terms
         public created() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -1221,7 +1221,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public created(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public created(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -1240,7 +1240,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -1294,27 +1294,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static created Load(string xmlFile)
         {
-            return XTypedServices.Load<created, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<created, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static created Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<created, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<created, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static created Parse(string xml)
         {
-            return XTypedServices.Parse<created, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<created, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new created(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new created(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -1348,13 +1348,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("dateAcceptedSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class dateAccepted: global::OgcToolkit.DublinCore.Elements.V11.date, IXMetaData, IXmlSerializable
+    public partial class dateAccepted: global::GeoSik.DublinCore.Elements.V11.date, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator dateAccepted(XElement xe) { return XTypedServices.ToXTypedElement<dateAccepted, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator dateAccepted(XElement xe) { return XTypedServices.ToXTypedElement<dateAccepted, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -1369,7 +1369,7 @@ namespace OgcToolkit.DublinCore.Terms
         public dateAccepted() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -1382,7 +1382,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public dateAccepted(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public dateAccepted(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -1401,7 +1401,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -1455,27 +1455,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static dateAccepted Load(string xmlFile)
         {
-            return XTypedServices.Load<dateAccepted, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<dateAccepted, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static dateAccepted Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<dateAccepted, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<dateAccepted, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static dateAccepted Parse(string xml)
         {
-            return XTypedServices.Parse<dateAccepted, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<dateAccepted, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new dateAccepted(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new dateAccepted(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -1509,13 +1509,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("dateCopyrightedSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class dateCopyrighted: global::OgcToolkit.DublinCore.Elements.V11.date, IXMetaData, IXmlSerializable
+    public partial class dateCopyrighted: global::GeoSik.DublinCore.Elements.V11.date, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator dateCopyrighted(XElement xe) { return XTypedServices.ToXTypedElement<dateCopyrighted, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator dateCopyrighted(XElement xe) { return XTypedServices.ToXTypedElement<dateCopyrighted, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -1530,7 +1530,7 @@ namespace OgcToolkit.DublinCore.Terms
         public dateCopyrighted() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -1543,7 +1543,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public dateCopyrighted(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public dateCopyrighted(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -1562,7 +1562,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -1616,27 +1616,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static dateCopyrighted Load(string xmlFile)
         {
-            return XTypedServices.Load<dateCopyrighted, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<dateCopyrighted, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static dateCopyrighted Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<dateCopyrighted, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<dateCopyrighted, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static dateCopyrighted Parse(string xml)
         {
-            return XTypedServices.Parse<dateCopyrighted, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<dateCopyrighted, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new dateCopyrighted(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new dateCopyrighted(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -1670,13 +1670,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("dateSubmittedSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class dateSubmitted: global::OgcToolkit.DublinCore.Elements.V11.date, IXMetaData, IXmlSerializable
+    public partial class dateSubmitted: global::GeoSik.DublinCore.Elements.V11.date, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator dateSubmitted(XElement xe) { return XTypedServices.ToXTypedElement<dateSubmitted, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator dateSubmitted(XElement xe) { return XTypedServices.ToXTypedElement<dateSubmitted, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -1691,7 +1691,7 @@ namespace OgcToolkit.DublinCore.Terms
         public dateSubmitted() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -1704,7 +1704,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public dateSubmitted(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public dateSubmitted(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -1723,7 +1723,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -1777,27 +1777,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static dateSubmitted Load(string xmlFile)
         {
-            return XTypedServices.Load<dateSubmitted, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<dateSubmitted, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static dateSubmitted Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<dateSubmitted, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<dateSubmitted, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static dateSubmitted Parse(string xml)
         {
-            return XTypedServices.Parse<dateSubmitted, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<dateSubmitted, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new dateSubmitted(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new dateSubmitted(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -1831,13 +1831,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("educationLevelSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class educationLevel: global::OgcToolkit.DublinCore.Terms.audience, IXMetaData, IXmlSerializable
+    public partial class educationLevel: global::GeoSik.DublinCore.Terms.audience, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator educationLevel(XElement xe) { return XTypedServices.ToXTypedElement<educationLevel, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator educationLevel(XElement xe) { return XTypedServices.ToXTypedElement<educationLevel, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -1852,7 +1852,7 @@ namespace OgcToolkit.DublinCore.Terms
         public educationLevel() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -1865,7 +1865,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public educationLevel(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public educationLevel(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -1884,7 +1884,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -1938,27 +1938,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static educationLevel Load(string xmlFile)
         {
-            return XTypedServices.Load<educationLevel, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<educationLevel, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static educationLevel Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<educationLevel, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<educationLevel, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static educationLevel Parse(string xml)
         {
-            return XTypedServices.Parse<educationLevel, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<educationLevel, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new educationLevel(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new educationLevel(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -1992,13 +1992,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("extentSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class extent: global::OgcToolkit.DublinCore.Elements.V11.format, IXMetaData, IXmlSerializable
+    public partial class extent: global::GeoSik.DublinCore.Elements.V11.format, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator extent(XElement xe) { return XTypedServices.ToXTypedElement<extent, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator extent(XElement xe) { return XTypedServices.ToXTypedElement<extent, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -2013,7 +2013,7 @@ namespace OgcToolkit.DublinCore.Terms
         public extent() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -2026,7 +2026,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public extent(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public extent(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -2045,7 +2045,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -2099,27 +2099,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static extent Load(string xmlFile)
         {
-            return XTypedServices.Load<extent, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<extent, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static extent Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<extent, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<extent, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static extent Parse(string xml)
         {
-            return XTypedServices.Parse<extent, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<extent, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new extent(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new extent(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -2153,13 +2153,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("hasFormatSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class hasFormat: global::OgcToolkit.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
+    public partial class hasFormat: global::GeoSik.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator hasFormat(XElement xe) { return XTypedServices.ToXTypedElement<hasFormat, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator hasFormat(XElement xe) { return XTypedServices.ToXTypedElement<hasFormat, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -2174,7 +2174,7 @@ namespace OgcToolkit.DublinCore.Terms
         public hasFormat() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -2187,7 +2187,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public hasFormat(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public hasFormat(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -2206,7 +2206,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -2260,27 +2260,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static hasFormat Load(string xmlFile)
         {
-            return XTypedServices.Load<hasFormat, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<hasFormat, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static hasFormat Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<hasFormat, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<hasFormat, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static hasFormat Parse(string xml)
         {
-            return XTypedServices.Parse<hasFormat, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<hasFormat, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new hasFormat(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new hasFormat(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -2314,13 +2314,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("hasPartSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class hasPart: global::OgcToolkit.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
+    public partial class hasPart: global::GeoSik.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator hasPart(XElement xe) { return XTypedServices.ToXTypedElement<hasPart, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator hasPart(XElement xe) { return XTypedServices.ToXTypedElement<hasPart, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -2335,7 +2335,7 @@ namespace OgcToolkit.DublinCore.Terms
         public hasPart() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -2348,7 +2348,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public hasPart(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public hasPart(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -2367,7 +2367,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -2421,27 +2421,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static hasPart Load(string xmlFile)
         {
-            return XTypedServices.Load<hasPart, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<hasPart, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static hasPart Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<hasPart, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<hasPart, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static hasPart Parse(string xml)
         {
-            return XTypedServices.Parse<hasPart, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<hasPart, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new hasPart(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new hasPart(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -2475,13 +2475,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("hasVersionSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class hasVersion: global::OgcToolkit.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
+    public partial class hasVersion: global::GeoSik.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator hasVersion(XElement xe) { return XTypedServices.ToXTypedElement<hasVersion, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator hasVersion(XElement xe) { return XTypedServices.ToXTypedElement<hasVersion, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -2496,7 +2496,7 @@ namespace OgcToolkit.DublinCore.Terms
         public hasVersion() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -2509,7 +2509,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public hasVersion(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public hasVersion(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -2528,7 +2528,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -2582,27 +2582,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static hasVersion Load(string xmlFile)
         {
-            return XTypedServices.Load<hasVersion, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<hasVersion, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static hasVersion Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<hasVersion, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<hasVersion, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static hasVersion Parse(string xml)
         {
-            return XTypedServices.Parse<hasVersion, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<hasVersion, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new hasVersion(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new hasVersion(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -2636,13 +2636,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("isFormatOfSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class isFormatOf: global::OgcToolkit.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
+    public partial class isFormatOf: global::GeoSik.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator isFormatOf(XElement xe) { return XTypedServices.ToXTypedElement<isFormatOf, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator isFormatOf(XElement xe) { return XTypedServices.ToXTypedElement<isFormatOf, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -2657,7 +2657,7 @@ namespace OgcToolkit.DublinCore.Terms
         public isFormatOf() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -2670,7 +2670,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public isFormatOf(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public isFormatOf(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -2689,7 +2689,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -2743,27 +2743,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static isFormatOf Load(string xmlFile)
         {
-            return XTypedServices.Load<isFormatOf, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<isFormatOf, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static isFormatOf Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<isFormatOf, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<isFormatOf, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static isFormatOf Parse(string xml)
         {
-            return XTypedServices.Parse<isFormatOf, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<isFormatOf, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new isFormatOf(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new isFormatOf(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -2797,13 +2797,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("isPartOfSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class isPartOf: global::OgcToolkit.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
+    public partial class isPartOf: global::GeoSik.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator isPartOf(XElement xe) { return XTypedServices.ToXTypedElement<isPartOf, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator isPartOf(XElement xe) { return XTypedServices.ToXTypedElement<isPartOf, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -2818,7 +2818,7 @@ namespace OgcToolkit.DublinCore.Terms
         public isPartOf() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -2831,7 +2831,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public isPartOf(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public isPartOf(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -2850,7 +2850,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -2904,27 +2904,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static isPartOf Load(string xmlFile)
         {
-            return XTypedServices.Load<isPartOf, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<isPartOf, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static isPartOf Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<isPartOf, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<isPartOf, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static isPartOf Parse(string xml)
         {
-            return XTypedServices.Parse<isPartOf, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<isPartOf, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new isPartOf(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new isPartOf(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -2958,13 +2958,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("isReferencedBySchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class isReferencedBy: global::OgcToolkit.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
+    public partial class isReferencedBy: global::GeoSik.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator isReferencedBy(XElement xe) { return XTypedServices.ToXTypedElement<isReferencedBy, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator isReferencedBy(XElement xe) { return XTypedServices.ToXTypedElement<isReferencedBy, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -2979,7 +2979,7 @@ namespace OgcToolkit.DublinCore.Terms
         public isReferencedBy() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -2992,7 +2992,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public isReferencedBy(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public isReferencedBy(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -3011,7 +3011,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -3065,27 +3065,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static isReferencedBy Load(string xmlFile)
         {
-            return XTypedServices.Load<isReferencedBy, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<isReferencedBy, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static isReferencedBy Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<isReferencedBy, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<isReferencedBy, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static isReferencedBy Parse(string xml)
         {
-            return XTypedServices.Parse<isReferencedBy, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<isReferencedBy, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new isReferencedBy(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new isReferencedBy(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -3119,13 +3119,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("isReplacedBySchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class isReplacedBy: global::OgcToolkit.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
+    public partial class isReplacedBy: global::GeoSik.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator isReplacedBy(XElement xe) { return XTypedServices.ToXTypedElement<isReplacedBy, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator isReplacedBy(XElement xe) { return XTypedServices.ToXTypedElement<isReplacedBy, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -3140,7 +3140,7 @@ namespace OgcToolkit.DublinCore.Terms
         public isReplacedBy() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -3153,7 +3153,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public isReplacedBy(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public isReplacedBy(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -3172,7 +3172,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -3226,27 +3226,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static isReplacedBy Load(string xmlFile)
         {
-            return XTypedServices.Load<isReplacedBy, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<isReplacedBy, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static isReplacedBy Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<isReplacedBy, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<isReplacedBy, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static isReplacedBy Parse(string xml)
         {
-            return XTypedServices.Parse<isReplacedBy, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<isReplacedBy, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new isReplacedBy(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new isReplacedBy(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -3280,13 +3280,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("isRequiredBySchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class isRequiredBy: global::OgcToolkit.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
+    public partial class isRequiredBy: global::GeoSik.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator isRequiredBy(XElement xe) { return XTypedServices.ToXTypedElement<isRequiredBy, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator isRequiredBy(XElement xe) { return XTypedServices.ToXTypedElement<isRequiredBy, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -3301,7 +3301,7 @@ namespace OgcToolkit.DublinCore.Terms
         public isRequiredBy() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -3314,7 +3314,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public isRequiredBy(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public isRequiredBy(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -3333,7 +3333,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -3387,27 +3387,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static isRequiredBy Load(string xmlFile)
         {
-            return XTypedServices.Load<isRequiredBy, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<isRequiredBy, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static isRequiredBy Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<isRequiredBy, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<isRequiredBy, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static isRequiredBy Parse(string xml)
         {
-            return XTypedServices.Parse<isRequiredBy, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<isRequiredBy, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new isRequiredBy(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new isRequiredBy(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -3441,13 +3441,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("issuedSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class issued: global::OgcToolkit.DublinCore.Elements.V11.date, IXMetaData, IXmlSerializable
+    public partial class issued: global::GeoSik.DublinCore.Elements.V11.date, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator issued(XElement xe) { return XTypedServices.ToXTypedElement<issued, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator issued(XElement xe) { return XTypedServices.ToXTypedElement<issued, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -3462,7 +3462,7 @@ namespace OgcToolkit.DublinCore.Terms
         public issued() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -3475,7 +3475,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public issued(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public issued(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -3494,7 +3494,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -3548,27 +3548,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static issued Load(string xmlFile)
         {
-            return XTypedServices.Load<issued, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<issued, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static issued Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<issued, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<issued, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static issued Parse(string xml)
         {
-            return XTypedServices.Parse<issued, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<issued, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new issued(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new issued(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -3602,13 +3602,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("isVersionOfSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class isVersionOf: global::OgcToolkit.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
+    public partial class isVersionOf: global::GeoSik.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator isVersionOf(XElement xe) { return XTypedServices.ToXTypedElement<isVersionOf, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator isVersionOf(XElement xe) { return XTypedServices.ToXTypedElement<isVersionOf, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -3623,7 +3623,7 @@ namespace OgcToolkit.DublinCore.Terms
         public isVersionOf() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -3636,7 +3636,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public isVersionOf(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public isVersionOf(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -3655,7 +3655,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -3709,27 +3709,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static isVersionOf Load(string xmlFile)
         {
-            return XTypedServices.Load<isVersionOf, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<isVersionOf, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static isVersionOf Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<isVersionOf, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<isVersionOf, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static isVersionOf Parse(string xml)
         {
-            return XTypedServices.Parse<isVersionOf, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<isVersionOf, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new isVersionOf(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new isVersionOf(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -3763,13 +3763,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("licenseSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class license: global::OgcToolkit.DublinCore.Elements.V11.rights, IXMetaData, IXmlSerializable
+    public partial class license: global::GeoSik.DublinCore.Elements.V11.rights, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator license(XElement xe) { return XTypedServices.ToXTypedElement<license, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator license(XElement xe) { return XTypedServices.ToXTypedElement<license, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -3784,7 +3784,7 @@ namespace OgcToolkit.DublinCore.Terms
         public license() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -3797,7 +3797,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public license(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public license(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -3816,7 +3816,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -3870,27 +3870,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static license Load(string xmlFile)
         {
-            return XTypedServices.Load<license, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<license, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static license Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<license, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<license, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static license Parse(string xml)
         {
-            return XTypedServices.Parse<license, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<license, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new license(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new license(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -3924,13 +3924,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("mediatorSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class mediator: global::OgcToolkit.DublinCore.Terms.audience, IXMetaData, IXmlSerializable
+    public partial class mediator: global::GeoSik.DublinCore.Terms.audience, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator mediator(XElement xe) { return XTypedServices.ToXTypedElement<mediator, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator mediator(XElement xe) { return XTypedServices.ToXTypedElement<mediator, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -3945,7 +3945,7 @@ namespace OgcToolkit.DublinCore.Terms
         public mediator() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -3958,7 +3958,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public mediator(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public mediator(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -3977,7 +3977,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -4031,27 +4031,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static mediator Load(string xmlFile)
         {
-            return XTypedServices.Load<mediator, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<mediator, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static mediator Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<mediator, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<mediator, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static mediator Parse(string xml)
         {
-            return XTypedServices.Parse<mediator, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<mediator, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new mediator(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new mediator(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -4085,13 +4085,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("mediumSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class medium: global::OgcToolkit.DublinCore.Elements.V11.format, IXMetaData, IXmlSerializable
+    public partial class medium: global::GeoSik.DublinCore.Elements.V11.format, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator medium(XElement xe) { return XTypedServices.ToXTypedElement<medium, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator medium(XElement xe) { return XTypedServices.ToXTypedElement<medium, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -4106,7 +4106,7 @@ namespace OgcToolkit.DublinCore.Terms
         public medium() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -4119,7 +4119,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public medium(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public medium(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -4138,7 +4138,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -4192,27 +4192,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static medium Load(string xmlFile)
         {
-            return XTypedServices.Load<medium, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<medium, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static medium Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<medium, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<medium, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static medium Parse(string xml)
         {
-            return XTypedServices.Parse<medium, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<medium, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new medium(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new medium(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -4246,13 +4246,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("modifiedSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class modified: global::OgcToolkit.DublinCore.Elements.V11.date, IXMetaData, IXmlSerializable
+    public partial class modified: global::GeoSik.DublinCore.Elements.V11.date, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator modified(XElement xe) { return XTypedServices.ToXTypedElement<modified, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator modified(XElement xe) { return XTypedServices.ToXTypedElement<modified, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -4267,7 +4267,7 @@ namespace OgcToolkit.DublinCore.Terms
         public modified() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -4280,7 +4280,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public modified(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public modified(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -4299,7 +4299,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -4353,27 +4353,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static modified Load(string xmlFile)
         {
-            return XTypedServices.Load<modified, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<modified, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static modified Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<modified, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<modified, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static modified Parse(string xml)
         {
-            return XTypedServices.Parse<modified, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<modified, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new modified(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new modified(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -4407,13 +4407,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("provenanceSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class provenance: global::OgcToolkit.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
+    public partial class provenance: global::GeoSik.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator provenance(XElement xe) { return XTypedServices.ToXTypedElement<provenance, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator provenance(XElement xe) { return XTypedServices.ToXTypedElement<provenance, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -4428,7 +4428,7 @@ namespace OgcToolkit.DublinCore.Terms
         public provenance() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -4441,7 +4441,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public provenance(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public provenance(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -4460,7 +4460,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -4514,27 +4514,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static provenance Load(string xmlFile)
         {
-            return XTypedServices.Load<provenance, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<provenance, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static provenance Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<provenance, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<provenance, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static provenance Parse(string xml)
         {
-            return XTypedServices.Parse<provenance, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<provenance, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new provenance(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new provenance(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -4568,13 +4568,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("referencesSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class references: global::OgcToolkit.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
+    public partial class references: global::GeoSik.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator references(XElement xe) { return XTypedServices.ToXTypedElement<references, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator references(XElement xe) { return XTypedServices.ToXTypedElement<references, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -4589,7 +4589,7 @@ namespace OgcToolkit.DublinCore.Terms
         public references() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -4602,7 +4602,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public references(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public references(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -4621,7 +4621,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -4675,27 +4675,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static references Load(string xmlFile)
         {
-            return XTypedServices.Load<references, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<references, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static references Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<references, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<references, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static references Parse(string xml)
         {
-            return XTypedServices.Parse<references, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<references, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new references(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new references(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -4729,13 +4729,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("replacesSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class replaces: global::OgcToolkit.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
+    public partial class replaces: global::GeoSik.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator replaces(XElement xe) { return XTypedServices.ToXTypedElement<replaces, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator replaces(XElement xe) { return XTypedServices.ToXTypedElement<replaces, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -4750,7 +4750,7 @@ namespace OgcToolkit.DublinCore.Terms
         public replaces() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -4763,7 +4763,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public replaces(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public replaces(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -4782,7 +4782,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -4836,27 +4836,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static replaces Load(string xmlFile)
         {
-            return XTypedServices.Load<replaces, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<replaces, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static replaces Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<replaces, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<replaces, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static replaces Parse(string xml)
         {
-            return XTypedServices.Parse<replaces, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<replaces, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new replaces(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new replaces(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -4890,13 +4890,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("requiresSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class requires: global::OgcToolkit.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
+    public partial class requires: global::GeoSik.DublinCore.Elements.V11.relation, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator requires(XElement xe) { return XTypedServices.ToXTypedElement<requires, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator requires(XElement xe) { return XTypedServices.ToXTypedElement<requires, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -4911,7 +4911,7 @@ namespace OgcToolkit.DublinCore.Terms
         public requires() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -4924,7 +4924,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public requires(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public requires(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -4943,7 +4943,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -4997,27 +4997,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static requires Load(string xmlFile)
         {
-            return XTypedServices.Load<requires, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<requires, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static requires Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<requires, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<requires, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static requires Parse(string xml)
         {
-            return XTypedServices.Parse<requires, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<requires, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new requires(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new requires(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -5051,13 +5051,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("rightsHolderSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class rightsHolder: global::OgcToolkit.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
+    public partial class rightsHolder: global::GeoSik.DublinCore.Elements.V11.DCelement, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator rightsHolder(XElement xe) { return XTypedServices.ToXTypedElement<rightsHolder, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator rightsHolder(XElement xe) { return XTypedServices.ToXTypedElement<rightsHolder, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -5072,7 +5072,7 @@ namespace OgcToolkit.DublinCore.Terms
         public rightsHolder() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -5085,7 +5085,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public rightsHolder(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public rightsHolder(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -5104,7 +5104,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -5158,27 +5158,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static rightsHolder Load(string xmlFile)
         {
-            return XTypedServices.Load<rightsHolder, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<rightsHolder, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static rightsHolder Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<rightsHolder, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<rightsHolder, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static rightsHolder Parse(string xml)
         {
-            return XTypedServices.Parse<rightsHolder, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<rightsHolder, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new rightsHolder(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new rightsHolder(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -5212,13 +5212,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("spatialSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class spatial: global::OgcToolkit.DublinCore.Elements.V11.coverage, IXMetaData, IXmlSerializable
+    public partial class spatial: global::GeoSik.DublinCore.Elements.V11.coverage, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator spatial(XElement xe) { return XTypedServices.ToXTypedElement<spatial, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator spatial(XElement xe) { return XTypedServices.ToXTypedElement<spatial, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -5233,7 +5233,7 @@ namespace OgcToolkit.DublinCore.Terms
         public spatial() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -5246,7 +5246,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public spatial(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public spatial(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -5265,7 +5265,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -5319,27 +5319,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static spatial Load(string xmlFile)
         {
-            return XTypedServices.Load<spatial, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<spatial, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static spatial Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<spatial, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<spatial, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static spatial Parse(string xml)
         {
-            return XTypedServices.Parse<spatial, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<spatial, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new spatial(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new spatial(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -5373,13 +5373,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("tableOfContentsSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class tableOfContents: global::OgcToolkit.DublinCore.Elements.V11.description, IXMetaData, IXmlSerializable
+    public partial class tableOfContents: global::GeoSik.DublinCore.Elements.V11.description, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator tableOfContents(XElement xe) { return XTypedServices.ToXTypedElement<tableOfContents, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator tableOfContents(XElement xe) { return XTypedServices.ToXTypedElement<tableOfContents, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -5394,7 +5394,7 @@ namespace OgcToolkit.DublinCore.Terms
         public tableOfContents() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -5407,7 +5407,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public tableOfContents(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public tableOfContents(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -5426,7 +5426,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -5480,27 +5480,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static tableOfContents Load(string xmlFile)
         {
-            return XTypedServices.Load<tableOfContents, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<tableOfContents, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static tableOfContents Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<tableOfContents, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<tableOfContents, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static tableOfContents Parse(string xml)
         {
-            return XTypedServices.Parse<tableOfContents, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<tableOfContents, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new tableOfContents(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new tableOfContents(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -5534,13 +5534,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("temporalSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class temporal: global::OgcToolkit.DublinCore.Elements.V11.coverage, IXMetaData, IXmlSerializable
+    public partial class temporal: global::GeoSik.DublinCore.Elements.V11.coverage, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator temporal(XElement xe) { return XTypedServices.ToXTypedElement<temporal, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator temporal(XElement xe) { return XTypedServices.ToXTypedElement<temporal, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -5555,7 +5555,7 @@ namespace OgcToolkit.DublinCore.Terms
         public temporal() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -5568,7 +5568,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public temporal(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public temporal(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -5587,7 +5587,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -5641,27 +5641,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static temporal Load(string xmlFile)
         {
-            return XTypedServices.Load<temporal, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<temporal, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static temporal Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<temporal, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<temporal, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static temporal Parse(string xml)
         {
-            return XTypedServices.Parse<temporal, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<temporal, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new temporal(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new temporal(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -5695,13 +5695,13 @@ namespace OgcToolkit.DublinCore.Terms
     /// </summary>
     [XmlSchemaProviderAttribute("validSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class valid: global::OgcToolkit.DublinCore.Elements.V11.date, IXMetaData, IXmlSerializable
+    public partial class valid: global::GeoSik.DublinCore.Elements.V11.date, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField;
+        private GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField;
 
-        public static explicit operator valid(XElement xe) { return XTypedServices.ToXTypedElement<valid, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator valid(XElement xe) { return XTypedServices.ToXTypedElement<valid, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         /// <summary>
         /// <para>
@@ -5716,7 +5716,7 @@ namespace OgcToolkit.DublinCore.Terms
         public valid() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral());
+            SetInnerType(new GeoSik.DublinCore.Elements.V11.SimpleLiteral());
         }
 
         /// <summary>
@@ -5729,7 +5729,7 @@ namespace OgcToolkit.DublinCore.Terms
         ///      an encoding scheme that describes the value domain for a given property.
         /// </para>
         /// </summary>
-        public valid(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral content) :
+        public valid(GeoSik.DublinCore.Elements.V11.SimpleLiteral content) :
             base(true)
         {
             SetInnerType(content);
@@ -5748,7 +5748,7 @@ namespace OgcToolkit.DublinCore.Terms
             }
         }
 
-        public new OgcToolkit.DublinCore.Elements.V11.SimpleLiteral Content
+        public new GeoSik.DublinCore.Elements.V11.SimpleLiteral Content
         {
             get
             {
@@ -5802,27 +5802,27 @@ namespace OgcToolkit.DublinCore.Terms
 
         public new static valid Load(string xmlFile)
         {
-            return XTypedServices.Load<valid, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<valid, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static valid Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<valid, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<valid, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static valid Parse(string xml)
         {
-            return XTypedServices.Parse<valid, OgcToolkit.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<valid, GeoSik.DublinCore.Elements.V11.SimpleLiteral>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new valid(((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
+            return new valid(((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.DublinCore.Elements.V11.SimpleLiteral ContentField)
+        private void SetInnerType(GeoSik.DublinCore.Elements.V11.SimpleLiteral ContentField)
         {
-            this.ContentField=((OgcToolkit.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.DublinCore.Elements.V11.SimpleLiteral)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }

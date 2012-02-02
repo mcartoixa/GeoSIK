@@ -1,20 +1,20 @@
 ﻿////////////////////////////////////////////////////////////////////////////////
 //
-// This file is part of OgcToolkit.
+// This file is part of GeoSIK.
 // Copyright (C) 2012 Isogeo
 //
-// OgcToolkit is free software: you can redistribute it and/or modify
+// GeoSIK is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 2 of the License, or
 // (at your option) any later version.
 //
-// OgcToolkit is distributed in the hope that it will be useful,
+// GeoSIK is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with OgcToolkit. If not, see <http://www.gnu.org/licenses/>.
+// along with GeoSIK. If not, see <http://www.gnu.org/licenses/>.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -27,7 +27,7 @@ using System.Reflection;
 using System.Web;
 using Microsoft.SqlServer.Types;
 
-namespace OgcToolkit.WebSample.Models.ModelFirst
+namespace GeoSik.WebSample.Models.ModelFirst
 {
 
     public class OperatorsImplementationProvider:
@@ -125,7 +125,7 @@ namespace OgcToolkit.WebSample.Models.ModelFirst
             return ret;
         }
 
-        [EdmFunction("OgcToolkit.WebSample.Models.ModelFirst.Store", "Geometry_STContains")]
+        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STContains")]
         public static int? GeometrySTContains(byte[] geom1, byte[] geom2)
         {
             SqlGeometry g1=GetGeometry(geom1);
@@ -138,7 +138,7 @@ namespace OgcToolkit.WebSample.Models.ModelFirst
             return (ret.IsNull ? (int?)null : ret.Value);
         }
 
-        [EdmFunction("OgcToolkit.WebSample.Models.ModelFirst.Store", "Geometry_STCrosses")]
+        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STCrosses")]
         public static int? GeometrySTCrosses(byte[] geom1, byte[] geom2)
         {
             SqlGeometry g1=GetGeometry(geom1);
@@ -151,7 +151,7 @@ namespace OgcToolkit.WebSample.Models.ModelFirst
             return (ret.IsNull ? (int?)null : ret.Value);
         }
 
-        [EdmFunction("OgcToolkit.WebSample.Models.ModelFirst.Store", "Geometry_STDisjoint")]
+        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STDisjoint")]
         public static int? GeometrySTDisjoint(byte[] geom1, byte[] geom2)
         {
             SqlGeometry g1=GetGeometry(geom1);
@@ -164,7 +164,7 @@ namespace OgcToolkit.WebSample.Models.ModelFirst
             return (ret.IsNull ? (int?)null : ret.Value);
         }
 
-        [EdmFunction("OgcToolkit.WebSample.Models.ModelFirst.Store", "Geometry_STDistance")]
+        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STDistance")]
         public static double? GeometrySTDistance(byte[] geom1, byte[] geom2)
         {
             SqlGeometry g1=GetGeometry(geom1);
@@ -177,7 +177,7 @@ namespace OgcToolkit.WebSample.Models.ModelFirst
             return (ret.IsNull ? (double?)null : ret.Value);
         }
 
-        [EdmFunction("OgcToolkit.WebSample.Models.ModelFirst.Store", "Geometry_STEquals")]
+        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STEquals")]
         public static int? GeometrySTEquals(byte[] geom1, byte[] geom2)
         {
             SqlGeometry g1=GetGeometry(geom1);
@@ -190,7 +190,7 @@ namespace OgcToolkit.WebSample.Models.ModelFirst
             return (ret.IsNull ? (int?)null : ret.Value);
         }
 
-        [EdmFunction("OgcToolkit.WebSample.Models.ModelFirst.Store", "Geometry_STIntersects")]
+        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STIntersects")]
         public static int? GeometrySTIntersects(byte[] geom1, byte[] geom2)
         {
             SqlGeometry g1=GetGeometry(geom1);
@@ -203,7 +203,7 @@ namespace OgcToolkit.WebSample.Models.ModelFirst
             return (ret.IsNull ? (int?)null : ret.Value);
         }
 
-        [EdmFunction("OgcToolkit.WebSample.Models.ModelFirst.Store", "Geometry_STOverlaps")]
+        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STOverlaps")]
         public static int? GeometrySTOverlaps(byte[] geom1, byte[] geom2)
         {
             SqlGeometry g1=GetGeometry(geom1);
@@ -216,7 +216,7 @@ namespace OgcToolkit.WebSample.Models.ModelFirst
             return (ret.IsNull ? (int?)null : ret.Value);
         }
 
-        [EdmFunction("OgcToolkit.WebSample.Models.ModelFirst.Store", "Geometry_STTouches")]
+        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STTouches")]
         public static int? GeometrySTTouches(byte[] geom1, byte[] geom2)
         {
             SqlGeometry g1=GetGeometry(geom1);
@@ -229,7 +229,7 @@ namespace OgcToolkit.WebSample.Models.ModelFirst
             return (ret.IsNull ? (int?)null : ret.Value);
         }
 
-        [EdmFunction("OgcToolkit.WebSample.Models.ModelFirst.Store", "Geometry_STWithin")]
+        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STWithin")]
         public static int? GeometrySTWithin(byte[] geom1, byte[] geom2)
         {
             SqlGeometry g1=GetGeometry(geom1);
@@ -242,7 +242,7 @@ namespace OgcToolkit.WebSample.Models.ModelFirst
             return (ret.IsNull ? (int?)null : ret.Value);
         }
 
-        [EdmFunction("OgcToolkit.WebSample.Models.ModelFirst.Store", "String_Equals")]
+        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "String_Equals")]
         public static int? StringEquals(string string1, string string2, int comparison)
         {
             if (string1==null)
@@ -252,19 +252,19 @@ namespace OgcToolkit.WebSample.Models.ModelFirst
             return Convert.ToInt32(ret);
         }
 
-        [EdmFunction("OgcToolkit.WebSample.Models.ModelFirst.Store", "String_Like")]
+        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "String_Like")]
         public static int? StringLike(string @string, string pattern, string escape, int comparison)
         {
             throw new NotSupportedException();
         }
 
-        [EdmFunction("OgcToolkit.WebSample.Models.ModelFirst", "StringCILike")]
+        [EdmFunction("GeoSik.WebSample.Models.ModelFirst", "StringCILike")]
         public static bool StringCILike(string @string, string pattern, string escape, int comparison)
         {
             throw new NotSupportedException();
         }
 
-        [EdmFunction("OgcToolkit.WebSample.Models.ModelFirst.Store", "String_NotEqual")]
+        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "String_NotEqual")]
         public static int? StringNotEqual(string string1, string string2, int comparison)
         {
             if (string1==null)

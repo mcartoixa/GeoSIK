@@ -1,25 +1,25 @@
 ﻿////////////////////////////////////////////////////////////////////////////////
 //
-// This file is part of OgcToolkit.
+// This file is part of GeoSIK.
 // Copyright (C) 2012 Isogeo
 //
-// OgcToolkit is free software: you can redistribute it and/or modify
+// GeoSIK is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 2 of the License, or
 // (at your option) any later version.
 //
-// OgcToolkit is distributed in the hope that it will be useful,
+// GeoSIK is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with OgcToolkit. If not, see <http://www.gnu.org/licenses/>.
+// along with GeoSIK. If not, see <http://www.gnu.org/licenses/>.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
 #pragma warning disable 108, 114, 3002, 3003, 3008, 3009
-namespace OgcToolkit.Ogc.Ows.V100
+namespace GeoSik.Ogc.Ows.V100
 {
     using System;
     using System.Collections;
@@ -31,11 +31,11 @@ namespace OgcToolkit.Ogc.Ows.V100
     using System.Xml.Serialization;
     using System.Xml.Linq;
     using Xml.Schema.Linq;
-    using OgcToolkit.Ogc.Filter.V110;
-    using OgcToolkit.Ogc.Gml.V311;
-    using OgcToolkit.Ogc.WebCatalog.Csw.V202;
-    using OgcToolkit.DublinCore.Elements.V11;
-    using OgcToolkit.DublinCore.Terms;
+    using GeoSik.Ogc.Filter.V110;
+    using GeoSik.Ogc.Gml.V311;
+    using GeoSik.Ogc.WebCatalog.Csw.V202;
+    using GeoSik.DublinCore.Elements.V11;
+    using GeoSik.DublinCore.Terms;
 
 
     [XmlSchemaProviderAttribute("AbstractMetaDataSchemaProvider")]
@@ -2461,7 +2461,7 @@ namespace OgcToolkit.Ogc.Ows.V100
     /// </summary>
     [XmlSchemaProviderAttribute("WGS84BoundingBoxTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class WGS84BoundingBoxType: global::OgcToolkit.Ogc.Ows.V100.BoundingBoxType, IXMetaData, IXmlSerializable
+    public partial class WGS84BoundingBoxType: global::GeoSik.Ogc.Ows.V100.BoundingBoxType, IXMetaData, IXmlSerializable
     {
 
         public static explicit operator WGS84BoundingBoxType(XElement xe) { return XTypedServices.ToXTypedElement<WGS84BoundingBoxType>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
@@ -4292,7 +4292,7 @@ namespace OgcToolkit.Ogc.Ows.V100
     /// </summary>
     [XmlSchemaProviderAttribute("IdentificationTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class IdentificationType: global::OgcToolkit.Ogc.Ows.V100.DescriptionType, IXMetaData, IXmlSerializable
+    public partial class IdentificationType: global::GeoSik.Ogc.Ows.V100.DescriptionType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -4594,7 +4594,7 @@ namespace OgcToolkit.Ogc.Ows.V100
     /// </summary>
     [XmlSchemaProviderAttribute("RequestMethodTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class RequestMethodType: global::OgcToolkit.Ogc.Ows.V100.OnlineResourceType, IXMetaData, IXmlSerializable
+    public partial class RequestMethodType: global::GeoSik.Ogc.Ows.V100.OnlineResourceType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -6533,7 +6533,7 @@ namespace OgcToolkit.Ogc.Ows.V100
     /// </summary>
     [XmlSchemaProviderAttribute("WGS84BoundingBoxSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class WGS84BoundingBox: global::OgcToolkit.Ogc.Ows.V100.BoundingBox, IXMetaData, IXmlSerializable
+    public partial class WGS84BoundingBox: global::GeoSik.Ogc.Ows.V100.BoundingBox, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -8397,7 +8397,7 @@ namespace OgcToolkit.Ogc.Ows.V100
             }
             set
             {
-                this.SetValueWithValidation(value, "TypedValue", global::OgcToolkit.Ogc.Ows.V100.MimeType.TypeDefinition);
+                this.SetValueWithValidation(value, "TypedValue", global::GeoSik.Ogc.Ows.V100.MimeType.TypeDefinition);
             }
         }
 
@@ -8590,7 +8590,7 @@ namespace OgcToolkit.Ogc.Ows.V100
 
     [XmlSchemaProviderAttribute("SupportedCRSSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class SupportedCRS: global::OgcToolkit.Ogc.Ows.V100.AvailableCRS, IXMetaData, IXmlSerializable
+    public partial class SupportedCRS: global::GeoSik.Ogc.Ows.V100.AvailableCRS, IXMetaData, IXmlSerializable
     {
 
         public static explicit operator SupportedCRS(XElement xe) { return XTypedServices.ToXTypedElement<SupportedCRS>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
@@ -9546,804 +9546,804 @@ namespace OgcToolkit.Ogc.Ows.V100
 
         private static void BuildTypeDictionary()
         {
-            typeDictionary.Add(XName.Get("AbstractRecordType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.AbstractRecordType));
-            typeDictionary.Add(XName.Get("DCMIRecordType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.DCMIRecordType));
-            typeDictionary.Add(XName.Get("BriefRecordType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.BriefRecordType));
-            typeDictionary.Add(XName.Get("SummaryRecordType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.SummaryRecordType));
-            typeDictionary.Add(XName.Get("RecordType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.RecordType));
-            typeDictionary.Add(XName.Get("EmptyType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.EmptyType));
-            typeDictionary.Add(XName.Get("RequestBaseType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.RequestBaseType));
-            typeDictionary.Add(XName.Get("GetCapabilitiesType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetCapabilitiesType));
-            typeDictionary.Add(XName.Get("CapabilitiesType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.CapabilitiesType));
-            typeDictionary.Add(XName.Get("DescribeRecordType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.DescribeRecordType));
-            typeDictionary.Add(XName.Get("DescribeRecordResponseType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.DescribeRecordResponseType));
-            typeDictionary.Add(XName.Get("SchemaComponentType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.SchemaComponentType));
-            typeDictionary.Add(XName.Get("GetRecordsType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecordsType));
-            typeDictionary.Add(XName.Get("DistributedSearchType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.DistributedSearchType));
-            typeDictionary.Add(XName.Get("AbstractQueryType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.AbstractQueryType));
-            typeDictionary.Add(XName.Get("QueryType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.QueryType));
-            typeDictionary.Add(XName.Get("QueryConstraintType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.QueryConstraintType));
-            typeDictionary.Add(XName.Get("ElementSetNameType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.ElementSetNameType));
-            typeDictionary.Add(XName.Get("GetRecordsResponseType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecordsResponseType));
-            typeDictionary.Add(XName.Get("RequestStatusType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.RequestStatusType));
-            typeDictionary.Add(XName.Get("SearchResultsType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.SearchResultsType));
-            typeDictionary.Add(XName.Get("GetRecordByIdType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecordByIdType));
-            typeDictionary.Add(XName.Get("GetRecordByIdResponseType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecordByIdResponseType));
-            typeDictionary.Add(XName.Get("GetDomainType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetDomainType));
-            typeDictionary.Add(XName.Get("GetDomainResponseType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetDomainResponseType));
-            typeDictionary.Add(XName.Get("DomainValuesType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.DomainValuesType));
-            typeDictionary.Add(XName.Get("ListOfValuesType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.ListOfValuesType));
-            typeDictionary.Add(XName.Get("ConceptualSchemeType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.ConceptualSchemeType));
-            typeDictionary.Add(XName.Get("RangeOfValuesType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.RangeOfValuesType));
-            typeDictionary.Add(XName.Get("AcknowledgementType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.AcknowledgementType));
-            typeDictionary.Add(XName.Get("EchoedRequestType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.EchoedRequestType));
-            typeDictionary.Add(XName.Get("TransactionType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.TransactionType));
-            typeDictionary.Add(XName.Get("InsertType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.InsertType));
-            typeDictionary.Add(XName.Get("UpdateType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.UpdateType));
-            typeDictionary.Add(XName.Get("DeleteType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.DeleteType));
-            typeDictionary.Add(XName.Get("RecordPropertyType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.RecordPropertyType));
-            typeDictionary.Add(XName.Get("TransactionResponseType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.TransactionResponseType));
-            typeDictionary.Add(XName.Get("TransactionSummaryType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.TransactionSummaryType));
-            typeDictionary.Add(XName.Get("InsertResultType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.InsertResultType));
-            typeDictionary.Add(XName.Get("HarvestType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.HarvestType));
-            typeDictionary.Add(XName.Get("HarvestResponseType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.HarvestResponseType));
-            typeDictionary.Add(XName.Get("SimpleLiteral", "http://purl.org/dc/elements/1.1/"), typeof(global::OgcToolkit.DublinCore.Elements.V11.SimpleLiteral));
-            typeDictionary.Add(XName.Get("elementContainer", "http://purl.org/dc/elements/1.1/"), typeof(global::OgcToolkit.DublinCore.Elements.V11.elementContainer));
-            typeDictionary.Add(XName.Get("MetadataType", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.MetadataType));
-            typeDictionary.Add(XName.Get("BoundingBoxType", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.BoundingBoxType));
-            typeDictionary.Add(XName.Get("WGS84BoundingBoxType", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.WGS84BoundingBoxType));
-            typeDictionary.Add(XName.Get("KeywordsType", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.KeywordsType));
-            typeDictionary.Add(XName.Get("CodeType", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.CodeType));
-            typeDictionary.Add(XName.Get("ResponsiblePartyType", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.ResponsiblePartyType));
-            typeDictionary.Add(XName.Get("ResponsiblePartySubsetType", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.ResponsiblePartySubsetType));
-            typeDictionary.Add(XName.Get("ContactType", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.ContactType));
-            typeDictionary.Add(XName.Get("OnlineResourceType", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.OnlineResourceType));
-            typeDictionary.Add(XName.Get("TelephoneType", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.TelephoneType));
-            typeDictionary.Add(XName.Get("AddressType", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.AddressType));
-            typeDictionary.Add(XName.Get("DescriptionType", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.DescriptionType));
-            typeDictionary.Add(XName.Get("IdentificationType", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.IdentificationType));
-            typeDictionary.Add(XName.Get("RequestMethodType", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.RequestMethodType));
-            typeDictionary.Add(XName.Get("DomainType", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.DomainType));
-            typeDictionary.Add(XName.Get("CapabilitiesBaseType", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.CapabilitiesBaseType));
-            typeDictionary.Add(XName.Get("GetCapabilitiesType", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.GetCapabilitiesType));
-            typeDictionary.Add(XName.Get("AcceptVersionsType", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.AcceptVersionsType));
-            typeDictionary.Add(XName.Get("SectionsType", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.SectionsType));
-            typeDictionary.Add(XName.Get("AcceptFormatsType", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.AcceptFormatsType));
-            typeDictionary.Add(XName.Get("ExceptionType", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.ExceptionType));
-            typeDictionary.Add(XName.Get("ExpressionType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.ExpressionType));
-            typeDictionary.Add(XName.Get("BinaryOperatorType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.BinaryOperatorType));
-            typeDictionary.Add(XName.Get("FunctionType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.FunctionType));
-            typeDictionary.Add(XName.Get("LiteralType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.LiteralType));
-            typeDictionary.Add(XName.Get("PropertyNameType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.PropertyNameType));
-            typeDictionary.Add(XName.Get("SortByType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.SortByType));
-            typeDictionary.Add(XName.Get("SortPropertyType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.SortPropertyType));
-            typeDictionary.Add(XName.Get("Spatial_CapabilitiesType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.Spatial_CapabilitiesType));
-            typeDictionary.Add(XName.Get("GeometryOperandsType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.GeometryOperandsType));
-            typeDictionary.Add(XName.Get("SpatialOperatorsType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.SpatialOperatorsType));
-            typeDictionary.Add(XName.Get("SpatialOperatorType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.SpatialOperatorType));
-            typeDictionary.Add(XName.Get("Scalar_CapabilitiesType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.Scalar_CapabilitiesType));
-            typeDictionary.Add(XName.Get("ComparisonOperatorsType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.ComparisonOperatorsType));
-            typeDictionary.Add(XName.Get("ArithmeticOperatorsType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.ArithmeticOperatorsType));
-            typeDictionary.Add(XName.Get("FunctionsType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.FunctionsType));
-            typeDictionary.Add(XName.Get("FunctionNamesType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.FunctionNamesType));
-            typeDictionary.Add(XName.Get("FunctionNameType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.FunctionNameType));
-            typeDictionary.Add(XName.Get("Id_CapabilitiesType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.Id_CapabilitiesType));
-            typeDictionary.Add(XName.Get("FilterType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.FilterType));
-            typeDictionary.Add(XName.Get("ComparisonOpsType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.ComparisonOpsType));
-            typeDictionary.Add(XName.Get("SpatialOpsType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.SpatialOpsType));
-            typeDictionary.Add(XName.Get("LogicOpsType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.LogicOpsType));
-            typeDictionary.Add(XName.Get("AbstractIdType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.AbstractIdType));
-            typeDictionary.Add(XName.Get("FeatureIdType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.FeatureIdType));
-            typeDictionary.Add(XName.Get("GmlObjectIdType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.GmlObjectIdType));
-            typeDictionary.Add(XName.Get("BinaryComparisonOpType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.BinaryComparisonOpType));
-            typeDictionary.Add(XName.Get("PropertyIsLikeType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.PropertyIsLikeType));
-            typeDictionary.Add(XName.Get("PropertyIsNullType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.PropertyIsNullType));
-            typeDictionary.Add(XName.Get("PropertyIsBetweenType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.PropertyIsBetweenType));
-            typeDictionary.Add(XName.Get("LowerBoundaryType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.LowerBoundaryType));
-            typeDictionary.Add(XName.Get("UpperBoundaryType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.UpperBoundaryType));
-            typeDictionary.Add(XName.Get("BinarySpatialOpType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.BinarySpatialOpType));
-            typeDictionary.Add(XName.Get("BBOXType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.BBOXType));
-            typeDictionary.Add(XName.Get("DistanceBufferType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.DistanceBufferType));
-            typeDictionary.Add(XName.Get("DistanceType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.DistanceType));
-            typeDictionary.Add(XName.Get("BinaryLogicOpType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.BinaryLogicOpType));
-            typeDictionary.Add(XName.Get("UnaryLogicOpType", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.UnaryLogicOpType));
-            typeDictionary.Add(XName.Get("CodeType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.CodeType));
-            typeDictionary.Add(XName.Get("CodeListType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.CodeListType));
-            typeDictionary.Add(XName.Get("CodeOrNullListType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.CodeOrNullListType));
-            typeDictionary.Add(XName.Get("MeasureType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MeasureType));
-            typeDictionary.Add(XName.Get("MeasureListType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MeasureListType));
-            typeDictionary.Add(XName.Get("MeasureOrNullListType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MeasureOrNullListType));
-            typeDictionary.Add(XName.Get("CoordinatesType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.CoordinatesType));
-            typeDictionary.Add(XName.Get("AbstractGMLType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractGMLType));
-            typeDictionary.Add(XName.Get("BagType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.BagType));
-            typeDictionary.Add(XName.Get("ArrayType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.ArrayType));
-            typeDictionary.Add(XName.Get("AbstractMetaDataType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractMetaDataType));
-            typeDictionary.Add(XName.Get("GenericMetaDataType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.GenericMetaDataType));
-            typeDictionary.Add(XName.Get("AssociationType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.AssociationType));
-            typeDictionary.Add(XName.Get("ReferenceType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.ReferenceType));
-            typeDictionary.Add(XName.Get("ArrayAssociationType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.ArrayAssociationType));
-            typeDictionary.Add(XName.Get("MetaDataPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MetaDataPropertyType));
-            typeDictionary.Add(XName.Get("StringOrRefType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.StringOrRefType));
-            typeDictionary.Add(XName.Get("DefinitionType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.DefinitionType));
-            typeDictionary.Add(XName.Get("DictionaryType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.DictionaryType));
-            typeDictionary.Add(XName.Get("DictionaryEntryType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.DictionaryEntryType));
-            typeDictionary.Add(XName.Get("IndirectEntryType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.IndirectEntryType));
-            typeDictionary.Add(XName.Get("DefinitionProxyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.DefinitionProxyType));
-            typeDictionary.Add(XName.Get("UnitOfMeasureType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.UnitOfMeasureType));
-            typeDictionary.Add(XName.Get("UnitDefinitionType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.UnitDefinitionType));
-            typeDictionary.Add(XName.Get("BaseUnitType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.BaseUnitType));
-            typeDictionary.Add(XName.Get("DerivedUnitType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.DerivedUnitType));
-            typeDictionary.Add(XName.Get("ConventionalUnitType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.ConventionalUnitType));
-            typeDictionary.Add(XName.Get("DerivationUnitTermType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.DerivationUnitTermType));
-            typeDictionary.Add(XName.Get("ConversionToPreferredUnitType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.ConversionToPreferredUnitType));
-            typeDictionary.Add(XName.Get("FormulaType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.FormulaType));
-            typeDictionary.Add(XName.Get("LengthType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.LengthType));
-            typeDictionary.Add(XName.Get("ScaleType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.ScaleType));
-            typeDictionary.Add(XName.Get("TimeType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.TimeType));
-            typeDictionary.Add(XName.Get("GridLengthType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.GridLengthType));
-            typeDictionary.Add(XName.Get("AreaType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.AreaType));
-            typeDictionary.Add(XName.Get("VolumeType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.VolumeType));
-            typeDictionary.Add(XName.Get("SpeedType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.SpeedType));
-            typeDictionary.Add(XName.Get("AngleChoiceType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.AngleChoiceType));
-            typeDictionary.Add(XName.Get("AngleType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.AngleType));
-            typeDictionary.Add(XName.Get("DMSAngleType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.DMSAngleType));
-            typeDictionary.Add(XName.Get("DegreesType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.DegreesType));
-            typeDictionary.Add(XName.Get("GeometryPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.GeometryPropertyType));
-            typeDictionary.Add(XName.Get("GeometryArrayPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.GeometryArrayPropertyType));
-            typeDictionary.Add(XName.Get("AbstractGeometryType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractGeometryType));
-            typeDictionary.Add(XName.Get("AbstractGeometricPrimitiveType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractGeometricPrimitiveType));
-            typeDictionary.Add(XName.Get("GeometricPrimitivePropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.GeometricPrimitivePropertyType));
-            typeDictionary.Add(XName.Get("PointType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.PointType));
-            typeDictionary.Add(XName.Get("PointPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.PointPropertyType));
-            typeDictionary.Add(XName.Get("PointArrayPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.PointArrayPropertyType));
-            typeDictionary.Add(XName.Get("AbstractCurveType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractCurveType));
-            typeDictionary.Add(XName.Get("CurvePropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.CurvePropertyType));
-            typeDictionary.Add(XName.Get("CurveArrayPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.CurveArrayPropertyType));
-            typeDictionary.Add(XName.Get("LineStringType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.LineStringType));
-            typeDictionary.Add(XName.Get("DirectPositionType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.DirectPositionType));
-            typeDictionary.Add(XName.Get("DirectPositionListType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.DirectPositionListType));
-            typeDictionary.Add(XName.Get("VectorType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.VectorType));
-            typeDictionary.Add(XName.Get("EnvelopeType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.EnvelopeType));
-            typeDictionary.Add(XName.Get("CoordType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.CoordType));
-            typeDictionary.Add(XName.Get("LineStringPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.LineStringPropertyType));
-            typeDictionary.Add(XName.Get("AbstractSurfaceType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractSurfaceType));
-            typeDictionary.Add(XName.Get("SurfacePropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.SurfacePropertyType));
-            typeDictionary.Add(XName.Get("SurfaceArrayPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.SurfaceArrayPropertyType));
-            typeDictionary.Add(XName.Get("PolygonType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.PolygonType));
-            typeDictionary.Add(XName.Get("AbstractRingType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractRingType));
-            typeDictionary.Add(XName.Get("AbstractRingPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractRingPropertyType));
-            typeDictionary.Add(XName.Get("LinearRingType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.LinearRingType));
-            typeDictionary.Add(XName.Get("LinearRingPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.LinearRingPropertyType));
-            typeDictionary.Add(XName.Get("PolygonPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.PolygonPropertyType));
-            typeDictionary.Add(XName.Get("CurveType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.CurveType));
-            typeDictionary.Add(XName.Get("OrientableCurveType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.OrientableCurveType));
-            typeDictionary.Add(XName.Get("AbstractCurveSegmentType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractCurveSegmentType));
-            typeDictionary.Add(XName.Get("CurveSegmentArrayPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.CurveSegmentArrayPropertyType));
-            typeDictionary.Add(XName.Get("LineStringSegmentType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.LineStringSegmentType));
-            typeDictionary.Add(XName.Get("ArcStringType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.ArcStringType));
-            typeDictionary.Add(XName.Get("ArcType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.ArcType));
-            typeDictionary.Add(XName.Get("CircleType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.CircleType));
-            typeDictionary.Add(XName.Get("ArcStringByBulgeType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.ArcStringByBulgeType));
-            typeDictionary.Add(XName.Get("ArcByBulgeType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.ArcByBulgeType));
-            typeDictionary.Add(XName.Get("ArcByCenterPointType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.ArcByCenterPointType));
-            typeDictionary.Add(XName.Get("CircleByCenterPointType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.CircleByCenterPointType));
-            typeDictionary.Add(XName.Get("OffsetCurveType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.OffsetCurveType));
-            typeDictionary.Add(XName.Get("AffinePlacementType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.AffinePlacementType));
-            typeDictionary.Add(XName.Get("ClothoidType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.ClothoidType));
-            typeDictionary.Add(XName.Get("GeodesicStringType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.GeodesicStringType));
-            typeDictionary.Add(XName.Get("GeodesicType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.GeodesicType));
-            typeDictionary.Add(XName.Get("CubicSplineType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.CubicSplineType));
-            typeDictionary.Add(XName.Get("KnotType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.KnotType));
-            typeDictionary.Add(XName.Get("KnotPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.KnotPropertyType));
-            typeDictionary.Add(XName.Get("BSplineType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.BSplineType));
-            typeDictionary.Add(XName.Get("BezierType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.BezierType));
-            typeDictionary.Add(XName.Get("SurfaceType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.SurfaceType));
-            typeDictionary.Add(XName.Get("OrientableSurfaceType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.OrientableSurfaceType));
-            typeDictionary.Add(XName.Get("AbstractSurfacePatchType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractSurfacePatchType));
-            typeDictionary.Add(XName.Get("SurfacePatchArrayPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.SurfacePatchArrayPropertyType));
-            typeDictionary.Add(XName.Get("PolygonPatchType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.PolygonPatchType));
-            typeDictionary.Add(XName.Get("TriangleType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.TriangleType));
-            typeDictionary.Add(XName.Get("RectangleType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.RectangleType));
-            typeDictionary.Add(XName.Get("RingType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.RingType));
-            typeDictionary.Add(XName.Get("RingPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.RingPropertyType));
-            typeDictionary.Add(XName.Get("AbstractParametricCurveSurfaceType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractParametricCurveSurfaceType));
-            typeDictionary.Add(XName.Get("AbstractGriddedSurfaceType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractGriddedSurfaceType));
-            typeDictionary.Add(XName.Get("ConeType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.ConeType));
-            typeDictionary.Add(XName.Get("CylinderType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.CylinderType));
-            typeDictionary.Add(XName.Get("SphereType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.SphereType));
-            typeDictionary.Add(XName.Get("PolyhedralSurfaceType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.PolyhedralSurfaceType));
-            typeDictionary.Add(XName.Get("PolygonPatchArrayPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.PolygonPatchArrayPropertyType));
-            typeDictionary.Add(XName.Get("TrianglePatchArrayPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.TrianglePatchArrayPropertyType));
-            typeDictionary.Add(XName.Get("TriangulatedSurfaceType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.TriangulatedSurfaceType));
-            typeDictionary.Add(XName.Get("TinType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.TinType));
-            typeDictionary.Add(XName.Get("LineStringSegmentArrayPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.LineStringSegmentArrayPropertyType));
-            typeDictionary.Add(XName.Get("AbstractSolidType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractSolidType));
-            typeDictionary.Add(XName.Get("SolidPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.SolidPropertyType));
-            typeDictionary.Add(XName.Get("SolidArrayPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.SolidArrayPropertyType));
-            typeDictionary.Add(XName.Get("SolidType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.SolidType));
-            typeDictionary.Add(XName.Get("AbstractGeometricAggregateType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractGeometricAggregateType));
-            typeDictionary.Add(XName.Get("MultiGeometryType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiGeometryType));
-            typeDictionary.Add(XName.Get("MultiGeometryPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiGeometryPropertyType));
-            typeDictionary.Add(XName.Get("MultiPointType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiPointType));
-            typeDictionary.Add(XName.Get("MultiPointPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiPointPropertyType));
-            typeDictionary.Add(XName.Get("MultiCurveType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiCurveType));
-            typeDictionary.Add(XName.Get("MultiCurvePropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiCurvePropertyType));
-            typeDictionary.Add(XName.Get("MultiSurfaceType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiSurfaceType));
-            typeDictionary.Add(XName.Get("MultiSurfacePropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiSurfacePropertyType));
-            typeDictionary.Add(XName.Get("MultiSolidType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiSolidType));
-            typeDictionary.Add(XName.Get("MultiSolidPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiSolidPropertyType));
-            typeDictionary.Add(XName.Get("MultiLineStringType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiLineStringType));
-            typeDictionary.Add(XName.Get("MultiLineStringPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiLineStringPropertyType));
-            typeDictionary.Add(XName.Get("MultiPolygonType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiPolygonType));
-            typeDictionary.Add(XName.Get("MultiPolygonPropertyType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiPolygonPropertyType));
+            typeDictionary.Add(XName.Get("AbstractRecordType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.AbstractRecordType));
+            typeDictionary.Add(XName.Get("DCMIRecordType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.DCMIRecordType));
+            typeDictionary.Add(XName.Get("BriefRecordType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.BriefRecordType));
+            typeDictionary.Add(XName.Get("SummaryRecordType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.SummaryRecordType));
+            typeDictionary.Add(XName.Get("RecordType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.RecordType));
+            typeDictionary.Add(XName.Get("EmptyType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.EmptyType));
+            typeDictionary.Add(XName.Get("RequestBaseType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.RequestBaseType));
+            typeDictionary.Add(XName.Get("GetCapabilitiesType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetCapabilitiesType));
+            typeDictionary.Add(XName.Get("CapabilitiesType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.CapabilitiesType));
+            typeDictionary.Add(XName.Get("DescribeRecordType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.DescribeRecordType));
+            typeDictionary.Add(XName.Get("DescribeRecordResponseType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.DescribeRecordResponseType));
+            typeDictionary.Add(XName.Get("SchemaComponentType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.SchemaComponentType));
+            typeDictionary.Add(XName.Get("GetRecordsType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecordsType));
+            typeDictionary.Add(XName.Get("DistributedSearchType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.DistributedSearchType));
+            typeDictionary.Add(XName.Get("AbstractQueryType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.AbstractQueryType));
+            typeDictionary.Add(XName.Get("QueryType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.QueryType));
+            typeDictionary.Add(XName.Get("QueryConstraintType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.QueryConstraintType));
+            typeDictionary.Add(XName.Get("ElementSetNameType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.ElementSetNameType));
+            typeDictionary.Add(XName.Get("GetRecordsResponseType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecordsResponseType));
+            typeDictionary.Add(XName.Get("RequestStatusType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.RequestStatusType));
+            typeDictionary.Add(XName.Get("SearchResultsType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.SearchResultsType));
+            typeDictionary.Add(XName.Get("GetRecordByIdType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecordByIdType));
+            typeDictionary.Add(XName.Get("GetRecordByIdResponseType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecordByIdResponseType));
+            typeDictionary.Add(XName.Get("GetDomainType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetDomainType));
+            typeDictionary.Add(XName.Get("GetDomainResponseType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetDomainResponseType));
+            typeDictionary.Add(XName.Get("DomainValuesType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.DomainValuesType));
+            typeDictionary.Add(XName.Get("ListOfValuesType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.ListOfValuesType));
+            typeDictionary.Add(XName.Get("ConceptualSchemeType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.ConceptualSchemeType));
+            typeDictionary.Add(XName.Get("RangeOfValuesType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.RangeOfValuesType));
+            typeDictionary.Add(XName.Get("AcknowledgementType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.AcknowledgementType));
+            typeDictionary.Add(XName.Get("EchoedRequestType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.EchoedRequestType));
+            typeDictionary.Add(XName.Get("TransactionType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.TransactionType));
+            typeDictionary.Add(XName.Get("InsertType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.InsertType));
+            typeDictionary.Add(XName.Get("UpdateType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.UpdateType));
+            typeDictionary.Add(XName.Get("DeleteType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.DeleteType));
+            typeDictionary.Add(XName.Get("RecordPropertyType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.RecordPropertyType));
+            typeDictionary.Add(XName.Get("TransactionResponseType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.TransactionResponseType));
+            typeDictionary.Add(XName.Get("TransactionSummaryType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.TransactionSummaryType));
+            typeDictionary.Add(XName.Get("InsertResultType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.InsertResultType));
+            typeDictionary.Add(XName.Get("HarvestType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.HarvestType));
+            typeDictionary.Add(XName.Get("HarvestResponseType", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.HarvestResponseType));
+            typeDictionary.Add(XName.Get("SimpleLiteral", "http://purl.org/dc/elements/1.1/"), typeof(global::GeoSik.DublinCore.Elements.V11.SimpleLiteral));
+            typeDictionary.Add(XName.Get("elementContainer", "http://purl.org/dc/elements/1.1/"), typeof(global::GeoSik.DublinCore.Elements.V11.elementContainer));
+            typeDictionary.Add(XName.Get("MetadataType", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.MetadataType));
+            typeDictionary.Add(XName.Get("BoundingBoxType", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.BoundingBoxType));
+            typeDictionary.Add(XName.Get("WGS84BoundingBoxType", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.WGS84BoundingBoxType));
+            typeDictionary.Add(XName.Get("KeywordsType", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.KeywordsType));
+            typeDictionary.Add(XName.Get("CodeType", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.CodeType));
+            typeDictionary.Add(XName.Get("ResponsiblePartyType", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.ResponsiblePartyType));
+            typeDictionary.Add(XName.Get("ResponsiblePartySubsetType", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.ResponsiblePartySubsetType));
+            typeDictionary.Add(XName.Get("ContactType", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.ContactType));
+            typeDictionary.Add(XName.Get("OnlineResourceType", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.OnlineResourceType));
+            typeDictionary.Add(XName.Get("TelephoneType", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.TelephoneType));
+            typeDictionary.Add(XName.Get("AddressType", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.AddressType));
+            typeDictionary.Add(XName.Get("DescriptionType", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.DescriptionType));
+            typeDictionary.Add(XName.Get("IdentificationType", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.IdentificationType));
+            typeDictionary.Add(XName.Get("RequestMethodType", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.RequestMethodType));
+            typeDictionary.Add(XName.Get("DomainType", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.DomainType));
+            typeDictionary.Add(XName.Get("CapabilitiesBaseType", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.CapabilitiesBaseType));
+            typeDictionary.Add(XName.Get("GetCapabilitiesType", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.GetCapabilitiesType));
+            typeDictionary.Add(XName.Get("AcceptVersionsType", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.AcceptVersionsType));
+            typeDictionary.Add(XName.Get("SectionsType", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.SectionsType));
+            typeDictionary.Add(XName.Get("AcceptFormatsType", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.AcceptFormatsType));
+            typeDictionary.Add(XName.Get("ExceptionType", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.ExceptionType));
+            typeDictionary.Add(XName.Get("ExpressionType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.ExpressionType));
+            typeDictionary.Add(XName.Get("BinaryOperatorType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.BinaryOperatorType));
+            typeDictionary.Add(XName.Get("FunctionType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.FunctionType));
+            typeDictionary.Add(XName.Get("LiteralType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.LiteralType));
+            typeDictionary.Add(XName.Get("PropertyNameType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.PropertyNameType));
+            typeDictionary.Add(XName.Get("SortByType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.SortByType));
+            typeDictionary.Add(XName.Get("SortPropertyType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.SortPropertyType));
+            typeDictionary.Add(XName.Get("Spatial_CapabilitiesType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.Spatial_CapabilitiesType));
+            typeDictionary.Add(XName.Get("GeometryOperandsType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.GeometryOperandsType));
+            typeDictionary.Add(XName.Get("SpatialOperatorsType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.SpatialOperatorsType));
+            typeDictionary.Add(XName.Get("SpatialOperatorType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.SpatialOperatorType));
+            typeDictionary.Add(XName.Get("Scalar_CapabilitiesType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.Scalar_CapabilitiesType));
+            typeDictionary.Add(XName.Get("ComparisonOperatorsType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.ComparisonOperatorsType));
+            typeDictionary.Add(XName.Get("ArithmeticOperatorsType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.ArithmeticOperatorsType));
+            typeDictionary.Add(XName.Get("FunctionsType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.FunctionsType));
+            typeDictionary.Add(XName.Get("FunctionNamesType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.FunctionNamesType));
+            typeDictionary.Add(XName.Get("FunctionNameType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.FunctionNameType));
+            typeDictionary.Add(XName.Get("Id_CapabilitiesType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.Id_CapabilitiesType));
+            typeDictionary.Add(XName.Get("FilterType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.FilterType));
+            typeDictionary.Add(XName.Get("ComparisonOpsType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.ComparisonOpsType));
+            typeDictionary.Add(XName.Get("SpatialOpsType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.SpatialOpsType));
+            typeDictionary.Add(XName.Get("LogicOpsType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.LogicOpsType));
+            typeDictionary.Add(XName.Get("AbstractIdType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.AbstractIdType));
+            typeDictionary.Add(XName.Get("FeatureIdType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.FeatureIdType));
+            typeDictionary.Add(XName.Get("GmlObjectIdType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.GmlObjectIdType));
+            typeDictionary.Add(XName.Get("BinaryComparisonOpType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.BinaryComparisonOpType));
+            typeDictionary.Add(XName.Get("PropertyIsLikeType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.PropertyIsLikeType));
+            typeDictionary.Add(XName.Get("PropertyIsNullType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.PropertyIsNullType));
+            typeDictionary.Add(XName.Get("PropertyIsBetweenType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.PropertyIsBetweenType));
+            typeDictionary.Add(XName.Get("LowerBoundaryType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.LowerBoundaryType));
+            typeDictionary.Add(XName.Get("UpperBoundaryType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.UpperBoundaryType));
+            typeDictionary.Add(XName.Get("BinarySpatialOpType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.BinarySpatialOpType));
+            typeDictionary.Add(XName.Get("BBOXType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.BBOXType));
+            typeDictionary.Add(XName.Get("DistanceBufferType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.DistanceBufferType));
+            typeDictionary.Add(XName.Get("DistanceType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.DistanceType));
+            typeDictionary.Add(XName.Get("BinaryLogicOpType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.BinaryLogicOpType));
+            typeDictionary.Add(XName.Get("UnaryLogicOpType", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.UnaryLogicOpType));
+            typeDictionary.Add(XName.Get("CodeType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.CodeType));
+            typeDictionary.Add(XName.Get("CodeListType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.CodeListType));
+            typeDictionary.Add(XName.Get("CodeOrNullListType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.CodeOrNullListType));
+            typeDictionary.Add(XName.Get("MeasureType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MeasureType));
+            typeDictionary.Add(XName.Get("MeasureListType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MeasureListType));
+            typeDictionary.Add(XName.Get("MeasureOrNullListType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MeasureOrNullListType));
+            typeDictionary.Add(XName.Get("CoordinatesType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.CoordinatesType));
+            typeDictionary.Add(XName.Get("AbstractGMLType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.AbstractGMLType));
+            typeDictionary.Add(XName.Get("BagType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.BagType));
+            typeDictionary.Add(XName.Get("ArrayType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.ArrayType));
+            typeDictionary.Add(XName.Get("AbstractMetaDataType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.AbstractMetaDataType));
+            typeDictionary.Add(XName.Get("GenericMetaDataType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.GenericMetaDataType));
+            typeDictionary.Add(XName.Get("AssociationType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.AssociationType));
+            typeDictionary.Add(XName.Get("ReferenceType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.ReferenceType));
+            typeDictionary.Add(XName.Get("ArrayAssociationType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.ArrayAssociationType));
+            typeDictionary.Add(XName.Get("MetaDataPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MetaDataPropertyType));
+            typeDictionary.Add(XName.Get("StringOrRefType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.StringOrRefType));
+            typeDictionary.Add(XName.Get("DefinitionType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.DefinitionType));
+            typeDictionary.Add(XName.Get("DictionaryType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.DictionaryType));
+            typeDictionary.Add(XName.Get("DictionaryEntryType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.DictionaryEntryType));
+            typeDictionary.Add(XName.Get("IndirectEntryType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.IndirectEntryType));
+            typeDictionary.Add(XName.Get("DefinitionProxyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.DefinitionProxyType));
+            typeDictionary.Add(XName.Get("UnitOfMeasureType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.UnitOfMeasureType));
+            typeDictionary.Add(XName.Get("UnitDefinitionType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.UnitDefinitionType));
+            typeDictionary.Add(XName.Get("BaseUnitType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.BaseUnitType));
+            typeDictionary.Add(XName.Get("DerivedUnitType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.DerivedUnitType));
+            typeDictionary.Add(XName.Get("ConventionalUnitType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.ConventionalUnitType));
+            typeDictionary.Add(XName.Get("DerivationUnitTermType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.DerivationUnitTermType));
+            typeDictionary.Add(XName.Get("ConversionToPreferredUnitType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.ConversionToPreferredUnitType));
+            typeDictionary.Add(XName.Get("FormulaType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.FormulaType));
+            typeDictionary.Add(XName.Get("LengthType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.LengthType));
+            typeDictionary.Add(XName.Get("ScaleType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.ScaleType));
+            typeDictionary.Add(XName.Get("TimeType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.TimeType));
+            typeDictionary.Add(XName.Get("GridLengthType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.GridLengthType));
+            typeDictionary.Add(XName.Get("AreaType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.AreaType));
+            typeDictionary.Add(XName.Get("VolumeType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.VolumeType));
+            typeDictionary.Add(XName.Get("SpeedType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.SpeedType));
+            typeDictionary.Add(XName.Get("AngleChoiceType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.AngleChoiceType));
+            typeDictionary.Add(XName.Get("AngleType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.AngleType));
+            typeDictionary.Add(XName.Get("DMSAngleType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.DMSAngleType));
+            typeDictionary.Add(XName.Get("DegreesType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.DegreesType));
+            typeDictionary.Add(XName.Get("GeometryPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.GeometryPropertyType));
+            typeDictionary.Add(XName.Get("GeometryArrayPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.GeometryArrayPropertyType));
+            typeDictionary.Add(XName.Get("AbstractGeometryType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.AbstractGeometryType));
+            typeDictionary.Add(XName.Get("AbstractGeometricPrimitiveType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.AbstractGeometricPrimitiveType));
+            typeDictionary.Add(XName.Get("GeometricPrimitivePropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.GeometricPrimitivePropertyType));
+            typeDictionary.Add(XName.Get("PointType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.PointType));
+            typeDictionary.Add(XName.Get("PointPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.PointPropertyType));
+            typeDictionary.Add(XName.Get("PointArrayPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.PointArrayPropertyType));
+            typeDictionary.Add(XName.Get("AbstractCurveType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.AbstractCurveType));
+            typeDictionary.Add(XName.Get("CurvePropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.CurvePropertyType));
+            typeDictionary.Add(XName.Get("CurveArrayPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.CurveArrayPropertyType));
+            typeDictionary.Add(XName.Get("LineStringType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.LineStringType));
+            typeDictionary.Add(XName.Get("DirectPositionType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.DirectPositionType));
+            typeDictionary.Add(XName.Get("DirectPositionListType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.DirectPositionListType));
+            typeDictionary.Add(XName.Get("VectorType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.VectorType));
+            typeDictionary.Add(XName.Get("EnvelopeType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.EnvelopeType));
+            typeDictionary.Add(XName.Get("CoordType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.CoordType));
+            typeDictionary.Add(XName.Get("LineStringPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.LineStringPropertyType));
+            typeDictionary.Add(XName.Get("AbstractSurfaceType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.AbstractSurfaceType));
+            typeDictionary.Add(XName.Get("SurfacePropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.SurfacePropertyType));
+            typeDictionary.Add(XName.Get("SurfaceArrayPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.SurfaceArrayPropertyType));
+            typeDictionary.Add(XName.Get("PolygonType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.PolygonType));
+            typeDictionary.Add(XName.Get("AbstractRingType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.AbstractRingType));
+            typeDictionary.Add(XName.Get("AbstractRingPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.AbstractRingPropertyType));
+            typeDictionary.Add(XName.Get("LinearRingType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.LinearRingType));
+            typeDictionary.Add(XName.Get("LinearRingPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.LinearRingPropertyType));
+            typeDictionary.Add(XName.Get("PolygonPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.PolygonPropertyType));
+            typeDictionary.Add(XName.Get("CurveType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.CurveType));
+            typeDictionary.Add(XName.Get("OrientableCurveType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.OrientableCurveType));
+            typeDictionary.Add(XName.Get("AbstractCurveSegmentType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.AbstractCurveSegmentType));
+            typeDictionary.Add(XName.Get("CurveSegmentArrayPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.CurveSegmentArrayPropertyType));
+            typeDictionary.Add(XName.Get("LineStringSegmentType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.LineStringSegmentType));
+            typeDictionary.Add(XName.Get("ArcStringType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.ArcStringType));
+            typeDictionary.Add(XName.Get("ArcType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.ArcType));
+            typeDictionary.Add(XName.Get("CircleType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.CircleType));
+            typeDictionary.Add(XName.Get("ArcStringByBulgeType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.ArcStringByBulgeType));
+            typeDictionary.Add(XName.Get("ArcByBulgeType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.ArcByBulgeType));
+            typeDictionary.Add(XName.Get("ArcByCenterPointType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.ArcByCenterPointType));
+            typeDictionary.Add(XName.Get("CircleByCenterPointType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.CircleByCenterPointType));
+            typeDictionary.Add(XName.Get("OffsetCurveType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.OffsetCurveType));
+            typeDictionary.Add(XName.Get("AffinePlacementType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.AffinePlacementType));
+            typeDictionary.Add(XName.Get("ClothoidType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.ClothoidType));
+            typeDictionary.Add(XName.Get("GeodesicStringType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.GeodesicStringType));
+            typeDictionary.Add(XName.Get("GeodesicType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.GeodesicType));
+            typeDictionary.Add(XName.Get("CubicSplineType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.CubicSplineType));
+            typeDictionary.Add(XName.Get("KnotType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.KnotType));
+            typeDictionary.Add(XName.Get("KnotPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.KnotPropertyType));
+            typeDictionary.Add(XName.Get("BSplineType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.BSplineType));
+            typeDictionary.Add(XName.Get("BezierType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.BezierType));
+            typeDictionary.Add(XName.Get("SurfaceType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.SurfaceType));
+            typeDictionary.Add(XName.Get("OrientableSurfaceType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.OrientableSurfaceType));
+            typeDictionary.Add(XName.Get("AbstractSurfacePatchType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.AbstractSurfacePatchType));
+            typeDictionary.Add(XName.Get("SurfacePatchArrayPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.SurfacePatchArrayPropertyType));
+            typeDictionary.Add(XName.Get("PolygonPatchType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.PolygonPatchType));
+            typeDictionary.Add(XName.Get("TriangleType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.TriangleType));
+            typeDictionary.Add(XName.Get("RectangleType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.RectangleType));
+            typeDictionary.Add(XName.Get("RingType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.RingType));
+            typeDictionary.Add(XName.Get("RingPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.RingPropertyType));
+            typeDictionary.Add(XName.Get("AbstractParametricCurveSurfaceType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.AbstractParametricCurveSurfaceType));
+            typeDictionary.Add(XName.Get("AbstractGriddedSurfaceType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.AbstractGriddedSurfaceType));
+            typeDictionary.Add(XName.Get("ConeType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.ConeType));
+            typeDictionary.Add(XName.Get("CylinderType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.CylinderType));
+            typeDictionary.Add(XName.Get("SphereType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.SphereType));
+            typeDictionary.Add(XName.Get("PolyhedralSurfaceType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.PolyhedralSurfaceType));
+            typeDictionary.Add(XName.Get("PolygonPatchArrayPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.PolygonPatchArrayPropertyType));
+            typeDictionary.Add(XName.Get("TrianglePatchArrayPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.TrianglePatchArrayPropertyType));
+            typeDictionary.Add(XName.Get("TriangulatedSurfaceType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.TriangulatedSurfaceType));
+            typeDictionary.Add(XName.Get("TinType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.TinType));
+            typeDictionary.Add(XName.Get("LineStringSegmentArrayPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.LineStringSegmentArrayPropertyType));
+            typeDictionary.Add(XName.Get("AbstractSolidType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.AbstractSolidType));
+            typeDictionary.Add(XName.Get("SolidPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.SolidPropertyType));
+            typeDictionary.Add(XName.Get("SolidArrayPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.SolidArrayPropertyType));
+            typeDictionary.Add(XName.Get("SolidType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.SolidType));
+            typeDictionary.Add(XName.Get("AbstractGeometricAggregateType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.AbstractGeometricAggregateType));
+            typeDictionary.Add(XName.Get("MultiGeometryType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MultiGeometryType));
+            typeDictionary.Add(XName.Get("MultiGeometryPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MultiGeometryPropertyType));
+            typeDictionary.Add(XName.Get("MultiPointType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MultiPointType));
+            typeDictionary.Add(XName.Get("MultiPointPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MultiPointPropertyType));
+            typeDictionary.Add(XName.Get("MultiCurveType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MultiCurveType));
+            typeDictionary.Add(XName.Get("MultiCurvePropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MultiCurvePropertyType));
+            typeDictionary.Add(XName.Get("MultiSurfaceType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MultiSurfaceType));
+            typeDictionary.Add(XName.Get("MultiSurfacePropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MultiSurfacePropertyType));
+            typeDictionary.Add(XName.Get("MultiSolidType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MultiSolidType));
+            typeDictionary.Add(XName.Get("MultiSolidPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MultiSolidPropertyType));
+            typeDictionary.Add(XName.Get("MultiLineStringType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MultiLineStringType));
+            typeDictionary.Add(XName.Get("MultiLineStringPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MultiLineStringPropertyType));
+            typeDictionary.Add(XName.Get("MultiPolygonType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MultiPolygonType));
+            typeDictionary.Add(XName.Get("MultiPolygonPropertyType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MultiPolygonPropertyType));
         }
 
         private static void BuildElementDictionary()
         {
-            elementDictionary.Add(XName.Get("AbstractMetaData", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.AbstractMetaData));
-            elementDictionary.Add(XName.Get("ServiceIdentification", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.ServiceIdentification));
-            elementDictionary.Add(XName.Get("ServiceProvider", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.ServiceProvider));
-            elementDictionary.Add(XName.Get("OperationsMetadata", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.OperationsMetadata));
-            elementDictionary.Add(XName.Get("ExtendedCapabilities", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.ExtendedCapabilities));
-            elementDictionary.Add(XName.Get("Operation", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.Operation));
-            elementDictionary.Add(XName.Get("DCP", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.DCP));
-            elementDictionary.Add(XName.Get("HTTP", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.HTTP));
-            elementDictionary.Add(XName.Get("ExceptionReport", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.ExceptionReport));
-            elementDictionary.Add(XName.Get("Filter_Capabilities", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.Filter_Capabilities));
-            elementDictionary.Add(XName.Get("LogicalOperators", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.LogicalOperators));
-            elementDictionary.Add(XName.Get("SimpleArithmetic", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.SimpleArithmetic));
-            elementDictionary.Add(XName.Get("EID", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.EID));
-            elementDictionary.Add(XName.Get("FID", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.FID));
-            elementDictionary.Add(XName.Get("_Object", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311._Object));
-            elementDictionary.Add(XName.Get("AbstractRecord", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.AbstractRecord));
-            elementDictionary.Add(XName.Get("DCMIRecord", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.DCMIRecord));
-            elementDictionary.Add(XName.Get("BriefRecord", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.BriefRecord));
-            elementDictionary.Add(XName.Get("SummaryRecord", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.SummaryRecord));
-            elementDictionary.Add(XName.Get("Record", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Record));
-            elementDictionary.Add(XName.Get("GetCapabilities", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetCapabilities));
-            elementDictionary.Add(XName.Get("Capabilities", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Capabilities));
-            elementDictionary.Add(XName.Get("DescribeRecord", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.DescribeRecord));
-            elementDictionary.Add(XName.Get("DescribeRecordResponse", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.DescribeRecordResponse));
-            elementDictionary.Add(XName.Get("GetRecords", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecords));
-            elementDictionary.Add(XName.Get("AbstractQuery", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.AbstractQuery));
-            elementDictionary.Add(XName.Get("Query", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Query));
-            elementDictionary.Add(XName.Get("Constraint", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Constraint));
-            elementDictionary.Add(XName.Get("ElementSetName", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.ElementSetName));
-            elementDictionary.Add(XName.Get("GetRecordsResponse", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecordsResponse));
-            elementDictionary.Add(XName.Get("GetRecordById", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecordById));
-            elementDictionary.Add(XName.Get("GetRecordByIdResponse", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecordByIdResponse));
-            elementDictionary.Add(XName.Get("GetDomain", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetDomain));
-            elementDictionary.Add(XName.Get("GetDomainResponse", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetDomainResponse));
-            elementDictionary.Add(XName.Get("Acknowledgement", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Acknowledgement));
-            elementDictionary.Add(XName.Get("Transaction", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Transaction));
-            elementDictionary.Add(XName.Get("RecordProperty", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.RecordProperty));
-            elementDictionary.Add(XName.Get("TransactionResponse", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.TransactionResponse));
-            elementDictionary.Add(XName.Get("Harvest", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Harvest));
-            elementDictionary.Add(XName.Get("HarvestResponse", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.HarvestResponse));
-            elementDictionary.Add(XName.Get("abstract", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.@abstract));
-            elementDictionary.Add(XName.Get("accessRights", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.accessRights));
-            elementDictionary.Add(XName.Get("alternative", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.alternative));
-            elementDictionary.Add(XName.Get("audience", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.audience));
-            elementDictionary.Add(XName.Get("available", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.available));
-            elementDictionary.Add(XName.Get("bibliographicCitation", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.bibliographicCitation));
-            elementDictionary.Add(XName.Get("conformsTo", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.conformsTo));
-            elementDictionary.Add(XName.Get("created", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.created));
-            elementDictionary.Add(XName.Get("dateAccepted", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.dateAccepted));
-            elementDictionary.Add(XName.Get("dateCopyrighted", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.dateCopyrighted));
-            elementDictionary.Add(XName.Get("dateSubmitted", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.dateSubmitted));
-            elementDictionary.Add(XName.Get("educationLevel", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.educationLevel));
-            elementDictionary.Add(XName.Get("extent", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.extent));
-            elementDictionary.Add(XName.Get("hasFormat", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.hasFormat));
-            elementDictionary.Add(XName.Get("hasPart", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.hasPart));
-            elementDictionary.Add(XName.Get("hasVersion", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.hasVersion));
-            elementDictionary.Add(XName.Get("isFormatOf", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.isFormatOf));
-            elementDictionary.Add(XName.Get("isPartOf", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.isPartOf));
-            elementDictionary.Add(XName.Get("isReferencedBy", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.isReferencedBy));
-            elementDictionary.Add(XName.Get("isReplacedBy", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.isReplacedBy));
-            elementDictionary.Add(XName.Get("isRequiredBy", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.isRequiredBy));
-            elementDictionary.Add(XName.Get("issued", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.issued));
-            elementDictionary.Add(XName.Get("isVersionOf", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.isVersionOf));
-            elementDictionary.Add(XName.Get("license", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.license));
-            elementDictionary.Add(XName.Get("mediator", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.mediator));
-            elementDictionary.Add(XName.Get("medium", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.medium));
-            elementDictionary.Add(XName.Get("modified", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.modified));
-            elementDictionary.Add(XName.Get("provenance", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.provenance));
-            elementDictionary.Add(XName.Get("references", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.references));
-            elementDictionary.Add(XName.Get("replaces", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.replaces));
-            elementDictionary.Add(XName.Get("requires", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.requires));
-            elementDictionary.Add(XName.Get("rightsHolder", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.rightsHolder));
-            elementDictionary.Add(XName.Get("spatial", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.spatial));
-            elementDictionary.Add(XName.Get("tableOfContents", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.tableOfContents));
-            elementDictionary.Add(XName.Get("temporal", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.temporal));
-            elementDictionary.Add(XName.Get("valid", "http://purl.org/dc/terms/"), typeof(global::OgcToolkit.DublinCore.Terms.valid));
-            elementDictionary.Add(XName.Get("DC-element", "http://purl.org/dc/elements/1.1/"), typeof(global::OgcToolkit.DublinCore.Elements.V11.DCelement));
-            elementDictionary.Add(XName.Get("title", "http://purl.org/dc/elements/1.1/"), typeof(global::OgcToolkit.DublinCore.Elements.V11.title));
-            elementDictionary.Add(XName.Get("creator", "http://purl.org/dc/elements/1.1/"), typeof(global::OgcToolkit.DublinCore.Elements.V11.creator));
-            elementDictionary.Add(XName.Get("subject", "http://purl.org/dc/elements/1.1/"), typeof(global::OgcToolkit.DublinCore.Elements.V11.subject));
-            elementDictionary.Add(XName.Get("description", "http://purl.org/dc/elements/1.1/"), typeof(global::OgcToolkit.DublinCore.Elements.V11.description));
-            elementDictionary.Add(XName.Get("publisher", "http://purl.org/dc/elements/1.1/"), typeof(global::OgcToolkit.DublinCore.Elements.V11.publisher));
-            elementDictionary.Add(XName.Get("contributor", "http://purl.org/dc/elements/1.1/"), typeof(global::OgcToolkit.DublinCore.Elements.V11.contributor));
-            elementDictionary.Add(XName.Get("date", "http://purl.org/dc/elements/1.1/"), typeof(global::OgcToolkit.DublinCore.Elements.V11.date));
-            elementDictionary.Add(XName.Get("type", "http://purl.org/dc/elements/1.1/"), typeof(global::OgcToolkit.DublinCore.Elements.V11.type));
-            elementDictionary.Add(XName.Get("format", "http://purl.org/dc/elements/1.1/"), typeof(global::OgcToolkit.DublinCore.Elements.V11.format));
-            elementDictionary.Add(XName.Get("identifier", "http://purl.org/dc/elements/1.1/"), typeof(global::OgcToolkit.DublinCore.Elements.V11.identifier));
-            elementDictionary.Add(XName.Get("source", "http://purl.org/dc/elements/1.1/"), typeof(global::OgcToolkit.DublinCore.Elements.V11.source));
-            elementDictionary.Add(XName.Get("language", "http://purl.org/dc/elements/1.1/"), typeof(global::OgcToolkit.DublinCore.Elements.V11.language));
-            elementDictionary.Add(XName.Get("relation", "http://purl.org/dc/elements/1.1/"), typeof(global::OgcToolkit.DublinCore.Elements.V11.relation));
-            elementDictionary.Add(XName.Get("coverage", "http://purl.org/dc/elements/1.1/"), typeof(global::OgcToolkit.DublinCore.Elements.V11.coverage));
-            elementDictionary.Add(XName.Get("rights", "http://purl.org/dc/elements/1.1/"), typeof(global::OgcToolkit.DublinCore.Elements.V11.rights));
-            elementDictionary.Add(XName.Get("Metadata", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.Metadata));
-            elementDictionary.Add(XName.Get("BoundingBox", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.BoundingBox));
-            elementDictionary.Add(XName.Get("WGS84BoundingBox", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.WGS84BoundingBox));
-            elementDictionary.Add(XName.Get("Title", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.Title));
-            elementDictionary.Add(XName.Get("Abstract", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.@Abstract));
-            elementDictionary.Add(XName.Get("Keywords", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.Keywords));
-            elementDictionary.Add(XName.Get("PointOfContact", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.PointOfContact));
-            elementDictionary.Add(XName.Get("IndividualName", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.IndividualName));
-            elementDictionary.Add(XName.Get("OrganisationName", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.OrganisationName));
-            elementDictionary.Add(XName.Get("PositionName", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.PositionName));
-            elementDictionary.Add(XName.Get("Role", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.Role));
-            elementDictionary.Add(XName.Get("ContactInfo", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.ContactInfo));
-            elementDictionary.Add(XName.Get("Identifier", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.Identifier));
-            elementDictionary.Add(XName.Get("OutputFormat", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.OutputFormat));
-            elementDictionary.Add(XName.Get("AvailableCRS", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.AvailableCRS));
-            elementDictionary.Add(XName.Get("SupportedCRS", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.SupportedCRS));
-            elementDictionary.Add(XName.Get("AccessConstraints", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.AccessConstraints));
-            elementDictionary.Add(XName.Get("Fees", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.Fees));
-            elementDictionary.Add(XName.Get("Language", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.Language));
-            elementDictionary.Add(XName.Get("GetCapabilities", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.GetCapabilities));
-            elementDictionary.Add(XName.Get("Exception", "http://www.opengis.net/ows"), typeof(global::OgcToolkit.Ogc.Ows.V100.Exception));
-            elementDictionary.Add(XName.Get("Add", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.Add));
-            elementDictionary.Add(XName.Get("Sub", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.Sub));
-            elementDictionary.Add(XName.Get("Mul", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.Mul));
-            elementDictionary.Add(XName.Get("Div", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.Div));
-            elementDictionary.Add(XName.Get("PropertyName", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.PropertyName));
-            elementDictionary.Add(XName.Get("Function", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.Function));
-            elementDictionary.Add(XName.Get("Literal", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.Literal));
-            elementDictionary.Add(XName.Get("expression", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.expression));
-            elementDictionary.Add(XName.Get("SortBy", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.SortBy));
-            elementDictionary.Add(XName.Get("_Id", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110._Id));
-            elementDictionary.Add(XName.Get("FeatureId", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.FeatureId));
-            elementDictionary.Add(XName.Get("GmlObjectId", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.GmlObjectId));
-            elementDictionary.Add(XName.Get("Filter", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.Filter));
-            elementDictionary.Add(XName.Get("comparisonOps", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.comparisonOps));
-            elementDictionary.Add(XName.Get("PropertyIsEqualTo", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.PropertyIsEqualTo));
-            elementDictionary.Add(XName.Get("PropertyIsNotEqualTo", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.PropertyIsNotEqualTo));
-            elementDictionary.Add(XName.Get("PropertyIsLessThan", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.PropertyIsLessThan));
-            elementDictionary.Add(XName.Get("PropertyIsGreaterThan", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.PropertyIsGreaterThan));
-            elementDictionary.Add(XName.Get("PropertyIsLessThanOrEqualTo", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.PropertyIsLessThanOrEqualTo));
-            elementDictionary.Add(XName.Get("PropertyIsGreaterThanOrEqualTo", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.PropertyIsGreaterThanOrEqualTo));
-            elementDictionary.Add(XName.Get("PropertyIsLike", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.PropertyIsLike));
-            elementDictionary.Add(XName.Get("PropertyIsNull", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.PropertyIsNull));
-            elementDictionary.Add(XName.Get("PropertyIsBetween", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.PropertyIsBetween));
-            elementDictionary.Add(XName.Get("spatialOps", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.spatialOps));
-            elementDictionary.Add(XName.Get("Equals", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.Equals));
-            elementDictionary.Add(XName.Get("Disjoint", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.Disjoint));
-            elementDictionary.Add(XName.Get("Touches", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.Touches));
-            elementDictionary.Add(XName.Get("Within", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.Within));
-            elementDictionary.Add(XName.Get("Overlaps", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.Overlaps));
-            elementDictionary.Add(XName.Get("Crosses", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.Crosses));
-            elementDictionary.Add(XName.Get("Intersects", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.Intersects));
-            elementDictionary.Add(XName.Get("Contains", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.Contains));
-            elementDictionary.Add(XName.Get("DWithin", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.DWithin));
-            elementDictionary.Add(XName.Get("Beyond", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.Beyond));
-            elementDictionary.Add(XName.Get("BBOX", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.BBOX));
-            elementDictionary.Add(XName.Get("logicOps", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.logicOps));
-            elementDictionary.Add(XName.Get("And", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.And));
-            elementDictionary.Add(XName.Get("Or", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.Or));
-            elementDictionary.Add(XName.Get("Not", "http://www.opengis.net/ogc"), typeof(global::OgcToolkit.Ogc.Filter.V110.Not));
-            elementDictionary.Add(XName.Get("Null", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.@Null));
-            elementDictionary.Add(XName.Get("_GML", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311._GML));
-            elementDictionary.Add(XName.Get("Bag", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.Bag));
-            elementDictionary.Add(XName.Get("Array", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.Array));
-            elementDictionary.Add(XName.Get("_MetaData", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311._MetaData));
-            elementDictionary.Add(XName.Get("GenericMetaData", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.GenericMetaData));
-            elementDictionary.Add(XName.Get("_association", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311._association));
-            elementDictionary.Add(XName.Get("_strictAssociation", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311._strictAssociation));
-            elementDictionary.Add(XName.Get("member", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.member));
-            elementDictionary.Add(XName.Get("_reference", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311._reference));
-            elementDictionary.Add(XName.Get("members", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.members));
-            elementDictionary.Add(XName.Get("metaDataProperty", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.metaDataProperty));
-            elementDictionary.Add(XName.Get("name", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.name));
-            elementDictionary.Add(XName.Get("description", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.description));
-            elementDictionary.Add(XName.Get("Definition", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.Definition));
-            elementDictionary.Add(XName.Get("Dictionary", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.Dictionary));
-            elementDictionary.Add(XName.Get("DefinitionCollection", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.DefinitionCollection));
-            elementDictionary.Add(XName.Get("dictionaryEntry", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.dictionaryEntry));
-            elementDictionary.Add(XName.Get("definitionMember", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.definitionMember));
-            elementDictionary.Add(XName.Get("indirectEntry", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.indirectEntry));
-            elementDictionary.Add(XName.Get("DefinitionProxy", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.DefinitionProxy));
-            elementDictionary.Add(XName.Get("definitionRef", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.definitionRef));
-            elementDictionary.Add(XName.Get("unitOfMeasure", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.unitOfMeasure));
-            elementDictionary.Add(XName.Get("UnitDefinition", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.UnitDefinition));
-            elementDictionary.Add(XName.Get("BaseUnit", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.BaseUnit));
-            elementDictionary.Add(XName.Get("DerivedUnit", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.DerivedUnit));
-            elementDictionary.Add(XName.Get("ConventionalUnit", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.ConventionalUnit));
-            elementDictionary.Add(XName.Get("quantityType", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.quantityType));
-            elementDictionary.Add(XName.Get("catalogSymbol", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.catalogSymbol));
-            elementDictionary.Add(XName.Get("derivationUnitTerm", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.derivationUnitTerm));
-            elementDictionary.Add(XName.Get("conversionToPreferredUnit", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.conversionToPreferredUnit));
-            elementDictionary.Add(XName.Get("roughConversionToPreferredUnit", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.roughConversionToPreferredUnit));
-            elementDictionary.Add(XName.Get("measure", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.measure));
-            elementDictionary.Add(XName.Get("angle", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.angle));
-            elementDictionary.Add(XName.Get("dmsAngle", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.dmsAngle));
-            elementDictionary.Add(XName.Get("degrees", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.degrees));
-            elementDictionary.Add(XName.Get("decimalMinutes", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.decimalMinutes));
-            elementDictionary.Add(XName.Get("minutes", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.minutes));
-            elementDictionary.Add(XName.Get("seconds", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.seconds));
-            elementDictionary.Add(XName.Get("_Geometry", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311._Geometry));
-            elementDictionary.Add(XName.Get("_GeometricPrimitive", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311._GeometricPrimitive));
-            elementDictionary.Add(XName.Get("Point", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.Point));
-            elementDictionary.Add(XName.Get("pointProperty", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.pointProperty));
-            elementDictionary.Add(XName.Get("pointRep", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.pointRep));
-            elementDictionary.Add(XName.Get("pointArrayProperty", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.pointArrayProperty));
-            elementDictionary.Add(XName.Get("_Curve", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311._Curve));
-            elementDictionary.Add(XName.Get("curveProperty", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.curveProperty));
-            elementDictionary.Add(XName.Get("curveArrayProperty", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.curveArrayProperty));
-            elementDictionary.Add(XName.Get("LineString", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.LineString));
-            elementDictionary.Add(XName.Get("pos", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.pos));
-            elementDictionary.Add(XName.Get("posList", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.posList));
-            elementDictionary.Add(XName.Get("vector", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.vector));
-            elementDictionary.Add(XName.Get("coordinates", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.coordinates));
-            elementDictionary.Add(XName.Get("Envelope", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.Envelope));
-            elementDictionary.Add(XName.Get("coord", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.coord));
-            elementDictionary.Add(XName.Get("lineStringProperty", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.lineStringProperty));
-            elementDictionary.Add(XName.Get("_Surface", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311._Surface));
-            elementDictionary.Add(XName.Get("surfaceProperty", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.surfaceProperty));
-            elementDictionary.Add(XName.Get("surfaceArrayProperty", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.surfaceArrayProperty));
-            elementDictionary.Add(XName.Get("Polygon", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.Polygon));
-            elementDictionary.Add(XName.Get("_Ring", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311._Ring));
-            elementDictionary.Add(XName.Get("exterior", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.exterior));
-            elementDictionary.Add(XName.Get("interior", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.interior));
-            elementDictionary.Add(XName.Get("outerBoundaryIs", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.outerBoundaryIs));
-            elementDictionary.Add(XName.Get("innerBoundaryIs", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.innerBoundaryIs));
-            elementDictionary.Add(XName.Get("LinearRing", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.LinearRing));
-            elementDictionary.Add(XName.Get("polygonProperty", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.polygonProperty));
-            elementDictionary.Add(XName.Get("Curve", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.Curve));
-            elementDictionary.Add(XName.Get("baseCurve", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.baseCurve));
-            elementDictionary.Add(XName.Get("OrientableCurve", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.OrientableCurve));
-            elementDictionary.Add(XName.Get("_CurveSegment", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311._CurveSegment));
-            elementDictionary.Add(XName.Get("segments", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.segments));
-            elementDictionary.Add(XName.Get("LineStringSegment", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.LineStringSegment));
-            elementDictionary.Add(XName.Get("ArcString", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.ArcString));
-            elementDictionary.Add(XName.Get("Arc", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.Arc));
-            elementDictionary.Add(XName.Get("Circle", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.Circle));
-            elementDictionary.Add(XName.Get("ArcStringByBulge", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.ArcStringByBulge));
-            elementDictionary.Add(XName.Get("ArcByBulge", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.ArcByBulge));
-            elementDictionary.Add(XName.Get("ArcByCenterPoint", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.ArcByCenterPoint));
-            elementDictionary.Add(XName.Get("CircleByCenterPoint", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.CircleByCenterPoint));
-            elementDictionary.Add(XName.Get("OffsetCurve", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.OffsetCurve));
-            elementDictionary.Add(XName.Get("AffinePlacement", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.AffinePlacement));
-            elementDictionary.Add(XName.Get("Clothoid", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.Clothoid));
-            elementDictionary.Add(XName.Get("GeodesicString", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.GeodesicString));
-            elementDictionary.Add(XName.Get("Geodesic", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.Geodesic));
-            elementDictionary.Add(XName.Get("CubicSpline", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.CubicSpline));
-            elementDictionary.Add(XName.Get("BSpline", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.BSpline));
-            elementDictionary.Add(XName.Get("Bezier", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.Bezier));
-            elementDictionary.Add(XName.Get("Surface", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.Surface));
-            elementDictionary.Add(XName.Get("baseSurface", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.baseSurface));
-            elementDictionary.Add(XName.Get("OrientableSurface", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.OrientableSurface));
-            elementDictionary.Add(XName.Get("_SurfacePatch", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311._SurfacePatch));
-            elementDictionary.Add(XName.Get("patches", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.patches));
-            elementDictionary.Add(XName.Get("PolygonPatch", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.PolygonPatch));
-            elementDictionary.Add(XName.Get("Triangle", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.Triangle));
-            elementDictionary.Add(XName.Get("Rectangle", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.Rectangle));
-            elementDictionary.Add(XName.Get("curveMember", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.curveMember));
-            elementDictionary.Add(XName.Get("Ring", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.Ring));
-            elementDictionary.Add(XName.Get("_ParametricCurveSurface", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311._ParametricCurveSurface));
-            elementDictionary.Add(XName.Get("_GriddedSurface", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311._GriddedSurface));
-            elementDictionary.Add(XName.Get("Cone", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.Cone));
-            elementDictionary.Add(XName.Get("Cylinder", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.Cylinder));
-            elementDictionary.Add(XName.Get("Sphere", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.Sphere));
-            elementDictionary.Add(XName.Get("PolyhedralSurface", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.PolyhedralSurface));
-            elementDictionary.Add(XName.Get("polygonPatches", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.polygonPatches));
-            elementDictionary.Add(XName.Get("trianglePatches", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.trianglePatches));
-            elementDictionary.Add(XName.Get("TriangulatedSurface", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.TriangulatedSurface));
-            elementDictionary.Add(XName.Get("Tin", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.Tin));
-            elementDictionary.Add(XName.Get("_Solid", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311._Solid));
-            elementDictionary.Add(XName.Get("solidProperty", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.solidProperty));
-            elementDictionary.Add(XName.Get("solidArrayProperty", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.solidArrayProperty));
-            elementDictionary.Add(XName.Get("Solid", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.Solid));
-            elementDictionary.Add(XName.Get("_GeometricAggregate", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311._GeometricAggregate));
-            elementDictionary.Add(XName.Get("MultiGeometry", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiGeometry));
-            elementDictionary.Add(XName.Get("multiGeometryProperty", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.multiGeometryProperty));
-            elementDictionary.Add(XName.Get("MultiPoint", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiPoint));
-            elementDictionary.Add(XName.Get("multiPointProperty", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.multiPointProperty));
-            elementDictionary.Add(XName.Get("MultiCurve", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiCurve));
-            elementDictionary.Add(XName.Get("multiCurveProperty", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.multiCurveProperty));
-            elementDictionary.Add(XName.Get("MultiSurface", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiSurface));
-            elementDictionary.Add(XName.Get("multiSurfaceProperty", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.multiSurfaceProperty));
-            elementDictionary.Add(XName.Get("MultiSolid", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiSolid));
-            elementDictionary.Add(XName.Get("multiSolidProperty", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.multiSolidProperty));
-            elementDictionary.Add(XName.Get("MultiPolygon", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiPolygon));
-            elementDictionary.Add(XName.Get("MultiLineString", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiLineString));
-            elementDictionary.Add(XName.Get("geometryMember", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.geometryMember));
-            elementDictionary.Add(XName.Get("geometryMembers", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.geometryMembers));
-            elementDictionary.Add(XName.Get("pointMember", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.pointMember));
-            elementDictionary.Add(XName.Get("pointMembers", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.pointMembers));
-            elementDictionary.Add(XName.Get("curveMembers", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.curveMembers));
-            elementDictionary.Add(XName.Get("surfaceMember", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.surfaceMember));
-            elementDictionary.Add(XName.Get("surfaceMembers", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.surfaceMembers));
-            elementDictionary.Add(XName.Get("solidMember", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.solidMember));
-            elementDictionary.Add(XName.Get("solidMembers", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.solidMembers));
-            elementDictionary.Add(XName.Get("multiCenterOf", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.multiCenterOf));
-            elementDictionary.Add(XName.Get("multiPosition", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.multiPosition));
-            elementDictionary.Add(XName.Get("multiCenterLineOf", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.multiCenterLineOf));
-            elementDictionary.Add(XName.Get("multiEdgeOf", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.multiEdgeOf));
-            elementDictionary.Add(XName.Get("multiCoverage", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.multiCoverage));
-            elementDictionary.Add(XName.Get("multiExtentOf", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.multiExtentOf));
-            elementDictionary.Add(XName.Get("multiLocation", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.multiLocation));
-            elementDictionary.Add(XName.Get("lineStringMember", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.lineStringMember));
-            elementDictionary.Add(XName.Get("polygonMember", "http://www.opengis.net/gml"), typeof(global::OgcToolkit.Ogc.Gml.V311.polygonMember));
+            elementDictionary.Add(XName.Get("AbstractMetaData", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.AbstractMetaData));
+            elementDictionary.Add(XName.Get("ServiceIdentification", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.ServiceIdentification));
+            elementDictionary.Add(XName.Get("ServiceProvider", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.ServiceProvider));
+            elementDictionary.Add(XName.Get("OperationsMetadata", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.OperationsMetadata));
+            elementDictionary.Add(XName.Get("ExtendedCapabilities", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.ExtendedCapabilities));
+            elementDictionary.Add(XName.Get("Operation", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.Operation));
+            elementDictionary.Add(XName.Get("DCP", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.DCP));
+            elementDictionary.Add(XName.Get("HTTP", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.HTTP));
+            elementDictionary.Add(XName.Get("ExceptionReport", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.ExceptionReport));
+            elementDictionary.Add(XName.Get("Filter_Capabilities", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.Filter_Capabilities));
+            elementDictionary.Add(XName.Get("LogicalOperators", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.LogicalOperators));
+            elementDictionary.Add(XName.Get("SimpleArithmetic", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.SimpleArithmetic));
+            elementDictionary.Add(XName.Get("EID", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.EID));
+            elementDictionary.Add(XName.Get("FID", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.FID));
+            elementDictionary.Add(XName.Get("_Object", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311._Object));
+            elementDictionary.Add(XName.Get("AbstractRecord", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.AbstractRecord));
+            elementDictionary.Add(XName.Get("DCMIRecord", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.DCMIRecord));
+            elementDictionary.Add(XName.Get("BriefRecord", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.BriefRecord));
+            elementDictionary.Add(XName.Get("SummaryRecord", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.SummaryRecord));
+            elementDictionary.Add(XName.Get("Record", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.Record));
+            elementDictionary.Add(XName.Get("GetCapabilities", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetCapabilities));
+            elementDictionary.Add(XName.Get("Capabilities", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.Capabilities));
+            elementDictionary.Add(XName.Get("DescribeRecord", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.DescribeRecord));
+            elementDictionary.Add(XName.Get("DescribeRecordResponse", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.DescribeRecordResponse));
+            elementDictionary.Add(XName.Get("GetRecords", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecords));
+            elementDictionary.Add(XName.Get("AbstractQuery", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.AbstractQuery));
+            elementDictionary.Add(XName.Get("Query", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.Query));
+            elementDictionary.Add(XName.Get("Constraint", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.Constraint));
+            elementDictionary.Add(XName.Get("ElementSetName", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.ElementSetName));
+            elementDictionary.Add(XName.Get("GetRecordsResponse", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecordsResponse));
+            elementDictionary.Add(XName.Get("GetRecordById", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecordById));
+            elementDictionary.Add(XName.Get("GetRecordByIdResponse", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecordByIdResponse));
+            elementDictionary.Add(XName.Get("GetDomain", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetDomain));
+            elementDictionary.Add(XName.Get("GetDomainResponse", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetDomainResponse));
+            elementDictionary.Add(XName.Get("Acknowledgement", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.Acknowledgement));
+            elementDictionary.Add(XName.Get("Transaction", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.Transaction));
+            elementDictionary.Add(XName.Get("RecordProperty", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.RecordProperty));
+            elementDictionary.Add(XName.Get("TransactionResponse", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.TransactionResponse));
+            elementDictionary.Add(XName.Get("Harvest", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.Harvest));
+            elementDictionary.Add(XName.Get("HarvestResponse", "http://www.opengis.net/cat/csw/2.0.2"), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.HarvestResponse));
+            elementDictionary.Add(XName.Get("abstract", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.@abstract));
+            elementDictionary.Add(XName.Get("accessRights", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.accessRights));
+            elementDictionary.Add(XName.Get("alternative", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.alternative));
+            elementDictionary.Add(XName.Get("audience", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.audience));
+            elementDictionary.Add(XName.Get("available", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.available));
+            elementDictionary.Add(XName.Get("bibliographicCitation", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.bibliographicCitation));
+            elementDictionary.Add(XName.Get("conformsTo", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.conformsTo));
+            elementDictionary.Add(XName.Get("created", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.created));
+            elementDictionary.Add(XName.Get("dateAccepted", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.dateAccepted));
+            elementDictionary.Add(XName.Get("dateCopyrighted", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.dateCopyrighted));
+            elementDictionary.Add(XName.Get("dateSubmitted", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.dateSubmitted));
+            elementDictionary.Add(XName.Get("educationLevel", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.educationLevel));
+            elementDictionary.Add(XName.Get("extent", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.extent));
+            elementDictionary.Add(XName.Get("hasFormat", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.hasFormat));
+            elementDictionary.Add(XName.Get("hasPart", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.hasPart));
+            elementDictionary.Add(XName.Get("hasVersion", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.hasVersion));
+            elementDictionary.Add(XName.Get("isFormatOf", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.isFormatOf));
+            elementDictionary.Add(XName.Get("isPartOf", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.isPartOf));
+            elementDictionary.Add(XName.Get("isReferencedBy", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.isReferencedBy));
+            elementDictionary.Add(XName.Get("isReplacedBy", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.isReplacedBy));
+            elementDictionary.Add(XName.Get("isRequiredBy", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.isRequiredBy));
+            elementDictionary.Add(XName.Get("issued", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.issued));
+            elementDictionary.Add(XName.Get("isVersionOf", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.isVersionOf));
+            elementDictionary.Add(XName.Get("license", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.license));
+            elementDictionary.Add(XName.Get("mediator", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.mediator));
+            elementDictionary.Add(XName.Get("medium", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.medium));
+            elementDictionary.Add(XName.Get("modified", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.modified));
+            elementDictionary.Add(XName.Get("provenance", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.provenance));
+            elementDictionary.Add(XName.Get("references", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.references));
+            elementDictionary.Add(XName.Get("replaces", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.replaces));
+            elementDictionary.Add(XName.Get("requires", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.requires));
+            elementDictionary.Add(XName.Get("rightsHolder", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.rightsHolder));
+            elementDictionary.Add(XName.Get("spatial", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.spatial));
+            elementDictionary.Add(XName.Get("tableOfContents", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.tableOfContents));
+            elementDictionary.Add(XName.Get("temporal", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.temporal));
+            elementDictionary.Add(XName.Get("valid", "http://purl.org/dc/terms/"), typeof(global::GeoSik.DublinCore.Terms.valid));
+            elementDictionary.Add(XName.Get("DC-element", "http://purl.org/dc/elements/1.1/"), typeof(global::GeoSik.DublinCore.Elements.V11.DCelement));
+            elementDictionary.Add(XName.Get("title", "http://purl.org/dc/elements/1.1/"), typeof(global::GeoSik.DublinCore.Elements.V11.title));
+            elementDictionary.Add(XName.Get("creator", "http://purl.org/dc/elements/1.1/"), typeof(global::GeoSik.DublinCore.Elements.V11.creator));
+            elementDictionary.Add(XName.Get("subject", "http://purl.org/dc/elements/1.1/"), typeof(global::GeoSik.DublinCore.Elements.V11.subject));
+            elementDictionary.Add(XName.Get("description", "http://purl.org/dc/elements/1.1/"), typeof(global::GeoSik.DublinCore.Elements.V11.description));
+            elementDictionary.Add(XName.Get("publisher", "http://purl.org/dc/elements/1.1/"), typeof(global::GeoSik.DublinCore.Elements.V11.publisher));
+            elementDictionary.Add(XName.Get("contributor", "http://purl.org/dc/elements/1.1/"), typeof(global::GeoSik.DublinCore.Elements.V11.contributor));
+            elementDictionary.Add(XName.Get("date", "http://purl.org/dc/elements/1.1/"), typeof(global::GeoSik.DublinCore.Elements.V11.date));
+            elementDictionary.Add(XName.Get("type", "http://purl.org/dc/elements/1.1/"), typeof(global::GeoSik.DublinCore.Elements.V11.type));
+            elementDictionary.Add(XName.Get("format", "http://purl.org/dc/elements/1.1/"), typeof(global::GeoSik.DublinCore.Elements.V11.format));
+            elementDictionary.Add(XName.Get("identifier", "http://purl.org/dc/elements/1.1/"), typeof(global::GeoSik.DublinCore.Elements.V11.identifier));
+            elementDictionary.Add(XName.Get("source", "http://purl.org/dc/elements/1.1/"), typeof(global::GeoSik.DublinCore.Elements.V11.source));
+            elementDictionary.Add(XName.Get("language", "http://purl.org/dc/elements/1.1/"), typeof(global::GeoSik.DublinCore.Elements.V11.language));
+            elementDictionary.Add(XName.Get("relation", "http://purl.org/dc/elements/1.1/"), typeof(global::GeoSik.DublinCore.Elements.V11.relation));
+            elementDictionary.Add(XName.Get("coverage", "http://purl.org/dc/elements/1.1/"), typeof(global::GeoSik.DublinCore.Elements.V11.coverage));
+            elementDictionary.Add(XName.Get("rights", "http://purl.org/dc/elements/1.1/"), typeof(global::GeoSik.DublinCore.Elements.V11.rights));
+            elementDictionary.Add(XName.Get("Metadata", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.Metadata));
+            elementDictionary.Add(XName.Get("BoundingBox", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.BoundingBox));
+            elementDictionary.Add(XName.Get("WGS84BoundingBox", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.WGS84BoundingBox));
+            elementDictionary.Add(XName.Get("Title", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.Title));
+            elementDictionary.Add(XName.Get("Abstract", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.@Abstract));
+            elementDictionary.Add(XName.Get("Keywords", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.Keywords));
+            elementDictionary.Add(XName.Get("PointOfContact", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.PointOfContact));
+            elementDictionary.Add(XName.Get("IndividualName", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.IndividualName));
+            elementDictionary.Add(XName.Get("OrganisationName", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.OrganisationName));
+            elementDictionary.Add(XName.Get("PositionName", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.PositionName));
+            elementDictionary.Add(XName.Get("Role", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.Role));
+            elementDictionary.Add(XName.Get("ContactInfo", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.ContactInfo));
+            elementDictionary.Add(XName.Get("Identifier", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.Identifier));
+            elementDictionary.Add(XName.Get("OutputFormat", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.OutputFormat));
+            elementDictionary.Add(XName.Get("AvailableCRS", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.AvailableCRS));
+            elementDictionary.Add(XName.Get("SupportedCRS", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.SupportedCRS));
+            elementDictionary.Add(XName.Get("AccessConstraints", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.AccessConstraints));
+            elementDictionary.Add(XName.Get("Fees", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.Fees));
+            elementDictionary.Add(XName.Get("Language", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.Language));
+            elementDictionary.Add(XName.Get("GetCapabilities", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.GetCapabilities));
+            elementDictionary.Add(XName.Get("Exception", "http://www.opengis.net/ows"), typeof(global::GeoSik.Ogc.Ows.V100.Exception));
+            elementDictionary.Add(XName.Get("Add", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.Add));
+            elementDictionary.Add(XName.Get("Sub", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.Sub));
+            elementDictionary.Add(XName.Get("Mul", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.Mul));
+            elementDictionary.Add(XName.Get("Div", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.Div));
+            elementDictionary.Add(XName.Get("PropertyName", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.PropertyName));
+            elementDictionary.Add(XName.Get("Function", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.Function));
+            elementDictionary.Add(XName.Get("Literal", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.Literal));
+            elementDictionary.Add(XName.Get("expression", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.expression));
+            elementDictionary.Add(XName.Get("SortBy", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.SortBy));
+            elementDictionary.Add(XName.Get("_Id", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110._Id));
+            elementDictionary.Add(XName.Get("FeatureId", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.FeatureId));
+            elementDictionary.Add(XName.Get("GmlObjectId", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.GmlObjectId));
+            elementDictionary.Add(XName.Get("Filter", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.Filter));
+            elementDictionary.Add(XName.Get("comparisonOps", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.comparisonOps));
+            elementDictionary.Add(XName.Get("PropertyIsEqualTo", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.PropertyIsEqualTo));
+            elementDictionary.Add(XName.Get("PropertyIsNotEqualTo", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.PropertyIsNotEqualTo));
+            elementDictionary.Add(XName.Get("PropertyIsLessThan", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.PropertyIsLessThan));
+            elementDictionary.Add(XName.Get("PropertyIsGreaterThan", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.PropertyIsGreaterThan));
+            elementDictionary.Add(XName.Get("PropertyIsLessThanOrEqualTo", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.PropertyIsLessThanOrEqualTo));
+            elementDictionary.Add(XName.Get("PropertyIsGreaterThanOrEqualTo", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.PropertyIsGreaterThanOrEqualTo));
+            elementDictionary.Add(XName.Get("PropertyIsLike", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.PropertyIsLike));
+            elementDictionary.Add(XName.Get("PropertyIsNull", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.PropertyIsNull));
+            elementDictionary.Add(XName.Get("PropertyIsBetween", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.PropertyIsBetween));
+            elementDictionary.Add(XName.Get("spatialOps", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.spatialOps));
+            elementDictionary.Add(XName.Get("Equals", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.Equals));
+            elementDictionary.Add(XName.Get("Disjoint", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.Disjoint));
+            elementDictionary.Add(XName.Get("Touches", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.Touches));
+            elementDictionary.Add(XName.Get("Within", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.Within));
+            elementDictionary.Add(XName.Get("Overlaps", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.Overlaps));
+            elementDictionary.Add(XName.Get("Crosses", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.Crosses));
+            elementDictionary.Add(XName.Get("Intersects", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.Intersects));
+            elementDictionary.Add(XName.Get("Contains", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.Contains));
+            elementDictionary.Add(XName.Get("DWithin", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.DWithin));
+            elementDictionary.Add(XName.Get("Beyond", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.Beyond));
+            elementDictionary.Add(XName.Get("BBOX", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.BBOX));
+            elementDictionary.Add(XName.Get("logicOps", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.logicOps));
+            elementDictionary.Add(XName.Get("And", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.And));
+            elementDictionary.Add(XName.Get("Or", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.Or));
+            elementDictionary.Add(XName.Get("Not", "http://www.opengis.net/ogc"), typeof(global::GeoSik.Ogc.Filter.V110.Not));
+            elementDictionary.Add(XName.Get("Null", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.@Null));
+            elementDictionary.Add(XName.Get("_GML", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311._GML));
+            elementDictionary.Add(XName.Get("Bag", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.Bag));
+            elementDictionary.Add(XName.Get("Array", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.Array));
+            elementDictionary.Add(XName.Get("_MetaData", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311._MetaData));
+            elementDictionary.Add(XName.Get("GenericMetaData", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.GenericMetaData));
+            elementDictionary.Add(XName.Get("_association", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311._association));
+            elementDictionary.Add(XName.Get("_strictAssociation", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311._strictAssociation));
+            elementDictionary.Add(XName.Get("member", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.member));
+            elementDictionary.Add(XName.Get("_reference", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311._reference));
+            elementDictionary.Add(XName.Get("members", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.members));
+            elementDictionary.Add(XName.Get("metaDataProperty", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.metaDataProperty));
+            elementDictionary.Add(XName.Get("name", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.name));
+            elementDictionary.Add(XName.Get("description", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.description));
+            elementDictionary.Add(XName.Get("Definition", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.Definition));
+            elementDictionary.Add(XName.Get("Dictionary", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.Dictionary));
+            elementDictionary.Add(XName.Get("DefinitionCollection", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.DefinitionCollection));
+            elementDictionary.Add(XName.Get("dictionaryEntry", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.dictionaryEntry));
+            elementDictionary.Add(XName.Get("definitionMember", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.definitionMember));
+            elementDictionary.Add(XName.Get("indirectEntry", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.indirectEntry));
+            elementDictionary.Add(XName.Get("DefinitionProxy", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.DefinitionProxy));
+            elementDictionary.Add(XName.Get("definitionRef", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.definitionRef));
+            elementDictionary.Add(XName.Get("unitOfMeasure", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.unitOfMeasure));
+            elementDictionary.Add(XName.Get("UnitDefinition", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.UnitDefinition));
+            elementDictionary.Add(XName.Get("BaseUnit", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.BaseUnit));
+            elementDictionary.Add(XName.Get("DerivedUnit", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.DerivedUnit));
+            elementDictionary.Add(XName.Get("ConventionalUnit", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.ConventionalUnit));
+            elementDictionary.Add(XName.Get("quantityType", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.quantityType));
+            elementDictionary.Add(XName.Get("catalogSymbol", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.catalogSymbol));
+            elementDictionary.Add(XName.Get("derivationUnitTerm", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.derivationUnitTerm));
+            elementDictionary.Add(XName.Get("conversionToPreferredUnit", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.conversionToPreferredUnit));
+            elementDictionary.Add(XName.Get("roughConversionToPreferredUnit", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.roughConversionToPreferredUnit));
+            elementDictionary.Add(XName.Get("measure", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.measure));
+            elementDictionary.Add(XName.Get("angle", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.angle));
+            elementDictionary.Add(XName.Get("dmsAngle", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.dmsAngle));
+            elementDictionary.Add(XName.Get("degrees", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.degrees));
+            elementDictionary.Add(XName.Get("decimalMinutes", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.decimalMinutes));
+            elementDictionary.Add(XName.Get("minutes", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.minutes));
+            elementDictionary.Add(XName.Get("seconds", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.seconds));
+            elementDictionary.Add(XName.Get("_Geometry", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311._Geometry));
+            elementDictionary.Add(XName.Get("_GeometricPrimitive", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311._GeometricPrimitive));
+            elementDictionary.Add(XName.Get("Point", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.Point));
+            elementDictionary.Add(XName.Get("pointProperty", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.pointProperty));
+            elementDictionary.Add(XName.Get("pointRep", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.pointRep));
+            elementDictionary.Add(XName.Get("pointArrayProperty", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.pointArrayProperty));
+            elementDictionary.Add(XName.Get("_Curve", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311._Curve));
+            elementDictionary.Add(XName.Get("curveProperty", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.curveProperty));
+            elementDictionary.Add(XName.Get("curveArrayProperty", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.curveArrayProperty));
+            elementDictionary.Add(XName.Get("LineString", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.LineString));
+            elementDictionary.Add(XName.Get("pos", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.pos));
+            elementDictionary.Add(XName.Get("posList", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.posList));
+            elementDictionary.Add(XName.Get("vector", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.vector));
+            elementDictionary.Add(XName.Get("coordinates", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.coordinates));
+            elementDictionary.Add(XName.Get("Envelope", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.Envelope));
+            elementDictionary.Add(XName.Get("coord", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.coord));
+            elementDictionary.Add(XName.Get("lineStringProperty", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.lineStringProperty));
+            elementDictionary.Add(XName.Get("_Surface", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311._Surface));
+            elementDictionary.Add(XName.Get("surfaceProperty", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.surfaceProperty));
+            elementDictionary.Add(XName.Get("surfaceArrayProperty", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.surfaceArrayProperty));
+            elementDictionary.Add(XName.Get("Polygon", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.Polygon));
+            elementDictionary.Add(XName.Get("_Ring", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311._Ring));
+            elementDictionary.Add(XName.Get("exterior", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.exterior));
+            elementDictionary.Add(XName.Get("interior", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.interior));
+            elementDictionary.Add(XName.Get("outerBoundaryIs", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.outerBoundaryIs));
+            elementDictionary.Add(XName.Get("innerBoundaryIs", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.innerBoundaryIs));
+            elementDictionary.Add(XName.Get("LinearRing", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.LinearRing));
+            elementDictionary.Add(XName.Get("polygonProperty", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.polygonProperty));
+            elementDictionary.Add(XName.Get("Curve", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.Curve));
+            elementDictionary.Add(XName.Get("baseCurve", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.baseCurve));
+            elementDictionary.Add(XName.Get("OrientableCurve", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.OrientableCurve));
+            elementDictionary.Add(XName.Get("_CurveSegment", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311._CurveSegment));
+            elementDictionary.Add(XName.Get("segments", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.segments));
+            elementDictionary.Add(XName.Get("LineStringSegment", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.LineStringSegment));
+            elementDictionary.Add(XName.Get("ArcString", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.ArcString));
+            elementDictionary.Add(XName.Get("Arc", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.Arc));
+            elementDictionary.Add(XName.Get("Circle", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.Circle));
+            elementDictionary.Add(XName.Get("ArcStringByBulge", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.ArcStringByBulge));
+            elementDictionary.Add(XName.Get("ArcByBulge", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.ArcByBulge));
+            elementDictionary.Add(XName.Get("ArcByCenterPoint", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.ArcByCenterPoint));
+            elementDictionary.Add(XName.Get("CircleByCenterPoint", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.CircleByCenterPoint));
+            elementDictionary.Add(XName.Get("OffsetCurve", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.OffsetCurve));
+            elementDictionary.Add(XName.Get("AffinePlacement", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.AffinePlacement));
+            elementDictionary.Add(XName.Get("Clothoid", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.Clothoid));
+            elementDictionary.Add(XName.Get("GeodesicString", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.GeodesicString));
+            elementDictionary.Add(XName.Get("Geodesic", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.Geodesic));
+            elementDictionary.Add(XName.Get("CubicSpline", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.CubicSpline));
+            elementDictionary.Add(XName.Get("BSpline", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.BSpline));
+            elementDictionary.Add(XName.Get("Bezier", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.Bezier));
+            elementDictionary.Add(XName.Get("Surface", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.Surface));
+            elementDictionary.Add(XName.Get("baseSurface", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.baseSurface));
+            elementDictionary.Add(XName.Get("OrientableSurface", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.OrientableSurface));
+            elementDictionary.Add(XName.Get("_SurfacePatch", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311._SurfacePatch));
+            elementDictionary.Add(XName.Get("patches", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.patches));
+            elementDictionary.Add(XName.Get("PolygonPatch", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.PolygonPatch));
+            elementDictionary.Add(XName.Get("Triangle", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.Triangle));
+            elementDictionary.Add(XName.Get("Rectangle", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.Rectangle));
+            elementDictionary.Add(XName.Get("curveMember", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.curveMember));
+            elementDictionary.Add(XName.Get("Ring", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.Ring));
+            elementDictionary.Add(XName.Get("_ParametricCurveSurface", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311._ParametricCurveSurface));
+            elementDictionary.Add(XName.Get("_GriddedSurface", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311._GriddedSurface));
+            elementDictionary.Add(XName.Get("Cone", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.Cone));
+            elementDictionary.Add(XName.Get("Cylinder", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.Cylinder));
+            elementDictionary.Add(XName.Get("Sphere", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.Sphere));
+            elementDictionary.Add(XName.Get("PolyhedralSurface", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.PolyhedralSurface));
+            elementDictionary.Add(XName.Get("polygonPatches", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.polygonPatches));
+            elementDictionary.Add(XName.Get("trianglePatches", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.trianglePatches));
+            elementDictionary.Add(XName.Get("TriangulatedSurface", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.TriangulatedSurface));
+            elementDictionary.Add(XName.Get("Tin", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.Tin));
+            elementDictionary.Add(XName.Get("_Solid", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311._Solid));
+            elementDictionary.Add(XName.Get("solidProperty", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.solidProperty));
+            elementDictionary.Add(XName.Get("solidArrayProperty", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.solidArrayProperty));
+            elementDictionary.Add(XName.Get("Solid", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.Solid));
+            elementDictionary.Add(XName.Get("_GeometricAggregate", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311._GeometricAggregate));
+            elementDictionary.Add(XName.Get("MultiGeometry", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MultiGeometry));
+            elementDictionary.Add(XName.Get("multiGeometryProperty", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.multiGeometryProperty));
+            elementDictionary.Add(XName.Get("MultiPoint", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MultiPoint));
+            elementDictionary.Add(XName.Get("multiPointProperty", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.multiPointProperty));
+            elementDictionary.Add(XName.Get("MultiCurve", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MultiCurve));
+            elementDictionary.Add(XName.Get("multiCurveProperty", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.multiCurveProperty));
+            elementDictionary.Add(XName.Get("MultiSurface", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MultiSurface));
+            elementDictionary.Add(XName.Get("multiSurfaceProperty", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.multiSurfaceProperty));
+            elementDictionary.Add(XName.Get("MultiSolid", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MultiSolid));
+            elementDictionary.Add(XName.Get("multiSolidProperty", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.multiSolidProperty));
+            elementDictionary.Add(XName.Get("MultiPolygon", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MultiPolygon));
+            elementDictionary.Add(XName.Get("MultiLineString", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.MultiLineString));
+            elementDictionary.Add(XName.Get("geometryMember", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.geometryMember));
+            elementDictionary.Add(XName.Get("geometryMembers", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.geometryMembers));
+            elementDictionary.Add(XName.Get("pointMember", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.pointMember));
+            elementDictionary.Add(XName.Get("pointMembers", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.pointMembers));
+            elementDictionary.Add(XName.Get("curveMembers", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.curveMembers));
+            elementDictionary.Add(XName.Get("surfaceMember", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.surfaceMember));
+            elementDictionary.Add(XName.Get("surfaceMembers", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.surfaceMembers));
+            elementDictionary.Add(XName.Get("solidMember", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.solidMember));
+            elementDictionary.Add(XName.Get("solidMembers", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.solidMembers));
+            elementDictionary.Add(XName.Get("multiCenterOf", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.multiCenterOf));
+            elementDictionary.Add(XName.Get("multiPosition", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.multiPosition));
+            elementDictionary.Add(XName.Get("multiCenterLineOf", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.multiCenterLineOf));
+            elementDictionary.Add(XName.Get("multiEdgeOf", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.multiEdgeOf));
+            elementDictionary.Add(XName.Get("multiCoverage", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.multiCoverage));
+            elementDictionary.Add(XName.Get("multiExtentOf", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.multiExtentOf));
+            elementDictionary.Add(XName.Get("multiLocation", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.multiLocation));
+            elementDictionary.Add(XName.Get("lineStringMember", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.lineStringMember));
+            elementDictionary.Add(XName.Get("polygonMember", "http://www.opengis.net/gml"), typeof(global::GeoSik.Ogc.Gml.V311.polygonMember));
         }
 
         private static void BuildWrapperDictionary()
         {
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.AbstractRecord), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.AbstractRecordType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.DCMIRecord), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.DCMIRecordType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.BriefRecord), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.BriefRecordType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.SummaryRecord), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.SummaryRecordType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.Record), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.RecordType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.GetCapabilities), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetCapabilitiesType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.Capabilities), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.CapabilitiesType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.DescribeRecord), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.DescribeRecordType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.DescribeRecordResponse), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.DescribeRecordResponseType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecords), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecordsType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.AbstractQuery), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.AbstractQueryType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.Query), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.QueryType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.Constraint), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.QueryConstraintType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.ElementSetName), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.ElementSetNameType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecordsResponse), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecordsResponseType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecordById), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecordByIdType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecordByIdResponse), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecordByIdResponseType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.GetDomain), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetDomainType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.GetDomainResponse), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetDomainResponseType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.Acknowledgement), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.AcknowledgementType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.Transaction), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.TransactionType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.RecordProperty), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.RecordPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.TransactionResponse), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.TransactionResponseType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.Harvest), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.HarvestType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.WebCatalog.Csw.V202.HarvestResponse), typeof(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.HarvestResponseType));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.@abstract), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.accessRights), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.alternative), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.audience), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.available), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.bibliographicCitation), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.conformsTo), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.created), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.dateAccepted), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.dateCopyrighted), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.dateSubmitted), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.educationLevel), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.extent), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.hasFormat), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.hasPart), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.hasVersion), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.isFormatOf), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.isPartOf), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.isReferencedBy), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.isReplacedBy), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.isRequiredBy), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.issued), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.isVersionOf), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.license), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.mediator), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.medium), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.modified), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.provenance), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.references), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.replaces), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.requires), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.rightsHolder), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.spatial), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.tableOfContents), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.temporal), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Terms.valid), typeof(void));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Elements.V11.DCelement), typeof(global::OgcToolkit.DublinCore.Elements.V11.SimpleLiteral));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Elements.V11.title), typeof(global::OgcToolkit.DublinCore.Elements.V11.SimpleLiteral));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Elements.V11.creator), typeof(global::OgcToolkit.DublinCore.Elements.V11.SimpleLiteral));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Elements.V11.subject), typeof(global::OgcToolkit.DublinCore.Elements.V11.SimpleLiteral));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Elements.V11.description), typeof(global::OgcToolkit.DublinCore.Elements.V11.SimpleLiteral));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Elements.V11.publisher), typeof(global::OgcToolkit.DublinCore.Elements.V11.SimpleLiteral));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Elements.V11.contributor), typeof(global::OgcToolkit.DublinCore.Elements.V11.SimpleLiteral));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Elements.V11.date), typeof(global::OgcToolkit.DublinCore.Elements.V11.SimpleLiteral));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Elements.V11.type), typeof(global::OgcToolkit.DublinCore.Elements.V11.SimpleLiteral));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Elements.V11.format), typeof(global::OgcToolkit.DublinCore.Elements.V11.SimpleLiteral));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Elements.V11.identifier), typeof(global::OgcToolkit.DublinCore.Elements.V11.SimpleLiteral));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Elements.V11.source), typeof(global::OgcToolkit.DublinCore.Elements.V11.SimpleLiteral));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Elements.V11.language), typeof(global::OgcToolkit.DublinCore.Elements.V11.SimpleLiteral));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Elements.V11.relation), typeof(global::OgcToolkit.DublinCore.Elements.V11.SimpleLiteral));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Elements.V11.coverage), typeof(global::OgcToolkit.DublinCore.Elements.V11.SimpleLiteral));
-            wrapperDictionary.Add(typeof(OgcToolkit.DublinCore.Elements.V11.rights), typeof(global::OgcToolkit.DublinCore.Elements.V11.SimpleLiteral));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Ows.V100.Metadata), typeof(global::OgcToolkit.Ogc.Ows.V100.MetadataType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Ows.V100.BoundingBox), typeof(global::OgcToolkit.Ogc.Ows.V100.BoundingBoxType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Ows.V100.WGS84BoundingBox), typeof(global::OgcToolkit.Ogc.Ows.V100.WGS84BoundingBoxType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Ows.V100.Keywords), typeof(global::OgcToolkit.Ogc.Ows.V100.KeywordsType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Ows.V100.PointOfContact), typeof(global::OgcToolkit.Ogc.Ows.V100.ResponsiblePartyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Ows.V100.Role), typeof(global::OgcToolkit.Ogc.Ows.V100.CodeType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Ows.V100.ContactInfo), typeof(global::OgcToolkit.Ogc.Ows.V100.ContactType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Ows.V100.Identifier), typeof(global::OgcToolkit.Ogc.Ows.V100.CodeType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Ows.V100.GetCapabilities), typeof(global::OgcToolkit.Ogc.Ows.V100.GetCapabilitiesType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Ows.V100.Exception), typeof(global::OgcToolkit.Ogc.Ows.V100.ExceptionType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.Add), typeof(global::OgcToolkit.Ogc.Filter.V110.BinaryOperatorType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.Sub), typeof(global::OgcToolkit.Ogc.Filter.V110.BinaryOperatorType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.Mul), typeof(global::OgcToolkit.Ogc.Filter.V110.BinaryOperatorType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.Div), typeof(global::OgcToolkit.Ogc.Filter.V110.BinaryOperatorType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.PropertyName), typeof(global::OgcToolkit.Ogc.Filter.V110.PropertyNameType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.Function), typeof(global::OgcToolkit.Ogc.Filter.V110.FunctionType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.Literal), typeof(global::OgcToolkit.Ogc.Filter.V110.LiteralType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.expression), typeof(global::OgcToolkit.Ogc.Filter.V110.ExpressionType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.SortBy), typeof(global::OgcToolkit.Ogc.Filter.V110.SortByType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110._Id), typeof(global::OgcToolkit.Ogc.Filter.V110.AbstractIdType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.FeatureId), typeof(global::OgcToolkit.Ogc.Filter.V110.FeatureIdType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.GmlObjectId), typeof(global::OgcToolkit.Ogc.Filter.V110.GmlObjectIdType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.Filter), typeof(global::OgcToolkit.Ogc.Filter.V110.FilterType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.comparisonOps), typeof(global::OgcToolkit.Ogc.Filter.V110.ComparisonOpsType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.PropertyIsEqualTo), typeof(global::OgcToolkit.Ogc.Filter.V110.BinaryComparisonOpType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.PropertyIsNotEqualTo), typeof(global::OgcToolkit.Ogc.Filter.V110.BinaryComparisonOpType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.PropertyIsLessThan), typeof(global::OgcToolkit.Ogc.Filter.V110.BinaryComparisonOpType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.PropertyIsGreaterThan), typeof(global::OgcToolkit.Ogc.Filter.V110.BinaryComparisonOpType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.PropertyIsLessThanOrEqualTo), typeof(global::OgcToolkit.Ogc.Filter.V110.BinaryComparisonOpType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.PropertyIsGreaterThanOrEqualTo), typeof(global::OgcToolkit.Ogc.Filter.V110.BinaryComparisonOpType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.PropertyIsLike), typeof(global::OgcToolkit.Ogc.Filter.V110.PropertyIsLikeType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.PropertyIsNull), typeof(global::OgcToolkit.Ogc.Filter.V110.PropertyIsNullType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.PropertyIsBetween), typeof(global::OgcToolkit.Ogc.Filter.V110.PropertyIsBetweenType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.spatialOps), typeof(global::OgcToolkit.Ogc.Filter.V110.SpatialOpsType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.Equals), typeof(global::OgcToolkit.Ogc.Filter.V110.BinarySpatialOpType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.Disjoint), typeof(global::OgcToolkit.Ogc.Filter.V110.BinarySpatialOpType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.Touches), typeof(global::OgcToolkit.Ogc.Filter.V110.BinarySpatialOpType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.Within), typeof(global::OgcToolkit.Ogc.Filter.V110.BinarySpatialOpType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.Overlaps), typeof(global::OgcToolkit.Ogc.Filter.V110.BinarySpatialOpType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.Crosses), typeof(global::OgcToolkit.Ogc.Filter.V110.BinarySpatialOpType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.Intersects), typeof(global::OgcToolkit.Ogc.Filter.V110.BinarySpatialOpType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.Contains), typeof(global::OgcToolkit.Ogc.Filter.V110.BinarySpatialOpType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.DWithin), typeof(global::OgcToolkit.Ogc.Filter.V110.DistanceBufferType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.Beyond), typeof(global::OgcToolkit.Ogc.Filter.V110.DistanceBufferType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.BBOX), typeof(global::OgcToolkit.Ogc.Filter.V110.BBOXType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.logicOps), typeof(global::OgcToolkit.Ogc.Filter.V110.LogicOpsType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.And), typeof(global::OgcToolkit.Ogc.Filter.V110.BinaryLogicOpType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.Or), typeof(global::OgcToolkit.Ogc.Filter.V110.BinaryLogicOpType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Filter.V110.Not), typeof(global::OgcToolkit.Ogc.Filter.V110.UnaryLogicOpType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311._GML), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractGMLType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.Bag), typeof(global::OgcToolkit.Ogc.Gml.V311.BagType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.Array), typeof(global::OgcToolkit.Ogc.Gml.V311.ArrayType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311._MetaData), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractMetaDataType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.GenericMetaData), typeof(global::OgcToolkit.Ogc.Gml.V311.GenericMetaDataType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311._association), typeof(global::OgcToolkit.Ogc.Gml.V311.AssociationType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311._strictAssociation), typeof(global::OgcToolkit.Ogc.Gml.V311.AssociationType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.member), typeof(global::OgcToolkit.Ogc.Gml.V311.AssociationType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311._reference), typeof(global::OgcToolkit.Ogc.Gml.V311.ReferenceType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.members), typeof(global::OgcToolkit.Ogc.Gml.V311.ArrayAssociationType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.metaDataProperty), typeof(global::OgcToolkit.Ogc.Gml.V311.MetaDataPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.name), typeof(global::OgcToolkit.Ogc.Gml.V311.CodeType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.description), typeof(global::OgcToolkit.Ogc.Gml.V311.StringOrRefType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.Definition), typeof(global::OgcToolkit.Ogc.Gml.V311.DefinitionType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.Dictionary), typeof(global::OgcToolkit.Ogc.Gml.V311.DictionaryType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.DefinitionCollection), typeof(global::OgcToolkit.Ogc.Gml.V311.DictionaryType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.dictionaryEntry), typeof(global::OgcToolkit.Ogc.Gml.V311.DictionaryEntryType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.definitionMember), typeof(global::OgcToolkit.Ogc.Gml.V311.DictionaryEntryType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.indirectEntry), typeof(global::OgcToolkit.Ogc.Gml.V311.IndirectEntryType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.DefinitionProxy), typeof(global::OgcToolkit.Ogc.Gml.V311.DefinitionProxyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.definitionRef), typeof(global::OgcToolkit.Ogc.Gml.V311.ReferenceType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.unitOfMeasure), typeof(global::OgcToolkit.Ogc.Gml.V311.UnitOfMeasureType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.UnitDefinition), typeof(global::OgcToolkit.Ogc.Gml.V311.UnitDefinitionType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.BaseUnit), typeof(global::OgcToolkit.Ogc.Gml.V311.BaseUnitType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.DerivedUnit), typeof(global::OgcToolkit.Ogc.Gml.V311.DerivedUnitType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.ConventionalUnit), typeof(global::OgcToolkit.Ogc.Gml.V311.ConventionalUnitType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.quantityType), typeof(global::OgcToolkit.Ogc.Gml.V311.StringOrRefType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.catalogSymbol), typeof(global::OgcToolkit.Ogc.Gml.V311.CodeType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.derivationUnitTerm), typeof(global::OgcToolkit.Ogc.Gml.V311.DerivationUnitTermType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.conversionToPreferredUnit), typeof(global::OgcToolkit.Ogc.Gml.V311.ConversionToPreferredUnitType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.roughConversionToPreferredUnit), typeof(global::OgcToolkit.Ogc.Gml.V311.ConversionToPreferredUnitType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.measure), typeof(global::OgcToolkit.Ogc.Gml.V311.MeasureType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.angle), typeof(global::OgcToolkit.Ogc.Gml.V311.MeasureType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.dmsAngle), typeof(global::OgcToolkit.Ogc.Gml.V311.DMSAngleType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.degrees), typeof(global::OgcToolkit.Ogc.Gml.V311.DegreesType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311._Geometry), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractGeometryType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311._GeometricPrimitive), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractGeometricPrimitiveType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.Point), typeof(global::OgcToolkit.Ogc.Gml.V311.PointType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.pointProperty), typeof(global::OgcToolkit.Ogc.Gml.V311.PointPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.pointRep), typeof(global::OgcToolkit.Ogc.Gml.V311.PointPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.pointArrayProperty), typeof(global::OgcToolkit.Ogc.Gml.V311.PointArrayPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311._Curve), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractCurveType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.curveProperty), typeof(global::OgcToolkit.Ogc.Gml.V311.CurvePropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.curveArrayProperty), typeof(global::OgcToolkit.Ogc.Gml.V311.CurveArrayPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.LineString), typeof(global::OgcToolkit.Ogc.Gml.V311.LineStringType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.pos), typeof(global::OgcToolkit.Ogc.Gml.V311.DirectPositionType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.posList), typeof(global::OgcToolkit.Ogc.Gml.V311.DirectPositionListType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.vector), typeof(global::OgcToolkit.Ogc.Gml.V311.VectorType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.coordinates), typeof(global::OgcToolkit.Ogc.Gml.V311.CoordinatesType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.Envelope), typeof(global::OgcToolkit.Ogc.Gml.V311.EnvelopeType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.coord), typeof(global::OgcToolkit.Ogc.Gml.V311.CoordType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.lineStringProperty), typeof(global::OgcToolkit.Ogc.Gml.V311.LineStringPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311._Surface), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractSurfaceType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.surfaceProperty), typeof(global::OgcToolkit.Ogc.Gml.V311.SurfacePropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.surfaceArrayProperty), typeof(global::OgcToolkit.Ogc.Gml.V311.SurfaceArrayPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.Polygon), typeof(global::OgcToolkit.Ogc.Gml.V311.PolygonType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311._Ring), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractRingType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.exterior), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractRingPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.interior), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractRingPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.outerBoundaryIs), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractRingPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.innerBoundaryIs), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractRingPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.LinearRing), typeof(global::OgcToolkit.Ogc.Gml.V311.LinearRingType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.polygonProperty), typeof(global::OgcToolkit.Ogc.Gml.V311.PolygonPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.Curve), typeof(global::OgcToolkit.Ogc.Gml.V311.CurveType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.baseCurve), typeof(global::OgcToolkit.Ogc.Gml.V311.CurvePropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.OrientableCurve), typeof(global::OgcToolkit.Ogc.Gml.V311.OrientableCurveType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311._CurveSegment), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractCurveSegmentType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.segments), typeof(global::OgcToolkit.Ogc.Gml.V311.CurveSegmentArrayPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.LineStringSegment), typeof(global::OgcToolkit.Ogc.Gml.V311.LineStringSegmentType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.ArcString), typeof(global::OgcToolkit.Ogc.Gml.V311.ArcStringType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.Arc), typeof(global::OgcToolkit.Ogc.Gml.V311.ArcType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.Circle), typeof(global::OgcToolkit.Ogc.Gml.V311.CircleType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.ArcStringByBulge), typeof(global::OgcToolkit.Ogc.Gml.V311.ArcStringByBulgeType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.ArcByBulge), typeof(global::OgcToolkit.Ogc.Gml.V311.ArcByBulgeType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.ArcByCenterPoint), typeof(global::OgcToolkit.Ogc.Gml.V311.ArcByCenterPointType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.CircleByCenterPoint), typeof(global::OgcToolkit.Ogc.Gml.V311.CircleByCenterPointType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.OffsetCurve), typeof(global::OgcToolkit.Ogc.Gml.V311.OffsetCurveType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.AffinePlacement), typeof(global::OgcToolkit.Ogc.Gml.V311.AffinePlacementType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.Clothoid), typeof(global::OgcToolkit.Ogc.Gml.V311.ClothoidType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.GeodesicString), typeof(global::OgcToolkit.Ogc.Gml.V311.GeodesicStringType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.Geodesic), typeof(global::OgcToolkit.Ogc.Gml.V311.GeodesicType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.CubicSpline), typeof(global::OgcToolkit.Ogc.Gml.V311.CubicSplineType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.BSpline), typeof(global::OgcToolkit.Ogc.Gml.V311.BSplineType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.Bezier), typeof(global::OgcToolkit.Ogc.Gml.V311.BezierType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.Surface), typeof(global::OgcToolkit.Ogc.Gml.V311.SurfaceType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.baseSurface), typeof(global::OgcToolkit.Ogc.Gml.V311.SurfacePropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.OrientableSurface), typeof(global::OgcToolkit.Ogc.Gml.V311.OrientableSurfaceType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311._SurfacePatch), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractSurfacePatchType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.patches), typeof(global::OgcToolkit.Ogc.Gml.V311.SurfacePatchArrayPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.PolygonPatch), typeof(global::OgcToolkit.Ogc.Gml.V311.PolygonPatchType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.Triangle), typeof(global::OgcToolkit.Ogc.Gml.V311.TriangleType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.Rectangle), typeof(global::OgcToolkit.Ogc.Gml.V311.RectangleType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.curveMember), typeof(global::OgcToolkit.Ogc.Gml.V311.CurvePropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.Ring), typeof(global::OgcToolkit.Ogc.Gml.V311.RingType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311._ParametricCurveSurface), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractParametricCurveSurfaceType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311._GriddedSurface), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractGriddedSurfaceType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.Cone), typeof(global::OgcToolkit.Ogc.Gml.V311.ConeType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.Cylinder), typeof(global::OgcToolkit.Ogc.Gml.V311.CylinderType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.Sphere), typeof(global::OgcToolkit.Ogc.Gml.V311.SphereType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.PolyhedralSurface), typeof(global::OgcToolkit.Ogc.Gml.V311.PolyhedralSurfaceType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.polygonPatches), typeof(global::OgcToolkit.Ogc.Gml.V311.PolygonPatchArrayPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.trianglePatches), typeof(global::OgcToolkit.Ogc.Gml.V311.TrianglePatchArrayPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.TriangulatedSurface), typeof(global::OgcToolkit.Ogc.Gml.V311.TriangulatedSurfaceType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.Tin), typeof(global::OgcToolkit.Ogc.Gml.V311.TinType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311._Solid), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractSolidType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.solidProperty), typeof(global::OgcToolkit.Ogc.Gml.V311.SolidPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.solidArrayProperty), typeof(global::OgcToolkit.Ogc.Gml.V311.SolidArrayPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.Solid), typeof(global::OgcToolkit.Ogc.Gml.V311.SolidType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311._GeometricAggregate), typeof(global::OgcToolkit.Ogc.Gml.V311.AbstractGeometricAggregateType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.MultiGeometry), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiGeometryType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.multiGeometryProperty), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiGeometryPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.MultiPoint), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiPointType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.multiPointProperty), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiPointPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.MultiCurve), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiCurveType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.multiCurveProperty), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiCurvePropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.MultiSurface), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiSurfaceType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.multiSurfaceProperty), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiSurfacePropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.MultiSolid), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiSolidType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.multiSolidProperty), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiSolidPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.MultiPolygon), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiPolygonType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.MultiLineString), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiLineStringType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.geometryMember), typeof(global::OgcToolkit.Ogc.Gml.V311.GeometryPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.geometryMembers), typeof(global::OgcToolkit.Ogc.Gml.V311.GeometryArrayPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.pointMember), typeof(global::OgcToolkit.Ogc.Gml.V311.PointPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.pointMembers), typeof(global::OgcToolkit.Ogc.Gml.V311.PointArrayPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.curveMembers), typeof(global::OgcToolkit.Ogc.Gml.V311.CurveArrayPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.surfaceMember), typeof(global::OgcToolkit.Ogc.Gml.V311.SurfacePropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.surfaceMembers), typeof(global::OgcToolkit.Ogc.Gml.V311.SurfaceArrayPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.solidMember), typeof(global::OgcToolkit.Ogc.Gml.V311.SolidPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.solidMembers), typeof(global::OgcToolkit.Ogc.Gml.V311.SolidArrayPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.multiCenterOf), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiPointPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.multiPosition), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiPointPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.multiCenterLineOf), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiCurvePropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.multiEdgeOf), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiCurvePropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.multiCoverage), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiSurfacePropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.multiExtentOf), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiSurfacePropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.multiLocation), typeof(global::OgcToolkit.Ogc.Gml.V311.MultiPointPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.lineStringMember), typeof(global::OgcToolkit.Ogc.Gml.V311.LineStringPropertyType));
-            wrapperDictionary.Add(typeof(OgcToolkit.Ogc.Gml.V311.polygonMember), typeof(global::OgcToolkit.Ogc.Gml.V311.PolygonPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.AbstractRecord), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.AbstractRecordType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.DCMIRecord), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.DCMIRecordType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.BriefRecord), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.BriefRecordType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.SummaryRecord), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.SummaryRecordType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.Record), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.RecordType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.GetCapabilities), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetCapabilitiesType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.Capabilities), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.CapabilitiesType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.DescribeRecord), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.DescribeRecordType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.DescribeRecordResponse), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.DescribeRecordResponseType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.GetRecords), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecordsType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.AbstractQuery), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.AbstractQueryType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.Query), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.QueryType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.Constraint), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.QueryConstraintType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.ElementSetName), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.ElementSetNameType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.GetRecordsResponse), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecordsResponseType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.GetRecordById), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecordByIdType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.GetRecordByIdResponse), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecordByIdResponseType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.GetDomain), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetDomainType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.GetDomainResponse), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetDomainResponseType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.Acknowledgement), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.AcknowledgementType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.Transaction), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.TransactionType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.RecordProperty), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.RecordPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.TransactionResponse), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.TransactionResponseType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.Harvest), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.HarvestType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.WebCatalog.Csw.V202.HarvestResponse), typeof(global::GeoSik.Ogc.WebCatalog.Csw.V202.HarvestResponseType));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.@abstract), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.accessRights), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.alternative), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.audience), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.available), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.bibliographicCitation), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.conformsTo), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.created), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.dateAccepted), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.dateCopyrighted), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.dateSubmitted), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.educationLevel), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.extent), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.hasFormat), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.hasPart), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.hasVersion), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.isFormatOf), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.isPartOf), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.isReferencedBy), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.isReplacedBy), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.isRequiredBy), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.issued), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.isVersionOf), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.license), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.mediator), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.medium), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.modified), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.provenance), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.references), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.replaces), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.requires), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.rightsHolder), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.spatial), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.tableOfContents), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.temporal), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Terms.valid), typeof(void));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Elements.V11.DCelement), typeof(global::GeoSik.DublinCore.Elements.V11.SimpleLiteral));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Elements.V11.title), typeof(global::GeoSik.DublinCore.Elements.V11.SimpleLiteral));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Elements.V11.creator), typeof(global::GeoSik.DublinCore.Elements.V11.SimpleLiteral));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Elements.V11.subject), typeof(global::GeoSik.DublinCore.Elements.V11.SimpleLiteral));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Elements.V11.description), typeof(global::GeoSik.DublinCore.Elements.V11.SimpleLiteral));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Elements.V11.publisher), typeof(global::GeoSik.DublinCore.Elements.V11.SimpleLiteral));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Elements.V11.contributor), typeof(global::GeoSik.DublinCore.Elements.V11.SimpleLiteral));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Elements.V11.date), typeof(global::GeoSik.DublinCore.Elements.V11.SimpleLiteral));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Elements.V11.type), typeof(global::GeoSik.DublinCore.Elements.V11.SimpleLiteral));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Elements.V11.format), typeof(global::GeoSik.DublinCore.Elements.V11.SimpleLiteral));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Elements.V11.identifier), typeof(global::GeoSik.DublinCore.Elements.V11.SimpleLiteral));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Elements.V11.source), typeof(global::GeoSik.DublinCore.Elements.V11.SimpleLiteral));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Elements.V11.language), typeof(global::GeoSik.DublinCore.Elements.V11.SimpleLiteral));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Elements.V11.relation), typeof(global::GeoSik.DublinCore.Elements.V11.SimpleLiteral));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Elements.V11.coverage), typeof(global::GeoSik.DublinCore.Elements.V11.SimpleLiteral));
+            wrapperDictionary.Add(typeof(GeoSik.DublinCore.Elements.V11.rights), typeof(global::GeoSik.DublinCore.Elements.V11.SimpleLiteral));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Ows.V100.Metadata), typeof(global::GeoSik.Ogc.Ows.V100.MetadataType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Ows.V100.BoundingBox), typeof(global::GeoSik.Ogc.Ows.V100.BoundingBoxType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Ows.V100.WGS84BoundingBox), typeof(global::GeoSik.Ogc.Ows.V100.WGS84BoundingBoxType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Ows.V100.Keywords), typeof(global::GeoSik.Ogc.Ows.V100.KeywordsType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Ows.V100.PointOfContact), typeof(global::GeoSik.Ogc.Ows.V100.ResponsiblePartyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Ows.V100.Role), typeof(global::GeoSik.Ogc.Ows.V100.CodeType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Ows.V100.ContactInfo), typeof(global::GeoSik.Ogc.Ows.V100.ContactType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Ows.V100.Identifier), typeof(global::GeoSik.Ogc.Ows.V100.CodeType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Ows.V100.GetCapabilities), typeof(global::GeoSik.Ogc.Ows.V100.GetCapabilitiesType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Ows.V100.Exception), typeof(global::GeoSik.Ogc.Ows.V100.ExceptionType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.Add), typeof(global::GeoSik.Ogc.Filter.V110.BinaryOperatorType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.Sub), typeof(global::GeoSik.Ogc.Filter.V110.BinaryOperatorType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.Mul), typeof(global::GeoSik.Ogc.Filter.V110.BinaryOperatorType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.Div), typeof(global::GeoSik.Ogc.Filter.V110.BinaryOperatorType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.PropertyName), typeof(global::GeoSik.Ogc.Filter.V110.PropertyNameType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.Function), typeof(global::GeoSik.Ogc.Filter.V110.FunctionType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.Literal), typeof(global::GeoSik.Ogc.Filter.V110.LiteralType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.expression), typeof(global::GeoSik.Ogc.Filter.V110.ExpressionType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.SortBy), typeof(global::GeoSik.Ogc.Filter.V110.SortByType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110._Id), typeof(global::GeoSik.Ogc.Filter.V110.AbstractIdType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.FeatureId), typeof(global::GeoSik.Ogc.Filter.V110.FeatureIdType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.GmlObjectId), typeof(global::GeoSik.Ogc.Filter.V110.GmlObjectIdType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.Filter), typeof(global::GeoSik.Ogc.Filter.V110.FilterType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.comparisonOps), typeof(global::GeoSik.Ogc.Filter.V110.ComparisonOpsType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.PropertyIsEqualTo), typeof(global::GeoSik.Ogc.Filter.V110.BinaryComparisonOpType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.PropertyIsNotEqualTo), typeof(global::GeoSik.Ogc.Filter.V110.BinaryComparisonOpType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.PropertyIsLessThan), typeof(global::GeoSik.Ogc.Filter.V110.BinaryComparisonOpType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.PropertyIsGreaterThan), typeof(global::GeoSik.Ogc.Filter.V110.BinaryComparisonOpType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.PropertyIsLessThanOrEqualTo), typeof(global::GeoSik.Ogc.Filter.V110.BinaryComparisonOpType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.PropertyIsGreaterThanOrEqualTo), typeof(global::GeoSik.Ogc.Filter.V110.BinaryComparisonOpType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.PropertyIsLike), typeof(global::GeoSik.Ogc.Filter.V110.PropertyIsLikeType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.PropertyIsNull), typeof(global::GeoSik.Ogc.Filter.V110.PropertyIsNullType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.PropertyIsBetween), typeof(global::GeoSik.Ogc.Filter.V110.PropertyIsBetweenType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.spatialOps), typeof(global::GeoSik.Ogc.Filter.V110.SpatialOpsType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.Equals), typeof(global::GeoSik.Ogc.Filter.V110.BinarySpatialOpType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.Disjoint), typeof(global::GeoSik.Ogc.Filter.V110.BinarySpatialOpType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.Touches), typeof(global::GeoSik.Ogc.Filter.V110.BinarySpatialOpType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.Within), typeof(global::GeoSik.Ogc.Filter.V110.BinarySpatialOpType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.Overlaps), typeof(global::GeoSik.Ogc.Filter.V110.BinarySpatialOpType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.Crosses), typeof(global::GeoSik.Ogc.Filter.V110.BinarySpatialOpType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.Intersects), typeof(global::GeoSik.Ogc.Filter.V110.BinarySpatialOpType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.Contains), typeof(global::GeoSik.Ogc.Filter.V110.BinarySpatialOpType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.DWithin), typeof(global::GeoSik.Ogc.Filter.V110.DistanceBufferType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.Beyond), typeof(global::GeoSik.Ogc.Filter.V110.DistanceBufferType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.BBOX), typeof(global::GeoSik.Ogc.Filter.V110.BBOXType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.logicOps), typeof(global::GeoSik.Ogc.Filter.V110.LogicOpsType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.And), typeof(global::GeoSik.Ogc.Filter.V110.BinaryLogicOpType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.Or), typeof(global::GeoSik.Ogc.Filter.V110.BinaryLogicOpType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Filter.V110.Not), typeof(global::GeoSik.Ogc.Filter.V110.UnaryLogicOpType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311._GML), typeof(global::GeoSik.Ogc.Gml.V311.AbstractGMLType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.Bag), typeof(global::GeoSik.Ogc.Gml.V311.BagType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.Array), typeof(global::GeoSik.Ogc.Gml.V311.ArrayType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311._MetaData), typeof(global::GeoSik.Ogc.Gml.V311.AbstractMetaDataType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.GenericMetaData), typeof(global::GeoSik.Ogc.Gml.V311.GenericMetaDataType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311._association), typeof(global::GeoSik.Ogc.Gml.V311.AssociationType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311._strictAssociation), typeof(global::GeoSik.Ogc.Gml.V311.AssociationType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.member), typeof(global::GeoSik.Ogc.Gml.V311.AssociationType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311._reference), typeof(global::GeoSik.Ogc.Gml.V311.ReferenceType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.members), typeof(global::GeoSik.Ogc.Gml.V311.ArrayAssociationType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.metaDataProperty), typeof(global::GeoSik.Ogc.Gml.V311.MetaDataPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.name), typeof(global::GeoSik.Ogc.Gml.V311.CodeType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.description), typeof(global::GeoSik.Ogc.Gml.V311.StringOrRefType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.Definition), typeof(global::GeoSik.Ogc.Gml.V311.DefinitionType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.Dictionary), typeof(global::GeoSik.Ogc.Gml.V311.DictionaryType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.DefinitionCollection), typeof(global::GeoSik.Ogc.Gml.V311.DictionaryType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.dictionaryEntry), typeof(global::GeoSik.Ogc.Gml.V311.DictionaryEntryType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.definitionMember), typeof(global::GeoSik.Ogc.Gml.V311.DictionaryEntryType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.indirectEntry), typeof(global::GeoSik.Ogc.Gml.V311.IndirectEntryType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.DefinitionProxy), typeof(global::GeoSik.Ogc.Gml.V311.DefinitionProxyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.definitionRef), typeof(global::GeoSik.Ogc.Gml.V311.ReferenceType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.unitOfMeasure), typeof(global::GeoSik.Ogc.Gml.V311.UnitOfMeasureType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.UnitDefinition), typeof(global::GeoSik.Ogc.Gml.V311.UnitDefinitionType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.BaseUnit), typeof(global::GeoSik.Ogc.Gml.V311.BaseUnitType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.DerivedUnit), typeof(global::GeoSik.Ogc.Gml.V311.DerivedUnitType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.ConventionalUnit), typeof(global::GeoSik.Ogc.Gml.V311.ConventionalUnitType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.quantityType), typeof(global::GeoSik.Ogc.Gml.V311.StringOrRefType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.catalogSymbol), typeof(global::GeoSik.Ogc.Gml.V311.CodeType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.derivationUnitTerm), typeof(global::GeoSik.Ogc.Gml.V311.DerivationUnitTermType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.conversionToPreferredUnit), typeof(global::GeoSik.Ogc.Gml.V311.ConversionToPreferredUnitType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.roughConversionToPreferredUnit), typeof(global::GeoSik.Ogc.Gml.V311.ConversionToPreferredUnitType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.measure), typeof(global::GeoSik.Ogc.Gml.V311.MeasureType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.angle), typeof(global::GeoSik.Ogc.Gml.V311.MeasureType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.dmsAngle), typeof(global::GeoSik.Ogc.Gml.V311.DMSAngleType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.degrees), typeof(global::GeoSik.Ogc.Gml.V311.DegreesType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311._Geometry), typeof(global::GeoSik.Ogc.Gml.V311.AbstractGeometryType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311._GeometricPrimitive), typeof(global::GeoSik.Ogc.Gml.V311.AbstractGeometricPrimitiveType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.Point), typeof(global::GeoSik.Ogc.Gml.V311.PointType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.pointProperty), typeof(global::GeoSik.Ogc.Gml.V311.PointPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.pointRep), typeof(global::GeoSik.Ogc.Gml.V311.PointPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.pointArrayProperty), typeof(global::GeoSik.Ogc.Gml.V311.PointArrayPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311._Curve), typeof(global::GeoSik.Ogc.Gml.V311.AbstractCurveType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.curveProperty), typeof(global::GeoSik.Ogc.Gml.V311.CurvePropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.curveArrayProperty), typeof(global::GeoSik.Ogc.Gml.V311.CurveArrayPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.LineString), typeof(global::GeoSik.Ogc.Gml.V311.LineStringType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.pos), typeof(global::GeoSik.Ogc.Gml.V311.DirectPositionType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.posList), typeof(global::GeoSik.Ogc.Gml.V311.DirectPositionListType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.vector), typeof(global::GeoSik.Ogc.Gml.V311.VectorType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.coordinates), typeof(global::GeoSik.Ogc.Gml.V311.CoordinatesType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.Envelope), typeof(global::GeoSik.Ogc.Gml.V311.EnvelopeType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.coord), typeof(global::GeoSik.Ogc.Gml.V311.CoordType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.lineStringProperty), typeof(global::GeoSik.Ogc.Gml.V311.LineStringPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311._Surface), typeof(global::GeoSik.Ogc.Gml.V311.AbstractSurfaceType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.surfaceProperty), typeof(global::GeoSik.Ogc.Gml.V311.SurfacePropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.surfaceArrayProperty), typeof(global::GeoSik.Ogc.Gml.V311.SurfaceArrayPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.Polygon), typeof(global::GeoSik.Ogc.Gml.V311.PolygonType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311._Ring), typeof(global::GeoSik.Ogc.Gml.V311.AbstractRingType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.exterior), typeof(global::GeoSik.Ogc.Gml.V311.AbstractRingPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.interior), typeof(global::GeoSik.Ogc.Gml.V311.AbstractRingPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.outerBoundaryIs), typeof(global::GeoSik.Ogc.Gml.V311.AbstractRingPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.innerBoundaryIs), typeof(global::GeoSik.Ogc.Gml.V311.AbstractRingPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.LinearRing), typeof(global::GeoSik.Ogc.Gml.V311.LinearRingType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.polygonProperty), typeof(global::GeoSik.Ogc.Gml.V311.PolygonPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.Curve), typeof(global::GeoSik.Ogc.Gml.V311.CurveType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.baseCurve), typeof(global::GeoSik.Ogc.Gml.V311.CurvePropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.OrientableCurve), typeof(global::GeoSik.Ogc.Gml.V311.OrientableCurveType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311._CurveSegment), typeof(global::GeoSik.Ogc.Gml.V311.AbstractCurveSegmentType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.segments), typeof(global::GeoSik.Ogc.Gml.V311.CurveSegmentArrayPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.LineStringSegment), typeof(global::GeoSik.Ogc.Gml.V311.LineStringSegmentType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.ArcString), typeof(global::GeoSik.Ogc.Gml.V311.ArcStringType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.Arc), typeof(global::GeoSik.Ogc.Gml.V311.ArcType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.Circle), typeof(global::GeoSik.Ogc.Gml.V311.CircleType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.ArcStringByBulge), typeof(global::GeoSik.Ogc.Gml.V311.ArcStringByBulgeType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.ArcByBulge), typeof(global::GeoSik.Ogc.Gml.V311.ArcByBulgeType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.ArcByCenterPoint), typeof(global::GeoSik.Ogc.Gml.V311.ArcByCenterPointType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.CircleByCenterPoint), typeof(global::GeoSik.Ogc.Gml.V311.CircleByCenterPointType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.OffsetCurve), typeof(global::GeoSik.Ogc.Gml.V311.OffsetCurveType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.AffinePlacement), typeof(global::GeoSik.Ogc.Gml.V311.AffinePlacementType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.Clothoid), typeof(global::GeoSik.Ogc.Gml.V311.ClothoidType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.GeodesicString), typeof(global::GeoSik.Ogc.Gml.V311.GeodesicStringType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.Geodesic), typeof(global::GeoSik.Ogc.Gml.V311.GeodesicType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.CubicSpline), typeof(global::GeoSik.Ogc.Gml.V311.CubicSplineType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.BSpline), typeof(global::GeoSik.Ogc.Gml.V311.BSplineType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.Bezier), typeof(global::GeoSik.Ogc.Gml.V311.BezierType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.Surface), typeof(global::GeoSik.Ogc.Gml.V311.SurfaceType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.baseSurface), typeof(global::GeoSik.Ogc.Gml.V311.SurfacePropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.OrientableSurface), typeof(global::GeoSik.Ogc.Gml.V311.OrientableSurfaceType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311._SurfacePatch), typeof(global::GeoSik.Ogc.Gml.V311.AbstractSurfacePatchType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.patches), typeof(global::GeoSik.Ogc.Gml.V311.SurfacePatchArrayPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.PolygonPatch), typeof(global::GeoSik.Ogc.Gml.V311.PolygonPatchType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.Triangle), typeof(global::GeoSik.Ogc.Gml.V311.TriangleType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.Rectangle), typeof(global::GeoSik.Ogc.Gml.V311.RectangleType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.curveMember), typeof(global::GeoSik.Ogc.Gml.V311.CurvePropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.Ring), typeof(global::GeoSik.Ogc.Gml.V311.RingType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311._ParametricCurveSurface), typeof(global::GeoSik.Ogc.Gml.V311.AbstractParametricCurveSurfaceType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311._GriddedSurface), typeof(global::GeoSik.Ogc.Gml.V311.AbstractGriddedSurfaceType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.Cone), typeof(global::GeoSik.Ogc.Gml.V311.ConeType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.Cylinder), typeof(global::GeoSik.Ogc.Gml.V311.CylinderType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.Sphere), typeof(global::GeoSik.Ogc.Gml.V311.SphereType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.PolyhedralSurface), typeof(global::GeoSik.Ogc.Gml.V311.PolyhedralSurfaceType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.polygonPatches), typeof(global::GeoSik.Ogc.Gml.V311.PolygonPatchArrayPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.trianglePatches), typeof(global::GeoSik.Ogc.Gml.V311.TrianglePatchArrayPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.TriangulatedSurface), typeof(global::GeoSik.Ogc.Gml.V311.TriangulatedSurfaceType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.Tin), typeof(global::GeoSik.Ogc.Gml.V311.TinType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311._Solid), typeof(global::GeoSik.Ogc.Gml.V311.AbstractSolidType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.solidProperty), typeof(global::GeoSik.Ogc.Gml.V311.SolidPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.solidArrayProperty), typeof(global::GeoSik.Ogc.Gml.V311.SolidArrayPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.Solid), typeof(global::GeoSik.Ogc.Gml.V311.SolidType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311._GeometricAggregate), typeof(global::GeoSik.Ogc.Gml.V311.AbstractGeometricAggregateType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.MultiGeometry), typeof(global::GeoSik.Ogc.Gml.V311.MultiGeometryType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.multiGeometryProperty), typeof(global::GeoSik.Ogc.Gml.V311.MultiGeometryPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.MultiPoint), typeof(global::GeoSik.Ogc.Gml.V311.MultiPointType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.multiPointProperty), typeof(global::GeoSik.Ogc.Gml.V311.MultiPointPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.MultiCurve), typeof(global::GeoSik.Ogc.Gml.V311.MultiCurveType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.multiCurveProperty), typeof(global::GeoSik.Ogc.Gml.V311.MultiCurvePropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.MultiSurface), typeof(global::GeoSik.Ogc.Gml.V311.MultiSurfaceType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.multiSurfaceProperty), typeof(global::GeoSik.Ogc.Gml.V311.MultiSurfacePropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.MultiSolid), typeof(global::GeoSik.Ogc.Gml.V311.MultiSolidType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.multiSolidProperty), typeof(global::GeoSik.Ogc.Gml.V311.MultiSolidPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.MultiPolygon), typeof(global::GeoSik.Ogc.Gml.V311.MultiPolygonType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.MultiLineString), typeof(global::GeoSik.Ogc.Gml.V311.MultiLineStringType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.geometryMember), typeof(global::GeoSik.Ogc.Gml.V311.GeometryPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.geometryMembers), typeof(global::GeoSik.Ogc.Gml.V311.GeometryArrayPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.pointMember), typeof(global::GeoSik.Ogc.Gml.V311.PointPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.pointMembers), typeof(global::GeoSik.Ogc.Gml.V311.PointArrayPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.curveMembers), typeof(global::GeoSik.Ogc.Gml.V311.CurveArrayPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.surfaceMember), typeof(global::GeoSik.Ogc.Gml.V311.SurfacePropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.surfaceMembers), typeof(global::GeoSik.Ogc.Gml.V311.SurfaceArrayPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.solidMember), typeof(global::GeoSik.Ogc.Gml.V311.SolidPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.solidMembers), typeof(global::GeoSik.Ogc.Gml.V311.SolidArrayPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.multiCenterOf), typeof(global::GeoSik.Ogc.Gml.V311.MultiPointPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.multiPosition), typeof(global::GeoSik.Ogc.Gml.V311.MultiPointPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.multiCenterLineOf), typeof(global::GeoSik.Ogc.Gml.V311.MultiCurvePropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.multiEdgeOf), typeof(global::GeoSik.Ogc.Gml.V311.MultiCurvePropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.multiCoverage), typeof(global::GeoSik.Ogc.Gml.V311.MultiSurfacePropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.multiExtentOf), typeof(global::GeoSik.Ogc.Gml.V311.MultiSurfacePropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.multiLocation), typeof(global::GeoSik.Ogc.Gml.V311.MultiPointPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.lineStringMember), typeof(global::GeoSik.Ogc.Gml.V311.LineStringPropertyType));
+            wrapperDictionary.Add(typeof(GeoSik.Ogc.Gml.V311.polygonMember), typeof(global::GeoSik.Ogc.Gml.V311.PolygonPropertyType));
         }
 
         protected internal static void AddSchemas(XmlSchemaSet schemas)
@@ -10750,2365 +10750,2365 @@ namespace OgcToolkit.Ogc.Ows.V100
         private XTypedElement rootObject;
 
 
-        public global::OgcToolkit.Ogc.Ows.V100.AbstractMetaData AbstractMetaData { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.AbstractMetaData; } }
+        public global::GeoSik.Ogc.Ows.V100.AbstractMetaData AbstractMetaData { get { return rootObject as global::GeoSik.Ogc.Ows.V100.AbstractMetaData; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.ServiceIdentification ServiceIdentification { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.ServiceIdentification; } }
+        public global::GeoSik.Ogc.Ows.V100.ServiceIdentification ServiceIdentification { get { return rootObject as global::GeoSik.Ogc.Ows.V100.ServiceIdentification; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.ServiceProvider ServiceProvider { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.ServiceProvider; } }
+        public global::GeoSik.Ogc.Ows.V100.ServiceProvider ServiceProvider { get { return rootObject as global::GeoSik.Ogc.Ows.V100.ServiceProvider; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.OperationsMetadata OperationsMetadata { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.OperationsMetadata; } }
+        public global::GeoSik.Ogc.Ows.V100.OperationsMetadata OperationsMetadata { get { return rootObject as global::GeoSik.Ogc.Ows.V100.OperationsMetadata; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.ExtendedCapabilities ExtendedCapabilities { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.ExtendedCapabilities; } }
+        public global::GeoSik.Ogc.Ows.V100.ExtendedCapabilities ExtendedCapabilities { get { return rootObject as global::GeoSik.Ogc.Ows.V100.ExtendedCapabilities; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.Operation Operation { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.Operation; } }
+        public global::GeoSik.Ogc.Ows.V100.Operation Operation { get { return rootObject as global::GeoSik.Ogc.Ows.V100.Operation; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.DCP DCP { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.DCP; } }
+        public global::GeoSik.Ogc.Ows.V100.DCP DCP { get { return rootObject as global::GeoSik.Ogc.Ows.V100.DCP; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.HTTP HTTP { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.HTTP; } }
+        public global::GeoSik.Ogc.Ows.V100.HTTP HTTP { get { return rootObject as global::GeoSik.Ogc.Ows.V100.HTTP; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.ExceptionReport ExceptionReport { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.ExceptionReport; } }
+        public global::GeoSik.Ogc.Ows.V100.ExceptionReport ExceptionReport { get { return rootObject as global::GeoSik.Ogc.Ows.V100.ExceptionReport; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.Metadata Metadata { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.Metadata; } }
+        public global::GeoSik.Ogc.Ows.V100.Metadata Metadata { get { return rootObject as global::GeoSik.Ogc.Ows.V100.Metadata; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.BoundingBox BoundingBox { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.BoundingBox; } }
+        public global::GeoSik.Ogc.Ows.V100.BoundingBox BoundingBox { get { return rootObject as global::GeoSik.Ogc.Ows.V100.BoundingBox; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.WGS84BoundingBox WGS84BoundingBox { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.WGS84BoundingBox; } }
+        public global::GeoSik.Ogc.Ows.V100.WGS84BoundingBox WGS84BoundingBox { get { return rootObject as global::GeoSik.Ogc.Ows.V100.WGS84BoundingBox; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.Title Title { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.Title; } }
+        public global::GeoSik.Ogc.Ows.V100.Title Title { get { return rootObject as global::GeoSik.Ogc.Ows.V100.Title; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.@Abstract @Abstract { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.@Abstract; } }
+        public global::GeoSik.Ogc.Ows.V100.@Abstract @Abstract { get { return rootObject as global::GeoSik.Ogc.Ows.V100.@Abstract; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.Keywords Keywords { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.Keywords; } }
+        public global::GeoSik.Ogc.Ows.V100.Keywords Keywords { get { return rootObject as global::GeoSik.Ogc.Ows.V100.Keywords; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.PointOfContact PointOfContact { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.PointOfContact; } }
+        public global::GeoSik.Ogc.Ows.V100.PointOfContact PointOfContact { get { return rootObject as global::GeoSik.Ogc.Ows.V100.PointOfContact; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.IndividualName IndividualName { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.IndividualName; } }
+        public global::GeoSik.Ogc.Ows.V100.IndividualName IndividualName { get { return rootObject as global::GeoSik.Ogc.Ows.V100.IndividualName; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.OrganisationName OrganisationName { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.OrganisationName; } }
+        public global::GeoSik.Ogc.Ows.V100.OrganisationName OrganisationName { get { return rootObject as global::GeoSik.Ogc.Ows.V100.OrganisationName; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.PositionName PositionName { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.PositionName; } }
+        public global::GeoSik.Ogc.Ows.V100.PositionName PositionName { get { return rootObject as global::GeoSik.Ogc.Ows.V100.PositionName; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.Role Role { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.Role; } }
+        public global::GeoSik.Ogc.Ows.V100.Role Role { get { return rootObject as global::GeoSik.Ogc.Ows.V100.Role; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.ContactInfo ContactInfo { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.ContactInfo; } }
+        public global::GeoSik.Ogc.Ows.V100.ContactInfo ContactInfo { get { return rootObject as global::GeoSik.Ogc.Ows.V100.ContactInfo; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.Identifier Identifier { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.Identifier; } }
+        public global::GeoSik.Ogc.Ows.V100.Identifier Identifier { get { return rootObject as global::GeoSik.Ogc.Ows.V100.Identifier; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.OutputFormat OutputFormat { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.OutputFormat; } }
+        public global::GeoSik.Ogc.Ows.V100.OutputFormat OutputFormat { get { return rootObject as global::GeoSik.Ogc.Ows.V100.OutputFormat; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.AvailableCRS AvailableCRS { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.AvailableCRS; } }
+        public global::GeoSik.Ogc.Ows.V100.AvailableCRS AvailableCRS { get { return rootObject as global::GeoSik.Ogc.Ows.V100.AvailableCRS; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.SupportedCRS SupportedCRS { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.SupportedCRS; } }
+        public global::GeoSik.Ogc.Ows.V100.SupportedCRS SupportedCRS { get { return rootObject as global::GeoSik.Ogc.Ows.V100.SupportedCRS; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.AccessConstraints AccessConstraints { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.AccessConstraints; } }
+        public global::GeoSik.Ogc.Ows.V100.AccessConstraints AccessConstraints { get { return rootObject as global::GeoSik.Ogc.Ows.V100.AccessConstraints; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.Fees Fees { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.Fees; } }
+        public global::GeoSik.Ogc.Ows.V100.Fees Fees { get { return rootObject as global::GeoSik.Ogc.Ows.V100.Fees; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.Language Language { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.Language; } }
+        public global::GeoSik.Ogc.Ows.V100.Language Language { get { return rootObject as global::GeoSik.Ogc.Ows.V100.Language; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.GetCapabilities GetCapabilities { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.GetCapabilities; } }
+        public global::GeoSik.Ogc.Ows.V100.GetCapabilities GetCapabilities { get { return rootObject as global::GeoSik.Ogc.Ows.V100.GetCapabilities; } }
 
-        public global::OgcToolkit.Ogc.Ows.V100.Exception Exception { get { return rootObject as global::OgcToolkit.Ogc.Ows.V100.Exception; } }
+        public global::GeoSik.Ogc.Ows.V100.Exception Exception { get { return rootObject as global::GeoSik.Ogc.Ows.V100.Exception; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.Filter_Capabilities Filter_Capabilities { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.Filter_Capabilities; } }
+        public global::GeoSik.Ogc.Filter.V110.Filter_Capabilities Filter_Capabilities { get { return rootObject as global::GeoSik.Ogc.Filter.V110.Filter_Capabilities; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.LogicalOperators LogicalOperators { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.LogicalOperators; } }
+        public global::GeoSik.Ogc.Filter.V110.LogicalOperators LogicalOperators { get { return rootObject as global::GeoSik.Ogc.Filter.V110.LogicalOperators; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.SimpleArithmetic SimpleArithmetic { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.SimpleArithmetic; } }
+        public global::GeoSik.Ogc.Filter.V110.SimpleArithmetic SimpleArithmetic { get { return rootObject as global::GeoSik.Ogc.Filter.V110.SimpleArithmetic; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.EID EID { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.EID; } }
+        public global::GeoSik.Ogc.Filter.V110.EID EID { get { return rootObject as global::GeoSik.Ogc.Filter.V110.EID; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.FID FID { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.FID; } }
+        public global::GeoSik.Ogc.Filter.V110.FID FID { get { return rootObject as global::GeoSik.Ogc.Filter.V110.FID; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.Add Add { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.Add; } }
+        public global::GeoSik.Ogc.Filter.V110.Add Add { get { return rootObject as global::GeoSik.Ogc.Filter.V110.Add; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.Sub Sub { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.Sub; } }
+        public global::GeoSik.Ogc.Filter.V110.Sub Sub { get { return rootObject as global::GeoSik.Ogc.Filter.V110.Sub; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.Mul Mul { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.Mul; } }
+        public global::GeoSik.Ogc.Filter.V110.Mul Mul { get { return rootObject as global::GeoSik.Ogc.Filter.V110.Mul; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.Div Div { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.Div; } }
+        public global::GeoSik.Ogc.Filter.V110.Div Div { get { return rootObject as global::GeoSik.Ogc.Filter.V110.Div; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.PropertyName PropertyName { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.PropertyName; } }
+        public global::GeoSik.Ogc.Filter.V110.PropertyName PropertyName { get { return rootObject as global::GeoSik.Ogc.Filter.V110.PropertyName; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.Function Function { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.Function; } }
+        public global::GeoSik.Ogc.Filter.V110.Function Function { get { return rootObject as global::GeoSik.Ogc.Filter.V110.Function; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.Literal Literal { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.Literal; } }
+        public global::GeoSik.Ogc.Filter.V110.Literal Literal { get { return rootObject as global::GeoSik.Ogc.Filter.V110.Literal; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.expression expression { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.expression; } }
+        public global::GeoSik.Ogc.Filter.V110.expression expression { get { return rootObject as global::GeoSik.Ogc.Filter.V110.expression; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.SortBy SortBy { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.SortBy; } }
+        public global::GeoSik.Ogc.Filter.V110.SortBy SortBy { get { return rootObject as global::GeoSik.Ogc.Filter.V110.SortBy; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110._Id _Id { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110._Id; } }
+        public global::GeoSik.Ogc.Filter.V110._Id _Id { get { return rootObject as global::GeoSik.Ogc.Filter.V110._Id; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.FeatureId FeatureId { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.FeatureId; } }
+        public global::GeoSik.Ogc.Filter.V110.FeatureId FeatureId { get { return rootObject as global::GeoSik.Ogc.Filter.V110.FeatureId; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.GmlObjectId GmlObjectId { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.GmlObjectId; } }
+        public global::GeoSik.Ogc.Filter.V110.GmlObjectId GmlObjectId { get { return rootObject as global::GeoSik.Ogc.Filter.V110.GmlObjectId; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.Filter Filter { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.Filter; } }
+        public global::GeoSik.Ogc.Filter.V110.Filter Filter { get { return rootObject as global::GeoSik.Ogc.Filter.V110.Filter; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.comparisonOps comparisonOps { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.comparisonOps; } }
+        public global::GeoSik.Ogc.Filter.V110.comparisonOps comparisonOps { get { return rootObject as global::GeoSik.Ogc.Filter.V110.comparisonOps; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.PropertyIsEqualTo PropertyIsEqualTo { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.PropertyIsEqualTo; } }
+        public global::GeoSik.Ogc.Filter.V110.PropertyIsEqualTo PropertyIsEqualTo { get { return rootObject as global::GeoSik.Ogc.Filter.V110.PropertyIsEqualTo; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.PropertyIsNotEqualTo PropertyIsNotEqualTo { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.PropertyIsNotEqualTo; } }
+        public global::GeoSik.Ogc.Filter.V110.PropertyIsNotEqualTo PropertyIsNotEqualTo { get { return rootObject as global::GeoSik.Ogc.Filter.V110.PropertyIsNotEqualTo; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.PropertyIsLessThan PropertyIsLessThan { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.PropertyIsLessThan; } }
+        public global::GeoSik.Ogc.Filter.V110.PropertyIsLessThan PropertyIsLessThan { get { return rootObject as global::GeoSik.Ogc.Filter.V110.PropertyIsLessThan; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.PropertyIsGreaterThan PropertyIsGreaterThan { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.PropertyIsGreaterThan; } }
+        public global::GeoSik.Ogc.Filter.V110.PropertyIsGreaterThan PropertyIsGreaterThan { get { return rootObject as global::GeoSik.Ogc.Filter.V110.PropertyIsGreaterThan; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.PropertyIsLessThanOrEqualTo PropertyIsLessThanOrEqualTo { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.PropertyIsLessThanOrEqualTo; } }
+        public global::GeoSik.Ogc.Filter.V110.PropertyIsLessThanOrEqualTo PropertyIsLessThanOrEqualTo { get { return rootObject as global::GeoSik.Ogc.Filter.V110.PropertyIsLessThanOrEqualTo; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.PropertyIsGreaterThanOrEqualTo PropertyIsGreaterThanOrEqualTo { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.PropertyIsGreaterThanOrEqualTo; } }
+        public global::GeoSik.Ogc.Filter.V110.PropertyIsGreaterThanOrEqualTo PropertyIsGreaterThanOrEqualTo { get { return rootObject as global::GeoSik.Ogc.Filter.V110.PropertyIsGreaterThanOrEqualTo; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.PropertyIsLike PropertyIsLike { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.PropertyIsLike; } }
+        public global::GeoSik.Ogc.Filter.V110.PropertyIsLike PropertyIsLike { get { return rootObject as global::GeoSik.Ogc.Filter.V110.PropertyIsLike; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.PropertyIsNull PropertyIsNull { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.PropertyIsNull; } }
+        public global::GeoSik.Ogc.Filter.V110.PropertyIsNull PropertyIsNull { get { return rootObject as global::GeoSik.Ogc.Filter.V110.PropertyIsNull; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.PropertyIsBetween PropertyIsBetween { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.PropertyIsBetween; } }
+        public global::GeoSik.Ogc.Filter.V110.PropertyIsBetween PropertyIsBetween { get { return rootObject as global::GeoSik.Ogc.Filter.V110.PropertyIsBetween; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.spatialOps spatialOps { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.spatialOps; } }
+        public global::GeoSik.Ogc.Filter.V110.spatialOps spatialOps { get { return rootObject as global::GeoSik.Ogc.Filter.V110.spatialOps; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.Equals Equals { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.Equals; } }
+        public global::GeoSik.Ogc.Filter.V110.Equals Equals { get { return rootObject as global::GeoSik.Ogc.Filter.V110.Equals; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.Disjoint Disjoint { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.Disjoint; } }
+        public global::GeoSik.Ogc.Filter.V110.Disjoint Disjoint { get { return rootObject as global::GeoSik.Ogc.Filter.V110.Disjoint; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.Touches Touches { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.Touches; } }
+        public global::GeoSik.Ogc.Filter.V110.Touches Touches { get { return rootObject as global::GeoSik.Ogc.Filter.V110.Touches; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.Within Within { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.Within; } }
+        public global::GeoSik.Ogc.Filter.V110.Within Within { get { return rootObject as global::GeoSik.Ogc.Filter.V110.Within; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.Overlaps Overlaps { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.Overlaps; } }
+        public global::GeoSik.Ogc.Filter.V110.Overlaps Overlaps { get { return rootObject as global::GeoSik.Ogc.Filter.V110.Overlaps; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.Crosses Crosses { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.Crosses; } }
+        public global::GeoSik.Ogc.Filter.V110.Crosses Crosses { get { return rootObject as global::GeoSik.Ogc.Filter.V110.Crosses; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.Intersects Intersects { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.Intersects; } }
+        public global::GeoSik.Ogc.Filter.V110.Intersects Intersects { get { return rootObject as global::GeoSik.Ogc.Filter.V110.Intersects; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.Contains Contains { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.Contains; } }
+        public global::GeoSik.Ogc.Filter.V110.Contains Contains { get { return rootObject as global::GeoSik.Ogc.Filter.V110.Contains; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.DWithin DWithin { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.DWithin; } }
+        public global::GeoSik.Ogc.Filter.V110.DWithin DWithin { get { return rootObject as global::GeoSik.Ogc.Filter.V110.DWithin; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.Beyond Beyond { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.Beyond; } }
+        public global::GeoSik.Ogc.Filter.V110.Beyond Beyond { get { return rootObject as global::GeoSik.Ogc.Filter.V110.Beyond; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.BBOX BBOX { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.BBOX; } }
+        public global::GeoSik.Ogc.Filter.V110.BBOX BBOX { get { return rootObject as global::GeoSik.Ogc.Filter.V110.BBOX; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.logicOps logicOps { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.logicOps; } }
+        public global::GeoSik.Ogc.Filter.V110.logicOps logicOps { get { return rootObject as global::GeoSik.Ogc.Filter.V110.logicOps; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.And And { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.And; } }
+        public global::GeoSik.Ogc.Filter.V110.And And { get { return rootObject as global::GeoSik.Ogc.Filter.V110.And; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.Or Or { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.Or; } }
+        public global::GeoSik.Ogc.Filter.V110.Or Or { get { return rootObject as global::GeoSik.Ogc.Filter.V110.Or; } }
 
-        public global::OgcToolkit.Ogc.Filter.V110.Not Not { get { return rootObject as global::OgcToolkit.Ogc.Filter.V110.Not; } }
+        public global::GeoSik.Ogc.Filter.V110.Not Not { get { return rootObject as global::GeoSik.Ogc.Filter.V110.Not; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311._Object _Object { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311._Object; } }
+        public global::GeoSik.Ogc.Gml.V311._Object _Object { get { return rootObject as global::GeoSik.Ogc.Gml.V311._Object; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.@Null @Null { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.@Null; } }
+        public global::GeoSik.Ogc.Gml.V311.@Null @Null { get { return rootObject as global::GeoSik.Ogc.Gml.V311.@Null; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311._GML _GML { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311._GML; } }
+        public global::GeoSik.Ogc.Gml.V311._GML _GML { get { return rootObject as global::GeoSik.Ogc.Gml.V311._GML; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.Bag Bag { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.Bag; } }
+        public global::GeoSik.Ogc.Gml.V311.Bag Bag { get { return rootObject as global::GeoSik.Ogc.Gml.V311.Bag; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.Array Array { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.Array; } }
+        public global::GeoSik.Ogc.Gml.V311.Array Array { get { return rootObject as global::GeoSik.Ogc.Gml.V311.Array; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311._MetaData _MetaData { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311._MetaData; } }
+        public global::GeoSik.Ogc.Gml.V311._MetaData _MetaData { get { return rootObject as global::GeoSik.Ogc.Gml.V311._MetaData; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.GenericMetaData GenericMetaData { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.GenericMetaData; } }
+        public global::GeoSik.Ogc.Gml.V311.GenericMetaData GenericMetaData { get { return rootObject as global::GeoSik.Ogc.Gml.V311.GenericMetaData; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311._association _association { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311._association; } }
+        public global::GeoSik.Ogc.Gml.V311._association _association { get { return rootObject as global::GeoSik.Ogc.Gml.V311._association; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311._strictAssociation _strictAssociation { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311._strictAssociation; } }
+        public global::GeoSik.Ogc.Gml.V311._strictAssociation _strictAssociation { get { return rootObject as global::GeoSik.Ogc.Gml.V311._strictAssociation; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.member member { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.member; } }
+        public global::GeoSik.Ogc.Gml.V311.member member { get { return rootObject as global::GeoSik.Ogc.Gml.V311.member; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311._reference _reference { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311._reference; } }
+        public global::GeoSik.Ogc.Gml.V311._reference _reference { get { return rootObject as global::GeoSik.Ogc.Gml.V311._reference; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.members members { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.members; } }
+        public global::GeoSik.Ogc.Gml.V311.members members { get { return rootObject as global::GeoSik.Ogc.Gml.V311.members; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.metaDataProperty metaDataProperty { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.metaDataProperty; } }
+        public global::GeoSik.Ogc.Gml.V311.metaDataProperty metaDataProperty { get { return rootObject as global::GeoSik.Ogc.Gml.V311.metaDataProperty; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.name name { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.name; } }
+        public global::GeoSik.Ogc.Gml.V311.name name { get { return rootObject as global::GeoSik.Ogc.Gml.V311.name; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.description description { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.description; } }
+        public global::GeoSik.Ogc.Gml.V311.description description { get { return rootObject as global::GeoSik.Ogc.Gml.V311.description; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.Definition Definition { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.Definition; } }
+        public global::GeoSik.Ogc.Gml.V311.Definition Definition { get { return rootObject as global::GeoSik.Ogc.Gml.V311.Definition; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.Dictionary Dictionary { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.Dictionary; } }
+        public global::GeoSik.Ogc.Gml.V311.Dictionary Dictionary { get { return rootObject as global::GeoSik.Ogc.Gml.V311.Dictionary; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.DefinitionCollection DefinitionCollection { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.DefinitionCollection; } }
+        public global::GeoSik.Ogc.Gml.V311.DefinitionCollection DefinitionCollection { get { return rootObject as global::GeoSik.Ogc.Gml.V311.DefinitionCollection; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.dictionaryEntry dictionaryEntry { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.dictionaryEntry; } }
+        public global::GeoSik.Ogc.Gml.V311.dictionaryEntry dictionaryEntry { get { return rootObject as global::GeoSik.Ogc.Gml.V311.dictionaryEntry; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.definitionMember definitionMember { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.definitionMember; } }
+        public global::GeoSik.Ogc.Gml.V311.definitionMember definitionMember { get { return rootObject as global::GeoSik.Ogc.Gml.V311.definitionMember; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.indirectEntry indirectEntry { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.indirectEntry; } }
+        public global::GeoSik.Ogc.Gml.V311.indirectEntry indirectEntry { get { return rootObject as global::GeoSik.Ogc.Gml.V311.indirectEntry; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.DefinitionProxy DefinitionProxy { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.DefinitionProxy; } }
+        public global::GeoSik.Ogc.Gml.V311.DefinitionProxy DefinitionProxy { get { return rootObject as global::GeoSik.Ogc.Gml.V311.DefinitionProxy; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.definitionRef definitionRef { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.definitionRef; } }
+        public global::GeoSik.Ogc.Gml.V311.definitionRef definitionRef { get { return rootObject as global::GeoSik.Ogc.Gml.V311.definitionRef; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.unitOfMeasure unitOfMeasure { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.unitOfMeasure; } }
+        public global::GeoSik.Ogc.Gml.V311.unitOfMeasure unitOfMeasure { get { return rootObject as global::GeoSik.Ogc.Gml.V311.unitOfMeasure; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.UnitDefinition UnitDefinition { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.UnitDefinition; } }
+        public global::GeoSik.Ogc.Gml.V311.UnitDefinition UnitDefinition { get { return rootObject as global::GeoSik.Ogc.Gml.V311.UnitDefinition; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.BaseUnit BaseUnit { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.BaseUnit; } }
+        public global::GeoSik.Ogc.Gml.V311.BaseUnit BaseUnit { get { return rootObject as global::GeoSik.Ogc.Gml.V311.BaseUnit; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.DerivedUnit DerivedUnit { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.DerivedUnit; } }
+        public global::GeoSik.Ogc.Gml.V311.DerivedUnit DerivedUnit { get { return rootObject as global::GeoSik.Ogc.Gml.V311.DerivedUnit; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.ConventionalUnit ConventionalUnit { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.ConventionalUnit; } }
+        public global::GeoSik.Ogc.Gml.V311.ConventionalUnit ConventionalUnit { get { return rootObject as global::GeoSik.Ogc.Gml.V311.ConventionalUnit; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.quantityType quantityType { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.quantityType; } }
+        public global::GeoSik.Ogc.Gml.V311.quantityType quantityType { get { return rootObject as global::GeoSik.Ogc.Gml.V311.quantityType; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.catalogSymbol catalogSymbol { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.catalogSymbol; } }
+        public global::GeoSik.Ogc.Gml.V311.catalogSymbol catalogSymbol { get { return rootObject as global::GeoSik.Ogc.Gml.V311.catalogSymbol; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.derivationUnitTerm derivationUnitTerm { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.derivationUnitTerm; } }
+        public global::GeoSik.Ogc.Gml.V311.derivationUnitTerm derivationUnitTerm { get { return rootObject as global::GeoSik.Ogc.Gml.V311.derivationUnitTerm; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.conversionToPreferredUnit conversionToPreferredUnit { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.conversionToPreferredUnit; } }
+        public global::GeoSik.Ogc.Gml.V311.conversionToPreferredUnit conversionToPreferredUnit { get { return rootObject as global::GeoSik.Ogc.Gml.V311.conversionToPreferredUnit; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.roughConversionToPreferredUnit roughConversionToPreferredUnit { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.roughConversionToPreferredUnit; } }
+        public global::GeoSik.Ogc.Gml.V311.roughConversionToPreferredUnit roughConversionToPreferredUnit { get { return rootObject as global::GeoSik.Ogc.Gml.V311.roughConversionToPreferredUnit; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.measure measure { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.measure; } }
+        public global::GeoSik.Ogc.Gml.V311.measure measure { get { return rootObject as global::GeoSik.Ogc.Gml.V311.measure; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.angle angle { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.angle; } }
+        public global::GeoSik.Ogc.Gml.V311.angle angle { get { return rootObject as global::GeoSik.Ogc.Gml.V311.angle; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.dmsAngle dmsAngle { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.dmsAngle; } }
+        public global::GeoSik.Ogc.Gml.V311.dmsAngle dmsAngle { get { return rootObject as global::GeoSik.Ogc.Gml.V311.dmsAngle; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.degrees degrees { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.degrees; } }
+        public global::GeoSik.Ogc.Gml.V311.degrees degrees { get { return rootObject as global::GeoSik.Ogc.Gml.V311.degrees; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.decimalMinutes decimalMinutes { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.decimalMinutes; } }
+        public global::GeoSik.Ogc.Gml.V311.decimalMinutes decimalMinutes { get { return rootObject as global::GeoSik.Ogc.Gml.V311.decimalMinutes; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.minutes minutes { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.minutes; } }
+        public global::GeoSik.Ogc.Gml.V311.minutes minutes { get { return rootObject as global::GeoSik.Ogc.Gml.V311.minutes; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.seconds seconds { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.seconds; } }
+        public global::GeoSik.Ogc.Gml.V311.seconds seconds { get { return rootObject as global::GeoSik.Ogc.Gml.V311.seconds; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311._Geometry _Geometry { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311._Geometry; } }
+        public global::GeoSik.Ogc.Gml.V311._Geometry _Geometry { get { return rootObject as global::GeoSik.Ogc.Gml.V311._Geometry; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311._GeometricPrimitive _GeometricPrimitive { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311._GeometricPrimitive; } }
+        public global::GeoSik.Ogc.Gml.V311._GeometricPrimitive _GeometricPrimitive { get { return rootObject as global::GeoSik.Ogc.Gml.V311._GeometricPrimitive; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.Point Point { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.Point; } }
+        public global::GeoSik.Ogc.Gml.V311.Point Point { get { return rootObject as global::GeoSik.Ogc.Gml.V311.Point; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.pointProperty pointProperty { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.pointProperty; } }
+        public global::GeoSik.Ogc.Gml.V311.pointProperty pointProperty { get { return rootObject as global::GeoSik.Ogc.Gml.V311.pointProperty; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.pointRep pointRep { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.pointRep; } }
+        public global::GeoSik.Ogc.Gml.V311.pointRep pointRep { get { return rootObject as global::GeoSik.Ogc.Gml.V311.pointRep; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.pointArrayProperty pointArrayProperty { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.pointArrayProperty; } }
+        public global::GeoSik.Ogc.Gml.V311.pointArrayProperty pointArrayProperty { get { return rootObject as global::GeoSik.Ogc.Gml.V311.pointArrayProperty; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311._Curve _Curve { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311._Curve; } }
+        public global::GeoSik.Ogc.Gml.V311._Curve _Curve { get { return rootObject as global::GeoSik.Ogc.Gml.V311._Curve; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.curveProperty curveProperty { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.curveProperty; } }
+        public global::GeoSik.Ogc.Gml.V311.curveProperty curveProperty { get { return rootObject as global::GeoSik.Ogc.Gml.V311.curveProperty; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.curveArrayProperty curveArrayProperty { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.curveArrayProperty; } }
+        public global::GeoSik.Ogc.Gml.V311.curveArrayProperty curveArrayProperty { get { return rootObject as global::GeoSik.Ogc.Gml.V311.curveArrayProperty; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.LineString LineString { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.LineString; } }
+        public global::GeoSik.Ogc.Gml.V311.LineString LineString { get { return rootObject as global::GeoSik.Ogc.Gml.V311.LineString; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.pos pos { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.pos; } }
+        public global::GeoSik.Ogc.Gml.V311.pos pos { get { return rootObject as global::GeoSik.Ogc.Gml.V311.pos; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.posList posList { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.posList; } }
+        public global::GeoSik.Ogc.Gml.V311.posList posList { get { return rootObject as global::GeoSik.Ogc.Gml.V311.posList; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.vector vector { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.vector; } }
+        public global::GeoSik.Ogc.Gml.V311.vector vector { get { return rootObject as global::GeoSik.Ogc.Gml.V311.vector; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.coordinates coordinates { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.coordinates; } }
+        public global::GeoSik.Ogc.Gml.V311.coordinates coordinates { get { return rootObject as global::GeoSik.Ogc.Gml.V311.coordinates; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.Envelope Envelope { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.Envelope; } }
+        public global::GeoSik.Ogc.Gml.V311.Envelope Envelope { get { return rootObject as global::GeoSik.Ogc.Gml.V311.Envelope; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.coord coord { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.coord; } }
+        public global::GeoSik.Ogc.Gml.V311.coord coord { get { return rootObject as global::GeoSik.Ogc.Gml.V311.coord; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.lineStringProperty lineStringProperty { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.lineStringProperty; } }
+        public global::GeoSik.Ogc.Gml.V311.lineStringProperty lineStringProperty { get { return rootObject as global::GeoSik.Ogc.Gml.V311.lineStringProperty; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311._Surface _Surface { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311._Surface; } }
+        public global::GeoSik.Ogc.Gml.V311._Surface _Surface { get { return rootObject as global::GeoSik.Ogc.Gml.V311._Surface; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.surfaceProperty surfaceProperty { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.surfaceProperty; } }
+        public global::GeoSik.Ogc.Gml.V311.surfaceProperty surfaceProperty { get { return rootObject as global::GeoSik.Ogc.Gml.V311.surfaceProperty; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.surfaceArrayProperty surfaceArrayProperty { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.surfaceArrayProperty; } }
+        public global::GeoSik.Ogc.Gml.V311.surfaceArrayProperty surfaceArrayProperty { get { return rootObject as global::GeoSik.Ogc.Gml.V311.surfaceArrayProperty; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.Polygon Polygon { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.Polygon; } }
+        public global::GeoSik.Ogc.Gml.V311.Polygon Polygon { get { return rootObject as global::GeoSik.Ogc.Gml.V311.Polygon; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311._Ring _Ring { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311._Ring; } }
+        public global::GeoSik.Ogc.Gml.V311._Ring _Ring { get { return rootObject as global::GeoSik.Ogc.Gml.V311._Ring; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.exterior exterior { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.exterior; } }
+        public global::GeoSik.Ogc.Gml.V311.exterior exterior { get { return rootObject as global::GeoSik.Ogc.Gml.V311.exterior; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.interior interior { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.interior; } }
+        public global::GeoSik.Ogc.Gml.V311.interior interior { get { return rootObject as global::GeoSik.Ogc.Gml.V311.interior; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.outerBoundaryIs outerBoundaryIs { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.outerBoundaryIs; } }
+        public global::GeoSik.Ogc.Gml.V311.outerBoundaryIs outerBoundaryIs { get { return rootObject as global::GeoSik.Ogc.Gml.V311.outerBoundaryIs; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.innerBoundaryIs innerBoundaryIs { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.innerBoundaryIs; } }
+        public global::GeoSik.Ogc.Gml.V311.innerBoundaryIs innerBoundaryIs { get { return rootObject as global::GeoSik.Ogc.Gml.V311.innerBoundaryIs; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.LinearRing LinearRing { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.LinearRing; } }
+        public global::GeoSik.Ogc.Gml.V311.LinearRing LinearRing { get { return rootObject as global::GeoSik.Ogc.Gml.V311.LinearRing; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.polygonProperty polygonProperty { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.polygonProperty; } }
+        public global::GeoSik.Ogc.Gml.V311.polygonProperty polygonProperty { get { return rootObject as global::GeoSik.Ogc.Gml.V311.polygonProperty; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.Curve Curve { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.Curve; } }
+        public global::GeoSik.Ogc.Gml.V311.Curve Curve { get { return rootObject as global::GeoSik.Ogc.Gml.V311.Curve; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.baseCurve baseCurve { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.baseCurve; } }
+        public global::GeoSik.Ogc.Gml.V311.baseCurve baseCurve { get { return rootObject as global::GeoSik.Ogc.Gml.V311.baseCurve; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.OrientableCurve OrientableCurve { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.OrientableCurve; } }
+        public global::GeoSik.Ogc.Gml.V311.OrientableCurve OrientableCurve { get { return rootObject as global::GeoSik.Ogc.Gml.V311.OrientableCurve; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311._CurveSegment _CurveSegment { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311._CurveSegment; } }
+        public global::GeoSik.Ogc.Gml.V311._CurveSegment _CurveSegment { get { return rootObject as global::GeoSik.Ogc.Gml.V311._CurveSegment; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.segments segments { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.segments; } }
+        public global::GeoSik.Ogc.Gml.V311.segments segments { get { return rootObject as global::GeoSik.Ogc.Gml.V311.segments; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.LineStringSegment LineStringSegment { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.LineStringSegment; } }
+        public global::GeoSik.Ogc.Gml.V311.LineStringSegment LineStringSegment { get { return rootObject as global::GeoSik.Ogc.Gml.V311.LineStringSegment; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.ArcString ArcString { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.ArcString; } }
+        public global::GeoSik.Ogc.Gml.V311.ArcString ArcString { get { return rootObject as global::GeoSik.Ogc.Gml.V311.ArcString; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.Arc Arc { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.Arc; } }
+        public global::GeoSik.Ogc.Gml.V311.Arc Arc { get { return rootObject as global::GeoSik.Ogc.Gml.V311.Arc; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.Circle Circle { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.Circle; } }
+        public global::GeoSik.Ogc.Gml.V311.Circle Circle { get { return rootObject as global::GeoSik.Ogc.Gml.V311.Circle; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.ArcStringByBulge ArcStringByBulge { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.ArcStringByBulge; } }
+        public global::GeoSik.Ogc.Gml.V311.ArcStringByBulge ArcStringByBulge { get { return rootObject as global::GeoSik.Ogc.Gml.V311.ArcStringByBulge; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.ArcByBulge ArcByBulge { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.ArcByBulge; } }
+        public global::GeoSik.Ogc.Gml.V311.ArcByBulge ArcByBulge { get { return rootObject as global::GeoSik.Ogc.Gml.V311.ArcByBulge; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.ArcByCenterPoint ArcByCenterPoint { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.ArcByCenterPoint; } }
+        public global::GeoSik.Ogc.Gml.V311.ArcByCenterPoint ArcByCenterPoint { get { return rootObject as global::GeoSik.Ogc.Gml.V311.ArcByCenterPoint; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.CircleByCenterPoint CircleByCenterPoint { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.CircleByCenterPoint; } }
+        public global::GeoSik.Ogc.Gml.V311.CircleByCenterPoint CircleByCenterPoint { get { return rootObject as global::GeoSik.Ogc.Gml.V311.CircleByCenterPoint; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.OffsetCurve OffsetCurve { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.OffsetCurve; } }
+        public global::GeoSik.Ogc.Gml.V311.OffsetCurve OffsetCurve { get { return rootObject as global::GeoSik.Ogc.Gml.V311.OffsetCurve; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.AffinePlacement AffinePlacement { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.AffinePlacement; } }
+        public global::GeoSik.Ogc.Gml.V311.AffinePlacement AffinePlacement { get { return rootObject as global::GeoSik.Ogc.Gml.V311.AffinePlacement; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.Clothoid Clothoid { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.Clothoid; } }
+        public global::GeoSik.Ogc.Gml.V311.Clothoid Clothoid { get { return rootObject as global::GeoSik.Ogc.Gml.V311.Clothoid; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.GeodesicString GeodesicString { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.GeodesicString; } }
+        public global::GeoSik.Ogc.Gml.V311.GeodesicString GeodesicString { get { return rootObject as global::GeoSik.Ogc.Gml.V311.GeodesicString; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.Geodesic Geodesic { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.Geodesic; } }
+        public global::GeoSik.Ogc.Gml.V311.Geodesic Geodesic { get { return rootObject as global::GeoSik.Ogc.Gml.V311.Geodesic; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.CubicSpline CubicSpline { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.CubicSpline; } }
+        public global::GeoSik.Ogc.Gml.V311.CubicSpline CubicSpline { get { return rootObject as global::GeoSik.Ogc.Gml.V311.CubicSpline; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.BSpline BSpline { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.BSpline; } }
+        public global::GeoSik.Ogc.Gml.V311.BSpline BSpline { get { return rootObject as global::GeoSik.Ogc.Gml.V311.BSpline; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.Bezier Bezier { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.Bezier; } }
+        public global::GeoSik.Ogc.Gml.V311.Bezier Bezier { get { return rootObject as global::GeoSik.Ogc.Gml.V311.Bezier; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.Surface Surface { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.Surface; } }
+        public global::GeoSik.Ogc.Gml.V311.Surface Surface { get { return rootObject as global::GeoSik.Ogc.Gml.V311.Surface; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.baseSurface baseSurface { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.baseSurface; } }
+        public global::GeoSik.Ogc.Gml.V311.baseSurface baseSurface { get { return rootObject as global::GeoSik.Ogc.Gml.V311.baseSurface; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.OrientableSurface OrientableSurface { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.OrientableSurface; } }
+        public global::GeoSik.Ogc.Gml.V311.OrientableSurface OrientableSurface { get { return rootObject as global::GeoSik.Ogc.Gml.V311.OrientableSurface; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311._SurfacePatch _SurfacePatch { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311._SurfacePatch; } }
+        public global::GeoSik.Ogc.Gml.V311._SurfacePatch _SurfacePatch { get { return rootObject as global::GeoSik.Ogc.Gml.V311._SurfacePatch; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.patches patches { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.patches; } }
+        public global::GeoSik.Ogc.Gml.V311.patches patches { get { return rootObject as global::GeoSik.Ogc.Gml.V311.patches; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.PolygonPatch PolygonPatch { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.PolygonPatch; } }
+        public global::GeoSik.Ogc.Gml.V311.PolygonPatch PolygonPatch { get { return rootObject as global::GeoSik.Ogc.Gml.V311.PolygonPatch; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.Triangle Triangle { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.Triangle; } }
+        public global::GeoSik.Ogc.Gml.V311.Triangle Triangle { get { return rootObject as global::GeoSik.Ogc.Gml.V311.Triangle; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.Rectangle Rectangle { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.Rectangle; } }
+        public global::GeoSik.Ogc.Gml.V311.Rectangle Rectangle { get { return rootObject as global::GeoSik.Ogc.Gml.V311.Rectangle; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.curveMember curveMember { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.curveMember; } }
+        public global::GeoSik.Ogc.Gml.V311.curveMember curveMember { get { return rootObject as global::GeoSik.Ogc.Gml.V311.curveMember; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.Ring Ring { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.Ring; } }
+        public global::GeoSik.Ogc.Gml.V311.Ring Ring { get { return rootObject as global::GeoSik.Ogc.Gml.V311.Ring; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311._ParametricCurveSurface _ParametricCurveSurface { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311._ParametricCurveSurface; } }
+        public global::GeoSik.Ogc.Gml.V311._ParametricCurveSurface _ParametricCurveSurface { get { return rootObject as global::GeoSik.Ogc.Gml.V311._ParametricCurveSurface; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311._GriddedSurface _GriddedSurface { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311._GriddedSurface; } }
+        public global::GeoSik.Ogc.Gml.V311._GriddedSurface _GriddedSurface { get { return rootObject as global::GeoSik.Ogc.Gml.V311._GriddedSurface; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.Cone Cone { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.Cone; } }
+        public global::GeoSik.Ogc.Gml.V311.Cone Cone { get { return rootObject as global::GeoSik.Ogc.Gml.V311.Cone; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.Cylinder Cylinder { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.Cylinder; } }
+        public global::GeoSik.Ogc.Gml.V311.Cylinder Cylinder { get { return rootObject as global::GeoSik.Ogc.Gml.V311.Cylinder; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.Sphere Sphere { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.Sphere; } }
+        public global::GeoSik.Ogc.Gml.V311.Sphere Sphere { get { return rootObject as global::GeoSik.Ogc.Gml.V311.Sphere; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.PolyhedralSurface PolyhedralSurface { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.PolyhedralSurface; } }
+        public global::GeoSik.Ogc.Gml.V311.PolyhedralSurface PolyhedralSurface { get { return rootObject as global::GeoSik.Ogc.Gml.V311.PolyhedralSurface; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.polygonPatches polygonPatches { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.polygonPatches; } }
+        public global::GeoSik.Ogc.Gml.V311.polygonPatches polygonPatches { get { return rootObject as global::GeoSik.Ogc.Gml.V311.polygonPatches; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.trianglePatches trianglePatches { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.trianglePatches; } }
+        public global::GeoSik.Ogc.Gml.V311.trianglePatches trianglePatches { get { return rootObject as global::GeoSik.Ogc.Gml.V311.trianglePatches; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.TriangulatedSurface TriangulatedSurface { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.TriangulatedSurface; } }
+        public global::GeoSik.Ogc.Gml.V311.TriangulatedSurface TriangulatedSurface { get { return rootObject as global::GeoSik.Ogc.Gml.V311.TriangulatedSurface; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.Tin Tin { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.Tin; } }
+        public global::GeoSik.Ogc.Gml.V311.Tin Tin { get { return rootObject as global::GeoSik.Ogc.Gml.V311.Tin; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311._Solid _Solid { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311._Solid; } }
+        public global::GeoSik.Ogc.Gml.V311._Solid _Solid { get { return rootObject as global::GeoSik.Ogc.Gml.V311._Solid; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.solidProperty solidProperty { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.solidProperty; } }
+        public global::GeoSik.Ogc.Gml.V311.solidProperty solidProperty { get { return rootObject as global::GeoSik.Ogc.Gml.V311.solidProperty; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.solidArrayProperty solidArrayProperty { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.solidArrayProperty; } }
+        public global::GeoSik.Ogc.Gml.V311.solidArrayProperty solidArrayProperty { get { return rootObject as global::GeoSik.Ogc.Gml.V311.solidArrayProperty; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.Solid Solid { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.Solid; } }
+        public global::GeoSik.Ogc.Gml.V311.Solid Solid { get { return rootObject as global::GeoSik.Ogc.Gml.V311.Solid; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311._GeometricAggregate _GeometricAggregate { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311._GeometricAggregate; } }
+        public global::GeoSik.Ogc.Gml.V311._GeometricAggregate _GeometricAggregate { get { return rootObject as global::GeoSik.Ogc.Gml.V311._GeometricAggregate; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.MultiGeometry MultiGeometry { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.MultiGeometry; } }
+        public global::GeoSik.Ogc.Gml.V311.MultiGeometry MultiGeometry { get { return rootObject as global::GeoSik.Ogc.Gml.V311.MultiGeometry; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.multiGeometryProperty multiGeometryProperty { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.multiGeometryProperty; } }
+        public global::GeoSik.Ogc.Gml.V311.multiGeometryProperty multiGeometryProperty { get { return rootObject as global::GeoSik.Ogc.Gml.V311.multiGeometryProperty; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.MultiPoint MultiPoint { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.MultiPoint; } }
+        public global::GeoSik.Ogc.Gml.V311.MultiPoint MultiPoint { get { return rootObject as global::GeoSik.Ogc.Gml.V311.MultiPoint; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.multiPointProperty multiPointProperty { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.multiPointProperty; } }
+        public global::GeoSik.Ogc.Gml.V311.multiPointProperty multiPointProperty { get { return rootObject as global::GeoSik.Ogc.Gml.V311.multiPointProperty; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.MultiCurve MultiCurve { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.MultiCurve; } }
+        public global::GeoSik.Ogc.Gml.V311.MultiCurve MultiCurve { get { return rootObject as global::GeoSik.Ogc.Gml.V311.MultiCurve; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.multiCurveProperty multiCurveProperty { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.multiCurveProperty; } }
+        public global::GeoSik.Ogc.Gml.V311.multiCurveProperty multiCurveProperty { get { return rootObject as global::GeoSik.Ogc.Gml.V311.multiCurveProperty; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.MultiSurface MultiSurface { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.MultiSurface; } }
+        public global::GeoSik.Ogc.Gml.V311.MultiSurface MultiSurface { get { return rootObject as global::GeoSik.Ogc.Gml.V311.MultiSurface; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.multiSurfaceProperty multiSurfaceProperty { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.multiSurfaceProperty; } }
+        public global::GeoSik.Ogc.Gml.V311.multiSurfaceProperty multiSurfaceProperty { get { return rootObject as global::GeoSik.Ogc.Gml.V311.multiSurfaceProperty; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.MultiSolid MultiSolid { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.MultiSolid; } }
+        public global::GeoSik.Ogc.Gml.V311.MultiSolid MultiSolid { get { return rootObject as global::GeoSik.Ogc.Gml.V311.MultiSolid; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.multiSolidProperty multiSolidProperty { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.multiSolidProperty; } }
+        public global::GeoSik.Ogc.Gml.V311.multiSolidProperty multiSolidProperty { get { return rootObject as global::GeoSik.Ogc.Gml.V311.multiSolidProperty; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.MultiPolygon MultiPolygon { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.MultiPolygon; } }
+        public global::GeoSik.Ogc.Gml.V311.MultiPolygon MultiPolygon { get { return rootObject as global::GeoSik.Ogc.Gml.V311.MultiPolygon; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.MultiLineString MultiLineString { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.MultiLineString; } }
+        public global::GeoSik.Ogc.Gml.V311.MultiLineString MultiLineString { get { return rootObject as global::GeoSik.Ogc.Gml.V311.MultiLineString; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.geometryMember geometryMember { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.geometryMember; } }
+        public global::GeoSik.Ogc.Gml.V311.geometryMember geometryMember { get { return rootObject as global::GeoSik.Ogc.Gml.V311.geometryMember; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.geometryMembers geometryMembers { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.geometryMembers; } }
+        public global::GeoSik.Ogc.Gml.V311.geometryMembers geometryMembers { get { return rootObject as global::GeoSik.Ogc.Gml.V311.geometryMembers; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.pointMember pointMember { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.pointMember; } }
+        public global::GeoSik.Ogc.Gml.V311.pointMember pointMember { get { return rootObject as global::GeoSik.Ogc.Gml.V311.pointMember; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.pointMembers pointMembers { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.pointMembers; } }
+        public global::GeoSik.Ogc.Gml.V311.pointMembers pointMembers { get { return rootObject as global::GeoSik.Ogc.Gml.V311.pointMembers; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.curveMembers curveMembers { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.curveMembers; } }
+        public global::GeoSik.Ogc.Gml.V311.curveMembers curveMembers { get { return rootObject as global::GeoSik.Ogc.Gml.V311.curveMembers; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.surfaceMember surfaceMember { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.surfaceMember; } }
+        public global::GeoSik.Ogc.Gml.V311.surfaceMember surfaceMember { get { return rootObject as global::GeoSik.Ogc.Gml.V311.surfaceMember; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.surfaceMembers surfaceMembers { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.surfaceMembers; } }
+        public global::GeoSik.Ogc.Gml.V311.surfaceMembers surfaceMembers { get { return rootObject as global::GeoSik.Ogc.Gml.V311.surfaceMembers; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.solidMember solidMember { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.solidMember; } }
+        public global::GeoSik.Ogc.Gml.V311.solidMember solidMember { get { return rootObject as global::GeoSik.Ogc.Gml.V311.solidMember; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.solidMembers solidMembers { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.solidMembers; } }
+        public global::GeoSik.Ogc.Gml.V311.solidMembers solidMembers { get { return rootObject as global::GeoSik.Ogc.Gml.V311.solidMembers; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.multiCenterOf multiCenterOf { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.multiCenterOf; } }
+        public global::GeoSik.Ogc.Gml.V311.multiCenterOf multiCenterOf { get { return rootObject as global::GeoSik.Ogc.Gml.V311.multiCenterOf; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.multiPosition multiPosition { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.multiPosition; } }
+        public global::GeoSik.Ogc.Gml.V311.multiPosition multiPosition { get { return rootObject as global::GeoSik.Ogc.Gml.V311.multiPosition; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.multiCenterLineOf multiCenterLineOf { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.multiCenterLineOf; } }
+        public global::GeoSik.Ogc.Gml.V311.multiCenterLineOf multiCenterLineOf { get { return rootObject as global::GeoSik.Ogc.Gml.V311.multiCenterLineOf; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.multiEdgeOf multiEdgeOf { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.multiEdgeOf; } }
+        public global::GeoSik.Ogc.Gml.V311.multiEdgeOf multiEdgeOf { get { return rootObject as global::GeoSik.Ogc.Gml.V311.multiEdgeOf; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.multiCoverage multiCoverage { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.multiCoverage; } }
+        public global::GeoSik.Ogc.Gml.V311.multiCoverage multiCoverage { get { return rootObject as global::GeoSik.Ogc.Gml.V311.multiCoverage; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.multiExtentOf multiExtentOf { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.multiExtentOf; } }
+        public global::GeoSik.Ogc.Gml.V311.multiExtentOf multiExtentOf { get { return rootObject as global::GeoSik.Ogc.Gml.V311.multiExtentOf; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.multiLocation multiLocation { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.multiLocation; } }
+        public global::GeoSik.Ogc.Gml.V311.multiLocation multiLocation { get { return rootObject as global::GeoSik.Ogc.Gml.V311.multiLocation; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.lineStringMember lineStringMember { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.lineStringMember; } }
+        public global::GeoSik.Ogc.Gml.V311.lineStringMember lineStringMember { get { return rootObject as global::GeoSik.Ogc.Gml.V311.lineStringMember; } }
 
-        public global::OgcToolkit.Ogc.Gml.V311.polygonMember polygonMember { get { return rootObject as global::OgcToolkit.Ogc.Gml.V311.polygonMember; } }
+        public global::GeoSik.Ogc.Gml.V311.polygonMember polygonMember { get { return rootObject as global::GeoSik.Ogc.Gml.V311.polygonMember; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.AbstractRecord AbstractRecord { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.AbstractRecord; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.AbstractRecord AbstractRecord { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.AbstractRecord; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.DCMIRecord DCMIRecord { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.DCMIRecord; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.DCMIRecord DCMIRecord { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.DCMIRecord; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.BriefRecord BriefRecord { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.BriefRecord; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.BriefRecord BriefRecord { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.BriefRecord; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.SummaryRecord SummaryRecord { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.SummaryRecord; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.SummaryRecord SummaryRecord { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.SummaryRecord; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Record Record { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Record; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.Record Record { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.Record; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetCapabilities GetCapabilities1 { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetCapabilities; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.GetCapabilities GetCapabilities1 { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.GetCapabilities; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Capabilities Capabilities { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Capabilities; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.Capabilities Capabilities { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.Capabilities; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.DescribeRecord DescribeRecord { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.DescribeRecord; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.DescribeRecord DescribeRecord { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.DescribeRecord; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.DescribeRecordResponse DescribeRecordResponse { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.DescribeRecordResponse; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.DescribeRecordResponse DescribeRecordResponse { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.DescribeRecordResponse; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecords GetRecords { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecords; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecords GetRecords { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecords; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.AbstractQuery AbstractQuery { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.AbstractQuery; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.AbstractQuery AbstractQuery { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.AbstractQuery; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Query Query { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Query; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.Query Query { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.Query; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Constraint Constraint { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Constraint; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.Constraint Constraint { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.Constraint; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.ElementSetName ElementSetName { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.ElementSetName; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.ElementSetName ElementSetName { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.ElementSetName; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecordsResponse GetRecordsResponse { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecordsResponse; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecordsResponse GetRecordsResponse { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecordsResponse; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecordById GetRecordById { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecordById; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecordById GetRecordById { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecordById; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecordByIdResponse GetRecordByIdResponse { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecordByIdResponse; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecordByIdResponse GetRecordByIdResponse { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecordByIdResponse; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetDomain GetDomain { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetDomain; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.GetDomain GetDomain { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.GetDomain; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetDomainResponse GetDomainResponse { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetDomainResponse; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.GetDomainResponse GetDomainResponse { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.GetDomainResponse; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Acknowledgement Acknowledgement { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Acknowledgement; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.Acknowledgement Acknowledgement { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.Acknowledgement; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Transaction Transaction { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Transaction; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.Transaction Transaction { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.Transaction; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.RecordProperty RecordProperty { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.RecordProperty; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.RecordProperty RecordProperty { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.RecordProperty; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.TransactionResponse TransactionResponse { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.TransactionResponse; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.TransactionResponse TransactionResponse { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.TransactionResponse; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Harvest Harvest { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Harvest; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.Harvest Harvest { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.Harvest; } }
 
-        public global::OgcToolkit.Ogc.WebCatalog.Csw.V202.HarvestResponse HarvestResponse { get { return rootObject as global::OgcToolkit.Ogc.WebCatalog.Csw.V202.HarvestResponse; } }
+        public global::GeoSik.Ogc.WebCatalog.Csw.V202.HarvestResponse HarvestResponse { get { return rootObject as global::GeoSik.Ogc.WebCatalog.Csw.V202.HarvestResponse; } }
 
-        public global::OgcToolkit.DublinCore.Terms.@abstract @abstract1 { get { return rootObject as global::OgcToolkit.DublinCore.Terms.@abstract; } }
+        public global::GeoSik.DublinCore.Terms.@abstract @abstract1 { get { return rootObject as global::GeoSik.DublinCore.Terms.@abstract; } }
 
-        public global::OgcToolkit.DublinCore.Terms.accessRights accessRights { get { return rootObject as global::OgcToolkit.DublinCore.Terms.accessRights; } }
+        public global::GeoSik.DublinCore.Terms.accessRights accessRights { get { return rootObject as global::GeoSik.DublinCore.Terms.accessRights; } }
 
-        public global::OgcToolkit.DublinCore.Terms.alternative alternative { get { return rootObject as global::OgcToolkit.DublinCore.Terms.alternative; } }
+        public global::GeoSik.DublinCore.Terms.alternative alternative { get { return rootObject as global::GeoSik.DublinCore.Terms.alternative; } }
 
-        public global::OgcToolkit.DublinCore.Terms.audience audience { get { return rootObject as global::OgcToolkit.DublinCore.Terms.audience; } }
+        public global::GeoSik.DublinCore.Terms.audience audience { get { return rootObject as global::GeoSik.DublinCore.Terms.audience; } }
 
-        public global::OgcToolkit.DublinCore.Terms.available available { get { return rootObject as global::OgcToolkit.DublinCore.Terms.available; } }
+        public global::GeoSik.DublinCore.Terms.available available { get { return rootObject as global::GeoSik.DublinCore.Terms.available; } }
 
-        public global::OgcToolkit.DublinCore.Terms.bibliographicCitation bibliographicCitation { get { return rootObject as global::OgcToolkit.DublinCore.Terms.bibliographicCitation; } }
+        public global::GeoSik.DublinCore.Terms.bibliographicCitation bibliographicCitation { get { return rootObject as global::GeoSik.DublinCore.Terms.bibliographicCitation; } }
 
-        public global::OgcToolkit.DublinCore.Terms.conformsTo conformsTo { get { return rootObject as global::OgcToolkit.DublinCore.Terms.conformsTo; } }
+        public global::GeoSik.DublinCore.Terms.conformsTo conformsTo { get { return rootObject as global::GeoSik.DublinCore.Terms.conformsTo; } }
 
-        public global::OgcToolkit.DublinCore.Terms.created created { get { return rootObject as global::OgcToolkit.DublinCore.Terms.created; } }
+        public global::GeoSik.DublinCore.Terms.created created { get { return rootObject as global::GeoSik.DublinCore.Terms.created; } }
 
-        public global::OgcToolkit.DublinCore.Terms.dateAccepted dateAccepted { get { return rootObject as global::OgcToolkit.DublinCore.Terms.dateAccepted; } }
+        public global::GeoSik.DublinCore.Terms.dateAccepted dateAccepted { get { return rootObject as global::GeoSik.DublinCore.Terms.dateAccepted; } }
 
-        public global::OgcToolkit.DublinCore.Terms.dateCopyrighted dateCopyrighted { get { return rootObject as global::OgcToolkit.DublinCore.Terms.dateCopyrighted; } }
+        public global::GeoSik.DublinCore.Terms.dateCopyrighted dateCopyrighted { get { return rootObject as global::GeoSik.DublinCore.Terms.dateCopyrighted; } }
 
-        public global::OgcToolkit.DublinCore.Terms.dateSubmitted dateSubmitted { get { return rootObject as global::OgcToolkit.DublinCore.Terms.dateSubmitted; } }
+        public global::GeoSik.DublinCore.Terms.dateSubmitted dateSubmitted { get { return rootObject as global::GeoSik.DublinCore.Terms.dateSubmitted; } }
 
-        public global::OgcToolkit.DublinCore.Terms.educationLevel educationLevel { get { return rootObject as global::OgcToolkit.DublinCore.Terms.educationLevel; } }
+        public global::GeoSik.DublinCore.Terms.educationLevel educationLevel { get { return rootObject as global::GeoSik.DublinCore.Terms.educationLevel; } }
 
-        public global::OgcToolkit.DublinCore.Terms.extent extent { get { return rootObject as global::OgcToolkit.DublinCore.Terms.extent; } }
+        public global::GeoSik.DublinCore.Terms.extent extent { get { return rootObject as global::GeoSik.DublinCore.Terms.extent; } }
 
-        public global::OgcToolkit.DublinCore.Terms.hasFormat hasFormat { get { return rootObject as global::OgcToolkit.DublinCore.Terms.hasFormat; } }
+        public global::GeoSik.DublinCore.Terms.hasFormat hasFormat { get { return rootObject as global::GeoSik.DublinCore.Terms.hasFormat; } }
 
-        public global::OgcToolkit.DublinCore.Terms.hasPart hasPart { get { return rootObject as global::OgcToolkit.DublinCore.Terms.hasPart; } }
+        public global::GeoSik.DublinCore.Terms.hasPart hasPart { get { return rootObject as global::GeoSik.DublinCore.Terms.hasPart; } }
 
-        public global::OgcToolkit.DublinCore.Terms.hasVersion hasVersion { get { return rootObject as global::OgcToolkit.DublinCore.Terms.hasVersion; } }
+        public global::GeoSik.DublinCore.Terms.hasVersion hasVersion { get { return rootObject as global::GeoSik.DublinCore.Terms.hasVersion; } }
 
-        public global::OgcToolkit.DublinCore.Terms.isFormatOf isFormatOf { get { return rootObject as global::OgcToolkit.DublinCore.Terms.isFormatOf; } }
+        public global::GeoSik.DublinCore.Terms.isFormatOf isFormatOf { get { return rootObject as global::GeoSik.DublinCore.Terms.isFormatOf; } }
 
-        public global::OgcToolkit.DublinCore.Terms.isPartOf isPartOf { get { return rootObject as global::OgcToolkit.DublinCore.Terms.isPartOf; } }
+        public global::GeoSik.DublinCore.Terms.isPartOf isPartOf { get { return rootObject as global::GeoSik.DublinCore.Terms.isPartOf; } }
 
-        public global::OgcToolkit.DublinCore.Terms.isReferencedBy isReferencedBy { get { return rootObject as global::OgcToolkit.DublinCore.Terms.isReferencedBy; } }
+        public global::GeoSik.DublinCore.Terms.isReferencedBy isReferencedBy { get { return rootObject as global::GeoSik.DublinCore.Terms.isReferencedBy; } }
 
-        public global::OgcToolkit.DublinCore.Terms.isReplacedBy isReplacedBy { get { return rootObject as global::OgcToolkit.DublinCore.Terms.isReplacedBy; } }
+        public global::GeoSik.DublinCore.Terms.isReplacedBy isReplacedBy { get { return rootObject as global::GeoSik.DublinCore.Terms.isReplacedBy; } }
 
-        public global::OgcToolkit.DublinCore.Terms.isRequiredBy isRequiredBy { get { return rootObject as global::OgcToolkit.DublinCore.Terms.isRequiredBy; } }
+        public global::GeoSik.DublinCore.Terms.isRequiredBy isRequiredBy { get { return rootObject as global::GeoSik.DublinCore.Terms.isRequiredBy; } }
 
-        public global::OgcToolkit.DublinCore.Terms.issued issued { get { return rootObject as global::OgcToolkit.DublinCore.Terms.issued; } }
+        public global::GeoSik.DublinCore.Terms.issued issued { get { return rootObject as global::GeoSik.DublinCore.Terms.issued; } }
 
-        public global::OgcToolkit.DublinCore.Terms.isVersionOf isVersionOf { get { return rootObject as global::OgcToolkit.DublinCore.Terms.isVersionOf; } }
+        public global::GeoSik.DublinCore.Terms.isVersionOf isVersionOf { get { return rootObject as global::GeoSik.DublinCore.Terms.isVersionOf; } }
 
-        public global::OgcToolkit.DublinCore.Terms.license license { get { return rootObject as global::OgcToolkit.DublinCore.Terms.license; } }
+        public global::GeoSik.DublinCore.Terms.license license { get { return rootObject as global::GeoSik.DublinCore.Terms.license; } }
 
-        public global::OgcToolkit.DublinCore.Terms.mediator mediator { get { return rootObject as global::OgcToolkit.DublinCore.Terms.mediator; } }
+        public global::GeoSik.DublinCore.Terms.mediator mediator { get { return rootObject as global::GeoSik.DublinCore.Terms.mediator; } }
 
-        public global::OgcToolkit.DublinCore.Terms.medium medium { get { return rootObject as global::OgcToolkit.DublinCore.Terms.medium; } }
+        public global::GeoSik.DublinCore.Terms.medium medium { get { return rootObject as global::GeoSik.DublinCore.Terms.medium; } }
 
-        public global::OgcToolkit.DublinCore.Terms.modified modified { get { return rootObject as global::OgcToolkit.DublinCore.Terms.modified; } }
+        public global::GeoSik.DublinCore.Terms.modified modified { get { return rootObject as global::GeoSik.DublinCore.Terms.modified; } }
 
-        public global::OgcToolkit.DublinCore.Terms.provenance provenance { get { return rootObject as global::OgcToolkit.DublinCore.Terms.provenance; } }
+        public global::GeoSik.DublinCore.Terms.provenance provenance { get { return rootObject as global::GeoSik.DublinCore.Terms.provenance; } }
 
-        public global::OgcToolkit.DublinCore.Terms.references references { get { return rootObject as global::OgcToolkit.DublinCore.Terms.references; } }
+        public global::GeoSik.DublinCore.Terms.references references { get { return rootObject as global::GeoSik.DublinCore.Terms.references; } }
 
-        public global::OgcToolkit.DublinCore.Terms.replaces replaces { get { return rootObject as global::OgcToolkit.DublinCore.Terms.replaces; } }
+        public global::GeoSik.DublinCore.Terms.replaces replaces { get { return rootObject as global::GeoSik.DublinCore.Terms.replaces; } }
 
-        public global::OgcToolkit.DublinCore.Terms.requires requires { get { return rootObject as global::OgcToolkit.DublinCore.Terms.requires; } }
+        public global::GeoSik.DublinCore.Terms.requires requires { get { return rootObject as global::GeoSik.DublinCore.Terms.requires; } }
 
-        public global::OgcToolkit.DublinCore.Terms.rightsHolder rightsHolder { get { return rootObject as global::OgcToolkit.DublinCore.Terms.rightsHolder; } }
+        public global::GeoSik.DublinCore.Terms.rightsHolder rightsHolder { get { return rootObject as global::GeoSik.DublinCore.Terms.rightsHolder; } }
 
-        public global::OgcToolkit.DublinCore.Terms.spatial spatial { get { return rootObject as global::OgcToolkit.DublinCore.Terms.spatial; } }
+        public global::GeoSik.DublinCore.Terms.spatial spatial { get { return rootObject as global::GeoSik.DublinCore.Terms.spatial; } }
 
-        public global::OgcToolkit.DublinCore.Terms.tableOfContents tableOfContents { get { return rootObject as global::OgcToolkit.DublinCore.Terms.tableOfContents; } }
+        public global::GeoSik.DublinCore.Terms.tableOfContents tableOfContents { get { return rootObject as global::GeoSik.DublinCore.Terms.tableOfContents; } }
 
-        public global::OgcToolkit.DublinCore.Terms.temporal temporal { get { return rootObject as global::OgcToolkit.DublinCore.Terms.temporal; } }
+        public global::GeoSik.DublinCore.Terms.temporal temporal { get { return rootObject as global::GeoSik.DublinCore.Terms.temporal; } }
 
-        public global::OgcToolkit.DublinCore.Terms.valid valid { get { return rootObject as global::OgcToolkit.DublinCore.Terms.valid; } }
+        public global::GeoSik.DublinCore.Terms.valid valid { get { return rootObject as global::GeoSik.DublinCore.Terms.valid; } }
 
-        public global::OgcToolkit.DublinCore.Elements.V11.DCelement DCelement { get { return rootObject as global::OgcToolkit.DublinCore.Elements.V11.DCelement; } }
+        public global::GeoSik.DublinCore.Elements.V11.DCelement DCelement { get { return rootObject as global::GeoSik.DublinCore.Elements.V11.DCelement; } }
 
-        public global::OgcToolkit.DublinCore.Elements.V11.title title1 { get { return rootObject as global::OgcToolkit.DublinCore.Elements.V11.title; } }
+        public global::GeoSik.DublinCore.Elements.V11.title title1 { get { return rootObject as global::GeoSik.DublinCore.Elements.V11.title; } }
 
-        public global::OgcToolkit.DublinCore.Elements.V11.creator creator { get { return rootObject as global::OgcToolkit.DublinCore.Elements.V11.creator; } }
+        public global::GeoSik.DublinCore.Elements.V11.creator creator { get { return rootObject as global::GeoSik.DublinCore.Elements.V11.creator; } }
 
-        public global::OgcToolkit.DublinCore.Elements.V11.subject subject { get { return rootObject as global::OgcToolkit.DublinCore.Elements.V11.subject; } }
+        public global::GeoSik.DublinCore.Elements.V11.subject subject { get { return rootObject as global::GeoSik.DublinCore.Elements.V11.subject; } }
 
-        public global::OgcToolkit.DublinCore.Elements.V11.description description1 { get { return rootObject as global::OgcToolkit.DublinCore.Elements.V11.description; } }
+        public global::GeoSik.DublinCore.Elements.V11.description description1 { get { return rootObject as global::GeoSik.DublinCore.Elements.V11.description; } }
 
-        public global::OgcToolkit.DublinCore.Elements.V11.publisher publisher { get { return rootObject as global::OgcToolkit.DublinCore.Elements.V11.publisher; } }
+        public global::GeoSik.DublinCore.Elements.V11.publisher publisher { get { return rootObject as global::GeoSik.DublinCore.Elements.V11.publisher; } }
 
-        public global::OgcToolkit.DublinCore.Elements.V11.contributor contributor { get { return rootObject as global::OgcToolkit.DublinCore.Elements.V11.contributor; } }
+        public global::GeoSik.DublinCore.Elements.V11.contributor contributor { get { return rootObject as global::GeoSik.DublinCore.Elements.V11.contributor; } }
 
-        public global::OgcToolkit.DublinCore.Elements.V11.date date { get { return rootObject as global::OgcToolkit.DublinCore.Elements.V11.date; } }
+        public global::GeoSik.DublinCore.Elements.V11.date date { get { return rootObject as global::GeoSik.DublinCore.Elements.V11.date; } }
 
-        public global::OgcToolkit.DublinCore.Elements.V11.type type { get { return rootObject as global::OgcToolkit.DublinCore.Elements.V11.type; } }
+        public global::GeoSik.DublinCore.Elements.V11.type type { get { return rootObject as global::GeoSik.DublinCore.Elements.V11.type; } }
 
-        public global::OgcToolkit.DublinCore.Elements.V11.format format { get { return rootObject as global::OgcToolkit.DublinCore.Elements.V11.format; } }
+        public global::GeoSik.DublinCore.Elements.V11.format format { get { return rootObject as global::GeoSik.DublinCore.Elements.V11.format; } }
 
-        public global::OgcToolkit.DublinCore.Elements.V11.identifier identifier1 { get { return rootObject as global::OgcToolkit.DublinCore.Elements.V11.identifier; } }
+        public global::GeoSik.DublinCore.Elements.V11.identifier identifier1 { get { return rootObject as global::GeoSik.DublinCore.Elements.V11.identifier; } }
 
-        public global::OgcToolkit.DublinCore.Elements.V11.source source { get { return rootObject as global::OgcToolkit.DublinCore.Elements.V11.source; } }
+        public global::GeoSik.DublinCore.Elements.V11.source source { get { return rootObject as global::GeoSik.DublinCore.Elements.V11.source; } }
 
-        public global::OgcToolkit.DublinCore.Elements.V11.language language1 { get { return rootObject as global::OgcToolkit.DublinCore.Elements.V11.language; } }
+        public global::GeoSik.DublinCore.Elements.V11.language language1 { get { return rootObject as global::GeoSik.DublinCore.Elements.V11.language; } }
 
-        public global::OgcToolkit.DublinCore.Elements.V11.relation relation { get { return rootObject as global::OgcToolkit.DublinCore.Elements.V11.relation; } }
+        public global::GeoSik.DublinCore.Elements.V11.relation relation { get { return rootObject as global::GeoSik.DublinCore.Elements.V11.relation; } }
 
-        public global::OgcToolkit.DublinCore.Elements.V11.coverage coverage { get { return rootObject as global::OgcToolkit.DublinCore.Elements.V11.coverage; } }
+        public global::GeoSik.DublinCore.Elements.V11.coverage coverage { get { return rootObject as global::GeoSik.DublinCore.Elements.V11.coverage; } }
 
-        public global::OgcToolkit.DublinCore.Elements.V11.rights rights { get { return rootObject as global::OgcToolkit.DublinCore.Elements.V11.rights; } }
+        public global::GeoSik.DublinCore.Elements.V11.rights rights { get { return rootObject as global::GeoSik.DublinCore.Elements.V11.rights; } }
 
         private XRoot()
         {
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.AbstractMetaData root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.AbstractMetaData root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.ServiceIdentification root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.ServiceIdentification root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.ServiceProvider root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.ServiceProvider root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.OperationsMetadata root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.OperationsMetadata root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.ExtendedCapabilities root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.ExtendedCapabilities root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.Operation root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.Operation root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.DCP root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.DCP root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.HTTP root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.HTTP root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.ExceptionReport root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.ExceptionReport root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.Metadata root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.Metadata root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.BoundingBox root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.BoundingBox root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.WGS84BoundingBox root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.WGS84BoundingBox root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.Title root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.Title root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.@Abstract root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.@Abstract root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.Keywords root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.Keywords root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.PointOfContact root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.PointOfContact root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.IndividualName root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.IndividualName root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.OrganisationName root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.OrganisationName root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.PositionName root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.PositionName root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.Role root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.Role root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.ContactInfo root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.ContactInfo root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.Identifier root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.Identifier root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.OutputFormat root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.OutputFormat root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.AvailableCRS root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.AvailableCRS root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.SupportedCRS root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.SupportedCRS root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.AccessConstraints root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.AccessConstraints root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.Fees root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.Fees root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.Language root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.Language root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.GetCapabilities root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.GetCapabilities root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Ows.V100.Exception root)
+        public XRoot(global::GeoSik.Ogc.Ows.V100.Exception root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.Filter_Capabilities root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.Filter_Capabilities root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.LogicalOperators root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.LogicalOperators root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.SimpleArithmetic root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.SimpleArithmetic root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.EID root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.EID root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.FID root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.FID root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.Add root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.Add root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.Sub root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.Sub root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.Mul root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.Mul root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.Div root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.Div root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.PropertyName root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.PropertyName root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.Function root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.Function root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.Literal root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.Literal root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.expression root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.expression root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.SortBy root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.SortBy root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110._Id root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110._Id root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.FeatureId root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.FeatureId root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.GmlObjectId root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.GmlObjectId root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.Filter root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.Filter root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.comparisonOps root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.comparisonOps root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.PropertyIsEqualTo root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.PropertyIsEqualTo root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.PropertyIsNotEqualTo root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.PropertyIsNotEqualTo root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.PropertyIsLessThan root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.PropertyIsLessThan root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.PropertyIsGreaterThan root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.PropertyIsGreaterThan root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.PropertyIsLessThanOrEqualTo root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.PropertyIsLessThanOrEqualTo root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.PropertyIsGreaterThanOrEqualTo root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.PropertyIsGreaterThanOrEqualTo root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.PropertyIsLike root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.PropertyIsLike root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.PropertyIsNull root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.PropertyIsNull root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.PropertyIsBetween root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.PropertyIsBetween root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.spatialOps root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.spatialOps root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.Equals root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.Equals root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.Disjoint root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.Disjoint root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.Touches root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.Touches root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.Within root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.Within root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.Overlaps root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.Overlaps root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.Crosses root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.Crosses root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.Intersects root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.Intersects root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.Contains root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.Contains root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.DWithin root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.DWithin root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.Beyond root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.Beyond root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.BBOX root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.BBOX root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.logicOps root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.logicOps root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.And root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.And root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.Or root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.Or root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Filter.V110.Not root)
+        public XRoot(global::GeoSik.Ogc.Filter.V110.Not root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311._Object root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311._Object root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.@Null root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.@Null root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311._GML root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311._GML root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.Bag root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.Bag root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.Array root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.Array root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311._MetaData root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311._MetaData root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.GenericMetaData root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.GenericMetaData root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311._association root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311._association root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311._strictAssociation root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311._strictAssociation root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.member root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.member root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311._reference root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311._reference root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.members root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.members root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.metaDataProperty root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.metaDataProperty root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.name root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.name root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.description root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.description root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.Definition root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.Definition root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.Dictionary root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.Dictionary root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.DefinitionCollection root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.DefinitionCollection root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.dictionaryEntry root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.dictionaryEntry root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.definitionMember root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.definitionMember root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.indirectEntry root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.indirectEntry root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.DefinitionProxy root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.DefinitionProxy root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.definitionRef root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.definitionRef root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.unitOfMeasure root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.unitOfMeasure root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.UnitDefinition root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.UnitDefinition root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.BaseUnit root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.BaseUnit root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.DerivedUnit root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.DerivedUnit root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.ConventionalUnit root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.ConventionalUnit root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.quantityType root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.quantityType root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.catalogSymbol root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.catalogSymbol root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.derivationUnitTerm root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.derivationUnitTerm root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.conversionToPreferredUnit root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.conversionToPreferredUnit root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.roughConversionToPreferredUnit root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.roughConversionToPreferredUnit root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.measure root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.measure root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.angle root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.angle root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.dmsAngle root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.dmsAngle root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.degrees root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.degrees root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.decimalMinutes root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.decimalMinutes root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.minutes root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.minutes root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.seconds root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.seconds root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311._Geometry root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311._Geometry root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311._GeometricPrimitive root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311._GeometricPrimitive root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.Point root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.Point root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.pointProperty root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.pointProperty root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.pointRep root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.pointRep root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.pointArrayProperty root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.pointArrayProperty root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311._Curve root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311._Curve root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.curveProperty root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.curveProperty root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.curveArrayProperty root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.curveArrayProperty root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.LineString root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.LineString root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.pos root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.pos root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.posList root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.posList root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.vector root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.vector root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.coordinates root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.coordinates root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.Envelope root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.Envelope root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.coord root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.coord root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.lineStringProperty root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.lineStringProperty root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311._Surface root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311._Surface root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.surfaceProperty root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.surfaceProperty root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.surfaceArrayProperty root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.surfaceArrayProperty root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.Polygon root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.Polygon root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311._Ring root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311._Ring root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.exterior root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.exterior root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.interior root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.interior root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.outerBoundaryIs root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.outerBoundaryIs root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.innerBoundaryIs root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.innerBoundaryIs root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.LinearRing root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.LinearRing root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.polygonProperty root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.polygonProperty root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.Curve root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.Curve root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.baseCurve root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.baseCurve root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.OrientableCurve root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.OrientableCurve root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311._CurveSegment root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311._CurveSegment root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.segments root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.segments root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.LineStringSegment root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.LineStringSegment root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.ArcString root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.ArcString root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.Arc root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.Arc root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.Circle root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.Circle root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.ArcStringByBulge root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.ArcStringByBulge root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.ArcByBulge root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.ArcByBulge root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.ArcByCenterPoint root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.ArcByCenterPoint root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.CircleByCenterPoint root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.CircleByCenterPoint root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.OffsetCurve root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.OffsetCurve root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.AffinePlacement root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.AffinePlacement root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.Clothoid root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.Clothoid root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.GeodesicString root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.GeodesicString root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.Geodesic root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.Geodesic root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.CubicSpline root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.CubicSpline root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.BSpline root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.BSpline root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.Bezier root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.Bezier root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.Surface root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.Surface root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.baseSurface root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.baseSurface root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.OrientableSurface root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.OrientableSurface root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311._SurfacePatch root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311._SurfacePatch root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.patches root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.patches root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.PolygonPatch root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.PolygonPatch root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.Triangle root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.Triangle root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.Rectangle root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.Rectangle root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.curveMember root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.curveMember root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.Ring root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.Ring root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311._ParametricCurveSurface root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311._ParametricCurveSurface root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311._GriddedSurface root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311._GriddedSurface root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.Cone root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.Cone root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.Cylinder root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.Cylinder root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.Sphere root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.Sphere root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.PolyhedralSurface root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.PolyhedralSurface root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.polygonPatches root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.polygonPatches root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.trianglePatches root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.trianglePatches root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.TriangulatedSurface root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.TriangulatedSurface root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.Tin root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.Tin root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311._Solid root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311._Solid root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.solidProperty root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.solidProperty root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.solidArrayProperty root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.solidArrayProperty root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.Solid root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.Solid root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311._GeometricAggregate root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311._GeometricAggregate root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.MultiGeometry root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.MultiGeometry root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.multiGeometryProperty root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.multiGeometryProperty root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.MultiPoint root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.MultiPoint root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.multiPointProperty root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.multiPointProperty root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.MultiCurve root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.MultiCurve root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.multiCurveProperty root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.multiCurveProperty root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.MultiSurface root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.MultiSurface root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.multiSurfaceProperty root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.multiSurfaceProperty root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.MultiSolid root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.MultiSolid root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.multiSolidProperty root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.multiSolidProperty root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.MultiPolygon root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.MultiPolygon root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.MultiLineString root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.MultiLineString root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.geometryMember root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.geometryMember root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.geometryMembers root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.geometryMembers root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.pointMember root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.pointMember root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.pointMembers root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.pointMembers root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.curveMembers root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.curveMembers root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.surfaceMember root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.surfaceMember root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.surfaceMembers root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.surfaceMembers root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.solidMember root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.solidMember root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.solidMembers root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.solidMembers root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.multiCenterOf root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.multiCenterOf root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.multiPosition root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.multiPosition root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.multiCenterLineOf root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.multiCenterLineOf root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.multiEdgeOf root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.multiEdgeOf root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.multiCoverage root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.multiCoverage root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.multiExtentOf root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.multiExtentOf root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.multiLocation root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.multiLocation root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.lineStringMember root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.lineStringMember root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.Gml.V311.polygonMember root)
+        public XRoot(global::GeoSik.Ogc.Gml.V311.polygonMember root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.AbstractRecord root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.AbstractRecord root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.DCMIRecord root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.DCMIRecord root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.BriefRecord root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.BriefRecord root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.SummaryRecord root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.SummaryRecord root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Record root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.Record root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetCapabilities root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetCapabilities root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Capabilities root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.Capabilities root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.DescribeRecord root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.DescribeRecord root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.DescribeRecordResponse root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.DescribeRecordResponse root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecords root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecords root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.AbstractQuery root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.AbstractQuery root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Query root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.Query root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Constraint root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.Constraint root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.ElementSetName root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.ElementSetName root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecordsResponse root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecordsResponse root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecordById root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecordById root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetRecordByIdResponse root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetRecordByIdResponse root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetDomain root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetDomain root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.GetDomainResponse root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.GetDomainResponse root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Acknowledgement root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.Acknowledgement root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Transaction root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.Transaction root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.RecordProperty root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.RecordProperty root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.TransactionResponse root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.TransactionResponse root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.Harvest root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.Harvest root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.Ogc.WebCatalog.Csw.V202.HarvestResponse root)
+        public XRoot(global::GeoSik.Ogc.WebCatalog.Csw.V202.HarvestResponse root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.@abstract root)
+        public XRoot(global::GeoSik.DublinCore.Terms.@abstract root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.accessRights root)
+        public XRoot(global::GeoSik.DublinCore.Terms.accessRights root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.alternative root)
+        public XRoot(global::GeoSik.DublinCore.Terms.alternative root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.audience root)
+        public XRoot(global::GeoSik.DublinCore.Terms.audience root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.available root)
+        public XRoot(global::GeoSik.DublinCore.Terms.available root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.bibliographicCitation root)
+        public XRoot(global::GeoSik.DublinCore.Terms.bibliographicCitation root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.conformsTo root)
+        public XRoot(global::GeoSik.DublinCore.Terms.conformsTo root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.created root)
+        public XRoot(global::GeoSik.DublinCore.Terms.created root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.dateAccepted root)
+        public XRoot(global::GeoSik.DublinCore.Terms.dateAccepted root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.dateCopyrighted root)
+        public XRoot(global::GeoSik.DublinCore.Terms.dateCopyrighted root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.dateSubmitted root)
+        public XRoot(global::GeoSik.DublinCore.Terms.dateSubmitted root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.educationLevel root)
+        public XRoot(global::GeoSik.DublinCore.Terms.educationLevel root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.extent root)
+        public XRoot(global::GeoSik.DublinCore.Terms.extent root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.hasFormat root)
+        public XRoot(global::GeoSik.DublinCore.Terms.hasFormat root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.hasPart root)
+        public XRoot(global::GeoSik.DublinCore.Terms.hasPart root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.hasVersion root)
+        public XRoot(global::GeoSik.DublinCore.Terms.hasVersion root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.isFormatOf root)
+        public XRoot(global::GeoSik.DublinCore.Terms.isFormatOf root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.isPartOf root)
+        public XRoot(global::GeoSik.DublinCore.Terms.isPartOf root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.isReferencedBy root)
+        public XRoot(global::GeoSik.DublinCore.Terms.isReferencedBy root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.isReplacedBy root)
+        public XRoot(global::GeoSik.DublinCore.Terms.isReplacedBy root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.isRequiredBy root)
+        public XRoot(global::GeoSik.DublinCore.Terms.isRequiredBy root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.issued root)
+        public XRoot(global::GeoSik.DublinCore.Terms.issued root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.isVersionOf root)
+        public XRoot(global::GeoSik.DublinCore.Terms.isVersionOf root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.license root)
+        public XRoot(global::GeoSik.DublinCore.Terms.license root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.mediator root)
+        public XRoot(global::GeoSik.DublinCore.Terms.mediator root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.medium root)
+        public XRoot(global::GeoSik.DublinCore.Terms.medium root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.modified root)
+        public XRoot(global::GeoSik.DublinCore.Terms.modified root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.provenance root)
+        public XRoot(global::GeoSik.DublinCore.Terms.provenance root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.references root)
+        public XRoot(global::GeoSik.DublinCore.Terms.references root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.replaces root)
+        public XRoot(global::GeoSik.DublinCore.Terms.replaces root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.requires root)
+        public XRoot(global::GeoSik.DublinCore.Terms.requires root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.rightsHolder root)
+        public XRoot(global::GeoSik.DublinCore.Terms.rightsHolder root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.spatial root)
+        public XRoot(global::GeoSik.DublinCore.Terms.spatial root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.tableOfContents root)
+        public XRoot(global::GeoSik.DublinCore.Terms.tableOfContents root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.temporal root)
+        public XRoot(global::GeoSik.DublinCore.Terms.temporal root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Terms.valid root)
+        public XRoot(global::GeoSik.DublinCore.Terms.valid root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Elements.V11.DCelement root)
+        public XRoot(global::GeoSik.DublinCore.Elements.V11.DCelement root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Elements.V11.title root)
+        public XRoot(global::GeoSik.DublinCore.Elements.V11.title root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Elements.V11.creator root)
+        public XRoot(global::GeoSik.DublinCore.Elements.V11.creator root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Elements.V11.subject root)
+        public XRoot(global::GeoSik.DublinCore.Elements.V11.subject root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Elements.V11.description root)
+        public XRoot(global::GeoSik.DublinCore.Elements.V11.description root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Elements.V11.publisher root)
+        public XRoot(global::GeoSik.DublinCore.Elements.V11.publisher root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Elements.V11.contributor root)
+        public XRoot(global::GeoSik.DublinCore.Elements.V11.contributor root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Elements.V11.date root)
+        public XRoot(global::GeoSik.DublinCore.Elements.V11.date root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Elements.V11.type root)
+        public XRoot(global::GeoSik.DublinCore.Elements.V11.type root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Elements.V11.format root)
+        public XRoot(global::GeoSik.DublinCore.Elements.V11.format root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Elements.V11.identifier root)
+        public XRoot(global::GeoSik.DublinCore.Elements.V11.identifier root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Elements.V11.source root)
+        public XRoot(global::GeoSik.DublinCore.Elements.V11.source root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Elements.V11.language root)
+        public XRoot(global::GeoSik.DublinCore.Elements.V11.language root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Elements.V11.relation root)
+        public XRoot(global::GeoSik.DublinCore.Elements.V11.relation root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Elements.V11.coverage root)
+        public XRoot(global::GeoSik.DublinCore.Elements.V11.coverage root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;
         }
 
-        public XRoot(global::OgcToolkit.DublinCore.Elements.V11.rights root)
+        public XRoot(global::GeoSik.DublinCore.Elements.V11.rights root)
         {
             this.doc=new XDocument(root.Untyped);
             this.rootObject=root;

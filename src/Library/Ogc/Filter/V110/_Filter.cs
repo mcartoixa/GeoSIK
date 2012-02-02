@@ -1,25 +1,25 @@
 ﻿////////////////////////////////////////////////////////////////////////////////
 //
-// This file is part of OgcToolkit.
+// This file is part of GeoSIK.
 // Copyright (C) 2012 Isogeo
 //
-// OgcToolkit is free software: you can redistribute it and/or modify
+// GeoSIK is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 2 of the License, or
 // (at your option) any later version.
 //
-// OgcToolkit is distributed in the hope that it will be useful,
+// GeoSIK is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with OgcToolkit. If not, see <http://www.gnu.org/licenses/>.
+// along with GeoSIK. If not, see <http://www.gnu.org/licenses/>.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
 #pragma warning disable 108, 114, 3002, 3003, 3008, 3009
-namespace OgcToolkit.Ogc.Filter.V110
+namespace GeoSik.Ogc.Filter.V110
 {
     using System;
     using System.Collections;
@@ -31,7 +31,7 @@ namespace OgcToolkit.Ogc.Filter.V110
     using System.Xml.Serialization;
     using System.Xml.Linq;
     using Xml.Schema.Linq;
-    using OgcToolkit.Ogc.Ows.V100;
+    using GeoSik.Ogc.Ows.V100;
 
 
     /// <summary>
@@ -642,7 +642,7 @@ namespace OgcToolkit.Ogc.Filter.V110
     /// </summary>
     [XmlSchemaProviderAttribute("BinaryOperatorTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class BinaryOperatorType: global::OgcToolkit.Ogc.Filter.V110.ExpressionType, IXMetaData, IXmlSerializable
+    public partial class BinaryOperatorType: global::GeoSik.Ogc.Filter.V110.ExpressionType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -775,7 +775,7 @@ namespace OgcToolkit.Ogc.Filter.V110
     /// </summary>
     [XmlSchemaProviderAttribute("FunctionTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class FunctionType: global::OgcToolkit.Ogc.Filter.V110.ExpressionType, IXMetaData, IXmlSerializable
+    public partial class FunctionType: global::GeoSik.Ogc.Filter.V110.ExpressionType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -926,7 +926,7 @@ namespace OgcToolkit.Ogc.Filter.V110
     /// </summary>
     [XmlSchemaProviderAttribute("LiteralTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class LiteralType: global::OgcToolkit.Ogc.Filter.V110.ExpressionType, IXMetaData, IXmlSerializable
+    public partial class LiteralType: global::GeoSik.Ogc.Filter.V110.ExpressionType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -1016,7 +1016,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("PropertyNameTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class PropertyNameType: global::OgcToolkit.Ogc.Filter.V110.ExpressionType, IXMetaData, IXmlSerializable
+    public partial class PropertyNameType: global::GeoSik.Ogc.Filter.V110.ExpressionType, IXMetaData, IXmlSerializable
     {
 
         public static explicit operator PropertyNameType(XElement xe) { return XTypedServices.ToXTypedElement<PropertyNameType>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
@@ -1270,7 +1270,7 @@ namespace OgcToolkit.Ogc.Filter.V110
             }
             set
             {
-                this.SetElementWithValidation(XName.Get("SortOrder", "http://www.opengis.net/ogc"), value, "SortOrder", global::OgcToolkit.Ogc.Filter.V110.SortOrderType.TypeDefinition);
+                this.SetElementWithValidation(XName.Get("SortOrder", "http://www.opengis.net/ogc"), value, "SortOrder", global::GeoSik.Ogc.Filter.V110.SortOrderType.TypeDefinition);
             }
         }
 
@@ -3314,7 +3314,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("FeatureIdTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class FeatureIdType: global::OgcToolkit.Ogc.Filter.V110.AbstractIdType, IXMetaData, IXmlSerializable
+    public partial class FeatureIdType: global::GeoSik.Ogc.Filter.V110.AbstractIdType, IXMetaData, IXmlSerializable
     {
 
         public static explicit operator FeatureIdType(XElement xe) { return XTypedServices.ToXTypedElement<FeatureIdType>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
@@ -3387,7 +3387,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("GmlObjectIdTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class GmlObjectIdType: global::OgcToolkit.Ogc.Filter.V110.AbstractIdType, IXMetaData, IXmlSerializable
+    public partial class GmlObjectIdType: global::GeoSik.Ogc.Filter.V110.AbstractIdType, IXMetaData, IXmlSerializable
     {
 
         public static explicit operator GmlObjectIdType(XElement xe) { return XTypedServices.ToXTypedElement<GmlObjectIdType>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
@@ -3465,7 +3465,7 @@ namespace OgcToolkit.Ogc.Filter.V110
     /// </summary>
     [XmlSchemaProviderAttribute("BinaryComparisonOpTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class BinaryComparisonOpType: global::OgcToolkit.Ogc.Filter.V110.ComparisonOpsType, IXMetaData, IXmlSerializable
+    public partial class BinaryComparisonOpType: global::GeoSik.Ogc.Filter.V110.ComparisonOpsType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -3619,7 +3619,7 @@ namespace OgcToolkit.Ogc.Filter.V110
     /// </summary>
     [XmlSchemaProviderAttribute("PropertyIsLikeTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class PropertyIsLikeType: global::OgcToolkit.Ogc.Filter.V110.ComparisonOpsType, IXMetaData, IXmlSerializable
+    public partial class PropertyIsLikeType: global::GeoSik.Ogc.Filter.V110.ComparisonOpsType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -3828,7 +3828,7 @@ namespace OgcToolkit.Ogc.Filter.V110
     /// </summary>
     [XmlSchemaProviderAttribute("PropertyIsNullTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class PropertyIsNullType: global::OgcToolkit.Ogc.Filter.V110.ComparisonOpsType, IXMetaData, IXmlSerializable
+    public partial class PropertyIsNullType: global::GeoSik.Ogc.Filter.V110.ComparisonOpsType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -3940,7 +3940,7 @@ namespace OgcToolkit.Ogc.Filter.V110
     /// </summary>
     [XmlSchemaProviderAttribute("PropertyIsBetweenTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class PropertyIsBetweenType: global::OgcToolkit.Ogc.Filter.V110.ComparisonOpsType, IXMetaData, IXmlSerializable
+    public partial class PropertyIsBetweenType: global::GeoSik.Ogc.Filter.V110.ComparisonOpsType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -4334,7 +4334,7 @@ namespace OgcToolkit.Ogc.Filter.V110
     /// </summary>
     [XmlSchemaProviderAttribute("BinarySpatialOpTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class BinarySpatialOpType: global::OgcToolkit.Ogc.Filter.V110.SpatialOpsType, IXMetaData, IXmlSerializable
+    public partial class BinarySpatialOpType: global::GeoSik.Ogc.Filter.V110.SpatialOpsType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -4409,12 +4409,12 @@ namespace OgcToolkit.Ogc.Filter.V110
         /// Regular expression: (PropertyName, (PropertyName | _Geometry | Envelope))
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V311._Geometry _Geometry
+        public GeoSik.Ogc.Gml.V311._Geometry _Geometry
         {
             get
             {
                 XTypedElement x=XTypedServices.ToSubstitutedXTypedElement(this, LinqToXsdTypeManager.Instance, XName.Get("_Geometry", "http://www.opengis.net/gml"), XName.Get("_GeometricPrimitive", "http://www.opengis.net/gml"), XName.Get("Point", "http://www.opengis.net/gml"), XName.Get("_Curve", "http://www.opengis.net/gml"), XName.Get("LineString", "http://www.opengis.net/gml"), XName.Get("_Surface", "http://www.opengis.net/gml"), XName.Get("Polygon", "http://www.opengis.net/gml"), XName.Get("_Ring", "http://www.opengis.net/gml"), XName.Get("LinearRing", "http://www.opengis.net/gml"), XName.Get("Curve", "http://www.opengis.net/gml"), XName.Get("OrientableCurve", "http://www.opengis.net/gml"), XName.Get("Surface", "http://www.opengis.net/gml"), XName.Get("OrientableSurface", "http://www.opengis.net/gml"), XName.Get("Ring", "http://www.opengis.net/gml"), XName.Get("PolyhedralSurface", "http://www.opengis.net/gml"), XName.Get("TriangulatedSurface", "http://www.opengis.net/gml"), XName.Get("Tin", "http://www.opengis.net/gml"), XName.Get("_Solid", "http://www.opengis.net/gml"), XName.Get("Solid", "http://www.opengis.net/gml"), XName.Get("_GeometricAggregate", "http://www.opengis.net/gml"), XName.Get("MultiGeometry", "http://www.opengis.net/gml"), XName.Get("MultiPoint", "http://www.opengis.net/gml"), XName.Get("MultiCurve", "http://www.opengis.net/gml"), XName.Get("MultiSurface", "http://www.opengis.net/gml"), XName.Get("MultiSolid", "http://www.opengis.net/gml"), XName.Get("MultiPolygon", "http://www.opengis.net/gml"), XName.Get("MultiLineString", "http://www.opengis.net/gml"));
-                return ((OgcToolkit.Ogc.Gml.V311._Geometry)(x));
+                return ((GeoSik.Ogc.Gml.V311._Geometry)(x));
             }
             set
             {
@@ -4433,12 +4433,12 @@ namespace OgcToolkit.Ogc.Filter.V110
         /// Regular expression: (PropertyName, (PropertyName | _Geometry | Envelope))
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V311.Envelope Envelope
+        public GeoSik.Ogc.Gml.V311.Envelope Envelope
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("Envelope", "http://www.opengis.net/gml"));
-                return ((OgcToolkit.Ogc.Gml.V311.Envelope)(x));
+                return ((GeoSik.Ogc.Gml.V311.Envelope)(x));
             }
             set
             {
@@ -4490,8 +4490,8 @@ namespace OgcToolkit.Ogc.Filter.V110
         private static void BuildElementDictionary()
         {
             localElementDictionary.Add(XName.Get("PropertyName", "http://www.opengis.net/ogc"), typeof(PropertyName));
-            localElementDictionary.Add(XName.Get("_Geometry", "http://www.opengis.net/gml"), typeof(OgcToolkit.Ogc.Gml.V311._Geometry));
-            localElementDictionary.Add(XName.Get("Envelope", "http://www.opengis.net/gml"), typeof(OgcToolkit.Ogc.Gml.V311.Envelope));
+            localElementDictionary.Add(XName.Get("_Geometry", "http://www.opengis.net/gml"), typeof(GeoSik.Ogc.Gml.V311._Geometry));
+            localElementDictionary.Add(XName.Get("Envelope", "http://www.opengis.net/gml"), typeof(GeoSik.Ogc.Gml.V311.Envelope));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -4513,7 +4513,7 @@ namespace OgcToolkit.Ogc.Filter.V110
     /// </summary>
     [XmlSchemaProviderAttribute("BBOXTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class BBOXType: global::OgcToolkit.Ogc.Filter.V110.SpatialOpsType, IXMetaData, IXmlSerializable
+    public partial class BBOXType: global::GeoSik.Ogc.Filter.V110.SpatialOpsType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -4568,12 +4568,12 @@ namespace OgcToolkit.Ogc.Filter.V110
         /// Regular expression: (PropertyName?, Envelope)
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V311.Envelope Envelope
+        public GeoSik.Ogc.Gml.V311.Envelope Envelope
         {
             get
             {
                 XElement x=this.GetElement(XName.Get("Envelope", "http://www.opengis.net/gml"));
-                return ((OgcToolkit.Ogc.Gml.V311.Envelope)(x));
+                return ((GeoSik.Ogc.Gml.V311.Envelope)(x));
             }
             set
             {
@@ -4625,7 +4625,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         private static void BuildElementDictionary()
         {
             localElementDictionary.Add(XName.Get("PropertyName", "http://www.opengis.net/ogc"), typeof(PropertyName));
-            localElementDictionary.Add(XName.Get("Envelope", "http://www.opengis.net/gml"), typeof(OgcToolkit.Ogc.Gml.V311.Envelope));
+            localElementDictionary.Add(XName.Get("Envelope", "http://www.opengis.net/gml"), typeof(GeoSik.Ogc.Gml.V311.Envelope));
         }
 
         ContentModelEntity IXMetaData.GetContentModel()
@@ -4647,7 +4647,7 @@ namespace OgcToolkit.Ogc.Filter.V110
     /// </summary>
     [XmlSchemaProviderAttribute("DistanceBufferTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DistanceBufferType: global::OgcToolkit.Ogc.Filter.V110.SpatialOpsType, IXMetaData, IXmlSerializable
+    public partial class DistanceBufferType: global::GeoSik.Ogc.Filter.V110.SpatialOpsType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -4705,12 +4705,12 @@ namespace OgcToolkit.Ogc.Filter.V110
         /// Regular expression: (PropertyName, _Geometry, Distance)
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V311._Geometry _Geometry
+        public GeoSik.Ogc.Gml.V311._Geometry _Geometry
         {
             get
             {
                 XTypedElement x=XTypedServices.ToSubstitutedXTypedElement(this, LinqToXsdTypeManager.Instance, XName.Get("_Geometry", "http://www.opengis.net/gml"), XName.Get("_GeometricPrimitive", "http://www.opengis.net/gml"), XName.Get("Point", "http://www.opengis.net/gml"), XName.Get("_Curve", "http://www.opengis.net/gml"), XName.Get("LineString", "http://www.opengis.net/gml"), XName.Get("_Surface", "http://www.opengis.net/gml"), XName.Get("Polygon", "http://www.opengis.net/gml"), XName.Get("_Ring", "http://www.opengis.net/gml"), XName.Get("LinearRing", "http://www.opengis.net/gml"), XName.Get("Curve", "http://www.opengis.net/gml"), XName.Get("OrientableCurve", "http://www.opengis.net/gml"), XName.Get("Surface", "http://www.opengis.net/gml"), XName.Get("OrientableSurface", "http://www.opengis.net/gml"), XName.Get("Ring", "http://www.opengis.net/gml"), XName.Get("PolyhedralSurface", "http://www.opengis.net/gml"), XName.Get("TriangulatedSurface", "http://www.opengis.net/gml"), XName.Get("Tin", "http://www.opengis.net/gml"), XName.Get("_Solid", "http://www.opengis.net/gml"), XName.Get("Solid", "http://www.opengis.net/gml"), XName.Get("_GeometricAggregate", "http://www.opengis.net/gml"), XName.Get("MultiGeometry", "http://www.opengis.net/gml"), XName.Get("MultiPoint", "http://www.opengis.net/gml"), XName.Get("MultiCurve", "http://www.opengis.net/gml"), XName.Get("MultiSurface", "http://www.opengis.net/gml"), XName.Get("MultiSolid", "http://www.opengis.net/gml"), XName.Get("MultiPolygon", "http://www.opengis.net/gml"), XName.Get("MultiLineString", "http://www.opengis.net/gml"));
-                return ((OgcToolkit.Ogc.Gml.V311._Geometry)(x));
+                return ((GeoSik.Ogc.Gml.V311._Geometry)(x));
             }
             set
             {
@@ -4783,7 +4783,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         private static void BuildElementDictionary()
         {
             localElementDictionary.Add(XName.Get("PropertyName", "http://www.opengis.net/ogc"), typeof(PropertyName));
-            localElementDictionary.Add(XName.Get("_Geometry", "http://www.opengis.net/gml"), typeof(OgcToolkit.Ogc.Gml.V311._Geometry));
+            localElementDictionary.Add(XName.Get("_Geometry", "http://www.opengis.net/gml"), typeof(GeoSik.Ogc.Gml.V311._Geometry));
             localElementDictionary.Add(XName.Get("Distance", "http://www.opengis.net/ogc"), typeof(DistanceType));
         }
 
@@ -4892,7 +4892,7 @@ namespace OgcToolkit.Ogc.Filter.V110
     /// </summary>
     [XmlSchemaProviderAttribute("BinaryLogicOpTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class BinaryLogicOpType: global::OgcToolkit.Ogc.Filter.V110.LogicOpsType, IXMetaData, IXmlSerializable
+    public partial class BinaryLogicOpType: global::GeoSik.Ogc.Filter.V110.LogicOpsType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -5147,7 +5147,7 @@ namespace OgcToolkit.Ogc.Filter.V110
     /// </summary>
     [XmlSchemaProviderAttribute("UnaryLogicOpTypeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class UnaryLogicOpType: global::OgcToolkit.Ogc.Filter.V110.LogicOpsType, IXMetaData, IXmlSerializable
+    public partial class UnaryLogicOpType: global::GeoSik.Ogc.Filter.V110.LogicOpsType, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -5337,7 +5337,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("AddSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class Add: global::OgcToolkit.Ogc.Filter.V110.expression, IXMetaData, IXmlSerializable
+    public partial class Add: global::GeoSik.Ogc.Filter.V110.expression, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -5491,7 +5491,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("SubSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class Sub: global::OgcToolkit.Ogc.Filter.V110.expression, IXMetaData, IXmlSerializable
+    public partial class Sub: global::GeoSik.Ogc.Filter.V110.expression, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -5645,7 +5645,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("MulSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class Mul: global::OgcToolkit.Ogc.Filter.V110.expression, IXMetaData, IXmlSerializable
+    public partial class Mul: global::GeoSik.Ogc.Filter.V110.expression, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -5799,7 +5799,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("DivSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class Div: global::OgcToolkit.Ogc.Filter.V110.expression, IXMetaData, IXmlSerializable
+    public partial class Div: global::GeoSik.Ogc.Filter.V110.expression, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -5953,7 +5953,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("PropertyNameSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class PropertyName: global::OgcToolkit.Ogc.Filter.V110.expression, IXMetaData, IXmlSerializable
+    public partial class PropertyName: global::GeoSik.Ogc.Filter.V110.expression, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -6084,7 +6084,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("FunctionSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class Function: global::OgcToolkit.Ogc.Filter.V110.expression, IXMetaData, IXmlSerializable
+    public partial class Function: global::GeoSik.Ogc.Filter.V110.expression, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -6255,7 +6255,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("LiteralSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class Literal: global::OgcToolkit.Ogc.Filter.V110.expression, IXMetaData, IXmlSerializable
+    public partial class Literal: global::GeoSik.Ogc.Filter.V110.expression, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -6862,7 +6862,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("FeatureIdSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class FeatureId: global::OgcToolkit.Ogc.Filter.V110._Id, IXMetaData, IXmlSerializable
+    public partial class FeatureId: global::GeoSik.Ogc.Filter.V110._Id, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -7010,7 +7010,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("GmlObjectIdSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class GmlObjectId: global::OgcToolkit.Ogc.Filter.V110._Id, IXMetaData, IXmlSerializable
+    public partial class GmlObjectId: global::GeoSik.Ogc.Filter.V110._Id, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -7543,7 +7543,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("PropertyIsEqualToSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class PropertyIsEqualTo: global::OgcToolkit.Ogc.Filter.V110.comparisonOps, IXMetaData, IXmlSerializable
+    public partial class PropertyIsEqualTo: global::GeoSik.Ogc.Filter.V110.comparisonOps, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -7714,7 +7714,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("PropertyIsNotEqualToSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class PropertyIsNotEqualTo: global::OgcToolkit.Ogc.Filter.V110.comparisonOps, IXMetaData, IXmlSerializable
+    public partial class PropertyIsNotEqualTo: global::GeoSik.Ogc.Filter.V110.comparisonOps, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -7885,7 +7885,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("PropertyIsLessThanSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class PropertyIsLessThan: global::OgcToolkit.Ogc.Filter.V110.comparisonOps, IXMetaData, IXmlSerializable
+    public partial class PropertyIsLessThan: global::GeoSik.Ogc.Filter.V110.comparisonOps, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -8056,7 +8056,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("PropertyIsGreaterThanSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class PropertyIsGreaterThan: global::OgcToolkit.Ogc.Filter.V110.comparisonOps, IXMetaData, IXmlSerializable
+    public partial class PropertyIsGreaterThan: global::GeoSik.Ogc.Filter.V110.comparisonOps, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -8227,7 +8227,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("PropertyIsLessThanOrEqualToSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class PropertyIsLessThanOrEqualTo: global::OgcToolkit.Ogc.Filter.V110.comparisonOps, IXMetaData, IXmlSerializable
+    public partial class PropertyIsLessThanOrEqualTo: global::GeoSik.Ogc.Filter.V110.comparisonOps, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -8398,7 +8398,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("PropertyIsGreaterThanOrEqualToSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class PropertyIsGreaterThanOrEqualTo: global::OgcToolkit.Ogc.Filter.V110.comparisonOps, IXMetaData, IXmlSerializable
+    public partial class PropertyIsGreaterThanOrEqualTo: global::GeoSik.Ogc.Filter.V110.comparisonOps, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -8569,7 +8569,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("PropertyIsLikeSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class PropertyIsLike: global::OgcToolkit.Ogc.Filter.V110.comparisonOps, IXMetaData, IXmlSerializable
+    public partial class PropertyIsLike: global::GeoSik.Ogc.Filter.V110.comparisonOps, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -8808,7 +8808,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("PropertyIsNullSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class PropertyIsNull: global::OgcToolkit.Ogc.Filter.V110.comparisonOps, IXMetaData, IXmlSerializable
+    public partial class PropertyIsNull: global::GeoSik.Ogc.Filter.V110.comparisonOps, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -8959,7 +8959,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("PropertyIsBetweenSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class PropertyIsBetween: global::OgcToolkit.Ogc.Filter.V110.comparisonOps, IXMetaData, IXmlSerializable
+    public partial class PropertyIsBetween: global::GeoSik.Ogc.Filter.V110.comparisonOps, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -9303,7 +9303,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("EqualsSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class Equals: global::OgcToolkit.Ogc.Filter.V110.spatialOps, IXMetaData, IXmlSerializable
+    public partial class Equals: global::GeoSik.Ogc.Filter.V110.spatialOps, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -9378,7 +9378,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         /// Regular expression: (PropertyName, (PropertyName | _Geometry | Envelope))
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V311._Geometry _Geometry
+        public GeoSik.Ogc.Gml.V311._Geometry _Geometry
         {
             get
             {
@@ -9401,7 +9401,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         /// Regular expression: (PropertyName, (PropertyName | _Geometry | Envelope))
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V311.Envelope Envelope
+        public GeoSik.Ogc.Gml.V311.Envelope Envelope
         {
             get
             {
@@ -9503,7 +9503,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("DisjointSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class Disjoint: global::OgcToolkit.Ogc.Filter.V110.spatialOps, IXMetaData, IXmlSerializable
+    public partial class Disjoint: global::GeoSik.Ogc.Filter.V110.spatialOps, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -9578,7 +9578,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         /// Regular expression: (PropertyName, (PropertyName | _Geometry | Envelope))
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V311._Geometry _Geometry
+        public GeoSik.Ogc.Gml.V311._Geometry _Geometry
         {
             get
             {
@@ -9601,7 +9601,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         /// Regular expression: (PropertyName, (PropertyName | _Geometry | Envelope))
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V311.Envelope Envelope
+        public GeoSik.Ogc.Gml.V311.Envelope Envelope
         {
             get
             {
@@ -9703,7 +9703,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("TouchesSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class Touches: global::OgcToolkit.Ogc.Filter.V110.spatialOps, IXMetaData, IXmlSerializable
+    public partial class Touches: global::GeoSik.Ogc.Filter.V110.spatialOps, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -9778,7 +9778,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         /// Regular expression: (PropertyName, (PropertyName | _Geometry | Envelope))
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V311._Geometry _Geometry
+        public GeoSik.Ogc.Gml.V311._Geometry _Geometry
         {
             get
             {
@@ -9801,7 +9801,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         /// Regular expression: (PropertyName, (PropertyName | _Geometry | Envelope))
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V311.Envelope Envelope
+        public GeoSik.Ogc.Gml.V311.Envelope Envelope
         {
             get
             {
@@ -9903,7 +9903,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("WithinSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class Within: global::OgcToolkit.Ogc.Filter.V110.spatialOps, IXMetaData, IXmlSerializable
+    public partial class Within: global::GeoSik.Ogc.Filter.V110.spatialOps, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -9978,7 +9978,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         /// Regular expression: (PropertyName, (PropertyName | _Geometry | Envelope))
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V311._Geometry _Geometry
+        public GeoSik.Ogc.Gml.V311._Geometry _Geometry
         {
             get
             {
@@ -10001,7 +10001,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         /// Regular expression: (PropertyName, (PropertyName | _Geometry | Envelope))
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V311.Envelope Envelope
+        public GeoSik.Ogc.Gml.V311.Envelope Envelope
         {
             get
             {
@@ -10103,7 +10103,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("OverlapsSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class Overlaps: global::OgcToolkit.Ogc.Filter.V110.spatialOps, IXMetaData, IXmlSerializable
+    public partial class Overlaps: global::GeoSik.Ogc.Filter.V110.spatialOps, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -10178,7 +10178,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         /// Regular expression: (PropertyName, (PropertyName | _Geometry | Envelope))
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V311._Geometry _Geometry
+        public GeoSik.Ogc.Gml.V311._Geometry _Geometry
         {
             get
             {
@@ -10201,7 +10201,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         /// Regular expression: (PropertyName, (PropertyName | _Geometry | Envelope))
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V311.Envelope Envelope
+        public GeoSik.Ogc.Gml.V311.Envelope Envelope
         {
             get
             {
@@ -10303,7 +10303,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("CrossesSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class Crosses: global::OgcToolkit.Ogc.Filter.V110.spatialOps, IXMetaData, IXmlSerializable
+    public partial class Crosses: global::GeoSik.Ogc.Filter.V110.spatialOps, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -10378,7 +10378,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         /// Regular expression: (PropertyName, (PropertyName | _Geometry | Envelope))
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V311._Geometry _Geometry
+        public GeoSik.Ogc.Gml.V311._Geometry _Geometry
         {
             get
             {
@@ -10401,7 +10401,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         /// Regular expression: (PropertyName, (PropertyName | _Geometry | Envelope))
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V311.Envelope Envelope
+        public GeoSik.Ogc.Gml.V311.Envelope Envelope
         {
             get
             {
@@ -10503,7 +10503,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("IntersectsSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class Intersects: global::OgcToolkit.Ogc.Filter.V110.spatialOps, IXMetaData, IXmlSerializable
+    public partial class Intersects: global::GeoSik.Ogc.Filter.V110.spatialOps, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -10578,7 +10578,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         /// Regular expression: (PropertyName, (PropertyName | _Geometry | Envelope))
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V311._Geometry _Geometry
+        public GeoSik.Ogc.Gml.V311._Geometry _Geometry
         {
             get
             {
@@ -10601,7 +10601,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         /// Regular expression: (PropertyName, (PropertyName | _Geometry | Envelope))
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V311.Envelope Envelope
+        public GeoSik.Ogc.Gml.V311.Envelope Envelope
         {
             get
             {
@@ -10703,7 +10703,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("ContainsSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class Contains: global::OgcToolkit.Ogc.Filter.V110.spatialOps, IXMetaData, IXmlSerializable
+    public partial class Contains: global::GeoSik.Ogc.Filter.V110.spatialOps, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -10778,7 +10778,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         /// Regular expression: (PropertyName, (PropertyName | _Geometry | Envelope))
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V311._Geometry _Geometry
+        public GeoSik.Ogc.Gml.V311._Geometry _Geometry
         {
             get
             {
@@ -10801,7 +10801,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         /// Regular expression: (PropertyName, (PropertyName | _Geometry | Envelope))
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V311.Envelope Envelope
+        public GeoSik.Ogc.Gml.V311.Envelope Envelope
         {
             get
             {
@@ -10903,7 +10903,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("DWithinSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class DWithin: global::OgcToolkit.Ogc.Filter.V110.spatialOps, IXMetaData, IXmlSerializable
+    public partial class DWithin: global::GeoSik.Ogc.Filter.V110.spatialOps, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -10975,7 +10975,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         /// Regular expression: (PropertyName, _Geometry, Distance)
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V311._Geometry _Geometry
+        public GeoSik.Ogc.Gml.V311._Geometry _Geometry
         {
             get
             {
@@ -11097,7 +11097,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("BeyondSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class Beyond: global::OgcToolkit.Ogc.Filter.V110.spatialOps, IXMetaData, IXmlSerializable
+    public partial class Beyond: global::GeoSik.Ogc.Filter.V110.spatialOps, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -11169,7 +11169,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         /// Regular expression: (PropertyName, _Geometry, Distance)
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V311._Geometry _Geometry
+        public GeoSik.Ogc.Gml.V311._Geometry _Geometry
         {
             get
             {
@@ -11291,7 +11291,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("BBOXSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class BBOX: global::OgcToolkit.Ogc.Filter.V110.spatialOps, IXMetaData, IXmlSerializable
+    public partial class BBOX: global::GeoSik.Ogc.Filter.V110.spatialOps, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -11360,7 +11360,7 @@ namespace OgcToolkit.Ogc.Filter.V110
         /// Regular expression: (PropertyName?, Envelope)
         /// </para>
         /// </summary>
-        public OgcToolkit.Ogc.Gml.V311.Envelope Envelope
+        public GeoSik.Ogc.Gml.V311.Envelope Envelope
         {
             get
             {
@@ -11612,7 +11612,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("AndSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class And: global::OgcToolkit.Ogc.Filter.V110.logicOps, IXMetaData, IXmlSerializable
+    public partial class And: global::GeoSik.Ogc.Filter.V110.logicOps, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -11832,7 +11832,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("OrSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class Or: global::OgcToolkit.Ogc.Filter.V110.logicOps, IXMetaData, IXmlSerializable
+    public partial class Or: global::GeoSik.Ogc.Filter.V110.logicOps, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -12052,7 +12052,7 @@ namespace OgcToolkit.Ogc.Filter.V110
 
     [XmlSchemaProviderAttribute("NotSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class Not: global::OgcToolkit.Ogc.Filter.V110.logicOps, IXMetaData, IXmlSerializable
+    public partial class Not: global::GeoSik.Ogc.Filter.V110.logicOps, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]

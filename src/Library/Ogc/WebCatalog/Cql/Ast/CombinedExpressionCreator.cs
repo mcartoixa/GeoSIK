@@ -6,7 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace OgcToolkit.Ogc.WebCatalog.Cql.Ast
+namespace GeoSik.Ogc.WebCatalog.Cql.Ast
 {
 
     internal class CombinedExpressionCreator:

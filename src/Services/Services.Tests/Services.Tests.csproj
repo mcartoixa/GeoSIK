@@ -9,8 +9,8 @@
     <ProjectGuid>{EEC124DB-4DFB-4497-A6DA-3A7DF790BA31}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OgcToolkit.Services.Tests</RootNamespace>
-    <AssemblyName>OgcToolkit.Services.Tests</AssemblyName>
+    <RootNamespace>GeoSik.Services.Tests</RootNamespace>
+    <AssemblyName>GeoSik.Services.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -40,7 +40,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>..\..\build\OgcToolkit.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\..\build\GeoSik.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Common.Logging">
@@ -101,8 +101,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\build\OgcToolkit.snk">
-      <Link>OgcToolkit.snk</Link>
+    <None Include="..\..\build\GeoSik.snk">
+      <Link>GeoSik.snk</Link>
     </None>
     <None Include="app.config" />
     <None Include="packages.config" />

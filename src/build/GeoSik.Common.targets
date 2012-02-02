@@ -1,5 +1,5 @@
 <!-- //////////////////////////////////////////////////////////////////////////
-This file defines the steps in the standard OGC Toolkit build process, specific for C# .NET projects.
+This file defines the steps in the standard GeoSIK build process, specific for C# .NET projects.
 It must be used with MSBuild 4.0.
 
 [IN]

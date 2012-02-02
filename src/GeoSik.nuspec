@@ -6,7 +6,7 @@
     <authors>Isogeo</authors>
     <owners>Isogeo</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Libraries that allow the use OGC standards in .NET applications, and makes the implementation of standard OGC web services easier.</description>
+    <description>Libraries that allow the use OGC standards in .NET applications, and makes the implementation of standard OGC Web Services easier.</description>
     <copyright>Copyright © 2012 Isogeo</copyright>
     <tags>OGC Geographical Standards Library Isogeo CSW</tags>
     <dependencies>
@@ -16,8 +16,8 @@
     <references>
       <reference file="Irony.dll" />
       <reference file="Irony.Interpreter.dll" />
-      <reference file="OgcToolkit.dll" />
-      <reference file="OgcToolkit.Services.dll" />
+      <reference file="GeoSik.dll" />
+      <reference file="GeoSik.Services.dll" />
     </references>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations" />

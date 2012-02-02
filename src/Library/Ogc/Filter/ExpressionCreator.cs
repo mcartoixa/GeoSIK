@@ -9,7 +9,7 @@ using System.Reflection;
 using System.Text;
 using LinqExpressionType=System.Linq.Expressions.ExpressionType;
 
-namespace OgcToolkit.Ogc.Filter
+namespace GeoSik.Ogc.Filter
 {
 
     public interface IExpressionCreator:

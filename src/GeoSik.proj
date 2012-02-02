@@ -23,12 +23,12 @@
   </ItemDefinitionGroup>
 
   <ItemGroup>
-    <Projects Include="OgcToolkit.sln">
-      <PartCoverExclude>[OgcToolkit]OgcToolkit.DublinCore.*;[OgcToolkit]OgcToolkit.Iso.*;[OgcToolkit]OgcToolkit.Ogc.Filter.V*;[OgcToolkit]OgcToolkit.Ogc.Gml.V*;[OgcToolkit]OgcToolkit.Ogc.Ows.V*;[OgcToolkit]OgcToolkit.Ogc.WebCatalog.Csw.V*;[OgcToolkit]OgcToolkit.W3.*;[OgcToolkit]OgcToolkit.Schemas;[OgcToolkit]OgcToolkit.SR"</PartCoverExclude>
+    <Projects Include="GeoSik.sln">
+      <PartCoverExclude>[GeoSik]GeoSik.DublinCore.*;[GeoSik]GeoSik.Iso.*;[GeoSik]GeoSik.Ogc.Filter.V*;[GeoSik]GeoSik.Ogc.Gml.V*;[GeoSik]GeoSik.Ogc.Ows.V*;[GeoSik]GeoSik.Ogc.WebCatalog.Csw.V*;[GeoSik]GeoSik.W3.*;[GeoSik]GeoSik.Schemas;[GeoSik]GeoSik.SR"</PartCoverExclude>
     </Projects>
   </ItemGroup>
 
   <!-- Import external targets -->
-  <Import Project="$(MSBuildProjectDirectory)\build\OgcToolkit.Common.targets" />
+  <Import Project="$(MSBuildProjectDirectory)\build\GeoSik.Common.targets" />
 
 </Project>

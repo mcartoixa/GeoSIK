@@ -1,25 +1,25 @@
 ﻿////////////////////////////////////////////////////////////////////////////////
 //
-// This file is part of OgcToolkit.
+// This file is part of GeoSIK.
 // Copyright (C) 2012 Isogeo
 //
-// OgcToolkit is free software: you can redistribute it and/or modify
+// GeoSIK is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 2 of the License, or
 // (at your option) any later version.
 //
-// OgcToolkit is distributed in the hope that it will be useful,
+// GeoSIK is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with OgcToolkit. If not, see <http://www.gnu.org/licenses/>.
+// along with GeoSIK. If not, see <http://www.gnu.org/licenses/>.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
 #pragma warning disable 108, 114, 3002, 3003, 3009
-namespace OgcToolkit.W3.Smil20
+namespace GeoSik.W3.Smil20
 {
     using System;
     using System.Collections;
@@ -31,7 +31,7 @@ namespace OgcToolkit.W3.Smil20
     using System.Xml.Serialization;
     using System.Xml.Linq;
     using Xml.Schema.Linq;
-    using OgcToolkit.Ogc.Gml.V311;
+    using GeoSik.Ogc.Gml.V311;
 
 
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
@@ -863,21 +863,21 @@ namespace OgcToolkit.W3.Smil20
 
     [XmlSchemaProviderAttribute("animateSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class animate: global::OgcToolkit.W3.Smil20.Language.animate, IXMetaData, IXmlSerializable
+    public partial class animate: global::GeoSik.W3.Smil20.Language.animate, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.W3.Smil20.Language.animateType ContentField;
+        private GeoSik.W3.Smil20.Language.animateType ContentField;
 
-        public static explicit operator animate(XElement xe) { return XTypedServices.ToXTypedElement<animate, OgcToolkit.W3.Smil20.Language.animateType>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator animate(XElement xe) { return XTypedServices.ToXTypedElement<animate, GeoSik.W3.Smil20.Language.animateType>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public animate() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.W3.Smil20.Language.animateType());
+            SetInnerType(new GeoSik.W3.Smil20.Language.animateType());
         }
 
-        public animate(OgcToolkit.W3.Smil20.Language.animateType content) :
+        public animate(GeoSik.W3.Smil20.Language.animateType content) :
             base(true)
         {
             SetInnerType(content);
@@ -896,7 +896,7 @@ namespace OgcToolkit.W3.Smil20
             }
         }
 
-        public new OgcToolkit.W3.Smil20.Language.animateType Content
+        public new GeoSik.W3.Smil20.Language.animateType Content
         {
             get
             {
@@ -950,27 +950,27 @@ namespace OgcToolkit.W3.Smil20
 
         public new static animate Load(string xmlFile)
         {
-            return XTypedServices.Load<animate, OgcToolkit.W3.Smil20.Language.animateType>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<animate, GeoSik.W3.Smil20.Language.animateType>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static animate Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<animate, OgcToolkit.W3.Smil20.Language.animateType>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<animate, GeoSik.W3.Smil20.Language.animateType>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static animate Parse(string xml)
         {
-            return XTypedServices.Parse<animate, OgcToolkit.W3.Smil20.Language.animateType>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<animate, GeoSik.W3.Smil20.Language.animateType>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new animate(((OgcToolkit.W3.Smil20.Language.animateType)(this.Content.Clone())));
+            return new animate(((GeoSik.W3.Smil20.Language.animateType)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.W3.Smil20.Language.animateType ContentField)
+        private void SetInnerType(GeoSik.W3.Smil20.Language.animateType ContentField)
         {
-            this.ContentField=((OgcToolkit.W3.Smil20.Language.animateType)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.W3.Smil20.Language.animateType)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -994,21 +994,21 @@ namespace OgcToolkit.W3.Smil20
 
     [XmlSchemaProviderAttribute("animateMotionSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class animateMotion: global::OgcToolkit.W3.Smil20.Language.animateMotion, IXMetaData, IXmlSerializable
+    public partial class animateMotion: global::GeoSik.W3.Smil20.Language.animateMotion, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.W3.Smil20.Language.animateMotionType ContentField;
+        private GeoSik.W3.Smil20.Language.animateMotionType ContentField;
 
-        public static explicit operator animateMotion(XElement xe) { return XTypedServices.ToXTypedElement<animateMotion, OgcToolkit.W3.Smil20.Language.animateMotionType>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator animateMotion(XElement xe) { return XTypedServices.ToXTypedElement<animateMotion, GeoSik.W3.Smil20.Language.animateMotionType>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public animateMotion() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.W3.Smil20.Language.animateMotionType());
+            SetInnerType(new GeoSik.W3.Smil20.Language.animateMotionType());
         }
 
-        public animateMotion(OgcToolkit.W3.Smil20.Language.animateMotionType content) :
+        public animateMotion(GeoSik.W3.Smil20.Language.animateMotionType content) :
             base(true)
         {
             SetInnerType(content);
@@ -1027,7 +1027,7 @@ namespace OgcToolkit.W3.Smil20
             }
         }
 
-        public new OgcToolkit.W3.Smil20.Language.animateMotionType Content
+        public new GeoSik.W3.Smil20.Language.animateMotionType Content
         {
             get
             {
@@ -1081,27 +1081,27 @@ namespace OgcToolkit.W3.Smil20
 
         public new static animateMotion Load(string xmlFile)
         {
-            return XTypedServices.Load<animateMotion, OgcToolkit.W3.Smil20.Language.animateMotionType>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<animateMotion, GeoSik.W3.Smil20.Language.animateMotionType>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static animateMotion Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<animateMotion, OgcToolkit.W3.Smil20.Language.animateMotionType>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<animateMotion, GeoSik.W3.Smil20.Language.animateMotionType>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static animateMotion Parse(string xml)
         {
-            return XTypedServices.Parse<animateMotion, OgcToolkit.W3.Smil20.Language.animateMotionType>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<animateMotion, GeoSik.W3.Smil20.Language.animateMotionType>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new animateMotion(((OgcToolkit.W3.Smil20.Language.animateMotionType)(this.Content.Clone())));
+            return new animateMotion(((GeoSik.W3.Smil20.Language.animateMotionType)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.W3.Smil20.Language.animateMotionType ContentField)
+        private void SetInnerType(GeoSik.W3.Smil20.Language.animateMotionType ContentField)
         {
-            this.ContentField=((OgcToolkit.W3.Smil20.Language.animateMotionType)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.W3.Smil20.Language.animateMotionType)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -1125,21 +1125,21 @@ namespace OgcToolkit.W3.Smil20
 
     [XmlSchemaProviderAttribute("animateColorSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class animateColor: global::OgcToolkit.W3.Smil20.Language.animateColor, IXMetaData, IXmlSerializable
+    public partial class animateColor: global::GeoSik.W3.Smil20.Language.animateColor, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.W3.Smil20.Language.animateColorType ContentField;
+        private GeoSik.W3.Smil20.Language.animateColorType ContentField;
 
-        public static explicit operator animateColor(XElement xe) { return XTypedServices.ToXTypedElement<animateColor, OgcToolkit.W3.Smil20.Language.animateColorType>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator animateColor(XElement xe) { return XTypedServices.ToXTypedElement<animateColor, GeoSik.W3.Smil20.Language.animateColorType>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public animateColor() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.W3.Smil20.Language.animateColorType());
+            SetInnerType(new GeoSik.W3.Smil20.Language.animateColorType());
         }
 
-        public animateColor(OgcToolkit.W3.Smil20.Language.animateColorType content) :
+        public animateColor(GeoSik.W3.Smil20.Language.animateColorType content) :
             base(true)
         {
             SetInnerType(content);
@@ -1158,7 +1158,7 @@ namespace OgcToolkit.W3.Smil20
             }
         }
 
-        public new OgcToolkit.W3.Smil20.Language.animateColorType Content
+        public new GeoSik.W3.Smil20.Language.animateColorType Content
         {
             get
             {
@@ -1212,27 +1212,27 @@ namespace OgcToolkit.W3.Smil20
 
         public new static animateColor Load(string xmlFile)
         {
-            return XTypedServices.Load<animateColor, OgcToolkit.W3.Smil20.Language.animateColorType>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<animateColor, GeoSik.W3.Smil20.Language.animateColorType>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static animateColor Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<animateColor, OgcToolkit.W3.Smil20.Language.animateColorType>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<animateColor, GeoSik.W3.Smil20.Language.animateColorType>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static animateColor Parse(string xml)
         {
-            return XTypedServices.Parse<animateColor, OgcToolkit.W3.Smil20.Language.animateColorType>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<animateColor, GeoSik.W3.Smil20.Language.animateColorType>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new animateColor(((OgcToolkit.W3.Smil20.Language.animateColorType)(this.Content.Clone())));
+            return new animateColor(((GeoSik.W3.Smil20.Language.animateColorType)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.W3.Smil20.Language.animateColorType ContentField)
+        private void SetInnerType(GeoSik.W3.Smil20.Language.animateColorType ContentField)
         {
-            this.ContentField=((OgcToolkit.W3.Smil20.Language.animateColorType)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.W3.Smil20.Language.animateColorType)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }
@@ -1256,21 +1256,21 @@ namespace OgcToolkit.W3.Smil20
 
     [XmlSchemaProviderAttribute("setSchemaProvider")]
     [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
-    public partial class set: global::OgcToolkit.W3.Smil20.Language.set, IXMetaData, IXmlSerializable
+    public partial class set: global::GeoSik.W3.Smil20.Language.set, IXMetaData, IXmlSerializable
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private OgcToolkit.W3.Smil20.Language.setType ContentField;
+        private GeoSik.W3.Smil20.Language.setType ContentField;
 
-        public static explicit operator set(XElement xe) { return XTypedServices.ToXTypedElement<set, OgcToolkit.W3.Smil20.Language.setType>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
+        public static explicit operator set(XElement xe) { return XTypedServices.ToXTypedElement<set, GeoSik.W3.Smil20.Language.setType>(xe, LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
 
         public set() :
             base(true)
         {
-            SetInnerType(new OgcToolkit.W3.Smil20.Language.setType());
+            SetInnerType(new GeoSik.W3.Smil20.Language.setType());
         }
 
-        public set(OgcToolkit.W3.Smil20.Language.setType content) :
+        public set(GeoSik.W3.Smil20.Language.setType content) :
             base(true)
         {
             SetInnerType(content);
@@ -1289,7 +1289,7 @@ namespace OgcToolkit.W3.Smil20
             }
         }
 
-        public new OgcToolkit.W3.Smil20.Language.setType Content
+        public new GeoSik.W3.Smil20.Language.setType Content
         {
             get
             {
@@ -1343,27 +1343,27 @@ namespace OgcToolkit.W3.Smil20
 
         public new static set Load(string xmlFile)
         {
-            return XTypedServices.Load<set, OgcToolkit.W3.Smil20.Language.setType>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<set, GeoSik.W3.Smil20.Language.setType>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public static set Load(System.IO.TextReader xmlFile)
         {
-            return XTypedServices.Load<set, OgcToolkit.W3.Smil20.Language.setType>(xmlFile, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Load<set, GeoSik.W3.Smil20.Language.setType>(xmlFile, LinqToXsdTypeManager.Instance);
         }
 
         public new static set Parse(string xml)
         {
-            return XTypedServices.Parse<set, OgcToolkit.W3.Smil20.Language.setType>(xml, LinqToXsdTypeManager.Instance);
+            return XTypedServices.Parse<set, GeoSik.W3.Smil20.Language.setType>(xml, LinqToXsdTypeManager.Instance);
         }
 
         public override XTypedElement Clone()
         {
-            return new set(((OgcToolkit.W3.Smil20.Language.setType)(this.Content.Clone())));
+            return new set(((GeoSik.W3.Smil20.Language.setType)(this.Content.Clone())));
         }
 
-        private void SetInnerType(OgcToolkit.W3.Smil20.Language.setType ContentField)
+        private void SetInnerType(GeoSik.W3.Smil20.Language.setType ContentField)
         {
-            this.ContentField=((OgcToolkit.W3.Smil20.Language.setType)(XTypedServices.GetCloneIfRooted(ContentField)));
+            this.ContentField=((GeoSik.W3.Smil20.Language.setType)(XTypedServices.GetCloneIfRooted(ContentField)));
             XTypedServices.SetName(this, this.ContentField);
             base.SetSubstitutionMember(ContentField);
         }

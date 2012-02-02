@@ -8,8 +8,8 @@
     <ProjectGuid>{34AECC13-2214-4FB6-B4E5-016FEE0120A5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OgcToolkit.Services</RootNamespace>
-    <AssemblyName>OgcToolkit.Services</AssemblyName>
+    <RootNamespace>GeoSik.Services</RootNamespace>
+    <AssemblyName>GeoSik.Services</AssemblyName>
     <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -40,7 +40,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>..\build\OgcToolkit.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\build\GeoSik.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Common.Logging">
@@ -97,8 +97,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\build\OgcToolkit.snk">
-      <Link>OgcToolkit.snk</Link>
+    <None Include="..\build\GeoSik.snk">
+      <Link>GeoSik.snk</Link>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
