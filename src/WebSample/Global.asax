@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="OgcToolkit.WebSample.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="GeoSik.WebSample.Global" Language="C#" %>

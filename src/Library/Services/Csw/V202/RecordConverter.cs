@@ -19,6 +19,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -136,24 +137,20 @@ namespace GeoSik.Services.Csw.V202
         {
             var r=briefRecord as Csw202.BriefRecord;
 
-            DC11.DCelement element=CreateRecordField(record, navigator);
-            if (element==null)
+            IList<DC11.DCelement> elements=CreateRecordField(record, navigator);
+            if (elements.Count==0)
                 return;
 
             switch (navigator.LocalName)
             {
             case "identifier":
-                r.identifier=new DC11.identifier[] {
-                    (DC11.identifier)element
-                };
+                r.identifier=elements.Cast<DC11.identifier>().ToList<DC11.identifier>();
                 break;
             case "title":
-                r.title=new DC11.title[] {
-                    (DC11.title)element
-                };
+                r.title=elements.Cast<DC11.title>().ToList<DC11.title>();
                 break;
             case "type":
-                r.type=(DC11.type)element;
+                r.type=(DC11.type)elements[0];
                 break;
             }
 
@@ -163,54 +160,38 @@ namespace GeoSik.Services.Csw.V202
         {
             var r=summaryRecord as Csw202.SummaryRecord;
 
-            DC11.DCelement element=CreateRecordField(record, navigator);
-            if (element==null)
+            IList<DC11.DCelement> elements=CreateRecordField(record, navigator);
+            if (elements.Count==0)
                 return;
 
             switch (navigator.LocalName)
             {
             case "abstract":
-                r.@abstract=new DCTerms.@abstract[] {
-                    (DCTerms.@abstract)element
-                };
+                r.@abstract=elements.Cast<DCTerms.@abstract>().ToList<DCTerms.@abstract>();
                 break;
             case "format":
-                r.format=new DC11.format[] {
-                    (DC11.format)element
-                };
+                r.format=elements.Cast<DC11.format>().ToList<DC11.format>();
                 break;
             case "identifier":
-                r.identifier=new DC11.identifier[] {
-                    (DC11.identifier)element
-                };
+                r.identifier=elements.Cast<DC11.identifier>().ToList<DC11.identifier>();
                 break;
             case "modified":
-                r.modified=new DCTerms.modified[] {
-                    (DCTerms.modified)element
-                };
+                r.modified=elements.Cast<DCTerms.modified>().ToList<DCTerms.modified>();
                 break;
             case "relation":
-                r.relation=new DC11.relation[] {
-                    (DC11.relation)element
-                };
+                r.relation=elements.Cast<DC11.relation>().ToList<DC11.relation>();
                 break;
             case "spatial":
-                r.spatial=new DCTerms.spatial[] {
-                    (DCTerms.spatial)element
-                };
+                r.spatial=elements.Cast<DCTerms.spatial>().ToList<DCTerms.spatial>();
                 break;
             case "subject":
-                r.subject=new DC11.subject[] {
-                    (DC11.subject)element
-                };
+                r.subject=elements.Cast<DC11.subject>().ToList<DC11.subject>();
                 break;
             case "title":
-                r.title=new DC11.title[] {
-                    (DC11.title)element
-                };
+                r.title=elements.Cast<DC11.title>().ToList<DC11.title>();
                 break;
             case "type":
-                r.type=(DC11.type)element;
+                r.type=(DC11.type)elements[0];
                 break;
             }
         }
@@ -221,95 +202,107 @@ namespace GeoSik.Services.Csw.V202
 
             if (navigator.LocalName=="BoundingBox")
             {
-                SqlGeometry g=navigator.GetValue(record) as SqlGeometry;
-                if (g!=null)
-                {
+                var v=navigator.GetValue(record);
+                if (v==null)
+                    return;
+                if (!(v is IEnumerable<SqlGeometry>))
+                    v=new SqlGeometry[] { (SqlGeometry)v };
+
+                foreach (SqlGeometry g in (IEnumerable<SqlGeometry>)v)
                     r.BoundingBox.Add(
                         new Ows100.BoundingBox() {
                             Geometry=g
                         }
                     );
-                }
                 return;
             }
 
-            DC11.DCelement element=CreateRecordField(record, navigator);
-            if (element!=null)
-                r.Content.DCelement.Add(element);
+            IList<DC11.DCelement> elements=CreateRecordField(record, navigator);
+            foreach (DC11.DCelement e in elements)
+                r.Content.DCelement.Add(e);
         }
 
-        private static DC11.DCelement CreateRecordField(IRecord record, Filter.XPathTypeNavigator navigator)
+        private static IList<DC11.DCelement> CreateRecordField(IRecord record, Filter.XPathTypeNavigator navigator)
         {
+            var ret=new List<DC11.DCelement>();
+
             object value=navigator.GetValue(record);
             if (value==null)
-                return null;
+                return ret;
 
-            DC11.DCelement ret=null;
-            switch (navigator.LocalName)
-            {
-            case "abstract":
-                ret=new DCTerms.@abstract();
-                break;
-            case "creator":
-                ret=new DC11.creator();
-                break;
-            case "contributor":
-                ret=new DC11.contributor();
-                break;
-            case "date":
-                ret=new DC11.date();
-                break;
-            case "description":
-                ret=new DC11.description();
-                break;
-            case "format":
-                ret=new DC11.format();
-                break;
-            case "identifier":
-                ret=new DC11.identifier();
-                break;
-            case "language":
-                ret=new DC11.language();
-                break;
-            case "modified":
-                ret=new DCTerms.modified();
-                break;
-            case "publisher":
-                ret=new DC11.publisher();
-                break;
-            case "relation":
-                ret=new DC11.relation();
-                break;
-            case "rights":
-                ret=new DC11.rights();
-                break;
-            case "source":
-                ret=new DC11.source();
-                break;
-            case "spatial":
-                ret=new DCTerms.spatial();
-                break;
-            case "subject":
-                ret=new DC11.subject();
-                break;
-            case "title":
-                ret=new DC11.title();
-                break;
-            case "type":
-                ret=new DC11.type();
-                break;
-            }
+            if ((value is string) || !(value is IEnumerable))
+                value=new object[] { value };
 
-            if (ret!=null)
+            foreach (object v in (IEnumerable)value)
             {
-                if (navigator.MoveToAttribute("scheme", string.Empty))
+                DC11.DCelement e=null;
+                switch (navigator.LocalName)
                 {
-                    object sch=navigator.GetValue(record);
-                    if (sch!=null)
-                        ret.scheme=new Uri(sch.ToString());
+                case "abstract":
+                    e=new DCTerms.@abstract();
+                    break;
+                case "creator":
+                    e=new DC11.creator();
+                    break;
+                case "contributor":
+                    e=new DC11.contributor();
+                    break;
+                case "date":
+                    e=new DC11.date();
+                    break;
+                case "description":
+                    e=new DC11.description();
+                    break;
+                case "format":
+                    e=new DC11.format();
+                    break;
+                case "identifier":
+                    e=new DC11.identifier();
+                    break;
+                case "language":
+                    e=new DC11.language();
+                    break;
+                case "modified":
+                    e=new DCTerms.modified();
+                    break;
+                case "publisher":
+                    e=new DC11.publisher();
+                    break;
+                case "relation":
+                    e=new DC11.relation();
+                    break;
+                case "rights":
+                    e=new DC11.rights();
+                    break;
+                case "source":
+                    e=new DC11.source();
+                    break;
+                case "spatial":
+                    e=new DCTerms.spatial();
+                    break;
+                case "subject":
+                    e=new DC11.subject();
+                    break;
+                case "title":
+                    e=new DC11.title();
+                    break;
+                case "type":
+                    e=new DC11.type();
+                    break;
                 }
 
-                ret.Untyped.Add(value);
+                if (e!=null)
+                {
+                    if (navigator.MoveToAttribute("scheme", string.Empty))
+                    {
+                        object sch=navigator.GetValue(record);
+                        if (sch!=null)
+                            e.scheme=new Uri(sch.ToString());
+                    }
+
+                    e.Untyped.Add(value);
+                    ret.Add(e);
+                }
             }
 
             return ret;

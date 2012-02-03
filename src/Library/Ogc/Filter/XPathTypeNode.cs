@@ -554,6 +554,7 @@ namespace GeoSik.Ogc.Filter
                     if (MetadataMemberInfos!=null)
                     {
                         _NodeAttributes=new List<Attribute>(MetadataMemberInfos.SelectMany<MemberInfo, Attribute>(m => m.GetCustomAttributes(typeof(XmlRootAttribute), true).Cast<Attribute>()));
+                        _NodeAttributes.AddRange(MetadataMemberInfos.SelectMany<MemberInfo, Attribute>(m => m.GetCustomAttributes(typeof(XmlIgnoreAttribute), true).Cast<Attribute>()));
                         _NodeAttributes.AddRange(MetadataMemberInfos.SelectMany<MemberInfo, Attribute>(m => m.GetCustomAttributes(typeof(XmlElementAttribute), true).Cast<Attribute>()));
                         _NodeAttributes.AddRange(MetadataMemberInfos.SelectMany<MemberInfo, Attribute>(m => m.GetCustomAttributes(typeof(XmlAttributeAttribute), true).Cast<Attribute>()));
                         _NodeAttributes.AddRange(MetadataMemberInfos.SelectMany<MemberInfo, Attribute>(m => m.GetCustomAttributes(typeof(XmlTextAttribute), true).Cast<Attribute>()));
