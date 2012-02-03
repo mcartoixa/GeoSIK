@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="OgcToolkit.WebSample.Services.Csw" CodeBehind="Csw.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="GeoSik.WebSample.Services.Csw" CodeBehind="Csw.svc.cs" %>

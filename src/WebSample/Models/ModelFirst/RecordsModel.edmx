@@ -4,9 +4,9 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="OgcToolkit.WebSample.Models.ModelFirst.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-        <EntityContainer Name="OgcToolkitWebSampleModelsModelFirstStoreContainer">
-          <EntitySet Name="Records" EntityType="OgcToolkit.WebSample.Models.ModelFirst.Store.Records" store:Type="Views" store:Schema="Ogc.Csw" store:Name="Records">
+    <Schema Namespace="GeoSik.WebSample.Models.ModelFirst.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="GeoSikWebSampleModelsModelFirstStoreContainer">
+          <EntitySet Name="Records" EntityType="GeoSik.WebSample.Models.ModelFirst.Store.Records" store:Type="Views" store:Schema="Ogc.Csw" store:Name="Records">
             <DefiningQuery>SELECT 
       [Records].[Identifier] AS [Identifier], 
       [Records].[Title] AS [Title], 
@@ -99,10 +99,10 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="OgcToolkit.WebSample.Models.ModelFirst" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <Schema Namespace="GeoSik.WebSample.Models.ModelFirst" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="MFConceptualEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="MFRecords" EntityType="OgcToolkit.WebSample.Models.ModelFirst.MFRecord" />
-          <AssociationSet Name="FK_Record_Relation" Association="OgcToolkit.WebSample.Models.ModelFirst.FK_Record_Relation">
+          <EntitySet Name="MFRecords" EntityType="GeoSik.WebSample.Models.ModelFirst.MFRecord" />
+          <AssociationSet Name="FK_Record_Relation" Association="GeoSik.WebSample.Models.ModelFirst.FK_Record_Relation">
             <End Role="Records" EntitySet="MFRecords" />
             <End Role="Records1" EntitySet="MFRecords" />
           </AssociationSet>
@@ -113,7 +113,7 @@
           </Key>
           <Property Name="Identifier" Type="String" MaxLength="45" Unicode="false" FixedLength="false" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
-          <Property Name="Subject" Type="OgcToolkit.WebSample.Models.ModelFirst.MFRecordSubject" Nullable="false" />
+          <Property Name="Subject" Type="GeoSik.WebSample.Models.ModelFirst.MFRecordSubject" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Date" Type="String" />
           <Property Name="Type" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
@@ -122,12 +122,12 @@
           <Property Name="Spatial" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="Coverage" Type="Binary" />
           <Property Name="AnyText" Type="String" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Records1" Relationship="OgcToolkit.WebSample.Models.ModelFirst.FK_Record_Relation" FromRole="Records" ToRole="Records1" />
-          <NavigationProperty Name="Records2" Relationship="OgcToolkit.WebSample.Models.ModelFirst.FK_Record_Relation" FromRole="Records1" ToRole="Records" />
+          <NavigationProperty Name="Records1" Relationship="GeoSik.WebSample.Models.ModelFirst.FK_Record_Relation" FromRole="Records" ToRole="Records1" />
+          <NavigationProperty Name="Records2" Relationship="GeoSik.WebSample.Models.ModelFirst.FK_Record_Relation" FromRole="Records1" ToRole="Records" />
         </EntityType>
         <Association Name="FK_Record_Relation">
-          <End Role="Records" Type="OgcToolkit.WebSample.Models.ModelFirst.MFRecord" Multiplicity="0..1" />
-          <End Role="Records1" Type="OgcToolkit.WebSample.Models.ModelFirst.MFRecord" Multiplicity="*" />
+          <End Role="Records" Type="GeoSik.WebSample.Models.ModelFirst.MFRecord" Multiplicity="0..1" />
+          <End Role="Records1" Type="GeoSik.WebSample.Models.ModelFirst.MFRecord" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Records">
               <PropertyRef Name="Identifier" />
@@ -155,9 +155,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="OgcToolkitWebSampleModelsModelFirstStoreContainer" CdmEntityContainer="MFConceptualEntities">
+        <EntityContainerMapping StorageEntityContainer="GeoSikWebSampleModelsModelFirstStoreContainer" CdmEntityContainer="MFConceptualEntities">
           <EntitySetMapping Name="MFRecords">
-            <EntityTypeMapping TypeName="OgcToolkit.WebSample.Models.ModelFirst.MFRecord">
+            <EntityTypeMapping TypeName="GeoSik.WebSample.Models.ModelFirst.MFRecord">
               <MappingFragment StoreEntitySet="Records">
                 <ScalarProperty Name="Identifier" ColumnName="Identifier" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -197,8 +197,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="RecordsModel">
-        <EntityTypeShape EntityType="OgcToolkit.WebSample.Models.ModelFirst.MFRecord" Width="1.5" PointX="0.75" PointY="0.75" Height="3.3263964843749996" IsExpanded="true" />
-        <AssociationConnector Association="OgcToolkit.WebSample.Models.ModelFirst.FK_Record_Relation" ManuallyRouted="false">
+        <EntityTypeShape EntityType="GeoSik.WebSample.Models.ModelFirst.MFRecord" Width="1.5" PointX="0.75" PointY="0.75" Height="3.3263964843749996" IsExpanded="true" />
+        <AssociationConnector Association="GeoSik.WebSample.Models.ModelFirst.FK_Record_Relation" ManuallyRouted="false">
           <ConnectorPoint PointX="1.2819230769230767" PointY="4.076396484375" />
           <ConnectorPoint PointX="1.2819230769230767" PointY="4.326396484375" />
           <ConnectorPoint PointX="1.7284615384615383" PointY="4.326396484375" />
