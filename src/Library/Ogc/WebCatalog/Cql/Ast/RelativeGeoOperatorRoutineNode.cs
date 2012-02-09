@@ -26,7 +26,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
-using Microsoft.SqlServer.Types;
 using Irony.Interpreter;
 using Irony.Interpreter.Ast;
 using Irony.Parsing;

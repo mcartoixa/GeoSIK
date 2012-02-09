@@ -25,7 +25,6 @@ using System.Text;
 using System.Xml;
 using System.Xml.XPath;
 using System.Xml.Serialization;
-using Microsoft.SqlServer.Types;
 using Csw202=GeoSik.Ogc.WebCatalog.Csw.V202;
 
 namespace GeoSik.Services.Csw.V202

@@ -24,7 +24,6 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using Microsoft.SqlServer.Types;
 
 namespace GeoSik.Ogc.Gml.V311
 {
@@ -33,29 +32,17 @@ namespace GeoSik.Ogc.Gml.V311
     partial class Point
     {
 
-        internal protected override void Populate(IGeometrySink sink)
+        internal protected override void InternalPopulate(IGeometrySink sink)
         {
-            sink.BeginGeometry(OpenGisGeometryType.Point);
+            sink.BeginGeometry(GeometryType.Point);
 
-            Debug.Assert((pos.TypedValue!=null) && (pos.TypedValue.Count==2));
-            sink.BeginFigure(pos.TypedValue[0], pos.TypedValue[1], null, null);
-            sink.EndFigure();
+            if ((pos!=null) && (pos.TypedValue!=null) && (pos.TypedValue.Count<2))
+            {
+                sink.BeginFigure(pos.TypedValue[0], pos.TypedValue[1], null);
+                sink.EndFigure();
+            }
+
             sink.EndGeometry();
-        }
-
-        public override SqlGeometry Geometry
-        {
-            get
-            {
-                if ((pos==null) || (pos.TypedValue==null) || (pos.TypedValue.Count<2))
-                    return null;
-
-                return base.Geometry;
-            }
-            set
-            {
-                base.Geometry=value;
-            }
         }
     }
 #pragma warning restore 3009

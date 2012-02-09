@@ -20,26 +20,26 @@
 
 using System;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using Microsoft.SqlServer.Types;
 using Irony.Interpreter;
 using Irony.Interpreter.Ast;
 using Irony.Parsing;
+using ProjNet.CoordinateSystems;
 
 namespace GeoSik.Ogc.WebCatalog.Cql.Ast
 {
 
 #pragma warning disable 3001, 3009
     public class GeometryLiteralNode:
-        LiteralNode<SqlGeometry>
+        DeferredLiteralNode<IGeometry>
     {
 
-        protected override SqlGeometry InitValue(ParsingContext context, ParseTreeNode treeNode)
+        protected override IGeometry GetValue(ParseTreeNode treeNode, ExpressionBuilderParameters parameters)
         {
-            return SqlGeometry.STGeomFromText(new SqlChars(treeNode.Token.Text), 4326); //TODO: right SRID ?
+            IGeometryBuilder builder=parameters.GeometryBuilderProvider.CreateBuilder();
+            return builder.Parse(treeNode.Token.Text, GeographicCoordinateSystem.WGS84);
         }
     }
 #pragma warning restore 3001, 3009

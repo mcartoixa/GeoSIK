@@ -28,7 +28,6 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Xml.XPath;
-using Microsoft.SqlServer.Types;
 using Csw202=GeoSik.Ogc.WebCatalog.Csw.V202;
 using DC11=GeoSik.DublinCore.Elements.V11;
 using DCTerms=GeoSik.DublinCore.Terms;
@@ -205,15 +204,16 @@ namespace GeoSik.Services.Csw.V202
                 var v=navigator.GetValue(record);
                 if (v==null)
                     return;
-                if (!(v is IEnumerable<SqlGeometry>))
-                    v=new SqlGeometry[] { (SqlGeometry)v };
+                if (v is IGeometry)
+                    v=new IGeometry[] { (IGeometry)v };
 
-                foreach (SqlGeometry g in (IEnumerable<SqlGeometry>)v)
-                    r.BoundingBox.Add(
-                        new Ows100.BoundingBox() {
-                            Geometry=g
-                        }
-                    );
+                foreach (IGeometry g in (IEnumerable<IGeometry>)v)
+                {
+                    var box=new Ows100.BoundingBox();
+                    box.InitFromGeometry(g);
+                    r.BoundingBox.Add(box);
+                }
+
                 return;
             }
 

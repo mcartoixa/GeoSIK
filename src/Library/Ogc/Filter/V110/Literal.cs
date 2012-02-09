@@ -27,7 +27,6 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Xml;
 using System.Xml.XPath;
-using Microsoft.SqlServer.Types;
 
 namespace GeoSik.Ogc.Filter.V110
 {

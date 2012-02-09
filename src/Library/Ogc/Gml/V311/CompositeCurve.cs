@@ -22,7 +22,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.SqlServer.Types;
 
 namespace GeoSik.Ogc.Gml.V311
 {
@@ -31,21 +30,9 @@ namespace GeoSik.Ogc.Gml.V311
     partial class CompositeCurve
     {
 
-        internal protected override void Populate(IGeometrySink sink)
+        internal protected override void InternalPopulate(IGeometrySink sink)
         {
             throw new NotImplementedException();
-        }
-
-        public override SqlGeometry Geometry
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                base.Geometry=value;
-            }
         }
     }
 #pragma warning restore 3009

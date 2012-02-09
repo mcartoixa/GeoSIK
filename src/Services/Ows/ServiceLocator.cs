@@ -232,7 +232,7 @@ namespace GeoSik.Services.Ows
             get
             {
                 if (_Instance==null)
-                    lock (syncRoot)
+                    lock (_SyncRoot)
                         if (_Instance==null)
                         {
                             _Instance=new ServiceLocator();
@@ -248,6 +248,6 @@ namespace GeoSik.Services.Ows
 
         private static List<Type> _RequestTypes;
         private static volatile ServiceLocator _Instance;
-        private static object syncRoot=new object();
+        private static object _SyncRoot=new object();
     }
 }

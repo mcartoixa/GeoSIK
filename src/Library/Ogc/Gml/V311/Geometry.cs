@@ -22,38 +22,56 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using System.Xml.Linq;
-using Microsoft.SqlServer.Types;
+using ProjNet.CoordinateSystems;
 
 namespace GeoSik.Ogc.Gml.V311
 {
 
 #pragma warning disable 3008, 3009
     partial class _Geometry:
-        IGeometryProvider
+        IGeometryContainer
     {
 
-        internal protected abstract void Populate(IGeometrySink sink);
+        internal protected abstract void InternalPopulate(IGeometrySink sink);
 
-        public virtual SqlGeometry Geometry
+        public void Populate(IGeometrySink sink)
         {
-            get
+            ICoordinateSystem s=null;
+            if (srsName!=null)
             {
-                var builder=new SqlGeometryBuilder();
-                if (srsName!=null)
-                    builder.SetSrid(Srid.CreateFromCrs(srsName).Value);
-                else
-                    builder.SetSrid(4326); // WGS84
+                Srid id=Srid.CreateFromCrs(srsName);
+                s=CoordinateSystemProvider.Instance.GetById(id);
+            } else
+                s=GeographicCoordinateSystem.WGS84;
 
-                Populate(builder);
-
-                return builder.ConstructedGeometry;
-            }
-            set
-            {
-                Untyped=XElement.Parse(value.AsGml().Value, LoadOptions.None);
-            }
+            sink.SetCoordinateSystem(s);
+            InternalPopulate(sink);
         }
+
+        //public virtual IGeometry Geometry
+        //{
+        //    get
+        //    {
+        //        var builder=new SqlGeometryBuilder();
+        //        if (srsName!=null)
+        //            builder.SetSrid(Srid.CreateFromCrs(srsName).Value);
+        //        else
+        //            builder.SetSrid(4326); // WGS84
+
+        //        Populate(builder);
+
+        //        return builder.ConstructedGeometry;
+        //    }
+        //    set
+        //    {
+        //        var sb=new StringBuilder();
+        //        using (XmlWriter xw=XmlWriter.Create(sb))
+        //            value.WriteXml(xw);
+        //        Untyped=XElement.Parse(sb.ToString(), LoadOptions.None);
+        //    }
+        //}
     }
 #pragma warning restore 3008, 3009
 }

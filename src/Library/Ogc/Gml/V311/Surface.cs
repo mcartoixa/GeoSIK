@@ -22,7 +22,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.SqlServer.Types;
 
 namespace GeoSik.Ogc.Gml.V311
 {
@@ -31,7 +30,7 @@ namespace GeoSik.Ogc.Gml.V311
     partial class Surface
     {
 
-        protected internal override void Populate(IGeometrySink sink)
+        protected internal override void InternalPopulate(IGeometrySink sink)
         {
             throw new NotImplementedException();
         }

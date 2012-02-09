@@ -36,7 +36,7 @@ namespace GeoSik.Ogc.Filter
         IXPathNavigable
     {
 
-        public ExpressionBuilderParameters(ParameterExpression[] parameters, IQueryProvider queryProvider, Type elementType, IXmlNamespaceResolver namespaceResolver, bool mayRootPathBeImplied, IOperatorImplementationProvider operatorImplementationProvider, Func<Type, IXmlNamespaceResolver, XPathTypeNavigator> navigatorCreator=null)
+        public ExpressionBuilderParameters(ParameterExpression[] parameters, IQueryProvider queryProvider, Type elementType, IXmlNamespaceResolver namespaceResolver, bool mayRootPathBeImplied, IGeometryBuilderProvider geometryBuilderProvider, IOperatorImplementationProvider operatorImplementationProvider, Func<Type, IXmlNamespaceResolver, XPathTypeNavigator> navigatorCreator=null)
         {
             Debug.Assert(parameters!=null);
             if (parameters==null)
@@ -58,12 +58,16 @@ namespace GeoSik.Ogc.Filter
             Debug.Assert(elementType!=null);
             if (elementType==null)
                 throw new ArgumentNullException("elementType");
+            //Debug.Assert(geometryBuilderProvider!=null);
+            //if (geometryBuilderProvider==null)
+            //    throw new ArgumentNullException("geometryBuilderProvider");
 
             Parameters=new ReadOnlyCollection<ParameterExpression>(parameters);
             ElementType=elementType;
             QueryProvider=queryProvider;
             NamespaceResolver=namespaceResolver;
             MayRootPathBeImplied=mayRootPathBeImplied;
+            GeometryBuilderProvider=geometryBuilderProvider;
             OperatorImplementationProvider=operatorImplementationProvider;
             NavigatorCreator=navigatorCreator;
         }
@@ -106,6 +110,12 @@ namespace GeoSik.Ogc.Filter
         }
 
         public bool MayRootPathBeImplied
+        {
+            get;
+            private set;
+        }
+
+        public IGeometryBuilderProvider GeometryBuilderProvider
         {
             get;
             private set;

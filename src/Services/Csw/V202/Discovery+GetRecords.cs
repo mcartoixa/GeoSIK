@@ -466,10 +466,14 @@ namespace GeoSik.Services.Csw.V202
                     var echo=new EchoedRequestType();
                     echo.Untyped.Add(request.Untyped);
 
-                    return new Acknowledgement() {
+                    var ret=new Acknowledgement() {
                         EchoedRequest=echo,
                         timeStamp=DateTime.UtcNow
                     };
+
+                    Logger.Debug(CultureInfo.InvariantCulture, m => m("< {0}", Service.ToTraceString(ret)));
+                    Logger.Debug(CultureInfo.InvariantCulture, m => m("Request processing finished"));
+                    return ret;
                 }
 
                 // Synchronous processing
@@ -513,7 +517,7 @@ namespace GeoSik.Services.Csw.V202
 
                     //if (query.Constraint!=null)
                     if (query.Untyped.Descendants("{http://www.opengis.net/cat/csw/2.0.2}Constraint").Any<XElement>())
-                        records=records.Where(query.Constraint, _NamespaceManager, mayRootPathBeImplied, ((Discovery)Service).GetOperatorImplementationProvider());
+                        records=records.Where(query.Constraint, _NamespaceManager, mayRootPathBeImplied, (IGeometryBuilderProvider)Service, ((Discovery)Service).GetOperatorImplementationProvider());
                 }
 
                 if (Logger.IsDebugEnabled)

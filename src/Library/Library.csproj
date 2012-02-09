@@ -53,8 +53,8 @@
     <Reference Include="Irony.Interpreter">
       <HintPath>..\lib\Irony\Irony.Interpreter.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SqlServer.Types, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\lib\SqlServer\Microsoft.SqlServer.Types.dll</HintPath>
+    <Reference Include="ProjNet">
+      <HintPath>..\lib\ProjNet\ProjNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -80,7 +80,13 @@
     <Compile Include="..\Version.cs">
       <Link>Properties\Version.cs</Link>
     </Compile>
-    <Compile Include="IGeometryProvider.cs" />
+    <Compile Include="CoordinateSystemProvider.cs" />
+    <Compile Include="GeometryType.cs" />
+    <Compile Include="IGeometry.cs" />
+    <Compile Include="IGeometryBuilder.cs" />
+    <Compile Include="IGeometryBuilderProvider.cs" />
+    <Compile Include="IGeometryContainer.cs" />
+    <Compile Include="IGeometrySink.cs" />
     <Compile Include="Ogc\Filter\ExpressionCreator.cs" />
     <Compile Include="Ogc\Filter\IXPathTypeNodeProvider.cs" />
     <Compile Include="Ogc\Filter\ExpressionBuilderParameter.cs" />
@@ -184,6 +190,7 @@
     <Compile Include="Ogc\WebCatalog\Cql\Ast\DateTimeLiteralNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\DateTimePeriodNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\DefaultLiteralNode.cs" />
+    <Compile Include="Ogc\WebCatalog\Cql\Ast\DeferredLiteralNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\DurationLiteralNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\ExistencePredicateNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\GeometryLiteralNode.cs" />
@@ -252,6 +259,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <EmbeddedResource Include="Srid.csv" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Schemas.resx">

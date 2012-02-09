@@ -69,7 +69,7 @@ namespace GeoSik.Ogc.Filter.V110
                     );
             }
 
-            protected override string GetCustomImplementationName(List<Type> paramTypes, List<object> paramValues)
+            protected override string GetCustomImplementationName(List<Type> paramTypes, List<object> paramValues, ExpressionBuilderParameters parameters)
             {
                 if (paramTypes[0]==typeof(string))
                 {
