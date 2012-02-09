@@ -22,7 +22,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.SqlServer.Types;
 
 namespace GeoSik.Ogc.Gml.V311
 {
@@ -31,9 +30,9 @@ namespace GeoSik.Ogc.Gml.V311
     partial class MultiGeometry
     {
 
-        protected internal override void Populate(IGeometrySink sink)
+        protected internal override void InternalPopulate(IGeometrySink sink)
         {
-            sink.BeginGeometry(OpenGisGeometryType.GeometryCollection);
+            sink.BeginGeometry(GeometryType.GeometryCollection);
 
             foreach (geometryMember g in geometryMember)
                 g._Geometry.Populate(sink);

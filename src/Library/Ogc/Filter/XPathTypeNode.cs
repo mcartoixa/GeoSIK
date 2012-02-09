@@ -403,13 +403,13 @@ namespace GeoSik.Ogc.Filter
                     switch (NodeType)
                     {
                     case XmlNodeType.Attribute:
-                        foreach (XmlAttributeAttribute xaa in NodeAttributes)
+                        foreach (XmlAttributeAttribute xaa in NodeAttributes.OfType<XmlAttributeAttribute>())
                             if (!string.IsNullOrEmpty(xaa.AttributeName))
                                 return xaa.AttributeName;
                         break;
                     case XmlNodeType.Element:
                     default:
-                        foreach (XmlElementAttribute xea in NodeAttributes)
+                        foreach (XmlElementAttribute xea in NodeAttributes.OfType<XmlElementAttribute>())
                             if (!string.IsNullOrEmpty(xea.ElementName))
                                 return xea.ElementName;
                         break;
@@ -418,7 +418,7 @@ namespace GeoSik.Ogc.Filter
                     return _MemberInfo.Name;
                 } else
                 {
-                    foreach (XmlRootAttribute xra in NodeAttributes)
+                    foreach (XmlRootAttribute xra in NodeAttributes.OfType<XmlRootAttribute>())
                         if (!string.IsNullOrEmpty(xra.ElementName))
                             return xra.ElementName;
 
@@ -449,20 +449,20 @@ namespace GeoSik.Ogc.Filter
                     switch (NodeType)
                     {
                     case XmlNodeType.Attribute:
-                        foreach (XmlAttributeAttribute xaa in NodeAttributes)
+                        foreach (XmlAttributeAttribute xaa in NodeAttributes.OfType<XmlAttributeAttribute>())
                             if (!string.IsNullOrEmpty(xaa.AttributeName))
                                 return xaa.Namespace ?? string.Empty;
                         break;
                     case XmlNodeType.Element:
                     default:
-                        foreach (XmlElementAttribute xea in NodeAttributes)
+                        foreach (XmlElementAttribute xea in NodeAttributes.OfType<XmlElementAttribute>())
                             if (!string.IsNullOrEmpty(xea.ElementName))
                                 return xea.Namespace ?? string.Empty;
                         break;
                     }
                 } else
                 {
-                    foreach (XmlRootAttribute xra in NodeAttributes)
+                    foreach (XmlRootAttribute xra in NodeAttributes.OfType<XmlRootAttribute>())
                         if (!string.IsNullOrEmpty(xra.ElementName))
                             return xra.Namespace;
                 }

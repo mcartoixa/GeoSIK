@@ -27,7 +27,6 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Xml;
-using Microsoft.SqlServer.Types;
 using Xml.Schema.Linq;
 
 namespace GeoSik.Ogc.Filter.V110
@@ -52,16 +51,20 @@ namespace GeoSik.Ogc.Filter.V110
                 throw new NotSupportedException("Only custom implementations are supported");
             }
 
-            protected override string GetCustomImplementationName(List<Type> paramTypes, List<object> paramValues)
+            protected override string GetCustomImplementationName(List<Type> paramTypes, List<object> paramValues, ExpressionBuilderParameters parameters)
             {
                 if (FilterElement.Envelope!=null)
                 {
-                    paramTypes.Add(typeof(SqlGeometry));
-                    paramValues.Add(FilterElement.Envelope.Geometry);
+                    paramTypes.Add(typeof(IGeometry));
+                    IGeometryBuilder builder=parameters.GeometryBuilderProvider.CreateBuilder();
+                    FilterElement.Envelope.Populate(builder);
+                    paramValues.Add(builder.ConstructedGeometry);
                 } else if (FilterElement.Geometry!=null)
                 {
-                    paramTypes.Add(typeof(SqlGeometry));
-                    paramValues.Add(FilterElement.Geometry.Geometry);
+                    paramTypes.Add(typeof(IGeometry));
+                    IGeometryBuilder builder=parameters.GeometryBuilderProvider.CreateBuilder();
+                    FilterElement.Geometry.Populate(builder);
+                    paramValues.Add(builder.ConstructedGeometry);
                 }
 
                 Debug.Assert(paramValues.Count==2);
@@ -104,11 +107,13 @@ namespace GeoSik.Ogc.Filter.V110
                 throw new NotSupportedException("Only custom implementations are supported");
             }
 
-            protected override string GetCustomImplementationName(List<Type> paramTypes, List<object> paramValues)
+            protected override string GetCustomImplementationName(List<Type> paramTypes, List<object> paramValues, ExpressionBuilderParameters parameters)
             {
                 Debug.Assert(paramTypes.Count==2);
 
-                paramValues.Add(FilterElement.Geometry.Geometry);
+                IGeometryBuilder builder=parameters.GeometryBuilderProvider.CreateBuilder();
+                FilterElement.Geometry.Populate(builder);
+                paramValues.Add(builder.ConstructedGeometry);
                 Debug.Assert(paramValues.Count==2);
 
                 return OperationNames.Distance;

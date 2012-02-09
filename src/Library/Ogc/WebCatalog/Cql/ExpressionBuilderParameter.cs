@@ -35,7 +35,7 @@ namespace GeoSik.Ogc.WebCatalog.Cql
     public sealed class ExpressionBuilderParameters
     {
 
-        public ExpressionBuilderParameters(ParameterExpression[] parameters, IQueryProvider queryProvider, Type elementType, IXmlNamespaceResolver namespaceResolver, bool mayRootPathBeImplied, IOperatorImplementationProvider operatorImplementationProvider)
+        public ExpressionBuilderParameters(ParameterExpression[] parameters, IQueryProvider queryProvider, Type elementType, IXmlNamespaceResolver namespaceResolver, bool mayRootPathBeImplied, IGeometryBuilderProvider geometryBuilderProvider, IOperatorImplementationProvider operatorImplementationProvider)
         {
             Debug.Assert(parameters!=null);
             if (parameters==null)
@@ -57,12 +57,16 @@ namespace GeoSik.Ogc.WebCatalog.Cql
             Debug.Assert(elementType!=null);
             if (elementType==null)
                 throw new ArgumentNullException("elementType");
+            Debug.Assert(geometryBuilderProvider!=null);
+            if (geometryBuilderProvider==null)
+                throw new ArgumentNullException("geometryBuilderProvider");
 
             Parameters=new ReadOnlyCollection<ParameterExpression>(parameters);
             ElementType=elementType;
             QueryProvider=queryProvider;
             NamespaceResolver=namespaceResolver;
             MayRootPathBeImplied=mayRootPathBeImplied;
+            GeometryBuilderProvider=geometryBuilderProvider;
             OperatorImplementationProvider=operatorImplementationProvider;
         }
 
@@ -91,6 +95,12 @@ namespace GeoSik.Ogc.WebCatalog.Cql
         }
 
         public bool MayRootPathBeImplied
+        {
+            get;
+            private set;
+        }
+
+        public IGeometryBuilderProvider GeometryBuilderProvider
         {
             get;
             private set;

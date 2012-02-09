@@ -48,7 +48,7 @@ namespace GeoSik.Ogc.Filter
             if (parameters.OperatorImplementationProvider!=null)
             {
                 List<object> paramValues=GetConstants(parameters).ToList<object>();
-                string opname=GetCustomImplementationName(subTypes, paramValues);
+                string opname=GetCustomImplementationName(subTypes, paramValues, parameters);
 
                 Type[] types=subTypes.ToArray();
                 object[] values=paramValues.ToArray();
@@ -103,7 +103,7 @@ namespace GeoSik.Ogc.Filter
         }
 
         protected abstract Expression CreateStandardExpression(IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType);
-        protected abstract string GetCustomImplementationName(List<Type> paramTypes, List<object> paramValues);
+        protected abstract string GetCustomImplementationName(List<Type> paramTypes, List<object> paramValues, ExpressionBuilderParameters parameters);
         protected abstract IEnumerator<IExpressionBuilder> GetEnumerator();
 
         protected virtual Expression CreateCustomExpression(MethodInfo method, object instance, IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)

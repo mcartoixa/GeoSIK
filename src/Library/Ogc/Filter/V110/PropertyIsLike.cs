@@ -75,7 +75,7 @@ namespace GeoSik.Ogc.Filter.V110
                 throw new NotSupportedException();
             }
 
-            protected override string GetCustomImplementationName(List<Type> paramTypes, List<object> paramValues)
+            protected override string GetCustomImplementationName(List<Type> paramTypes, List<object> paramValues, ExpressionBuilderParameters parameters)
             {
                 paramTypes.Add(typeof(string));
                 paramValues.Add(_Pattern);

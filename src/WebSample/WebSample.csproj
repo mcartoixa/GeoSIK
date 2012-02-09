@@ -58,6 +58,9 @@
     <Reference Include="NLog">
       <HintPath>..\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
     </Reference>
+    <Reference Include="ProjNet, Version=1.2.3432.30659, Culture=neutral, PublicKeyToken=a1f5bdcd9c6f5740, processorArchitecture=MSIL">
+      <HintPath>..\lib\ProjNet\ProjNet.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -223,6 +226,10 @@
     <ProjectReference Include="..\Services\Services.csproj">
       <Project>{34AECC13-2214-4FB6-B4E5-016FEE0120A5}</Project>
       <Name>Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SqlServer\SqlServer.csproj">
+      <Project>{5CFC8782-7087-4F37-AA3B-ED503E3BDAE6}</Project>
+      <Name>SqlServer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

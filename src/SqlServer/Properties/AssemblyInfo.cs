@@ -18,18 +18,24 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.SqlServer.Types;
+using System.Reflection;
+using System.Resources;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
-namespace GeoSik
-{
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+[assembly: AssemblyTitle("SqlServer")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyCulture("")]
 
-    public interface IGeometryProvider
-    {
+// Setting ComVisible to false makes the types in this assembly not visible 
+// to COM components.  If you need to access a type in this assembly from 
+// COM, set the ComVisible attribute to true on that type.
+[assembly: ComVisible(false)]
 
-        SqlGeometry Geometry { get; }
-    }
-}
+// The following GUID is for the ID of the typelib if this project is exposed to COM
+[assembly: Guid("00ef7620-1885-4176-bd5e-245c06d34644")]
+
+[assembly: NeutralResourcesLanguage("en-US")]

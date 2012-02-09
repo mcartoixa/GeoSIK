@@ -35,12 +35,12 @@ namespace GeoSik.Ogc.WebCatalog.Cql
     public static class CqlQueryable
     {
 
-        public static IQueryable<T> Where<T>(this IQueryable<T> source, string constraint, XmlNamespaceManager namespaceManager=null, bool mayRootPathBeImplied=false, IOperatorImplementationProvider operatorImplementationProvider=null)
+        public static IQueryable<T> Where<T>(this IQueryable<T> source, string constraint, XmlNamespaceManager namespaceManager=null, bool mayRootPathBeImplied=false, IGeometryBuilderProvider geometryBuilderProvider=null, IOperatorImplementationProvider operatorImplementationProvider=null)
         {
-            return (IQueryable<T>)Where((IQueryable)source, constraint, namespaceManager, mayRootPathBeImplied, operatorImplementationProvider);
+            return (IQueryable<T>)Where((IQueryable)source, constraint, namespaceManager, mayRootPathBeImplied, geometryBuilderProvider, operatorImplementationProvider);
         }
 
-        public static IQueryable Where(this IQueryable source, string constraint, XmlNamespaceManager namespaceManager=null, bool mayRootPathBeImplied=false, IOperatorImplementationProvider operatorImplementationProvider=null)
+        public static IQueryable Where(this IQueryable source, string constraint, XmlNamespaceManager namespaceManager=null, bool mayRootPathBeImplied=false, IGeometryBuilderProvider geometryBuilderProvider=null, IOperatorImplementationProvider operatorImplementationProvider=null)
         {
             Debug.Assert(source!=null);
             if (source==null)
@@ -91,7 +91,7 @@ namespace GeoSik.Ogc.WebCatalog.Cql
             var parameters=new ParameterExpression[] {
                 Expression.Parameter(source.ElementType)
             };
-            var ebp=new ExpressionBuilderParameters(parameters, source.Provider, source.ElementType, namespaceManager, mayRootPathBeImplied, operatorImplementationProvider);
+            var ebp=new ExpressionBuilderParameters(parameters, source.Provider, source.ElementType, namespaceManager, mayRootPathBeImplied, geometryBuilderProvider, operatorImplementationProvider);
 
             LambdaExpression lambda=Expression.Lambda(((Ast.IExpressionBuilder)tree.Root.AstNode).CreateExpression(ebp, typeof(bool), null), parameters);
             return source.Provider.CreateQuery(
