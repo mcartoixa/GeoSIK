@@ -53,6 +53,9 @@
     <Reference Include="Irony.Interpreter">
       <HintPath>..\lib\Irony\Irony.Interpreter.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.0.7\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="ProjNet">
       <HintPath>..\lib\ProjNet\ProjNet.dll</HintPath>
     </Reference>
@@ -82,6 +85,8 @@
     </Compile>
     <Compile Include="CoordinateSystemProvider.cs" />
     <Compile Include="GeometryBuilder.cs" />
+    <Compile Include="GeometryJsonConverter.cs" />
+    <Compile Include="GeometryTransformerSink.cs" />
     <Compile Include="GeometryType.cs" />
     <Compile Include="IGeometry.cs" />
     <Compile Include="IGeometryBuilder.cs" />
