@@ -43,6 +43,42 @@
           <Property Name="Coverage" Type="varbinary(max)" />
           <Property Name="AnyText" Type="nvarchar(max)" StoreGeneratedPattern="Computed" />
         </EntityType>
+        <Function Name="Geography_STContains" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geog1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geog2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geography_STCrosses" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geog1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geog2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geography_STDisjoint" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geog1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geog2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geography_STDistance" ReturnType="float" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geog1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geog2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geography_STEquals" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geog1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geog2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geography_STIntersects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geog1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geog2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geography_STOverlaps" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geog1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geog2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geography_STTouches" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geog1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geog2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geography_STWithin" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geog1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geog2" Type="varbinary(max)" Mode="In" />
+        </Function>
         <Function Name="Geometry_STContains" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
           <Parameter Name="geom1" Type="varbinary(max)" Mode="In" />
           <Parameter Name="geom2" Type="varbinary(max)" Mode="In" />

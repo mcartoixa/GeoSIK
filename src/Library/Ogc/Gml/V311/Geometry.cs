@@ -31,7 +31,7 @@ namespace GeoSik.Ogc.Gml.V311
 
 #pragma warning disable 3008, 3009
     partial class _Geometry:
-        IGeometryContainer
+        IGeometryTap
     {
 
         internal protected abstract void InternalPopulate(IGeometrySink sink);

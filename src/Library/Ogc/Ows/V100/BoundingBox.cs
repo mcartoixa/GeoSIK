@@ -32,7 +32,7 @@ namespace GeoSik.Ogc.Ows.V100
 
 #pragma warning disable 3009
     partial class BoundingBox:
-        IGeometryContainer
+        IGeometryTap
     {
 
         public void Populate(IGeometrySink sink)
@@ -54,11 +54,16 @@ namespace GeoSik.Ogc.Ows.V100
                 (UpperCorner!=null) && (UpperCorner.Count==2)
             )
             {
-                sink.BeginFigure(LowerCorner[0], LowerCorner[1], null);
-                sink.AddLine(UpperCorner[0], LowerCorner[1], null);
-                sink.AddLine(UpperCorner[0], UpperCorner[1], null);
-                sink.AddLine(LowerCorner[0], UpperCorner[1], null);
-                sink.AddLine(LowerCorner[0], LowerCorner[1], null);
+                double minlon=Math.Min(LowerCorner[0], UpperCorner[0]);
+                double maxlon=Math.Max(LowerCorner[0], UpperCorner[0]);
+                double minlat=Math.Min(LowerCorner[1], UpperCorner[1]);
+                double maxlat=Math.Max(LowerCorner[1], UpperCorner[1]);
+
+                sink.BeginFigure(minlon, minlat, null);
+                sink.AddLine(maxlon, minlat, null);
+                sink.AddLine(maxlon, maxlat, null);
+                sink.AddLine(minlon, maxlat, null);
+                sink.AddLine(minlon, minlat, null);
                 sink.EndFigure();
             }
 
@@ -78,7 +83,7 @@ namespace GeoSik.Ogc.Ows.V100
             var lc=new List<double>(2);
             var uc=new List<double>(2);
 
-            IGeometry envelope=g.GetEnvelope();
+            IGeometry envelope=g.Envelope();
             IGeometry p1=envelope.GetPoint(1);
             IGeometry p2=envelope.GetPoint(3);
 

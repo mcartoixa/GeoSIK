@@ -26,7 +26,7 @@ using System.Text;
 namespace GeoSik
 {
 
-    public interface IGeometryContainer
+    public interface IGeometryTap
     {
 
         void Populate(IGeometrySink sink);

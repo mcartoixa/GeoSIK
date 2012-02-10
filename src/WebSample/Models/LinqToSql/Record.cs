@@ -28,8 +28,8 @@ using System.Linq;
 using System.Web;
 using System.Xml;
 using System.Xml.Serialization;
-using Microsoft.SqlServer.Types;
 using Csw202Service=GeoSik.Services.Csw.V202;
+using SqlTypes=Microsoft.SqlServer.Types;
 
 namespace GeoSik.WebSample.Models.LinqToSql
 {
@@ -47,7 +47,7 @@ namespace GeoSik.WebSample.Models.LinqToSql
 
         [XmlElement("BoundingBox", Namespace=Namespaces.OgcOws, Order=8, IsNullable=false)]
         [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.BoundingBox)]
-        public SqlGeometry BoundingBox
+        public IGeometry BoundingBox
         {
             get
             {
@@ -56,9 +56,9 @@ namespace GeoSik.WebSample.Models.LinqToSql
                     using (var ms=new MemoryStream(Coverage.ToArray()))
                         using (var br=new BinaryReader(ms))
                         {
-                            var ret=new SqlGeometry();
-                            ret.Read(br);
-                            return ret;
+                            var g=new SqlTypes.SqlGeography();
+                            g.Read(br);
+                            return new SqlServer.SqlGeographyWrapper(g);
                         }
                 }
 
@@ -71,7 +71,7 @@ namespace GeoSik.WebSample.Models.LinqToSql
                     using (var ms=new MemoryStream())
                         using (var bw=new BinaryWriter(ms))
                         {
-                            value.Write(bw);
+                            ((SqlTypes.SqlGeography)((SqlServer.SqlGeographyWrapper)value)).Write(bw);
                             Coverage=ms.ToArray();
                         }
                 } else
@@ -84,10 +84,10 @@ namespace GeoSik.WebSample.Models.LinqToSql
         {
             get
             {
-                if ((BoundingBox==null) || BoundingBox.STSrid.IsNull)
+                if (BoundingBox==null)
                     return null;
 
-                return new Srid(BoundingBox.STSrid.Value).Crs.ToString();
+                return new Srid((int)BoundingBox.CoordinateSystem.AuthorityCode).Crs.ToString();
             }
         }
     }

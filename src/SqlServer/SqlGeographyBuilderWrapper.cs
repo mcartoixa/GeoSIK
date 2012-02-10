@@ -30,11 +30,11 @@ using SqlTypes=Microsoft.SqlServer.Types;
 namespace GeoSik.SqlServer
 {
 
-    internal sealed class SqlGeometryBuilderWrapper:
+    internal sealed class SqlGeographyBuilderWrapper:
         IGeometryBuilder
     {
 
-        public SqlGeometryBuilderWrapper()
+        public SqlGeographyBuilderWrapper()
         {
             _Builder=new SqlTypes.SqlGeometryBuilder();
         }
@@ -95,9 +95,9 @@ namespace GeoSik.SqlServer
             _Builder.EndGeometry();
         }
 
-        public SqlGeometryWrapper Parse(string text, ICoordinateSystem system)
+        public SqlGeographyWrapper Parse(string text, ICoordinateSystem system)
         {
-            return new SqlGeometryWrapper(SqlTypes.SqlGeometry.STGeomFromText((SqlChars)((SqlString)text), (int)system.AuthorityCode), system);
+            return new SqlGeographyWrapper(SqlTypes.SqlGeography.STGeomFromText((SqlChars)((SqlString)text), (int)system.AuthorityCode), system);
         }
 
         IGeometry IGeometryBuilder.Parse(string text, ICoordinateSystem system)
@@ -105,11 +105,13 @@ namespace GeoSik.SqlServer
             return Parse(text, system);
         }
 
-        public SqlGeometryWrapper ConstructedGeometry
+        public SqlGeographyWrapper ConstructedGeometry
         {
             get
             {
-                return new SqlGeometryWrapper(_Builder.ConstructedGeometry, _TargetSystem);
+                // cf. http://blogs.msdn.com/b/edkatibah/archive/2008/08/19/working-with-invalid-data-and-the-sql-server-2008-geography-data-type-part-1b.aspx
+                SqlTypes.SqlGeometry geom=_Builder.ConstructedGeometry.MakeValid();
+                return Parse(((SqlString)geom.STUnion(geom.STStartPoint()).STAsText()).Value, _TargetSystem);
             }
         }
 
@@ -123,5 +125,6 @@ namespace GeoSik.SqlServer
 
         private SqlTypes.SqlGeometryBuilder _Builder;
         private ICoordinateSystem _TargetSystem;
+
     }
 }

@@ -21,6 +21,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -33,33 +34,33 @@ using SqlTypes=Microsoft.SqlServer.Types;
 namespace GeoSik.SqlServer
 {
 
-    public sealed class SqlGeometryWrapper:
+    public sealed class SqlGeographyWrapper:
         IGeometry
     {
 
-        public SqlGeometryWrapper():
-            this(new SqlTypes.SqlGeometry())
+        public SqlGeographyWrapper():
+            this(new SqlTypes.SqlGeography())
         {
         }
 
-        public SqlGeometryWrapper(SqlTypes.SqlGeometry sg):
+        public SqlGeographyWrapper(SqlTypes.SqlGeography sg):
             this(sg, null)
         {
         }
 
-        public SqlGeometryWrapper(SqlTypes.SqlGeometry sg, ICoordinateSystem coordinateSystem)
+        public SqlGeographyWrapper(SqlTypes.SqlGeography sg, ICoordinateSystem coordinateSystem)
         {
             Debug.Assert(sg!=null);
             if (sg==null)
                 throw new ArgumentNullException("sg");
 
-            _Geometry=sg;
+            _Geography=sg;
             _CoordinateSystem=coordinateSystem;
         }
 
         public override string ToString()
         {
-            return _Geometry.ToString();
+            return _Geography.ToString();
         }
 
         public bool Equals(IGeometry geometry)
@@ -67,10 +68,10 @@ namespace GeoSik.SqlServer
             if (geometry==null)
                 return false;
 
-            var sgw=geometry as SqlGeometryWrapper;
+            var sgw=geometry as SqlGeographyWrapper;
             if (sgw!=null)
             {
-                var r=_Geometry.STEquals(sgw._Geometry);
+                var r=_Geography.STEquals(sgw._Geography);
                 return r.IsTrue;
             }
 
@@ -134,7 +135,18 @@ namespace GeoSik.SqlServer
 
         public IGeometry Envelope()
         {
-            return new SqlGeometryWrapper(_Geometry.STEnvelope(), CoordinateSystem);
+            // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
+
+            SqlTypes.SqlGeometry geom=SqlTypes.SqlGeometry.STGeomFromText((SqlChars)((SqlString)_Geography.ToString()), _Geography.STSrid.Value);
+            SqlTypes.SqlGeometry env=geom.STEnvelope();
+
+            return new SqlGeographyWrapper(
+                SqlTypes.SqlGeography.STGeomFromText(
+                    (SqlChars)((SqlString)env.ToString()),
+                    _Geography.STSrid.Value
+                ),
+                CoordinateSystem
+            );
         }
 
         public double GetLength()
@@ -144,14 +156,14 @@ namespace GeoSik.SqlServer
 
         public IGeometry GetPoint(int index)
         {
-            return new SqlGeometryWrapper(_Geometry.STPointN(index), CoordinateSystem);
+            return new SqlGeographyWrapper(_Geography.STPointN(index), CoordinateSystem);
         }
 
         public void Populate(IGeometrySink sink)
         {
-            var sgs=sink as SqlTypes.IGeometrySink;
+            var sgs=sink as SqlTypes.IGeographySink;
             if (sgs!=null)
-                _Geometry.Populate(sgs);
+                _Geography.Populate(sgs);
             else
                 throw new NotSupportedException();
         }
@@ -163,7 +175,7 @@ namespace GeoSik.SqlServer
 
         public void WriteXml(XmlWriter xw)
         {
-            xw.WriteRaw(_Geometry.AsGml().Value);
+            xw.WriteRaw(_Geography.AsGml().Value);
         }
 
         private IEnumerator<IGeometry> GetEnumerator()
@@ -173,8 +185,8 @@ namespace GeoSik.SqlServer
 
         private IEnumerable<IGeometry> GetPoints()
         {
-            for (int i=0; i<_Geometry.STNumPoints().Value; ++i)
-                yield return new SqlGeometryWrapper(_Geometry.STPointN(i));
+            for (int i=0; i<_Geography.STNumPoints().Value; ++i)
+                yield return new SqlGeographyWrapper(_Geography.STPointN(i));
         }
 
         System.Xml.Schema.XmlSchema IXmlSerializable.GetSchema()
@@ -192,32 +204,32 @@ namespace GeoSik.SqlServer
             return GetEnumerator();
         }
 
-        private static SqlGeometryWrapper FromGeometry(IGeometry geometry)
+        private static SqlGeographyWrapper FromGeometry(IGeometry geometry)
         {
-            var ret=geometry as SqlGeometryWrapper;
+            var ret=geometry as SqlGeographyWrapper;
             if (ret!=null)
                 return ret;
 
-            var sgbw=new SqlGeometryBuilderWrapper();
+            var sgbw=new SqlGeographyBuilderWrapper();
             geometry.Populate(sgbw);
             ret=sgbw.ConstructedGeometry;
 
             return ret;
         }
 
-        public static implicit operator SqlTypes.SqlGeometry(SqlGeometryWrapper wrapper)
+        public static implicit operator SqlTypes.SqlGeography(SqlGeographyWrapper wrapper)
         {
-            return wrapper._Geometry;
+            return wrapper._Geography;
         }
 
         public double X
         {
-            get { return _Geometry.STX.Value; }
+            get { return _Geography.Long.Value; }
         }
 
         public double Y
         {
-            get { return _Geometry.STY.Value; }
+            get { return _Geography.Lat.Value; }
         }
 
         public double? Z
@@ -225,8 +237,8 @@ namespace GeoSik.SqlServer
             get
             {
                 double? ret=null;
-                if (!_Geometry.Z.IsNull)
-                    ret=_Geometry.Z.Value;
+                if (!_Geography.Z.IsNull)
+                    ret=_Geography.Z.Value;
                 return ret;
             }
         }
@@ -236,13 +248,13 @@ namespace GeoSik.SqlServer
             get
             {
                 if (_CoordinateSystem==null)
-                    _CoordinateSystem=CoordinateSystemProvider.Instance.GetById(new Srid(_Geometry.STSrid.Value));
+                    _CoordinateSystem=CoordinateSystemProvider.Instance.GetById(new Srid(_Geography.STSrid.Value));
 
                 return _CoordinateSystem;
             }
         }
 
-        private SqlTypes.SqlGeometry _Geometry;
+        private SqlTypes.SqlGeography _Geography;
         private ICoordinateSystem _CoordinateSystem;
     }
 }

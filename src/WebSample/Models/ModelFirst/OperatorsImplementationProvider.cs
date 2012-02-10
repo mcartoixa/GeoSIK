@@ -49,25 +49,25 @@ namespace GeoSik.WebSample.Models.ModelFirst
             case OperationNames.Contains:
                 arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
                 values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
-                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTContains", arguments);
+                return typeof(OperatorsImplementationProvider).GetMethod("GeographySTContains", arguments);
             case OperationNames.Crosses:
                 arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
                 values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
-                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTCrosses", arguments);
+                return typeof(OperatorsImplementationProvider).GetMethod("GeographySTCrosses", arguments);
             case OperationNames.Disjoint:
                 arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
                 values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
-                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTDisjoint", arguments);
+                return typeof(OperatorsImplementationProvider).GetMethod("GeographySTDisjoint", arguments);
             case OperationNames.Distance:
                 arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
                 values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
-                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTDistance", arguments);
+                return typeof(OperatorsImplementationProvider).GetMethod("GeographySTDistance", arguments);
             case OperationNames.Equal:
                 if ((arguments.Length==2) && (arguments[1]==typeof(IGeometry)))
                 {
                     arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
                     values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
-                    return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTEquals", arguments);
+                    return typeof(OperatorsImplementationProvider).GetMethod("GeographySTEquals", arguments);
                 }
                 if ((arguments.Length==3) && (arguments[2]==typeof(StringComparison)))
                 {
@@ -83,7 +83,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
             case OperationNames.Intersects:
                 arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
                 values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
-                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTIntersects", arguments);
+                return typeof(OperatorsImplementationProvider).GetMethod("GeographySTIntersects", arguments);
             case OperationNames.Like:
                 {
                     StringComparison comparison=(StringComparison)values[3];
@@ -112,18 +112,126 @@ namespace GeoSik.WebSample.Models.ModelFirst
             case OperationNames.Overlaps:
                 arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
                 values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
-                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTOverlaps", arguments);
+                return typeof(OperatorsImplementationProvider).GetMethod("GeographySTOverlaps", arguments);
             case OperationNames.Touches:
                 arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
                 values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
-                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTTouches", arguments);
+                return typeof(OperatorsImplementationProvider).GetMethod("GeographySTTouches", arguments);
             case OperationNames.Within:
                 arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
                 values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
-                return typeof(OperatorsImplementationProvider).GetMethod("GeometrySTWithin", arguments);
+                return typeof(OperatorsImplementationProvider).GetMethod("GeographySTWithin", arguments);
             }
 
             return ret;
+        }
+
+        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STContains")]
+        public static int? GeographySTContains(byte[] geom1, byte[] geom2)
+        {
+            IGeometry g1=GetGeometry(geom1);
+            if (g1==null)
+                return null;
+
+            IGeometry g2=GetGeometry(geom2);
+
+            return Convert.ToInt32(g1.Contains(g2));
+        }
+
+        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STCrosses")]
+        public static int? GeographySTCrosses(byte[] geom1, byte[] geom2)
+        {
+            IGeometry g1=GetGeometry(geom1);
+            if (g1==null)
+                return null;
+
+            IGeometry g2=GetGeometry(geom2);
+
+            return Convert.ToInt32(g1.Crosses(g2));
+        }
+
+        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STDisjoint")]
+        public static int? GeographySTDisjoint(byte[] geom1, byte[] geom2)
+        {
+            IGeometry g1=GetGeometry(geom1);
+            if (g1==null)
+                return null;
+
+            IGeometry g2=GetGeometry(geom2);
+
+            return Convert.ToInt32(g1.Disjoint(g2));
+        }
+
+        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STDistance")]
+        public static double? GeographySTDistance(byte[] geom1, byte[] geom2)
+        {
+            IGeometry g1=GetGeometry(geom1);
+            if (g1==null)
+                return null;
+
+            IGeometry g2=GetGeometry(geom2);
+
+            return g1.Distance(g2);
+        }
+
+        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STEquals")]
+        public static int? GeographySTEquals(byte[] geom1, byte[] geom2)
+        {
+            IGeometry g1=GetGeometry(geom1);
+            if (g1==null)
+                return null;
+
+            IGeometry g2=GetGeometry(geom2);
+
+            return Convert.ToInt32(g1.Equals(g2));
+        }
+
+        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STIntersects")]
+        public static int? GeographySTIntersects(byte[] geom1, byte[] geom2)
+        {
+            IGeometry g1=GetGeometry(geom1);
+            if (g1==null)
+                return null;
+
+            IGeometry g2=GetGeometry(geom2);
+
+            return Convert.ToInt32(g1.Intersects(g2));
+        }
+
+        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STOverlaps")]
+        public static int? GeographySTOverlaps(byte[] geom1, byte[] geom2)
+        {
+            IGeometry g1=GetGeometry(geom1);
+            if (g1==null)
+                return null;
+
+            IGeometry g2=GetGeometry(geom2);
+
+            return Convert.ToInt32(g1.Overlaps(g2));
+        }
+
+        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STTouches")]
+        public static int? GeographySTTouches(byte[] geom1, byte[] geom2)
+        {
+            IGeometry g1=GetGeometry(geom1);
+            if (g1==null)
+                return null;
+
+            IGeometry g2=GetGeometry(geom2);
+
+            return Convert.ToInt32(g1.Touches(g2));
+        }
+
+        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STWithin")]
+        public static int? GeographySTWithin(byte[] geom1, byte[] geom2)
+        {
+            IGeometry g1=GetGeometry(geom1);
+            if (g1==null)
+                return null;
+
+            IGeometry g2=GetGeometry(geom2);
+
+            return Convert.ToInt32(g1.Within(g2));
         }
 
         [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STContains")]
@@ -278,18 +386,18 @@ namespace GeoSik.WebSample.Models.ModelFirst
 
             byte[] ret=null;
 
-            var sgw=geometry as SqlServer.SqlGeometryWrapper;
+            var sgw=geometry as SqlServer.SqlGeographyWrapper;
             if ((sgw==null) || !sgw.CoordinateSystem.EqualParams(GeographicCoordinateSystem.WGS84))
             {
-                var b=new SqlServer.SqlGeometryBuilder();
+                var b=new SqlServer.SqlGeometryBuilder(GeographicCoordinateSystem.WGS84);
                 geometry.Populate(b);
-                sgw=(SqlServer.SqlGeometryWrapper)b.ConstructedGeometry;
+                sgw=(SqlServer.SqlGeographyWrapper)b.ConstructedGeometry;
             }
 
             using (var ms=new MemoryStream())
                 using (var bw=new BinaryWriter(ms))
                 {
-                    ((SqlTypes.SqlGeometry)sgw).Write(bw);
+                    ((SqlTypes.SqlGeography)sgw).Write(bw);
                     ret=ms.ToArray();
                 }
 
@@ -301,10 +409,10 @@ namespace GeoSik.WebSample.Models.ModelFirst
             if (binary==null)
                 return null;
 
-            var ret=new SqlServer.SqlGeometryWrapper();
+            var ret=new SqlServer.SqlGeographyWrapper();
             using (var ms=new MemoryStream(binary))
                 using (var br=new BinaryReader(ms))
-                    ((SqlTypes.SqlGeometry)ret).Read(br);
+                    ((SqlTypes.SqlGeography)ret).Read(br);
 
             return ret;
         }

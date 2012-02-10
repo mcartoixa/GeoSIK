@@ -81,12 +81,14 @@
       <Link>Properties\Version.cs</Link>
     </Compile>
     <Compile Include="CoordinateSystemProvider.cs" />
+    <Compile Include="GeometryBuilder.cs" />
     <Compile Include="GeometryType.cs" />
     <Compile Include="IGeometry.cs" />
     <Compile Include="IGeometryBuilder.cs" />
     <Compile Include="IGeometryBuilderProvider.cs" />
-    <Compile Include="IGeometryContainer.cs" />
     <Compile Include="IGeometrySink.cs" />
+    <Compile Include="IGeometryTap.cs" />
+    <Compile Include="ISimpleGeometry.cs" />
     <Compile Include="Ogc\Filter\ExpressionCreator.cs" />
     <Compile Include="Ogc\Filter\IXPathTypeNodeProvider.cs" />
     <Compile Include="Ogc\Filter\ExpressionBuilderParameter.cs" />

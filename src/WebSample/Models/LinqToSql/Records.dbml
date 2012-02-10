@@ -79,4 +79,49 @@
     <Parameter Name="comparison" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="[Ogc.Filter].Geography_STContains" Method="Geography_STContains" IsComposable="true">
+    <Parameter Name="geog1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Parameter Name="geog2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="[Ogc.Filter].Geography_STWithin" Method="Geography_STWithin" IsComposable="true">
+    <Parameter Name="geog1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Parameter Name="geog2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="[Ogc.Filter].Geography_STCrosses" Method="Geography_STCrosses" IsComposable="true">
+    <Parameter Name="geog1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Parameter Name="geog2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="[Ogc.Filter].Geography_STDisjoint" Method="Geography_STDisjoint" IsComposable="true">
+    <Parameter Name="geog1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Parameter Name="geog2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="[Ogc.Filter].Geography_STDistance" Method="Geography_STDistance" IsComposable="true">
+    <Parameter Name="geog1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Parameter Name="geog2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Return Type="System.Double" />
+  </Function>
+  <Function Name="[Ogc.Filter].Geography_STEquals" Method="Geography_STEquals" IsComposable="true">
+    <Parameter Name="geog1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Parameter Name="geog2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="[Ogc.Filter].Geography_STIntersects" Method="Geography_STIntersects" IsComposable="true">
+    <Parameter Name="geog1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Parameter Name="geog2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="[Ogc.Filter].Geography_STOverlaps" Method="Geography_STOverlaps" IsComposable="true">
+    <Parameter Name="geog1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Parameter Name="geog2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="[Ogc.Filter].Geography_STTouches" Method="Geography_STTouches" IsComposable="true">
+    <Parameter Name="geog1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Parameter Name="geog2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>
