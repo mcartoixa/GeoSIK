@@ -27,9 +27,9 @@ using System.Reflection;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using Microsoft.SqlServer.Types;
 using Csw202=GeoSik.Ogc.WebCatalog.Csw.V202;
 using Csw202Service=GeoSik.Services.Csw.V202;
+using SqlTypes=Microsoft.SqlServer.Types;
 
 namespace GeoSik.WebSample.Models.CodeFirst
 {
@@ -107,7 +107,7 @@ namespace GeoSik.WebSample.Models.CodeFirst
 
         [NotMapped]
         [XmlElement("BoundingBox", Namespace=Namespaces.OgcOws, Order=8, IsNullable=false)]
-        public SqlGeometry BoundingBox
+        public IGeometry BoundingBox
         {
             get
             {
@@ -116,9 +116,9 @@ namespace GeoSik.WebSample.Models.CodeFirst
                     using (var ms=new MemoryStream(Coverage))
                         using (var br=new BinaryReader(ms))
                         {
-                            var ret=new SqlGeometry();
-                            ret.Read(br);
-                            return ret;
+                            var g=new SqlTypes.SqlGeography();
+                            g.Read(br);
+                            return new SqlServer.SqlGeographyWrapper(g);
                         }
                 }
 
@@ -131,7 +131,7 @@ namespace GeoSik.WebSample.Models.CodeFirst
                     using (var ms=new MemoryStream())
                         using (var bw=new BinaryWriter(ms))
                         {
-                            value.Write(bw);
+                            ((SqlTypes.SqlGeography)((SqlServer.SqlGeographyWrapper)value)).Write(bw);
                             Coverage=ms.ToArray();
                         }
                 } else

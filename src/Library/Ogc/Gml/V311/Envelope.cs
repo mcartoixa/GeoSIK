@@ -32,7 +32,7 @@ namespace GeoSik.Ogc.Gml.V311
 
 #pragma warning disable 3009
     partial class Envelope:
-        IGeometryContainer
+        IGeometryTap
     {
 
         public void Populate(IGeometrySink sink)
@@ -51,29 +51,22 @@ namespace GeoSik.Ogc.Gml.V311
             sink.BeginGeometry(GeometryType.Polygon);
 
             if (
-                (lowerCorner!=null)&&(lowerCorner.TypedValue!=null)&&(lowerCorner.TypedValue.Count==2)&&
-                (upperCorner!=null)&&(upperCorner.TypedValue!=null)&&(upperCorner.TypedValue.Count==2)
+                (lowerCorner!=null) && (lowerCorner.TypedValue!=null) && (lowerCorner.TypedValue.Count==2)&&
+                (upperCorner!=null) && (upperCorner.TypedValue!=null) && (upperCorner.TypedValue.Count==2)
             )
             {
-                sink.BeginFigure(lowerCorner.TypedValue[0], lowerCorner.TypedValue[1], null);
-                sink.AddLine(upperCorner.TypedValue[0], lowerCorner.TypedValue[1], null);
-                sink.AddLine(upperCorner.TypedValue[0], upperCorner.TypedValue[1], null);
-                sink.AddLine(lowerCorner.TypedValue[0], upperCorner.TypedValue[1], null);
-                sink.AddLine(lowerCorner.TypedValue[0], lowerCorner.TypedValue[1], null);
+                double minlon=Math.Min(lowerCorner.TypedValue[0], upperCorner.TypedValue[0]);
+                double maxlon=Math.Max(lowerCorner.TypedValue[0], upperCorner.TypedValue[0]);
+                double minlat=Math.Min(lowerCorner.TypedValue[1], upperCorner.TypedValue[1]);
+                double maxlat=Math.Max(lowerCorner.TypedValue[1], upperCorner.TypedValue[1]);
+
+                sink.BeginFigure(minlon, minlat, null);
+                sink.AddLine(maxlon, minlat, null);
+                sink.AddLine(maxlon, maxlat, null);
+                sink.AddLine(minlon, maxlat, null);
+                sink.AddLine(minlon, minlat, null);
                 sink.EndFigure();
             }
-
-            //sink.BeginGeometry(GeometryType.LineString);
-
-            //if (
-            //    (lowerCorner!=null) && (lowerCorner.TypedValue!=null) && (lowerCorner.TypedValue.Count==2) &&
-            //    (upperCorner!=null) && (upperCorner.TypedValue!=null) && (upperCorner.TypedValue.Count==2)
-            //)
-            //{
-            //    sink.BeginFigure(lowerCorner.TypedValue[0], lowerCorner.TypedValue[1], null);
-            //    sink.AddLine(upperCorner.TypedValue[0], upperCorner.TypedValue[1], null);
-            //    sink.EndFigure();
-            //}
 
             sink.EndGeometry();
         }

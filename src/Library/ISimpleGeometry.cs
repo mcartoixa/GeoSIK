@@ -20,9 +20,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Text;
 using System.Xml.Serialization;
 using ProjNet.CoordinateSystems;
@@ -30,27 +28,13 @@ using ProjNet.CoordinateSystems;
 namespace GeoSik
 {
 
-    public interface IGeometry:
-        ISimpleGeometry,
-        IEnumerable<IGeometry>,
-        IEquatable<IGeometry>
+    public interface ISimpleGeometry:
+        IGeometryTap,
+        IXmlSerializable
     {
 
-        double Distance(IGeometry geometry);
-        bool Disjoint(IGeometry geometry);
-        bool Touches(IGeometry geometry);
-        bool Within(IGeometry geometry);
-        bool Overlaps(IGeometry geometry);
-        bool Crosses(IGeometry geometry);
-        bool Intersects(IGeometry geometry);
-        bool Contains(IGeometry geometry);
-        bool Relate(IGeometry geometry);
-        double GetLength();
-        IGeometry GetPoint(int index);
-        int NumPoints();
+        IGeometry Envelope();
 
-        double X { get; }
-        double Y { get; }
-        double? Z { get; }
+        ICoordinateSystem CoordinateSystem { get; }
     }
 }

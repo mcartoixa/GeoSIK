@@ -28,8 +28,8 @@ using System.Linq;
 using System.Web;
 using System.Xml;
 using System.Xml.Serialization;
-using SqlTypes=Microsoft.SqlServer.Types;
 using Csw202Service=GeoSik.Services.Csw.V202;
+using SqlTypes=Microsoft.SqlServer.Types;
 
 namespace GeoSik.WebSample.Models.ModelFirst
 {
@@ -57,9 +57,9 @@ namespace GeoSik.WebSample.Models.ModelFirst
                     using (var ms=new MemoryStream(Coverage))
                         using (var br=new BinaryReader(ms))
                         {
-                            var g=new SqlTypes.SqlGeometry();
+                            var g=new SqlTypes.SqlGeography();
                             g.Read(br);
-                            return new SqlServer.SqlGeometryWrapper(g);
+                            return new SqlServer.SqlGeographyWrapper(g);
                         }
                 }
 
@@ -72,7 +72,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
                     using (var ms=new MemoryStream())
                         using (var bw=new BinaryWriter(ms))
                         {
-                            ((SqlTypes.SqlGeometry)((SqlServer.SqlGeometryWrapper)value)).Write(bw);
+                            ((SqlTypes.SqlGeography)((SqlServer.SqlGeographyWrapper)value)).Write(bw);
                             Coverage=ms.ToArray();
                         }
                 } else

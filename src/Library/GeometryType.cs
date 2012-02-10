@@ -34,6 +34,7 @@ namespace GeoSik
         Surface,
         Polygon,
         GeometryCollection,
+        MultiCurve,
         MultiPoint,
         MultiLineString,
         MultiSurface,

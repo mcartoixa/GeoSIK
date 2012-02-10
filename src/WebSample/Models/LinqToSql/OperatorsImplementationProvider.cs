@@ -27,7 +27,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Web;
-using Microsoft.SqlServer.Types;
+using ProjNet.CoordinateSystems;
+using SqlTypes=Microsoft.SqlServer.Types;
 
 namespace GeoSik.WebSample.Models.LinqToSql
 {
@@ -54,25 +55,25 @@ namespace GeoSik.WebSample.Models.LinqToSql
             {
             case OperationNames.Contains:
                 arguments=new Type[] { typeof(Binary), typeof(Binary) };
-                values=values.Select<object, object>(v => GetBinary((SqlGeometry)v)).ToArray<object>();
-                return typeof(RecordsDataContext).GetMethod("Geometry_STContains", arguments);
+                values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
+                return typeof(RecordsDataContext).GetMethod("Geography_STContains", arguments);
             case OperationNames.Crosses:
                 arguments=new Type[] { typeof(Binary), typeof(Binary) };
-                values=values.Select<object, object>(v => GetBinary((SqlGeometry)v)).ToArray<object>();
-                return typeof(RecordsDataContext).GetMethod("Geometry_STCrosses", arguments);
+                values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
+                return typeof(RecordsDataContext).GetMethod("Geography_STCrosses", arguments);
             case OperationNames.Disjoint:
                 arguments=new Type[] { typeof(Binary), typeof(Binary) };
-                values=values.Select<object, object>(v => GetBinary((SqlGeometry)v)).ToArray<object>();
-                return typeof(RecordsDataContext).GetMethod("Geometry_STDisjoint", arguments);
+                values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
+                return typeof(RecordsDataContext).GetMethod("Geography_STDisjoint", arguments);
             case OperationNames.Distance:
                 arguments=new Type[] { typeof(Binary), typeof(Binary) };
-                values=values.Select<object, object>(v => GetBinary((SqlGeometry)v)).ToArray<object>();
-                return typeof(RecordsDataContext).GetMethod("Geometry_STDistance", arguments);
+                values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
+                return typeof(RecordsDataContext).GetMethod("Geography_STDistance", arguments);
             case OperationNames.Equal:
-                if ((arguments.Length==2) && (arguments[1])==typeof(SqlGeometry))
+                if ((arguments.Length==2) && (arguments[1])==typeof(IGeometry))
                 {
-                    values=values.Select<object, object>(v => GetBinary((SqlGeometry)v)).ToArray<object>();
-                    return typeof(RecordsDataContext).GetMethod("Geometry_STEquals", arguments);
+                    values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
+                    return typeof(RecordsDataContext).GetMethod("Geography_STEquals", arguments);
                 }
                 if ((arguments.Length==3) && (arguments[2]==typeof(StringComparison)))
                 {
@@ -87,8 +88,8 @@ namespace GeoSik.WebSample.Models.LinqToSql
                 break;
             case OperationNames.Intersects:
                 arguments=new Type[] { typeof(Binary), typeof(Binary) };
-                values=values.Select<object, object>(v => GetBinary((SqlGeometry)v)).ToArray<object>();
-                return typeof(RecordsDataContext).GetMethod("Geometry_STIntersects", arguments);
+                values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
+                return typeof(RecordsDataContext).GetMethod("Geography_STIntersects", arguments);
             case OperationNames.Like:
                 // LIKE is case insensitive by default: use it
                 {
@@ -115,31 +116,40 @@ namespace GeoSik.WebSample.Models.LinqToSql
                 break;
             case OperationNames.Overlaps:
                 arguments=new Type[] { typeof(Binary), typeof(Binary) };
-                values=values.Select<object, object>(v => GetBinary((SqlGeometry)v)).ToArray<object>();
-                return typeof(RecordsDataContext).GetMethod("Geometry_STOverlaps", arguments);
+                values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
+                return typeof(RecordsDataContext).GetMethod("Geography_STOverlaps", arguments);
             case OperationNames.Touches:
                 arguments=new Type[] { typeof(Binary), typeof(Binary) };
-                values=values.Select<object, object>(v => GetBinary((SqlGeometry)v)).ToArray<object>();
-                return typeof(RecordsDataContext).GetMethod("Geometry_STTouches", arguments);
+                values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
+                return typeof(RecordsDataContext).GetMethod("Geography_STTouches", arguments);
             case OperationNames.Within:
                 arguments=new Type[] { typeof(Binary), typeof(Binary) };
-                values=values.Select<object, object>(v => GetBinary((SqlGeometry)v)).ToArray<object>();
-                return typeof(RecordsDataContext).GetMethod("Geometry_STWithin", arguments);
+                values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
+                return typeof(RecordsDataContext).GetMethod("Geography_STWithin", arguments);
             }
 
             return ret;
         }
 
-        private static Binary GetBinary(SqlGeometry geometry)
+        private static Binary GetBinary(IGeometry geometry)
         {
             if (geometry==null)
                 return null;
 
             Binary ret=null;
+
+            var sgw=geometry as SqlServer.SqlGeographyWrapper;
+            if ((sgw==null) || !sgw.CoordinateSystem.EqualParams(GeographicCoordinateSystem.WGS84))
+            {
+                var b=new SqlServer.SqlGeometryBuilder(GeographicCoordinateSystem.WGS84);
+                geometry.Populate(b);
+                sgw=(SqlServer.SqlGeographyWrapper)b.ConstructedGeometry;
+            }
+
             using (var ms=new MemoryStream())
                 using (var bw=new BinaryWriter(ms))
                 {
-                    geometry.Write(bw);
+                    ((SqlTypes.SqlGeography)sgw).Write(bw);
                     ret=new Binary(ms.ToArray());
                 }
 

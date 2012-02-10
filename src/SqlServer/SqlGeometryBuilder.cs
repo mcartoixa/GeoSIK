@@ -32,110 +32,69 @@ namespace GeoSik.SqlServer
 {
 
     public sealed class SqlGeometryBuilder:
-        IGeometryBuilder,
+        GeometryBuilder,
         SqlTypes.IGeographySink,
         SqlTypes.IGeometrySink
     {
 
-        public SqlGeometryBuilder()
-        {}
-
-        public SqlGeometryBuilder(ICoordinateSystem sourceSystem)
+        public SqlGeometryBuilder():
+            base()
         {
-            _SourceSystem=sourceSystem;
         }
 
-        public void SetCoordinateSystem(ICoordinateSystem targetSystem)
+        public SqlGeometryBuilder(ICoordinateSystem targetSystem):
+            base(targetSystem)
         {
-            if (targetSystem==null)
-                targetSystem=GeographicCoordinateSystem.WGS84;
+        }
 
-            if ((targetSystem is IGeographicCoordinateSystem) || (targetSystem is IGeocentricCoordinateSystem))
-                _Builder=new SqlGeometryBuilderWrapper();
+        protected override void DoSetCoordinateSystem(ICoordinateSystem system)
+        {
+            if ((system is IGeographicCoordinateSystem) || (system is IGeocentricCoordinateSystem))
+                _Builder=new SqlGeographyBuilderWrapper();
             else
                 _Builder=new SqlGeometryBuilderWrapper();
 
-            _Builder.SetCoordinateSystem(targetSystem);
-            _TargetSystem=targetSystem;
-
-            if ((_SourceSystem!=null) && !_SourceSystem.Equals(_TargetSystem) && !_SourceSystem.EqualParams(_TargetSystem))
-                _Transformation=new CoordinateTransformationFactory().CreateFromCoordinateSystems(_SourceSystem, _TargetSystem);
+            _Builder.SetCoordinateSystem(system);
         }
 
-        public void BeginGeometry(GeometryType type)
+        public override void BeginGeometry(GeometryType type)
         {
             _Builder.BeginGeometry(type);
         }
 
-        public void BeginFigure(double x, double y, double? z)
+        protected override void DoBeginFigure(double x, double y, double? z)
         {
-            double[] coord=TransformCoordinates(x, y, z);
-            x=coord[0];
-            y=coord[1];
-            if (z.HasValue)
-                z=coord[2];
-
             _Builder.BeginFigure(x, y, z);
         }
 
-        public void BeginFigure(double x, double y)
+        protected override void DoAddLine(double x, double y, double? z)
         {
-            _Builder.BeginFigure(x, y, null);
-        }
-
-        public void AddLine(double x, double y, double? z)
-        {
-            double[] coord=TransformCoordinates(x, y, z);
-            x=coord[0];
-            y=coord[1];
-            if (z.HasValue)
-                z=coord[2];
-
             _Builder.AddLine(x, y, z);
         }
 
-        public void AddLine(double x, double y)
-        {
-            _Builder.AddLine(x, y, null);
-        }
-
-        public void EndFigure()
+        public override void EndFigure()
         {
             _Builder.EndFigure();
         }
 
-        public void EndGeometry()
+        public override void EndGeometry()
         {
             _Builder.EndGeometry();
         }
 
-        public IGeometry Parse(string text, ICoordinateSystem system)
+        public override IGeometry Parse(string text, ICoordinateSystem system)
         {
-            return new SqlGeometryWrapper(SqlTypes.SqlGeometry.STGeomFromText((SqlChars)((SqlString)text), (int)system.AuthorityCode), system);
+            return _Builder.Parse(text, system);
         }
 
-        private double[] TransformCoordinates(double x, double y, double? z)
+        void SqlTypes.IGeographySink.AddLine(double latitude, double longitude, double? z, double? m)
         {
-            double[] ret=null;
-            if (z.HasValue)
-                ret=new double[] { x, y, z.Value };
-            else
-                ret=new double[] { x, y };
-
-            if (_Transformation!=null)
-                ret=_Transformation.MathTransform.Transform(ret);
-
-            return ret;
+            AddLine(longitude, latitude, z);
         }
 
-        void SqlTypes.IGeographySink.AddLine(double x, double y, double? z, double? m)
+        void SqlTypes.IGeographySink.BeginFigure(double latitude, double longitude, double? z, double? m)
         {
-            AddLine(x, y, z);
-        }
-
-        void SqlTypes.IGeographySink.BeginFigure(double x, double y, double? z, double? m)
-        {
-            BeginFigure(x, y, z);
+            BeginFigure(longitude, latitude, z);
         }
 
         void SqlTypes.IGeographySink.BeginGeography(SqlTypes.OpenGisGeographyType type)
@@ -165,7 +124,7 @@ namespace GeoSik.SqlServer
                 return;
             }
 
-            throw new InvalidOperationException();
+            throw new NotSupportedException();
         }
 
         void SqlTypes.IGeographySink.EndFigure()
@@ -220,7 +179,7 @@ namespace GeoSik.SqlServer
                 return;
             }
 
-            throw new InvalidOperationException();
+            throw new NotSupportedException();
         }
 
         void SqlTypes.IGeometrySink.EndFigure()
@@ -238,21 +197,14 @@ namespace GeoSik.SqlServer
             SetCoordinateSystem(CoordinateSystemProvider.Instance.GetById(new Srid(srid)));
         }
 
-        public IGeometry ConstructedGeometry
+        public override IGeometry ConstructedGeometry
         {
             get
             {
-                var geomw=_Builder as SqlGeometryBuilderWrapper;
-                if (geomw!=null)
-                    return geomw.ConstructedGeometry;
-
-                throw new InvalidOperationException();
+                return _Builder.ConstructedGeometry;
             }
         }
 
-        private IGeometrySink _Builder;
-        private ICoordinateSystem _SourceSystem;
-        private ICoordinateSystem _TargetSystem;
-        private ICoordinateTransformation _Transformation;
+        private IGeometryBuilder _Builder;
     }
 }
