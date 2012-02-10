@@ -32,21 +32,15 @@ namespace GeoSik
 
 
 
-    ////////////////////////////////////////////////////////////////////////////
-    ///
-    /// <summary>Base class for a <see cref="IGeometry" /> builder.</summary>
-    ///
-    ////////////////////////////////////////////////////////////////////////////
-
-    public abstract class GeometryBuilder:
-        IGeometryBuilder
+    public abstract class GeometryTransformerSink:
+        IGeometrySink
     {
 
-        protected GeometryBuilder()
+        protected GeometryTransformerSink()
         {
         }
 
-        protected GeometryBuilder(ICoordinateSystem targetSystem)
+        protected GeometryTransformerSink(ICoordinateSystem targetSystem)
         {
             _TargetSystem=targetSystem;
         }
@@ -99,7 +93,6 @@ namespace GeoSik
         public abstract void BeginGeometry(GeometryType type);
         public abstract void EndFigure();
         public abstract void EndGeometry();
-        public abstract IGeometry Parse(string text, ICoordinateSystem system);
 
         protected abstract void DoAddLine(double x, double y, double? z);
         protected abstract void DoBeginFigure(double x, double y, double? z);
@@ -117,11 +110,6 @@ namespace GeoSik
                 ret=_Transformation.MathTransform.Transform(ret);
 
             return ret;
-        }
-
-        public abstract IGeometry ConstructedGeometry
-        {
-            get;
         }
 
         private ICoordinateSystem _SourceSystem;
