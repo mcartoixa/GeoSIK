@@ -32,6 +32,13 @@ namespace GeoSik
 
 
 
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Base implementation of a <see cref="IGeometrySink" /> that can be used to 
+    /// transform the <see cref="ICoordinateSystem" /> of the source.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
     public abstract class GeometryTransformerSink:
         IGeometrySink
     {
@@ -91,8 +98,8 @@ namespace GeoSik
         }
 
         public abstract void BeginGeometry(GeometryType type);
-        public abstract void EndFigure();
-        public abstract void EndGeometry();
+        public virtual void EndFigure() { }
+        public virtual void EndGeometry() { }
 
         protected abstract void DoAddLine(double x, double y, double? z);
         protected abstract void DoBeginFigure(double x, double y, double? z);

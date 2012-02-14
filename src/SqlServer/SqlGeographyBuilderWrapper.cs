@@ -115,7 +115,7 @@ namespace GeoSik.SqlServer
             }
         }
 
-        IGeometry IGeometryBuilder.ConstructedGeometry
+        ISimpleGeometry IGeometryBuilder.ConstructedGeometry
         {
             get
             {

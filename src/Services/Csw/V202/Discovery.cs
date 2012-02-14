@@ -35,6 +35,7 @@ using System.Xml.Schema;
 using Xml.Schema.Linq;
 using GeoSik.Ogc.WebCatalog.Csw.V202;
 using Gmd=GeoSik.Iso.Ts19139.Gmd;
+using Gml311=GeoSik.Ogc.Gml.V311;
 using Ows100=GeoSik.Ogc.Ows.V100;
 using Filter=GeoSik.Ogc.Filter.V110;
 
@@ -113,7 +114,11 @@ namespace GeoSik.Services.Csw.V202
         }
 
         protected abstract IQueryable GetRecordsSource(Uri outputSchema);
-        protected abstract IGeometryBuilder CreateGeometryBuilder();
+
+        protected virtual IGeometryBuilder CreateGeometryBuilder()
+        {
+            return new Gml311.GmlGeometryBuilder();
+        }
 
         public virtual IEnumerable<IXMetaData> SupportedRecordTypes
         {

@@ -32,6 +32,22 @@ namespace GeoSik.Ogc.Gml.V311
     partial class Point
     {
 
+        internal override void BeginFigure(double x, double y, double? z)
+        {
+            pos=new pos();
+            pos.TypedValue=new List<double>();
+
+            pos.TypedValue.Add(x);
+            pos.TypedValue.Add(y);
+            if (z.HasValue)
+                pos.TypedValue.Add(z.Value);
+        }
+
+        internal override void AddLine(double x, double y, double? z)
+        {
+            throw new InvalidOperationException();
+        }
+
         internal protected override void InternalPopulate(IGeometrySink sink)
         {
             sink.BeginGeometry(GeometryType.Point);

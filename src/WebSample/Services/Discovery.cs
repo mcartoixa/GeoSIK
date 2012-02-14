@@ -178,10 +178,10 @@ namespace GeoSik.WebSample.Services
         //    return new Models.LinqToSql.OperatorsImplementationProvider(RecordContext);
         //}
 
-        protected override IGeometryBuilder CreateGeometryBuilder()
-        {
-            return new SqlServer.SqlGeometryBuilder();
-        }
+        //protected override IGeometryBuilder CreateGeometryBuilder()
+        //{
+        //    return new SqlServer.SqlGeometryBuilder();
+        //}
 
         public override string ProviderName
         {

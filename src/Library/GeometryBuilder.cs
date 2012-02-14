@@ -55,7 +55,7 @@ namespace GeoSik
 
         public abstract IGeometry Parse(string text, ICoordinateSystem system);
 
-        public abstract IGeometry ConstructedGeometry
+        public abstract ISimpleGeometry ConstructedGeometry
         {
             get;
         }

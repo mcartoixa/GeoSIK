@@ -48,25 +48,25 @@ namespace GeoSik.WebSample.Models.ModelFirst
             {
             case OperationNames.Contains:
                 arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
-                values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
+                values=values.Select<object, object>(v => GetBinary((ISimpleGeometry)v)).ToArray<object>();
                 return typeof(OperatorsImplementationProvider).GetMethod("GeographySTContains", arguments);
             case OperationNames.Crosses:
                 arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
-                values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
+                values=values.Select<object, object>(v => GetBinary((ISimpleGeometry)v)).ToArray<object>();
                 return typeof(OperatorsImplementationProvider).GetMethod("GeographySTCrosses", arguments);
             case OperationNames.Disjoint:
                 arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
-                values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
+                values=values.Select<object, object>(v => GetBinary((ISimpleGeometry)v)).ToArray<object>();
                 return typeof(OperatorsImplementationProvider).GetMethod("GeographySTDisjoint", arguments);
             case OperationNames.Distance:
                 arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
-                values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
+                values=values.Select<object, object>(v => GetBinary((ISimpleGeometry)v)).ToArray<object>();
                 return typeof(OperatorsImplementationProvider).GetMethod("GeographySTDistance", arguments);
             case OperationNames.Equal:
                 if ((arguments.Length==2) && (arguments[1]==typeof(IGeometry)))
                 {
                     arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
-                    values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
+                    values=values.Select<object, object>(v => GetBinary((ISimpleGeometry)v)).ToArray<object>();
                     return typeof(OperatorsImplementationProvider).GetMethod("GeographySTEquals", arguments);
                 }
                 if ((arguments.Length==3) && (arguments[2]==typeof(StringComparison)))
@@ -82,7 +82,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
                 break;
             case OperationNames.Intersects:
                 arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
-                values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
+                values=values.Select<object, object>(v => GetBinary((ISimpleGeometry)v)).ToArray<object>();
                 return typeof(OperatorsImplementationProvider).GetMethod("GeographySTIntersects", arguments);
             case OperationNames.Like:
                 {
@@ -111,15 +111,15 @@ namespace GeoSik.WebSample.Models.ModelFirst
                 break;
             case OperationNames.Overlaps:
                 arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
-                values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
+                values=values.Select<object, object>(v => GetBinary((ISimpleGeometry)v)).ToArray<object>();
                 return typeof(OperatorsImplementationProvider).GetMethod("GeographySTOverlaps", arguments);
             case OperationNames.Touches:
                 arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
-                values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
+                values=values.Select<object, object>(v => GetBinary((ISimpleGeometry)v)).ToArray<object>();
                 return typeof(OperatorsImplementationProvider).GetMethod("GeographySTTouches", arguments);
             case OperationNames.Within:
                 arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
-                values=values.Select<object, object>(v => GetBinary((IGeometry)v)).ToArray<object>();
+                values=values.Select<object, object>(v => GetBinary((ISimpleGeometry)v)).ToArray<object>();
                 return typeof(OperatorsImplementationProvider).GetMethod("GeographySTWithin", arguments);
             }
 
@@ -379,7 +379,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
             return (comparison==StringComparison.CurrentCulture) || (comparison==StringComparison.InvariantCulture) || (comparison==StringComparison.Ordinal);
         }
 
-        private static byte[] GetBinary(IGeometry geometry)
+        private static byte[] GetBinary(ISimpleGeometry geometry)
         {
             if (geometry==null)
                 return null;

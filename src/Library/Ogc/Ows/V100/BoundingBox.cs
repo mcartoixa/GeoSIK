@@ -70,7 +70,7 @@ namespace GeoSik.Ogc.Ows.V100
             sink.EndGeometry();
         }
 
-        public void InitFromGeometry(IGeometry g)
+        public void InitFromGeometry(ISimpleGeometry g)
         {
             if (g==null)
             {
@@ -83,24 +83,24 @@ namespace GeoSik.Ogc.Ows.V100
             var lc=new List<double>(2);
             var uc=new List<double>(2);
 
-            IGeometry envelope=g.Envelope();
-            IGeometry p1=envelope.GetPoint(1);
-            IGeometry p2=envelope.GetPoint(3);
+            ISimpleGeometry env=g.Envelope();
 
-            var xmin=Math.Min(p1.X, p2.X);
-            var ymin=Math.Min(p1.Y, p2.Y);
-            var xmax=Math.Max(p1.X, p2.X);
-            var ymax=Math.Max(p1.Y, p2.Y);
+            var envelope=env as Gml.V311.Envelope;
+            if (envelope==null)
+            {
+                envelope=new Gml.V311.Envelope();
+                env.Populate(envelope);
+            }
+            Debug.Assert(envelope!=null);
 
-            lc.Add(xmin);
-            lc.Add(ymin);
-            uc.Add(xmax);
-            uc.Add(ymax);
+            lc.Add(envelope.lowerCorner.TypedValue[0]);
+            lc.Add(envelope.lowerCorner.TypedValue[1]);
+            uc.Add(envelope.upperCorner.TypedValue[0]);
+            uc.Add(envelope.upperCorner.TypedValue[1]);
 
             // Bug in LinqToXsd : serialization is culture dependent...
             //LowerCorner=lc;
             //UpperCorner=uc;
-
             LowerCorner=new List<double>();
             foreach (XElement el in Untyped.Descendants("{http://www.opengis.net/ows}LowerCorner"))
                 el.Value=string.Join(

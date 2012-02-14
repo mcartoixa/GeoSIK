@@ -116,6 +116,7 @@
     <Compile Include="Ogc\Gml\V311\CompositeSurface.cs" />
     <Compile Include="Ogc\Gml\V311\CompositeSolid.cs" />
     <Compile Include="Ogc\Gml\V311\GeometricComplex.cs" />
+    <Compile Include="Ogc\Gml\V311\GmlGeometryBuilder.cs" />
     <Compile Include="Ogc\Gml\V311\MultiLineString.cs" />
     <Compile Include="Ogc\Gml\V311\MultiPolygon.cs" />
     <Compile Include="Ogc\Gml\V311\MultiSolid.cs" />

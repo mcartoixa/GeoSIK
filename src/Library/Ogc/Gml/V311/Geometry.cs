@@ -31,23 +31,73 @@ namespace GeoSik.Ogc.Gml.V311
 
 #pragma warning disable 3008, 3009
     partial class _Geometry:
-        IGeometryTap
+        ISimpleGeometry
     {
 
         internal protected abstract void InternalPopulate(IGeometrySink sink);
 
         public void Populate(IGeometrySink sink)
         {
-            ICoordinateSystem s=null;
             if (srsName!=null)
-            {
-                Srid id=Srid.CreateFromCrs(srsName);
-                s=CoordinateSystemProvider.Instance.GetById(id);
-            } else
-                s=GeographicCoordinateSystem.WGS84;
+                sink.SetCoordinateSystem(CoordinateSystem);
 
-            sink.SetCoordinateSystem(s);
             InternalPopulate(sink);
+        }
+
+        public Envelope Envelope()
+        {
+            var ret=new Envelope();
+            PopulateEnvelope(ret);
+            return ret;
+        }
+
+        protected virtual void PopulateEnvelope(Envelope envelope)
+        {
+            Populate(envelope);
+        }
+
+        internal virtual void BeginFigure(double x, double y, double? z)
+        {
+            //TODO: turn to abstract method
+            throw new NotImplementedException();
+        }
+
+        internal virtual void AddLine(double x, double y, double? z)
+        {
+            //TODO: turn to abstract method
+            throw new NotImplementedException();
+        }
+
+        internal virtual void EndFigure()
+        {
+        }
+
+        ISimpleGeometry ISimpleGeometry.Envelope()
+        {
+            return Envelope();
+        }
+
+        public ICoordinateSystem CoordinateSystem
+        {
+            get
+            {
+                if (srsName==null)
+                    return GeographicCoordinateSystem.WGS84;
+
+                return CoordinateSystemProvider.Instance.GetById(Srid.CreateFromCrs(srsName));
+            }
+            internal set
+            {
+                if (value!=null)
+                {
+                    srsName=new Srid((int)value.AuthorityCode).Crs;
+                    srsDimension=value.Dimension;
+                } else
+                {
+                    srsName=null;
+                    srsDimension=null;
+                }
+            }
         }
 
         //public virtual IGeometry Geometry
