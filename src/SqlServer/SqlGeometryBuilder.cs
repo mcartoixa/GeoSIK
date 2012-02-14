@@ -197,7 +197,7 @@ namespace GeoSik.SqlServer
             SetCoordinateSystem(CoordinateSystemProvider.Instance.GetById(new Srid(srid)));
         }
 
-        public override IGeometry ConstructedGeometry
+        public override ISimpleGeometry ConstructedGeometry
         {
             get
             {

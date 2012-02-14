@@ -34,7 +34,7 @@ using SqlTypes=Microsoft.SqlServer.Types;
 namespace GeoSik.SqlServer
 {
 
-    public sealed class SqlGeographyWrapper:
+    public sealed partial class SqlGeographyWrapper:
         IGeometry
     {
 
@@ -133,7 +133,7 @@ namespace GeoSik.SqlServer
             throw new NotImplementedException();
         }
 
-        public IGeometry Envelope()
+        public ISimpleGeometry Envelope()
         {
             // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
 
@@ -162,10 +162,10 @@ namespace GeoSik.SqlServer
         public void Populate(IGeometrySink sink)
         {
             var sgs=sink as SqlTypes.IGeographySink;
-            if (sgs!=null)
-                _Geography.Populate(sgs);
-            else
-                throw new NotSupportedException();
+            if (sgs==null)
+                sgs=new Sink(sink);
+
+            _Geography.Populate(sgs);
         }
 
         public void ReadXml(XmlReader xr)

@@ -26,6 +26,14 @@ using System.Text;
 namespace GeoSik
 {
 
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Interface implemented by a class that can fill a <see cref="IGeometrySink" />.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
     public interface IGeometryTap
     {
 

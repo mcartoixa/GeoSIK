@@ -64,6 +64,8 @@
     <Compile Include="..\Version.cs">
       <Link>Properties\Version.cs</Link>
     </Compile>
+    <Compile Include="SqlGeometryWrapper+Sink.cs" />
+    <Compile Include="SqlGeographyWrapper+Sink.cs" />
     <Compile Include="SqlGeographyWrapper.cs" />
     <Compile Include="SqlGeographyBuilderWrapper.cs" />
     <Compile Include="SqlGeometryBuilder.cs" />

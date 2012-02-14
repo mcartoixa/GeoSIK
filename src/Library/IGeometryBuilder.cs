@@ -32,6 +32,6 @@ namespace GeoSik
     {
 
         IGeometry Parse(string text, ICoordinateSystem system);
-        IGeometry ConstructedGeometry { get; }
+        ISimpleGeometry ConstructedGeometry { get; }
     }
 }

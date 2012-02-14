@@ -32,26 +32,20 @@ namespace GeoSik.Ogc.Gml.V311
 
 #pragma warning disable 3009
     partial class Envelope:
-        IGeometryTap
+        ISimpleGeometry,
+        IGeometryTap,
+        IGeometrySink
     {
 
         public void Populate(IGeometrySink sink)
         {
-            ICoordinateSystem cs=null;
             if (srsName!=null)
-            {
-                Srid id=Srid.CreateFromCrs(srsName);
-                cs=CoordinateSystemProvider.Instance.GetById(id);
-            } else
-                cs=GeographicCoordinateSystem.WGS84;
-
-            
-            sink.SetCoordinateSystem(cs);
+                sink.SetCoordinateSystem(CoordinateSystem);
 
             sink.BeginGeometry(GeometryType.Polygon);
 
             if (
-                (lowerCorner!=null) && (lowerCorner.TypedValue!=null) && (lowerCorner.TypedValue.Count==2)&&
+                (lowerCorner!=null) && (lowerCorner.TypedValue!=null) && (lowerCorner.TypedValue.Count==2) &&
                 (upperCorner!=null) && (upperCorner.TypedValue!=null) && (upperCorner.TypedValue.Count==2)
             )
             {
@@ -69,6 +63,132 @@ namespace GeoSik.Ogc.Gml.V311
             }
 
             sink.EndGeometry();
+        }
+
+        internal protected void SetCoordinateSystem(ICoordinateSystem system)
+        {
+            CoordinateSystem=system;
+        }
+
+        internal protected void BeginGeometry(GeometryType type)
+        {
+        }
+
+        internal protected void BeginFigure(double x, double y, double? z)
+        {
+            AddLine(x, y, z);
+        }
+
+        internal protected void AddLine(double x, double y, double? z)
+        {
+            // Bug in LinqToXsd: serialization is culture dependent...
+            // lowerCorner.TypedValue[0]=x;
+            // lowerCorner.TypedValue[1]=y;
+
+            IList<double> lc=null;
+            if (lowerCorner==null)
+            {
+                lowerCorner=new DirectPositionType();
+                lc=new double[] { x, y };
+            } else
+            {
+                lc=new List<double>(lowerCorner.TypedValue);
+
+                if (lc[0]>x)
+                    lc[0]=x;
+                if (lc[1]>y)
+                    lc[1]=y;
+            }
+
+            IList<double> uc=null;
+            if (upperCorner==null)
+            {
+                upperCorner=new DirectPositionType();
+                uc=new double[] { x, y };
+            } else
+            {
+                uc=new List<double>(upperCorner.TypedValue);
+
+                if (uc[0]<x)
+                    uc[0]=x;
+                if (uc[1]<y)
+                    uc[1]=y;
+            }
+
+            lowerCorner.Untyped.Value=string.Join(
+                " ",
+                lc.Select<double, string>(d => d.ToString(CultureInfo.InvariantCulture))
+            );
+            upperCorner.Untyped.Value=string.Join(
+                " ",
+                uc.Select<double, string>(d => d.ToString(CultureInfo.InvariantCulture))
+            );
+        }
+
+        internal protected void EndFigure()
+        {
+        }
+
+        internal protected void EndGeometry()
+        {
+        }
+
+        void IGeometrySink.SetCoordinateSystem(ICoordinateSystem system)
+        {
+            SetCoordinateSystem(system);
+        }
+
+        void IGeometrySink.BeginGeometry(GeometryType type)
+        {
+            BeginGeometry(type);
+        }
+
+        void IGeometrySink.BeginFigure(double x, double y, double? z)
+        {
+            BeginFigure(x, y, z);
+        }
+
+        void IGeometrySink.AddLine(double x, double y, double? z)
+        {
+            AddLine(x, y, z);
+        }
+
+        void IGeometrySink.EndFigure()
+        {
+            EndFigure();
+        }
+
+        void IGeometrySink.EndGeometry()
+        {
+            EndGeometry();
+        }
+
+        ISimpleGeometry ISimpleGeometry.Envelope()
+        {
+            return this;
+        }
+
+        public ICoordinateSystem CoordinateSystem
+        {
+            get
+            {
+                if (srsName==null)
+                    return GeographicCoordinateSystem.WGS84;
+
+                return CoordinateSystemProvider.Instance.GetById(Srid.CreateFromCrs(srsName));
+            }
+            internal set
+            {
+                if (value!=null)
+                {
+                    srsName=new Srid((int)value.AuthorityCode).Crs;
+                    srsDimension=value.Dimension;
+                } else
+                {
+                    srsName=null;
+                    srsDimension=null;
+                }
+            }
         }
 
         //public SqlGeometry Geometry

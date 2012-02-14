@@ -33,7 +33,7 @@ using SqlTypes=Microsoft.SqlServer.Types;
 namespace GeoSik.SqlServer
 {
 
-    public sealed class SqlGeometryWrapper:
+    public sealed partial class SqlGeometryWrapper:
         IGeometry
     {
 
@@ -132,7 +132,7 @@ namespace GeoSik.SqlServer
             throw new NotImplementedException();
         }
 
-        public IGeometry Envelope()
+        public ISimpleGeometry Envelope()
         {
             return new SqlGeometryWrapper(_Geometry.STEnvelope(), CoordinateSystem);
         }
@@ -150,10 +150,10 @@ namespace GeoSik.SqlServer
         public void Populate(IGeometrySink sink)
         {
             var sgs=sink as SqlTypes.IGeometrySink;
-            if (sgs!=null)
-                _Geometry.Populate(sgs);
-            else
-                throw new NotSupportedException();
+            if (sgs==null)
+                sgs=new Sink(sink);
+
+            _Geometry.Populate(sgs);
         }
 
         public void ReadXml(XmlReader xr)

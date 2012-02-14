@@ -30,15 +30,46 @@ namespace GeoSik.Ogc.Gml.V311
     partial class Polygon
     {
 
+        protected override void PopulateEnvelope(Envelope envelope)
+        {
+            if ((exterior!=null)&&(exterior._Ring!=null))
+                exterior._Ring.Populate(envelope);
+        }
+
+        internal override void BeginFigure(double x, double y, double? z)
+        {
+            _CurrentRing.Push(new LinearRing());
+            _CurrentRing.Peek().BeginFigure(x, y, z);
+        }
+
+        internal override void AddLine(double x, double y, double? z)
+        {
+            _CurrentRing.Peek().AddLine(x, y, z);
+        }
+
+        internal override void EndFigure()
+        {
+            LinearRing ring=_CurrentRing.Pop();
+            if (exterior!=null)
+                interior.Add(new interior() { _Ring=ring });
+            else
+                exterior=new exterior() { _Ring=ring };
+        }
+
         internal protected override void InternalPopulate(IGeometrySink sink)
         {
             sink.BeginGeometry(GeometryType.Polygon);
 
             if ((exterior!=null) && (exterior._Ring!=null))
                 exterior._Ring.Populate(sink);
+            if (interior!=null)
+                foreach (interior intr in interior)
+                    intr._Ring.Populate(sink);
 
             sink.EndGeometry();
         }
+
+        private Stack<LinearRing> _CurrentRing=new Stack<LinearRing>();
     }
 #pragma warning restore 3009
 }

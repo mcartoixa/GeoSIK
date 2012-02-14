@@ -23,17 +23,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
+using Newtonsoft.Json;
 using ProjNet.CoordinateSystems;
 
 namespace GeoSik
 {
 
+    [JsonConverter(typeof(GeometryJsonConverter))]
     public interface ISimpleGeometry:
         IGeometryTap,
         IXmlSerializable
     {
 
-        IGeometry Envelope();
+        ISimpleGeometry Envelope();
 
         ICoordinateSystem CoordinateSystem { get; }
     }
