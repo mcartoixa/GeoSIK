@@ -36,6 +36,7 @@ namespace GeoSik
         IEquatable<IGeometry>
     {
 
+        IGeometry Centroid();
         double Distance(IGeometry geometry);
         bool Disjoint(IGeometry geometry);
         bool Touches(IGeometry geometry);

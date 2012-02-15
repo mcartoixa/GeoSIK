@@ -132,6 +132,11 @@ namespace GeoSik.SqlServer
             throw new NotImplementedException();
         }
 
+        public IGeometry Centroid()
+        {
+            return new SqlGeometryWrapper(_Geometry.STCentroid(), CoordinateSystem);
+        }
+
         public ISimpleGeometry Envelope()
         {
             return new SqlGeometryWrapper(_Geometry.STEnvelope(), CoordinateSystem);
