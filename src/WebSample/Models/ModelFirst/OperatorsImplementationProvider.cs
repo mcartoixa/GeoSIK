@@ -63,7 +63,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
                 values=values.Select<object, object>(v => GetBinary((ISimpleGeometry)v)).ToArray<object>();
                 return typeof(OperatorsImplementationProvider).GetMethod("GeographySTDistance", arguments);
             case OperationNames.Equal:
-                if ((arguments.Length==2) && (arguments[1]==typeof(IGeometry)))
+                if ((arguments.Length==2) && (arguments[1]==typeof(ISimpleGeometry)))
                 {
                     arguments=new Type[] { typeof(byte[]), typeof(byte[]) };
                     values=values.Select<object, object>(v => GetBinary((ISimpleGeometry)v)).ToArray<object>();

@@ -36,13 +36,13 @@ namespace GeoSik.Ogc.Filter.V110
     partial class Filter
     {
 
-        internal LambdaExpression CreateLambda(IQueryable source, XmlNamespaceManager namespaceManager, bool mayRootPathBeImplied, IGeometryBuilderProvider geometryBuilderProvider, IOperatorImplementationProvider operatorImplementationProvider, Func<Type, IXmlNamespaceResolver, XPathTypeNavigator> navigatorCreator=null)
+        internal LambdaExpression CreateLambda(IQueryable source, XmlNamespaceManager namespaceManager, bool mayRootPathBeImplied, IOperatorImplementationProvider operatorImplementationProvider, Func<Type, IXmlNamespaceResolver, XPathTypeNavigator> navigatorCreator=null)
         {
             ParameterExpression[] parameters=new ParameterExpression[] {
                 Expression.Parameter(source.ElementType)
             };
 
-            var ebp=new ExpressionBuilderParameters(parameters, source.Provider, source.ElementType, namespaceManager, mayRootPathBeImplied, geometryBuilderProvider, operatorImplementationProvider, navigatorCreator);
+            var ebp=new ExpressionBuilderParameters(parameters, source.Provider, source.ElementType, namespaceManager, mayRootPathBeImplied, operatorImplementationProvider, navigatorCreator);
 
             Type st=typeof(bool);
             Expression body=null;

@@ -44,8 +44,7 @@ namespace GeoSik.Services.Csw.V202
 
     public abstract partial class Discovery:
         OgcService,
-        IDiscovery,
-        IGeometryBuilderProvider
+        IDiscovery
     {
 
         public Capabilities GetCapabilities(NameValueCollection parameters)
@@ -115,11 +114,6 @@ namespace GeoSik.Services.Csw.V202
 
         protected abstract IQueryable GetRecordsSource(Uri outputSchema);
 
-        protected virtual IGeometryBuilder CreateGeometryBuilder()
-        {
-            return new Gml311.GmlGeometryBuilder();
-        }
-
         public virtual IEnumerable<IXMetaData> SupportedRecordTypes
         {
             get
@@ -131,11 +125,6 @@ namespace GeoSik.Services.Csw.V202
         protected virtual IOperatorImplementationProvider GetOperatorImplementationProvider()
         {
             return null;
-        }
-
-        IGeometryBuilder IGeometryBuilderProvider.CreateBuilder()
-        {
-            return CreateGeometryBuilder();
         }
 
         private static XDocument GetRecordSchema(XNamespace ns)
