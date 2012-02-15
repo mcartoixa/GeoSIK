@@ -517,7 +517,7 @@ namespace GeoSik.Services.Csw.V202
 
                     //if (query.Constraint!=null)
                     if (query.Untyped.Descendants("{http://www.opengis.net/cat/csw/2.0.2}Constraint").Any<XElement>())
-                        records=records.Where(query.Constraint, _NamespaceManager, mayRootPathBeImplied, (IGeometryBuilderProvider)Service, ((Discovery)Service).GetOperatorImplementationProvider());
+                        records=records.Where(query.Constraint, _NamespaceManager, mayRootPathBeImplied, ((Discovery)Service).GetOperatorImplementationProvider());
                 }
 
                 if (Logger.IsDebugEnabled)

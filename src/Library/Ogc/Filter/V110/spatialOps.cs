@@ -56,13 +56,13 @@ namespace GeoSik.Ogc.Filter.V110
                 if (FilterElement.Envelope!=null)
                 {
                     paramTypes.Add(typeof(IGeometry));
-                    IGeometryBuilder builder=parameters.GeometryBuilderProvider.CreateBuilder();
+                    IGeometryBuilder builder=new Gml.V311.GmlGeometryBuilder();
                     FilterElement.Envelope.Populate(builder);
                     paramValues.Add(builder.ConstructedGeometry);
                 } else if (FilterElement.Geometry!=null)
                 {
                     paramTypes.Add(typeof(IGeometry));
-                    IGeometryBuilder builder=parameters.GeometryBuilderProvider.CreateBuilder();
+                    IGeometryBuilder builder=new Gml.V311.GmlGeometryBuilder();
                     FilterElement.Geometry.Populate(builder);
                     paramValues.Add(builder.ConstructedGeometry);
                 }
@@ -111,7 +111,7 @@ namespace GeoSik.Ogc.Filter.V110
             {
                 Debug.Assert(paramTypes.Count==2);
 
-                IGeometryBuilder builder=parameters.GeometryBuilderProvider.CreateBuilder();
+                IGeometryBuilder builder=new Gml.V311.GmlGeometryBuilder();
                 FilterElement.Geometry.Populate(builder);
                 paramValues.Add(builder.ConstructedGeometry);
                 Debug.Assert(paramValues.Count==2);

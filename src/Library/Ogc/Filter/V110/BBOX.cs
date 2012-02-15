@@ -54,7 +54,7 @@ namespace GeoSik.Ogc.Filter.V110
             protected override string GetCustomImplementationName(List<Type> paramTypes, List<object> paramValues, ExpressionBuilderParameters parameters)
             {
                 paramTypes.Add(typeof(IGeometry));
-                IGeometryBuilder builder=parameters.GeometryBuilderProvider.CreateBuilder();
+                IGeometryBuilder builder=new Gml311.GmlGeometryBuilder();
                 FilterElement.Envelope.Populate(builder);
                 paramValues.Add(builder.ConstructedGeometry);
 

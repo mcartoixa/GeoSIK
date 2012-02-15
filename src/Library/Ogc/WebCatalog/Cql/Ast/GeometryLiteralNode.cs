@@ -33,14 +33,15 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
 
 #pragma warning disable 3001, 3009
     public class GeometryLiteralNode:
-        DeferredLiteralNode<IGeometry>
+        LiteralNode<IGeometry>
     {
 
-        protected override IGeometry GetValue(ParseTreeNode treeNode, ExpressionBuilderParameters parameters)
+        protected override IGeometry InitValue(ParsingContext context, ParseTreeNode treeNode)
         {
-            IGeometryBuilder builder=parameters.GeometryBuilderProvider.CreateBuilder();
-            return builder.Parse(treeNode.Token.Text, GeographicCoordinateSystem.WGS84);
+            return _Builder.Parse(treeNode.Token.Text, GeographicCoordinateSystem.WGS84);
         }
+
+        private static IGeometryBuilder _Builder=new Gml.V311.GmlGeometryBuilder();
     }
 #pragma warning restore 3001, 3009
 }

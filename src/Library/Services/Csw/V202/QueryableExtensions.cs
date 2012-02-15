@@ -39,13 +39,13 @@ namespace GeoSik.Services.Csw.V202
     {
 
         [SuppressMessage("Microsoft.Design", "CA1026:DefaultParametersShouldNotBeUsed")]
-        internal static IQueryable<T> Where<T>(this IQueryable<T> source, Csw202.Constraint constraint, XmlNamespaceManager namespaceManager=null, bool mayRootPathBeImplied=false, IGeometryBuilderProvider geometryBuilderProvider=null, IOperatorImplementationProvider operatorImplementationProvider=null)
+        internal static IQueryable<T> Where<T>(this IQueryable<T> source, Csw202.Constraint constraint, XmlNamespaceManager namespaceManager=null, bool mayRootPathBeImplied=false, IOperatorImplementationProvider operatorImplementationProvider=null)
         {
-            return (IQueryable<T>)Where((IQueryable)source, constraint, namespaceManager, mayRootPathBeImplied, geometryBuilderProvider, operatorImplementationProvider);
+            return (IQueryable<T>)Where((IQueryable)source, constraint, namespaceManager, mayRootPathBeImplied, operatorImplementationProvider);
         }
 
         [SuppressMessage("Microsoft.Design", "CA1026:DefaultParametersShouldNotBeUsed")]
-        internal static IQueryable Where(this IQueryable source, Csw202.Constraint constraint, XmlNamespaceManager namespaceManager=null, bool mayRootPathBeImplied=false, IGeometryBuilderProvider geometryBuilderProvider=null, IOperatorImplementationProvider operatorImplementationProvider=null)
+        internal static IQueryable Where(this IQueryable source, Csw202.Constraint constraint, XmlNamespaceManager namespaceManager=null, bool mayRootPathBeImplied=false, IOperatorImplementationProvider operatorImplementationProvider=null)
         {
             Debug.Assert(source!=null);
             if (source==null)
@@ -58,10 +58,10 @@ namespace GeoSik.Services.Csw.V202
 
             //if (constraint.Filter!=null)
             if (constraint.Untyped.Descendants("{http://www.opengis.net/ogc}Filter").Any<XElement>())
-                ret=Filter110.FilterQueryable.Where(ret, constraint.Filter, namespaceManager, mayRootPathBeImplied, geometryBuilderProvider, operatorImplementationProvider, (t, r) => new XPathQueryableNavigator(t, r));
+                ret=Filter110.FilterQueryable.Where(ret, constraint.Filter, namespaceManager, mayRootPathBeImplied, operatorImplementationProvider, (t, r) => new XPathQueryableNavigator(t, r));
 
             if (!string.IsNullOrEmpty(constraint.CqlText))
-                ret=Cql.CqlQueryable.Where(ret, constraint.CqlText, namespaceManager, mayRootPathBeImplied, geometryBuilderProvider, operatorImplementationProvider);
+                ret=Cql.CqlQueryable.Where(ret, constraint.CqlText, namespaceManager, mayRootPathBeImplied, operatorImplementationProvider);
 
             return ret;
         }
