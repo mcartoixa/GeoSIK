@@ -133,20 +133,32 @@ namespace GeoSik.SqlServer
             throw new NotImplementedException();
         }
 
-        public ISimpleGeometry Envelope()
+        public IGeometry Centroid()
         {
+            // Transform into SqlGeometry, calculate, then back to SqlGeography
             // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
 
-            SqlTypes.SqlGeometry geom=SqlTypes.SqlGeometry.STGeomFromText((SqlChars)((SqlString)_Geography.ToString()), _Geography.STSrid.Value);
-            SqlTypes.SqlGeometry env=geom.STEnvelope();
+            var sgmbw=new SqlGeometryBuilderWrapper();
+            Populate(sgmbw);
+            IGeometry c=sgmbw.ConstructedGeometry.Centroid();
 
-            return new SqlGeographyWrapper(
-                SqlTypes.SqlGeography.STGeomFromText(
-                    (SqlChars)((SqlString)env.ToString()),
-                    _Geography.STSrid.Value
-                ),
-                CoordinateSystem
-            );
+            var sggbw=new SqlGeometryBuilderWrapper();
+            Populate(sggbw);
+            return sggbw.ConstructedGeometry;
+        }
+
+        public ISimpleGeometry Envelope()
+        {
+            // Transform into SqlGeometry, calculate, then back to SqlGeography
+            // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
+
+            var sgmbw=new SqlGeometryBuilderWrapper();
+            Populate(sgmbw);
+            ISimpleGeometry c=sgmbw.ConstructedGeometry.Envelope();
+
+            var sggbw=new SqlGeometryBuilderWrapper();
+            Populate(sggbw);
+            return sggbw.ConstructedGeometry;
         }
 
         public double GetLength()
