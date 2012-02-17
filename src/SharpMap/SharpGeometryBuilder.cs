@@ -83,6 +83,9 @@ namespace GeoSik.SharpMap
                     SmGeometries.Geometry g=null;
                     switch (_GeometryType)
                     {
+                    case SmGeometries.GeometryType2.LineString:
+                        g=new SmGeometries.LineString(_Figures.First.Value);
+                        break;
                     case SmGeometries.GeometryType2.Point:
                         g=(SmGeometries.Geometry)_Figures.First.Value[0];
                         break;
