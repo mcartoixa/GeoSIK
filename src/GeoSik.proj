@@ -26,9 +26,23 @@
     <Projects Include="GeoSik.sln">
       <PartCoverExclude>[GeoSik]GeoSik.DublinCore.*;[GeoSik]GeoSik.Iso.*;[GeoSik]GeoSik.Ogc.Filter.V*;[GeoSik]GeoSik.Ogc.Gml.V*;[GeoSik]GeoSik.Ogc.Ows.V*;[GeoSik]GeoSik.Ogc.WebCatalog.Csw.V*;[GeoSik]GeoSik.W3.*;[GeoSik]GeoSik.Schemas;[GeoSik]GeoSik.SR"</PartCoverExclude>
     </Projects>
+    <Projects Include="GeoSik.SqlServer.sln">
+      <PartCoverExclude>[GeoSik]*"</PartCoverExclude>
+    </Projects>
   </ItemGroup>
 
   <!-- Import external targets -->
   <Import Project="$(MSBuildProjectDirectory)\build\GeoSik.Common.targets" />
+
+  <Target
+    Name="UpdateNuSpecReferencesVersions"
+    AfterTargets="UpdateVersion"
+  >
+    <XmlUpdate
+      XmlFileName="GeoSik.SqlServer.nuspec"
+      XPath="/package/metadata/dependencies/dependency[@id='GeoSik']/@version"
+      Value="$(VersionMajor).$(VersionMinor).$(VersionBuild).$(VersionRevision)"
+    />
+  </Target>
 
 </Project>
