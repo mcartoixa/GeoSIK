@@ -7,6 +7,7 @@
     <owners>Isogeo</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Libraries that allow the use OGC standards in .NET applications, and makes the implementation of standard OGC Web Services easier.</description>
+    <projectUrl>http://geosik.codeplex.com/</projectUrl>
     <copyright>Copyright © 2012 Isogeo</copyright>
     <tags>GeoSik OGC Geographical Standards Library Isogeo CSW</tags>
     <dependencies>

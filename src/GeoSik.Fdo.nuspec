@@ -1,12 +1,13 @@
 <?xml version="1.0"?>
 <package>
   <metadata>
-    <id>GeoSik.SqlServer</id>
+    <id>GeoSik.Fdo</id>
     <version>1.0</version>
     <authors>Isogeo</authors>
     <owners>Isogeo</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Library that make GeoSik interoperable with OSGeo FDO spatial types.</description>
+    <projectUrl>http://geosik.codeplex.com/</projectUrl>
     <copyright>Copyright © 2012 Isogeo</copyright>
     <tags>GeoSik OSGeo FDO</tags>
     <dependencies>
