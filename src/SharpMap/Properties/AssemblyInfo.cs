@@ -18,31 +18,24 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Xml.Serialization;
-using ProjNet.CoordinateSystems;
+using System.Reflection;
+using System.Resources;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
-namespace GeoSik
-{
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+[assembly: AssemblyTitle("SharpMap")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyCulture("")]
 
-    public interface IGeometry:
-        ISimpleGeometry
-    {
+// Setting ComVisible to false makes the types in this assembly not visible 
+// to COM components.  If you need to access a type in this assembly from 
+// COM, set the ComVisible attribute to true on that type.
+[assembly: ComVisible(false)]
 
-        IGeometry Centroid();
-        double Distance(IGeometry geometry);
-        bool Disjoint(IGeometry geometry);
-        bool Touches(IGeometry geometry);
-        bool Within(IGeometry geometry);
-        bool Overlaps(IGeometry geometry);
-        bool Crosses(IGeometry geometry);
-        bool Intersects(IGeometry geometry);
-        bool Contains(IGeometry geometry);
-        bool Relate(IGeometry geometry);
-    }
-}
+// The following GUID is for the ID of the typelib if this project is exposed to COM
+[assembly: Guid("185d6cbb-9801-4b2a-842b-03af5f0ee458")]
+
+[assembly: NeutralResourcesLanguage("en-US")]

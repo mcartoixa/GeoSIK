@@ -19,62 +19,44 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Text;
 using System.Xml;
+using System.Xml.Schema;
 using System.Xml.Serialization;
 using ProjNet.CoordinateSystems;
-using SqlTypes=Microsoft.SqlServer.Types;
+using SmGeometries=SharpMap.Geometries;
 
-namespace GeoSik.SqlServer
+namespace GeoSik.SharpMap
 {
 
-    public sealed partial class SqlGeometry:
+#pragma warning disable 3001
+    public class SharpGeometry:
         IGeometry
     {
 
-        public SqlGeometry():
-            this(new SqlTypes.SqlGeometry())
+        private SharpGeometry()
         {
         }
 
-        public SqlGeometry(SqlTypes.SqlGeometry sg):
-            this(sg, null)
+        public SharpGeometry(SmGeometries.Geometry geometry)
         {
-        }
-
-        public SqlGeometry(SqlTypes.SqlGeometry sg, ICoordinateSystem coordinateSystem)
-        {
-            Debug.Assert(sg!=null);
-            if (sg==null)
-                throw new ArgumentNullException("sg");
-
-            _Geometry=sg;
-            _CoordinateSystem=coordinateSystem;
-        }
-
-        public override string ToString()
-        {
-            return _Geometry.ToString();
-        }
-
-        public bool Equals(IGeometry geometry)
-        {
+            Debug.Assert(geometry!=null);
             if (geometry==null)
-                return false;
+                throw new ArgumentNullException("geometry");
 
-            var sgw=geometry as SqlGeometry;
-            if (sgw!=null)
-            {
-                var r=_Geometry.STEquals(sgw._Geometry);
-                return r.IsTrue;
-            }
+            _Geometry=geometry;
+        }
 
-            throw new NotImplementedException();
+        public IGeometry Centroid()
+        {
+            var pol=_Geometry as SmGeometries.Polygon;
+            if (pol!=null)
+                return new SharpGeometry(pol.Centroid);
+
+            throw new NotSupportedException();
         }
 
         public double Distance(IGeometry geometry)
@@ -122,69 +104,40 @@ namespace GeoSik.SqlServer
             throw new NotImplementedException();
         }
 
-        public IGeometry Centroid()
-        {
-            return new SqlGeometry(_Geometry.STCentroid(), CoordinateSystem);
-        }
-
         public ISimpleGeometry Envelope()
         {
-            return new SqlGeometry(_Geometry.STEnvelope(), CoordinateSystem);
+            return new SharpGeometry(_Geometry.Envelope());
         }
 
         public void Populate(IGeometrySink sink)
         {
-            var sgs=sink as SqlTypes.IGeometrySink;
-            if (sgs==null)
-                sgs=new Sink(sink);
-
-            _Geometry.Populate(sgs);
+            throw new NotImplementedException();
         }
 
-        public void ReadXml(XmlReader xr)
+        public void ReadXml(XmlReader reader)
         {
             throw new NotImplementedException();
         }
 
-        public void WriteXml(XmlWriter xw)
+        public void WriteXml(XmlWriter writer)
         {
-            xw.WriteRaw(_Geometry.AsGml().Value);
+            throw new NotImplementedException();
         }
 
-        System.Xml.Schema.XmlSchema IXmlSerializable.GetSchema()
+        XmlSchema IXmlSerializable.GetSchema()
         {
             return null;
         }
 
-        private static SqlGeometry FromGeometry(IGeometry geometry)
-        {
-            var ret=geometry as SqlGeometry;
-            if (ret!=null)
-                return ret;
-
-            var sgbw=new SqlGeometryBuilderWrapper();
-            geometry.Populate(sgbw);
-            ret=sgbw.ConstructedGeometry;
-
-            return ret;
-        }
-
-        public static implicit operator SqlTypes.SqlGeometry(SqlGeometry wrapper)
-        {
-            return wrapper._Geometry;
-        }
         public ICoordinateSystem CoordinateSystem
         {
             get
             {
-                if (_CoordinateSystem==null)
-                    _CoordinateSystem=CoordinateSystemProvider.Instance.GetById(new Srid(_Geometry.STSrid.Value));
-
-                return _CoordinateSystem;
+                return _Geometry.SpatialReference;
             }
         }
 
-        private SqlTypes.SqlGeometry _Geometry;
-        private ICoordinateSystem _CoordinateSystem;
+        private SmGeometries.Geometry _Geometry;
     }
+#pragma warning restore 3001
 }
