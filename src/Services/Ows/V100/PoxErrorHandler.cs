@@ -30,9 +30,8 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using Ows100=GeoSik.Ogc.Ows.V100;
 
-namespace GeoSik.Services.Ows.V100
+namespace GeoSik.Ogc.Ows.V100
 {
 
     public class PoxErrorHandler:
@@ -41,14 +40,14 @@ namespace GeoSik.Services.Ows.V100
 
         protected override Message CreateMessage(FaultException fex, MessageVersion version)
         {
-            var fexd=fex as WebFaultException<Ows100.ExceptionReport>;
+            var fexd=fex as WebFaultException<Types.ExceptionReport>;
             if (fexd==null)
             {
                 var oex=new OwsException(OwsExceptionCode.NoApplicableCode, fex);
-                fexd=new WebFaultException<Ows100.ExceptionReport>((Ows100.ExceptionReport)oex, HttpStatusCode.InternalServerError);
+                fexd=new WebFaultException<Types.ExceptionReport>((Types.ExceptionReport)oex, HttpStatusCode.InternalServerError);
             }
 
-            return WebOperationContext.Current.CreateXmlResponse<Ows100.ExceptionReport>(fexd.Detail);
+            return WebOperationContext.Current.CreateXmlResponse<Types.ExceptionReport>(fexd.Detail);
         }
 
     }

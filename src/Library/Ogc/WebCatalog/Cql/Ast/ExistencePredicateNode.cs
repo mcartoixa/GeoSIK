@@ -27,7 +27,6 @@ using System.Xml.XPath;
 using Irony.Interpreter;
 using Irony.Interpreter.Ast;
 using Irony.Parsing;
-using Csw202=GeoSik.Services.Csw.V202;
 
 namespace GeoSik.Ogc.WebCatalog.Cql.Ast
 {
@@ -51,7 +50,7 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
         {
             if (!_Result.HasValue)
             {
-                Csw202.XPathQueryableNavigator xptn=new Csw202.XPathQueryableNavigator(parameters.ElementType);
+                Csw.V202.XPathQueryableNavigator xptn=new Csw.V202.XPathQueryableNavigator(parameters.ElementType);
                 XPathNodeIterator xpni=xptn.Select(_AttributeName.Identifier.Symbol, parameters.NamespaceResolver, true);
                 _Result=xpni.MoveNext();
                 if (_Negated)

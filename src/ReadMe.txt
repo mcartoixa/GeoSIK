@@ -35,9 +35,9 @@ LinqToXsd.exe iso\19139\20070417\gmd\gmd.xsd /config:LinqToXsd.config.xml /enabl
   <Namespaces>
     <Namespace Schema="http://www.opengis.net/gml" Clr="GeoSik.Ogc.Gml.V311" />
     <Namespace Schema="http://www.opengis.net/gml/3.2" Clr="GeoSik.Ogc.Gml.V321" />
-    <Namespace Schema="http://www.opengis.net/ows" Clr="GeoSik.Ogc.Ows.V100" />
+    <Namespace Schema="http://www.opengis.net/ows" Clr="GeoSik.Ogc.Ows.V100.Types" />
     <Namespace Schema="http://www.opengis.net/ogc" Clr="GeoSik.Ogc.Filter.V110" />
-    <Namespace Schema="http://www.opengis.net/cat/csw/2.0.2" Clr="GeoSik.Ogc.WebCatalog.Csw.V202" />
+    <Namespace Schema="http://www.opengis.net/cat/csw/2.0.2" Clr="GeoSik.Ogc.WebCatalog.Csw.V202.Types" />
     <Namespace Schema="http://www.isotc211.org/2005/gco" Clr="GeoSik.Iso.Ts19139.Gco" />
     <Namespace Schema="http://www.isotc211.org/2005/gmd" Clr="GeoSik.Iso.Ts19139.Gmd" />
     <Namespace Schema="http://www.isotc211.org/2005/gmx" Clr="GeoSik.Iso.Ts19139.Gmx" />

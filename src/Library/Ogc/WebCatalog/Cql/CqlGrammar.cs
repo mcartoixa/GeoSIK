@@ -28,7 +28,6 @@ using System.Xml;
 using System.Xml.XPath;
 using Irony.Parsing;
 using Irony.Interpreter.Ast;
-using Csw202=GeoSik.Services.Csw.V202;
 
 namespace GeoSik.Ogc.WebCatalog.Cql
 {

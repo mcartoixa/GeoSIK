@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GeoSik.Services {
+namespace GeoSik.Ogc {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace GeoSik.Services {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GeoSik.Services.SR", typeof(SR).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GeoSik.Ogc.SR", typeof(SR).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

@@ -32,7 +32,7 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using GeoSik.Services.Ows;
+using GeoSik.Ogc.Ows;
 
 namespace GeoSik.WebSample.Services
 {
@@ -50,7 +50,7 @@ namespace GeoSik.WebSample.Services
             return CreateMessage(response, OperationContext.Current.IncomingMessageVersion);
         }
 
-        public Message Execute(GeoSik.Services.Ows.IRequest request)
+        public Message Execute(IRequest request)
         {
             IXmlSerializable response=ServiceLocatorInstance.InvokeService(request);
             return CreateMessage(response, OperationContext.Current.IncomingMessageVersion);

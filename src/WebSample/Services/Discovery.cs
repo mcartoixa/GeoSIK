@@ -26,16 +26,19 @@ using System.ServiceModel.Web;
 using System.Xml.Linq;
 using System.Web;
 using Xml.Schema.Linq;
-using GeoSik.Services;
-using Csw202=GeoSik.Ogc.WebCatalog.Csw.V202;
-using Ows100=GeoSik.Ogc.Ows.V100;
+using GeoSik.Ogc;
+using GeoSik.Ogc.Ows;
+using GeoSik.Ogc.Ows.V100;
+using GeoSik.Ogc.WebCatalog.Csw;
+using Ows100=GeoSik.Ogc.Ows.V100.Types;
+using Csw202=GeoSik.Ogc.WebCatalog.Csw.V202.Types;
 
 namespace GeoSik.WebSample.Services
 {
 
     [OwsDescription(Discovery.Service, Discovery.Version)]
     public class Discovery:
-        GeoSik.Services.Csw.V202.Discovery,
+        GeoSik.Ogc.WebCatalog.Csw.V202.Discovery,
         IDisposable
     {
 
@@ -98,10 +101,10 @@ namespace GeoSik.WebSample.Services
                     return ret;
 
                 ret.Add(
-                    new GeoSik.Services.OwsEndPoint() {
+                    new OwsEndPoint() {
                         AddOperationName=false,
                         BaseUri=new Uri(baseUri, "Services/Ows.svc/"),
-                        Method=GeoSik.Services.OwsMethod.Get
+                        Method=OwsMethod.Get
                     }
                 );
                 //e.EndPoints.Add(
@@ -112,10 +115,10 @@ namespace GeoSik.WebSample.Services
                 //    }
                 //);
                 ret.Add(
-                    new GeoSik.Services.OwsEndPoint() {
+                    new OwsEndPoint() {
                         AddOperationName=true,
                         BaseUri=new Uri(baseUri, "Services/Csw.svc/xml/"),
-                        Method=GeoSik.Services.OwsMethod.Xml
+                        Method=OwsMethod.Xml
                     }
                 );
 
@@ -145,7 +148,7 @@ namespace GeoSik.WebSample.Services
             _RecordContext=null;
         }
 
-        protected override GeoSik.Services.Csw.V202.Discovery.GetCapabilitiesProcessorBase CreateGetCapabilitiesProcessor()
+        protected override Discovery.GetCapabilitiesProcessorBase CreateGetCapabilitiesProcessor()
         {
             return new GetCapabilitiesProcessor(this);
         }
