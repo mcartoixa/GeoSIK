@@ -41,7 +41,7 @@ namespace GeoSik.Ogc.Gml.V311
         {
         }
 
-        public override IGeometry Parse(string text, ICoordinateSystem system)
+        public override ISimpleGeometry Parse(string text, ICoordinateSystem system)
         {
             throw new NotImplementedException();
         }

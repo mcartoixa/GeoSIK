@@ -29,11 +29,11 @@ using SqlTypes=Microsoft.SqlServer.Types;
 namespace GeoSik.SqlServer
 {
 
-    partial class SqlGeometryWrapper
+    partial class SqlGeography
     {
 
         internal class Sink:
-            SqlTypes.IGeometrySink
+            SqlTypes.IGeographySink
         {
 
             public Sink(IGeometrySink sink)
@@ -55,34 +55,9 @@ namespace GeoSik.SqlServer
                 _Sink.BeginFigure(longitude, latitude, z);
             }
 
-            public void BeginGeometry(SqlTypes.OpenGisGeometryType type)
+            public void BeginGeography(SqlTypes.OpenGisGeographyType type)
             {
-                switch (type)
-                {
-                case SqlTypes.OpenGisGeometryType.GeometryCollection:
-                    _Sink.BeginGeometry(GeometryType.GeometryCollection);
-                    return;
-                case SqlTypes.OpenGisGeometryType.LineString:
-                    _Sink.BeginGeometry(GeometryType.LineString);
-                    return;
-                case SqlTypes.OpenGisGeometryType.MultiLineString:
-                    _Sink.BeginGeometry(GeometryType.MultiLineString);
-                    return;
-                case SqlTypes.OpenGisGeometryType.MultiPoint:
-                    _Sink.BeginGeometry(GeometryType.MultiPoint);
-                    return;
-                case SqlTypes.OpenGisGeometryType.MultiPolygon:
-                    _Sink.BeginGeometry(GeometryType.MultiPolygon);
-                    return;
-                case SqlTypes.OpenGisGeometryType.Point:
-                    _Sink.BeginGeometry(GeometryType.Point);
-                    return;
-                case SqlTypes.OpenGisGeometryType.Polygon:
-                    _Sink.BeginGeometry(GeometryType.Polygon);
-                    return;
-                }
-
-                throw new NotSupportedException();
+                _Sink.BeginGeometry(GeometryTypeUtils.Convert(type));
             }
 
             public void EndFigure()
@@ -90,7 +65,7 @@ namespace GeoSik.SqlServer
                 _Sink.EndFigure();
             }
 
-            public void EndGeometry()
+            public void EndGeography()
             {
                 _Sink.EndGeometry();
             }

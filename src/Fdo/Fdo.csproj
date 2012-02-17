@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5CFC8782-7087-4F37-AA3B-ED503E3BDAE6}</ProjectGuid>
+    <ProjectGuid>{6CCF671A-CF09-418F-886E-98E7F069321D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GeoSik.SqlServer</RootNamespace>
-    <AssemblyName>GeoSik.SqlServer</AssemblyName>
+    <RootNamespace>GeoSik.Fdo</RootNamespace>
+    <AssemblyName>GeoSik.Fdo</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\src\</SolutionDir>
@@ -34,24 +34,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>..\build\GeoSik.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.SqlServer.Types, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\lib\SqlServer\Microsoft.SqlServer.Types.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.0.7\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.4.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="OSGeo.FDO.Common">
+      <HintPath>..\lib\FDO\OSGeo.FDO.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="OSGeo.FDO.Geometry">
+      <HintPath>..\lib\FDO\OSGeo.FDO.Geometry.dll</HintPath>
     </Reference>
     <Reference Include="ProjNet">
       <HintPath>..\lib\ProjNet\ProjNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -65,15 +67,11 @@
     <Compile Include="..\Version.cs">
       <Link>Properties\Version.cs</Link>
     </Compile>
+    <Compile Include="FdoEnvelope.cs" />
+    <Compile Include="FdoGeometryBuilder.cs" />
+    <Compile Include="FdoGeometry.cs" />
     <Compile Include="GeometryTypeUtils.cs" />
-    <Compile Include="SqlGeography+Sink.cs" />
-    <Compile Include="SqlGeography.cs" />
-    <Compile Include="SqlGeographyBuilderWrapper.cs" />
-    <Compile Include="SqlGeometry+Sink.cs" />
-    <Compile Include="SqlGeometry.cs" />
-    <Compile Include="SqlGeometryBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SqlGeometryBuilderWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Library\Library.csproj">

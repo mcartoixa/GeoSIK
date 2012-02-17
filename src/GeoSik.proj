@@ -26,6 +26,9 @@
     <Projects Include="GeoSik.sln">
       <PartCoverExclude>[GeoSik]GeoSik.DublinCore.*;[GeoSik]GeoSik.Iso.*;[GeoSik]GeoSik.Ogc.Filter.V*;[GeoSik]GeoSik.Ogc.Gml.V*;[GeoSik]GeoSik.Ogc.Ows.V*;[GeoSik]GeoSik.Ogc.WebCatalog.Csw.V*;[GeoSik]GeoSik.W3.*;[GeoSik]GeoSik.Schemas;[GeoSik]GeoSik.SR"</PartCoverExclude>
     </Projects>
+    <Projects Include="GeoSik.Fdo.sln">
+      <PartCoverExclude>[GeoSik]*"</PartCoverExclude>
+    </Projects>
     <Projects Include="GeoSik.SqlServer.sln">
       <PartCoverExclude>[GeoSik]*"</PartCoverExclude>
     </Projects>
@@ -38,8 +41,11 @@
     Name="UpdateNuSpecReferencesVersions"
     AfterTargets="UpdateVersion"
   >
+    <ItemGroup>
+      <NuSpecItems Include="GeoSik.*.nuspec" />
+    </ItemGroup>
     <XmlUpdate
-      XmlFileName="GeoSik.SqlServer.nuspec"
+      XmlFileName="%(NuSpecItems.Identity)"
       XPath="/package/metadata/dependencies/dependency[@id='GeoSik']/@version"
       Value="$(VersionMajor).$(VersionMinor).$(VersionBuild).$(VersionRevision)"
     />
