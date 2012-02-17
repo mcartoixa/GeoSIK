@@ -86,6 +86,11 @@ namespace GeoSik.Fdo
             throw new NotImplementedException();
         }
 
+        public static FGeometry.IGeometry ToNativeFdo(FdoGeometry geometry)
+        {
+            return geometry._Geometry;
+        }
+
         private FGeometry.IGeometry _Geometry;
         private ICoordinateSystem _CoordinateSystem;
     }

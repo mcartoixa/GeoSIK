@@ -7,6 +7,7 @@
     <owners>Isogeo</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Library that make GeoSik interoperable with Sql Server spatial types.</description>
+    <projectUrl>http://geosik.codeplex.com/</projectUrl>
     <copyright>Copyright © 2012 Isogeo</copyright>
     <tags>GeoSik SqlServer</tags>
     <dependencies>

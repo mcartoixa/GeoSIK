@@ -104,6 +104,11 @@ namespace GeoSik.Fdo
             throw new NotImplementedException();
         }
 
+        public static FGeometry.IEnvelope ToNativeFdo(FdoEnvelope envelope)
+        {
+            return envelope._Envelope;
+        }
+
         protected virtual void Dispose(bool disposing)
         {
             if (disposing)
