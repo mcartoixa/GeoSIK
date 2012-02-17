@@ -55,6 +55,7 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.0.7\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ProjNet">
       <HintPath>..\lib\ProjNet\ProjNet.dll</HintPath>

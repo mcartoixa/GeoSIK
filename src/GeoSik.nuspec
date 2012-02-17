@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<package >
+<package>
   <metadata>
-    <id>OgcToolkit</id>
+    <id>GeoSik</id>
     <version>1.0</version>
     <authors>Isogeo</authors>
     <owners>Isogeo</owners>
@@ -15,11 +15,11 @@
       <dependency id="Newtonsoft.Json" version="4.0.7" />
     </dependencies>
     <references>
-      <reference file="Irony.dll" />
-      <reference file="Irony.Interpreter.dll" />
       <reference file="GeoSik.dll" />
       <reference file="GeoSik.Services.dll" />
-      <reference file="GeoSik.SqlServer.dll" />
+      <reference file="Irony.dll" />
+      <reference file="Irony.Interpreter.dll" />
+      <reference file="ProjNet.dll" />
     </references>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations" />
