@@ -29,6 +29,9 @@
     <Projects Include="GeoSik.Fdo.sln">
       <PartCoverExclude>[GeoSik]*"</PartCoverExclude>
     </Projects>
+    <Projects Include="GeoSik.SharpMap.sln">
+      <PartCoverExclude>[GeoSik]*"</PartCoverExclude>
+    </Projects>
     <Projects Include="GeoSik.SqlServer.sln">
       <PartCoverExclude>[GeoSik]*"</PartCoverExclude>
     </Projects>

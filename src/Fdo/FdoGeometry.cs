@@ -71,11 +71,6 @@ namespace GeoSik.Fdo
             throw new NotImplementedException();
         }
 
-        XmlSchema IXmlSerializable.GetSchema()
-        {
-            return null;
-        }
-
         public void ReadXml(XmlReader reader)
         {
             throw new NotImplementedException();
@@ -84,6 +79,11 @@ namespace GeoSik.Fdo
         public void WriteXml(XmlWriter writer)
         {
             throw new NotImplementedException();
+        }
+
+        XmlSchema IXmlSerializable.GetSchema()
+        {
+            return null;
         }
 
         public static FGeometry.IGeometry ToNativeFdo(FdoGeometry geometry)

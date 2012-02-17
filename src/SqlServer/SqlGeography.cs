@@ -123,16 +123,6 @@ namespace GeoSik.SqlServer
             throw new NotImplementedException();
         }
 
-        public double Length()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int NumPoints()
-        {
-            throw new NotImplementedException();
-        }
-
         public IGeometry Centroid()
         {
             // Transform into SqlGeometry, calculate, then back to SqlGeography
@@ -161,16 +151,6 @@ namespace GeoSik.SqlServer
             return sggbw.ConstructedGeometry;
         }
 
-        public double GetLength()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IGeometry GetPoint(int index)
-        {
-            return new SqlGeography(_Geography.STPointN(index), CoordinateSystem);
-        }
-
         public void Populate(IGeometrySink sink)
         {
             var sgs=sink as SqlTypes.IGeographySink;
@@ -190,30 +170,9 @@ namespace GeoSik.SqlServer
             xw.WriteRaw(_Geography.AsGml().Value);
         }
 
-        private IEnumerator<IGeometry> GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-
-        private IEnumerable<IGeometry> GetPoints()
-        {
-            for (int i=0; i<_Geography.STNumPoints().Value; ++i)
-                yield return new SqlGeography(_Geography.STPointN(i));
-        }
-
         System.Xml.Schema.XmlSchema IXmlSerializable.GetSchema()
         {
             return null;
-        }
-
-        IEnumerator<IGeometry> IEnumerable<IGeometry>.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
         }
 
         private static SqlGeography FromGeometry(IGeometry geometry)
@@ -232,27 +191,6 @@ namespace GeoSik.SqlServer
         public static implicit operator SqlTypes.SqlGeography(SqlGeography wrapper)
         {
             return wrapper._Geography;
-        }
-
-        public double X
-        {
-            get { return _Geography.Long.Value; }
-        }
-
-        public double Y
-        {
-            get { return _Geography.Lat.Value; }
-        }
-
-        public double? Z
-        {
-            get
-            {
-                double? ret=null;
-                if (!_Geography.Z.IsNull)
-                    ret=_Geography.Z.Value;
-                return ret;
-            }
         }
 
         public ICoordinateSystem CoordinateSystem
