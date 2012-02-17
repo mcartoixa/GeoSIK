@@ -173,6 +173,7 @@ namespace GeoSik.SqlServer
         {
             return wrapper._Geometry;
         }
+
         public ICoordinateSystem CoordinateSystem
         {
             get

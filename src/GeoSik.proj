@@ -27,13 +27,13 @@
       <PartCoverExclude>[GeoSik]GeoSik.DublinCore.*;[GeoSik]GeoSik.Iso.*;[GeoSik]GeoSik.Ogc.Filter.V*;[GeoSik]GeoSik.Ogc.Gml.V*;[GeoSik]GeoSik.Ogc.Ows.V*;[GeoSik]GeoSik.Ogc.WebCatalog.Csw.V*;[GeoSik]GeoSik.W3.*;[GeoSik]GeoSik.Schemas;[GeoSik]GeoSik.SR"</PartCoverExclude>
     </Projects>
     <Projects Include="GeoSik.Fdo.sln">
-      <PartCoverExclude>[GeoSik]*"</PartCoverExclude>
+      <PartCoverExclude>[GeoSik]*;[GeoSik.Fdo]GeoSik.Fdo.SR"</PartCoverExclude>
     </Projects>
     <Projects Include="GeoSik.SharpMap.sln">
-      <PartCoverExclude>[GeoSik]*"</PartCoverExclude>
+      <PartCoverExclude>[GeoSik]*;[GeoSik.SharpMap]GeoSik.SharpMap.SR"</PartCoverExclude>
     </Projects>
     <Projects Include="GeoSik.SqlServer.sln">
-      <PartCoverExclude>[GeoSik]*"</PartCoverExclude>
+      <PartCoverExclude>[GeoSik]*;[GeoSik.SqlServer]GeoSik.SqlServer.SR"</PartCoverExclude>
     </Projects>
   </ItemGroup>
 

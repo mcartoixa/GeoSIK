@@ -86,7 +86,7 @@ namespace GeoSik.Fdo
             return null;
         }
 
-        public static FGeometry.IGeometry ToNativeFdo(FdoGeometry geometry)
+        public static FGeometry.IGeometry ToNativeGeometry(FdoGeometry geometry)
         {
             return geometry._Geometry;
         }
