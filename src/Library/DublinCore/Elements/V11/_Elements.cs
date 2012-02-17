@@ -31,7 +31,7 @@ namespace GeoSik.DublinCore.Elements.V11
     using System.Xml.Serialization;
     using System.Xml.Linq;
     using Xml.Schema.Linq;
-    using GeoSik.Ogc.Ows.V100;
+    using GeoSik.Ogc.Ows.V100.Types;
 
 
     /// <summary>

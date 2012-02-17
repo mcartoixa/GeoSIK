@@ -29,7 +29,7 @@ using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
 using System.Text;
 
-namespace GeoSik.Services.Ows.V100
+namespace GeoSik.Ogc.Ows.V100
 {
 
     public class PoxFaultBehavior:

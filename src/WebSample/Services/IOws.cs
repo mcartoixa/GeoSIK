@@ -27,7 +27,8 @@ using System.ServiceModel.Channels;
 using System.ServiceModel.Web;
 using System.Text;
 using System.Xml.Serialization;
-using Ows100=GeoSik.Ogc.Ows.V100;
+using GeoSik.Ogc.Ows;
+using Ows100=GeoSik.Ogc.Ows.V100.Types;
 
 namespace GeoSik.WebSample.Services
 {
@@ -42,13 +43,13 @@ namespace GeoSik.WebSample.Services
     }
 
     [ServiceContract]
-    [ServiceKnownType("GetRequestTypes", typeof(GeoSik.Services.Ows.ServiceLocator))]
+    [ServiceKnownType("GetRequestTypes", typeof(ServiceLocator))]
     public interface IOwsPostMethod
     {
 
         [OperationContract]
         [FaultContract(typeof(Ows100.ExceptionReport), Name="TestExceptionName")]
         [WebInvoke(Method="POST", UriTemplate="", BodyStyle=WebMessageBodyStyle.Bare, RequestFormat=WebMessageFormat.Xml, ResponseFormat=WebMessageFormat.Xml)]
-        Message Execute(GeoSik.Services.Ows.IRequest request);
+        Message Execute(IRequest request);
     }
 }

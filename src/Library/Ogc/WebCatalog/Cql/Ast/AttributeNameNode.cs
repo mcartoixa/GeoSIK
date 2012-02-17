@@ -29,7 +29,6 @@ using System.Xml.XPath;
 using Irony.Interpreter;
 using Irony.Interpreter.Ast;
 using Irony.Parsing;
-using Csw202=GeoSik.Services.Csw.V202;
 
 namespace GeoSik.Ogc.WebCatalog.Cql.Ast
 {
@@ -72,14 +71,14 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
             return ret;
         }
 
-        private Csw202.XPathQueryableNavigator GetNavigator(ExpressionBuilderParameters parameters)
+        private Csw.V202.XPathQueryableNavigator GetNavigator(ExpressionBuilderParameters parameters)
         {
             if (_Navigator==null)
             {
-                Csw202.XPathQueryableNavigator xptn=new Csw202.XPathQueryableNavigator(parameters.ElementType);
+                Csw.V202.XPathQueryableNavigator xptn=new Csw.V202.XPathQueryableNavigator(parameters.ElementType);
                 XPathNodeIterator xpni=xptn.Select(_Identifier.Symbol, parameters.NamespaceResolver, true);
                 while (xpni.MoveNext())
-                    _Navigator=xpni.Current as Csw202.XPathQueryableNavigator;
+                    _Navigator=xpni.Current as Csw.V202.XPathQueryableNavigator;
 
                 Debug.Assert(_Navigator!=null);
                 if (_Navigator==null)
@@ -104,7 +103,7 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
         }
 
         private IdentifierNode _Identifier;
-        private Csw202.XPathQueryableNavigator _Navigator;
+        private Csw.V202.XPathQueryableNavigator _Navigator;
     }
 #pragma warning restore 3001, 3003, 3009
 }

@@ -27,8 +27,8 @@ using System.Reflection;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using Csw202=GeoSik.Ogc.WebCatalog.Csw.V202;
-using Csw202Service=GeoSik.Services.Csw.V202;
+using GeoSik.Ogc.WebCatalog.Csw.V202;
+using Csw202=GeoSik.Ogc.WebCatalog.Csw.V202.Types;
 using SqlTypes=Microsoft.SqlServer.Types;
 
 namespace GeoSik.WebSample.Models.CodeFirst
@@ -60,12 +60,12 @@ namespace GeoSik.WebSample.Models.CodeFirst
     [Table("Records", Schema="Ogc.Csw")]
     [XmlRoot("Record", Namespace=Namespaces.OgcWebCatalogCswV202, IsNullable=false)]
     public class CFRecord:
-        Csw202Service.IRecord
+        IRecord
     {
 
-        Csw202Service.IRecordConverter Csw202Service.IRecord.GetConverter(XmlNamespaceManager namespaceManager)
+        IRecordConverter IRecord.GetConverter(XmlNamespaceManager namespaceManager)
         {
-            return new Csw202Service.RecordConverter(namespaceManager);
+            return new RecordConverter(namespaceManager);
         }
 
         [Key]

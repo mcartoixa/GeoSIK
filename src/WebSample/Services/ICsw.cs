@@ -30,7 +30,7 @@ namespace GeoSik.WebSample.Services
 
     [ServiceContract]
     public interface ICsw:
-        GeoSik.Services.Csw.V202.IDiscovery
+        GeoSik.Ogc.WebCatalog.Csw.V202.IDiscovery
     {
     }
 }

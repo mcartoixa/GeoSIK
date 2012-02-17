@@ -29,9 +29,8 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using Ows100=GeoSik.Ogc.Ows.V100;
 
-namespace GeoSik.Services.Ows
+namespace GeoSik.Ogc.Ows
 {
 
     /// <summary>Handles OWS exceptions according to [OGC 06-121r9, §8].</summary>
@@ -76,7 +75,7 @@ namespace GeoSik.Services.Ows
                         status=HttpStatusCode.NotImplemented;
                         break;
                     }
-                    fex=new WebFaultException<Ows100.ExceptionReport>((Ows100.ExceptionReport)oex, status);
+                    fex=new WebFaultException<V100.Types.ExceptionReport>((V100.Types.ExceptionReport)oex, status);
                 } else
                 {
                     FaultCode fc=FaultCode.CreateReceiverFaultCode("InternalServerError", "http://schemas.microsoft.com/2009/WebFault");

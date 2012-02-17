@@ -28,9 +28,8 @@ using System.Text;
 using System.Xml.Serialization;
 using Common.Logging;
 using Xml.Schema.Linq;
-using Ows=GeoSik.Ogc.Ows;
 
-namespace GeoSik.Services
+namespace GeoSik.Ogc
 {
 
     public abstract class OgcRequestProcessor<TRequest, TResponse>

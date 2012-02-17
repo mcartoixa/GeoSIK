@@ -28,7 +28,7 @@ using System.Reflection;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace GeoSik.Services.Ows
+namespace GeoSik.Ogc.Ows
 {
 
     /// <summary>This type can be used to invoke OWS services dynamically.</summary>

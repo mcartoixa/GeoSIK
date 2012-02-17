@@ -30,9 +30,9 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using Ows100=GeoSik.Ogc.Ows.V100; //TODO: should be v2.0.0
+using Ows100=GeoSik.Ogc.Ows.V100.Types; //TODO: should be v2.0.0
 
-namespace GeoSik.Services.Ows.V200
+namespace GeoSik.Ogc.Ows.V200
 {
 
     public class PoxErrorHandler:

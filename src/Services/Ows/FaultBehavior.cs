@@ -29,7 +29,7 @@ using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
 using System.Text;
 
-namespace GeoSik.Services.Ows
+namespace GeoSik.Ogc.Ows
 {
 
     public class FaultBehavior:

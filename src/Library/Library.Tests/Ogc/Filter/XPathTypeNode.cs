@@ -24,7 +24,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using Csw202=GeoSik.Services.Csw.V202;
+using Csw202=GeoSik.Ogc.WebCatalog.Csw.V202.Types;
 using Xunit;
 using Xunit.Extensions;
 

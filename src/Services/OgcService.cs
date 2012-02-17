@@ -30,7 +30,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using Common.Logging;
 
-namespace GeoSik.Services
+namespace GeoSik.Ogc
 {
 
     public abstract class OgcService
@@ -49,10 +49,10 @@ namespace GeoSik.Services
                 throw new ArgumentNullException("request");
 
             if (request.Service!=ServiceName)
-                throw new OwsException(OwsExceptionCode.NoApplicableCode);
+                throw new Ows.OwsException(Ows.OwsExceptionCode.NoApplicableCode);
 
             if (request.Version!=ServiceVersion)
-                throw new OwsException(OwsExceptionCode.VersionNegotiationFailed);
+                throw new Ows.OwsException(Ows.OwsExceptionCode.VersionNegotiationFailed);
         }
 
         internal protected string ToTraceString(IXmlSerializable xml)

@@ -28,7 +28,7 @@ using System.Linq;
 using System.Web;
 using System.Xml;
 using System.Xml.Serialization;
-using Csw202Service=GeoSik.Services.Csw.V202;
+using GeoSik.Ogc.WebCatalog.Csw.V202;
 using SqlTypes=Microsoft.SqlServer.Types;
 
 namespace GeoSik.WebSample.Models.ModelFirst
@@ -37,17 +37,17 @@ namespace GeoSik.WebSample.Models.ModelFirst
     [MetadataType(typeof(MFRecordMetaData))]
     [XmlRoot("Record", Namespace=Namespaces.OgcWebCatalogCswV202, IsNullable=false)]
     partial class MFRecord:
-        Csw202Service.IRecord
+        IRecord
     {
 
-        Csw202Service.IRecordConverter Csw202Service.IRecord.GetConverter(XmlNamespaceManager namespaceManager)
+        IRecordConverter IRecord.GetConverter(XmlNamespaceManager namespaceManager)
         {
-            return new Csw202Service.RecordConverter(namespaceManager);
+            return new RecordConverter(namespaceManager);
         }
 
         [NotMapped]
         [XmlElement("BoundingBox", Namespace=Namespaces.OgcOws, Order=8, IsNullable=false)]
-        [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.BoundingBox)]
+        [CoreQueryable(CoreQueryableNames.BoundingBox)]
         public IGeometry BoundingBox
         {
             get
@@ -90,31 +90,31 @@ namespace GeoSik.WebSample.Models.ModelFirst
     {
 
         [XmlElement("identifier", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=0, IsNullable=false)]
-        [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Identifier)]
+        [CoreQueryable(CoreQueryableNames.Identifier)]
         public string Identifier { get; set; }
 
         [XmlElement("title", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=1, IsNullable=false)]
-        [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Title)]
+        [CoreQueryable(CoreQueryableNames.Title)]
         public string Title { get; set; }
 
         [XmlElement("subject", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=2, IsNullable=false)]
-        [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Subject)]
+        [CoreQueryable(CoreQueryableNames.Subject)]
         public MFRecordSubject Subject { get; set; }
 
         [XmlElement("abstract", Namespace=Namespaces.DublinCoreTerms, DataType="string", Order=3, IsNullable=false)]
-        [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Abstract)]
+        [CoreQueryable(CoreQueryableNames.Abstract)]
         public string Description { get; set; }
 
         [XmlElement("date", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=4)]
-        [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Modified)]
+        [CoreQueryable(CoreQueryableNames.Modified)]
         public string Date { get; set; }
 
         [XmlElement("type", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=5, IsNullable=false)]
-        [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Type)]
+        [CoreQueryable(CoreQueryableNames.Type)]
         public string Type { get; set; }
 
         [XmlElement("format", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=6, IsNullable=false)]
-        [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Format)]
+        [CoreQueryable(CoreQueryableNames.Format)]
         public string Format { get; set; }
 
         [XmlElement("spatial", Namespace=Namespaces.DublinCoreTerms, DataType="string", Order=7, IsNullable=false)]
@@ -125,11 +125,11 @@ namespace GeoSik.WebSample.Models.ModelFirst
         public byte[] Coverage { get; set; }
 
         [XmlElement("relation", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=9, IsNullable=false)]
-        [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.Association)]
+        [CoreQueryable(CoreQueryableNames.Association)]
         public string Relation { get; set; }
 
         [XmlElement("AnyText", Namespace=Namespaces.OgcWebCatalogCswV202, DataType="string", Order=10, IsNullable=false)]
-        [Csw202Service.CoreQueryable(Csw202Service.CoreQueryableNames.AnyText)]
+        [CoreQueryable(CoreQueryableNames.AnyText)]
         public string AnyText { get; set; }
 
         [XmlIgnore]

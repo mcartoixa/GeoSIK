@@ -8,7 +8,7 @@
     <ProjectGuid>{34AECC13-2214-4FB6-B4E5-016FEE0120A5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GeoSik.Services</RootNamespace>
+    <RootNamespace>GeoSik.Ogc</RootNamespace>
     <AssemblyName>GeoSik.Services</AssemblyName>
     <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
@@ -73,11 +73,6 @@
     <Compile Include="..\Version.cs">
       <Link>Properties\Version.cs</Link>
     </Compile>
-    <Compile Include="Csw\V202\Discovery+GetRecordById.cs" />
-    <Compile Include="Csw\V202\Discovery+DescribeRecord.cs" />
-    <Compile Include="Csw\V202\Discovery+GetCapabilities.cs" />
-    <Compile Include="Csw\V202\Discovery+GetRecords.cs" />
-    <Compile Include="Csw\V202\Discovery.cs" />
     <Compile Include="OgcRequestProcessor.cs" />
     <Compile Include="OgcService.cs" />
     <Compile Include="OwsDescriptionAttribute.cs" />
@@ -95,6 +90,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SR.resx</DependentUpon>
     </Compile>
+    <Compile Include="WebCatalog\Csw\V202\Discovery+DescribeRecord.cs" />
+    <Compile Include="WebCatalog\Csw\V202\Discovery+GetCapabilities.cs" />
+    <Compile Include="WebCatalog\Csw\V202\Discovery+GetRecordById.cs" />
+    <Compile Include="WebCatalog\Csw\V202\Discovery+GetRecords.cs" />
+    <Compile Include="WebCatalog\Csw\V202\Discovery.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\build\GeoSik.snk">

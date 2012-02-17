@@ -9,7 +9,7 @@
     <ProjectGuid>{EEC124DB-4DFB-4497-A6DA-3A7DF790BA31}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GeoSik.Services.Tests</RootNamespace>
+    <RootNamespace>GeoSik.Ogc.Tests</RootNamespace>
     <AssemblyName>GeoSik.Services.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -88,10 +88,10 @@
     <Compile Include="..\..\Version.cs">
       <Link>Properties\Version.cs</Link>
     </Compile>
-    <Compile Include="Csw\V202\Discovery+DescribeRecord.cs" />
-    <Compile Include="Csw\V202\Discovery+GetRecords.cs" />
-    <Compile Include="Csw\V202\Discovery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebCatalog\Csw\V202\Discovery+DescribeRecord.cs" />
+    <Compile Include="WebCatalog\Csw\V202\Discovery+GetRecords.cs" />
+    <Compile Include="WebCatalog\Csw\V202\Discovery.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Library\Library.csproj">

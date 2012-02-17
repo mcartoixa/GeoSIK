@@ -31,7 +31,7 @@ namespace GeoSik.Ogc.Filter.V110
     using System.Xml.Serialization;
     using System.Xml.Linq;
     using Xml.Schema.Linq;
-    using GeoSik.Ogc.Ows.V100;
+    using GeoSik.Ogc.Ows.V100.Types;
 
 
     /// <summary>
