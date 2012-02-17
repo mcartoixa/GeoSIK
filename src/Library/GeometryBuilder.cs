@@ -53,7 +53,7 @@ namespace GeoSik
         {
         }
 
-        public abstract IGeometry Parse(string text, ICoordinateSystem system);
+        public abstract ISimpleGeometry Parse(string text, ICoordinateSystem system);
 
         public abstract ISimpleGeometry ConstructedGeometry
         {

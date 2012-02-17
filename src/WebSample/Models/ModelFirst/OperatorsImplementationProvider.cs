@@ -386,12 +386,12 @@ namespace GeoSik.WebSample.Models.ModelFirst
 
             byte[] ret=null;
 
-            var sgw=geometry as SqlServer.SqlGeographyWrapper;
+            var sgw=geometry as SqlServer.SqlGeography;
             if ((sgw==null) || !sgw.CoordinateSystem.EqualParams(GeographicCoordinateSystem.WGS84))
             {
                 var b=new SqlServer.SqlGeometryBuilder(GeographicCoordinateSystem.WGS84);
                 geometry.Populate(b);
-                sgw=(SqlServer.SqlGeographyWrapper)b.ConstructedGeometry;
+                sgw=(SqlServer.SqlGeography)b.ConstructedGeometry;
             }
 
             using (var ms=new MemoryStream())
@@ -409,7 +409,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
             if (binary==null)
                 return null;
 
-            var ret=new SqlServer.SqlGeographyWrapper();
+            var ret=new SqlServer.SqlGeography();
             using (var ms=new MemoryStream(binary))
                 using (var br=new BinaryReader(ms))
                     ((SqlTypes.SqlGeography)ret).Read(br);

@@ -82,7 +82,7 @@ namespace GeoSik.SqlServer
             _Builder.EndGeometry();
         }
 
-        public override IGeometry Parse(string text, ICoordinateSystem system)
+        public override ISimpleGeometry Parse(string text, ICoordinateSystem system)
         {
             return _Builder.Parse(text, system);
         }
@@ -99,32 +99,7 @@ namespace GeoSik.SqlServer
 
         void SqlTypes.IGeographySink.BeginGeography(SqlTypes.OpenGisGeographyType type)
         {
-            switch (type)
-            {
-            case SqlTypes.OpenGisGeographyType.GeometryCollection:
-                BeginGeometry(GeometryType.GeometryCollection);
-                return;
-            case SqlTypes.OpenGisGeographyType.LineString:
-                BeginGeometry(GeometryType.LineString);
-                return;
-            case SqlTypes.OpenGisGeographyType.MultiLineString:
-                BeginGeometry(GeometryType.MultiLineString);
-                return;
-            case SqlTypes.OpenGisGeographyType.MultiPoint:
-                BeginGeometry(GeometryType.MultiPoint);
-                return;
-            case SqlTypes.OpenGisGeographyType.MultiPolygon:
-                BeginGeometry(GeometryType.MultiPolygon);
-                return;
-            case SqlTypes.OpenGisGeographyType.Point:
-                BeginGeometry(GeometryType.Point);
-                return;
-            case SqlTypes.OpenGisGeographyType.Polygon:
-                BeginGeometry(GeometryType.Polygon);
-                return;
-            }
-
-            throw new NotSupportedException();
+            BeginGeometry(GeometryTypeUtils.Convert(type));
         }
 
         void SqlTypes.IGeographySink.EndFigure()
@@ -154,32 +129,7 @@ namespace GeoSik.SqlServer
 
         void SqlTypes.IGeometrySink.BeginGeometry(SqlTypes.OpenGisGeometryType type)
         {
-            switch (type)
-            {
-            case SqlTypes.OpenGisGeometryType.GeometryCollection:
-                BeginGeometry(GeometryType.GeometryCollection);
-                return;
-            case SqlTypes.OpenGisGeometryType.LineString:
-                BeginGeometry(GeometryType.LineString);
-                return;
-            case SqlTypes.OpenGisGeometryType.MultiLineString:
-                BeginGeometry(GeometryType.MultiLineString);
-                return;
-            case SqlTypes.OpenGisGeometryType.MultiPoint:
-                BeginGeometry(GeometryType.MultiPoint);
-                return;
-            case SqlTypes.OpenGisGeometryType.MultiPolygon:
-                BeginGeometry(GeometryType.MultiPolygon);
-                return;
-            case SqlTypes.OpenGisGeometryType.Point:
-                BeginGeometry(GeometryType.Point);
-                return;
-            case SqlTypes.OpenGisGeometryType.Polygon:
-                BeginGeometry(GeometryType.Polygon);
-                return;
-            }
-
-            throw new NotSupportedException();
+            BeginGeometry(GeometryTypeUtils.Convert(type));
         }
 
         void SqlTypes.IGeometrySink.EndFigure()

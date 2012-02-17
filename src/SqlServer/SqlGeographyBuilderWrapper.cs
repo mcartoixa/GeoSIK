@@ -47,32 +47,7 @@ namespace GeoSik.SqlServer
 
         public void BeginGeometry(GeometryType type)
         {
-            switch (type)
-            {
-            case GeometryType.GeometryCollection:
-                _Builder.BeginGeometry(SqlTypes.OpenGisGeometryType.GeometryCollection);
-                break;
-            case GeometryType.LineString:
-                _Builder.BeginGeometry(SqlTypes.OpenGisGeometryType.LineString);
-                break;
-            case GeometryType.MultiLineString:
-                _Builder.BeginGeometry(SqlTypes.OpenGisGeometryType.MultiLineString);
-                break;
-            case GeometryType.MultiPoint:
-                _Builder.BeginGeometry(SqlTypes.OpenGisGeometryType.MultiPoint);
-                break;
-            case GeometryType.MultiPolygon:
-                _Builder.BeginGeometry(SqlTypes.OpenGisGeometryType.MultiPolygon);
-                break;
-            case GeometryType.Point:
-                _Builder.BeginGeometry(SqlTypes.OpenGisGeometryType.Point);
-                break;
-            case GeometryType.Polygon:
-                _Builder.BeginGeometry(SqlTypes.OpenGisGeometryType.Polygon);
-                break;
-            default:
-                throw new NotSupportedException();
-            }
+            _Builder.BeginGeometry(GeometryTypeUtils.ConvertToGeometry(type));
         }
 
         public void BeginFigure(double x, double y, double? z)
@@ -95,17 +70,17 @@ namespace GeoSik.SqlServer
             _Builder.EndGeometry();
         }
 
-        public SqlGeographyWrapper Parse(string text, ICoordinateSystem system)
+        public SqlGeography Parse(string text, ICoordinateSystem system)
         {
-            return new SqlGeographyWrapper(SqlTypes.SqlGeography.STGeomFromText((SqlChars)((SqlString)text), (int)system.AuthorityCode), system);
+            return new SqlGeography(SqlTypes.SqlGeography.STGeomFromText((SqlChars)((SqlString)text), (int)system.AuthorityCode), system);
         }
 
-        IGeometry IGeometryBuilder.Parse(string text, ICoordinateSystem system)
+        ISimpleGeometry IGeometryBuilder.Parse(string text, ICoordinateSystem system)
         {
             return Parse(text, system);
         }
 
-        public SqlGeographyWrapper ConstructedGeometry
+        public SqlGeography ConstructedGeometry
         {
             get
             {

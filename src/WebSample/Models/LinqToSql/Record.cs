@@ -58,7 +58,7 @@ namespace GeoSik.WebSample.Models.LinqToSql
                         {
                             var g=new SqlTypes.SqlGeography();
                             g.Read(br);
-                            return new SqlServer.SqlGeographyWrapper(g);
+                            return new SqlServer.SqlGeography(g);
                         }
                 }
 
@@ -71,7 +71,7 @@ namespace GeoSik.WebSample.Models.LinqToSql
                     using (var ms=new MemoryStream())
                         using (var bw=new BinaryWriter(ms))
                         {
-                            ((SqlTypes.SqlGeography)((SqlServer.SqlGeographyWrapper)value)).Write(bw);
+                            ((SqlTypes.SqlGeography)((SqlServer.SqlGeography)value)).Write(bw);
                             Coverage=ms.ToArray();
                         }
                 } else

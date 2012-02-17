@@ -138,12 +138,12 @@ namespace GeoSik.WebSample.Models.LinqToSql
 
             Binary ret=null;
 
-            var sgw=geometry as SqlServer.SqlGeographyWrapper;
+            var sgw=geometry as SqlServer.SqlGeography;
             if ((sgw==null) || !sgw.CoordinateSystem.EqualParams(GeographicCoordinateSystem.WGS84))
             {
                 var b=new SqlServer.SqlGeometryBuilder(GeographicCoordinateSystem.WGS84);
                 geometry.Populate(b);
-                sgw=(SqlServer.SqlGeographyWrapper)b.ConstructedGeometry;
+                sgw=(SqlServer.SqlGeography)b.ConstructedGeometry;
             }
 
             using (var ms=new MemoryStream())

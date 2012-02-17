@@ -33,10 +33,10 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
 
 #pragma warning disable 3001, 3009
     public class GeometryLiteralNode:
-        LiteralNode<IGeometry>
+        LiteralNode<ISimpleGeometry>
     {
 
-        protected override IGeometry InitValue(ParsingContext context, ParseTreeNode treeNode)
+        protected override ISimpleGeometry InitValue(ParsingContext context, ParseTreeNode treeNode)
         {
             return _Builder.Parse(treeNode.Token.Text, GeographicCoordinateSystem.WGS84);
         }
