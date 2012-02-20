@@ -63,6 +63,17 @@ namespace GeoSik.Fdo
             _CoordinateSystem=coordinateSystem;
         }
 
+        ~FdoGeometry()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
         /// <summary>Gets the envelope of the current geometry.</summary>
         /// <returns>The envelope of the current geometry.</returns>
         /// <remarks>
@@ -71,14 +82,6 @@ namespace GeoSik.Fdo
         public FdoEnvelope Envelope()
         {
             return new FdoEnvelope(_Geometry.Envelope, CoordinateSystem);
-        }
-
-        public ICoordinateSystem CoordinateSystem
-        {
-            get
-            {
-                return _CoordinateSystem;
-            }
         }
 
         public void Populate(IGeometrySink sink)
@@ -131,6 +134,17 @@ namespace GeoSik.Fdo
             throw new NotImplementedException();
         }
 
+        private void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (_Geometry!=null)
+                    _Geometry.Dispose();
+            }
+
+            _Geometry=null;
+        }
+
         ISimpleGeometry ISimpleGeometry.Envelope()
         {
             return Envelope();
@@ -169,6 +183,14 @@ namespace GeoSik.Fdo
                 }
 
             sink.EndFigure();
+        }
+
+        public ICoordinateSystem CoordinateSystem
+        {
+            get
+            {
+                return _CoordinateSystem;
+            }
         }
 
         private FGeometry.IGeometry _Geometry;
