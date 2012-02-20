@@ -27,19 +27,29 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 using ProjNet.CoordinateSystems;
+using FCommon=OSGeo.FDO.Common;
 using FGeometry=OSGeo.FDO.Geometry;
 
 namespace GeoSik.Fdo
 {
 
     public class FdoGeometry:
-        ISimpleGeometry
+        ISimpleGeometry,
+        IDisposable
     {
 
         private FdoGeometry()
         {
         }
 
+        /// <summary>Creates a new instance of the <see cref="FdoGeometry" /> class that encapsulates
+        /// a copy of the specified FDO geometry, in the specified coordinate system.</summary>
+        /// <param name="geometry">The FDO geometry for which a copy will be encapsulated.</param>
+        /// <param name="coordinateSystem">The coordinate system of the encapsulated FDO geometry.</param>
+        /// <remarks>
+        ///   <para>This instance encapsulates a copy of the specified <paramref name="geometry" />. It is thus
+        /// the responsibility of the caller to <see cref="IDisposable.Dispose()" /> the specified <paramref name="geometry" />.</para>
+        /// </remarks>
         public FdoGeometry(FGeometry.IGeometry geometry, ICoordinateSystem coordinateSystem)
         {
             Debug.Assert(geometry!=null);
@@ -49,11 +59,16 @@ namespace GeoSik.Fdo
             if (coordinateSystem==null)
                 throw new ArgumentNullException("coordinateSystem");
 
-            _Geometry=geometry;
+            _Geometry=FdoGeometryBuilder.Factory.CreateGeometry(geometry);
             _CoordinateSystem=coordinateSystem;
         }
 
-        public ISimpleGeometry Envelope()
+        /// <summary>Gets the envelope of the current geometry.</summary>
+        /// <returns>The envelope of the current geometry.</returns>
+        /// <remarks>
+        ///   <para>It is the responsibility of the caller to <see cref="IDisposable.Dispose()" /> the returned envelope.</para>
+        /// </remarks>
+        public FdoEnvelope Envelope()
         {
             return new FdoEnvelope(_Geometry.Envelope, CoordinateSystem);
         }
@@ -68,7 +83,42 @@ namespace GeoSik.Fdo
 
         public void Populate(IGeometrySink sink)
         {
-            throw new NotImplementedException();
+            sink.SetCoordinateSystem(CoordinateSystem);
+            sink.BeginGeometry(GeometryTypeUtils.Convert(_Geometry.DerivedType));
+
+            switch (_Geometry.DerivedType)
+            {
+            case FCommon.GeometryType.GeometryType_LineString:
+                using (FGeometry.DirectPositionCollection positions=((FGeometry.ILineString)_Geometry).Positions)
+                    CreateFigure(sink, positions);
+                break;
+            case FCommon.GeometryType.GeometryType_Point:
+                using (FGeometry.DirectPositionCollection positions=new FGeometry.DirectPositionCollection())
+                    using (FGeometry.IDirectPosition p=((FGeometry.IPoint)_Geometry).Position)
+                    {
+                        positions.Add(p);
+                        CreateFigure(sink, positions);
+                    }
+                break;
+            case FCommon.GeometryType.GeometryType_Polygon:
+                {
+                    var polygon=(FGeometry.IPolygon)_Geometry;
+                    using (FGeometry.ILinearRing exterior=polygon.ExteriorRing)
+                        using (FGeometry.DirectPositionCollection positions=exterior.Positions)
+                            CreateFigure(sink, positions);
+
+                    for (int i=0; i<polygon.InteriorRingCount; ++i)
+                        using (FGeometry.ILinearRing interior=polygon.GetInteriorRing(i))
+                            using (FGeometry.DirectPositionCollection positions=interior.Positions)
+                                CreateFigure(sink, positions);
+                }
+                break;
+            default:
+                //TODO: implement other geometry types...
+                throw new NotSupportedException();
+            }
+
+            sink.EndGeometry();
         }
 
         public void ReadXml(XmlReader reader)
@@ -81,6 +131,11 @@ namespace GeoSik.Fdo
             throw new NotImplementedException();
         }
 
+        ISimpleGeometry ISimpleGeometry.Envelope()
+        {
+            return Envelope();
+        }
+
         XmlSchema IXmlSerializable.GetSchema()
         {
             return null;
@@ -89,6 +144,31 @@ namespace GeoSik.Fdo
         public static FGeometry.IGeometry ToNativeGeometry(FdoGeometry geometry)
         {
             return geometry._Geometry;
+        }
+
+        private static void CreateFigure(IGeometrySink sink, FGeometry.DirectPositionCollection positions)
+        {
+            if ((positions==null) || (positions.Count==0))
+                return;
+
+            using (FGeometry.IDirectPosition p0=positions[0])
+            {
+                if (p0.Dimensionality>2)
+                    sink.BeginFigure(p0.X, p0.Y, p0.Z);
+                else
+                    sink.BeginFigure(p0.X, p0.Y, null);
+            }
+
+            for (int i=1; i<positions.Count; ++i)
+                using (FGeometry.IDirectPosition pi=positions[i])
+                {
+                    if (pi.Dimensionality>2)
+                        sink.BeginFigure(pi.X, pi.Y, pi.Z);
+                    else
+                        sink.BeginFigure(pi.X, pi.Y, null);
+                }
+
+            sink.EndFigure();
         }
 
         private FGeometry.IGeometry _Geometry;

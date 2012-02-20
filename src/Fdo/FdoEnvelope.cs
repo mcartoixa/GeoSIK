@@ -50,7 +50,7 @@ namespace GeoSik.Fdo
             if (coordinateSystem==null)
                 throw new ArgumentNullException("coordinateSystem");
 
-            _Envelope=envelope;
+            _Envelope=FdoGeometryBuilder.Factory.CreateEnvelope(envelope);
             _CoordinateSystem=coordinateSystem;
         }
 
@@ -65,9 +65,15 @@ namespace GeoSik.Fdo
             GC.SuppressFinalize(this);
         }
 
-        public ISimpleGeometry Envelope()
+        /// <summary>Gets a copy of the current envelope.</summary>
+        /// <returns>The copy of the current envelope.</returns>
+        /// <remarks>
+        ///   <para>It is the responsibility of the caller to <see cref="IDisposable.Dispose()" /> the returned instance.</para>
+        /// </remarks>
+        public FdoEnvelope Envelope()
         {
-            return this;
+            // Create a copy that can be disposed
+            return new FdoEnvelope(this._Envelope, CoordinateSystem);
         }
 
         public ICoordinateSystem CoordinateSystem
@@ -115,6 +121,11 @@ namespace GeoSik.Fdo
                 _Envelope.Dispose();
 
             _Envelope=null;
+        }
+
+        ISimpleGeometry ISimpleGeometry.Envelope()
+        {
+            return Envelope();
         }
 
         XmlSchema IXmlSerializable.GetSchema()

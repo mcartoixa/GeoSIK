@@ -76,16 +76,13 @@ namespace GeoSik.Fdo
 
         public override ISimpleGeometry Parse(string text, ICoordinateSystem system)
         {
-            return new FdoGeometry(_Factory.CreateGeometry(text), system);
+            return new FdoGeometry(Factory.CreateGeometry(text), system);
         }
 
         private void Dispose(bool disposing)
         {
             if (disposing)
             {
-                if (!_Factory.Disposed)
-                    _Factory.Dispose();
-
                 if (_Geometry!=null)
                     _Geometry.Dispose();
 
@@ -117,17 +114,18 @@ namespace GeoSik.Fdo
                     switch (_GeometryType)
                     {
                     case FCommon.GeometryType.GeometryType_Point:
-                        _Geometry=_Factory.CreatePoint(_Figures.First.Value[0]);
+                        using (FGeometry.IDirectPosition p=_Figures.First.Value[0])
+                            _Geometry=Factory.CreatePoint(p);
                         break;
                     case FCommon.GeometryType.GeometryType_Polygon:
-                        using (FGeometry.ILinearRing exterior=_Factory.CreateLinearRing(_Figures.First.Value))
+                        using (FGeometry.ILinearRing exterior=Factory.CreateLinearRing(_Figures.First.Value))
                             using (var interior=new FGeometry.LinearRingCollection())
                             {
                                 LinkedListNode<FGeometry.DirectPositionCollection> current=_Figures.First;
                                 while (current.Next!=_Figures.First)
-                                    interior.Add(_Factory.CreateLinearRing(current.Value));
+                                    interior.Add(Factory.CreateLinearRing(current.Value));
 
-                                _Geometry=_Factory.CreatePolygon(exterior, interior);
+                                _Geometry=Factory.CreatePolygon(exterior, interior);
                             }
                         break;
                     default:
@@ -140,11 +138,26 @@ namespace GeoSik.Fdo
             }
         }
 
-        private FGeometry.FgfGeometryFactory _Factory=new FGeometry.FgfGeometryFactory();
+        internal static FGeometry.FgfGeometryFactory Factory
+        {
+            get
+            {
+                if (_Factory==null)
+                    lock (_SyncRoot)
+                        if (_Factory==null)
+                            _Factory=new FGeometry.FgfGeometryFactory();
+
+                return _Factory;
+            }
+        }
+
         private FCommon.GeometryType _GeometryType;
         private LinkedList<FGeometry.DirectPositionCollection> _Figures=new LinkedList<FGeometry.DirectPositionCollection>();
         private ICoordinateSystem _TargetSystem;
 
         private FGeometry.IGeometry _Geometry;
+
+        private static FGeometry.FgfGeometryFactory _Factory;
+        private static object _SyncRoot=new object();
     }
 }
