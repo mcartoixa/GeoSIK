@@ -118,7 +118,10 @@ namespace GeoSik.Fdo
         protected virtual void Dispose(bool disposing)
         {
             if (disposing)
-                _Envelope.Dispose();
+            {
+                if (_Envelope!=null)
+                    _Envelope.Dispose();
+            }
 
             _Envelope=null;
         }
