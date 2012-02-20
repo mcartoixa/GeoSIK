@@ -27,11 +27,25 @@ using ProjNet.CoordinateSystems;
 namespace GeoSik
 {
 
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Interface implemented by a class that can build geometries.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
     public interface IGeometryBuilder:
         IGeometrySink
     {
 
+        /// <summary>Returns the geometry defined by the specified WKT representation, in the specified coordinate system.</summary>
+        /// <param name="text">The WKT representation of the geometry.</param>
+        /// <param name="system">The coordinate system of the geometry.</param>
+        /// <returns>The geometry.</returns>
         ISimpleGeometry Parse(string text, ICoordinateSystem system);
+
+        /// <summary>When used as a <see cref="IGeometrySink" />, returns the resulting geometry.</summary>
         ISimpleGeometry ConstructedGeometry { get; }
     }
 }

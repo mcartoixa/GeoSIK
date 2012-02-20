@@ -37,6 +37,11 @@ namespace GeoSik
     public interface IGeometryTap
     {
 
+        /// <summary>Applies a geometry type call sequence to the specified <paramref name="sink" />.</summary>
+        /// <param name="sink">The sink to populate.</param>
+        /// <remarks>
+        ///   <para>The call sequence is a set of figures, lines, and points for geometry types.</para>
+        /// </remarks>
         void Populate(IGeometrySink sink);
     }
 }

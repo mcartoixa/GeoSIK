@@ -29,14 +29,31 @@ using ProjNet.CoordinateSystems;
 namespace GeoSik
 {
 
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Interface implemented by a simple geometry representation.</summary>
+    /// <remarks>
+    ///   <para>A simple geometry is a type that holds geometric data but does not allow
+    /// complex calculation on these data (like intersections, or hulls).</para>
+    ///   <para>Types that implement this interface are automatically serializable in <a href="http://geojson.org/">GeoJSON</a>
+    /// when using the <a href="http://json.codeplex.com/">JSON.NET</a> serializer.</para>
+    /// </remarks>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
     [JsonConverter(typeof(GeometryJsonConverter))]
     public interface ISimpleGeometry:
         IGeometryTap,
         IXmlSerializable
     {
 
+        /// <summary>Returns the envelope of the current geometry.</summary>
+        /// <returns>The envelope of the current geometry.</returns>
         ISimpleGeometry Envelope();
 
+        /// <summary>Gets the coordinate system for the geometry.</summary>
         ICoordinateSystem CoordinateSystem { get; }
     }
 }

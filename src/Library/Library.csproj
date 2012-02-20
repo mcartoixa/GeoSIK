@@ -91,7 +91,6 @@
     <Compile Include="GeometryType.cs" />
     <Compile Include="IGeometry.cs" />
     <Compile Include="IGeometryBuilder.cs" />
-    <Compile Include="IGeometryBuilderProvider.cs" />
     <Compile Include="IGeometrySink.cs" />
     <Compile Include="IGeometryTap.cs" />
     <Compile Include="ISimpleGeometry.cs" />
