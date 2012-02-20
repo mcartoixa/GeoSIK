@@ -27,14 +27,36 @@ using ProjNet.CoordinateSystems;
 namespace GeoSik
 {
 
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Interface implemented by a class that can build geometry representations.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
     public interface IGeometrySink
     {
 
+        /// <summary>Defines the coordinate system for the geometry representation.</summary>
+        /// <param name="system">The coordinate system.</param>
         void SetCoordinateSystem(ICoordinateSystem system);
+        /// <summary>Starts the call sequence for the specified <see cref="GeometryType" />.</summary>
+        /// <param name="type">The type of the geometry to represent.</param>
         void BeginGeometry(GeometryType type);
+        /// <summary>Defines the starting point of a geometry figure.</summary>
+        /// <param name="x">The easting of the point.</param>
+        /// <param name="y">The northing of the point.</param>
+        /// <param name="z">The elevation of the point.</param>
         void BeginFigure(double x, double y, double? z);
+        /// <summary>Defines a point other than the starting point of a geometry figure.</summary>
+        /// <param name="x">The eastings of the point.</param>
+        /// <param name="y">The northings of the point.</param>
+        /// <param name="z">The elevation of the point.</param>
         void AddLine(double x, double y, double? z);
+        /// <summary>Finishes the call sequence for a geometry figure.</summary>
         void EndFigure();
+        /// <summary>Finishes the call sequence for a geometry representation.</summary>
         void EndGeometry();
     }
 }
