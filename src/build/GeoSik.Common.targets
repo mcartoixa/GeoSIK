@@ -91,7 +91,7 @@ It must be used with MSBuild 4.0.
 
   <!-- Prepares the build -->
   <PropertyGroup>
-    <PrepareDependsOn>BeforePrepare;PrepareEnvironment;PrepareOutput;AfterPrepare</PrepareDependsOn>
+    <PrepareDependsOn>BeforePrepare;PrepareEnvironment;PrepareDependencies;PrepareOutput;AfterPrepare</PrepareDependsOn>
   </PropertyGroup>
   <Target Name="Prepare" DependsOnTargets="$(PrepareDependsOn)" />
 
@@ -106,6 +106,19 @@ It must be used with MSBuild 4.0.
       BatchArguments="$(SetEnvironmentArguments)"
       EnableDelayedExpansion="True"
       EnableExtensions="True"
+    />
+  </Target>
+
+  <!-- Projects should update themselves, but required because of http://nuget.codeplex.com/discussions/297078 -->
+  <Target Name="PrepareDependencies">
+    <ItemGroup>
+      <PackageConfigFiles Include="**/packages.config" />
+    </ItemGroup>
+    <Exec
+      Condition="'@(PackageConfigFiles)'!=''"
+      Command="&quot;$(NuGetToolPath)&quot; install &quot;%(PackageConfigFiles.Identity)&quot; -o packages"
+      WorkingDirectory="$(InputPath)"
+      YieldDuringToolExecution="True"
     />
   </Target>
 
