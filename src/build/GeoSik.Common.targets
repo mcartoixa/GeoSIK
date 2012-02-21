@@ -519,6 +519,10 @@ It must be used with MSBuild 4.0.
       OverwriteReadOnlyFiles="true"
       SkipUnchangedFiles="true"
     />
+    <ItemGroup>
+      <PackagedItems Remove="@(PackagedItems)" />
+      <SymbolItems Remove="@(SymbolItems)" />
+    </ItemGroup>
   </Target>
 
   <Target Name="BeforePackage" />

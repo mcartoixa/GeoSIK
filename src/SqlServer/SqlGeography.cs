@@ -83,18 +83,18 @@ namespace GeoSik.SqlServer
             // Transform into SqlGeometry, calculate, then back to SqlGeography
             // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
 
-            return Convert(SqlGeometry.Convert(this).Centroid());
+            return ToGeography(SqlGeometry.ToGeometry(this).Centroid());
         }
 
         public double Distance(IGeometry geometry)
         {
-            SqlGeography other=Convert(geometry);
+            SqlGeography other=ToGeography(geometry);
             return _Geography.STDistance(other._Geography).Value;
         }
 
         public bool Disjoint(IGeometry geometry)
         {
-            SqlGeography other=Convert(geometry);
+            SqlGeography other=ToGeography(geometry);
             return _Geography.STDisjoint(other._Geography).Value;
         }
 
@@ -103,7 +103,7 @@ namespace GeoSik.SqlServer
             // Transform into SqlGeometry, then calculate
             // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
 
-            return SqlGeometry.Convert(this).Touches(geometry);
+            return SqlGeometry.ToGeometry(this).Touches(geometry);
         }
 
         public bool Within(IGeometry geometry)
@@ -111,7 +111,7 @@ namespace GeoSik.SqlServer
             // Transform into SqlGeometry, then calculate
             // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
 
-            return SqlGeometry.Convert(this).Within(geometry);
+            return SqlGeometry.ToGeometry(this).Within(geometry);
         }
 
         public bool Overlaps(IGeometry geometry)
@@ -119,7 +119,7 @@ namespace GeoSik.SqlServer
             // Transform into SqlGeometry, then calculate
             // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
 
-            return SqlGeometry.Convert(this).Overlaps(geometry);
+            return SqlGeometry.ToGeometry(this).Overlaps(geometry);
         }
 
         public bool Crosses(IGeometry geometry)
@@ -127,12 +127,12 @@ namespace GeoSik.SqlServer
             // Transform into SqlGeometry, then calculate
             // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
 
-            return SqlGeometry.Convert(this).Crosses(geometry);
+            return SqlGeometry.ToGeometry(this).Crosses(geometry);
         }
 
         public bool Intersects(IGeometry geometry)
         {
-            SqlGeography other=Convert(geometry);
+            SqlGeography other=ToGeography(geometry);
             return _Geography.STIntersects(other._Geography).Value;
         }
 
@@ -141,7 +141,7 @@ namespace GeoSik.SqlServer
             // Transform into SqlGeometry, then calculate
             // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
 
-            return SqlGeometry.Convert(this).Contains(geometry);
+            return SqlGeometry.ToGeometry(this).Contains(geometry);
         }
 
         public ISimpleGeometry Envelope()
@@ -149,7 +149,7 @@ namespace GeoSik.SqlServer
             // Transform into SqlGeometry, calculate, then back to SqlGeography
             // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
 
-            return Convert(SqlGeometry.Convert(this).Envelope());
+            return ToGeography(SqlGeometry.ToGeometry(this).Envelope());
         }
 
         public void Populate(IGeometrySink sink)
@@ -176,7 +176,7 @@ namespace GeoSik.SqlServer
             return null;
         }
 
-        internal static SqlGeography Convert(ISimpleGeometry geometry)
+        public static SqlGeography ToGeography(ISimpleGeometry geometry)
         {
             var sg=geometry as SqlGeography;
             if (sg!=null)

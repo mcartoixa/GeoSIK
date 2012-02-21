@@ -18,9 +18,6 @@
     <references>
       <reference file="GeoSik.dll" />
       <reference file="GeoSik.Services.dll" />
-      <reference file="Irony.dll" />
-      <reference file="Irony.Interpreter.dll" />
-      <reference file="ProjNet.dll" />
     </references>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations" />

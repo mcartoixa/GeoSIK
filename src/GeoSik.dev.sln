@@ -29,6 +29,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fdo", "Fdo\Fdo.csproj", "{6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpMap", "SharpMap\SharpMap.csproj", "{6470553D-BFB6-40FE-92AC-B9466F129CF0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "misc", "misc", "{02879CE5-78DF-46DC-9EA1-2FABB2BFD78D}"
+	ProjectSection(SolutionItems) = preProject
+		misc\GeoSik.Fdo.nuspec = misc\GeoSik.Fdo.nuspec
+		misc\GeoSik.nuspec = misc\GeoSik.nuspec
+		misc\GeoSik.SharpMap.nuspec = misc\GeoSik.SharpMap.nuspec
+		misc\GeoSik.SqlServer.nuspec = misc\GeoSik.SqlServer.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
