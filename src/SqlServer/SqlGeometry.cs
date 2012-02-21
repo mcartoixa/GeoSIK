@@ -77,54 +77,63 @@ namespace GeoSik.SqlServer
             throw new NotImplementedException();
         }
 
+        public IGeometry Centroid()
+        {
+            return new SqlGeometry(_Geometry.STCentroid(), CoordinateSystem);
+        }
+
         public double Distance(IGeometry geometry)
         {
-            throw new NotImplementedException();
+            SqlGeometry other=Convert(geometry);
+            return _Geometry.STDistance(other._Geometry).Value;
         }
 
         public bool Disjoint(IGeometry geometry)
         {
-            throw new NotImplementedException();
+            SqlGeometry other=Convert(geometry);
+            return _Geometry.STDisjoint(other._Geometry).Value;
         }
 
         public bool Touches(IGeometry geometry)
         {
-            throw new NotImplementedException();
+            SqlGeometry other=Convert(geometry);
+            return _Geometry.STTouches(other._Geometry).Value;
         }
 
         public bool Within(IGeometry geometry)
         {
-            throw new NotImplementedException();
+            SqlGeometry other=Convert(geometry);
+            return _Geometry.STWithin(other._Geometry).Value;
         }
 
         public bool Overlaps(IGeometry geometry)
         {
-            throw new NotImplementedException();
+            SqlGeometry other=Convert(geometry);
+            return _Geometry.STOverlaps(other._Geometry).Value;
         }
 
         public bool Crosses(IGeometry geometry)
         {
-            throw new NotImplementedException();
+            SqlGeometry other=Convert(geometry);
+            return _Geometry.STCrosses(other._Geometry).Value;
         }
 
         public bool Intersects(IGeometry geometry)
         {
-            throw new NotImplementedException();
+            SqlGeometry other=Convert(geometry);
+            return _Geometry.STIntersects(other._Geometry).Value;
         }
 
         public bool Contains(IGeometry geometry)
         {
-            throw new NotImplementedException();
+            SqlGeometry other=Convert(geometry);
+            return _Geometry.STContains(other._Geometry).Value;
         }
 
-        public bool Relate(IGeometry geometry)
+        public bool Relate(IGeometry geometry, string intersectionPatternMatrix)
         {
-            throw new NotImplementedException();
-        }
-
-        public IGeometry Centroid()
-        {
-            return new SqlGeometry(_Geometry.STCentroid(), CoordinateSystem);
+            SqlGeometry other=Convert(geometry);
+            return _Geometry.STRelate(other._Geometry, intersectionPatternMatrix).Value;
         }
 
         public ISimpleGeometry Envelope()
@@ -156,17 +165,15 @@ namespace GeoSik.SqlServer
             return null;
         }
 
-        private static SqlGeometry FromGeometry(IGeometry geometry)
+        internal static SqlGeometry Convert(ISimpleGeometry geometry)
         {
-            var ret=geometry as SqlGeometry;
-            if (ret!=null)
-                return ret;
+            var sg=geometry as SqlGeometry;
+            if (sg!=null)
+                return sg;
 
-            var sgbw=new SqlGeometryBuilderWrapper();
-            geometry.Populate(sgbw);
-            ret=sgbw.ConstructedGeometry;
-
-            return ret;
+            var sgb=new SqlGeometryBuilderWrapper();
+            geometry.Populate(sgb);
+            return sgb.ConstructedGeometry;
         }
 
         public static implicit operator SqlTypes.SqlGeometry(SqlGeometry wrapper)

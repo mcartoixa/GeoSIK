@@ -43,6 +43,5 @@ namespace GeoSik
         bool Crosses(IGeometry geometry);
         bool Intersects(IGeometry geometry);
         bool Contains(IGeometry geometry);
-        bool Relate(IGeometry geometry);
     }
 }
