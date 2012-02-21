@@ -24,33 +24,112 @@
 
   <ItemGroup>
     <Projects Include="GeoSik.sln">
-      <PartCoverExclude>[GeoSik]GeoSik.DublinCore.*;[GeoSik]GeoSik.Iso.*;[GeoSik]GeoSik.Ogc.Filter.V*;[GeoSik]GeoSik.Ogc.Gml.V*;[GeoSik]GeoSik.Ogc.Ows.V*;[GeoSik]GeoSik.Ogc.WebCatalog.Csw.V*;[GeoSik]GeoSik.W3.*;[GeoSik]GeoSik.Schemas;[GeoSik]GeoSik.SR"</PartCoverExclude>
-    </Projects>
-    <Projects Include="GeoSik.Fdo.sln">
-      <PartCoverExclude>[GeoSik]*;[GeoSik.Fdo]GeoSik.Fdo.SR"</PartCoverExclude>
-    </Projects>
-    <Projects Include="GeoSik.SharpMap.sln">
-      <PartCoverExclude>[GeoSik]*;[GeoSik.SharpMap]GeoSik.SharpMap.SR"</PartCoverExclude>
-    </Projects>
-    <Projects Include="GeoSik.SqlServer.sln">
-      <PartCoverExclude>[GeoSik]*;[GeoSik.SqlServer]GeoSik.SqlServer.SR"</PartCoverExclude>
+      <PartCoverExclude>[GeoSik]GeoSik.DublinCore.*;[GeoSik]GeoSik.Iso.*;[GeoSik]GeoSik.Ogc.Filter.V*;[GeoSik]GeoSik.Ogc.Gml.V*;[GeoSik]GeoSik.Ogc.Ows.V*;[GeoSik]GeoSik.Ogc.WebCatalog.Csw.V*;[GeoSik]GeoSik.W3.*;[GeoSik]GeoSik.Schemas;[GeoSik]*.SR;[GeoSik.*]*.SR"</PartCoverExclude>
     </Projects>
   </ItemGroup>
 
   <!-- Import external targets -->
   <Import Project="$(MSBuildProjectDirectory)\build\GeoSik.Common.targets" />
 
+
+
+  <!-- Version update for NuSpec dependencies -->
   <Target
     Name="UpdateNuSpecReferencesVersions"
     AfterTargets="UpdateVersion"
   >
     <ItemGroup>
-      <NuSpecItems Include="GeoSik.*.nuspec" />
+      <NuSpecItems Include="misc\GeoSik.*.nuspec" />
     </ItemGroup>
     <XmlUpdate
       XmlFileName="%(NuSpecItems.Identity)"
       XPath="/package/metadata/dependencies/dependency[@id='GeoSik']/@version"
       Value="$(VersionMajor).$(VersionMinor).$(VersionBuild).$(VersionRevision)"
+    />
+  </Target>
+
+
+
+  <!-- Refined packaging -->
+  <Target Name="AfterPackage" DependsOnTargets="GeoSikNuSpecPrePackage;GeoSikWrapperNuSpecPrePackage;EndPackage" />
+  <ItemGroup>
+    <GeoSikWrappers Include="misc\GeoSik.*.nuspec" />
+  </ItemGroup>
+
+  <Target Name="GeoSikNuSpecPrePackage">
+    <PropertyGroup>
+      <GeoSikNuSpecInputDir>$(TmpOutBinOutputPath)GeoSik_Any CPU_Release\</GeoSikNuSpecInputDir>
+      <GeoSikNuSpecTmpOutDir>$(IntermediateOutputPath)pack\GeoSik\</GeoSikNuSpecTmpOutDir>
+    </PropertyGroup>
+    <MakeDir Directories="$(GeoSikNuSpecTmpOutDir)lib" />
+
+    <ItemGroup>
+      <GeoSikNuSpecItems Include="$(GeoSikNuSpecInputDir)GeoSik.dll;$(GeoSikNuSpecInputDir)GeoSik.Services.dll" />
+    </ItemGroup>
+
+    <Copy
+      SourceFiles="@(GeoSikNuSpecItems)"
+      DestinationFiles="@(GeoSikNuSpecItems->'$(GeoSikNuSpecTmpOutDir)lib\net40\%(RecursiveDir)%(Filename)%(Extension)')"
+    />
+    <Copy
+      SourceFiles="misc\GeoSik.nuspec"
+      DestinationFiles="$(GeoSikNuSpecTmpOutDir)GeoSik.nuspec"
+      OverwriteReadOnlyFiles="true"
+    />
+  </Target>
+
+  <Target
+    Name="GeoSikWrapperNuSpecPrePackage"
+    Outputs="$(GeoSikNuSpecTmpOutDir)%(GeoSikWrappers.Filename).$(VersionMajor).$(VersionMinor).$(VersionBuild).$(VersionRevision).nuget"
+  >
+    <PropertyGroup>
+      <GeoSikNuSpecInputDir>$(TmpOutBinOutputPath)GeoSik_Any CPU_Release\</GeoSikNuSpecInputDir>
+      <GeoSikNuSpecTmpOutDir>$(IntermediateOutputPath)pack\%(GeoSikWrappers.Filename)\</GeoSikNuSpecTmpOutDir>
+    </PropertyGroup>
+    <MakeDir Directories="$(GeoSikNuSpecTmpOutDir)lib" />
+
+    <ItemGroup>
+      <GeoSikWrapperNuSpecItems Include="$(GeoSikNuSpecInputDir)%(GeoSikWrappers.Filename).dll" />
+    </ItemGroup>
+
+    <Copy
+      SourceFiles="@(GeoSikWrapperNuSpecItems)"
+      DestinationFiles="@(GeoSikWrapperNuSpecItems->'$(GeoSikNuSpecTmpOutDir)lib\net40\%(RecursiveDir)%(Filename)%(Extension)')"
+    />
+    <Copy
+      SourceFiles="%(GeoSikWrappers.Identity)"
+      DestinationFiles="$(GeoSikNuSpecTmpOutDir)%(GeoSikWrappers.Filename)%(GeoSikWrappers.Extension)"
+      OverwriteReadOnlyFiles="true"
+    />
+
+    <ItemGroup>
+      <GeoSikWrapperNuSpecItems Remove="@(GeoSikWrapperNuSpecItems)" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="EndPackage">
+    <ItemGroup>
+      <PackageSpec Include="$(IntermediateOutputPath)pack\**\*.nuspec" />
+    </ItemGroup>
+
+    <MakeDir Directories="$(TmpOutBinOutputPath)" />
+    <Exec
+      Command="&quot;$(NuGetToolPath)&quot; pack &quot;%(PackageSpec.Identity)&quot; -OutputDirectory &quot;$(TmpOutBinOutputPath).&quot;"
+      WorkingDirectory="$(InputPath)"
+      YieldDuringToolExecution="True"
+    />
+
+    <PropertyGroup>
+      <ZipInputDir>$(TmpOutBinOutputPath)GeoSik_Any CPU_Release\</ZipInputDir>
+    </PropertyGroup>
+    <ItemGroup>
+      <ZipItems Include="$(ZipInputDir)GeoSik.dll;$(ZipInputDir)GeoSik.*.dll" />
+    </ItemGroup>
+    <Zip
+      Files="@(ZipItems)"
+      ZipFileName="$(TmpOutBinOutputPath)GeoSik.zip"
+      WorkingDirectory="$(ZipInputDir)"
+      ZipLevel="9"
     />
   </Target>
 

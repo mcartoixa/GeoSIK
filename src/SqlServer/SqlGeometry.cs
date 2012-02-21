@@ -84,55 +84,55 @@ namespace GeoSik.SqlServer
 
         public double Distance(IGeometry geometry)
         {
-            SqlGeometry other=Convert(geometry);
+            SqlGeometry other=ToGeometry(geometry);
             return _Geometry.STDistance(other._Geometry).Value;
         }
 
         public bool Disjoint(IGeometry geometry)
         {
-            SqlGeometry other=Convert(geometry);
+            SqlGeometry other=ToGeometry(geometry);
             return _Geometry.STDisjoint(other._Geometry).Value;
         }
 
         public bool Touches(IGeometry geometry)
         {
-            SqlGeometry other=Convert(geometry);
+            SqlGeometry other=ToGeometry(geometry);
             return _Geometry.STTouches(other._Geometry).Value;
         }
 
         public bool Within(IGeometry geometry)
         {
-            SqlGeometry other=Convert(geometry);
+            SqlGeometry other=ToGeometry(geometry);
             return _Geometry.STWithin(other._Geometry).Value;
         }
 
         public bool Overlaps(IGeometry geometry)
         {
-            SqlGeometry other=Convert(geometry);
+            SqlGeometry other=ToGeometry(geometry);
             return _Geometry.STOverlaps(other._Geometry).Value;
         }
 
         public bool Crosses(IGeometry geometry)
         {
-            SqlGeometry other=Convert(geometry);
+            SqlGeometry other=ToGeometry(geometry);
             return _Geometry.STCrosses(other._Geometry).Value;
         }
 
         public bool Intersects(IGeometry geometry)
         {
-            SqlGeometry other=Convert(geometry);
+            SqlGeometry other=ToGeometry(geometry);
             return _Geometry.STIntersects(other._Geometry).Value;
         }
 
         public bool Contains(IGeometry geometry)
         {
-            SqlGeometry other=Convert(geometry);
+            SqlGeometry other=ToGeometry(geometry);
             return _Geometry.STContains(other._Geometry).Value;
         }
 
         public bool Relate(IGeometry geometry, string intersectionPatternMatrix)
         {
-            SqlGeometry other=Convert(geometry);
+            SqlGeometry other=ToGeometry(geometry);
             return _Geometry.STRelate(other._Geometry, intersectionPatternMatrix).Value;
         }
 
@@ -165,7 +165,7 @@ namespace GeoSik.SqlServer
             return null;
         }
 
-        internal static SqlGeometry Convert(ISimpleGeometry geometry)
+        public static SqlGeometry ToGeometry(ISimpleGeometry geometry)
         {
             var sg=geometry as SqlGeometry;
             if (sg!=null)
