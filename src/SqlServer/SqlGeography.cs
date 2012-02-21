@@ -78,63 +78,70 @@ namespace GeoSik.SqlServer
             throw new NotImplementedException();
         }
 
-        public double Distance(IGeometry geometry)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Disjoint(IGeometry geometry)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Touches(IGeometry geometry)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Within(IGeometry geometry)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Overlaps(IGeometry geometry)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Crosses(IGeometry geometry)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Intersects(IGeometry geometry)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Contains(IGeometry geometry)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Relate(IGeometry geometry)
-        {
-            throw new NotImplementedException();
-        }
-
         public IGeometry Centroid()
         {
             // Transform into SqlGeometry, calculate, then back to SqlGeography
             // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
 
-            var sgmbw=new SqlGeometryBuilderWrapper();
-            Populate(sgmbw);
-            IGeometry c=sgmbw.ConstructedGeometry.Centroid();
+            return Convert(SqlGeometry.Convert(this).Centroid());
+        }
 
-            var sggbw=new SqlGeometryBuilderWrapper();
-            Populate(sggbw);
-            return sggbw.ConstructedGeometry;
+        public double Distance(IGeometry geometry)
+        {
+            SqlGeography other=Convert(geometry);
+            return _Geography.STDistance(other._Geography).Value;
+        }
+
+        public bool Disjoint(IGeometry geometry)
+        {
+            SqlGeography other=Convert(geometry);
+            return _Geography.STDisjoint(other._Geography).Value;
+        }
+
+        public bool Touches(IGeometry geometry)
+        {
+            // Transform into SqlGeometry, then calculate
+            // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
+
+            return SqlGeometry.Convert(this).Touches(geometry);
+        }
+
+        public bool Within(IGeometry geometry)
+        {
+            // Transform into SqlGeometry, then calculate
+            // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
+
+            return SqlGeometry.Convert(this).Within(geometry);
+        }
+
+        public bool Overlaps(IGeometry geometry)
+        {
+            // Transform into SqlGeometry, then calculate
+            // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
+
+            return SqlGeometry.Convert(this).Overlaps(geometry);
+        }
+
+        public bool Crosses(IGeometry geometry)
+        {
+            // Transform into SqlGeometry, then calculate
+            // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
+
+            return SqlGeometry.Convert(this).Crosses(geometry);
+        }
+
+        public bool Intersects(IGeometry geometry)
+        {
+            SqlGeography other=Convert(geometry);
+            return _Geography.STIntersects(other._Geography).Value;
+        }
+
+        public bool Contains(IGeometry geometry)
+        {
+            // Transform into SqlGeometry, then calculate
+            // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
+
+            return SqlGeometry.Convert(this).Contains(geometry);
         }
 
         public ISimpleGeometry Envelope()
@@ -142,13 +149,7 @@ namespace GeoSik.SqlServer
             // Transform into SqlGeometry, calculate, then back to SqlGeography
             // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
 
-            var sgmbw=new SqlGeometryBuilderWrapper();
-            Populate(sgmbw);
-            ISimpleGeometry c=sgmbw.ConstructedGeometry.Envelope();
-
-            var sggbw=new SqlGeometryBuilderWrapper();
-            Populate(sggbw);
-            return sggbw.ConstructedGeometry;
+            return Convert(SqlGeometry.Convert(this).Envelope());
         }
 
         public void Populate(IGeometrySink sink)
@@ -175,17 +176,15 @@ namespace GeoSik.SqlServer
             return null;
         }
 
-        private static SqlGeography FromGeometry(IGeometry geometry)
+        internal static SqlGeography Convert(ISimpleGeometry geometry)
         {
-            var ret=geometry as SqlGeography;
-            if (ret!=null)
-                return ret;
+            var sg=geometry as SqlGeography;
+            if (sg!=null)
+                return sg;
 
-            var sgbw=new SqlGeographyBuilderWrapper();
-            geometry.Populate(sgbw);
-            ret=sgbw.ConstructedGeometry;
-
-            return ret;
+            var sgb=new SqlGeographyBuilderWrapper();
+            geometry.Populate(sgb);
+            return sgb.ConstructedGeometry;
         }
 
         public static implicit operator SqlTypes.SqlGeography(SqlGeography wrapper)
