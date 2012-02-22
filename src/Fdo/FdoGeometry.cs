@@ -33,7 +33,15 @@ using FGeometry=OSGeo.FDO.Geometry;
 namespace GeoSik.Fdo
 {
 
-    public class FdoGeometry:
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Encapsulates a <see cref="FGeometry.IGeometry" /> as a <see cref="IGeometry" />.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
+    public sealed class FdoGeometry:
         ISimpleGeometry,
         IDisposable
     {
@@ -63,11 +71,13 @@ namespace GeoSik.Fdo
             _CoordinateSystem=coordinateSystem;
         }
 
+        /// <summary>Finalizes the current instance.</summary>
         ~FdoGeometry()
         {
             Dispose(false);
         }
 
+        /// <summary>Releases native resources associated with the current instance.</summary>
         public void Dispose()
         {
             Dispose(true);
@@ -84,6 +94,11 @@ namespace GeoSik.Fdo
             return new FdoEnvelope(_Geometry.Envelope, CoordinateSystem);
         }
 
+        /// <summary>Applies a geometry type call sequence to the specified <paramref name="sink" />.</summary>
+        /// <param name="sink">The sink to populate.</param>
+        /// <remarks>
+        ///   <para>The call sequence is a set of figures, lines, and points for geometry types.</para>
+        /// </remarks>
         public void Populate(IGeometrySink sink)
         {
             sink.SetCoordinateSystem(CoordinateSystem);
@@ -124,11 +139,15 @@ namespace GeoSik.Fdo
             sink.EndGeometry();
         }
 
+        /// <summary>Generates a geometry from its GML representation.</summary>
+        /// <param name="reader">The stream from which the geometry is deserialized. </param>
         public void ReadXml(XmlReader reader)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>Converts a geometry into its GML representation.</summary>
+        /// <param name="writer">The stream to which the geometry is serialized. </param>
         public void WriteXml(XmlWriter writer)
         {
             throw new NotImplementedException();
@@ -155,7 +174,10 @@ namespace GeoSik.Fdo
             return null;
         }
 
-        public static FGeometry.IGeometry ToNativeGeometry(FdoGeometry geometry)
+        /// <summary>Converts the specified <paramref name="geometry" /> into a <see cref="FGeometry.IGeometry" />.</summary>
+        /// <param name="geometry">The geometry to convert.</param>
+        /// <returns>The converted geometry.</returns>
+        public static FGeometry.IGeometry ToGeometry(FdoGeometry geometry)
         {
             return geometry._Geometry;
         }
@@ -185,6 +207,7 @@ namespace GeoSik.Fdo
             sink.EndFigure();
         }
 
+        /// <summary>Gets the coordinate system for the current geometry.</summary>
         public ICoordinateSystem CoordinateSystem
         {
             get

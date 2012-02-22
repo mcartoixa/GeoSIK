@@ -117,22 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ArrayShouldHaveElementsException" xml:space="preserve">
-    <value>The array should have at least {0} elements ({1} elements found)</value>
-  </data>
-  <data name="CannotBuildGeometryWithoutCoordinateSystemException" xml:space="preserve">
-    <value>A geometry cannot be built without a coordinate system</value>
-  </data>
-  <data name="CqlTermNotImplementedException" xml:space="preserve">
-    <value>The CQL term "{0}" has not been implemented</value>
-  </data>
-  <data name="InvalidPropertyNameExpressionException" xml:space="preserve">
-    <value>Invalid PropertyName expression: "{0}"</value>
-  </data>
-  <data name="UnsupportedFilterElement" xml:space="preserve">
-    <value>Filter element "{0}" is not supported</value>
-  </data>
-  <data name="UnsupportedFormatString" xml:space="preserve">
-    <value>The "{0}" format string is not supported</value>
+  <data name="SharpMapSpatialReferenceMustBeInitiliazed" xml:space="preserve">
+    <value>SharpMap geometry spatial reference must be intialized</value>
   </data>
 </root>

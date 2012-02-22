@@ -85,7 +85,6 @@
     </Compile>
     <Compile Include="CoordinateSystemProvider.cs" />
     <Compile Include="EnumerableExtensions.cs" />
-    <Compile Include="GeometryBuilder.cs" />
     <Compile Include="GeometryJsonConverter.cs" />
     <Compile Include="GeometryTransformerSink.cs" />
     <Compile Include="GeometryType.cs" />

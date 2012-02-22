@@ -34,21 +34,31 @@ using SqlTypes=Microsoft.SqlServer.Types;
 namespace GeoSik.SqlServer
 {
 
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Encapsulates a <see cref="SqlTypes.SqlGeography" /> as a <see cref="IGeometry" />.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
     public sealed partial class SqlGeography:
         IGeometry
     {
 
-        public SqlGeography():
+        /// <summary>Creates a new instance of the <see cref="SqlGeometry" /> class.</summary>
+        public SqlGeography() :
             this(new SqlTypes.SqlGeography())
         {
         }
 
-        public SqlGeography(SqlTypes.SqlGeography sg):
+        /// <summary>Creates a new instance of the <see cref="SqlGeometry" /> class.</summary>
+        public SqlGeography(SqlTypes.SqlGeography sg) :
             this(sg, null)
         {
         }
 
-        public SqlGeography(SqlTypes.SqlGeography sg, ICoordinateSystem coordinateSystem)
+        internal SqlGeography(SqlTypes.SqlGeography sg, ICoordinateSystem coordinateSystem)
         {
             Debug.Assert(sg!=null);
             if (sg==null)
@@ -58,27 +68,31 @@ namespace GeoSik.SqlServer
             _CoordinateSystem=coordinateSystem;
         }
 
+        /// <summary>Returns the string representation of this geometry.</summary>
+        /// <returns>The string representation of this geometry.</returns>
         public override string ToString()
         {
             return _Geography.ToString();
         }
 
-        public bool Equals(IGeometry geometry)
-        {
-            if (geometry==null)
-                return false;
+        //public bool Equals(IGeometry geometry)
+        //{
+        //    if (geometry==null)
+        //        return false;
 
-            var sgw=geometry as SqlGeography;
-            if (sgw!=null)
-            {
-                var r=_Geography.STEquals(sgw._Geography);
-                return r.IsTrue;
-            }
+        //    var sgw=geometry as SqlGeography;
+        //    if (sgw!=null)
+        //    {
+        //        var r=_Geography.STEquals(sgw._Geography);
+        //        return r.IsTrue;
+        //    }
 
-            throw new NotImplementedException();
-        }
+        //    throw new NotImplementedException();
+        //}
 
-        public IGeometry Centroid()
+        /// <summary>Returns the centroid for the current geometry.</summary>
+        /// <returns>The centroid for the current geometry.</returns>
+        public ISimpleGeometry Centroid()
         {
             // Transform into SqlGeometry, calculate, then back to SqlGeography
             // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
@@ -86,19 +100,28 @@ namespace GeoSik.SqlServer
             return ToGeography(SqlGeometry.ToGeometry(this).Centroid());
         }
 
-        public double Distance(IGeometry geometry)
+        /// <summary>Returns the shortest distance between any 2 points in the 2 geometries.</summary>
+        /// <param name="geometry">The geometry to calculate the distance from.</param>
+        /// <returns>The shortest distance between any 2 points in the 2 geometries.</returns>
+        public double Distance(ISimpleGeometry geometry)
         {
             SqlGeography other=ToGeography(geometry);
             return _Geography.STDistance(other._Geography).Value;
         }
 
-        public bool Disjoint(IGeometry geometry)
+        /// <summary>Indicates whether the 2 geometries are disjoint or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the 2 geometries are disjoint, or else <c>false</c>.</returns>
+        public bool Disjoint(ISimpleGeometry geometry)
         {
             SqlGeography other=ToGeography(geometry);
             return _Geography.STDisjoint(other._Geography).Value;
         }
 
-        public bool Touches(IGeometry geometry)
+        /// <summary>Indicates whether the 2 geometries touch themselves or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the 2 geometries touch themselves, or else <c>false</c>.</returns>
+        public bool Touches(ISimpleGeometry geometry)
         {
             // Transform into SqlGeometry, then calculate
             // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
@@ -106,7 +129,10 @@ namespace GeoSik.SqlServer
             return SqlGeometry.ToGeometry(this).Touches(geometry);
         }
 
-        public bool Within(IGeometry geometry)
+        /// <summary>Indicates whether the current geometry is within the specified <paramref name="geometry" /> or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the current geometry is within the specified <paramref name="geometry" />, or else <c>false</c>.</returns>
+        public bool Within(ISimpleGeometry geometry)
         {
             // Transform into SqlGeometry, then calculate
             // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
@@ -114,7 +140,10 @@ namespace GeoSik.SqlServer
             return SqlGeometry.ToGeometry(this).Within(geometry);
         }
 
-        public bool Overlaps(IGeometry geometry)
+        /// <summary>Indicates whether the current geometry overlaps the specified <paramref name="geometry" /> or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the current geometry overlaps the specified <paramref name="geometry" />, or else <c>false</c>.</returns>
+        public bool Overlaps(ISimpleGeometry geometry)
         {
             // Transform into SqlGeometry, then calculate
             // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
@@ -122,7 +151,10 @@ namespace GeoSik.SqlServer
             return SqlGeometry.ToGeometry(this).Overlaps(geometry);
         }
 
-        public bool Crosses(IGeometry geometry)
+        /// <summary>Indicates whether the 2 geometries cross or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the 2 geometries cross, or else <c>false</c>.</returns>
+        public bool Crosses(ISimpleGeometry geometry)
         {
             // Transform into SqlGeometry, then calculate
             // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
@@ -130,13 +162,19 @@ namespace GeoSik.SqlServer
             return SqlGeometry.ToGeometry(this).Crosses(geometry);
         }
 
-        public bool Intersects(IGeometry geometry)
+        /// <summary>Indicates whether the 2 geometries intersect or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the 2 geometries intersect, or else <c>false</c>.</returns>
+        public bool Intersects(ISimpleGeometry geometry)
         {
             SqlGeography other=ToGeography(geometry);
             return _Geography.STIntersects(other._Geography).Value;
         }
 
-        public bool Contains(IGeometry geometry)
+        /// <summary>Indicates whether the current geometry contains the specified <paramref name="geometry" /> or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the current geometry contains the specified <paramref name="geometry" />, or else <c>false</c>.</returns>
+        public bool Contains(ISimpleGeometry geometry)
         {
             // Transform into SqlGeometry, then calculate
             // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
@@ -144,6 +182,8 @@ namespace GeoSik.SqlServer
             return SqlGeometry.ToGeometry(this).Contains(geometry);
         }
 
+        /// <summary>Returns the envelope of the current geometry.</summary>
+        /// <returns>The envelope of the current geometry.</returns>
         public ISimpleGeometry Envelope()
         {
             // Transform into SqlGeometry, calculate, then back to SqlGeography
@@ -152,6 +192,11 @@ namespace GeoSik.SqlServer
             return ToGeography(SqlGeometry.ToGeometry(this).Envelope());
         }
 
+        /// <summary>Applies a geometry type call sequence to the specified <paramref name="sink" />.</summary>
+        /// <param name="sink">The sink to populate.</param>
+        /// <remarks>
+        ///   <para>The call sequence is a set of figures, lines, and points for geometry types.</para>
+        /// </remarks>
         public void Populate(IGeometrySink sink)
         {
             var sgs=sink as SqlTypes.IGeographySink;
@@ -161,14 +206,18 @@ namespace GeoSik.SqlServer
             _Geography.Populate(sgs);
         }
 
-        public void ReadXml(XmlReader xr)
+        /// <summary>Generates a geometry from its GML representation.</summary>
+        /// <param name="reader">The stream from which the geometry is deserialized. </param>
+        public void ReadXml(XmlReader reader)
         {
             throw new NotImplementedException();
         }
 
-        public void WriteXml(XmlWriter xw)
+        /// <summary>Converts a geometry into its GML representation.</summary>
+        /// <param name="writer">The stream to which the geometry is serialized. </param>
+        public void WriteXml(XmlWriter writer)
         {
-            xw.WriteRaw(_Geography.AsGml().Value);
+            writer.WriteRaw(_Geography.AsGml().Value);
         }
 
         System.Xml.Schema.XmlSchema IXmlSerializable.GetSchema()
@@ -176,6 +225,9 @@ namespace GeoSik.SqlServer
             return null;
         }
 
+        /// <summary>Converts the specified <paramref name="geometry" /> into a <see cref="SqlGeography" />.</summary>
+        /// <param name="geometry">The geometry to convert.</param>
+        /// <returns>The converted geometry.</returns>
         public static SqlGeography ToGeography(ISimpleGeometry geometry)
         {
             var sg=geometry as SqlGeography;
@@ -187,11 +239,15 @@ namespace GeoSik.SqlServer
             return sgb.ConstructedGeometry;
         }
 
-        public static implicit operator SqlTypes.SqlGeography(SqlGeography wrapper)
+        /// <summary>Converts the specified <paramref name="geography" /> into a <see cref="SqlTypes.SqlGeometry" />.</summary>
+        /// <param name="geography">The geometry to convert.</param>
+        /// <returns>The converted geometry.</returns>
+        public static implicit operator SqlTypes.SqlGeography(SqlGeography geography)
         {
-            return wrapper._Geography;
+            return geography._Geography;
         }
 
+        /// <summary>Gets the coordinate system for the current geometry.</summary>
         public ICoordinateSystem CoordinateSystem
         {
             get

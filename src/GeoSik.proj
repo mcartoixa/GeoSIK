@@ -90,6 +90,7 @@
 
     <ItemGroup>
       <GeoSikWrapperNuSpecItems Include="$(GeoSikNuSpecInputDir)%(GeoSikWrappers.Filename).dll" />
+      <GeoSikWrapperNuSpecItems Include="$(GeoSikNuSpecInputDir)%(GeoSikWrappers.Filename).xml" />
     </ItemGroup>
 
     <Copy
@@ -123,7 +124,7 @@
       <ZipInputDir>$(TmpOutBinOutputPath)GeoSik_Any CPU_Release\</ZipInputDir>
     </PropertyGroup>
     <ItemGroup>
-      <ZipItems Include="$(ZipInputDir)GeoSik.dll;$(ZipInputDir)GeoSik.*.dll" />
+      <ZipItems Include="$(ZipInputDir)GeoSik.dll;$(ZipInputDir)GeoSik.*.dll;$(ZipInputDir)GeoSik.*.xml" />
     </ItemGroup>
     <Zip
       Files="@(ZipItems)"

@@ -30,18 +30,56 @@ using ProjNet.CoordinateSystems;
 namespace GeoSik
 {
 
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Interface implemented by a geometry.</summary>
+    /// <remarks>
+    ///   <para>A simple geometry is a type that holds spatial geometric data and allows
+    /// complex calculation on these data (like intersections, or centroid).</para>
+    /// </remarks>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
     public interface IGeometry:
         ISimpleGeometry
     {
 
-        IGeometry Centroid();
-        double Distance(IGeometry geometry);
-        bool Disjoint(IGeometry geometry);
-        bool Touches(IGeometry geometry);
-        bool Within(IGeometry geometry);
-        bool Overlaps(IGeometry geometry);
-        bool Crosses(IGeometry geometry);
-        bool Intersects(IGeometry geometry);
-        bool Contains(IGeometry geometry);
+        /// <summary>Returns the centroid for the current geometry.</summary>
+        /// <returns>The centroid for the current geometry.</returns>
+        ISimpleGeometry Centroid();
+        /// <summary>Returns the shortest distance between any 2 points in the 2 geometries.</summary>
+        /// <param name="geometry">The geometry to calculate the distance from.</param>
+        /// <returns>The shortest distance between any 2 points in the 2 geometries.</returns>
+        double Distance(ISimpleGeometry geometry);
+        /// <summary>Indicates whether the 2 geometries are disjoint or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the 2 geometries are disjoint, or else <c>false</c>.</returns>
+        bool Disjoint(ISimpleGeometry geometry);
+        /// <summary>Indicates whether the 2 geometries touch themselves or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the 2 geometries touch themselves, or else <c>false</c>.</returns>
+        bool Touches(ISimpleGeometry geometry);
+        /// <summary>Indicates whether the current geometry is within the specified <paramref name="geometry" /> or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the current geometry is within the specified <paramref name="geometry" />, or else <c>false</c>.</returns>
+        bool Within(ISimpleGeometry geometry);
+        /// <summary>Indicates whether the current geometry overlaps the specified <paramref name="geometry" /> or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the current geometry overlaps the specified <paramref name="geometry" />, or else <c>false</c>.</returns>
+        bool Overlaps(ISimpleGeometry geometry);
+        /// <summary>Indicates whether the 2 geometries cross or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the 2 geometries cross, or else <c>false</c>.</returns>
+        bool Crosses(ISimpleGeometry geometry);
+        /// <summary>Indicates whether the 2 geometries intersect or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the 2 geometries intersect, or else <c>false</c>.</returns>
+        bool Intersects(ISimpleGeometry geometry);
+        /// <summary>Indicates whether the current geometry contains the specified <paramref name="geometry" /> or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the current geometry contains the specified <paramref name="geometry" />, or else <c>false</c>.</returns>
+        bool Contains(ISimpleGeometry geometry);
     }
 }

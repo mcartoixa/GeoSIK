@@ -33,21 +33,31 @@ using SqlTypes=Microsoft.SqlServer.Types;
 namespace GeoSik.SqlServer
 {
 
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Encapsulates a <see cref="SqlTypes.SqlGeometry" /> as a <see cref="IGeometry" />.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
     public sealed partial class SqlGeometry:
         IGeometry
     {
 
+        /// <summary>Creates a new instance of the <see cref="SqlGeometry" /> class.</summary>
         public SqlGeometry():
             this(new SqlTypes.SqlGeometry())
         {
         }
 
+        /// <summary>Creates a new instance of the <see cref="SqlGeometry" /> class.</summary>
         public SqlGeometry(SqlTypes.SqlGeometry sg):
             this(sg, null)
         {
         }
 
-        public SqlGeometry(SqlTypes.SqlGeometry sg, ICoordinateSystem coordinateSystem)
+        internal SqlGeometry(SqlTypes.SqlGeometry sg, ICoordinateSystem coordinateSystem)
         {
             Debug.Assert(sg!=null);
             if (sg==null)
@@ -57,90 +67,125 @@ namespace GeoSik.SqlServer
             _CoordinateSystem=coordinateSystem;
         }
 
+        /// <summary>Returns the string representation of this geometry.</summary>
+        /// <returns>The string representation of this geometry.</returns>
         public override string ToString()
         {
             return _Geometry.ToString();
         }
 
-        public bool Equals(IGeometry geometry)
-        {
-            if (geometry==null)
-                return false;
+        //public bool Equals(IGeometry geometry)
+        //{
+        //    if (geometry==null)
+        //        return false;
 
-            var sgw=geometry as SqlGeometry;
-            if (sgw!=null)
-            {
-                var r=_Geometry.STEquals(sgw._Geometry);
-                return r.IsTrue;
-            }
+        //    var sgw=geometry as SqlGeometry;
+        //    if (sgw!=null)
+        //    {
+        //        var r=_Geometry.STEquals(sgw._Geometry);
+        //        return r.IsTrue;
+        //    }
 
-            throw new NotImplementedException();
-        }
+        //    throw new NotImplementedException();
+        //}
 
-        public IGeometry Centroid()
+        /// <summary>Returns the centroid for the current geometry.</summary>
+        /// <returns>The centroid for the current geometry.</returns>
+        public ISimpleGeometry Centroid()
         {
             return new SqlGeometry(_Geometry.STCentroid(), CoordinateSystem);
         }
 
-        public double Distance(IGeometry geometry)
+        /// <summary>Returns the shortest distance between any 2 points in the 2 geometries.</summary>
+        /// <param name="geometry">The geometry to calculate the distance from.</param>
+        /// <returns>The shortest distance between any 2 points in the 2 geometries.</returns>
+        public double Distance(ISimpleGeometry geometry)
         {
             SqlGeometry other=ToGeometry(geometry);
             return _Geometry.STDistance(other._Geometry).Value;
         }
 
-        public bool Disjoint(IGeometry geometry)
+        /// <summary>Indicates whether the 2 geometries are disjoint or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the 2 geometries are disjoint, or else <c>false</c>.</returns>
+        public bool Disjoint(ISimpleGeometry geometry)
         {
             SqlGeometry other=ToGeometry(geometry);
             return _Geometry.STDisjoint(other._Geometry).Value;
         }
 
-        public bool Touches(IGeometry geometry)
+        /// <summary>Indicates whether the 2 geometries touch themselves or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the 2 geometries touch themselves, or else <c>false</c>.</returns>
+        public bool Touches(ISimpleGeometry geometry)
         {
             SqlGeometry other=ToGeometry(geometry);
             return _Geometry.STTouches(other._Geometry).Value;
         }
 
-        public bool Within(IGeometry geometry)
+        /// <summary>Indicates whether the current geometry is within the specified <paramref name="geometry" /> or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the current geometry is within the specified <paramref name="geometry" />, or else <c>false</c>.</returns>
+        public bool Within(ISimpleGeometry geometry)
         {
             SqlGeometry other=ToGeometry(geometry);
             return _Geometry.STWithin(other._Geometry).Value;
         }
 
-        public bool Overlaps(IGeometry geometry)
+        /// <summary>Indicates whether the current geometry overlaps the specified <paramref name="geometry" /> or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the current geometry overlaps the specified <paramref name="geometry" />, or else <c>false</c>.</returns>
+        public bool Overlaps(ISimpleGeometry geometry)
         {
             SqlGeometry other=ToGeometry(geometry);
             return _Geometry.STOverlaps(other._Geometry).Value;
         }
 
-        public bool Crosses(IGeometry geometry)
+        /// <summary>Indicates whether the 2 geometries cross or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the 2 geometries cross, or else <c>false</c>.</returns>
+        public bool Crosses(ISimpleGeometry geometry)
         {
             SqlGeometry other=ToGeometry(geometry);
             return _Geometry.STCrosses(other._Geometry).Value;
         }
 
-        public bool Intersects(IGeometry geometry)
+        /// <summary>Indicates whether the 2 geometries intersect or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the 2 geometries intersect, or else <c>false</c>.</returns>
+        public bool Intersects(ISimpleGeometry geometry)
         {
             SqlGeometry other=ToGeometry(geometry);
             return _Geometry.STIntersects(other._Geometry).Value;
         }
 
-        public bool Contains(IGeometry geometry)
+        /// <summary>Indicates whether the current geometry contains the specified <paramref name="geometry" /> or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the current geometry contains the specified <paramref name="geometry" />, or else <c>false</c>.</returns>
+        public bool Contains(ISimpleGeometry geometry)
         {
             SqlGeometry other=ToGeometry(geometry);
             return _Geometry.STContains(other._Geometry).Value;
         }
 
-        public bool Relate(IGeometry geometry, string intersectionPatternMatrix)
-        {
-            SqlGeometry other=ToGeometry(geometry);
-            return _Geometry.STRelate(other._Geometry, intersectionPatternMatrix).Value;
-        }
+        //public bool Relate(ISimpleGeometry geometry, string intersectionPatternMatrix)
+        //{
+        //    SqlGeometry other=ToGeometry(geometry);
+        //    return _Geometry.STRelate(other._Geometry, intersectionPatternMatrix).Value;
+        //}
 
+        /// <summary>Returns the envelope of the current geometry.</summary>
+        /// <returns>The envelope of the current geometry.</returns>
         public ISimpleGeometry Envelope()
         {
             return new SqlGeometry(_Geometry.STEnvelope(), CoordinateSystem);
         }
 
+        /// <summary>Applies a geometry type call sequence to the specified <paramref name="sink" />.</summary>
+        /// <param name="sink">The sink to populate.</param>
+        /// <remarks>
+        ///   <para>The call sequence is a set of figures, lines, and points for geometry types.</para>
+        /// </remarks>
         public void Populate(IGeometrySink sink)
         {
             var sgs=sink as SqlTypes.IGeometrySink;
@@ -150,14 +195,18 @@ namespace GeoSik.SqlServer
             _Geometry.Populate(sgs);
         }
 
-        public void ReadXml(XmlReader xr)
+        /// <summary>Generates a geometry from its GML representation.</summary>
+        /// <param name="reader">The stream from which the geometry is deserialized. </param>
+        public void ReadXml(XmlReader reader)
         {
             throw new NotImplementedException();
         }
 
-        public void WriteXml(XmlWriter xw)
+        /// <summary>Converts a geometry into its GML representation.</summary>
+        /// <param name="writer">The stream to which the geometry is serialized. </param>
+        public void WriteXml(XmlWriter writer)
         {
-            xw.WriteRaw(_Geometry.AsGml().Value);
+            writer.WriteRaw(_Geometry.AsGml().Value);
         }
 
         System.Xml.Schema.XmlSchema IXmlSerializable.GetSchema()
@@ -165,6 +214,9 @@ namespace GeoSik.SqlServer
             return null;
         }
 
+        /// <summary>Converts the specified <paramref name="geometry" /> into a <see cref="SqlGeometry" />.</summary>
+        /// <param name="geometry">The geometry to convert.</param>
+        /// <returns>The converted geometry.</returns>
         public static SqlGeometry ToGeometry(ISimpleGeometry geometry)
         {
             var sg=geometry as SqlGeometry;
@@ -176,11 +228,15 @@ namespace GeoSik.SqlServer
             return sgb.ConstructedGeometry;
         }
 
-        public static implicit operator SqlTypes.SqlGeometry(SqlGeometry wrapper)
+        /// <summary>Converts the specified <paramref name="geometry" /> into a <see cref="SqlTypes.SqlGeometry" />.</summary>
+        /// <param name="geometry">The geometry to convert.</param>
+        /// <returns>The converted geometry.</returns>
+        public static implicit operator SqlTypes.SqlGeometry(SqlGeometry geometry)
         {
-            return wrapper._Geometry;
+            return geometry._Geometry;
         }
 
+        /// <summary>Gets the coordinate system for the current geometry.</summary>
         public ICoordinateSystem CoordinateSystem
         {
             get
