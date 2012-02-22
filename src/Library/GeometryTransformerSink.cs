@@ -76,7 +76,7 @@ namespace GeoSik
             DoSetCoordinateSystem(_TargetSystem);
             _SourceSystem=sourceSystem;
 
-            if ((_TargetSystem!=null) && !_TargetSystem.Equals(_SourceSystem) && !_TargetSystem.EqualParams(_SourceSystem))
+            if (!_TargetSystem.Equals(_SourceSystem) && !_TargetSystem.EqualParams(_SourceSystem))
                 _Transformation=new CoordinateTransformationFactory().CreateFromCoordinateSystems(_SourceSystem, _TargetSystem);
         }
 
@@ -126,7 +126,9 @@ namespace GeoSik
 
         /// <summary>Sets the coordinate system of the geometry representation.</summary>
         /// <param name="system">The coordinate system of the geometry representation. Equivalent to <see cref="GeometryTransformerSink.TargetSystem" />.</param>
-        protected abstract void DoSetCoordinateSystem(ICoordinateSystem system);
+        protected virtual void DoSetCoordinateSystem(ICoordinateSystem system)
+        {
+        }
 
         /// <summary>Defines the starting point of a geometry figure.</summary>
         /// <param name="x">The easting of the point, in the target coordinate system.</param>
@@ -142,6 +144,11 @@ namespace GeoSik
 
         private double[] TransformCoordinates(double x, double y, double? z)
         {
+            Debug.Assert(_TargetSystem!=null);
+            Debug.Assert(_SourceSystem!=null);
+            if ((_Transformation==null) && ((_SourceSystem==null) || (_TargetSystem==null)))
+                throw new InvalidOperationException(SR.CannotBuildGeometryWithoutCoordinateSystemException);
+
             double[] ret=null;
             if (z.HasValue)
                 ret=new double[] { x, y, z.Value };

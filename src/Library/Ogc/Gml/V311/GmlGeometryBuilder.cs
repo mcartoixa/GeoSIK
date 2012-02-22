@@ -27,25 +27,34 @@ using ProjNet.CoordinateSystems;
 namespace GeoSik.Ogc.Gml.V311
 {
 
-    public class GmlGeometryBuilder:
-        GeometryBuilder
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Class that builds <see cref="_Geometry" /> instances.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
+    public sealed class GmlGeometryBuilder:
+        GeometryTransformerSink,
+        IGeometryBuilder
     {
 
+        /// <summary>Creates a new instance of the <see cref="GmlGeometryBuilder" /> class.</summary>
         public GmlGeometryBuilder():
             base()
         {
         }
 
+        /// <summary>Creates a new instance of the <see cref="GmlGeometryBuilder" /> class.</summary>
+        /// <param name="targetSystem">The target coordinate system. If different from the source, transformations will occur.</param>
         public GmlGeometryBuilder(ICoordinateSystem targetSystem):
             base(targetSystem)
         {
         }
 
-        public override ISimpleGeometry Parse(string text, ICoordinateSystem system)
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>Starts the call sequence for the specified <see cref="GeometryType" />.</summary>
+        /// <param name="type">The type of the geometry to build.</param>
         public override void BeginGeometry(GeometryType type)
         {
             switch (type)
@@ -85,30 +94,44 @@ namespace GeoSik.Ogc.Gml.V311
             if (_Geometry==null)
                 throw new NotSupportedException();
 
-            _Geometry.CoordinateSystem=_CoordinateSystem;
+            _Geometry.CoordinateSystem=TargetSystem;
         }
 
+        /// <summary>Finishes the call sequence for a geometry figure.</summary>
         public override void EndFigure()
         {
             _Geometry.EndFigure();
         }
 
+        /// <summary>Defines the starting point of a geometry figure.</summary>
+        /// <param name="x">The easting of the point, in the target coordinate system.</param>
+        /// <param name="y">The northing of the point, in the target coordinate system..</param>
+        /// <param name="z">The elevation of the point, in the target coordinate system..</param>
         protected override void DoAddLine(double x, double y, double? z)
         {
             _Geometry.AddLine(x, y, z);
         }
 
+        /// <summary>Defines a point other than the starting point of a geometry figure.</summary>
+        /// <param name="x">The eastings of the point, in the target coordinate system.</param>
+        /// <param name="y">The northings of the point, in the target coordinate system.</param>
+        /// <param name="z">The elevation of the point, in the target coordinate system.</param>
         protected override void DoBeginFigure(double x, double y, double? z)
         {
             _Geometry.BeginFigure(x, y, z);
         }
 
-        protected override void DoSetCoordinateSystem(ICoordinateSystem system)
+        /// <summary>Parses the geometry defined by the specified WKT representation, in the specified coordinate system.</summary>
+        /// <param name="text">The WKT representation of the geometry.</param>
+        /// <param name="system">The coordinate system of the WKT representation.</param>
+        public void Parse(string text, ICoordinateSystem system)
         {
-            _CoordinateSystem=system;
+            //TODO: implement parsing
+            throw new NotImplementedException();
         }
 
-        public override ISimpleGeometry ConstructedGeometry
+        /// <summary>Returns the geometry resulting from the actions on the current <see cref="GmlGeometryBuilder" />.</summary>
+        internal _Geometry ConstructedGeometry
         {
             get
             {
@@ -116,7 +139,14 @@ namespace GeoSik.Ogc.Gml.V311
             }
         }
 
+        ISimpleGeometry IGeometryBuilder.ConstructedGeometry
+        {
+            get
+            {
+                return ConstructedGeometry;
+            }
+        }
+
         private _Geometry _Geometry;
-        private ICoordinateSystem _CoordinateSystem;
     }
 }

@@ -38,10 +38,10 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
 
         protected override ISimpleGeometry InitValue(ParsingContext context, ParseTreeNode treeNode)
         {
-            return _Builder.Parse(treeNode.Token.Text, GeographicCoordinateSystem.WGS84);
+            var builder=new Gml.V311.GmlGeometryBuilder();
+            builder.Parse(treeNode.Token.Text, GeographicCoordinateSystem.WGS84);
+            return builder.ConstructedGeometry;
         }
-
-        private static IGeometryBuilder _Builder=new Gml.V311.GmlGeometryBuilder();
     }
 #pragma warning restore 3001, 3009
 }

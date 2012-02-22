@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GeoSik {
+namespace GeoSik.SharpMap {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace GeoSik {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GeoSik.SR", typeof(SR).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GeoSik.SharpMap.SR", typeof(SR).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,56 +61,11 @@ namespace GeoSik {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The array should have at least {0} elements ({1} elements found).
+        ///   Looks up a localized string similar to SharpMap geometry spatial reference must be intialized.
         /// </summary>
-        internal static string ArrayShouldHaveElementsException {
+        internal static string SharpMapSpatialReferenceMustBeInitiliazed {
             get {
-                return ResourceManager.GetString("ArrayShouldHaveElementsException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to A geometry cannot be built without a coordinate system.
-        /// </summary>
-        internal static string CannotBuildGeometryWithoutCoordinateSystemException {
-            get {
-                return ResourceManager.GetString("CannotBuildGeometryWithoutCoordinateSystemException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The CQL term &quot;{0}&quot; has not been implemented.
-        /// </summary>
-        internal static string CqlTermNotImplementedException {
-            get {
-                return ResourceManager.GetString("CqlTermNotImplementedException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Invalid PropertyName expression: &quot;{0}&quot;.
-        /// </summary>
-        internal static string InvalidPropertyNameExpressionException {
-            get {
-                return ResourceManager.GetString("InvalidPropertyNameExpressionException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Filter element &quot;{0}&quot; is not supported.
-        /// </summary>
-        internal static string UnsupportedFilterElement {
-            get {
-                return ResourceManager.GetString("UnsupportedFilterElement", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The &quot;{0}&quot; format string is not supported.
-        /// </summary>
-        internal static string UnsupportedFormatString {
-            get {
-                return ResourceManager.GetString("UnsupportedFormatString", resourceCulture);
+                return ResourceManager.GetString("SharpMapSpatialReferenceMustBeInitiliazed", resourceCulture);
             }
         }
     }

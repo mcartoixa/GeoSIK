@@ -56,7 +56,7 @@ namespace GeoSik
         void AddLine(double x, double y, double? z);
         /// <summary>Finishes the call sequence for a geometry figure.</summary>
         void EndFigure();
-        /// <summary>Finishes the call sequence for a geometry representation.</summary>
+        /// <summary>Finishes the call sequence for a geometry.</summary>
         void EndGeometry();
     }
 }

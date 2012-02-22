@@ -6,7 +6,7 @@ PREREQUISITES
 	* Microsoft Windows SDK 7.1
 	* MSBuild.Community.Tasks 1.3
 	* FxCop 10.0
-	* PartCover .NET4 <https://github.com/sawilde/partcover.net4>
+	* [PartCover .NET4] (https://github.com/sawilde/partcover.net4)
 
 - Development:
 	* SQL Server Express 2008 R2
@@ -24,12 +24,10 @@ build.bat
 DEVELOPMENT
 -----------
 
-- Build the project once (build.bat) before any development: NuGet packages will automatically be updated in your repository.
-
 - Serialization:
-	* Serialization objects found in the Library project have been generated with LinqToXsd <http://linqtoxsd.codeplex.com/> with a command line like the following:
+	* Serialization objects found in the Library project have been generated with [LinqToXsd] (http://linqtoxsd.codeplex.com/) with a command line like the following:
 LinqToXsd.exe iso\19139\20070417\gmd\gmd.xsd /config:LinqToXsd.config.xml /enableServiceReference
-	* Original XML schemas can be found online at <http://schemas.opengis.net/>.
+	* Original XML schemas can be found online at http://schemas.opengis.net/.
 	* LinqToXsd configuration looks like the following:
 <Configuration xmlns="http://www.microsoft.com/xml/schema/linq">
   <Namespaces>

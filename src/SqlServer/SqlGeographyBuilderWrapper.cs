@@ -70,23 +70,24 @@ namespace GeoSik.SqlServer
             _Builder.EndGeometry();
         }
 
-        public SqlGeography Parse(string text, ICoordinateSystem system)
+        public void Parse(string text, ICoordinateSystem system)
         {
-            return new SqlGeography(SqlTypes.SqlGeography.STGeomFromText((SqlChars)((SqlString)text), (int)system.AuthorityCode), system);
-        }
-
-        ISimpleGeometry IGeometryBuilder.Parse(string text, ICoordinateSystem system)
-        {
-            return Parse(text, system);
+            _Geography=new SqlGeography(SqlTypes.SqlGeography.STGeomFromText((SqlChars)((SqlString)text), (int)system.AuthorityCode), system);
         }
 
         public SqlGeography ConstructedGeometry
         {
             get
             {
-                // cf. http://blogs.msdn.com/b/edkatibah/archive/2008/08/19/working-with-invalid-data-and-the-sql-server-2008-geography-data-type-part-1b.aspx
-                SqlTypes.SqlGeometry geom=_Builder.ConstructedGeometry.MakeValid();
-                return Parse(((SqlString)geom.STUnion(geom.STStartPoint()).STAsText()).Value, _TargetSystem);
+                if (_Geography==null)
+                {
+                    // cf. http://blogs.msdn.com/b/edkatibah/archive/2008/08/19/working-with-invalid-data-and-the-sql-server-2008-geography-data-type-part-1b.aspx
+                    SqlTypes.SqlGeometry geom=_Builder.ConstructedGeometry.MakeValid();
+                    Parse(((SqlString)geom.STUnion(geom.STStartPoint()).STAsText()).Value, _TargetSystem);
+                }
+
+                Debug.Assert(_Geography!=null);
+                return _Geography;
             }
         }
 
@@ -99,6 +100,7 @@ namespace GeoSik.SqlServer
         }
 
         private SqlTypes.SqlGeometryBuilder _Builder;
+        private SqlGeography _Geography;
         private ICoordinateSystem _TargetSystem;
 
     }

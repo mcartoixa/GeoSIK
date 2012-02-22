@@ -70,21 +70,19 @@ namespace GeoSik.SqlServer
             _Builder.EndGeometry();
         }
 
-        public SqlGeometry Parse(string text, ICoordinateSystem system)
+        public void Parse(string text, ICoordinateSystem system)
         {
-            return new SqlGeometry(SqlTypes.SqlGeometry.STGeomFromText((SqlChars)((SqlString)text), (int)system.AuthorityCode), system);
-        }
-
-        ISimpleGeometry IGeometryBuilder.Parse(string text, ICoordinateSystem system)
-        {
-            return Parse(text, system);
+            _Geometry=new SqlGeometry(SqlTypes.SqlGeometry.STGeomFromText((SqlChars)((SqlString)text), (int)system.AuthorityCode), system);
         }
 
         public SqlGeometry ConstructedGeometry
         {
             get
             {
-                return new SqlGeometry(_Builder.ConstructedGeometry, _TargetSystem);
+                if (_Geometry==null)
+                    _Geometry=new SqlGeometry(_Builder.ConstructedGeometry, _TargetSystem);
+
+                return _Geometry;
             }
         }
 
@@ -97,6 +95,7 @@ namespace GeoSik.SqlServer
         }
 
         private SqlTypes.SqlGeometryBuilder _Builder;
+        private SqlGeometry _Geometry;
         private ICoordinateSystem _TargetSystem;
     }
 }

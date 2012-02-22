@@ -20,6 +20,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using ProjNet.CoordinateSystems;
@@ -28,36 +29,53 @@ using SmGeometries=SharpMap.Geometries;
 namespace GeoSik.SharpMap
 {
 
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Class used to build <see cref="SharpGeometry" /> instances.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
     public class SharpGeometryBuilder:
-        GeometryBuilder
+        GeometryTransformerSink,
+        IGeometryBuilder
     {
 
+        /// <summary>Creates a new instance of the <see cref="SharpGeometryBuilder" /> class.</summary>
         public SharpGeometryBuilder():
             base()
         {
         }
 
-        public SharpGeometryBuilder(ICoordinateSystem targetSystem):
+        /// <summary>Creates a new instance of the <see cref="SharpGeometryBuilder" /> class.</summary>
+        /// <param name="targetSystem">The target coordinate system. If different from the source, transformations will occur.</param>
+        public SharpGeometryBuilder(ICoordinateSystem targetSystem) :
             base(targetSystem)
         {
         }
 
-        protected override void DoSetCoordinateSystem(ICoordinateSystem system)
-        {
-            _TargetSystem=system;
-        }
-
+        /// <summary>Starts the call sequence for the specified <see cref="GeometryType" />.</summary>
+        /// <param name="type">The type of the geometry to build.</param>
         public override void BeginGeometry(GeometryType type)
         {
             _GeometryType=GeometryTypeUtils.Convert(type);
         }
 
+        /// <summary>Defines a point other than the starting point of a geometry figure.</summary>
+        /// <param name="x">The eastings of the point, in the target coordinate system.</param>
+        /// <param name="y">The northings of the point, in the target coordinate system.</param>
+        /// <param name="z">The elevation of the point, in the target coordinate system.</param>
         protected override void DoBeginFigure(double x, double y, double? z)
         {
             _Figures.AddLast(new List<SmGeometries.Point>());
             DoAddLine(x, y, z);
         }
 
+        /// <summary>Defines the starting point of a geometry figure.</summary>
+        /// <param name="x">The easting of the point, in the target coordinate system.</param>
+        /// <param name="y">The northing of the point, in the target coordinate system..</param>
+        /// <param name="z">The elevation of the point, in the target coordinate system..</param>
         protected override void DoAddLine(double x, double y, double? z)
         {
             LinkedListNode<IList<SmGeometries.Point>> last=_Figures.Last;
@@ -67,14 +85,29 @@ namespace GeoSik.SharpMap
                 last.Value.Add(new SmGeometries.Point(x, y));
         }
 
-        public override ISimpleGeometry Parse(string text, ICoordinateSystem system)
+        /// <summary>Returns the geometry defined by the specified WKT representation, in the specified coordinate system.</summary>
+        /// <param name="text">The WKT representation of the geometry.</param>
+        /// <param name="system">The coordinate system of the WKT representation.</param>
+        public void Parse(string text, ICoordinateSystem system)
         {
+            Debug.Assert(system!=null);
+            if (system==null)
+                throw new ArgumentNullException("system");
+
             var g=SmGeometries.Geometry.GeomFromText(text);
             g.SpatialReference=system;
-            return new SharpGeometry(g);
+
+            if ((TargetSystem!=null) && ((system!=TargetSystem) || !system.EqualParams(TargetSystem)))
+            {
+                _Geometry=null;
+                var orig=new SharpGeometry(g);
+                orig.Populate(this);
+            } else
+                _Geometry=new SharpGeometry(g);
         }
 
-        public override ISimpleGeometry ConstructedGeometry
+        /// <summary>Returns the geometry resulting from the actions on the current <see cref="SharpGeometryBuilder" />.</summary>
+        public SharpGeometry ConstructedGeometry
         {
             get
             {
@@ -113,9 +146,16 @@ namespace GeoSik.SharpMap
             }
         }
 
+        ISimpleGeometry IGeometryBuilder.ConstructedGeometry
+        {
+            get
+            {
+                return ConstructedGeometry;
+            }
+        }
+
         private SmGeometries.GeometryType2 _GeometryType;
         private LinkedList<IList<SmGeometries.Point>> _Figures=new LinkedList<IList<SmGeometries.Point>>();
-        private ICoordinateSystem _TargetSystem;
 
         private SharpGeometry _Geometry;
     }

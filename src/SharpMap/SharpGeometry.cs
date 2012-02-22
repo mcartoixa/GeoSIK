@@ -32,15 +32,26 @@ using SmGeometries=SharpMap.Geometries;
 namespace GeoSik.SharpMap
 {
 
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Encapsulates a <see cref="SmGeometries.Geometry" /> as a <see cref="IGeometry" />.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
 #pragma warning disable 3001, 3002
     public class SharpGeometry:
         IGeometry
     {
 
+        /// <summary>Creates a new instance of the <see cref="SharpGeometry" /> class.</summary>
         private SharpGeometry()
         {
         }
 
+        /// <summary>Creates a new instance of the <see cref="SharpGeometry" /> class.</summary>
+        /// <param name="geometry">The <see cref="SmGeometries.Geometry" /> to encapsulate.</param>
         public SharpGeometry(SmGeometries.Geometry geometry)
         {
             Debug.Assert(geometry!=null);
@@ -48,13 +59,19 @@ namespace GeoSik.SharpMap
                 throw new ArgumentNullException("geometry");
             Debug.Assert(geometry.SpatialReference!=null);
             if (geometry.SpatialReference==null)
-                throw new ArgumentException("", "geometry");
+                throw new ArgumentException(SR.SharpMapSpatialReferenceMustBeInitiliazed, "geometry");
 
             _Geometry=geometry;
         }
 
-        public IGeometry Centroid()
+        /// <summary>Returns the centroid for the current geometry.</summary>
+        /// <returns>The centroid for the current geometry.</returns>
+        public SharpGeometry Centroid()
         {
+            var p=_Geometry as SmGeometries.Point;
+            if (p!=null)
+                return this;
+
             var pol=_Geometry as SmGeometries.Polygon;
             if (pol!=null)
                 return new SharpGeometry(pol.Centroid);
@@ -62,64 +79,90 @@ namespace GeoSik.SharpMap
             throw new NotSupportedException();
         }
 
-        public double Distance(IGeometry geometry)
+        /// <summary>Returns the shortest distance between any 2 points in the 2 geometries.</summary>
+        /// <param name="geometry">The geometry to calculate the distance from.</param>
+        /// <returns>The shortest distance between any 2 points in the 2 geometries.</returns>
+        public double Distance(ISimpleGeometry geometry)
         {
             SharpGeometry other=Convert(geometry);
             return _Geometry.Distance(other._Geometry);
         }
 
-        public bool Disjoint(IGeometry geometry)
+        /// <summary>Indicates whether the 2 geometries are disjoint or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the 2 geometries are disjoint, or else <c>false</c>.</returns>
+        public bool Disjoint(ISimpleGeometry geometry)
         {
             SharpGeometry other=Convert(geometry);
             return _Geometry.Disjoint(other._Geometry);
         }
 
-        public bool Touches(IGeometry geometry)
+        /// <summary>Indicates whether the 2 geometries touch themselves or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the 2 geometries touch themselves, or else <c>false</c>.</returns>
+        public bool Touches(ISimpleGeometry geometry)
         {
             SharpGeometry other=Convert(geometry);
             return _Geometry.Touches(other._Geometry);
         }
 
-        public bool Within(IGeometry geometry)
+        /// <summary>Indicates whether the current geometry is within the specified <paramref name="geometry" /> or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the current geometry is within the specified <paramref name="geometry" />, or else <c>false</c>.</returns>
+        public bool Within(ISimpleGeometry geometry)
         {
             SharpGeometry other=Convert(geometry);
             return _Geometry.Within(other._Geometry);
         }
 
-        public bool Overlaps(IGeometry geometry)
+        /// <summary>Indicates whether the current geometry overlaps the specified <paramref name="geometry" /> or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the current geometry overlaps the specified <paramref name="geometry" />, or else <c>false</c>.</returns>
+        public bool Overlaps(ISimpleGeometry geometry)
         {
             SharpGeometry other=Convert(geometry);
             return _Geometry.Overlaps(other._Geometry);
         }
 
-        public bool Crosses(IGeometry geometry)
+        /// <summary>Indicates whether the 2 geometries cross or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the 2 geometries cross, or else <c>false</c>.</returns>
+        public bool Crosses(ISimpleGeometry geometry)
         {
             SharpGeometry other=Convert(geometry);
             return _Geometry.Crosses(other._Geometry);
         }
 
-        public bool Intersects(IGeometry geometry)
+        /// <summary>Indicates whether the 2 geometries intersect or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the 2 geometries intersect, or else <c>false</c>.</returns>
+        public bool Intersects(ISimpleGeometry geometry)
         {
             SharpGeometry other=Convert(geometry);
             return _Geometry.Intersects(other._Geometry);
         }
 
-        public bool Contains(IGeometry geometry)
+        /// <summary>Indicates whether the current geometry contains the specified <paramref name="geometry" /> or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the current geometry contains the specified <paramref name="geometry" />, or else <c>false</c>.</returns>
+        public bool Contains(ISimpleGeometry geometry)
         {
             SharpGeometry other=Convert(geometry);
             return _Geometry.Contains(other._Geometry);
         }
 
-        public bool Relate(IGeometry geometry)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ISimpleGeometry Envelope()
+        /// <summary>Returns the envelope of the current geometry.</summary>
+        /// <returns>The envelope of the current geometry.</returns>
+        public SharpGeometry Envelope()
         {
             return new SharpGeometry(_Geometry.Envelope());
         }
 
+        /// <summary>Applies a geometry type call sequence to the specified <paramref name="sink" />.</summary>
+        /// <param name="sink">The sink to populate.</param>
+        /// <remarks>
+        ///   <para>The call sequence is a set of figures, lines, and points for geometry types.</para>
+        /// </remarks>
         public void Populate(IGeometrySink sink)
         {
             sink.SetCoordinateSystem(CoordinateSystem);
@@ -151,14 +194,28 @@ namespace GeoSik.SharpMap
             sink.EndGeometry();
         }
 
+        /// <summary>Generates a geometry from its GML representation.</summary>
+        /// <param name="reader">The stream from which the geometry is deserialized. </param>
         public void ReadXml(XmlReader reader)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>Converts a geometry into its GML representation.</summary>
+        /// <param name="writer">The stream to which the geometry is serialized. </param>
         public void WriteXml(XmlWriter writer)
         {
             throw new NotImplementedException();
+        }
+
+        ISimpleGeometry IGeometry.Centroid()
+        {
+            return Centroid();
+        }
+
+        ISimpleGeometry ISimpleGeometry.Envelope()
+        {
+            return Envelope();
         }
 
         XmlSchema IXmlSerializable.GetSchema()
@@ -166,7 +223,7 @@ namespace GeoSik.SharpMap
             return null;
         }
 
-        private static SharpGeometry Convert(IGeometry geometry)
+        private static SharpGeometry Convert(ISimpleGeometry geometry)
         {
             var sg=geometry as SharpGeometry;
             if (sg!=null)
@@ -202,26 +259,39 @@ namespace GeoSik.SharpMap
             sink.EndFigure();
         }
 
-        public static SmGeometries.Geometry ToGeometry(SharpGeometry wrapper)
+        /// <summary>Converts the specified <paramref name="geometry" /> into a <see cref="SmGeometries.Geometry" />.</summary>
+        /// <param name="geometry">The geometry to convert.</param>
+        /// <returns>The converted geometry.</returns>
+        public static SmGeometries.Geometry ToGeometry(SharpGeometry geometry)
         {
-            return wrapper._Geometry;
+            return geometry._Geometry;
         }
 
+        /// <summary>Converts the specified <paramref name="geometry" /> into a <see cref="SharpGeometry" />.</summary>
+        /// <param name="geometry">The geometry to convert.</param>
+        /// <returns>The converted geometry.</returns>
         public static SharpGeometry ToSharpGeometry(SmGeometries.Geometry geometry)
         {
             return new SharpGeometry(geometry);
         }
 
-        public static implicit operator SmGeometries.Geometry(SharpGeometry wrapper)
+        /// <summary>Converts the specified <paramref name="geometry" /> into a <see cref="SmGeometries.Geometry" />.</summary>
+        /// <param name="geometry">The geometry to convert.</param>
+        /// <returns>The converted geometry.</returns>
+        public static implicit operator SmGeometries.Geometry(SharpGeometry geometry)
         {
-            return wrapper._Geometry;
+            return geometry._Geometry;
         }
 
+        /// <summary>Converts the specified <paramref name="geometry" /> into a <see cref="SharpGeometry" />.</summary>
+        /// <param name="geometry">The geometry to convert.</param>
+        /// <returns>The converted geometry.</returns>
         public static explicit operator SharpGeometry(SmGeometries.Geometry geometry)
         {
             return new SharpGeometry(geometry);
         }
 
+        /// <summary>Gets the coordinate system for the current geometry.</summary>
         public ICoordinateSystem CoordinateSystem
         {
             get

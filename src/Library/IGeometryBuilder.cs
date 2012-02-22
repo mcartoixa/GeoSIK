@@ -39,13 +39,12 @@ namespace GeoSik
         IGeometrySink
     {
 
-        /// <summary>Returns the geometry defined by the specified WKT representation, in the specified coordinate system.</summary>
+        /// <summary>Parses the geometry defined by the specified WKT representation, in the specified coordinate system.</summary>
         /// <param name="text">The WKT representation of the geometry.</param>
-        /// <param name="system">The coordinate system of the geometry.</param>
-        /// <returns>The geometry.</returns>
-        ISimpleGeometry Parse(string text, ICoordinateSystem system);
+        /// <param name="system">The coordinate system of the WKT representation.</param>
+        void Parse(string text, ICoordinateSystem system);
 
-        /// <summary>When used as a <see cref="IGeometrySink" />, returns the resulting geometry.</summary>
+        /// <summary>Returns the geometry resulting from the actions on the current <see cref="IGeometryBuilder" />.</summary>
         ISimpleGeometry ConstructedGeometry { get; }
     }
 }
