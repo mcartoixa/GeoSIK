@@ -33,14 +33,20 @@
 
 
 
-  <!-- Version update for NuSpec dependencies -->
+  <!-- Version update for NuSpec files -->
+
   <Target
-    Name="UpdateNuSpecReferencesVersions"
-    AfterTargets="UpdateVersion"
+    Name="UpdateNuSpecFilesVersion"
+    Outputs="%(Projects.Filename).nuspec"
   >
     <ItemGroup>
-      <NuSpecItems Include="misc\GeoSik.*.nuspec" />
+      <NuSpecItems Include="misc\GeoSik.nuspec;misc\GeoSik.*.nuspec" />
     </ItemGroup>
+    <XmlUpdate
+      XmlFileName="%(NuSpecItems.Identity)"
+      XPath="/package/metadata/version"
+      Value="$(VersionMajor).$(VersionMinor).$(VersionBuild).$(VersionRevision)"
+    />
     <XmlUpdate
       XmlFileName="%(NuSpecItems.Identity)"
       XPath="/package/metadata/dependencies/dependency[@id='GeoSik']/@version"
