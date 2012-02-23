@@ -21,6 +21,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Xml;
@@ -107,33 +108,51 @@ namespace GeoSik.Fdo
             switch (_Geometry.DerivedType)
             {
             case FCommon.GeometryType.GeometryType_LineString:
-                using (FGeometry.DirectPositionCollection positions=((FGeometry.ILineString)_Geometry).Positions)
-                    CreateFigure(sink, positions);
-                break;
             case FCommon.GeometryType.GeometryType_Point:
-                using (FGeometry.DirectPositionCollection positions=new FGeometry.DirectPositionCollection())
-                    using (FGeometry.IDirectPosition p=((FGeometry.IPoint)_Geometry).Position)
-                    {
-                        positions.Add(p);
-                        CreateFigure(sink, positions);
-                    }
-                break;
             case FCommon.GeometryType.GeometryType_Polygon:
+                _PopulateSimpleType(sink, _Geometry);
+                break;
+            case FCommon.GeometryType.GeometryType_MultiLineString:
                 {
-                    var polygon=(FGeometry.IPolygon)_Geometry;
-                    using (FGeometry.ILinearRing exterior=polygon.ExteriorRing)
-                        using (FGeometry.DirectPositionCollection positions=exterior.Positions)
-                            CreateFigure(sink, positions);
-
-                    for (int i=0; i<polygon.InteriorRingCount; ++i)
-                        using (FGeometry.ILinearRing interior=polygon.GetInteriorRing(i))
-                            using (FGeometry.DirectPositionCollection positions=interior.Positions)
-                                CreateFigure(sink, positions);
+                    var multiLineString=(FGeometry.IMultiLineString)_Geometry;
+                    for (int i=0; i<multiLineString.Count; ++i)
+                        using (FGeometry.ILineString lineString=multiLineString[i])
+                            _PopulateSimpleType(sink, lineString);
+                }
+                break;
+            case FCommon.GeometryType.GeometryType_MultiPoint:
+                {
+                    var multiPoint=(FGeometry.IMultiPoint)_Geometry;
+                    using (FGeometry.DirectPositionCollection positions=new FGeometry.DirectPositionCollection())
+                        for (int i=0; i<multiPoint.Count; ++i)
+                            using (FGeometry.IPoint point=multiPoint[i])
+                                _PopulateSimpleType(sink, point);
+                }
+                break;
+            case FCommon.GeometryType.GeometryType_MultiPolygon:
+                {
+                    var multiPolygon=(FGeometry.IMultiPolygon)_Geometry;
+                    for (int i=0; i<multiPolygon.Count; ++i)
+                        using (FGeometry.IPolygon polygon=multiPolygon[i])
+                            _PopulateSimpleType(sink, polygon);
+                }
+                break;
+            case FCommon.GeometryType.GeometryType_MultiGeometry:
+                {
+                    var multiGeometry=(FGeometry.IMultiGeometry)_Geometry;
+                    for (int i=0; i<multiGeometry.Count; ++i)
+                        using (FGeometry.IGeometry geometry=multiGeometry[i])
+                            _PopulateSimpleType(sink, geometry);
                 }
                 break;
             default:
-                //TODO: implement other geometry types...
-                throw new NotSupportedException();
+                throw new NotSupportedException(
+                    string.Format(
+                        CultureInfo.CurrentCulture,
+                        SR.UnsupportedGeometryTypeException,
+                        _Geometry.DerivedType
+                    )
+                );
             }
 
             sink.EndGeometry();
@@ -162,6 +181,50 @@ namespace GeoSik.Fdo
             }
 
             _Geometry=null;
+        }
+
+        private static void _PopulateSimpleType(IGeometrySink sink, FGeometry.IGeometry geometry)
+        {
+            sink.BeginGeometry(GeometryTypeUtils.Convert(geometry.DerivedType));
+
+            switch (geometry.DerivedType)
+            {
+            case FCommon.GeometryType.GeometryType_LineString:
+                using (FGeometry.DirectPositionCollection positions=((FGeometry.ILineString)geometry).Positions)
+                    CreateFigure(sink, positions);
+                break;
+            case FCommon.GeometryType.GeometryType_Point:
+                using (FGeometry.DirectPositionCollection positions=new FGeometry.DirectPositionCollection())
+                    using (FGeometry.IDirectPosition dp=((FGeometry.IPoint)geometry).Position)
+                    {
+                        positions.Add(dp);
+                        CreateFigure(sink, positions);
+                    }
+                break;
+            case FCommon.GeometryType.GeometryType_Polygon:
+                {
+                    var polygon=(FGeometry.IPolygon)geometry;
+                    using (FGeometry.ILinearRing exterior=polygon.ExteriorRing)
+                        using (FGeometry.DirectPositionCollection positions=exterior.Positions)
+                            CreateFigure(sink, positions);
+
+                    for (int i=0; i<polygon.InteriorRingCount; ++i)
+                        using (FGeometry.ILinearRing interior=polygon.GetInteriorRing(i))
+                            using (FGeometry.DirectPositionCollection positions=interior.Positions)
+                                CreateFigure(sink, positions);
+                }
+                break;
+            default:
+                throw new NotSupportedException(
+                    string.Format(
+                        CultureInfo.CurrentCulture,
+                        SR.UnsupportedGeometryTypeException,
+                        geometry.DerivedType
+                    )
+                );
+            }
+
+            sink.EndGeometry();
         }
 
         ISimpleGeometry ISimpleGeometry.Envelope()
@@ -199,9 +262,9 @@ namespace GeoSik.Fdo
                 using (FGeometry.IDirectPosition pi=positions[i])
                 {
                     if (pi.Dimensionality>2)
-                        sink.BeginFigure(pi.X, pi.Y, pi.Z);
+                        sink.AddLine(pi.X, pi.Y, pi.Z);
                     else
-                        sink.BeginFigure(pi.X, pi.Y, null);
+                        sink.AddLine(pi.X, pi.Y, null);
                 }
 
             sink.EndFigure();

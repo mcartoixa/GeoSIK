@@ -61,20 +61,33 @@ namespace GeoSik.Ogc.SimpleFeature
                     throw new ArgumentNullException("writer");
 
                 _Writer=writer;
-                _CurrentType=new Stack<GeometryType>();
             }
 
             public override void BeginGeometry(GeometryType type)
             {
-                if (_CurrentType.Count==0)
+                if ((_CurrentType.Count==0) || (_CurrentType.Peek()==GeometryType.GeometryCollection))
                 {
                     _Writer.WriteStartObject();
                     _Writer.WritePropertyName("type");
                     _Writer.WriteValue(type.ToString("G"));
-                    _Writer.WritePropertyName("coordinates");
+                    if (type==GeometryType.GeometryCollection)
+                        _Writer.WritePropertyName("geometries");
+                    else
+                        _Writer.WritePropertyName("coordinates");
                 }
 
                 _CurrentType.Push(type);
+
+                switch (type)
+                {
+                case GeometryType.GeometryCollection:
+                case GeometryType.MultiLineString:
+                case GeometryType.MultiPoint:
+                case GeometryType.MultiPolygon:
+                case GeometryType.Polygon:
+                    _Writer.WriteStartArray();
+                    break;
+                }
             }
 
             public override void EndFigure()
@@ -85,9 +98,20 @@ namespace GeoSik.Ogc.SimpleFeature
 
             public override void EndGeometry()
             {
-                _CurrentType.Pop();
+                GeometryType type=_CurrentType.Pop();
 
-                if (_CurrentType.Count==0)
+                switch (type)
+                {
+                case GeometryType.GeometryCollection:
+                case GeometryType.MultiLineString:
+                case GeometryType.MultiPoint:
+                case GeometryType.MultiPolygon:
+                case GeometryType.Polygon:
+                    _Writer.WriteEndArray();
+                    break;
+                }
+
+                if ((_CurrentType.Count==0) || (_CurrentType.Peek()==GeometryType.GeometryCollection))
                     _Writer.WriteEndObject();
             }
 
@@ -118,7 +142,7 @@ namespace GeoSik.Ogc.SimpleFeature
             }
 
             private JsonWriter _Writer;
-            private Stack<GeometryType> _CurrentType;
+            private Stack<GeometryType> _CurrentType=new Stack<GeometryType>();
         }
 
         public override bool CanConvert(Type objectType)

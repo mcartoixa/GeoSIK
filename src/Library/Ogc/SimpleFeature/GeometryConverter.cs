@@ -48,7 +48,7 @@ namespace GeoSik.Ogc.SimpleFeature
                 if ((_Builder.Length>0) && (_Builder[_Builder.Length-1]==')'))
                     _Builder.Append(", ");
 
-                if (_CurrentType.Count==0 || (_CurrentType.Peek()==GeometryType.GeometryCollection))
+                if ((_CurrentType.Count==0) || (_CurrentType.Peek()==GeometryType.GeometryCollection))
                 {
                     _Builder.Append(type.ToString("G").ToUpperInvariant());
                     _Builder.Append(" ");
@@ -90,6 +90,8 @@ namespace GeoSik.Ogc.SimpleFeature
             public void EndGeometry()
             {
                 GeometryType type=_CurrentType.Pop();
+                bool isEmpty=(_CurrentType.Count==0) && !_HasContent;
+
                 switch (type)
                 {
                 case GeometryType.GeometryCollection:
@@ -97,11 +99,14 @@ namespace GeoSik.Ogc.SimpleFeature
                 case GeometryType.MultiPoint:
                 case GeometryType.MultiPolygon:
                 case GeometryType.Polygon:
-                    _Builder.Append(")");
+                    if (isEmpty)
+                        _Builder.Remove(_Builder.Length-1, 1);
+                    else
+                        _Builder.Append(")");
                     break;
                 }
 
-                if ((_CurrentType.Count==0) && !_HasContent)
+                if (isEmpty)
                     _Builder.Append("EMPTY");
             }
 
