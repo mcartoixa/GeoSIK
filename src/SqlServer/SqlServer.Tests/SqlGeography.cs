@@ -35,12 +35,19 @@ namespace GeoSik.SqlServer.Tests
 
         [Theory]
         [InlineData("Point (10 10)", "POINT (10 10)")]
+        [InlineData("Point Empty", "POINT EMPTY")]
         [InlineData("LineString ( 10 10, 20 20, 30 40)", "LINESTRING (10 10, 20 20, 30 40)")]
+        [InlineData("LineString Empty", "LINESTRING EMPTY")]
         [InlineData("Polygon ((10 10, 20 15, 20 20, 10 20, 10 10))", "POLYGON ((10 10, 20 15, 20 20, 10 20, 10 10))")]
+        [InlineData("Polygon Empty", "POLYGON EMPTY")]
         [InlineData("MultiPoint ((10 10), (20 20))", "MULTIPOINT ((10 10), (20 20))")]
+        [InlineData("MultiPoint Empty", "MULTIPOINT EMPTY")]
         [InlineData("MultiLineString ( (10 10, 20 20), (15 15, 30 15) )", "MULTILINESTRING ((10 10, 20 20), (15 15, 30 15))")]
+        [InlineData("MultiLineString Empty", "MULTILINESTRING EMPTY")]
         //[InlineData("MultiPolygon ( ((10 10, 20 15, 20 20, 10 20, 10 10)), ((60 60, 70 70, 80 60, 60 60 )) )", "MULTIPOLYGON (((10 10, 20 15, 20 20, 10 20, 10 10)), ((60 60, 70 70, 80 60, 60 60)))")]
+        [InlineData("MultiPolygon Empty", "MULTIPOLYGON EMPTY")]
         [InlineData("GeometryCollection ( POINT (10 10), POINT (30 30), LINESTRING (15 15, 20 20) )", "GEOMETRYCOLLECTION (POINT (10 10), POINT (30 30), LINESTRING (15 15, 20 20))")]
+        [InlineData("GeometryCollection Empty", "GEOMETRYCOLLECTION EMPTY")]
         public void ShouldSerializeToWkt(string input, string expected)
         {
             var g=new SqlGeography(SqlTypes.SqlGeography.STGeomFromText(new SqlChars(new SqlString(input)), 4326));
@@ -50,12 +57,19 @@ namespace GeoSik.SqlServer.Tests
 
         [Theory]
         [InlineData("Point (10 10)", "POINT (10 10)")]
+        [InlineData("Point Empty", "POINT EMPTY")]
         [InlineData("LineString ( 10 10, 20 20, 30 40)", "LINESTRING (10 10, 20 20, 30 40)")]
+        [InlineData("LineString Empty", "LINESTRING EMPTY")]
         [InlineData("Polygon ((10 10, 20 15, 20 20, 10 20, 10 10))", "POLYGON ((10 10, 20 15, 20 20, 10 20, 10 10))")]
+        [InlineData("Polygon Empty", "POLYGON EMPTY")]
         [InlineData("MultiPoint ((10 10), (20 20))", "MULTIPOINT ((10 10), (20 20))")]
+        [InlineData("MultiPoint Empty", "MULTIPOINT EMPTY")]
         [InlineData("MultiLineString ( (10 10, 20 20), (15 15, 30 15) )", "MULTILINESTRING ((10 10, 20 20), (15 15, 30 15))")]
+        [InlineData("MultiLineString Empty", "MULTILINESTRING EMPTY")]
         //[InlineData("MultiPolygon ( ((10 10, 20 15, 20 20, 10 20, 10 10)), ((60 60, 70 70, 80 60, 60 60 )) )", "MULTIPOLYGON (((10 10, 20 15, 20 20, 10 20, 10 10)), ((60 60, 70 70, 80 60, 60 60)))")]
+        [InlineData("MultiPolygon Empty", "MULTIPOLYGON EMPTY")]
         [InlineData("GeometryCollection ( POINT (10 10), POINT (30 30), LINESTRING (15 15, 20 20) )", "GEOMETRYCOLLECTION (POINT (10 10), POINT (30 30), LINESTRING (15 15, 20 20))")]
+        [InlineData("GeometryCollection Empty", "GEOMETRYCOLLECTION EMPTY")]
         public void ShouldSerializeToWktWithGeoSikConverter(string input, string expected)
         {
             var g=new SqlGeography(SqlTypes.SqlGeography.STGeomFromText(new SqlChars(new SqlString(input)), 4326));
