@@ -20,6 +20,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using FCommon=OSGeo.FDO.Common;
@@ -34,14 +35,10 @@ namespace GeoSik.Fdo
         {
             switch (type)
             {
-            case GeometryType.Curve:
-                return FCommon.GeometryType.GeometryType_CurveString;
             case GeometryType.GeometryCollection:
                 return FCommon.GeometryType.GeometryType_MultiGeometry;
             case GeometryType.LineString:
                 return FCommon.GeometryType.GeometryType_LineString;
-            case GeometryType.MultiCurve:
-                return FCommon.GeometryType.GeometryType_MultiCurveString;
             case GeometryType.MultiLineString:
                 return FCommon.GeometryType.GeometryType_MultiLineString;
             case GeometryType.MultiPoint:
@@ -54,7 +51,13 @@ namespace GeoSik.Fdo
                 return FCommon.GeometryType.GeometryType_Polygon;
             }
 
-            throw new NotSupportedException();
+            throw new NotSupportedException(
+                string.Format(
+                    CultureInfo.CurrentCulture,
+                    SR.UnsupportedGeometryTypeException,
+                    type
+                )
+            );
         }
 
         public static GeometryType Convert(FCommon.GeometryType type)
@@ -62,14 +65,10 @@ namespace GeoSik.Fdo
 
             switch (type)
             {
-            case FCommon.GeometryType.GeometryType_CurveString:
-                return GeometryType.Curve;
             case FCommon.GeometryType.GeometryType_MultiGeometry:
                 return GeometryType.GeometryCollection;
             case FCommon.GeometryType.GeometryType_LineString:
                 return GeometryType.LineString;
-            case FCommon.GeometryType.GeometryType_MultiCurveString:
-                return GeometryType.MultiCurve;
             case FCommon.GeometryType.GeometryType_MultiLineString:
                 return GeometryType.MultiLineString;
             case FCommon.GeometryType.GeometryType_MultiPoint:
@@ -82,7 +81,13 @@ namespace GeoSik.Fdo
                 return GeometryType.Polygon;
             }
 
-            throw new NotSupportedException();
+            throw new NotSupportedException(
+                string.Format(
+                    CultureInfo.CurrentCulture,
+                    SR.UnsupportedGeometryTypeException,
+                    type
+                )
+            );
         }
     }
 }

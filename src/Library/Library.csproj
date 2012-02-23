@@ -45,7 +45,7 @@
   <ItemGroup>
     <Reference Include="Common.Logging">
       <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Irony">
       <HintPath>..\lib\Irony\Irony.dll</HintPath>
@@ -85,9 +85,10 @@
     </Compile>
     <Compile Include="CoordinateSystemProvider.cs" />
     <Compile Include="EnumerableExtensions.cs" />
-    <Compile Include="GeometryJsonConverter.cs" />
     <Compile Include="GeometryTransformerSink.cs" />
     <Compile Include="GeometryType.cs" />
+    <Compile Include="Ogc\SimpleFeature\GeometryJsonConverter.cs" />
+    <Compile Include="Ogc\SimpleFeature\GeometryWktGrammar.cs" />
     <Compile Include="IGeometry.cs" />
     <Compile Include="IGeometryBuilder.cs" />
     <Compile Include="IGeometrySink.cs" />

@@ -59,7 +59,7 @@ namespace GeoSik.SharpMap
                 throw new ArgumentNullException("geometry");
             Debug.Assert(geometry.SpatialReference!=null);
             if (geometry.SpatialReference==null)
-                throw new ArgumentException(SR.SharpMapSpatialReferenceMustBeInitiliazed, "geometry");
+                throw new ArgumentException(SR.SharpMapSpatialReferenceMustBeInitiliazedException, "geometry");
 
             _Geometry=geometry;
         }
@@ -208,10 +208,10 @@ namespace GeoSik.SharpMap
             throw new NotImplementedException();
         }
 
-        ISimpleGeometry IGeometry.Centroid()
-        {
-            return Centroid();
-        }
+        //ISimpleGeometry IGeometry.Centroid()
+        //{
+        //    return Centroid();
+        //}
 
         ISimpleGeometry ISimpleGeometry.Envelope()
         {

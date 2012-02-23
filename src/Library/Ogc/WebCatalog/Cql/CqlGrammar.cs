@@ -32,15 +32,24 @@ using Irony.Interpreter.Ast;
 namespace GeoSik.Ogc.WebCatalog.Cql
 {
 
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>OGC Common Catalogue Query Language grammar as defined in <a href="http://portal.opengeospatial.org/files/?artifact_id=20555">OGC 07-006r1 §6.2.2</a>.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
     [Language("CQL", "1.0", "OGC Common Catalogue Query Language 1.0 grammar")]
     public class CqlGrammar:
         Grammar
     {
 
+        /// <summary>Creates a new instance of the <see cref="CqlGrammar" /> class.</summary>
         public CqlGrammar():
             base(true)
         {
-            GrammarComments="OGC Common Catalogue Query Language grammar as defined in [OGC 07-006r1 §6.2.2].";
+            GrammarComments="OGC Common Catalogue Query Language grammar as defined in [OGC 07-006r1 §6.2.2]";
 
             // Terminals
             var identifier=new IdentifierTerminal("identifier", ":", "");

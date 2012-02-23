@@ -43,7 +43,7 @@ namespace GeoSik
     ///
     ////////////////////////////////////////////////////////////////////////////
 
-    [JsonConverter(typeof(GeometryJsonConverter))]
+    [JsonConverter(typeof(Ogc.SimpleFeature.GeometryJsonConverter))]
     public interface ISimpleGeometry:
         IGeometryTap,
         IXmlSerializable

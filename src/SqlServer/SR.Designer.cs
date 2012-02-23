@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GeoSik.SharpMap {
+namespace GeoSik.SqlServer {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace GeoSik.SharpMap {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GeoSik.SharpMap.SR", typeof(SR).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GeoSik.SqlServer.SR", typeof(SR).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,15 +57,6 @@ namespace GeoSik.SharpMap {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SharpMap geometry spatial reference must be intialized.
-        /// </summary>
-        internal static string SharpMapSpatialReferenceMustBeInitiliazedException {
-            get {
-                return ResourceManager.GetString("SharpMapSpatialReferenceMustBeInitiliazedException", resourceCulture);
             }
         }
         

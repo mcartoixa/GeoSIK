@@ -20,6 +20,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using SmGeometries=SharpMap.Geometries;
@@ -34,31 +35,29 @@ namespace GeoSik.SharpMap
         {
             switch (type)
             {
-            case GeometryType.Curve:
-                return SmGeometries.GeometryType2.Curve;
             case GeometryType.GeometryCollection:
                 return SmGeometries.GeometryType2.GeometryCollection;
             case GeometryType.LineString:
                 return SmGeometries.GeometryType2.LineString;
-            case GeometryType.MultiCurve:
-                return SmGeometries.GeometryType2.MultiCurve;
             case GeometryType.MultiLineString:
                 return SmGeometries.GeometryType2.MultiLineString;
             case GeometryType.MultiPoint:
                 return SmGeometries.GeometryType2.MultiPoint;
             case GeometryType.MultiPolygon:
                 return SmGeometries.GeometryType2.MultiPolygon;
-            case GeometryType.MultiSurface:
-                return SmGeometries.GeometryType2.MultiSurface;
             case GeometryType.Point:
                 return SmGeometries.GeometryType2.Point;
             case GeometryType.Polygon:
                 return SmGeometries.GeometryType2.Polygon;
-            case GeometryType.Surface:
-                return SmGeometries.GeometryType2.Surface;
             }
 
-            throw new NotSupportedException();
+            throw new NotSupportedException(
+                string.Format(
+                    CultureInfo.CurrentCulture,
+                    SR.UnsupportedGeometryTypeException,
+                    type
+                )
+            );
         }
 
         public static GeometryType Convert(SmGeometries.GeometryType2 type)
@@ -66,14 +65,10 @@ namespace GeoSik.SharpMap
 
             switch (type)
             {
-            case SmGeometries.GeometryType2.Curve:
-                return GeometryType.Curve;
             case SmGeometries.GeometryType2.GeometryCollection:
                 return GeometryType.GeometryCollection;
             case SmGeometries.GeometryType2.LineString:
                 return GeometryType.LineString;
-            case SmGeometries.GeometryType2.MultiCurve:
-                return GeometryType.MultiCurve;
             case SmGeometries.GeometryType2.MultiLineString:
                 return GeometryType.MultiLineString;
             case SmGeometries.GeometryType2.MultiPoint:
@@ -81,16 +76,18 @@ namespace GeoSik.SharpMap
             case SmGeometries.GeometryType2.MultiPolygon:
                 return GeometryType.MultiPolygon;
             case SmGeometries.GeometryType2.MultiSurface:
-                return GeometryType.MultiSurface;
-            case SmGeometries.GeometryType2.Point:
                 return GeometryType.Point;
             case SmGeometries.GeometryType2.Polygon:
                 return GeometryType.Polygon;
-            case SmGeometries.GeometryType2.Surface:
-                return GeometryType.Surface;
             }
 
-            throw new NotSupportedException();
+            throw new NotSupportedException(
+                string.Format(
+                    CultureInfo.CurrentCulture,
+                    SR.UnsupportedGeometryTypeException,
+                    type
+                )
+            );
         }
     }
 }
