@@ -37,6 +37,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "misc", "misc", "{02879CE5-7
 		misc\GeoSik.SqlServer.nuspec = misc\GeoSik.SqlServer.nuspec
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.Tests", "SqlServer\SqlServer.Tests\SqlServer.Tests.csproj", "{22ECEC42-EE00-43F5-97E6-258B7BFC752E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{6470553D-BFB6-40FE-92AC-B9466F129CF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6470553D-BFB6-40FE-92AC-B9466F129CF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6470553D-BFB6-40FE-92AC-B9466F129CF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22ECEC42-EE00-43F5-97E6-258B7BFC752E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22ECEC42-EE00-43F5-97E6-258B7BFC752E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22ECEC42-EE00-43F5-97E6-258B7BFC752E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22ECEC42-EE00-43F5-97E6-258B7BFC752E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

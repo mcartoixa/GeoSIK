@@ -45,14 +45,14 @@ namespace GeoSik.SqlServer
                 _Sink=sink;
             }
 
-            public void AddLine(double latitude, double longitude, double? z, double? m)
+            public void AddLine(double x, double y, double? z, double? m)
             {
-                _Sink.AddLine(longitude, latitude, z);
+                _Sink.AddLine(x, y, z);
             }
 
-            public void BeginFigure(double latitude, double longitude, double? z, double? m)
+            public void BeginFigure(double x, double y, double? z, double? m)
             {
-                _Sink.BeginFigure(longitude, latitude, z);
+                _Sink.BeginFigure(x, y, z);
             }
 
             public void BeginGeometry(SqlTypes.OpenGisGeometryType type)

@@ -49,6 +49,10 @@ namespace GeoSik.Ogc.SimpleFeature
             GeometryTransformerSink
         {
 
+            private JsonSink()
+            {
+            }
+
             public JsonSink(JsonWriter writer):
                 base(GeographicCoordinateSystem.WGS84)
             {
