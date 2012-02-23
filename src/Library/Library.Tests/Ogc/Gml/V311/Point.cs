@@ -20,30 +20,39 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using ProjNet.CoordinateSystems;
+using Xunit;
+using Xunit.Extensions;
 
-namespace GeoSik
+namespace GeoSik.Ogc.Gml.V311.Tests
 {
 
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    ///
-    /// <summary>Interface implemented by a class that can fill a <see cref="IGeometrySink" />.</summary>
-    ///
-    ////////////////////////////////////////////////////////////////////////////
-
-    [TypeConverter(typeof(Ogc.SimpleFeature.GeometryConverter))]
-    public interface IGeometryTap
+    public class PointTests
     {
 
-        /// <summary>Applies a geometry type call sequence to the specified <paramref name="sink" />.</summary>
-        /// <param name="sink">The sink to populate.</param>
-        /// <remarks>
-        ///   <para>The call sequence is a set of figures, lines, and points for geometry types.</para>
-        /// </remarks>
-        void Populate(IGeometrySink sink);
+        [Theory]
+        [InlineData(30, 10, null, "POINT (30 10)")]
+        [InlineData(0, 0, null, "POINT (0 0)")]
+        [InlineData(1.2345, 9.8765, null, "POINT (1.2345 9.8765)")]
+        public void ShouldSerializeToWkt(double x, double y, double? z, string expectedWkt)
+        {
+            var coords=new List<double>(new double[] { x, y });
+            if (z.HasValue)
+                coords.Add(z.Value);
+
+            var point=new Point() {
+                pos=new pos(),
+                CoordinateSystem=GeographicCoordinateSystem.WGS84
+            };
+            point.pos.Untyped.Value=string.Join(
+                " ",
+                coords.Select<double, string>(d => d.ToString(CultureInfo.InvariantCulture))
+            );
+
+            Assert.Equal<string>(expectedWkt, point.ToString());
+        }
     }
 }

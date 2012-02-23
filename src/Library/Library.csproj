@@ -87,6 +87,7 @@
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="GeometryTransformerSink.cs" />
     <Compile Include="GeometryType.cs" />
+    <Compile Include="Ogc\SimpleFeature\GeometryConverter.cs" />
     <Compile Include="Ogc\SimpleFeature\GeometryJsonConverter.cs" />
     <Compile Include="Ogc\SimpleFeature\GeometryWktGrammar.cs" />
     <Compile Include="IGeometry.cs" />

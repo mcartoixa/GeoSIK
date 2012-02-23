@@ -51,6 +51,12 @@ namespace GeoSik.Ogc.Gml.V311
             return ret;
         }
 
+        public override string ToString()
+        {
+            var converter=new SimpleFeature.GeometryConverter();
+            return converter.ConvertToInvariantString(this);
+        }
+
         protected virtual void PopulateEnvelope(Envelope envelope)
         {
             Populate(envelope);

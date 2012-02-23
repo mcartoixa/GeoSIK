@@ -34,13 +34,15 @@ namespace GeoSik.Ogc.Gml.V311
 
         internal override void BeginFigure(double x, double y, double? z)
         {
-            pos=new pos();
-            pos.TypedValue=new List<double>();
-
-            pos.TypedValue.Add(x);
-            pos.TypedValue.Add(y);
+            var coords=new List<double>(new double[] { x, y });
             if (z.HasValue)
-                pos.TypedValue.Add(z.Value);
+                coords.Add(z.Value);
+
+            pos=new pos();
+            pos.Untyped.Value=string.Join(
+                " ",
+                coords.Select<double, string>(d => d.ToString(CultureInfo.InvariantCulture))
+            );
         }
 
         internal override void AddLine(double x, double y, double? z)
@@ -52,7 +54,7 @@ namespace GeoSik.Ogc.Gml.V311
         {
             sink.BeginGeometry(GeometryType.Point);
 
-            if ((pos!=null) && (pos.TypedValue!=null) && (pos.TypedValue.Count<2))
+            if ((pos!=null) && (pos.TypedValue!=null) && (pos.TypedValue.Count>1))
             {
                 sink.BeginFigure(pos.TypedValue[0], pos.TypedValue[1], null);
                 sink.EndFigure();
