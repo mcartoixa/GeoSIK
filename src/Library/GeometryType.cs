@@ -28,16 +28,15 @@ namespace GeoSik
 
     public enum GeometryType
     {
-        Point,
-        Curve,
-        LineString,
-        Surface,
-        Polygon,
         GeometryCollection,
-        MultiCurve,
+        LineString,
         MultiPoint,
         MultiLineString,
-        MultiSurface,
-        MultiPolygon
+        MultiPolygon,
+        Point,
+        Polygon,
+        PolyhedralSurface,
+        Tin,
+        Triangle
     }
 }

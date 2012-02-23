@@ -46,9 +46,9 @@ namespace GeoSik
         ISimpleGeometry
     {
 
-        /// <summary>Returns the centroid for the current geometry.</summary>
-        /// <returns>The centroid for the current geometry.</returns>
-        ISimpleGeometry Centroid();
+        ///// <summary>Returns the centroid for the current geometry.</summary>
+        ///// <returns>The centroid for the current geometry.</returns>
+        //ISimpleGeometry Centroid();
         /// <summary>Returns the shortest distance between any 2 points in the 2 geometries.</summary>
         /// <param name="geometry">The geometry to calculate the distance from.</param>
         /// <returns>The shortest distance between any 2 points in the 2 geometries.</returns>

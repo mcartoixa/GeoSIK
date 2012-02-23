@@ -26,7 +26,7 @@ using System.Text;
 using Newtonsoft.Json;
 using ProjNet.CoordinateSystems;
 
-namespace GeoSik
+namespace GeoSik.Ogc.SimpleFeature
 {
 
 
@@ -62,11 +62,15 @@ namespace GeoSik
 
             public override void BeginGeometry(GeometryType type)
             {
-                _CurrentType.Push(type);
+                if (_CurrentType.Count==0)
+                {
+                    _Writer.WriteStartObject();
+                    _Writer.WritePropertyName("type");
+                    _Writer.WriteValue(type.ToString("G"));
+                    _Writer.WritePropertyName("coordinates");
+                }
 
-                _Writer.WriteStartObject();
-                _Writer.WritePropertyName("type");
-                _Writer.WriteValue(type.ToString("G"));
+                _CurrentType.Push(type);
             }
 
             public override void EndFigure()
@@ -77,9 +81,10 @@ namespace GeoSik
 
             public override void EndGeometry()
             {
-                _Writer.WriteEndObject();
-
                 _CurrentType.Pop();
+
+                if (_CurrentType.Count==0)
+                    _Writer.WriteEndObject();
             }
 
             protected override void DoSetCoordinateSystem(ProjNet.CoordinateSystems.ICoordinateSystem system)
@@ -90,8 +95,6 @@ namespace GeoSik
 
             protected override void DoBeginFigure(double x, double y, double? z)
             {
-                _Writer.WritePropertyName("coordinates");
-
                 if (_CurrentType.Peek()!=GeometryType.Point)
                     _Writer.WriteStartArray();
 

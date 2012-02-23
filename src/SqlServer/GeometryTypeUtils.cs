@@ -20,6 +20,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using SqlTypes=Microsoft.SqlServer.Types;
@@ -49,7 +50,13 @@ namespace GeoSik.SqlServer
                 return GeometryType.Polygon;
             }
 
-            throw new NotSupportedException();
+            throw new NotSupportedException(
+                string.Format(
+                    CultureInfo.CurrentCulture,
+                    SR.UnsupportedGeometryTypeException,
+                    type
+                )
+            );
         }
 
         public static GeometryType Convert(SqlTypes.OpenGisGeographyType type)
@@ -72,7 +79,13 @@ namespace GeoSik.SqlServer
                 return GeometryType.Polygon;
             }
 
-            throw new NotSupportedException();
+            throw new NotSupportedException(
+                string.Format(
+                    CultureInfo.CurrentCulture,
+                    SR.UnsupportedGeometryTypeException,
+                    type
+                )
+            );
         }
 
         public static SqlTypes.OpenGisGeometryType ConvertToGeometry(GeometryType type)
@@ -95,7 +108,13 @@ namespace GeoSik.SqlServer
                 return SqlTypes.OpenGisGeometryType.Polygon;
             }
 
-            throw new NotSupportedException();
+            throw new NotSupportedException(
+                string.Format(
+                    CultureInfo.CurrentCulture,
+                    SR.UnsupportedGeometryTypeException,
+                    type
+                )
+            );
         }
 
         public static SqlTypes.OpenGisGeographyType ConvertToGeography(GeometryType type)
@@ -118,7 +137,13 @@ namespace GeoSik.SqlServer
                 return SqlTypes.OpenGisGeographyType.Polygon;
             }
 
-            throw new NotSupportedException();
+            throw new NotSupportedException(
+                string.Format(
+                    CultureInfo.CurrentCulture,
+                    SR.UnsupportedGeometryTypeException,
+                    type
+                )
+            );
         }
     }
 }

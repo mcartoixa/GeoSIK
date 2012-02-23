@@ -59,14 +59,8 @@ namespace GeoSik.Ogc.Gml.V311
         {
             switch (type)
             {
-            case GeometryType.Curve:
-                _Geometry=new Curve();
-                break;
             case GeometryType.LineString:
                 _Geometry=new LineString();
-                break;
-            case GeometryType.MultiCurve:
-                _Geometry=new MultiCurve();
                 break;
             case GeometryType.MultiLineString:
                 _Geometry=new MultiLineString();
@@ -77,17 +71,11 @@ namespace GeoSik.Ogc.Gml.V311
             case GeometryType.MultiPolygon:
                 _Geometry=new MultiPolygon();
                 break;
-            case GeometryType.MultiSurface:
-                _Geometry=new MultiSurface();
-                break;
             case GeometryType.Point:
                 _Geometry=new Point();
                 break;
             case GeometryType.Polygon:
                 _Geometry=new Polygon();
-                break;
-            case GeometryType.Surface:
-                _Geometry=new Surface();
                 break;
             }
 

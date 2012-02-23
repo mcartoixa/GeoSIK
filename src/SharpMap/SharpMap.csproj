@@ -39,9 +39,6 @@
     <DocumentationFile>bin\Release\GeoSik.SharpMap.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="ProjNet">
       <HintPath>..\lib\ProjNet\ProjNet.dll</HintPath>
     </Reference>
@@ -78,9 +75,6 @@
       <Project>{3915ADD6-5F33-4452-89EA-8906518E2128}</Project>
       <Name>Library</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SR.resx">
