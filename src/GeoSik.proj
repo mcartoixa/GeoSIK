@@ -37,7 +37,7 @@
 
   <Target
     Name="UpdateNuSpecFilesVersion"
-    Outputs="%(Projects.Filename).nuspec"
+    AfterTargets="UpdateVersion"
   >
     <ItemGroup>
       <NuSpecItems Include="misc\GeoSik.nuspec;misc\GeoSik.*.nuspec" />
