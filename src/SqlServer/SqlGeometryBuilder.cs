@@ -128,7 +128,7 @@ namespace GeoSik.SqlServer
 
         private static IGeometryBuilder CreateBuilder(ICoordinateSystem system)
         {
-            if ((system is IGeographicCoordinateSystem)||(system is IGeocentricCoordinateSystem))
+            if ((system is IGeographicCoordinateSystem) || (system is IGeocentricCoordinateSystem))
                 return new SqlGeographyBuilderWrapper();
             else
                 return new SqlGeometryBuilderWrapper();
