@@ -21,6 +21,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using ProjNet.CoordinateSystems;
@@ -42,6 +43,132 @@ namespace GeoSik.SharpMap
         IGeometryBuilder
     {
 
+        internal sealed class Sink:
+            IGeometrySink
+        {
+
+            public void SetCoordinateSystem(ICoordinateSystem system)
+            {
+                _SpatialReference=system;
+            }
+
+            public void BeginGeometry(GeometryType type)
+            {
+                _CurrentType.Push(type);
+            }
+
+            public void BeginFigure(double x, double y, double? z)
+            {
+                AddLine(x, y, z);
+            }
+
+            public void AddLine(double x, double y, double? z)
+            {
+                SmGeometries.Point point=null;
+                if (z.HasValue)
+                    point=new SmGeometries.Point3D(x, y, z.Value);
+                else
+                    point=new SmGeometries.Point(x, y);
+                _CurrentPoints.Add(point);
+            }
+
+            public void EndFigure()
+            {
+                GeometryType type=_CurrentType.Peek();
+                switch (type)
+                {
+                case GeometryType.GeometryCollection:
+                    {
+                        var g=new SmGeometries.GeometryCollection();
+                        g.Collection=_Figures;
+                        _Figures=new SmGeometries.Geometry[] { g };
+                    }
+                    break;
+                case GeometryType.LineString:
+                    _Figures.Add(new SmGeometries.LineString(_CurrentPoints));
+                    break;
+                case GeometryType.MultiLineString:
+                    {
+                        var g=new SmGeometries.MultiLineString();
+                        g.LineStrings=_Figures.Cast<SmGeometries.LineString>().ToList<SmGeometries.LineString>();
+                        _Figures=new SmGeometries.Geometry[] { g };
+                    }
+                    break;
+                case GeometryType.MultiPoint:
+                    {
+                        var g=new SmGeometries.MultiPoint();
+                        g.Points=_Figures.Cast<SmGeometries.Point>().ToList<SmGeometries.Point>();
+                        _Figures=new SmGeometries.Geometry[] { g };
+                    }
+                    break;
+                case GeometryType.MultiPolygon:
+                    {
+                        var g=new SmGeometries.MultiPolygon();
+                        g.Polygons=_Figures.Cast<SmGeometries.Polygon>().ToList<SmGeometries.Polygon>();
+                        _Figures=new SmGeometries.Geometry[] { g };
+                    }
+                    break;
+                case GeometryType.Point:
+                    if (_CurrentPoints.Count>0)
+                        _Figures.Add(_CurrentPoints[0]);
+                    else
+                        _Figures.Add(new SmGeometries.Point());
+                    break;
+                case GeometryType.Polygon:
+                    _Figures.Add(new SmGeometries.LinearRing(_CurrentPoints));
+                    break;
+                default:
+                    throw new NotSupportedException(
+                        string.Format(
+                            CultureInfo.CurrentCulture,
+                            SR.UnsupportedGeometryTypeException,
+                            type
+                        )
+                    );
+                }
+
+                _CurrentPoints.Clear();
+            }
+
+            public void EndGeometry()
+            {
+                GeometryType type=_CurrentType.Peek();
+                switch (type)
+                {
+                case GeometryType.Polygon:
+                    if (_Figures.Count>0)
+                    {
+                        var g=new SmGeometries.Polygon(
+                            (SmGeometries.LinearRing)_Figures[0],
+                            _Figures.Skip(1).Cast<SmGeometries.LinearRing>().ToList<SmGeometries.LinearRing>()
+                        );
+                        _Figures=new SmGeometries.Geometry[] { g };
+                    } else
+                        _Figures=new SmGeometries.Geometry[] { new SmGeometries.Polygon() };
+                    break;
+                }
+
+                _CurrentType.Pop();
+
+                if (_CurrentType.Count==0)
+                    _Figures[0].SpatialReference=_SpatialReference;
+            }
+
+            public SmGeometries.Geometry Geometry
+            {
+                get
+                {
+                    Debug.Assert(_Figures.Count==1);
+                    return _Figures[0];
+                }
+            }
+
+            private ICoordinateSystem _SpatialReference;
+            private Stack<GeometryType> _CurrentType=new Stack<GeometryType>();
+            private IList<SmGeometries.Point> _CurrentPoints=new List<SmGeometries.Point>();
+            private IList<SmGeometries.Geometry> _Figures=new List<SmGeometries.Geometry>();
+        }
+
         /// <summary>Creates a new instance of the <see cref="SharpGeometryBuilder" /> class.</summary>
         public SharpGeometryBuilder():
             base()
@@ -50,7 +177,7 @@ namespace GeoSik.SharpMap
 
         /// <summary>Creates a new instance of the <see cref="SharpGeometryBuilder" /> class.</summary>
         /// <param name="targetSystem">The target coordinate system. If different from the source, transformations will occur.</param>
-        public SharpGeometryBuilder(ICoordinateSystem targetSystem) :
+        public SharpGeometryBuilder(ICoordinateSystem targetSystem):
             base(targetSystem)
         {
         }
@@ -59,7 +186,34 @@ namespace GeoSik.SharpMap
         /// <param name="type">The type of the geometry to build.</param>
         public override void BeginGeometry(GeometryType type)
         {
-            _GeometryType=GeometryTypeUtils.Convert(type);
+            _Sink.BeginGeometry(type);
+        }
+
+        /// <summary>Finishes the call sequence for a geometry figure.</summary>
+        /// <inheritdoc />
+        public override void EndFigure()
+        {
+            base.EndFigure();
+
+            _Sink.EndFigure();
+        }
+
+        /// <summary>Finishes the call sequence for a geometry representation.</summary>
+        /// <inheritdoc />
+        public override void EndGeometry()
+        {
+            base.EndGeometry();
+
+            _Sink.EndGeometry();
+        }
+
+        /// <summary>Sets the coordinate system of the geometry representation.</summary>
+        /// <inheritdoc />
+        protected override void DoSetCoordinateSystem(ICoordinateSystem system)
+        {
+            base.DoSetCoordinateSystem(system);
+
+            _Sink.SetCoordinateSystem(system);
         }
 
         /// <summary>Defines a point other than the starting point of a geometry figure.</summary>
@@ -68,8 +222,7 @@ namespace GeoSik.SharpMap
         /// <param name="z">The elevation of the point, in the target coordinate system.</param>
         protected override void DoBeginFigure(double x, double y, double? z)
         {
-            _Figures.AddLast(new List<SmGeometries.Point>());
-            DoAddLine(x, y, z);
+            _Sink.BeginFigure(x, y, z);
         }
 
         /// <summary>Defines the starting point of a geometry figure.</summary>
@@ -78,11 +231,7 @@ namespace GeoSik.SharpMap
         /// <param name="z">The elevation of the point, in the target coordinate system..</param>
         protected override void DoAddLine(double x, double y, double? z)
         {
-            LinkedListNode<IList<SmGeometries.Point>> last=_Figures.Last;
-            if (z.HasValue)
-                last.Value.Add(new SmGeometries.Point3D(x, y, z.Value));
-            else
-                last.Value.Add(new SmGeometries.Point(x, y));
+            _Sink.AddLine(x, y, z);
         }
 
         /// <summary>Returns the geometry defined by the specified WKT representation, in the specified coordinate system.</summary>
@@ -112,35 +261,7 @@ namespace GeoSik.SharpMap
             get
             {
                 if (_Geometry==null)
-                {
-                    SmGeometries.Geometry g=null;
-                    switch (_GeometryType)
-                    {
-                    case SmGeometries.GeometryType2.LineString:
-                        g=new SmGeometries.LineString(_Figures.First.Value);
-                        break;
-                    case SmGeometries.GeometryType2.Point:
-                        g=(SmGeometries.Geometry)_Figures.First.Value[0];
-                        break;
-                    case SmGeometries.GeometryType2.Polygon:
-                        {
-                            var exterior=new SmGeometries.LinearRing(_Figures.First.Value);
-                            var interior=new List<SmGeometries.LinearRing>();
-
-                            var current=_Figures.First;
-                            while (current.Next!=_Figures.First)
-                                interior.Add(new SmGeometries.LinearRing(current.Value));
-
-                            g=new SmGeometries.Polygon(exterior, interior);
-                        }
-                        break;
-                    default:
-                        //TODO: implement other geometry types...
-                        throw new NotImplementedException();
-                    }
-
-                    _Geometry=new SharpGeometry(g);
-                }
+                    _Geometry=new SharpGeometry(_Sink.Geometry);
 
                 return _Geometry;
             }
@@ -154,9 +275,7 @@ namespace GeoSik.SharpMap
             }
         }
 
-        private SmGeometries.GeometryType2 _GeometryType;
-        private LinkedList<IList<SmGeometries.Point>> _Figures=new LinkedList<IList<SmGeometries.Point>>();
-
+        private Sink _Sink=new Sink();
         private SharpGeometry _Geometry;
     }
 }
