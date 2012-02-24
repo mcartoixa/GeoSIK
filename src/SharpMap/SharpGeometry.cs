@@ -21,6 +21,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Xml;
@@ -51,7 +52,15 @@ namespace GeoSik.SharpMap
         }
 
         /// <summary>Creates a new instance of the <see cref="SharpGeometry" /> class.</summary>
-        /// <param name="geometry">The <see cref="SmGeometries.Geometry" /> to encapsulate.</param>
+        /// <param name="geometry">The <see cref="SmGeometries.Geometry" /> to encapsulate.
+        /// Its spatial reference must be initialized. </param>
+        /// <exception cref="ArgumentNullException">
+        ///  <para>The <paramref name="geometry" /> is <c>null</c>.</para>
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        ///   <para>The spatial reference of the specified <paramref name="geometry" /> was
+        /// not initialized.</para>
+        /// </exception>
         public SharpGeometry(SmGeometries.Geometry geometry)
         {
             Debug.Assert(geometry!=null);
@@ -59,7 +68,7 @@ namespace GeoSik.SharpMap
                 throw new ArgumentNullException("geometry");
             Debug.Assert(geometry.SpatialReference!=null);
             if (geometry.SpatialReference==null)
-                throw new ArgumentException(SR.SharpMapSpatialReferenceMustBeInitiliazedException, "geometry");
+                throw new ArgumentException(SR.SharpMapSpatialReferenceMustBeInitializedException, "geometry");
 
             _Geometry=geometry;
         }
@@ -166,32 +175,33 @@ namespace GeoSik.SharpMap
         public void Populate(IGeometrySink sink)
         {
             sink.SetCoordinateSystem(CoordinateSystem);
-            sink.BeginGeometry(GeometryTypeUtils.Convert(_Geometry.GeometryType));
 
             switch (_Geometry.GeometryType)
             {
             case SmGeometries.GeometryType2.LineString:
-                CreateFigure(sink, ((SmGeometries.LineString)_Geometry).Vertices);
-                break;
             case SmGeometries.GeometryType2.Point:
-                CreateFigure(sink, new SmGeometries.Point[] { (SmGeometries.Point)_Geometry });
-                break;
             case SmGeometries.GeometryType2.Polygon:
-                {
-                    var pol=(SmGeometries.Polygon)_Geometry;
-                    CreateFigure(sink, pol.ExteriorRing.Vertices);
-
-                    if (pol.InteriorRings!=null)
-                        foreach (SmGeometries.LinearRing lr in pol.InteriorRings)
-                            CreateFigure(sink, lr.Vertices);
-                }
+                _PopulateSimpleType(sink, _Geometry);
+                break;
+            case SmGeometries.GeometryType2.GeometryCollection:
+            case SmGeometries.GeometryType2.MultiLineString:
+            case SmGeometries.GeometryType2.MultiPoint:
+            case SmGeometries.GeometryType2.MultiPolygon:
+                sink.BeginGeometry(GeometryTypeUtils.Convert(_Geometry.GeometryType));
+                foreach (SmGeometries.Geometry g in (IEnumerable<SmGeometries.Geometry>)_Geometry)
+                    _PopulateSimpleType(sink, g);
+                sink.EndGeometry();
                 break;
             default:
-                //TODO: implement other geometry types...
-                throw new NotSupportedException();
+                throw new NotSupportedException(
+                    string.Format(
+                        CultureInfo.CurrentCulture,
+                        SR.UnsupportedGeometryTypeException,
+                        _Geometry.GeometryType
+                    )
+                );
             }
 
-            sink.EndGeometry();
         }
 
         /// <summary>Generates a geometry from its GML representation.</summary>
@@ -221,6 +231,41 @@ namespace GeoSik.SharpMap
         XmlSchema IXmlSerializable.GetSchema()
         {
             return null;
+        }
+
+        private static void _PopulateSimpleType(IGeometrySink sink, SmGeometries.Geometry geometry)
+        {
+            sink.BeginGeometry(GeometryTypeUtils.Convert(geometry.GeometryType));
+
+            switch (geometry.GeometryType)
+            {
+            case SmGeometries.GeometryType2.LineString:
+                CreateFigure(sink, ((SmGeometries.LineString)geometry).Vertices);
+                break;
+            case SmGeometries.GeometryType2.Point:
+                CreateFigure(sink, new SmGeometries.Point[] { (SmGeometries.Point)geometry });
+                break;
+            case SmGeometries.GeometryType2.Polygon:
+                {
+                    var pol=(SmGeometries.Polygon)geometry;
+                    CreateFigure(sink, pol.ExteriorRing.Vertices);
+
+                    if (pol.InteriorRings!=null)
+                        foreach (SmGeometries.LinearRing lr in pol.InteriorRings)
+                            CreateFigure(sink, lr.Vertices);
+                }
+                break;
+            default:
+                throw new NotSupportedException(
+                    string.Format(
+                        CultureInfo.CurrentCulture,
+                        SR.UnsupportedGeometryTypeException,
+                        geometry.GeometryType
+                    )
+                );
+            }
+
+            sink.EndGeometry();
         }
 
         private static SharpGeometry Convert(ISimpleGeometry geometry)

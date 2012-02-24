@@ -63,9 +63,9 @@ namespace GeoSik.SharpMap {
         /// <summary>
         ///   Looks up a localized string similar to SharpMap geometry spatial reference must be intialized.
         /// </summary>
-        internal static string SharpMapSpatialReferenceMustBeInitiliazedException {
+        internal static string SharpMapSpatialReferenceMustBeInitializedException {
             get {
-                return ResourceManager.GetString("SharpMapSpatialReferenceMustBeInitiliazedException", resourceCulture);
+                return ResourceManager.GetString("SharpMapSpatialReferenceMustBeInitializedException", resourceCulture);
             }
         }
         

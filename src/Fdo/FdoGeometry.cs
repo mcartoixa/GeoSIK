@@ -103,7 +103,6 @@ namespace GeoSik.Fdo
         public void Populate(IGeometrySink sink)
         {
             sink.SetCoordinateSystem(CoordinateSystem);
-            sink.BeginGeometry(GeometryTypeUtils.Convert(_Geometry.DerivedType));
 
             switch (_Geometry.DerivedType)
             {
@@ -113,14 +112,17 @@ namespace GeoSik.Fdo
                 _PopulateSimpleType(sink, _Geometry);
                 break;
             case FCommon.GeometryType.GeometryType_MultiLineString:
+                sink.BeginGeometry(GeometryTypeUtils.Convert(_Geometry.DerivedType));
                 {
                     var multiLineString=(FGeometry.IMultiLineString)_Geometry;
                     for (int i=0; i<multiLineString.Count; ++i)
                         using (FGeometry.ILineString lineString=multiLineString[i])
                             _PopulateSimpleType(sink, lineString);
                 }
+                sink.EndGeometry();
                 break;
             case FCommon.GeometryType.GeometryType_MultiPoint:
+                sink.BeginGeometry(GeometryTypeUtils.Convert(_Geometry.DerivedType));
                 {
                     var multiPoint=(FGeometry.IMultiPoint)_Geometry;
                     using (FGeometry.DirectPositionCollection positions=new FGeometry.DirectPositionCollection())
@@ -128,22 +130,27 @@ namespace GeoSik.Fdo
                             using (FGeometry.IPoint point=multiPoint[i])
                                 _PopulateSimpleType(sink, point);
                 }
+                sink.EndGeometry();
                 break;
             case FCommon.GeometryType.GeometryType_MultiPolygon:
+                sink.BeginGeometry(GeometryTypeUtils.Convert(_Geometry.DerivedType));
                 {
                     var multiPolygon=(FGeometry.IMultiPolygon)_Geometry;
                     for (int i=0; i<multiPolygon.Count; ++i)
                         using (FGeometry.IPolygon polygon=multiPolygon[i])
                             _PopulateSimpleType(sink, polygon);
                 }
+                sink.EndGeometry();
                 break;
             case FCommon.GeometryType.GeometryType_MultiGeometry:
+                sink.BeginGeometry(GeometryTypeUtils.Convert(_Geometry.DerivedType));
                 {
                     var multiGeometry=(FGeometry.IMultiGeometry)_Geometry;
                     for (int i=0; i<multiGeometry.Count; ++i)
                         using (FGeometry.IGeometry geometry=multiGeometry[i])
                             _PopulateSimpleType(sink, geometry);
                 }
+                sink.EndGeometry();
                 break;
             default:
                 throw new NotSupportedException(
@@ -155,7 +162,6 @@ namespace GeoSik.Fdo
                 );
             }
 
-            sink.EndGeometry();
         }
 
         /// <summary>Generates a geometry from its GML representation.</summary>
