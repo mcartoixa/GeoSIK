@@ -556,18 +556,18 @@ It must be used with MSBuild 4.0.
       <PreliminaryParameterValue Condition="'$(BuildType)'=='Release'">False</PreliminaryParameterValue>
     </PropertyGroup>
 
-    <MSBuild
+    <!-- Did not work with MSBuild 4.0: http://shfb.codeplex.com/Thread/View.aspx?ThreadId=50652 -->
+    <!-- <MSBuild
       Projects="%(SandcastleProjects.Identity)"
       RebaseOutputs="True"
       Properties="Configuration=Release;Platform=AnyCPU;OutputPath=$(_DocOutputPath).;WorkingPath=$(_DocIntermediateOutputPath).;Preliminary=$(PreliminaryParameterValue);HelpFileVersion=$(CCNetLabel)"
       Targets="Build"
       RunEachTargetSeparately="True"
-    />
-    <!-- Did not work with MSBuild 4.0: http://shfb.codeplex.com/Thread/View.aspx?ThreadId=50652 -->
-    <!-- <Exec
-      Command="&quot;$([MSBuild]::GetRegistryValue('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSBuild\ToolsVersions\3.5', 'MSBuildToolsPath'))MSBuild.exe&quot; &quot;%(SandcastleProjects.Identity)&quot; /nologo /p:Configuration=Release /p:Platform=AnyCPU /p:OutputPath=&quot;$(_DocOutputPath).&quot; /p:WorkingPath=&quot;$(_DocIntermediateOutputPath).&quot; /p:Preliminary=$(PreliminaryParameterValue) /p:HelpFileVersion=$(CCNetLabel) /nr:False"
-      YieldDuringToolExecution="True"
     /> -->
+    <Exec
+      Command="&quot;$([MSBuild]::GetRegistryValue('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSBuild\ToolsVersions\4.0', 'MSBuildToolsPath'))MSBuild.exe&quot; &quot;%(SandcastleProjects.Identity)&quot; /nologo /p:Configuration=Release /p:Platform=AnyCPU /p:OutputPath=&quot;$(_DocOutputPath).&quot; /p:WorkingPath=&quot;$(_DocIntermediateOutputPath).&quot; /p:Preliminary=$(PreliminaryParameterValue) /p:HelpFileVersion=$(CCNetLabel) /nr:False"
+      YieldDuringToolExecution="True"
+    />
   </Target>
 
   <Target Name="InternalDocumentPublish"
