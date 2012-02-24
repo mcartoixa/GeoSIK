@@ -16,7 +16,7 @@
     <Name>GeoSikHelp</Name>
     <!-- SHFB properties -->
     <OutputPath>.\bin\</OutputPath>
-    <HtmlHelpName>GeoSik.Help</HtmlHelpName>
+    <HtmlHelpName>GeoSikHelp</HtmlHelpName>
     <Language>en-US</Language>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\..\tmp\bin\GeoSik\Release\Any CPU\GeoSik.dll" xmlns="" />
@@ -98,19 +98,20 @@
     <CopyrightText>Copyright \xA9 2011-{%2540BuildDate:yyyy} Isogeo</CopyrightText>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="GeoSik.DublinCore.Elements.V11" isExposed="False" xmlns="" />
-<Filter entryType="Namespace" fullName="GeoSik.DublinCore.Terms" isExposed="False" xmlns="" />
-<Filter entryType="Namespace" fullName="GeoSik.Iso.Ts19139.Gco" isExposed="False" xmlns="" />
-<Filter entryType="Namespace" fullName="GeoSik.Iso.Ts19139.Gmd" isExposed="False" xmlns="" />
-<Filter entryType="Namespace" fullName="GeoSik.Iso.Ts19139.Gsr" isExposed="False" xmlns="" />
-<Filter entryType="Namespace" fullName="GeoSik.Iso.Ts19139.Gss" isExposed="False" xmlns="" />
-<Filter entryType="Namespace" fullName="GeoSik.Iso.Ts19139.Gts" isExposed="False" xmlns="" />
-<Filter entryType="Namespace" fullName="GeoSik.Ogc.Filter.V110" isExposed="False" xmlns="" />
-<Filter entryType="Namespace" fullName="GeoSik.Ogc.Gml.V311" isExposed="False" xmlns="" />
-<Filter entryType="Namespace" fullName="GeoSik.Ogc.Gml.V321" isExposed="False" xmlns="" />
-<Filter entryType="Namespace" fullName="GeoSik.Ogc.Ows.V100.Types" isExposed="False" xmlns="" />
-<Filter entryType="Namespace" fullName="GeoSik.Ogc.WebCatalog.Csw.V202.Types" isExposed="False" xmlns="" />
-<Filter entryType="Namespace" fullName="GeoSik.W3.Smil20" isExposed="False" xmlns="" />
-<Filter entryType="Namespace" fullName="GeoSik.W3.Smil20.Language" isExposed="False" xmlns="" /></ApiFilter>
+      <Filter entryType="Namespace" fullName="GeoSik.DublinCore.Terms" isExposed="False" xmlns="" />
+      <Filter entryType="Namespace" fullName="GeoSik.Iso.Ts19139.Gco" isExposed="False" xmlns="" />
+      <Filter entryType="Namespace" fullName="GeoSik.Iso.Ts19139.Gmd" isExposed="False" xmlns="" />
+      <Filter entryType="Namespace" fullName="GeoSik.Iso.Ts19139.Gsr" isExposed="False" xmlns="" />
+      <Filter entryType="Namespace" fullName="GeoSik.Iso.Ts19139.Gss" isExposed="False" xmlns="" />
+      <Filter entryType="Namespace" fullName="GeoSik.Iso.Ts19139.Gts" isExposed="False" xmlns="" />
+      <Filter entryType="Namespace" fullName="GeoSik.Ogc.Filter.V110" isExposed="False" xmlns="" />
+      <Filter entryType="Namespace" fullName="GeoSik.Ogc.Gml.V311" isExposed="False" xmlns="" />
+      <Filter entryType="Namespace" fullName="GeoSik.Ogc.Gml.V321" isExposed="False" xmlns="" />
+      <Filter entryType="Namespace" fullName="GeoSik.Ogc.Ows.V100.Types" isExposed="False" xmlns="" />
+      <Filter entryType="Namespace" fullName="GeoSik.Ogc.WebCatalog.Csw.V202.Types" isExposed="False" xmlns="" />
+      <Filter entryType="Namespace" fullName="GeoSik.W3.Smil20" isExposed="False" xmlns="" />
+      <Filter entryType="Namespace" fullName="GeoSik.W3.Smil20.Language" isExposed="False" xmlns="" />
+    </ApiFilter>
     <VisibleItems>InheritedMembers, InheritedFrameworkMembers, Protected, SealedProtected</VisibleItems>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in
