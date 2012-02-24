@@ -132,9 +132,11 @@
     </PropertyGroup>
     <ItemGroup>
       <ZipItems Include="$(ZipInputDir)GeoSik.dll;$(ZipInputDir)GeoSik.xml;$(ZipInputDir)GeoSik.*.dll;$(ZipInputDir)GeoSik.*.xml" />
+      <ZipItems Include="$(TmpDocOutputPath)**\*.chm" />
     </ItemGroup>
     <Zip
       Files="@(ZipItems)"
+      Flatten="True"
       ZipFileName="$(TmpOutBinOutputPath)GeoSik.zip"
       WorkingDirectory="$(ZipInputDir)"
       ZipLevel="9"
