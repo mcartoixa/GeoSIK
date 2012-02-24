@@ -1,12 +1,15 @@
 syntax: glob
+*.log
 *.suo
 *.user
 *.cache
 *.Cache
 *.FileListAbsolute.txt
 *.gpState
+*.svclog
 bin
 obj
+src/packages
 tmp
 *.lnk
 TestResults/*

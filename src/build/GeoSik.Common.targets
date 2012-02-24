@@ -329,7 +329,7 @@ It must be used with MSBuild 4.0.
       <ClocResultsFile>$(TmpOutputPath)cloc-results.xml</ClocResultsFile>
     </PropertyGroup>
     <Exec
-      Command="&quot;$(MSBuildThisFileDirectory)\cloc.exe&quot; $(InputPath) --exclude-dir=bin,build,doc,lib,obj,tmp,GeneratedCode --exclude-ext=csproj,sln --not-match-f=&quot;(^jquery.*|.*?min\.js$|^_)&quot; --3 --quiet --progress-rate=0 --xml --report_file=&quot;$(ClocResultsFile)&quot;"
+      Command="&quot;$(MSBuildThisFileDirectory)\cloc.exe&quot; $(InputPath) --exclude-dir=bin,build,doc,lib,obj,packages,tmp,GeneratedCode --exclude-ext=csproj,sln --not-match-f=&quot;(^jquery.*|.*?min\.js$|^_)&quot; --3 --quiet --progress-rate=0 --xml --report_file=&quot;$(ClocResultsFile)&quot;"
       WorkingDirectory="$(InputPath)"
       YieldDuringToolExecution="True"
     />
@@ -556,18 +556,18 @@ It must be used with MSBuild 4.0.
       <PreliminaryParameterValue Condition="'$(BuildType)'=='Release'">False</PreliminaryParameterValue>
     </PropertyGroup>
 
-    <!-- Does not work (yet) with MSBuild 4.0: http://shfb.codeplex.com/Thread/View.aspx?ThreadId=50652 -->
-    <!-- <MSBuild
+    <MSBuild
       Projects="%(SandcastleProjects.Identity)"
       RebaseOutputs="True"
       Properties="Configuration=Release;Platform=AnyCPU;OutputPath=$(_DocOutputPath).;WorkingPath=$(_DocIntermediateOutputPath).;Preliminary=$(PreliminaryParameterValue);HelpFileVersion=$(CCNetLabel)"
       Targets="Build"
       RunEachTargetSeparately="True"
-    /> -->
-    <Exec
+    />
+    <!-- Did not work with MSBuild 4.0: http://shfb.codeplex.com/Thread/View.aspx?ThreadId=50652 -->
+    <!-- <Exec
       Command="&quot;$([MSBuild]::GetRegistryValue('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSBuild\ToolsVersions\3.5', 'MSBuildToolsPath'))MSBuild.exe&quot; &quot;%(SandcastleProjects.Identity)&quot; /nologo /p:Configuration=Release /p:Platform=AnyCPU /p:OutputPath=&quot;$(_DocOutputPath).&quot; /p:WorkingPath=&quot;$(_DocIntermediateOutputPath).&quot; /p:Preliminary=$(PreliminaryParameterValue) /p:HelpFileVersion=$(CCNetLabel) /nr:False"
       YieldDuringToolExecution="True"
-    />
+    /> -->
   </Target>
 
   <Target Name="InternalDocumentPublish"
@@ -585,13 +585,6 @@ It must be used with MSBuild 4.0.
       <DocumentationWebFiles Include="$(TmpDocOutputPath)$(SandcastleInputDir)\**\*.*" Exclude="@(DocumentationBinFiles);$(TmpDocOutputPath)$(SandcastleInputDir)\*.log" />
     </ItemGroup>
 
-    <Copy
-      Condition="'$(BuildType)'=='Release'"
-      SourceFiles="@(DocumentationBinFiles)"
-      DestinationFolder="$(DocOutputPath)"
-      OverwriteReadOnlyFiles="true"
-      SkipUnchangedFiles="true"
-    />
     <Copy
       SourceFiles="@(DocumentationWebFiles)"
       DestinationFiles="@(DocumentationWebFiles->'$(TmpOutDocOutputPath)$(SandcastleInputDir)\%(RecursiveDir)%(Filename)%(Extension)')"
