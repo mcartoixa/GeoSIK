@@ -75,7 +75,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="Xml.Schema.Linq">
       <HintPath>..\packages\LinqToXsd.2.0.2\lib\Xml.Schema.Linq.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -86,9 +86,24 @@
       <Link>Properties\Version.cs</Link>
     </Compile>
     <Compile Include="CoordinateSystemProvider.cs" />
+    <Compile Include="DublinCore\Elements\V11\_Documentation.cs" />
+    <Compile Include="DublinCore\Elements\_Documentation.cs" />
+    <Compile Include="DublinCore\Terms\_Documentation.cs" />
+    <Compile Include="DublinCore\_Documentation.cs" />
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="GeometryTransformerSink.cs" />
     <Compile Include="GeometryType.cs" />
+    <Compile Include="Iso\Ts19139\Gco\_Documentation.cs" />
+    <Compile Include="Iso\Ts19139\Gmd\_Documentation.cs" />
+    <Compile Include="Iso\Ts19139\Gsr\_Documentation.cs" />
+    <Compile Include="Iso\Ts19139\Gss\_Documentation.cs" />
+    <Compile Include="Iso\Ts19139\Gts\_Documentation.cs" />
+    <Compile Include="Iso\Ts19139\_Documentation.cs" />
+    <Compile Include="Iso\_Documentation.cs" />
+    <Compile Include="Ogc\Filter\V110\_Documentation.cs" />
+    <Compile Include="Ogc\Gml\V311\_Documentation.cs" />
+    <Compile Include="Ogc\Gml\V321\_Documentation.cs" />
+    <Compile Include="Ogc\Ows\V100\Types\_Documentation.cs" />
     <Compile Include="Ogc\SimpleFeature\GeometryConverter.cs" />
     <Compile Include="Ogc\SimpleFeature\GeometryJsonConverter.cs" />
     <Compile Include="Ogc\SimpleFeature\GeometryWktGrammar.cs" />
@@ -237,6 +252,7 @@
     <Compile Include="Ogc\WebCatalog\Csw\V202\Types\GetRecords.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\Types\GetRecordsResponse.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\Types\IGetRecordsResponse.cs" />
+    <Compile Include="Ogc\WebCatalog\Csw\V202\Types\_Documentation.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\Types\_Publication.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\XPathQueryableIterator.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\XPathQueryableNavigator.cs" />
@@ -255,8 +271,11 @@
       <DependentUpon>SR.resx</DependentUpon>
     </Compile>
     <Compile Include="Srid.cs" />
+    <Compile Include="W3\Smil20\Language\_Documentation.cs" />
     <Compile Include="W3\Smil20\Language\_Language.cs" />
+    <Compile Include="W3\Smil20\_Documentation.cs" />
     <Compile Include="W3\Smil20\_Smil.cs" />
+    <Compile Include="W3\_Documentation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\build\GeoSik.snk">

@@ -9,7 +9,9 @@ PREREQUISITES
 	* [PartCover .NET4] (https://github.com/sawilde/partcover.net4)
 
 - Development:
+	* Microsoft Visual Studio 2010
 	* SQL Server Express 2008 R2
+	* [Sandcastle Help File Builder 1.9.3.4 Beta 2] (http://shfb.codeplex.com/)
 
 
 
