@@ -18,7 +18,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#pragma warning disable 3002, 3009
+#pragma warning disable 1591, 3002, 3009
 namespace GeoSik.W3.Smil20.Language
 {
     using System;
@@ -4712,4 +4712,4 @@ namespace GeoSik.W3.Smil20.Language
         }
     }
 }
-#pragma warning restore 3002, 3009
+#pragma warning restore 1591, 3002, 3009

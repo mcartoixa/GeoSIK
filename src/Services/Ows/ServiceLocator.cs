@@ -163,7 +163,7 @@ namespace GeoSik.Ogc.Ows
             };
         }
 
-        /// <summary>Initializes the list of services that can be <see cref="InvokeService">invoked</see> by the current <see cref="ServiceLocator" />.</summary>
+        /// <summary>Initializes the list of services that can be invoked by the current <see cref="ServiceLocator" />.</summary>
         private void FindServices()
         {
             if (_Services==null)

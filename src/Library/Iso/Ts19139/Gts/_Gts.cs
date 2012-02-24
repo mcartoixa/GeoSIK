@@ -18,7 +18,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#pragma warning disable 3002, 3009
+#pragma warning disable 1591, 3002, 3009
 namespace GeoSik.Iso.Ts19139.Gts
 {
     using System;
@@ -709,4 +709,4 @@ namespace GeoSik.Iso.Ts19139.Gts
         }
     }
 }
-#pragma warning restore 3002, 3009
+#pragma warning restore 1591, 3002, 3009

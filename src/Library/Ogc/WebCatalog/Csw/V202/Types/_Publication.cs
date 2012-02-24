@@ -18,7 +18,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#pragma warning disable 108, 114, 3002, 3003, 3005, 3009
+#pragma warning disable 108, 114, 1591, 3002, 3003, 3005, 3009
 namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
 {
     using System;
@@ -13195,4 +13195,4 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
         }
     }
 }
-#pragma warning restore 108, 114, 3002, 3003, 3005, 3009
+#pragma warning restore 108, 114, 1591, 3002, 3003, 3005, 3009

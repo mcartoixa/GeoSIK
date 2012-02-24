@@ -18,7 +18,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#pragma warning disable 108, 114, 3002, 3003, 3008, 3009
+#pragma warning disable 108, 114, 1591, 3002, 3003, 3008, 3009
 namespace GeoSik.Ogc.Filter.V110
 {
     using System;
@@ -12774,4 +12774,4 @@ namespace GeoSik.Ogc.Filter.V110
         }
     }
 }
-#pragma warning restore 108, 114, 3002, 3003, 3008, 3009
+#pragma warning restore 108, 114, 1591, 3002, 3003, 3008, 3009

@@ -18,7 +18,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#pragma warning disable 108, 114, 3002, 3009
+#pragma warning disable 108, 114, 1591, 3002, 3009
 namespace GeoSik.DublinCore.Elements.V11
 {
     using System;
@@ -3259,4 +3259,4 @@ namespace GeoSik.DublinCore.Elements.V11
         }
     }
 }
-#pragma warning restore 108, 114, 3002, 3009
+#pragma warning restore 108, 114, 1591, 3002, 3009
