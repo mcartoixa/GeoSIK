@@ -13,7 +13,7 @@
          Studio adds them anyway -->
     <AssemblyName>GeoSik.Help</AssemblyName>
     <RootNamespace>GeoSik.Help</RootNamespace>
-    <Name>GeoSik.Help</Name>
+    <Name>GeoSikHelp</Name>
     <!-- SHFB properties -->
     <OutputPath>.\bin\</OutputPath>
     <HtmlHelpName>GeoSik.Help</HtmlHelpName>
