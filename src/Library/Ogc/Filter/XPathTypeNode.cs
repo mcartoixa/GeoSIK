@@ -83,10 +83,9 @@ namespace GeoSik.Ogc.Filter
 
         /// <summary>Creates an <see cref="Expression" /> from the current node and the specified <paramref name="parameter" />.</summary>
         /// <param name="parameter">A parameter that represents an instance of the root node, which is the furthest <see cref="Parent" /> from the current node.</param>
+        /// <param name="expectedType">The type that the returned expression is expected to represent.</param>
+        /// <param name="expressionCreator">A custom function that should be applied to the returned expression.</param>
         /// <returns>The expression that gives access to the current node.</returns>
-        /// <remarks>
-        ///   <para></para>
-        /// </remarks>
         public Expression CreateExpression(ParameterExpression parameter, Type expectedType=null, Func<Expression, ParameterExpression, Expression> expressionCreator=null)
         {
             LinkedList<XPathTypeNode> path=GetNodePath();

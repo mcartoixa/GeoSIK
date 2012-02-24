@@ -71,6 +71,7 @@
 
     <ItemGroup>
       <GeoSikNuSpecItems Include="$(GeoSikNuSpecInputDir)GeoSik.dll;$(GeoSikNuSpecInputDir)GeoSik.Services.dll" />
+      <GeoSikNuSpecItems Include="$(GeoSikNuSpecInputDir)GeoSik.xml;$(GeoSikNuSpecInputDir)GeoSik.Services.xml" />
     </ItemGroup>
 
     <Copy
@@ -130,7 +131,7 @@
       <ZipInputDir>$(TmpOutBinOutputPath)GeoSik_Any CPU_Release\</ZipInputDir>
     </PropertyGroup>
     <ItemGroup>
-      <ZipItems Include="$(ZipInputDir)GeoSik.dll;$(ZipInputDir)GeoSik.*.dll;$(ZipInputDir)GeoSik.*.xml" />
+      <ZipItems Include="$(ZipInputDir)GeoSik.dll;$(ZipInputDir)GeoSik.xml;$(ZipInputDir)GeoSik.*.dll;$(ZipInputDir)GeoSik.*.xml" />
     </ItemGroup>
     <Zip
       Files="@(ZipItems)"

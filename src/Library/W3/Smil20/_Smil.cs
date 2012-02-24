@@ -18,7 +18,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#pragma warning disable 108, 114, 3002, 3003, 3009
+#pragma warning disable 108, 114, 1591, 3002, 3003, 3009
 namespace GeoSik.W3.Smil20
 {
     using System;
@@ -1557,4 +1557,4 @@ namespace GeoSik.W3.Smil20
         }
     }
 }
-#pragma warning restore 108, 114, 3002, 3003, 3009
+#pragma warning restore 108, 114, 1591, 3002, 3003, 3009

@@ -18,7 +18,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#pragma warning disable 108, 3002, 3003, 3009
+#pragma warning disable 108, 1591, 3002, 3003, 3009
 namespace GeoSik.Iso.Ts19139.Gco
 {
     using System;
@@ -18782,4 +18782,4 @@ namespace GeoSik.Iso.Ts19139.Gco
         }
     }
 }
-#pragma warning restore 108, 3002, 3003, 3009
+#pragma warning restore 108, 1591, 3002, 3003, 3009

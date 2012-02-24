@@ -18,7 +18,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#pragma warning disable 108, 109, 3002, 3003, 3009
+#pragma warning disable 108, 109, 1591, 3002, 3003, 3009
 namespace GeoSik.Iso.Ts19139.Gmd
 {
     using System;
@@ -77891,4 +77891,4 @@ namespace GeoSik.Iso.Ts19139.Gmd
         }
     }
 }
-#pragma warning restore 108, 109, 3002, 3003, 3009
+#pragma warning restore 108, 109, 1591, 3002, 3003, 3009
