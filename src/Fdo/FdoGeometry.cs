@@ -29,7 +29,10 @@ using System.Xml.Schema;
 using System.Xml.Serialization;
 using ProjNet.CoordinateSystems;
 using FCommon=OSGeo.FDO.Common;
+using FFilter=OSGeo.FDO.Filter;
 using FGeometry=OSGeo.FDO.Geometry;
+using FSpatial=OSGeo.FDO.Spatial;
+using Gml=GeoSik.Ogc.Gml.V311;
 
 namespace GeoSik.Fdo
 {
@@ -43,8 +46,9 @@ namespace GeoSik.Fdo
     ////////////////////////////////////////////////////////////////////////////
 
     public sealed class FdoGeometry:
-        ISimpleGeometry,
-        IDisposable
+        IGeometry,
+        IDisposable,
+        ICloneable
     {
 
         private FdoGeometry()
@@ -78,11 +82,95 @@ namespace GeoSik.Fdo
             Dispose(false);
         }
 
+        /// <summary>Returns a copy of the current geometry.</summary>
+        /// <returns>A copy of the current geometry.</returns>
+        /// <remarks>
+        ///   <para>It is the responsibility of the caller to <see cref="IDisposable.Dispose()" /> the returned geometry.</para>
+        /// </remarks>
+        public FdoGeometry Clone()
+        {
+            return new FdoGeometry(
+                FdoGeometryBuilder.Factory.CreateGeometry(_Geometry),
+                CoordinateSystem
+            );
+        }
+
         /// <summary>Releases native resources associated with the current instance.</summary>
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        /// <summary>Returns the shortest distance between any 2 points in the 2 geometries.</summary>
+        /// <param name="geometry">The geometry to calculate the distance from.</param>
+        /// <returns>The shortest distance between any 2 points in the 2 geometries.</returns>
+        public double Distance(ISimpleGeometry geometry)
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>Indicates whether the 2 geometries are disjoint or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the 2 geometries are disjoint, or else <c>false</c>.</returns>
+        public bool Disjoint(ISimpleGeometry geometry)
+        {
+            using (FdoGeometry other=Convert(geometry))
+                return FSpatial.SpatialUtility.Evaluate(_Geometry, FFilter.SpatialOperations.SpatialOperations_Disjoint, other._Geometry);
+        }
+
+        /// <summary>Indicates whether the 2 geometries touch themselves or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the 2 geometries touch themselves, or else <c>false</c>.</returns>
+        public bool Touches(ISimpleGeometry geometry)
+        {
+            using (FdoGeometry other=Convert(geometry))
+                return FSpatial.SpatialUtility.Evaluate(_Geometry, FFilter.SpatialOperations.SpatialOperations_Touches, other._Geometry);
+        }
+
+        /// <summary>Indicates whether the current geometry is within the specified <paramref name="geometry" /> or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the current geometry is within the specified <paramref name="geometry" />, or else <c>false</c>.</returns>
+        public bool Within(ISimpleGeometry geometry)
+        {
+            using (FdoGeometry other=Convert(geometry))
+                return FSpatial.SpatialUtility.Evaluate(_Geometry, FFilter.SpatialOperations.SpatialOperations_Within, other._Geometry);
+        }
+
+        /// <summary>Indicates whether the current geometry overlaps the specified <paramref name="geometry" /> or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the current geometry overlaps the specified <paramref name="geometry" />, or else <c>false</c>.</returns>
+        public bool Overlaps(ISimpleGeometry geometry)
+        {
+            using (FdoGeometry other=Convert(geometry))
+                return FSpatial.SpatialUtility.Evaluate(_Geometry, FFilter.SpatialOperations.SpatialOperations_Overlaps, other._Geometry);
+        }
+
+        /// <summary>Indicates whether the 2 geometries cross or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the 2 geometries cross, or else <c>false</c>.</returns>
+        public bool Crosses(ISimpleGeometry geometry)
+        {
+            using (FdoGeometry other=Convert(geometry))
+                return FSpatial.SpatialUtility.Evaluate(_Geometry, FFilter.SpatialOperations.SpatialOperations_Crosses, other._Geometry);
+        }
+
+        /// <summary>Indicates whether the 2 geometries intersect or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the 2 geometries intersect, or else <c>false</c>.</returns>
+        public bool Intersects(ISimpleGeometry geometry)
+        {
+            using (FdoGeometry other=Convert(geometry))
+                return FSpatial.SpatialUtility.Evaluate(_Geometry, FFilter.SpatialOperations.SpatialOperations_Intersects, other._Geometry);
+        }
+
+        /// <summary>Indicates whether the current geometry contains the specified <paramref name="geometry" /> or not.</summary>
+        /// <param name="geometry">The geometry to test against.</param>
+        /// <returns><c>true</c> if the current geometry contains the specified <paramref name="geometry" />, or else <c>false</c>.</returns>
+        public bool Contains(ISimpleGeometry geometry)
+        {
+            using (FdoGeometry other=Convert(geometry))
+                return FSpatial.SpatialUtility.Evaluate(_Geometry, FFilter.SpatialOperations.SpatialOperations_Contains, other._Geometry);
         }
 
         /// <summary>Gets the envelope of the current geometry.</summary>
@@ -164,18 +252,15 @@ namespace GeoSik.Fdo
 
         }
 
-        /// <summary>Generates a geometry from its GML representation.</summary>
-        /// <param name="reader">The stream from which the geometry is deserialized. </param>
-        public void ReadXml(XmlReader reader)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>Converts a geometry into its GML representation.</summary>
         /// <param name="writer">The stream to which the geometry is serialized. </param>
         public void WriteXml(XmlWriter writer)
         {
-            throw new NotImplementedException();
+            var builder=new Gml.GmlGeometryBuilder();
+            Populate(builder);
+            IXmlSerializable xg=builder.ConstructedGeometry;
+
+            xg.WriteXml(writer);
         }
 
         private void Dispose(bool disposing)
@@ -233,9 +318,40 @@ namespace GeoSik.Fdo
             sink.EndGeometry();
         }
 
+        object ICloneable.Clone()
+        {
+            return Clone();
+        }
+
         ISimpleGeometry ISimpleGeometry.Envelope()
         {
             return Envelope();
+        }
+
+        /// <summary>Generates a geometry from its GML representation.</summary>
+        /// <param name="reader">The stream from which the geometry is deserialized. </param>
+        void IXmlSerializable.ReadXml(XmlReader reader)
+        {
+            var xdoc=new XmlDocument();
+            xdoc.Load(reader);
+
+            Gml._Geometry g=Gml._Geometry.Parse(xdoc.DocumentElement.OuterXml);
+            using (var builder=new FdoGeometryBuilder())
+            {
+                g.Populate(builder);
+
+                if (_Geometry!=null)
+                {
+                    _Geometry.Dispose();
+                    _Geometry=null;
+                    _CoordinateSystem=null;
+                }
+                using (FdoGeometry ng=builder.ConstructedGeometry)
+                {
+                    _Geometry=FdoGeometry.ToGeometry(ng);
+                    _CoordinateSystem=ng._CoordinateSystem;
+                }
+            }
         }
 
         XmlSchema IXmlSerializable.GetSchema()
@@ -249,6 +365,17 @@ namespace GeoSik.Fdo
         public static FGeometry.IGeometry ToGeometry(FdoGeometry geometry)
         {
             return geometry._Geometry;
+        }
+
+        private static FdoGeometry Convert(ISimpleGeometry geometry)
+        {
+            var sg=geometry as FdoGeometry;
+            if (sg!=null)
+                return sg.Clone();
+
+            var sgb=new FdoGeometryBuilder();
+            geometry.Populate(sgb);
+            return sgb.ConstructedGeometry;
         }
 
         private static void CreateFigure(IGeometrySink sink, FGeometry.DirectPositionCollection positions)

@@ -28,6 +28,7 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 using ProjNet.CoordinateSystems;
+using Gml=GeoSik.Ogc.Gml.V311;
 using SmGeometries=SharpMap.Geometries;
 
 namespace GeoSik.SharpMap
@@ -204,18 +205,15 @@ namespace GeoSik.SharpMap
 
         }
 
-        /// <summary>Generates a geometry from its GML representation.</summary>
-        /// <param name="reader">The stream from which the geometry is deserialized. </param>
-        public void ReadXml(XmlReader reader)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>Converts a geometry into its GML representation.</summary>
         /// <param name="writer">The stream to which the geometry is serialized. </param>
         public void WriteXml(XmlWriter writer)
         {
-            throw new NotImplementedException();
+            var builder=new Gml.GmlGeometryBuilder();
+            Populate(builder);
+            IXmlSerializable xg=builder.ConstructedGeometry;
+
+            xg.WriteXml(writer);
         }
 
         //ISimpleGeometry IGeometry.Centroid()
@@ -226,6 +224,20 @@ namespace GeoSik.SharpMap
         ISimpleGeometry ISimpleGeometry.Envelope()
         {
             return Envelope();
+        }
+
+        /// <summary>Generates a geometry from its GML representation.</summary>
+        /// <param name="reader">The stream from which the geometry is deserialized. </param>
+        void IXmlSerializable.ReadXml(XmlReader reader)
+        {
+            var xdoc=new XmlDocument();
+            xdoc.Load(reader);
+
+            Gml._Geometry g=Gml._Geometry.Parse(xdoc.DocumentElement.OuterXml);
+            var builder=new SharpGeometryBuilder();
+            g.Populate(builder);
+
+            _Geometry=SharpGeometry.ToGeometry(builder.ConstructedGeometry);
         }
 
         XmlSchema IXmlSerializable.GetSchema()

@@ -21,11 +21,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Xml;
+using System.Xml.Schema;
 using System.Xml.Serialization;
 using ProjNet.CoordinateSystems;
 using SqlTypes=Microsoft.SqlServer.Types;
@@ -195,23 +197,23 @@ namespace GeoSik.SqlServer
             _Geometry.Populate(sgs);
         }
 
-        /// <summary>Generates a geometry from its GML representation.</summary>
-        /// <param name="reader">The stream from which the geometry is deserialized. </param>
-        public void ReadXml(XmlReader reader)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>Converts a geometry into its GML representation.</summary>
         /// <param name="writer">The stream to which the geometry is serialized. </param>
         public void WriteXml(XmlWriter writer)
         {
-            writer.WriteRaw(_Geometry.AsGml().Value);
+            ((IXmlSerializable)_Geometry.AsGml()).WriteXml(writer);
         }
 
-        System.Xml.Schema.XmlSchema IXmlSerializable.GetSchema()
+        XmlSchema IXmlSerializable.GetSchema()
         {
             return null;
+        }
+
+        /// <summary>Generates a geometry from its GML representation.</summary>
+        /// <param name="reader">The stream from which the geometry is deserialized. </param>
+        void IXmlSerializable.ReadXml(XmlReader reader)
+        {
+            _Geometry=SqlTypes.SqlGeometry.GeomFromGml(new SqlXml(reader), _Geometry.STSrid.Value);
         }
 
         /// <summary>Converts the specified <paramref name="geometry" /> into a <see cref="SqlGeometry" />.</summary>

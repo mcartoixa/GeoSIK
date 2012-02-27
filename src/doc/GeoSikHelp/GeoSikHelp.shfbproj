@@ -15,7 +15,7 @@
     <RootNamespace>GeoSik.Help</RootNamespace>
     <Name>GeoSikHelp</Name>
     <!-- SHFB properties -->
-    <OutputPath>.\bin\</OutputPath>
+    <OutputPath>bin\</OutputPath>
     <HtmlHelpName>GeoSikHelp</HtmlHelpName>
     <Language>en-US</Language>
     <DocumentationSources>
@@ -87,12 +87,17 @@
       </ComponentConfig>
     </ComponentConfigurations>
     <PlugInConfigurations>
-      <PlugInConfig id="Hierarchical Table of Contents" enabled="True" xmlns="">
+      <PlugInConfig id="Hierarchical Table of Contents" enabled="True">
         <configuration>
           <toc minParts="2" insertBelow="True" />
         </configuration>
       </PlugInConfig>
-    </PlugInConfigurations>
+<PlugInConfig id="Wildcard Assembly References" enabled="True"><configuration>
+  <references>
+    <reference path="lib\" wildcard="*.dll" recurse="true" />
+    <reference path="packages\" wildcard="*.dll" recurse="true" />
+  </references>
+</configuration></PlugInConfig></PlugInConfigurations>
     <HelpFileVersion>0.0.0.0</HelpFileVersion>
     <CopyrightHref>Isogeo</CopyrightHref>
     <CopyrightText>Copyright \xA9 2011-{%2540BuildDate:yyyy} Isogeo</CopyrightText>
@@ -113,6 +118,8 @@
       <Filter entryType="Namespace" fullName="GeoSik.W3.Smil20.Language" isExposed="False" xmlns="" />
     </ApiFilter>
     <VisibleItems>InheritedMembers, InheritedFrameworkMembers, Protected, SealedProtected</VisibleItems>
+    <WorkingPath>obj\</WorkingPath>
+    <RootNamespaceTitle>Reference</RootNamespaceTitle>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in
        order for Visual Studio to perform the build.  The others are optional
