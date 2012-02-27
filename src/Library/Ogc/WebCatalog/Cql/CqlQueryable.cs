@@ -27,6 +27,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Xml;
 using Common.Logging;
+using Irony;
 using Irony.Parsing;
 
 namespace GeoSik.Ogc.WebCatalog.Cql
@@ -57,30 +58,30 @@ namespace GeoSik.Ogc.WebCatalog.Cql
                 var logger=LogManager.GetCurrentClassLogger();
                 var exl=new List<Exception>();
 
-                foreach (ParserMessage pm in tree.ParserMessages)
-                    switch (pm.Level)
+                foreach (LogMessage lm in tree.ParserMessages)
+                    switch (lm.Level)
                     {
-                    case ParserErrorLevel.Error:
-                        logger.Error(CultureInfo.InvariantCulture, m => m("({0},{1}): {2}", pm.Location.Line, pm.Location.Column, pm.Message));
+                    case ErrorLevel.Error:
+                        logger.Error(CultureInfo.InvariantCulture, m => m("({0},{1}): {2}", lm.Location.Line, lm.Location.Column, lm.Message));
                         exl.Add(
                             new ArgumentException(
                                 string.Format(
                                     parser.Context.Culture,
                                     "({0},{1}): {2}: {3}",
-                                    pm.Location.Line,
-                                    pm.Location.Column,
-                                    pm.Level,
-                                    pm.Message
+                                    lm.Location.Line,
+                                    lm.Location.Column,
+                                    lm.Level,
+                                    lm.Message
                                 ),
                                 "constraint"
                             )
                         );
                         break;
-                    case ParserErrorLevel.Info:
-                        logger.Info(CultureInfo.InvariantCulture, m => m("({0},{1}): {2}", pm.Location.Line, pm.Location.Column, pm.Message));
+                    case ErrorLevel.Info:
+                        logger.Info(CultureInfo.InvariantCulture, m => m("({0},{1}): {2}", lm.Location.Line, lm.Location.Column, lm.Message));
                         break;
                     default:
-                        logger.Warn(CultureInfo.InvariantCulture, m => m("({0},{1}): {2}", pm.Location.Line, pm.Location.Column, pm.Message));
+                        logger.Warn(CultureInfo.InvariantCulture, m => m("({0},{1}): {2}", lm.Location.Line, lm.Location.Column, lm.Message));
                         break;
                     }
 

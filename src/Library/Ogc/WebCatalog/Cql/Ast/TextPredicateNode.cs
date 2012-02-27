@@ -27,6 +27,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
+using Irony.Ast;
 using Irony.Interpreter;
 using Irony.Interpreter.Ast;
 using Irony.Parsing;
@@ -110,15 +111,15 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
             }
         }
 
-        public override void Init(ParsingContext context, ParseTreeNode treeNode)
+        public override void Init(AstContext context, ParseTreeNode treeNode)
         {
             base.Init(context, treeNode);
 
-            var on=treeNode.MappedChildNodes[1].AstNode as NotKeywordNode;
+            var on=treeNode.ChildNodes[1].AstNode as NotKeywordNode;
             if (on!=null)
                 _OptionalNot=on;
-            AddChild("", treeNode.MappedChildNodes[0]);
-            AddChild("", treeNode.MappedChildNodes[treeNode.MappedChildNodes.Count-1]);
+            AddChild("", treeNode.ChildNodes[0]);
+            AddChild("", treeNode.ChildNodes[treeNode.ChildNodes.Count-1]);
 
             AsString="IsLike";
         }

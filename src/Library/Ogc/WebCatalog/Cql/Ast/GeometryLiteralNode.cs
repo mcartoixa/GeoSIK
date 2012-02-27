@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using Irony.Ast;
 using Irony.Interpreter;
 using Irony.Interpreter.Ast;
 using Irony.Parsing;
@@ -36,7 +37,7 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
         LiteralNode<ISimpleGeometry>
     {
 
-        protected override ISimpleGeometry InitValue(ParsingContext context, ParseTreeNode treeNode)
+        protected override ISimpleGeometry InitValue(AstContext context, ParseTreeNode treeNode)
         {
             var builder=new Gml.V311.GmlGeometryBuilder();
             builder.Parse(treeNode.Token.Text, GeographicCoordinateSystem.WGS84);

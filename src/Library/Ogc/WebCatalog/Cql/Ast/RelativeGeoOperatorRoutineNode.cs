@@ -26,6 +26,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
+using Irony.Ast;
 using Irony.Interpreter;
 using Irony.Interpreter.Ast;
 using Irony.Parsing;
@@ -71,17 +72,17 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
             }
         }
 
-        public override void Init(ParsingContext context, ParseTreeNode treeNode)
+        public override void Init(AstContext context, ParseTreeNode treeNode)
         {
             base.Init(context, treeNode);
 
-            _OperatorExpression=context.GetOperatorExpressionType(treeNode.MappedChildNodes[0].FindTokenAndGetText());
+            _OperatorExpression=((InterpreterAstContext)context).OperatorHandler.GetOperatorExpressionType(treeNode.ChildNodes[0].FindTokenAndGetText());
 
-            AddChild("", treeNode.MappedChildNodes[1]);
-            AddChild("", treeNode.MappedChildNodes[2]);
-            _Tolerance=(ToleranceNode)treeNode.MappedChildNodes[3].AstNode;
+            AddChild("", treeNode.ChildNodes[1]);
+            AddChild("", treeNode.ChildNodes[2]);
+            _Tolerance=(ToleranceNode)treeNode.ChildNodes[3].AstNode;
 
-            AsString=((OperatorNameNode)treeNode.MappedChildNodes[0].AstNode).Name;
+            AsString=((OperatorNameNode)treeNode.ChildNodes[0].AstNode).Name;
         }
 
         public Expression CreateExpression(ExpressionBuilderParameters parameters, Type expectedStaticType, Func<Expression, ParameterExpression, Expression> operatorCreator)

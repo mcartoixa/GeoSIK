@@ -25,6 +25,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
+using Irony.Ast;
 using Irony.Interpreter;
 using Irony.Interpreter.Ast;
 using Irony.Parsing;
@@ -84,18 +85,18 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
             private DateTime _Date;
         }
 
-        public override void Init(ParsingContext context, ParseTreeNode treeNode)
+        public override void Init(AstContext context, ParseTreeNode treeNode)
         {
             base.Init(context, treeNode);
 
-            AddChild("", treeNode.MappedChildNodes[0]);
+            AddChild("", treeNode.ChildNodes[0]);
 
             StringBuilder sb=new StringBuilder();
-            for (int i=1; i<treeNode.MappedChildNodes.Count-1; ++i)
-                sb.Append(((OperatorNameNode)treeNode.MappedChildNodes[i].AstNode).Name);
+            for (int i=1; i<treeNode.ChildNodes.Count-1; ++i)
+                sb.Append(((OperatorNameNode)treeNode.ChildNodes[i].AstNode).Name);
             _OperatorName=sb.ToString();
 
-            _DateTimeExpression=(AstNode)treeNode.MappedChildNodes[treeNode.MappedChildNodes.Count-1].AstNode;
+            _DateTimeExpression=(AstNode)treeNode.ChildNodes[treeNode.ChildNodes.Count-1].AstNode;
 
             AsString=_OperatorName;
         }

@@ -24,6 +24,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Xml.XPath;
+using Irony.Ast;
 using Irony.Interpreter;
 using Irony.Interpreter.Ast;
 using Irony.Parsing;
@@ -37,12 +38,12 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
         IExpressionBuilder
     {
 
-        public override void Init(ParsingContext context, ParseTreeNode treeNode)
+        public override void Init(AstContext context, ParseTreeNode treeNode)
         {
             base.Init(context, treeNode);
 
-            _AttributeName=(AttributeNameNode)AddChild("", treeNode.MappedChildNodes[0]);
-            _Negated=treeNode.MappedChildNodes[1].Term.Name.Contains("NOT");
+            _AttributeName=(AttributeNameNode)AddChild("", treeNode.ChildNodes[0]);
+            _Negated=treeNode.ChildNodes[1].Term.Name.Contains("NOT");
 
         }
 

@@ -25,6 +25,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
+using Irony.Ast;
 using Irony.Interpreter;
 using Irony.Interpreter.Ast;
 using Irony.Parsing;
@@ -103,11 +104,11 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
             }
         }
 
-        public override void Init(ParsingContext context, ParseTreeNode treeNode)
+        public override void Init(AstContext context, ParseTreeNode treeNode)
         {
             base.Init(context, treeNode);
 
-            foreach (ParseTreeNode ptn in treeNode.MappedChildNodes)
+            foreach (ParseTreeNode ptn in treeNode.ChildNodes)
                 AddChild("", ptn);
 
             AsString=ExpressionType.ToString();
@@ -152,7 +153,7 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
         BooleanExpressionNode
     {
 
-        public override void Init(ParsingContext context, ParseTreeNode treeNode)
+        public override void Init(AstContext context, ParseTreeNode treeNode)
         {
             ExpressionType=ExpressionType.OrElse;
 
@@ -164,7 +165,7 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
         BooleanExpressionNode
     {
 
-        public override void Init(ParsingContext context, ParseTreeNode treeNode)
+        public override void Init(AstContext context, ParseTreeNode treeNode)
         {
             ExpressionType=ExpressionType.AndAlso;
 
