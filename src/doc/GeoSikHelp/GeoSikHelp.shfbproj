@@ -59,33 +59,21 @@
           <colorizer syntaxFile="{@SHFBFolder}Colorizer\highlight.xml" styleFile="{@SHFBFolder}Colorizer\highlight.xsl" copyImageUrl="../icons/CopyCode.gif" language="cs" tabSize="0" numberLines="false" outlining="false" keepSeeTags="false" defaultTitle="true" />
         </component>
       </ComponentConfig>
-      <ComponentConfig id="Post-transform Component" enabled="True">
-        <component id="Post-transform Component" type="SandcastleBuilder.Components.PostTransformComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">
-          <!-- Code colorizer files (required).
+<ComponentConfig id="Post-transform Component" enabled="True"><component id="Post-transform Component" type="SandcastleBuilder.Components.PostTransformComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll"><!-- Code colorizer files (required).
                  Attributes:
                     Stylesheet file (required)
                     Script file (required)
-                    "Copy" image file (required) -->
-          <colorizer stylesheet="{@SHFBFolder}Colorizer\highlight.css" scriptFile="{@SHFBFolder}Colorizer\highlight.js" copyImage="{@SHFBFolder}Colorizer\CopyCode.gif" />
-          <!-- Base output paths for the files (required).  These should match
+                    "Copy" image file (required) --><colorizer stylesheet="{@SHFBFolder}Colorizer\highlight.css" scriptFile="{@SHFBFolder}Colorizer\highlight.js" copyImage="{@SHFBFolder}Colorizer\CopyCode.gif" /><!-- Base output paths for the files (required).  These should match
                  the parent folder of the output path of the HTML files (see
-                 each of the SaveComponent instances below). -->
-          <outputPaths>
+                 each of the SaveComponent instances below). --><outputPaths>
 {@HelpFormatOutputPaths}
-            </outputPaths>
-          <!-- Logo image file (optional).  Filename is required. The height,
+            </outputPaths><!-- Logo image file (optional).  Filename is required. The height,
                  width, altText, placement, and alignment attributes are
-                 optional. -->
-          <logoFile filename="{@ProjectFolder}GeoSik.png" height="47" width="129" altText="GeoSIK" placement="right" alignment="left" />
-        </component>
-      </ComponentConfig>
-      <ComponentConfig id="API Token Resolution" enabled="True">
-        <component id="API Token Resolution" type="Microsoft.Ddue.Tools.SharedContentComponent" assembly="{@SandcastlePath}ProductionTools\BuildComponents.dll">
+                 optional. --><logoFile filename="{@ProjectFolder}GeoSik.png" height="47" width="129" altText="GeoSIK" placement="left" alignment="left" /></component></ComponentConfig>
+<ComponentConfig id="API Token Resolution" enabled="True"><component id="API Token Resolution" type="Microsoft.Ddue.Tools.SharedContentComponent" assembly="{@SandcastlePath}ProductionTools\BuildComponents.dll">
 
         {@TokenFiles}
-        <replace elements="/*//token" item="string(.)" /></component>
-      </ComponentConfig>
-    </ComponentConfigurations>
+        <replace elements="/*//token" item="string(.)" /></component></ComponentConfig></ComponentConfigurations>
     <PlugInConfigurations>
       <PlugInConfig id="Hierarchical Table of Contents" enabled="True">
         <configuration>
@@ -94,12 +82,12 @@
       </PlugInConfig>
 <PlugInConfig id="Wildcard Assembly References" enabled="True"><configuration>
   <references>
-    <reference path="lib\" wildcard="*.dll" recurse="true" />
-    <reference path="packages\" wildcard="*.dll" recurse="true" />
+    <reference path="..\..\lib\" wildcard="*.dll" recurse="true" />
+    <reference path="..\..\packages\" wildcard="*.dll" recurse="true" />
   </references>
 </configuration></PlugInConfig></PlugInConfigurations>
     <HelpFileVersion>0.0.0.0</HelpFileVersion>
-    <CopyrightHref>Isogeo</CopyrightHref>
+    <CopyrightHref>http://www.isogeo.fr/</CopyrightHref>
     <CopyrightText>Copyright \xA9 2011-{%2540BuildDate:yyyy} Isogeo</CopyrightText>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="GeoSik.DublinCore.Elements.V11" isExposed="False" xmlns="" />
@@ -140,6 +128,30 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Content" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="GeoSik.png">
+      <ImageId>GeoSik</ImageId>
+      <AlternateText>Geo Sik</AlternateText>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lgpl-2.1-standalone.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ContentLayout Include="GeoSikHelp.content" />
+  </ItemGroup>
+  <ItemGroup>
+    <Tokens Include="GeoSikHelp.tokens" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\Glossary.aml" />
+  </ItemGroup>
+  <ItemGroup>
+    <SiteMap Include="GeoSikHelp.sitemap" />
+  </ItemGroup>
   <!-- Import the SHFB build targets -->
   <Import Project="$(SHFBROOT)\SandcastleHelpFileBuilder.targets" />
 </Project>
