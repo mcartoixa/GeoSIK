@@ -26,6 +26,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Xml;
 using System.Xml.XPath;
+using Irony.Ast;
 using Irony.Parsing;
 using Irony.Interpreter.Ast;
 
@@ -67,15 +68,19 @@ namespace GeoSik.Ogc.WebCatalog.Cql
                 }
             );
             //var digit_literal=new FixedLengthLiteral("digit", 1, TypeCode.Byte);
-            var numeric_literal=new NumberLiteral("numeric literal", NumberOptions.AllowSign);
-            var unsigned_numeric_literal=new NumberLiteral("unsigned numeric literal", NumberOptions.None);
+            var numeric_literal=new NumberLiteral("numeric literal", NumberOptions.AllowSign, typeof(Ast.DefaultLiteralNode));
+            var unsigned_numeric_literal=new NumberLiteral("unsigned numeric literal", NumberOptions.None, typeof(Ast.DefaultLiteralNode));
             //var integer_literal=new NumberLiteral("integer literal", NumberOptions.IntOnly | NumberOptions.NoDotAfterInt);
             //var character_literal=new StringLiteral("character literal", "'", StringOptions.IsChar | StringOptions.AllowsDoubledQuote);
-            var string_literal=new StringLiteral("string literal", "'", StringOptions.AllowsDoubledQuote);
-            var left_paren=ToTerm("(", "left paren");
-            var right_paren=ToTerm(")", "right paren");
+            var string_literal=new StringLiteral("string literal", "'", StringOptions.AllowsDoubledQuote, typeof(Ast.DefaultLiteralNode));
             var period=ToTerm(".", "period");
             var comma=ToTerm(",", "comma");
+            var left_paren=ToTerm("(", "left paren");
+            var right_paren=ToTerm(")", "right paren");
+            left_paren.SetFlag(TermFlags.IsOpenBrace);
+            left_paren.IsPairFor=right_paren;
+            right_paren.SetFlag(TermFlags.IsCloseBrace);
+            right_paren.IsPairFor=left_paren;
 
             var TRUE=ToTerm("TRUE");
             var FALSE=ToTerm("FALSE");
@@ -112,63 +117,64 @@ namespace GeoSik.Ogc.WebCatalog.Cql
             var date_time=new RegexBasedTerminal(name: "date-time", pattern: @"(?<fulldate>(?<dateyear>\d{4})-(?<datemonth>\d{2})-(?<dateday>\d{2}))T(?<UTCtime>(?<timehour>\d{2}):(?<timeminute>\d{2}):(?<timesecond>\d{2}(\.\d+)?)Z)");
             var duration=new RegexBasedTerminal(name: "duration", pattern: @"P((?<duryear>\d+)Y)?((?<durmonth>\d+)M)?((?<durday>\d+)D)?(T((?<durhour>\d+)H)?((?<durminute>\d+)M)?((?<dursecond>\d+)S)?)?");
 
-            AFTER.AstNodeType=typeof(Ast.OperatorNameNode);
-            AND.AstNodeType=typeof(Ast.OperatorNameNode);
-            BEFORE.AstNodeType=typeof(Ast.OperatorNameNode);
-            BEYOND.AstNodeType=typeof(Ast.OperatorNameNode);
-            CONTAINS.AstNodeType=typeof(Ast.OperatorNameNode);
-            CROSSES.AstNodeType=typeof(Ast.OperatorNameNode);
-            DISJOINT.AstNodeType=typeof(Ast.OperatorNameNode);
-            DURING.AstNodeType=typeof(Ast.OperatorNameNode);
-            DOESNOTEXIST.AstNodeType=typeof(Ast.OperatorNameNode);
-            DURING.AstNodeType=typeof(Ast.OperatorNameNode);
-            DWITHIN.AstNodeType=typeof(Ast.OperatorNameNode);
-            EQUALS.AstNodeType=typeof(Ast.OperatorNameNode);
-            EXISTS.AstNodeType=typeof(Ast.OperatorNameNode);
-            INTERSECTS.AstNodeType=typeof(Ast.OperatorNameNode);
-            LIKE.AstNodeType=typeof(Ast.OperatorNameNode);
-            NOT.AstNodeType=typeof(Ast.NotKeywordNode);
-            OR.AstNodeType=typeof(Ast.OperatorNameNode);
-            OVERLAPS.AstNodeType=typeof(Ast.OperatorNameNode);
-            //RELATE.AstNodeType=typeof(Ast.OperatorNameNode);
-            TOUCHES.AstNodeType=typeof(Ast.OperatorNameNode);
-            WITHIN.AstNodeType=typeof(Ast.OperatorNameNode);
+            AFTER.AstConfig.NodeType=typeof(Ast.OperatorNameNode);
+            AND.AstConfig.NodeType=typeof(Ast.OperatorNameNode);
+            BEFORE.AstConfig.NodeType=typeof(Ast.OperatorNameNode);
+            BEYOND.AstConfig.NodeType=typeof(Ast.OperatorNameNode);
+            CONTAINS.AstConfig.NodeType=typeof(Ast.OperatorNameNode);
+            CROSSES.AstConfig.NodeType=typeof(Ast.OperatorNameNode);
+            DISJOINT.AstConfig.NodeType=typeof(Ast.OperatorNameNode);
+            DURING.AstConfig.NodeType=typeof(Ast.OperatorNameNode);
+            DOESNOTEXIST.AstConfig.NodeType=typeof(Ast.OperatorNameNode);
+            DURING.AstConfig.NodeType=typeof(Ast.OperatorNameNode);
+            DWITHIN.AstConfig.NodeType=typeof(Ast.OperatorNameNode);
+            EQUALS.AstConfig.NodeType=typeof(Ast.OperatorNameNode);
+            EXISTS.AstConfig.NodeType=typeof(Ast.OperatorNameNode);
+            INTERSECTS.AstConfig.NodeType=typeof(Ast.OperatorNameNode);
+            LIKE.AstConfig.NodeType=typeof(Ast.OperatorNameNode);
+            NOT.AstConfig.NodeType=typeof(Ast.NotKeywordNode);
+            OR.AstConfig.NodeType=typeof(Ast.OperatorNameNode);
+            OVERLAPS.AstConfig.NodeType=typeof(Ast.OperatorNameNode);
+            //RELATE.AstConfig.NodeType=typeof(Ast.OperatorNameNode);
+            TOUCHES.AstConfig.NodeType=typeof(Ast.OperatorNameNode);
+            WITHIN.AstConfig.NodeType=typeof(Ast.OperatorNameNode);
 
-            date_time.AstNodeType=typeof(Ast.DateTimeLiteralNode);
-            duration.AstNodeType=typeof(Ast.DurationLiteralNode);
+            date_time.AstConfig.NodeType=typeof(Ast.DateTimeLiteralNode);
+            duration.AstConfig.NodeType=typeof(Ast.DurationLiteralNode);
 
             // Non terminals
             var optional_not=new NonTerminal("optional not", Empty | NOT);
 
-            var attribute_name=new NonTerminal("attribute name") { AstNodeType=typeof(Ast.AttributeNameNode) };
+            var attribute_name=new NonTerminal("attribute name", typeof(Ast.AttributeNameNode));
             var search_condition=new NonTerminal("search condition");
-            var boolean_value_expression=new NonTerminal("boolean value expression") { AstNodeType=typeof(Ast.BooleanValueExpressionNode) };
-            var boolean_term=new NonTerminal("boolean term") { AstNodeType=typeof(Ast.BooleanTermNode) };
-            var boolean_factor=new NonTerminal("boolean factor") { AstNodeType=typeof(Ast.BooleanFactorNode) };
+            var boolean_value_expression=new NonTerminal("boolean value expression", typeof(Ast.BooleanValueExpressionNode));
+            var boolean_term=new NonTerminal("boolean term", typeof(Ast.BooleanTermNode));
+            var boolean_factor=new NonTerminal("boolean factor", typeof(Ast.BooleanFactorNode));
             var boolean_primary=new NonTerminal("boolean primary");
             var predicate=new NonTerminal("predicate");
-            var temporal_predicate=new NonTerminal("temporal predicate") { AstNodeType=typeof(Ast.TemporalPredicateNode) };
+            var temporal_predicate=new NonTerminal("temporal predicate", typeof(Ast.TemporalPredicateNode));
             var date_time_expression=new NonTerminal("date-time expression");
-            var existence_predicate=new NonTerminal("existence predicate") { AstNodeType=typeof(Ast.ExistencePredicateNode) };
-            var comparison_predicate=new NonTerminal("comparison predicate") { AstNodeType=typeof(Ast.ComparisonPredicateNode) };
-            var text_predicate=new NonTerminal("text predicate") { AstNodeType=typeof(Ast.TextPredicateNode) };
-            var null_predicate=new NonTerminal("null predicate") { AstNodeType=typeof(Ast.NullPredicateNode) };
+            var existence_predicate=new NonTerminal("existence predicate", typeof(Ast.ExistencePredicateNode));
+            var comparison_predicate=new NonTerminal("comparison predicate", typeof(Ast.ComparisonPredicateNode));
+            var text_predicate=new NonTerminal("text predicate", typeof(Ast.TextPredicateNode));
+            var null_predicate=new NonTerminal("null predicate", typeof(Ast.NullPredicateNode));
             var comp_op=new NonTerminal("comp op", equals_operator | not_equals_operator | less_than_operator | greater_than_operator | less_than_or_equals_operator | greater_than_or_equals_operator);
             var general_literal=new NonTerminal("general literal");
             var literal=new NonTerminal("literal");
-            var boolean_literal=new NonTerminal("boolean literal", TRUE | FALSE | UNKNOWN) { AstNodeType=typeof(Ast.BooleanLiteralNode) };
+            var boolean_literal=new NonTerminal("boolean literal", TRUE | FALSE | UNKNOWN);
+            boolean_literal.AstConfig.NodeType=typeof(Ast.BooleanLiteralNode);
             var routine_invocation=new NonTerminal("routine invocation");
-            var geoop_routine=new NonTerminal("geoop routine") { AstNodeType=typeof(Ast.GeoOperatorRoutineNode) };
-            var relgeoop_routine=new NonTerminal("relgeoop routine") { AstNodeType=typeof(Ast.RelativeGeoOperatorRoutineNode) };
+            var geoop_routine=new NonTerminal("geoop routine", typeof(Ast.GeoOperatorRoutineNode));
+            var relgeoop_routine=new NonTerminal("relgeoop routine", typeof(Ast.RelativeGeoOperatorRoutineNode));
             var routine=new NonTerminal("routine");
             var geoop_name=new NonTerminal("geoop name");
             var relgeoop_name=new NonTerminal("relgeoop name");
             var argument=new NonTerminal("argument");
             var positional_arguments=new NonTerminal("positional arguments");
-            var tolerance=new NonTerminal("tolerance") { AstNodeType=typeof(Ast.ToleranceNode) };
+            var tolerance=new NonTerminal("tolerance", typeof(Ast.ToleranceNode));
             var distance_units=new NonTerminal("distance units");
 
-            var geometry_literal=new NonTerminal("geometry literal") { AstNodeType=typeof(Ast.GeometryLiteralNode) };
+            var geometry_literal=new NonTerminal("geometry literal", typeof(Ast.GeometryLiteralNode));
             var geometry_literal_series=new NonTerminal("geometry literal series");
             var point_tagged_text=new NonTerminal("Point Tagged Text");
             var linestring_tagged_text=new NonTerminal("LineString Tagged Text");
@@ -198,8 +204,10 @@ namespace GeoSik.Ogc.WebCatalog.Cql
             var northboundlongitude=new NonTerminal("NorthBoundLongitude", numeric_literal);
             var southboundlongitude=new NonTerminal("SouthBoundLongitude", numeric_literal);
 
-            var date_time_period=new NonTerminal("date-time period") { AstNodeType=typeof(Ast.DateTimePeriodNode) };
+            var date_time_period=new NonTerminal("date-time period");
+            date_time_period.AstConfig.NodeType=typeof(Ast.DateTimePeriodNode);
 
+            identifier.AstConfig.NodeType=typeof(IdentifierNode);
             attribute_name.Rule=MakePlusRule(attribute_name, period, identifier);
 
             search_condition.Rule=boolean_value_expression;
@@ -257,23 +265,30 @@ namespace GeoSik.Ogc.WebCatalog.Cql
             date_time_expression.Rule=date_time | date_time_period;
 
             // Operators
-            OperatorMappings.Add(equals_operator.Text, ExpressionType.Equal, 10);
-            OperatorMappings.Add(not_equals_operator.Text, ExpressionType.NotEqual, 10);
-            OperatorMappings.Add(greater_than_operator.Text, ExpressionType.GreaterThan, 10);
-            OperatorMappings.Add(greater_than_or_equals_operator.Text, ExpressionType.GreaterThanOrEqual, 10);
-            OperatorMappings.Add(less_than_operator.Text, ExpressionType.LessThan, 10);
-            OperatorMappings.Add(less_than_or_equals_operator.Text, ExpressionType.LessThanOrEqual, 10);
-            OperatorMappings.Add(NOT.Text, ExpressionType.Not, 3);
-            OperatorMappings.Add(OR.Text, ExpressionType.OrElse, 2);
-            OperatorMappings.Add(AND.Text, ExpressionType.AndAlso, 1);
+            RegisterOperators(10, equals_operator, not_equals_operator, greater_than_operator, greater_than_or_equals_operator, less_than_operator, less_than_or_equals_operator);
+            RegisterOperators(3, NOT);
+            RegisterOperators(2, OR);
+            RegisterOperators(1, AND);
 
-            OperatorMappings.Add(BEYOND.Text, ExpressionType.GreaterThanOrEqual, 0);
-            OperatorMappings.Add(DWITHIN.Text, ExpressionType.LessThanOrEqual, 0);
+            RegisterOperators(0, BEYOND, WITHIN);
+
+            _OperatorHandler=new OperatorHandler(true);
+            var oid=_OperatorHandler.BuildDefaultOperatorMappings();
+            oid.Clear();
+            oid.Add(equals_operator.Text, ExpressionType.Equal, 10);
+            oid.Add(not_equals_operator.Text, ExpressionType.NotEqual, 10);
+            oid.Add(greater_than_operator.Text, ExpressionType.GreaterThan, 10);
+            oid.Add(greater_than_or_equals_operator.Text, ExpressionType.GreaterThanOrEqual, 10);
+            oid.Add(less_than_operator.Text, ExpressionType.LessThan, 10);
+            oid.Add(less_than_or_equals_operator.Text, ExpressionType.LessThanOrEqual, 10);
+            oid.Add(NOT.Text, ExpressionType.Not, 3);
+            oid.Add(OR.Text, ExpressionType.OrElse, 2);
+            oid.Add(AND.Text, ExpressionType.AndAlso, 1);
+
+            oid.Add(BEYOND.Text, ExpressionType.GreaterThanOrEqual, 0);
+            oid.Add(DWITHIN.Text, ExpressionType.LessThanOrEqual, 0);
 
             // Grammar
-            DefaultIdentifierNodeType=typeof(IdentifierNode);
-            DefaultLiteralNodeType=typeof(Ast.DefaultLiteralNode);
-            DefaultNodeType=typeof(NotSupportedNode);
             Delimiters="\"%&'()*+,-./:;<=>?[]^_|{}";
             MarkMemberSelect(":");
             MarkPunctuation(left_paren, right_paren, period, comma);
@@ -282,5 +297,17 @@ namespace GeoSik.Ogc.WebCatalog.Cql
             Root=search_condition;
             LanguageFlags=LanguageFlags.CreateAst;
         }
+
+        public override void BuildAst(LanguageData language, ParseTree parseTree)
+        {
+            if (!LanguageFlags.IsSet(LanguageFlags.CreateAst))
+                return;
+
+            var astContext=new InterpreterAstContext(language, _OperatorHandler);
+            var astBuilder=new AstBuilder(astContext);
+            astBuilder.BuildAst(parseTree);
+        }
+
+        private OperatorHandler _OperatorHandler;
     }
 }

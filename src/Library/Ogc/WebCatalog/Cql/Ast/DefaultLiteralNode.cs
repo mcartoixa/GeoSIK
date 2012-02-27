@@ -22,6 +22,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Irony.Ast;
 using Irony.Interpreter;
 using Irony.Interpreter.Ast;
 using Irony.Parsing;
@@ -34,7 +35,7 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
         LiteralNode<object>
     {
 
-        protected override object InitValue(ParsingContext context, ParseTreeNode treeNode)
+        protected override object InitValue(AstContext context, ParseTreeNode treeNode)
         {
             return treeNode.Token.Value;
         }

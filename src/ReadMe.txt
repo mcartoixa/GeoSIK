@@ -26,6 +26,7 @@ build.bat
 DEVELOPMENT
 -----------
 
+- The GeoSik.dev.sln solution is meant for development. Other solutions are used by the build scripts.
 - Serialization:
 	* Serialization objects found in the Library project have been generated with [LinqToXsd] (http://linqtoxsd.codeplex.com/) with a command line like the following:
 LinqToXsd.exe iso\19139\20070417\gmd\gmd.xsd /config:LinqToXsd.config.xml /enableServiceReference

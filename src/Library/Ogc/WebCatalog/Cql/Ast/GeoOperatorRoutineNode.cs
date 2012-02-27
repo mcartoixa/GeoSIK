@@ -26,6 +26,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
+using Irony.Ast;
 using Irony.Interpreter;
 using Irony.Interpreter.Ast;
 using Irony.Parsing;
@@ -73,13 +74,13 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
             }
         }
 
-        public override void Init(ParsingContext context, ParseTreeNode treeNode)
+        public override void Init(AstContext context, ParseTreeNode treeNode)
         {
             base.Init(context, treeNode);
 
-            _OperatorName=((OperatorNameNode)treeNode.MappedChildNodes[0].AstNode).Name;
-            AddChild("", treeNode.MappedChildNodes[1]);
-            AddChild("", treeNode.MappedChildNodes[2]);
+            _OperatorName=((OperatorNameNode)treeNode.ChildNodes[0].AstNode).Name;
+            AddChild("", treeNode.ChildNodes[1]);
+            AddChild("", treeNode.ChildNodes[2]);
 
             AsString=_OperatorName;
         }

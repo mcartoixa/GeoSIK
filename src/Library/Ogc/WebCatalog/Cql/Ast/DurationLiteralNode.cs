@@ -24,6 +24,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Xml;
+using Irony.Ast;
 using Irony.Interpreter;
 using Irony.Interpreter.Ast;
 using Irony.Parsing;
@@ -36,7 +37,7 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
         LiteralNode<TimeSpan>
     {
 
-        public override void Init(ParsingContext context, ParseTreeNode treeNode)
+        public override void Init(AstContext context, ParseTreeNode treeNode)
         {
             base.Init(context, treeNode);
 
@@ -47,7 +48,7 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
             );
         }
 
-        protected override TimeSpan InitValue(ParsingContext context, ParseTreeNode treeNode)
+        protected override TimeSpan InitValue(AstContext context, ParseTreeNode treeNode)
         {
             return XmlConvert.ToTimeSpan(treeNode.Token.ValueString);
         }

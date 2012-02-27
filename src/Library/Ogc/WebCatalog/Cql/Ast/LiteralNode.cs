@@ -24,6 +24,7 @@ using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using Irony.Ast;
 using Irony.Interpreter;
 using Irony.Interpreter.Ast;
 using Irony.Parsing;
@@ -37,7 +38,7 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
         IExpressionBuilder
     {
 
-        public override void Init(ParsingContext context, ParseTreeNode treeNode)
+        public override void Init(AstContext context, ParseTreeNode treeNode)
         {
             base.Init(context, treeNode);
 
@@ -52,7 +53,7 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
                 AsString="<null>";
         }
 
-        protected abstract T InitValue(ParsingContext context, ParseTreeNode treeNode);
+        protected abstract T InitValue(AstContext context, ParseTreeNode treeNode);
 
         protected override object DoEvaluate(ScriptThread thread)
         {
