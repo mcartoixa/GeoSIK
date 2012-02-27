@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="fdc71072-323b-442a-989d-651ca9a41f4d" revisionNumber="1">
+  <developerGlossaryDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <glossary>
+      <glossaryDiv address="geosik">
+        <title>GeoSIK</title>
+
+        <glossaryEntry>
+          <terms>
+            <term termId="kvp">KVP</term>
+          </terms>
+          <definition>
+            <para>Stands for <legacyBold>K</legacyBold>eyword <legacyBold>V</legacyBold>alue <legacyBold>P</legacyBold>air</para>
+          </definition>
+        </glossaryEntry>
+
+        <glossaryEntry>
+          <terms>
+            <term termId="ows">OWS</term>
+          </terms>
+          <definition>
+            <para>Stands for <legacyBold>O</legacyBold>GC <legacyBold>W</legacyBold>eb <legacyBold>S</legacyBold>ervices common standard.</para>
+          </definition>
+        </glossaryEntry>
+
+      </glossaryDiv>
+    </glossary>
+  </developerGlossaryDocument>
+</topic>
