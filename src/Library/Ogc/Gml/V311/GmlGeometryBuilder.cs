@@ -119,7 +119,7 @@ namespace GeoSik.Ogc.Gml.V311
         }
 
         /// <summary>Returns the geometry resulting from the actions on the current <see cref="GmlGeometryBuilder" />.</summary>
-        internal _Geometry ConstructedGeometry
+        public _Geometry ConstructedGeometry
         {
             get
             {

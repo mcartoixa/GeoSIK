@@ -27,6 +27,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Xml;
+using System.Xml.Schema;
 using System.Xml.Serialization;
 using ProjNet.CoordinateSystems;
 using SqlTypes=Microsoft.SqlServer.Types;
@@ -220,7 +221,14 @@ namespace GeoSik.SqlServer
             writer.WriteRaw(_Geography.AsGml().Value);
         }
 
-        System.Xml.Schema.XmlSchema IXmlSerializable.GetSchema()
+        /// <summary>Generates a geometry from its GML representation.</summary>
+        /// <param name="reader">The stream from which the geometry is deserialized. </param>
+        void IXmlSerializable.ReadXml(XmlReader reader)
+        {
+            _Geography=SqlTypes.SqlGeography.GeomFromGml(new SqlXml(reader), _Geography.STSrid.Value);
+        }
+
+        XmlSchema IXmlSerializable.GetSchema()
         {
             return null;
         }
