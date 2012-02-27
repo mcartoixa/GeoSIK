@@ -148,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\Glossary.aml" />
+    <None Include="Content\Welcome.aml" />
   </ItemGroup>
   <ItemGroup>
     <SiteMap Include="GeoSikHelp.sitemap" />
