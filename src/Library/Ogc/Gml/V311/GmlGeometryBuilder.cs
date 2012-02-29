@@ -20,6 +20,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using ProjNet.CoordinateSystems;
@@ -114,8 +115,18 @@ namespace GeoSik.Ogc.Gml.V311
         /// <param name="system">The coordinate system of the WKT representation.</param>
         public void Parse(string text, ICoordinateSystem system)
         {
-            //TODO: implement parsing
-            throw new NotImplementedException();
+            Debug.Assert(system!=null);
+            if (system==null)
+                throw new ArgumentNullException("system");
+
+            IGeometryBuilder builder=new GmlGeometryBuilder();
+            SimpleFeature.GeometryWktGrammar.Populate(builder, text, system);
+            _Geometry g=(_Geometry)builder.ConstructedGeometry;
+
+            if ((TargetSystem!=null) && ((system!=TargetSystem) || !system.EqualParams(TargetSystem)))
+                g.Populate(this);
+            else
+                _Geometry=g;
         }
 
         /// <summary>Returns the geometry resulting from the actions on the current <see cref="GmlGeometryBuilder" />.</summary>

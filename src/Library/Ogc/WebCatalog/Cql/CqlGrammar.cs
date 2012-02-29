@@ -204,8 +204,7 @@ namespace GeoSik.Ogc.WebCatalog.Cql
             var northboundlongitude=new NonTerminal("NorthBoundLongitude", numeric_literal);
             var southboundlongitude=new NonTerminal("SouthBoundLongitude", numeric_literal);
 
-            var date_time_period=new NonTerminal("date-time period");
-            date_time_period.AstConfig.NodeType=typeof(Ast.DateTimePeriodNode);
+            var date_time_period=new NonTerminal("date-time period", typeof(Ast.DateTimePeriodNode));
 
             identifier.AstConfig.NodeType=typeof(IdentifierNode);
             attribute_name.Rule=MakePlusRule(attribute_name, period, identifier);
@@ -269,7 +268,6 @@ namespace GeoSik.Ogc.WebCatalog.Cql
             RegisterOperators(3, NOT);
             RegisterOperators(2, OR);
             RegisterOperators(1, AND);
-
             RegisterOperators(0, BEYOND, WITHIN);
 
             _OperatorHandler=new OperatorHandler(true);
@@ -298,6 +296,9 @@ namespace GeoSik.Ogc.WebCatalog.Cql
             LanguageFlags=LanguageFlags.CreateAst;
         }
 
+        /// <summary>Builds the AST for the specified language data and parse tree.</summary>
+        /// <param name="language">The language data.</param>
+        /// <param name="parseTree">The parse tree to build the AST against.</param>
         public override void BuildAst(LanguageData language, ParseTree parseTree)
         {
             if (!LanguageFlags.IsSet(LanguageFlags.CreateAst))
