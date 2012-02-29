@@ -211,6 +211,14 @@
     <Compile Include="Ogc\Ows\V100\IOgcService.cs" />
     <Compile Include="Ogc\Ows\V100\Types\BoundingBox.cs" />
     <Compile Include="Ogc\Ows\V100\Types\_Ows.cs" />
+    <Compile Include="Ogc\SimpleFeature\WktAst\GeometryCollectionTaggedTextNode.cs" />
+    <Compile Include="Ogc\SimpleFeature\WktAst\GeometryNode.cs" />
+    <Compile Include="Ogc\SimpleFeature\WktAst\MultiPolygonNode.cs" />
+    <Compile Include="Ogc\SimpleFeature\WktAst\MultiLineStringNode.cs" />
+    <Compile Include="Ogc\SimpleFeature\WktAst\MultiPointNode.cs" />
+    <Compile Include="Ogc\SimpleFeature\WktAst\PointNode.cs" />
+    <Compile Include="Ogc\SimpleFeature\WktAst\PointTaggedTextNode.cs" />
+    <Compile Include="Ogc\SimpleFeature\WktAst\SeriesNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\AttributeNameNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\BooleanExpressionNode.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\BooleanFactorNode.cs" />
