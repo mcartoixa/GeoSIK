@@ -51,9 +51,17 @@ namespace GeoSik.Ogc.SimpleFeature.WktAst
         {
             base.Init(context, treeNode);
 
-            var series=(SeriesNode)treeNode.ChildNodes[1].AstNode;
-            foreach (ParseTreeNode n in series)
-                AddChild("polygon", n);
+            if (treeNode.ChildNodes.Count>1)
+            {
+                var series=(SeriesNode)treeNode.ChildNodes[1].AstNode;
+                if (series!=null)
+                    foreach (ParseTreeNode n in series)
+                    {
+                        var s=AddChild("polygon", n) as SeriesNode;
+                        if (s!=null)
+                            _PolygonsSeries.Add(s);
+                    }
+            }
         }
 
         /// <summary>Applies a geometry type call sequence to the specified <paramref name="sink" />.</summary>

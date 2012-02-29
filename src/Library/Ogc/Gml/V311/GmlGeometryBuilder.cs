@@ -58,6 +58,12 @@ namespace GeoSik.Ogc.Gml.V311
         /// <param name="type">The type of the geometry to build.</param>
         public override void BeginGeometry(GeometryType type)
         {
+            if (_Geometry!=null)
+            {
+                _Geometry.BeginGeometry(type);
+                return;
+            }
+
             switch (type)
             {
             case GeometryType.LineString:
@@ -89,7 +95,17 @@ namespace GeoSik.Ogc.Gml.V311
         /// <summary>Finishes the call sequence for a geometry figure.</summary>
         public override void EndFigure()
         {
+            base.EndFigure();
+
             _Geometry.EndFigure();
+        }
+
+        /// <summary>Finishes the call sequence for a geometry representation.</summary>
+        public override void EndGeometry()
+        {
+            base.EndGeometry();
+
+            _Geometry.EndGeometry();
         }
 
         /// <summary>Defines the starting point of a geometry figure.</summary>

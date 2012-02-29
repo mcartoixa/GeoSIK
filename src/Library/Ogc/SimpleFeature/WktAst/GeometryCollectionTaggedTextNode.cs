@@ -51,9 +51,13 @@ namespace GeoSik.Ogc.SimpleFeature.WktAst
         {
             base.Init(context, treeNode);
 
-            var series=(SeriesNode)treeNode.ChildNodes[1].AstNode;
-            foreach (ParseTreeNode n in series)
-                _Geometries.Add((IGeometryTap)AddChild("geometry", n));
+            if (treeNode.ChildNodes.Count>1)
+            {
+                var series=(SeriesNode)treeNode.ChildNodes[1].AstNode;
+                if (series!=null)
+                    foreach (ParseTreeNode n in series)
+                        _Geometries.Add((IGeometryTap)AddChild("geometry", n));
+            }
 
             AsString="GEOMETRYCOLLECTION";
         }

@@ -20,8 +20,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 
 namespace GeoSik.Ogc.Gml.V311
 {
@@ -34,10 +36,34 @@ namespace GeoSik.Ogc.Gml.V311
         {
             sink.BeginGeometry(GeometryType.MultiLineString);
 
-            foreach (lineStringMember l in lineStringMember)
-                l.LineString.Populate(sink);
+            //if ((lineStringMember!=null)
+            if (Untyped.Descendants("{http://www.opengis.net/gml}lineStringMember").Any<XElement>())
+                foreach (lineStringMember l in lineStringMember)
+                    l.LineString.Populate(sink);
 
             sink.EndGeometry();
+        }
+
+        internal override void BeginGeometry(GeometryType type)
+        {
+            Debug.Assert(type==GeometryType.LineString);
+        }
+
+        internal override void BeginFigure(double x, double y, double? z)
+        {
+            var ls=new LineString();
+            ls.BeginFigure(x, y, z);
+            lineStringMember.Add(new lineStringMember() { LineString=ls });
+        }
+
+        internal override void AddLine(double x, double y, double? z)
+        {
+            lineStringMember[lineStringMember.Count-1].LineString.AddLine(x, y, z);
+        }
+
+        internal override void EndFigure()
+        {
+            lineStringMember[lineStringMember.Count-1].LineString.EndFigure();
         }
     }
 #pragma warning restore 3009

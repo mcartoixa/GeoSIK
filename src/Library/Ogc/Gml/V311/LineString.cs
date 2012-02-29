@@ -20,8 +20,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Xml.Linq;
+using Xml.Schema.Linq;
 
 namespace GeoSik.Ogc.Gml.V311
 {
@@ -33,16 +36,47 @@ namespace GeoSik.Ogc.Gml.V311
         internal protected override void InternalPopulate(IGeometrySink sink)
         {
             sink.BeginGeometry(GeometryType.LineString);
-            
-            if ((posList!=null) && (posList.TypedValue!=null) && (posList.TypedValue.Count>=2))
-            {
-                sink.BeginFigure(posList.TypedValue[0], posList.TypedValue[1], null);
-                for (int i=2; i<posList.TypedValue.Count; i+=2)
-                    sink.AddLine(posList.TypedValue[i], posList.TypedValue[i+1], null);
-                sink.EndFigure();
-            }
+
+            //if (posList!=null)
+            if (Untyped.Descendants("{http://www.opengis.net/gml}posList").Any<XElement>())
+                if ((posList.TypedValue!=null) && (posList.TypedValue.Count>=2))
+                {
+                    sink.BeginFigure(posList.TypedValue[0], posList.TypedValue[1], null);
+                    for (int i=2; i<posList.TypedValue.Count; i+=2)
+                        sink.AddLine(posList.TypedValue[i], posList.TypedValue[i+1], null);
+                    sink.EndFigure();
+                }
 
             sink.EndGeometry();
+        }
+
+        internal override void BeginFigure(double x, double y, double? z)
+        {
+            List<double> coord=new List<double>(new double[] { x, y });
+            if (z.HasValue)
+                coord.Add(z.Value);
+
+            posList=new posList();
+            posList.Untyped.Value=string.Join(
+                " ",
+                coord.Select<double, string>(d => d.ToString(CultureInfo.InvariantCulture))
+            );
+        }
+
+        internal override void AddLine(double x, double y, double? z)
+        {
+            List<double> coord=new List<double>(new double[] { x, y });
+            if (z.HasValue)
+                coord.Add(z.Value);
+
+            posList.Untyped.Value=string.Concat(
+                posList.Untyped.Value,
+                " ",
+                string.Join(
+                    " ",
+                    coord.Select<double, string>(d => d.ToString(CultureInfo.InvariantCulture))
+                )
+            );
         }
     }
 #pragma warning restore 3009

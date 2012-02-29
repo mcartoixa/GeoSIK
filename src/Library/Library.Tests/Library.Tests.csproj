@@ -94,6 +94,7 @@
     <Compile Include="Ogc\Filter\XPathTypeNavigator.cs" />
     <Compile Include="Ogc\Filter\XPathTypeNode.cs" />
     <Compile Include="Ogc\Gml\V311\Point.cs" />
+    <Compile Include="Ogc\Gml\V311\GmlGeometryBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -62,6 +62,11 @@ namespace GeoSik.Ogc.Gml.V311
             Populate(envelope);
         }
 
+        internal virtual void BeginGeometry(GeometryType type)
+        {
+            throw new InvalidOperationException();
+        }
+
         internal virtual void BeginFigure(double x, double y, double? z)
         {
             //TODO: turn to abstract method
@@ -75,6 +80,10 @@ namespace GeoSik.Ogc.Gml.V311
         }
 
         internal virtual void EndFigure()
+        {
+        }
+
+        internal virtual void EndGeometry()
         {
         }
 
