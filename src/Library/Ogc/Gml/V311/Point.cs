@@ -24,6 +24,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 
 namespace GeoSik.Ogc.Gml.V311
 {
@@ -54,11 +55,13 @@ namespace GeoSik.Ogc.Gml.V311
         {
             sink.BeginGeometry(GeometryType.Point);
 
-            if ((pos!=null) && (pos.TypedValue!=null) && (pos.TypedValue.Count>1))
-            {
-                sink.BeginFigure(pos.TypedValue[0], pos.TypedValue[1], null);
-                sink.EndFigure();
-            }
+            //if (pos!=null)
+            if (Untyped.Descendants("{http://www.opengis.net/gml}pos").Any<XElement>())
+                if ((pos.TypedValue!=null)&&(pos.TypedValue.Count>1))
+                {
+                    sink.BeginFigure(pos.TypedValue[0], pos.TypedValue[1], null);
+                    sink.EndFigure();
+                }
 
             sink.EndGeometry();
         }

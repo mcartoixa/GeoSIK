@@ -51,9 +51,13 @@ namespace GeoSik.Ogc.SimpleFeature.WktAst
         {
             base.Init(context, treeNode);
 
-            var series=(SeriesNode)treeNode.ChildNodes[1].AstNode;
-            foreach (ParseTreeNode n in series)
-                _Points.Add((PointNode)AddChild("point", n));
+            if (treeNode.ChildNodes.Count>1)
+            {
+                var series=(SeriesNode)treeNode.ChildNodes[1].AstNode;
+                if (series!=null)
+                    foreach (ParseTreeNode n in series)
+                        _Points.Add((PointNode)AddChild("point", n));
+            }
         }
 
         /// <summary>Applies a geometry type call sequence to the specified <paramref name="sink" />.</summary>
@@ -73,9 +77,19 @@ namespace GeoSik.Ogc.SimpleFeature.WktAst
                     sink.BeginGeometry(GeometryType.Point);
 
                 sink.BeginFigure(points[0].X, points[0].Y, null);
+                if (type==GeometryType.MultiPoint)
+                    sink.EndFigure();
+
                 for (int i=1; i<points.Count; ++i)
-                    sink.AddLine(points[i].X, points[i].Y, null);
-                sink.EndFigure();
+                    if (type==GeometryType.MultiPoint)
+                    {
+                        sink.BeginFigure(points[i].X, points[i].Y, null);
+                        sink.EndFigure();
+                    } else
+                        sink.AddLine(points[i].X, points[i].Y, null);
+
+                if (type!=GeometryType.MultiPoint)
+                    sink.EndFigure();
 
                 if (type!=GeometryType.LineString)
                     sink.EndGeometry();

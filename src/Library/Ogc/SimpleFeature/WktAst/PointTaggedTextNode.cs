@@ -43,7 +43,9 @@ namespace GeoSik.Ogc.SimpleFeature.WktAst
         {
             base.Init(context, treeNode);
 
-            _Point=(PointNode)AddChild("point", treeNode.ChildNodes[1]);
+            if (treeNode.ChildNodes.Count>1)
+                _Point=AddChild("point", treeNode.ChildNodes[1]) as PointNode;
+
             AsString="POINT";
         }
 
@@ -52,8 +54,11 @@ namespace GeoSik.Ogc.SimpleFeature.WktAst
         public void Populate(IGeometrySink sink)
         {
             sink.BeginGeometry(GeometryType.Point);
-            sink.BeginFigure(_Point.X, _Point.Y, null);
-            sink.EndFigure();
+            if (_Point!=null)
+            {
+                sink.BeginFigure(_Point.X, _Point.Y, null);
+                sink.EndFigure();
+            }
             sink.EndGeometry();
         }
 

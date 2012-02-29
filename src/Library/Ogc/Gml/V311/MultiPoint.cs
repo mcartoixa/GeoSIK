@@ -20,8 +20,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 
 namespace GeoSik.Ogc.Gml.V311
 {
@@ -34,10 +36,29 @@ namespace GeoSik.Ogc.Gml.V311
         {
             sink.BeginGeometry(GeometryType.MultiPoint);
 
-            foreach (pointMember p in pointMember)
-                p.Point.Populate(sink);
+            //if ((pointMember!=null)
+            if (Untyped.Descendants("{http://www.opengis.net/gml}pointMember").Any<XElement>())
+                foreach (pointMember p in pointMember)
+                    p.Point.Populate(sink);
 
             sink.EndGeometry();
+        }
+
+        internal override void BeginGeometry(GeometryType type)
+        {
+            Debug.Assert(type==GeometryType.Point);
+        }
+
+        internal override void BeginFigure(double x, double y, double? z)
+        {
+            var p=new Point();
+            p.BeginFigure(x, y, z);
+            pointMember.Add(new pointMember() { Point=p });
+        }
+
+        internal override void AddLine(double x, double y, double? z)
+        {
+            throw new InvalidOperationException();
         }
     }
 #pragma warning restore 3009

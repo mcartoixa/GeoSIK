@@ -22,6 +22,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 
 namespace GeoSik.Ogc.Gml.V311
 {
@@ -32,7 +33,11 @@ namespace GeoSik.Ogc.Gml.V311
 
         protected override void PopulateEnvelope(Envelope envelope)
         {
-            if ((exterior!=null)&&(exterior._Ring!=null))
+            //if ((exterior!=null) && (exterior._Ring!=null))
+            if (
+                Untyped.Descendants("{http://www.opengis.net/gml}exterior").Any<XElement>() &&
+                exterior.Untyped.Descendants("{http://www.opengis.net/gml}_Ring").Any<XElement>()
+            )
                 exterior._Ring.Populate(envelope);
         }
 
