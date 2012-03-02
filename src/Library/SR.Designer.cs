@@ -113,5 +113,14 @@ namespace GeoSik {
                 return ResourceManager.GetString("UnsupportedFormatString", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geometry type {0:G} is not supported by this implementation.
+        /// </summary>
+        internal static string UnsupportedGeometryTypeException {
+            get {
+                return ResourceManager.GetString("UnsupportedGeometryTypeException", resourceCulture);
+            }
+        }
     }
 }

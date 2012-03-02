@@ -135,4 +135,7 @@
   <data name="UnsupportedFormatString" xml:space="preserve">
     <value>The "{0}" format string is not supported</value>
   </data>
+  <data name="UnsupportedGeometryTypeException" xml:space="preserve">
+    <value>Geometry type {0:G} is not supported by this implementation</value>
+  </data>
 </root>

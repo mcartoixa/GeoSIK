@@ -21,6 +21,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using ProjNet.CoordinateSystems;
@@ -66,6 +67,9 @@ namespace GeoSik.Ogc.Gml.V311
 
             switch (type)
             {
+            case GeometryType.GeometryCollection:
+                _Geometry=new MultiGeometry();
+                break;
             case GeometryType.LineString:
                 _Geometry=new LineString();
                 break;
@@ -87,7 +91,13 @@ namespace GeoSik.Ogc.Gml.V311
             }
 
             if (_Geometry==null)
-                throw new NotSupportedException();
+                throw new NotSupportedException(
+                    string.Format(
+                        CultureInfo.CurrentCulture,
+                        SR.UnsupportedGeometryTypeException,
+                        type
+                    )
+                );
 
             _Geometry.CoordinateSystem=TargetSystem;
         }
