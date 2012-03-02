@@ -45,8 +45,8 @@ namespace GeoSik.Ogc.Gml.V311.Tests
         [InlineData("MultiLineString Empty", "MULTILINESTRING EMPTY")]
         [InlineData("MultiPolygon ( ((10 10, 20 15, 20 20, 10 20, 10 10)), ((60 60, 70 70, 80 60, 60 60 )) )", "MULTIPOLYGON (((10 10, 20 15, 20 20, 10 20, 10 10)), ((60 60, 70 70, 80 60, 60 60)))")]
         [InlineData("MultiPolygon Empty", "MULTIPOLYGON EMPTY")]
-        //[InlineData("GeometryCollection ( POINT (10 10), POINT (30 30), LINESTRING (15 15, 20 20) )", "GEOMETRYCOLLECTION (POINT (10 10), POINT (30 30), LINESTRING (15 15, 20 20))")]
-        //[InlineData("GeometryCollection Empty", "GEOMETRYCOLLECTION EMPTY")]
+        [InlineData("GeometryCollection ( POINT (10 10), POINT (30 30), LINESTRING (15 15, 20 20) )", "GEOMETRYCOLLECTION (POINT (10 10), POINT (30 30), LINESTRING (15 15, 20 20))")]
+        [InlineData("GeometryCollection Empty", "GEOMETRYCOLLECTION EMPTY")]
         public void ShouldParseWkt(string input, string expected)
         {
             var builder=new GmlGeometryBuilder();

@@ -20,8 +20,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 
 namespace GeoSik.Ogc.Gml.V311
 {
@@ -34,11 +36,56 @@ namespace GeoSik.Ogc.Gml.V311
         {
             sink.BeginGeometry(GeometryType.GeometryCollection);
 
-            foreach (geometryMember g in geometryMember)
-                g._Geometry.Populate(sink);
+            //if ((geometryMember!=null)
+            if (Untyped.Descendants("{http://www.opengis.net/gml}geometryMember").Any<XElement>())
+                foreach (geometryMember g in geometryMember)
+                    g._Geometry.Populate(sink);
 
             sink.EndGeometry();
         }
+
+        internal override void BeginGeometry(GeometryType type)
+        {
+            if (_Builder==null)
+            {
+                Debug.Assert(_CurrentType.Count==0);
+                _Builder=new GmlGeometryBuilder();
+                _Builder.SetCoordinateSystem(CoordinateSystem);
+            }
+            _Builder.BeginGeometry(type);
+            _CurrentType.Push(type);
+        }
+
+        internal override void BeginFigure(double x, double y, double? z)
+        {
+            _Builder.BeginFigure(x, y, z);
+        }
+
+        internal override void AddLine(double x, double y, double? z)
+        {
+            _Builder.AddLine(x, y, z);
+        }
+
+        internal override void EndFigure()
+        {
+            _Builder.EndFigure();
+        }
+
+        internal override void EndGeometry()
+        {
+            if (_CurrentType.Count>0)
+            {
+                _CurrentType.Pop();
+                if (_CurrentType.Count==0)
+                {
+                    geometryMember.Add(new geometryMember() { _Geometry=_Builder.ConstructedGeometry });
+                    _Builder=null;
+                }
+            }
+        }
+
+        private GmlGeometryBuilder _Builder;
+        private Stack<GeometryType> _CurrentType=new Stack<GeometryType>();
     }
 #pragma warning restore 3009
 }
