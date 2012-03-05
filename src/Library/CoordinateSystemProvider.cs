@@ -159,7 +159,7 @@ namespace GeoSik
             private set;
         }
 
-        /// <summary>Gets or sets the <see href="cfd9dabf-22f3-4742-8b54-d84404610db1#wkt" /> of the coordinate system being created.</summary>
+        /// <summary>Gets or sets the <see href="html/fdc71072-323b-442a-989d-651ca9a41f4d.htm#wkt">WKT</see> of the coordinate system being created.</summary>
         public string WellKnownText
         {
             get;
