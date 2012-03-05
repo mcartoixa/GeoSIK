@@ -97,7 +97,7 @@ namespace GeoSik.Ogc.Gml.V311
             get
             {
                 if (srsName==null)
-                    return GeographicCoordinateSystem.WGS84;
+                    return CoordinateSystemProvider.Instance.Wgs84;
 
                 return CoordinateSystemProvider.Instance.GetById(Srid.CreateFromCrs(srsName));
             }

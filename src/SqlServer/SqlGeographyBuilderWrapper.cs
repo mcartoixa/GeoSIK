@@ -36,7 +36,7 @@ namespace GeoSik.SqlServer
 
         public SqlGeographyBuilderWrapper()
         {
-            _Builder=new SqlTypes.SqlGeometryBuilder();
+            _Builder=new SqlTypes.SqlGeographyBuilder();
         }
 
         public void SetCoordinateSystem(ICoordinateSystem system)
@@ -47,17 +47,19 @@ namespace GeoSik.SqlServer
 
         public void BeginGeometry(GeometryType type)
         {
-            _Builder.BeginGeometry(GeometryTypeUtils.ConvertToGeometry(type));
+            _Builder.BeginGeography(GeometryTypeUtils.ConvertToGeography(type));
         }
 
         public void BeginFigure(double x, double y, double? z)
         {
-            _Builder.BeginFigure(x, y, z, null);
+            // latitude, longitude is y, x...
+            _Builder.BeginFigure(y, x, z, null);
         }
 
         public void AddLine(double x, double y, double? z)
         {
-            _Builder.AddLine(x, y, z, null);
+            // latitude, longitude is y, x...
+            _Builder.AddLine(y, x, z, null);
         }
 
         public void EndFigure()
@@ -67,7 +69,7 @@ namespace GeoSik.SqlServer
 
         public void EndGeometry()
         {
-            _Builder.EndGeometry();
+            _Builder.EndGeography();
         }
 
         public void Parse(string text, ICoordinateSystem system)
@@ -80,11 +82,7 @@ namespace GeoSik.SqlServer
             get
             {
                 if (_Geography==null)
-                {
-                    // cf. http://blogs.msdn.com/b/edkatibah/archive/2008/08/19/working-with-invalid-data-and-the-sql-server-2008-geography-data-type-part-1b.aspx
-                    SqlTypes.SqlGeometry geom=_Builder.ConstructedGeometry.MakeValid();
-                    Parse(((SqlString)geom.STUnion(geom.STStartPoint()).STAsText()).Value, _TargetSystem);
-                }
+                    _Geography=new SqlGeography(_Builder.ConstructedGeography, _TargetSystem);
 
                 Debug.Assert(_Geography!=null);
                 return _Geography;
@@ -99,7 +97,7 @@ namespace GeoSik.SqlServer
             }
         }
 
-        private SqlTypes.SqlGeometryBuilder _Builder;
+        private SqlTypes.SqlGeographyBuilder _Builder;
         private SqlGeography _Geography;
         private ICoordinateSystem _TargetSystem;
 

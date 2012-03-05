@@ -111,7 +111,7 @@ namespace GeoSik.Fdo
 
             var g=Factory.CreateGeometry(text);
 
-            if ((TargetSystem!=null) && ((system!=TargetSystem) || !system.EqualParams(TargetSystem)))
+            if ((TargetSystem!=null) && !system.ReferenceEquals(TargetSystem))
             {
                 if (_Geometry!=null)
                 {

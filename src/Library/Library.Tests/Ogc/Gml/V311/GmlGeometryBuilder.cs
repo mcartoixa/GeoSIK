@@ -50,7 +50,7 @@ namespace GeoSik.Ogc.Gml.V311.Tests
         public void ShouldParseWkt(string input, string expected)
         {
             var builder=new GmlGeometryBuilder();
-            builder.Parse(input, GeographicCoordinateSystem.WGS84);
+            builder.Parse(input, CoordinateSystemProvider.Instance.Wgs84);
 
             var g=builder.ConstructedGeometry;
 

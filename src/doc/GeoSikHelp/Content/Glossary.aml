@@ -5,7 +5,6 @@
     xmlns:xlink="http://www.w3.org/1999/xlink">
 
     <glossary>
-      <glossaryDiv address="geosik">
         <title>GeoSIK</title>
 
         <glossaryEntry>
@@ -26,7 +25,16 @@
           </definition>
         </glossaryEntry>
 
-      </glossaryDiv>
+        <glossaryEntry>
+          <terms>
+            <term termId="wkt">WKT</term>
+          </terms>
+          <definition>
+            <para>Stands for <legacyBold>W</legacyBold>ell-<legacyBold>K</legacyBold>nown <legacyBold>T</legacyBold>ext.</para>
+            <para>A WKT is a textual representation of a spatial geometry or of a coordinate system. It is defined in the <quoteInline>ISO/IEC 13249-3:2011</quoteInline> standard.</para>
+          </definition>
+        </glossaryEntry>
+
     </glossary>
   </developerGlossaryDocument>
 </topic>

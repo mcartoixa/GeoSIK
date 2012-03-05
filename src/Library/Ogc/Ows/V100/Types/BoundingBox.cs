@@ -43,7 +43,7 @@ namespace GeoSik.Ogc.Ows.V100.Types
                 Srid id=Srid.CreateFromCrs(crs);
                 s=CoordinateSystemProvider.Instance.GetById(id);
             } else
-                s=GeographicCoordinateSystem.WGS84;
+                s=CoordinateSystemProvider.Instance.Wgs84;
 
             sink.SetCoordinateSystem(s);
 
