@@ -73,22 +73,20 @@
 <ComponentConfig id="API Token Resolution" enabled="True"><component id="API Token Resolution" type="Microsoft.Ddue.Tools.SharedContentComponent" assembly="{@SandcastlePath}ProductionTools\BuildComponents.dll">
 
         {@TokenFiles}
-        <replace elements="/*//token" item="string(.)" /></component></ComponentConfig></ComponentConfigurations>
+        <replace elements="/*//token" item="string(.)" /></component></ComponentConfig>
+<ComponentConfig id="IntelliSense Component" enabled="True"><component id="IntelliSense Component" type="SandcastleBuilder.Components.IntelliSenseComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll"><!-- Output options (optional)
+                 Attributes:
+                    Include Namespaces (false by default)
+                    Namespaces filename ("Namespaces" if not specified or empty)
+                    Directory (current folder if not specified or empty) --><output includeNamespaces="false" namespacesFile="Namespaces" folder="{@OutputFolder}" /></component></ComponentConfig></ComponentConfigurations>
     <PlugInConfigurations>
       <PlugInConfig id="Hierarchical Table of Contents" enabled="True">
         <configuration>
           <toc minParts="2" insertBelow="True" />
         </configuration>
       </PlugInConfig>
-      <PlugInConfig id="Wildcard Assembly References" enabled="True">
-        <configuration>
-          <references>
-            <reference path="..\..\lib\" wildcard="*.dll" recurse="true" />
-            <reference path="..\..\packages\" wildcard="*.dll" recurse="true" />
-          </references>
-        </configuration>
-      </PlugInConfig>
-    </PlugInConfigurations>
+<PlugInConfig id="Wildcard Assembly References" enabled="True"><configuration><references><reference path="..\..\lib\" wildcard="*.dll" recurse="true" /><reference path="..\..\packages\" wildcard="*.dll" recurse="true" /></references></configuration></PlugInConfig>
+<PlugInConfig id="Table of Contents Exclusion" enabled="True"><configuration /></PlugInConfig></PlugInConfigurations>
     <HelpFileVersion>0.0.0.0</HelpFileVersion>
     <CopyrightHref>http://www.isogeo.fr/</CopyrightHref>
     <CopyrightText>Copyright \xA9 2011-{%2540BuildDate:yyyy} Isogeo</CopyrightText>
