@@ -139,9 +139,9 @@ namespace GeoSik.WebSample.Models.LinqToSql
             Binary ret=null;
 
             var sgw=geometry as SqlServer.SqlGeography;
-            if ((sgw==null) || !sgw.CoordinateSystem.EqualParams(GeographicCoordinateSystem.WGS84))
+            if ((sgw==null) || !sgw.CoordinateSystem.ReferenceEquals(CoordinateSystemProvider.Instance.Wgs84))
             {
-                var b=new SqlServer.SqlGeometryBuilder(GeographicCoordinateSystem.WGS84);
+                var b=new SqlServer.SqlGeometryBuilder(CoordinateSystemProvider.Instance.Wgs84);
                 geometry.Populate(b);
                 sgw=(SqlServer.SqlGeography)b.ConstructedGeometry;
             }

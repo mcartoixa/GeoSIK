@@ -149,7 +149,7 @@ namespace GeoSik.Ogc.Gml.V311
             SimpleFeature.GeometryWktGrammar.Populate(builder, text, system);
             _Geometry g=(_Geometry)builder.ConstructedGeometry;
 
-            if ((TargetSystem!=null) && ((system!=TargetSystem) || !system.EqualParams(TargetSystem)))
+            if ((TargetSystem!=null) && !system.ReferenceEquals(TargetSystem))
                 g.Populate(this);
             else
                 _Geometry=g;

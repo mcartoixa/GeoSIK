@@ -30,6 +30,14 @@ using ProjNet.CoordinateSystems;
 namespace GeoSik
 {
 
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Type that provides coordinate systems.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
     public sealed class CoordinateSystemProvider
     {
 
@@ -39,11 +47,14 @@ namespace GeoSik
             _WktDictionary=new Dictionary<Srid, string>();
         }
 
+        /// <summary>Gets the coordinate system with the specified <paramref name="id" />.</summary>
+        /// <param name="id">The identifier of the coordinate system to get.</param>
+        /// <returns>The coordinate system with the specified <paramref name="id" />.</returns>
         public ICoordinateSystem GetById(Srid id)
         {
             // WGS84 by default
             if (id.Value==0)
-                return GeographicCoordinateSystem.WGS84;
+                return Wgs84;
 
             // Has the id already been used ?
             if (_WktDictionary.ContainsKey(id))
@@ -88,6 +99,16 @@ namespace GeoSik
                 eh(this, e);
         }
 
+        /// <summary>Gets the WGS84 coordinate system.</summary>
+        public ICoordinateSystem Wgs84
+        {
+            get
+            {
+                return GetById(new Srid(4326));
+            }
+        }
+
+        /// <summary>Gets the single instance of the the <see cref="CoordinateSystemProvider" /> class.</summary>
         public static CoordinateSystemProvider Instance
         {
             get
@@ -101,6 +122,7 @@ namespace GeoSik
             }
         }
 
+        /// <summary>Event triggered when a coordinate system has to be created.</summary>
         public event EventHandler<CoordinateSystemCreateEventArgs> CreatingCoordinateSystem;
 
         private Dictionary<Srid, string> _WktDictionary;
@@ -111,21 +133,33 @@ namespace GeoSik
         private static object _SyncRoot=new object();
     }
 
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Arguments for the <see cref="CoordinateSystemProvider.CreatingCoordinateSystem" /> event.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
     public sealed class CoordinateSystemCreateEventArgs:
         EventArgs
     {
 
+        /// <summary>Creates a new instance of the <see cref="CoordinateSystemCreateEventArgs" /> class.</summary>
+        /// <param name="id">The identifier of the coordinate system being created.</param>
         public CoordinateSystemCreateEventArgs(Srid id)
         {
             Id=id;
         }
 
+        /// <summary>Gets the identifier of the coordinate system being created.</summary>
         public Srid Id
         {
             get;
             private set;
         }
 
+        /// <summary>Gets or sets the <link xlink:href="cfd9dabf-22f3-4742-8b54-d84404610db1#wkt" /> of the coordinate system being created.</summary>
         public string WellKnownText
         {
             get;

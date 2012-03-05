@@ -92,7 +92,7 @@ namespace GeoSik.SqlServer
             builder.Parse(text, system);
             IGeometry g=(IGeometry)builder.ConstructedGeometry;
 
-            if ((TargetSystem!=null) && ((system!=TargetSystem) || !system.EqualParams(TargetSystem)))
+            if ((TargetSystem!=null) && !system.ReferenceEquals(TargetSystem))
                 g.Populate(this);
             else
                 _Geometry=g;

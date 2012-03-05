@@ -45,7 +45,7 @@ namespace GeoSik.Ogc.Gml.V311.Tests
 
             var point=new Point() {
                 pos=new pos(),
-                CoordinateSystem=GeographicCoordinateSystem.WGS84
+                CoordinateSystem=CoordinateSystemProvider.Instance.Wgs84
             };
             point.pos.Untyped.Value=string.Join(
                 " ",

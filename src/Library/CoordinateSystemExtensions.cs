@@ -20,29 +20,37 @@
 
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
-using Irony.Ast;
-using Irony.Interpreter;
-using Irony.Interpreter.Ast;
-using Irony.Parsing;
 using ProjNet.CoordinateSystems;
 
-namespace GeoSik.Ogc.WebCatalog.Cql.Ast
+namespace GeoSik
 {
 
-#pragma warning disable 3001, 3009
-    public class GeometryLiteralNode:
-        LiteralNode<ISimpleGeometry>
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Utility extensions for <see cref="ICoordinateSystem" /> types.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
+    public static class CoordinateSystemExtensions
     {
 
-        protected override ISimpleGeometry InitValue(AstContext context, ParseTreeNode treeNode)
+        /// <summary>Indicates whether the specified spatial references are the same.</summary>
+        /// <param name="left">The first spatial reference to test.</param>
+        /// <param name="right">The second spatial reference to test.</param>
+        /// <returns><c>true</c> if the two spatial refernces are the same; or else <c>false</c>.</returns>
+        public static bool ReferenceEquals(this IInfo left, IInfo right)
         {
-            var builder=new Gml.V311.GmlGeometryBuilder();
-            builder.Parse(treeNode.Token.Text, CoordinateSystemProvider.Instance.Wgs84);
-            return builder.ConstructedGeometry;
+            if (left==null)
+                return right==null;
+
+            if (object.ReferenceEquals(left, right))
+                return true;
+
+            return left.EqualParams(right);
         }
     }
-#pragma warning restore 3001, 3009
 }
