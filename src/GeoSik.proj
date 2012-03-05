@@ -34,7 +34,6 @@
 
 
   <!-- Version update for NuSpec files -->
-
   <Target
     Name="UpdateNuSpecFilesVersion"
     AfterTargets="UpdateVersion"
@@ -51,6 +50,26 @@
       XmlFileName="%(NuSpecItems.Identity)"
       XPath="/package/metadata/dependencies/dependency[@id='GeoSik']/@version"
       Value="$(VersionMajor).$(VersionMinor).$(VersionBuild).$(VersionRevision)"
+    />
+  </Target>
+
+
+
+  <!-- Refined packaging -->
+  <Target Name="BeforePackage" DependsOnTargets="ReplaceIntellisenseFiles" />
+  <Target Name="ReplaceIntellisenseFiles">
+    <PropertyGroup>
+      <IntellisenseInputDir>$(TmpDocOutputPath)xml\</IntellisenseInputDir>
+      <IntellisenseOutputDir>$(TmpOutBinOutputPath)GeoSik_Any CPU_Release\</IntellisenseOutputDir>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <IntellisenseItems Include="$(IntellisenseInputDir)*.xml" />
+    </ItemGroup>
+    <Copy
+      SourceFiles="@(IntellisenseItems)"
+      DestinationFolder="$(IntellisenseOutputDir)"
+      OverwriteReadOnlyFiles="true"
     />
   </Target>
 
