@@ -37,7 +37,7 @@ namespace GeoSik.Ogc.WebCatalog.Cql
 
     ////////////////////////////////////////////////////////////////////////////
     ///
-    /// <summary>OGC Common Catalogue Query Language grammar as defined in <a href="http://portal.opengeospatial.org/files/?artifact_id=20555">OGC 07-006r1 §6.2.2</a>.</summary>
+    /// <summary>OGC Common Catalogue Query Language grammar as defined in <see href="http://portal.opengeospatial.org/files/?artifact_id=20555">OGC 07-006r1 §6.2.2</see>.</summary>
     ///
     ////////////////////////////////////////////////////////////////////////////
 
