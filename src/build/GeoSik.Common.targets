@@ -340,6 +340,74 @@ It must be used with MSBuild 4.0.
 
 
 
+  <!-- Generates documentation for the project -->
+  <PropertyGroup>
+    <DocumentDependsOn>Prepare;BeforeDocument;InternalDocument;InternalDocumentPublish;AfterDocument</DocumentDependsOn>
+  </PropertyGroup>
+  <Target
+    Name="Document"
+    DependsOnTargets="$(DocumentDependsOn)"
+  />
+
+  <Target
+    Name="InternalDocument"
+    Condition="'@(SandcastleProjects)'!=''"
+    Outputs="$(TmpDocOutputPath)%(SandcastleProjects.RecursiveDir)\%(SandcastleProjects.Filename).chm"
+  >
+    <PropertyGroup>
+      <_DocIntermediateOutputPath>$(IntermediateOutputPath)doc\</_DocIntermediateOutputPath>
+      <_DocIntermediateOutputPath Condition="'%(SandcastleProjects.RecursiveDir)'!=''">$(IntermediateOutputPath)doc\%(SandcastleProjects.RecursiveDir)</_DocIntermediateOutputPath>
+      <_DocOutputPath>$(TmpDocOutputPath)</_DocOutputPath>
+      <_DocOutputPath Condition="'%(SandcastleProjects.RecursiveDir)'!=''">$(TmpDocOutputPath)%(SandcastleProjects.RecursiveDir)</_DocOutputPath>
+
+      <VersionParameter Condition="'$(CCNetLabel)'!=''">;HelpFileVersion=$(CCNetLabel)</VersionParameter>
+
+      <PreliminaryParameterValue>True</PreliminaryParameterValue>
+      <PreliminaryParameterValue Condition="'$(BuildType)'=='Release'">False</PreliminaryParameterValue>
+    </PropertyGroup>
+
+    <!-- Did not work with MSBuild 4.0: http://shfb.codeplex.com/Thread/View.aspx?ThreadId=50652 -->
+    <!-- <MSBuild
+      Projects="%(SandcastleProjects.Identity)"
+      RebaseOutputs="True"
+      Properties="Configuration=Release;Platform=AnyCPU;OutputPath=$(_DocOutputPath).;WorkingPath=$(_DocIntermediateOutputPath).;Preliminary=$(PreliminaryParameterValue);HelpFileVersion=$(CCNetLabel)"
+      Targets="Build"
+      RunEachTargetSeparately="True"
+    /> -->
+    <Exec
+      Command="&quot;$([MSBuild]::GetRegistryValue('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSBuild\ToolsVersions\4.0', 'MSBuildToolsPath'))MSBuild.exe&quot; &quot;%(SandcastleProjects.Identity)&quot; /nologo /p:Configuration=Release /p:Platform=AnyCPU /p:OutputPath=&quot;$(_DocOutputPath).&quot; /p:WorkingPath=&quot;$(_DocIntermediateOutputPath).&quot; /p:Preliminary=$(PreliminaryParameterValue) /p:HelpFileVersion=$(CCNetLabel) /nr:False"
+      YieldDuringToolExecution="True"
+    />
+  </Target>
+
+  <Target Name="InternalDocumentPublish"
+    Outputs="$(DocOutputPath)%(SandcastleProjects.Filename).chm"
+  >
+    <PropertyGroup>
+      <SandcastleInputDir>%(SandcastleProjects.RecursiveDir)</SandcastleInputDir>
+    </PropertyGroup>
+    <ItemGroup>
+      <DocumentationBinFiles Include="$(TmpDocOutputPath)$(SandcastleInputDir)\*.bat" />
+      <DocumentationBinFiles Include="$(TmpDocOutputPath)$(SandcastleInputDir)\*.chm" />
+      <DocumentationBinFiles Include="$(TmpDocOutputPath)$(SandcastleInputDir)\*.exe" />
+      <DocumentationBinFiles Include="$(TmpDocOutputPath)$(SandcastleInputDir)\*.msha" />
+      <DocumentationBinFiles Include="$(TmpDocOutputPath)$(SandcastleInputDir)\*.mshc" />
+      <DocumentationWebFiles Include="$(TmpDocOutputPath)$(SandcastleInputDir)\**\*.*" Exclude="@(DocumentationBinFiles);$(TmpDocOutputPath)$(SandcastleInputDir)\*.log;$(TmpDocOutputPath)$(SandcastleInputDir)\xml\*.*" />
+    </ItemGroup>
+
+    <Copy
+      SourceFiles="@(DocumentationWebFiles)"
+      DestinationFiles="@(DocumentationWebFiles->'$(TmpOutDocOutputPath)$(SandcastleInputDir)\%(RecursiveDir)%(Filename)%(Extension)')"
+      OverwriteReadOnlyFiles="true"
+      SkipUnchangedFiles="true"
+    />
+  </Target>
+
+  <Target Name="BeforeDocument" />
+  <Target Name="AfterDocument" />
+
+
+
   <!-- Packages the projects -->
   <PropertyGroup>
     <PackageDependsOn>Prepare;BeforePackage;InternalPackagePrepare;InternalPackageNuGet;InternalPackageOthers;AfterPackage</PackageDependsOn>
@@ -528,73 +596,6 @@ It must be used with MSBuild 4.0.
   <Target Name="BeforePackage" />
   <Target Name="AfterPackage" />
 
-
-
-  <!-- Generates documentation for the project -->
-  <PropertyGroup>
-    <DocumentDependsOn>Prepare;BeforeDocument;InternalDocument;InternalDocumentPublish;AfterDocument</DocumentDependsOn>
-  </PropertyGroup>
-  <Target
-    Name="Document"
-    DependsOnTargets="$(DocumentDependsOn)"
-  />
-
-  <Target
-    Name="InternalDocument"
-    Condition="'@(SandcastleProjects)'!=''"
-    Outputs="$(TmpDocOutputPath)%(SandcastleProjects.RecursiveDir)\%(SandcastleProjects.Filename).chm"
-  >
-    <PropertyGroup>
-      <_DocIntermediateOutputPath>$(IntermediateOutputPath)doc\</_DocIntermediateOutputPath>
-      <_DocIntermediateOutputPath Condition="'%(SandcastleProjects.RecursiveDir)'!=''">$(IntermediateOutputPath)doc\%(SandcastleProjects.RecursiveDir)</_DocIntermediateOutputPath>
-      <_DocOutputPath>$(TmpDocOutputPath)</_DocOutputPath>
-      <_DocOutputPath Condition="'%(SandcastleProjects.RecursiveDir)'!=''">$(TmpDocOutputPath)%(SandcastleProjects.RecursiveDir)</_DocOutputPath>
-
-      <VersionParameter Condition="'$(CCNetLabel)'!=''">;HelpFileVersion=$(CCNetLabel)</VersionParameter>
-
-      <PreliminaryParameterValue>True</PreliminaryParameterValue>
-      <PreliminaryParameterValue Condition="'$(BuildType)'=='Release'">False</PreliminaryParameterValue>
-    </PropertyGroup>
-
-    <!-- Did not work with MSBuild 4.0: http://shfb.codeplex.com/Thread/View.aspx?ThreadId=50652 -->
-    <!-- <MSBuild
-      Projects="%(SandcastleProjects.Identity)"
-      RebaseOutputs="True"
-      Properties="Configuration=Release;Platform=AnyCPU;OutputPath=$(_DocOutputPath).;WorkingPath=$(_DocIntermediateOutputPath).;Preliminary=$(PreliminaryParameterValue);HelpFileVersion=$(CCNetLabel)"
-      Targets="Build"
-      RunEachTargetSeparately="True"
-    /> -->
-    <Exec
-      Command="&quot;$([MSBuild]::GetRegistryValue('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSBuild\ToolsVersions\4.0', 'MSBuildToolsPath'))MSBuild.exe&quot; &quot;%(SandcastleProjects.Identity)&quot; /nologo /p:Configuration=Release /p:Platform=AnyCPU /p:OutputPath=&quot;$(_DocOutputPath).&quot; /p:WorkingPath=&quot;$(_DocIntermediateOutputPath).&quot; /p:Preliminary=$(PreliminaryParameterValue) /p:HelpFileVersion=$(CCNetLabel) /nr:False"
-      YieldDuringToolExecution="True"
-    />
-  </Target>
-
-  <Target Name="InternalDocumentPublish"
-    Outputs="$(DocOutputPath)%(SandcastleProjects.Filename).chm"
-  >
-    <PropertyGroup>
-      <SandcastleInputDir>%(SandcastleProjects.RecursiveDir)</SandcastleInputDir>
-    </PropertyGroup>
-    <ItemGroup>
-      <DocumentationBinFiles Include="$(TmpDocOutputPath)$(SandcastleInputDir)\*.bat" />
-      <DocumentationBinFiles Include="$(TmpDocOutputPath)$(SandcastleInputDir)\*.chm" />
-      <DocumentationBinFiles Include="$(TmpDocOutputPath)$(SandcastleInputDir)\*.exe" />
-      <DocumentationBinFiles Include="$(TmpDocOutputPath)$(SandcastleInputDir)\*.msha" />
-      <DocumentationBinFiles Include="$(TmpDocOutputPath)$(SandcastleInputDir)\*.mshc" />
-      <DocumentationWebFiles Include="$(TmpDocOutputPath)$(SandcastleInputDir)\**\*.*" Exclude="@(DocumentationBinFiles);$(TmpDocOutputPath)$(SandcastleInputDir)\*.log" />
-    </ItemGroup>
-
-    <Copy
-      SourceFiles="@(DocumentationWebFiles)"
-      DestinationFiles="@(DocumentationWebFiles->'$(TmpOutDocOutputPath)$(SandcastleInputDir)\%(RecursiveDir)%(Filename)%(Extension)')"
-      OverwriteReadOnlyFiles="true"
-      SkipUnchangedFiles="true"
-    />
-  </Target>
-
-  <Target Name="BeforeDocument" />
-  <Target Name="AfterDocument" />
 
 
   <Target
