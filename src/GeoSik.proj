@@ -59,8 +59,8 @@
   <Target Name="BeforePackage" DependsOnTargets="ReplaceIntellisenseFiles" />
   <Target Name="ReplaceIntellisenseFiles">
     <PropertyGroup>
-      <IntellisenseInputDir>$(TmpDocOutputPath)xml\</IntellisenseInputDir>
-      <IntellisenseOutputDir>$(TmpOutBinOutputPath)GeoSik_Any CPU_Release\</IntellisenseOutputDir>
+      <IntellisenseInputDir>$(IntermediateOutputPath)doc\GeoSikHelp\xml\</IntellisenseInputDir>
+      <IntellisenseOutputDir>$(TmpBinOutputPath)GeoSik\Release\Any CPU\</IntellisenseOutputDir>
     </PropertyGroup>
 
     <ItemGroup>
