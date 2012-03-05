@@ -38,7 +38,7 @@ namespace GeoSik.Ogc.SimpleFeature
 
     ////////////////////////////////////////////////////////////////////////////
     ///
-    /// <summary>OGC Geometry Well-Known Text grammar as defined in <a href="http://portal.opengeospatial.org/files/?artifact_id=25355">OGC 06-103r4 §7.2</a>.</summary>
+    /// <summary>OGC Geometry Well-Known Text grammar as defined in <see href="http://portal.opengeospatial.org/files/?artifact_id=25355">OGC 06-103r4 §7.2</see>.</summary>
     /// <remarks>
     ///   <para>Only 2 dimension WKT representations are supported at this time.</para>
     /// </remarks>

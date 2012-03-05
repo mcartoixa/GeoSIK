@@ -35,7 +35,7 @@ namespace GeoSik.Ogc.SimpleFeature
     ///
     /// <summary>Converts a <see cref="IGeometryTap" /> to JSON.</summary>
     /// <remarks>
-    ///   <para>The returned JSON is in the <a href="http://en.wikipedia.org/wiki/World_Geodetic_System">WGS84</a>
+    ///   <para>The returned JSON is in the <see href="http://en.wikipedia.org/wiki/World_Geodetic_System">WGS84</see>
     /// coordinate reference system.</para>
     /// </remarks>
     ///
