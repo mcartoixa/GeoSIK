@@ -18,6 +18,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Resources;
 using System.Runtime.CompilerServices;
@@ -36,3 +37,5 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 [assembly: NeutralResourcesLanguage("en-US")]
+
+[module: SuppressMessage("Microsoft.Design", "CA2210:AssembliesShouldHaveValidStrongNames", Justification="FDO assemblies are not signed")]

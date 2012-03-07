@@ -200,13 +200,14 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
 
             if (navigator.LocalName=="BoundingBox")
             {
-                var v=navigator.GetValue(record);
-                if (v==null)
+                object value=navigator.GetValue(record);
+                if (value==null)
                     return;
-                if (v is IGeometry)
-                    v=new IGeometry[] { (IGeometry)v };
+                var geom=value as ISimpleGeometry;
+                if (value!=null)
+                    value=new ISimpleGeometry[] { geom };
 
-                foreach (IGeometry g in (IEnumerable<IGeometry>)v)
+                foreach (ISimpleGeometry g in (IEnumerable<ISimpleGeometry>)value)
                 {
                     var box=new Ows100.BoundingBox();
                     box.InitFromGeometry(g);

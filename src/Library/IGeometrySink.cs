@@ -20,6 +20,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using ProjNet.CoordinateSystems;
@@ -48,11 +49,17 @@ namespace GeoSik
         /// <param name="x">The easting of the point.</param>
         /// <param name="y">The northing of the point.</param>
         /// <param name="z">The elevation of the point.</param>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId="x")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId="y")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId="z")]
         void BeginFigure(double x, double y, double? z);
         /// <summary>Defines a point other than the starting point of a geometry figure.</summary>
         /// <param name="x">The eastings of the point.</param>
         /// <param name="y">The northings of the point.</param>
         /// <param name="z">The elevation of the point.</param>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId="x")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId="y")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId="z")]
         void AddLine(double x, double y, double? z);
         /// <summary>Finishes the call sequence for a geometry figure.</summary>
         void EndFigure();
