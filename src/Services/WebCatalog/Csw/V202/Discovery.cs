@@ -40,6 +40,17 @@ using Filter=GeoSik.Ogc.Filter.V110;
 namespace GeoSik.Ogc.WebCatalog.Csw.V202
 {
 
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Base implementation of a CSW discovery service.</summary>
+    /// <remarks>
+    ///   <para>The specification of the discovery service is defined in <token>CSW202Spec</token> §7.2.4.</para>
+    /// </remarks>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
     public abstract partial class Discovery:
         OgcService,
         IDiscovery

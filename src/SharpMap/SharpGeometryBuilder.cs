@@ -246,7 +246,7 @@ namespace GeoSik.SharpMap
             var g=SmGeometries.Geometry.GeomFromText(text);
             g.SpatialReference=system;
 
-            if ((TargetSystem!=null) && !system.ReferenceEquals(TargetSystem))
+            if ((TargetSystem!=null) && !system.SpatialReferenceEquals(TargetSystem))
             {
                 _Geometry=null;
                 var orig=new SharpGeometry(g);

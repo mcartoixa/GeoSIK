@@ -77,7 +77,7 @@ namespace GeoSik
             DoSetCoordinateSystem(_TargetSystem);
             _SourceSystem=sourceSystem;
 
-            if (!_TargetSystem.ReferenceEquals(_SourceSystem))
+            if (!_TargetSystem.SpatialReferenceEquals(_SourceSystem))
                 _Transformation=new CoordinateTransformationFactory().CreateFromCoordinateSystems(_SourceSystem, _TargetSystem);
         }
 

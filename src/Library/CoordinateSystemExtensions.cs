@@ -42,7 +42,7 @@ namespace GeoSik
         /// <param name="left">The first spatial reference to test.</param>
         /// <param name="right">The second spatial reference to test.</param>
         /// <returns><c>true</c> if the two spatial refernces are the same; or else <c>false</c>.</returns>
-        public static bool ReferenceEquals(this IInfo left, IInfo right)
+        public static bool SpatialReferenceEquals(this IInfo left, IInfo right)
         {
             if (left==null)
                 return right==null;
