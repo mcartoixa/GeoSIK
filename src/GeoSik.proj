@@ -48,7 +48,7 @@
     />
     <XmlUpdate
       XmlFileName="%(NuSpecItems.Identity)"
-      XPath="/package/metadata/dependencies/dependency[@id='GeoSik']/@version"
+      XPath="/package/metadata/dependencies/dependency[contains(@id, 'GeoSik')]/@version"
       Value="$(VersionMajor).$(VersionMinor).$(VersionBuild).$(VersionRevision)"
     />
   </Target>
@@ -78,7 +78,7 @@
   <!-- Refined packaging -->
   <Target Name="AfterPackage" DependsOnTargets="GeoSikNuSpecPrePackage;GeoSikWrapperNuSpecPrePackage;EndPackage" />
   <ItemGroup>
-    <GeoSikWrappers Include="misc\GeoSik.*.nuspec" />
+    <GeoSikWrappers Include="misc\GeoSik.*.nuspec" Exclude="misc\GeoSik.Externals.nuspec" />
   </ItemGroup>
 
   <Target Name="GeoSikNuSpecPrePackage">
@@ -100,6 +100,29 @@
     <Copy
       SourceFiles="misc\GeoSik.nuspec"
       DestinationFiles="$(GeoSikNuSpecTmpOutDir)GeoSik.nuspec"
+      OverwriteReadOnlyFiles="true"
+    />
+  </Target>
+
+  <Target Name="GeoSikExternalsNuSpecPrePackage">
+    <PropertyGroup>
+      <GeoSikNuSpecInputDir>$(TmpOutBinOutputPath)GeoSik_Any CPU_Release\</GeoSikNuSpecInputDir>
+      <GeoSikNuSpecTmpOutDir>$(IntermediateOutputPath)pack\GeoSik.Externals\</GeoSikNuSpecTmpOutDir>
+    </PropertyGroup>
+    <MakeDir Directories="$(GeoSikNuSpecTmpOutDir)lib" />
+
+    <ItemGroup>
+      <GeoSikNuSpecItems Include="$(GeoSikNuSpecInputDir)Irony.dll;$(GeoSikNuSpecInputDir)Irony.Interpreter.dll" />
+      <GeoSikNuSpecItems Include="$(GeoSikNuSpecInputDir)ProjNet.dll;$(GeoSikNuSpecInputDir)ProjNet.xml" />
+    </ItemGroup>
+
+    <Copy
+      SourceFiles="@(GeoSikNuSpecItems)"
+      DestinationFiles="@(GeoSikNuSpecItems->'$(GeoSikNuSpecTmpOutDir)lib\net40\%(RecursiveDir)%(Filename)%(Extension)')"
+    />
+    <Copy
+      SourceFiles="misc\GeoSik.Externals.nuspec"
+      DestinationFiles="$(GeoSikNuSpecTmpOutDir)GeoSik.Externals.nuspec"
       OverwriteReadOnlyFiles="true"
     />
   </Target>

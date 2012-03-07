@@ -203,11 +203,17 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 object value=navigator.GetValue(record);
                 if (value==null)
                     return;
-                var geom=value as ISimpleGeometry;
-                if (value!=null)
-                    value=new ISimpleGeometry[] { geom };
 
-                foreach (ISimpleGeometry g in (IEnumerable<ISimpleGeometry>)value)
+                // Covariance is a feature of .NET 4.0 http://msdn.microsoft.com/en-us/library/dd233059.aspx
+                var ensg=value as IEnumerable<ISimpleGeometry>;
+                if (ensg==null)
+                {
+                    var geom=value as ISimpleGeometry;
+                    if (geom!=null)
+                        ensg=new ISimpleGeometry[] { geom };
+                }
+
+                foreach (ISimpleGeometry g in ensg)
                 {
                     var box=new Ows100.BoundingBox();
                     box.InitFromGeometry(g);
