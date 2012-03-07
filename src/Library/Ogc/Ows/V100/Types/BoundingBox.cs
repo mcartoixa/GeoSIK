@@ -35,17 +35,10 @@ namespace GeoSik.Ogc.Ows.V100.Types
         IGeometryTap
     {
 
+        /// <summary>Applies a geometry type call sequence to the specified <paramref name="sink" />.</summary>
         public void Populate(IGeometrySink sink)
         {
-            ICoordinateSystem s=null;
-            if (crs!=null)
-            {
-                Srid id=Srid.CreateFromCrs(crs);
-                s=CoordinateSystemProvider.Instance.GetById(id);
-            } else
-                s=CoordinateSystemProvider.Instance.Wgs84;
-
-            sink.SetCoordinateSystem(s);
+            sink.SetCoordinateSystem(CoordinateSystem);
 
             sink.BeginGeometry(GeometryType.Polygon);
 
@@ -70,15 +63,18 @@ namespace GeoSik.Ogc.Ows.V100.Types
             sink.EndGeometry();
         }
 
+        /// <summary>Fills the current bounding box with the specified geometry information.</summary>
+        /// <param name="g">THe geometry to fill this bounding box with.</param>
         public void InitFromGeometry(ISimpleGeometry g)
         {
             if (g==null)
             {
                 LowerCorner=null;
                 UpperCorner=null;
+                return;
             }
 
-            crs=new Srid((int)g.CoordinateSystem.AuthorityCode).Crs;
+            CoordinateSystem=g.CoordinateSystem;
 
             var lc=new List<double>(2);
             var uc=new List<double>(2);
@@ -113,6 +109,29 @@ namespace GeoSik.Ogc.Ows.V100.Types
                     " ",
                     uc.Select<double, string>(d => d.ToString(CultureInfo.InvariantCulture))
                 );
+        }
+
+        /// <summary>Gets or sets the spatial reference of the current bounding box.</summary>
+        protected virtual ICoordinateSystem CoordinateSystem
+        {
+            get
+            {
+                ICoordinateSystem ret=null;
+                if (crs!=null)
+                {
+                    Srid id=Srid.CreateFromCrs(crs);
+                    ret=CoordinateSystemProvider.Instance.GetById(id);
+                } else
+                    ret=CoordinateSystemProvider.Instance.Wgs84;
+                return ret;
+            }
+            set
+            {
+                if (value!=null)
+                    crs=new Srid((int)value.AuthorityCode).Crs;
+                else
+                    crs=null;
+            }
         }
     }
 #pragma warning restore 3009

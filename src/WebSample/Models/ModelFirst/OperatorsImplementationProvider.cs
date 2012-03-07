@@ -387,7 +387,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
             byte[] ret=null;
 
             var sgw=geometry as SqlServer.SqlGeography;
-            if ((sgw==null) || !sgw.CoordinateSystem.ReferenceEquals(CoordinateSystemProvider.Instance.Wgs84))
+            if ((sgw==null) || !sgw.CoordinateSystem.SpatialReferenceEquals(CoordinateSystemProvider.Instance.Wgs84))
             {
                 var b=new SqlServer.SqlGeometryBuilder(CoordinateSystemProvider.Instance.Wgs84);
                 geometry.Populate(b);
