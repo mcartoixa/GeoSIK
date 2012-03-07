@@ -174,6 +174,7 @@
     </PropertyGroup>
     <ItemGroup>
       <ZipItems Include="$(ZipInputDir)GeoSik.dll;$(ZipInputDir)GeoSik.xml;$(ZipInputDir)GeoSik.*.dll;$(ZipInputDir)GeoSik.*.xml" />
+      <ZipItems Include="$(ZipInputDir)Irony.dll;$(ZipInputDir)Irony.Interpreter.dll;$(ZipInputDir)ProjNet.dll;$(ZipInputDir)ProjNet.xml" />
       <ZipItems Include="$(TmpDocOutputPath)**\*.chm" />
     </ItemGroup>
     <Zip
