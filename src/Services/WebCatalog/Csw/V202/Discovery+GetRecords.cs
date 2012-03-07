@@ -393,7 +393,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 string[] typeNames=request.Content.AbstractQuery.Untyped.Attribute("typeNames").Value.Split(' ');
                 if (typeNames.Any<string>(
                     a => !((Discovery)Service).SupportedRecordTypes.Any<IXMetaData>(
-                        m => string.Compare(string.Concat(_NamespaceManager.LookupPrefix(m.SchemaName.NamespaceName), ":", m.SchemaName.LocalName), a)==0
+                        m => string.Compare(string.Concat(_NamespaceManager.LookupPrefix(m.SchemaName.NamespaceName), ":", m.SchemaName.LocalName), a, StringComparison.Ordinal)==0
                     )
                 ))
                     throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
@@ -436,7 +436,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
             public override Types.IGetRecordsResponse Process(Types.GetRecords request)
             {
                 Logger.Debug(CultureInfo.InvariantCulture, m => m("Request processing started"));
-                Logger.Debug(CultureInfo.InvariantCulture, m => m("> {0}", Service.ToTraceString(request)));
+                Logger.Debug(CultureInfo.InvariantCulture, m => m("> {0}", OgcService.ToTraceString(request)));
 
                 CheckRequest(request);
 
@@ -471,7 +471,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                         timeStamp=DateTime.UtcNow
                     };
 
-                    Logger.Debug(CultureInfo.InvariantCulture, m => m("< {0}", Service.ToTraceString(ret)));
+                    Logger.Debug(CultureInfo.InvariantCulture, m => m("< {0}", OgcService.ToTraceString(ret)));
                     Logger.Debug(CultureInfo.InvariantCulture, m => m("Request processing finished"));
                     return ret;
                 }
@@ -482,7 +482,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                     task.RunSynchronously();
                     Types.IGetRecordsResponse ret=task.Result;
 
-                    Logger.Debug(CultureInfo.InvariantCulture, m => m("< {0}", Service.ToTraceString(ret)));
+                    Logger.Debug(CultureInfo.InvariantCulture, m => m("< {0}", OgcService.ToTraceString(ret)));
                     Logger.Debug(CultureInfo.InvariantCulture, m => m("Request processing finished"));
                     return ret;
                 }

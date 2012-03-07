@@ -195,6 +195,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 return new UriTypeConverter();
             }
 
+            //TODO: compile LINQ expression?
             internal IQueryable Where(IQueryable source, IEnumerable<Uri> ids, XmlNamespaceManager namespaceManager=null, IOperatorImplementationProvider operatorImplementationProvider=null)
             {
                 var parameters=new ParameterExpression[] {

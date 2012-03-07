@@ -18,6 +18,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Resources;
 using System.Runtime.CompilerServices;
@@ -39,3 +40,5 @@ using System.Runtime.InteropServices;
 [assembly: Guid("185d6cbb-9801-4b2a-842b-03af5f0ee458")]
 
 [assembly: NeutralResourcesLanguage("en-US")]
+
+[module: SuppressMessage("Microsoft.Design", "CA2210:AssembliesShouldHaveValidStrongNames", Justification="SharpMap assemblies are not signed")]

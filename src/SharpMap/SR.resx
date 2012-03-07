@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="SharpMapSpatialReferenceMustBeInitializedException" xml:space="preserve">
-    <value>SharpMap geometry spatial reference must be intialized</value>
+    <value>SharpMap geometry spatial reference must be initialized</value>
   </data>
   <data name="UnsupportedGeometryTypeException" xml:space="preserve">
     <value>Geometry type {0:G} is not supported by this implementation</value>

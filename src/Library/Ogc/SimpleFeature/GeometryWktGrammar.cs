@@ -178,7 +178,7 @@ namespace GeoSik.Ogc.SimpleFeature
                                     lm.Level,
                                     lm.Message
                                 ),
-                                "constraint"
+                                "text"
                             )
                         );
                         break;

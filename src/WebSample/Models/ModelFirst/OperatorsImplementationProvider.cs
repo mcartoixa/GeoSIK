@@ -32,14 +32,14 @@ namespace GeoSik.WebSample.Models.ModelFirst
 {
 
     public class OperatorsImplementationProvider:
-        IOperatorImplementationProvider
+        Ogc.IOperatorImplementationProvider
     {
 
         public OperatorsImplementationProvider()
         {
         }
 
-        MethodInfo IOperatorImplementationProvider.GetImplementation(string operatorName, ref Type[] arguments, ref object[] values, out object instance)
+        MethodInfo Ogc.IOperatorImplementationProvider.GetImplementation(string operatorName, ref Type[] arguments, ref object[] values, out object instance)
         {
             MethodInfo ret=null;
             instance=null;

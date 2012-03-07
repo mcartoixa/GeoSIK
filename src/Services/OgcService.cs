@@ -55,7 +55,7 @@ namespace GeoSik.Ogc
                 throw new Ows.OwsException(Ows.OwsExceptionCode.VersionNegotiationFailed);
         }
 
-        internal protected string ToTraceString(IXmlSerializable xml)
+        internal protected static string ToTraceString(IXmlSerializable xml)
         {
             var sb=new StringBuilder();
             using (var xw=XmlWriter.Create(sb))

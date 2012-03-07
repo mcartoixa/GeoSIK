@@ -64,7 +64,7 @@ namespace GeoSik.Ogc
         public virtual TResponse Process(TRequest request)
         {
             Logger.Debug(CultureInfo.InvariantCulture, m => m("Request processing started"));
-            Logger.Debug(CultureInfo.InvariantCulture, m => m("> {0}", Service.ToTraceString(request)));
+            Logger.Debug(CultureInfo.InvariantCulture, m => m("> {0}", OgcService.ToTraceString(request)));
 
             CheckRequest(request);
 
@@ -74,7 +74,7 @@ namespace GeoSik.Ogc
             OnProcessed(args);
 
             Debug.Assert(args.Response!=null);
-            Logger.Debug(CultureInfo.InvariantCulture, m => m("< {0}", Service.ToTraceString(args.Response)));
+            Logger.Debug(CultureInfo.InvariantCulture, m => m("< {0}", OgcService.ToTraceString(args.Response)));
             Logger.Debug(CultureInfo.InvariantCulture, m => m("Request processing finished"));
             return args.Response;
         }

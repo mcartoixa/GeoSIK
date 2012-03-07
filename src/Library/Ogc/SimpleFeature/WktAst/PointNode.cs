@@ -20,6 +20,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -62,6 +63,7 @@ namespace GeoSik.Ogc.SimpleFeature.WktAst
         }
 
         /// <summary>Gets the easting of the current point.</summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId="X")]
         public double X
         {
             get;
@@ -69,6 +71,7 @@ namespace GeoSik.Ogc.SimpleFeature.WktAst
         }
 
         /// <summary>Gets the northing of the current point.</summary>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId="Y")]
         public double Y
         {
             get;
