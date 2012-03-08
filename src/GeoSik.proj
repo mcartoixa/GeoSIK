@@ -76,7 +76,7 @@
 
 
   <!-- Refined packaging -->
-  <Target Name="AfterPackage" DependsOnTargets="GeoSikNuSpecPrePackage;GeoSikWrapperNuSpecPrePackage;EndPackage" />
+  <Target Name="AfterPackage" DependsOnTargets="GeoSikExternalsNuSpecPrePackage;GeoSikNuSpecPrePackage;GeoSikWrapperNuSpecPrePackage;EndPackage" />
   <ItemGroup>
     <GeoSikWrappers Include="misc\GeoSik.*.nuspec" Exclude="misc\GeoSik.Externals.nuspec" />
   </ItemGroup>
@@ -180,7 +180,7 @@
     <Zip
       Files="@(ZipItems)"
       Flatten="True"
-      ZipFileName="$(TmpOutBinOutputPath)GeoSik.zip"
+      ZipFileName="$(TmpOutBinOutputPath)GeoSik.$(VersionMajor).$(VersionMinor).$(VersionBuild).$(VersionRevision).zip"
       WorkingDirectory="$(ZipInputDir)"
       ZipLevel="9"
     />
