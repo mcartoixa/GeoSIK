@@ -36,7 +36,7 @@ namespace GeoSik.Ogc.Gml.V311
             //if ((exterior!=null) && (exterior._Ring!=null))
             if (
                 Untyped.Descendants("{http://www.opengis.net/gml}exterior").Any<XElement>() &&
-                exterior.Untyped.Descendants("{http://www.opengis.net/gml}_Ring").Any<XElement>()
+                exterior.Untyped.Descendants("{http://www.opengis.net/gml}LinearRing").Any<XElement>()
             )
                 exterior._Ring.Populate(envelope);
         }
