@@ -503,25 +503,19 @@ It must be used with MSBuild 4.0.
       <PackageInputBaseDir Condition="'$(PackageInputBaseDir)'==''">$(TmpBinOutputPath)$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\</PackageInputBaseDir>
       <PackageTmpOutDir>$(IntermediateOutputPath)pack\$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\</PackageTmpOutDir>
     </PropertyGroup>
-    <XmlPeek
-      Condition="$(ProjectsPackaged) And Exists('$(ProjectsFileName).nuspec')"
-      XmlInputPath="$(ProjectsFileName).nuspec"
-      Query="/package/metadata/references/reference/@file">
-      <Output TaskParameter="Result" ItemName="NuSpecReferences" />
-    </XmlPeek>
     <ItemGroup>
       <PackagedItems
-        Include="$(PackageInputBaseDir)**\%(NuSpecReferences.Identity)"
+        Include="$(PackageInputBaseDir)**\*.*"
         Exclude="$(PackageInputBaseDir)**\*.pdb;$(PackageInputBaseDir)**\CodeContracts\**\*.*"
       />
-      <SymbolItems Include="$(PackageInputBaseDir)**\%(NuSpecReferences.Filename).pdb" Exclude="$(PackageInputBaseDir)**\CodeContracts\**\*.*" />
+      <SymbolItems Include="$(PackageInputBaseDir)**\*.pdb" Exclude="$(PackageInputBaseDir)**\CodeContracts\**\*.*" />
     </ItemGroup>
 
     <MakeDir Directories="$(PackageTmpOutDir)lib" />
     <Move
       Condition="$(ProjectsPackaged) And Exists('$(ProjectsFileName).nuspec')"
       SourceFiles="@(PackagedItems)"
-      DestinationFiles="@(PackagedItems->'$(PackageTmpOutDir)lib\%(RecursiveDir)%(Filename)%(Extension)')"
+      DestinationFiles="@(PackagedItems->'$(PackageTmpOutDir)src\%(RecursiveDir)%(Filename)%(Extension)')"
     />
     <Copy
       Condition="$(ProjectsPackaged) And Exists('$(ProjectsFileName).nuspec')"

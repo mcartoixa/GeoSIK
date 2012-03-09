@@ -18,4 +18,8 @@
       <reference file="GeoSik.Fdo.dll" />
     </references>
   </metadata>
+  <files> 
+    <file src="src\GeoSik.Fdo.dll" target="lib\net40" /> 
+    <file src="src\GeoSik.Fdo.xml" target="lib\net40" /> 
+  </files> 
 </package>
