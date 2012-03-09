@@ -70,6 +70,8 @@ It must be used with MSBuild 4.0.
 
     <BuildDependsOn Condition="$(UnitTests)">$(BuildDependsOn);Compile;Tests</BuildDependsOn>
     <BuildDependsOn Condition="'$(BuildDependsOn)'==''">$(BuildDependsOn);Compile</BuildDependsOn>
+
+    <GenerateDocumentation Condition="'$(GenerateDocumentation)'==''">False</GenerateDocumentation>
   </PropertyGroup>
 
   <ItemGroup>
@@ -116,7 +118,7 @@ It must be used with MSBuild 4.0.
     </ItemGroup>
     <Exec
       Condition="'@(PackageConfigFiles)'!=''"
-      Command="&quot;$(NuGetToolPath)&quot; install &quot;%(PackageConfigFiles.Identity)&quot; -o packages -s &quot;https://go.microsoft.com/fwlink/?LinkID=230477&quot; -s &quot;$(LocalAppData)\NuGet\Cache&quot;"
+      Command="&quot;$(NuGetToolPath)&quot; install &quot;%(PackageConfigFiles.Identity)&quot; -o packages -s &quot;$(LocalAppData)\NuGet\Cache&quot;"
       WorkingDirectory="$(InputPath)"
       YieldDuringToolExecution="True"
     />
@@ -346,12 +348,13 @@ It must be used with MSBuild 4.0.
   </PropertyGroup>
   <Target
     Name="Document"
+    Condition="$(GenerateDocumentation)"
     DependsOnTargets="$(DocumentDependsOn)"
   />
 
   <Target
     Name="InternalDocument"
-    Condition="'@(SandcastleProjects)'!=''"
+    Condition="$(GenerateDocumentation) And '@(SandcastleProjects)'!=''"
     Outputs="$(TmpDocOutputPath)%(SandcastleProjects.RecursiveDir)\%(SandcastleProjects.Filename).chm"
   >
     <PropertyGroup>
@@ -381,6 +384,7 @@ It must be used with MSBuild 4.0.
   </Target>
 
   <Target Name="InternalDocumentPublish"
+    Condition="$(GenerateDocumentation)"
     Outputs="$(DocOutputPath)%(SandcastleProjects.Filename).chm"
   >
     <PropertyGroup>

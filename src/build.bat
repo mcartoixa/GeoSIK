@@ -6,7 +6,8 @@
 ::                 /rebuild  - Cleans and builds the project (default)
 ::                 /release  - Rebuilds the project and performs additional operations
 ::
-::                 /log      - Creates a detailed log
+::                 /doc      - Generates and packages the documentation (can be long)
+::                 /log      - Creates a detailed log for the build
 ::
 ::                 /NoPause  - Does not pause after completion
 ::                 /?        - Gets the usage for this script
@@ -22,6 +23,7 @@ IF ERRORLEVEL 1 GOTO ERROR_EXT
 SET NO_PAUSE=0
 SET PROJECT=GeoSik.proj
 SET TARGET=Rebuild
+SET GENERATE_DOCUMENTATION=False
 SET VERBOSITY=minimal
 GOTO ARGS
 
@@ -31,7 +33,7 @@ GOTO ARGS
 :: Builds the project
 :: -------------------------------------------------------------------
 :BUILD
-msbuild.exe %PROJECT% /nologo /t:%TARGET% /m:%NUMBER_OF_PROCESSORS% /l:FileLogger,Microsoft.Build.Engine;logfile=build.log;verbosity=%VERBOSITY%;encoding=UTF-8 /nr:False
+msbuild.exe %PROJECT% /nologo /t:%TARGET% /m:%NUMBER_OF_PROCESSORS% /p:GenerateDocumentation="%GENERATE_DOCUMENTATION%" /l:FileLogger,Microsoft.Build.Engine;logfile=build.log;verbosity=%VERBOSITY%;encoding=UTF-8 /nr:False
 
 IF ERRORLEVEL 1 (
     msbuild.exe build\Result.proj /t:Failure /nologo /noconlog /v:q
@@ -47,12 +49,13 @@ GOTO END
 :: Note: Currently, last one on the command line wins (ex: /rebuild /clean == /clean)
 :: -------------------------------------------------------------------
 :ARGS
-::IF NOT "x%~4"=="x" GOTO ERROR_USAGE
+::IF NOT "x%~5"=="x" GOTO ERROR_USAGE
 
 :ARGS_PARSE
 IF /I "%~1"=="/clean"      SET TARGET=Clean& SHIFT & GOTO ARGS_PARSE
 IF /I "%~1"=="/rebuild"    SET TARGET=Rebuild& SHIFT & GOTO ARGS_PARSE
 IF /I "%~1"=="/release"    SET TARGET=Release& SHIFT & GOTO ARGS_PARSE
+IF /I "%~1"=="/doc"        SET GENERATE_DOCUMENTATION=True& SHIFT & GOTO ARGS_PARSE
 IF /I "%~1"=="/log"        SET VERBOSITY=diagnostic& SHIFT & GOTO ARGS_PARSE
 IF /I "%~1"=="/NoPause"    SET NO_PAUSE=1& SHIFT & GOTO ARGS_PARSE
 IF /I "%~1"=="/?"          GOTO ERROR_USAGE
@@ -99,13 +102,14 @@ ECHO Could not find MSBuild 4.0
 GOTO END
 
 :ERROR_USAGE
-ECHO Usage: "build [/clean | /rebuild | /release] [/log] [/NoPause] [/?]"
+ECHO Usage: "build [/clean | /rebuild | /release] [/doc] [/log] [/NoPause] [/?]"
 ECHO.
 ECHO                 /clean    - Cleans the project
 ECHO                 /rebuild  - Cleans and builds the project (default)
 ECHO                 /release  - Rebuilds the project and performs additional operations
 ECHO.
-ECHO                 /log      - Creates a detailed log
+ECHO                 /doc      - Generates and packages the documentation (can be long)
+ECHO                 /log      - Creates a detailed log for the build
 ECHO.
 ECHO                 /NoPause  - Does not pause after completion
 ECHO                 /?        - Gets the usage for this script

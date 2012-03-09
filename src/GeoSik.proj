@@ -86,19 +86,17 @@
       <NuSpecInputDir>$(TmpOutBinOutputPath)GeoSik_Any CPU_Release\</NuSpecInputDir>
       <NuSpecTmpOutDir>$(IntermediateOutputPath)pack\All\</NuSpecTmpOutDir>
     </PropertyGroup>
-    <MakeDir Directories="$(GeoSikNuSpecTmpOutDir)src" />
-
     <ItemGroup>
       <NuSpecElements Include="$(NuSpecInputDir)**\*.*" />
     </ItemGroup>
 
     <Copy
       SourceFiles="@(NuSpecElements)"
-      DestinationFiles="@(NuSpecElements->'$(GeoSikNuSpecTmpOutDir)src\%(RecursiveDir)%(Filename)%(Extension)')"
+      DestinationFiles="@(NuSpecElements->'$(NuSpecTmpOutDir)src\%(RecursiveDir)%(Filename)%(Extension)')"
     />
     <Copy
       SourceFiles="@(NuSpecItems)"
-      DestinationFiles="@(NuSpecItems->'$(GeoSikNuSpecTmpOutDir)%(RecursiveDir)%(Filename)%(Extension)')"
+      DestinationFiles="@(NuSpecItems->'$(NuSpecTmpOutDir)%(RecursiveDir)%(Filename)%(Extension)')"
       OverwriteReadOnlyFiles="true"
     />
   </Target>
@@ -110,8 +108,8 @@
 
     <MakeDir Directories="$(TmpOutBinOutputPath)" />
     <Exec
-      Command="&quot;$(NuGetToolPath)&quot; pack &quot;%(PackageSpec.Identity)&quot; -OutputDirectory &quot;$(TmpOutBinOutputPath).&quot;"
-      WorkingDirectory="$(InputPath)"
+      Command="&quot;$(NuGetToolPath)&quot; pack &quot;%(NuSpecItems.Filename)%(NuSpecItems.Extension)&quot; -OutputDirectory &quot;$(TmpOutBinOutputPath).&quot;"
+      WorkingDirectory="$(IntermediateOutputPath)pack\All\"
       YieldDuringToolExecution="True"
     />
 
