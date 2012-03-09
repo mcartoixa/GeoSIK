@@ -28,4 +28,10 @@
       <frameworkAssembly assemblyName="System.Xml.Linq" />
     </frameworkAssemblies>
   </metadata>
+  <files> 
+    <file src="src\GeoSik.dll" target="lib\net40" /> 
+    <file src="src\GeoSik.xml" target="lib\net40" /> 
+    <file src="src\GeoSik.Services.dll" target="lib\net40" /> 
+    <file src="src\GeoSik.Services.xml" target="lib\net40" /> 
+  </files> 
 </package>

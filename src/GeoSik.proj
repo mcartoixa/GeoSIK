@@ -76,88 +76,34 @@
 
 
   <!-- Refined packaging -->
-  <Target Name="AfterPackage" DependsOnTargets="GeoSikExternalsNuSpecPrePackage;GeoSikNuSpecPrePackage;GeoSikWrapperNuSpecPrePackage;EndPackage" />
+  <Target Name="AfterPackage" DependsOnTargets="NuSpecPrePackage;NuSpecPackage" />
   <ItemGroup>
-    <GeoSikWrappers Include="misc\GeoSik.*.nuspec" Exclude="misc\GeoSik.Externals.nuspec" />
+    <NuSpecItems Include="misc\*.nuspec" />
   </ItemGroup>
 
-  <Target Name="GeoSikNuSpecPrePackage">
+  <Target Name="NuSpecPrePackage">
     <PropertyGroup>
-      <GeoSikNuSpecInputDir>$(TmpOutBinOutputPath)GeoSik_Any CPU_Release\</GeoSikNuSpecInputDir>
-      <GeoSikNuSpecTmpOutDir>$(IntermediateOutputPath)pack\GeoSik\</GeoSikNuSpecTmpOutDir>
+      <NuSpecInputDir>$(TmpOutBinOutputPath)GeoSik_Any CPU_Release\</NuSpecInputDir>
+      <NuSpecTmpOutDir>$(IntermediateOutputPath)pack\All\</NuSpecTmpOutDir>
     </PropertyGroup>
-    <MakeDir Directories="$(GeoSikNuSpecTmpOutDir)lib" />
+    <MakeDir Directories="$(GeoSikNuSpecTmpOutDir)src" />
 
     <ItemGroup>
-      <GeoSikNuSpecItems Include="$(GeoSikNuSpecInputDir)GeoSik.dll;$(GeoSikNuSpecInputDir)GeoSik.Services.dll" />
-      <GeoSikNuSpecItems Include="$(GeoSikNuSpecInputDir)GeoSik.xml;$(GeoSikNuSpecInputDir)GeoSik.Services.xml" />
+      <NuSpecElements Include="$(NuSpecInputDir)**\*.*" />
     </ItemGroup>
 
     <Copy
-      SourceFiles="@(GeoSikNuSpecItems)"
-      DestinationFiles="@(GeoSikNuSpecItems->'$(GeoSikNuSpecTmpOutDir)lib\net40\%(RecursiveDir)%(Filename)%(Extension)')"
+      SourceFiles="@(NuSpecElements)"
+      DestinationFiles="@(NuSpecElements->'$(GeoSikNuSpecTmpOutDir)src\%(RecursiveDir)%(Filename)%(Extension)')"
     />
     <Copy
-      SourceFiles="misc\GeoSik.nuspec"
-      DestinationFiles="$(GeoSikNuSpecTmpOutDir)GeoSik.nuspec"
+      SourceFiles="@(NuSpecItems)"
+      DestinationFiles="@(NuSpecItems->'$(GeoSikNuSpecTmpOutDir)%(RecursiveDir)%(Filename)%(Extension)')"
       OverwriteReadOnlyFiles="true"
     />
   </Target>
 
-  <Target Name="GeoSikExternalsNuSpecPrePackage">
-    <PropertyGroup>
-      <GeoSikNuSpecInputDir>$(TmpOutBinOutputPath)GeoSik_Any CPU_Release\</GeoSikNuSpecInputDir>
-      <GeoSikNuSpecTmpOutDir>$(IntermediateOutputPath)pack\GeoSik.Externals\</GeoSikNuSpecTmpOutDir>
-    </PropertyGroup>
-    <MakeDir Directories="$(GeoSikNuSpecTmpOutDir)lib" />
-
-    <ItemGroup>
-      <GeoSikNuSpecItems Include="$(GeoSikNuSpecInputDir)Irony.dll;$(GeoSikNuSpecInputDir)Irony.Interpreter.dll" />
-      <GeoSikNuSpecItems Include="$(GeoSikNuSpecInputDir)ProjNet.dll;$(GeoSikNuSpecInputDir)ProjNet.xml" />
-    </ItemGroup>
-
-    <Copy
-      SourceFiles="@(GeoSikNuSpecItems)"
-      DestinationFiles="@(GeoSikNuSpecItems->'$(GeoSikNuSpecTmpOutDir)lib\net40\%(RecursiveDir)%(Filename)%(Extension)')"
-    />
-    <Copy
-      SourceFiles="misc\GeoSik.Externals.nuspec"
-      DestinationFiles="$(GeoSikNuSpecTmpOutDir)GeoSik.Externals.nuspec"
-      OverwriteReadOnlyFiles="true"
-    />
-  </Target>
-
-  <Target
-    Name="GeoSikWrapperNuSpecPrePackage"
-    Outputs="$(GeoSikNuSpecTmpOutDir)%(GeoSikWrappers.Filename).$(VersionMajor).$(VersionMinor).$(VersionBuild).$(VersionRevision).nuget"
-  >
-    <PropertyGroup>
-      <GeoSikNuSpecInputDir>$(TmpOutBinOutputPath)GeoSik_Any CPU_Release\</GeoSikNuSpecInputDir>
-      <GeoSikNuSpecTmpOutDir>$(IntermediateOutputPath)pack\%(GeoSikWrappers.Filename)\</GeoSikNuSpecTmpOutDir>
-    </PropertyGroup>
-    <MakeDir Directories="$(GeoSikNuSpecTmpOutDir)lib" />
-
-    <ItemGroup>
-      <GeoSikWrapperNuSpecItems Include="$(GeoSikNuSpecInputDir)%(GeoSikWrappers.Filename).dll" />
-      <GeoSikWrapperNuSpecItems Include="$(GeoSikNuSpecInputDir)%(GeoSikWrappers.Filename).xml" />
-    </ItemGroup>
-
-    <Copy
-      SourceFiles="@(GeoSikWrapperNuSpecItems)"
-      DestinationFiles="@(GeoSikWrapperNuSpecItems->'$(GeoSikNuSpecTmpOutDir)lib\net40\%(RecursiveDir)%(Filename)%(Extension)')"
-    />
-    <Copy
-      SourceFiles="%(GeoSikWrappers.Identity)"
-      DestinationFiles="$(GeoSikNuSpecTmpOutDir)%(GeoSikWrappers.Filename)%(GeoSikWrappers.Extension)"
-      OverwriteReadOnlyFiles="true"
-    />
-
-    <ItemGroup>
-      <GeoSikWrapperNuSpecItems Remove="@(GeoSikWrapperNuSpecItems)" />
-    </ItemGroup>
-  </Target>
-
-  <Target Name="EndPackage">
+  <Target Name="NuSpecPackage">
     <ItemGroup>
       <PackageSpec Include="$(IntermediateOutputPath)pack\**\*.nuspec" />
     </ItemGroup>
