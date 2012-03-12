@@ -71,7 +71,7 @@ It must be used with MSBuild 4.0.
     <BuildDependsOn Condition="$(UnitTests)">$(BuildDependsOn);Compile;Tests</BuildDependsOn>
     <BuildDependsOn Condition="'$(BuildDependsOn)'==''">$(BuildDependsOn);Compile</BuildDependsOn>
 
-    <GenerateDocumentation Condition="'$(GenerateDocumentation)'==''">False</GenerateDocumentation>
+    <GenerateDocumentation Condition="'$(GenerateDocumentation)'==''">True</GenerateDocumentation>
   </PropertyGroup>
 
   <ItemGroup>
