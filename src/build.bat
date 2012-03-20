@@ -33,7 +33,7 @@ GOTO ARGS
 :: Builds the project
 :: -------------------------------------------------------------------
 :BUILD
-msbuild.exe %PROJECT% /nologo /t:%TARGET% /m:%NUMBER_OF_PROCESSORS% /p:GenerateDocumentation="%GENERATE_DOCUMENTATION%" /l:FileLogger,Microsoft.Build.Engine;logfile=build.log;verbosity=%VERBOSITY%;encoding=UTF-8 /nr:False
+msbuild.exe %PROJECT% /nologo /t:%TARGET% /m:%NUMBER_OF_PROCESSORS% /p:GenerateDocumentation="%GENERATE_DOCUMENTATION%" /fl /flp:logfile=build.log;verbosity=%VERBOSITY%;encoding=UTF-8 /nr:False
 
 IF ERRORLEVEL 1 (
     msbuild.exe build\Result.proj /t:Failure /nologo /noconlog /v:q
