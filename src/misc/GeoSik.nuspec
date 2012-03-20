@@ -13,7 +13,7 @@
     <dependencies>
       <dependency id="Common.Logging" version="2.0.0" />
       <dependency id="LinqToXsd" version="2.0.2" />
-      <dependency id="Newtonsoft.Json" version="4.0.8" />
+      <dependency id="Newtonsoft.Json" version="4.5.1" />
       <dependency id="ProjNet" version="1.2" />
       <dependency id="GeoSik.Externals" version="1.0" />
     </dependencies>
