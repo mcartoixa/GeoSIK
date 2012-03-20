@@ -9,17 +9,14 @@
     <description>External dependencies for the GeoSIK libraries. These are libraries that are not (yet?) packaged for NuGet.</description>
     <projectUrl>http://geosik.codeplex.com/</projectUrl>
     <copyright>Copyright © 2012 Isogeo</copyright>
-    <tags>GeoSik Irony Proj.NET</tags>
+    <tags>GeoSik Irony</tags>
     <references>
       <reference file="Irony.dll" />
       <reference file="Irony.Interpreter.dll" />
-      <reference file="ProjNet.dll" />
     </references>
   </metadata>
   <files> 
     <file src="src\Irony.dll" target="lib\net40" /> 
     <file src="src\Irony.Interpreter.dll" target="lib\net40" /> 
-    <file src="src\ProjNet.dll" target="lib\net20" /> 
-    <file src="src\ProjNet.xml" target="lib\net20" /> 
   </files> 
 </package>

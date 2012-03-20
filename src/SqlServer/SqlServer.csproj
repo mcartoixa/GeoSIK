@@ -45,8 +45,9 @@
     <Reference Include="Microsoft.SqlServer.Types, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\lib\SqlServer\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
-    <Reference Include="ProjNet">
-      <HintPath>..\lib\ProjNet\ProjNet.dll</HintPath>
+    <Reference Include="ProjNet, Version=1.2.4455.27045, Culture=neutral, PublicKeyToken=a1f5bdcd9c6f5740, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ProjNet.1.2\lib\net20\ProjNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -89,6 +90,7 @@
     <None Include="..\build\GeoSik.snk">
       <Link>GeoSik.snk</Link>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SR.resx">

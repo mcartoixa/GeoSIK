@@ -39,8 +39,9 @@
     <DocumentationFile>bin\Release\GeoSik.SharpMap.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ProjNet">
-      <HintPath>..\lib\ProjNet\ProjNet.dll</HintPath>
+    <Reference Include="ProjNet, Version=1.2.4455.27045, Culture=neutral, PublicKeyToken=a1f5bdcd9c6f5740, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ProjNet.1.2\lib\net20\ProjNet.dll</HintPath>
     </Reference>
     <Reference Include="SharpMap">
       <HintPath>..\lib\SharpMap\SharpMap.dll</HintPath>
