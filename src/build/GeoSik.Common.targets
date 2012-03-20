@@ -118,7 +118,7 @@ It must be used with MSBuild 4.0.
     </ItemGroup>
     <Exec
       Condition="'@(PackageConfigFiles)'!=''"
-      Command="&quot;$(NuGetToolPath)&quot; install &quot;%(PackageConfigFiles.Identity)&quot; -o packages -s &quot;$(LocalAppData)\NuGet\Cache&quot;"
+      Command="&quot;$(NuGetToolPath)&quot; install &quot;%(PackageConfigFiles.Identity)&quot; -o packages -s &quot;https://go.microsoft.com/fwlink/?LinkID=230477&quot; -s &quot;$(LocalAppData)\NuGet\Cache&quot;"
       WorkingDirectory="$(InputPath)"
       YieldDuringToolExecution="True"
     />
