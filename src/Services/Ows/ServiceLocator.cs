@@ -35,11 +35,14 @@ namespace GeoSik.Ogc.Ows
     public sealed class ServiceLocator
     {
 
+        /// <summary>Creates a new instance of the <see cref="ServiceLocator" /> class.</summary>
         public ServiceLocator():
             this(Assembly.GetExecutingAssembly())
         {
         }
 
+        /// <summary>Creates a new instance of the <see cref="ServiceLocator" /> class.</summary>
+        /// <param name="assembly">The assembly to scan for OWS services.</param>
         public ServiceLocator(Assembly assembly)
         {
             Debug.Assert(assembly!=null);
@@ -50,9 +53,18 @@ namespace GeoSik.Ogc.Ows
         }
 
         /// <summary>Invokes the OWS service referenced in the specified <paramref name="parameters" />.</summary>
-        /// <param name="parameters">The key/value pairs </param>
-        /// <returns></returns>
+        /// <param name="parameters">The key/value pairs that are used as parameters of the service call.</param>
+        /// <returns>The result of the call.</returns>
         public IXmlSerializable InvokeService(NameValueCollection parameters)
+        {
+            return InvokeService(null, parameters);
+        }
+
+        /// <summary>Invokes the OWS service referenced in the specified <paramref name="parameters" />.</summary>
+        /// <param name="arguments">The arguments to use for the service instantiation. Can be <c>null</c>.</param>
+        /// <param name="parameters">The key/value pairs that are used as parameters of the service call.</param>
+        /// <returns>The result of the call.</returns>
+        public IXmlSerializable InvokeService(object[] arguments, NameValueCollection parameters)
         {
             Debug.Assert(parameters!=null);
             if (parameters==null)
@@ -78,10 +90,22 @@ namespace GeoSik.Ogc.Ows
                     Locator=OgcService.VersionParameter
                 };
 
-            return InvokeService(parameters, service, version, request);
+            return InvokeService(arguments, parameters, service, version, request);
         }
 
+        /// <summary>Invokes the OWS service corresponding to the specified <paramref name="request" />.</summary>
+        /// <param name="request">The request that is used for the service call.</param>
+        /// <returns>The result of the call.</returns>
         public IXmlSerializable InvokeService(IRequest request)
+        {
+            return InvokeService(null, request);
+        }
+
+        /// <summary>Invokes the OWS service corresponding to the specified <paramref name="request" />.</summary>
+        /// <param name="arguments">The arguments to use for the service instantiation. Can be <c>null</c>.</param>
+        /// <param name="request">The request that is used for the service call.</param>
+        /// <returns>The result of the call.</returns>
+        public IXmlSerializable InvokeService(object[] arguments, IRequest request)
         {
             Debug.Assert(request!=null);
             if (request==null)
@@ -101,10 +125,10 @@ namespace GeoSik.Ogc.Ows
                     Locator=OgcService.VersionParameter
                 };
 
-            return InvokeService(request, request.Service, request.Version, operation);
+            return InvokeService(arguments, request, request.Service, request.Version, operation);
         }
 
-        private IXmlSerializable InvokeService(object input, string service, string version, string request)
+        private IXmlSerializable InvokeService(object[] arguments, object input, string service, string version, string request)
         {
             FindServices();
 
@@ -134,7 +158,7 @@ namespace GeoSik.Ogc.Ows
                 if ((pia.Length==1) && (pia[0].ParameterType==input.GetType()))
                     try
                     {
-                        return r.Invoke(Activator.CreateInstance(t), new object[] { input }) as IXmlSerializable;
+                        return r.Invoke(Activator.CreateInstance(t, arguments), new object[] { input }) as IXmlSerializable;
                     } catch (TargetInvocationException tiex)
                     {
                         var oex=tiex.InnerException as OwsException;
@@ -179,6 +203,12 @@ namespace GeoSik.Ogc.Ows
             }
         }
 
+        /// <summary>Gets all the request types used in registered OWS services.</summary>
+        /// <param name="knownTypeAttributeTarget">Unused.</param>
+        /// <returns>The request types used in registered OWS services.</returns>
+        /// <remarks>
+        ///   <para>Can be used as a helper method for the <see cref="System.ServiceModel.ServiceKnownTypeAttribute" /> attribute.</para>
+        /// </remarks>
         [SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId="knownTypeAttributeTarget", Justification="Required to be used as a ServiceKnownTypeAttribute parameter")]
         public static Type[] GetRequestTypes(ICustomAttributeProvider knownTypeAttributeTarget)
         {
