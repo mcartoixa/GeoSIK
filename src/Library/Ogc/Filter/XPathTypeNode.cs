@@ -143,7 +143,7 @@ namespace GeoSik.Ogc.Filter
             return ret;
         }
 
-        public object GetValue(object instance)
+        public virtual object GetValue(object instance)
         {
             object ret=GetValueBase(instance);
 
@@ -298,7 +298,7 @@ namespace GeoSik.Ogc.Filter
             return ret;
         }
 
-        private static object GetMemberValue(object instance, MemberInfo member)
+        internal protected static object GetMemberValue(object instance, MemberInfo member)
         {
             object ret=null;
 

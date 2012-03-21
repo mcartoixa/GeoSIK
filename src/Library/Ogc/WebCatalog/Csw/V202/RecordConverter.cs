@@ -247,6 +247,9 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 case "abstract":
                     e=new DCTerms.@abstract();
                     break;
+                case "created":
+                    e=new DCTerms.created();
+                    break;
                 case "creator":
                     e=new DC11.creator();
                     break;
@@ -295,6 +298,9 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 case "type":
                     e=new DC11.type();
                     break;
+                case "valid":
+                    e=new DCTerms.valid();
+                    break;
                 }
 
                 if (e!=null)
@@ -306,7 +312,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                             e.scheme=new Uri(sch.ToString());
                     }
 
-                    e.Untyped.Add(value);
+                    e.Untyped.Add(v);
                     ret.Add(e);
                 }
             }
