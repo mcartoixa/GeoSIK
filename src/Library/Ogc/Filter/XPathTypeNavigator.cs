@@ -374,6 +374,22 @@ namespace GeoSik.Ogc.Filter
             }
         }
 
+        public override object UnderlyingObject
+        {
+            get
+            {
+                return _Current;
+            }
+        }
+
+        internal XPathTypeContext Context
+        {
+            get
+            {
+                return _Context;
+            }
+        }
+
         internal XPathTypeNode Root
         {
             get

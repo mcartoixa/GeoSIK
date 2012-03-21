@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -60,6 +61,16 @@ namespace GeoSik.Ogc.Filter
                 enuex,
                 oplex
             );
+        }
+
+        public override object GetValue(object instance)
+        {
+            var ret=GetValueBase(instance) as IEnumerable;
+
+            if ((ret!=null) && (ValueMemberInfo!=null))
+                ret=ret.Cast<object>().Select(o => GetMemberValue(o, ValueMemberInfo));
+
+            return ret;
         }
 
         protected override Type GetMemberType(MemberInfo member)
