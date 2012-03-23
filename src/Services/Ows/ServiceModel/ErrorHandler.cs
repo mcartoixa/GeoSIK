@@ -29,20 +29,35 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
+using Ows100=GeoSik.Ogc.Ows.V100.Types;
 
-namespace GeoSik.Ogc.Ows
+namespace GeoSik.Ogc.Ows.ServiceModel
 {
 
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
     /// <summary>Handles OWS exceptions according to [OGC 06-121r9, §8].</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
     public class ErrorHandler:
         IErrorHandler
     {
 
+        /// <summary>Indicates that the current session should not be aborted, whatever exception has been raised.</summary>
+        /// <param name="error">The exception that has been raised.</param>
+        /// <returns><c>true</c></returns>
         public bool HandleError(Exception error)
         {
             return true;
         }
 
+        /// <summary>Creates a fault message from the specified exception.</summary>
+        /// <param name="error">The exception that has been raised.</param>
+        /// <param name="version">The SOAP version of the message.</param>
+        /// <param name="fault">The fault message that is returned to the client.</param>
         public void ProvideFault(Exception error, MessageVersion version, ref Message fault)
         {
             var aex=error as AggregateException;
@@ -75,7 +90,7 @@ namespace GeoSik.Ogc.Ows
                         status=HttpStatusCode.NotImplemented;
                         break;
                     }
-                    fex=new WebFaultException<V100.Types.ExceptionReport>((V100.Types.ExceptionReport)oex, status);
+                    fex=new WebFaultException<Ows100.ExceptionReport>((Ows100.ExceptionReport)oex, status);
                 } else
                 {
                     FaultCode fc=FaultCode.CreateReceiverFaultCode("InternalServerError", "http://schemas.microsoft.com/2009/WebFault");
@@ -86,6 +101,10 @@ namespace GeoSik.Ogc.Ows
             fault=CreateMessage(fex, version);
         }
 
+        /// <summary>Creates a fault message from the specified parameters.</summary>
+        /// <param name="fex">The fault exception to create a message from.</param>
+        /// <param name="version">The SOAP version of the message.</param>
+        /// <returns>A fault message.</returns>
         protected virtual Message CreateMessage(FaultException fex, MessageVersion version)
         {
             MessageFault mf=fex.CreateMessageFault();

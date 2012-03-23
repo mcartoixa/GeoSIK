@@ -30,24 +30,37 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
+using Ows100=GeoSik.Ogc.Ows.V100.Types;
 
-namespace GeoSik.Ogc.Ows.V100
+namespace GeoSik.Ogc.Ows.ServiceModel
 {
 
-    public class PoxErrorHandler:
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>WCF error handler that conforms to the OWS 1.0.0 specifications.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
+    public class Ows100PoxErrorHandler:
         ErrorHandler
     {
 
+        /// <summary>Creates a fault message from the specified parameters.</summary>
+        /// <param name="fex">The fault exception to create a message from.</param>
+        /// <param name="version">The SOAP version of the message.</param>
+        /// <returns>A fault message.</returns>
         protected override Message CreateMessage(FaultException fex, MessageVersion version)
         {
-            var fexd=fex as WebFaultException<Types.ExceptionReport>;
+            var fexd=fex as WebFaultException<Ows100.ExceptionReport>;
             if (fexd==null)
             {
                 var oex=new OwsException(OwsExceptionCode.NoApplicableCode, fex);
-                fexd=new WebFaultException<Types.ExceptionReport>((Types.ExceptionReport)oex, HttpStatusCode.InternalServerError);
+                fexd=new WebFaultException<Ows100.ExceptionReport>((Ows100.ExceptionReport)oex, HttpStatusCode.InternalServerError);
             }
 
-            return WebOperationContext.Current.CreateXmlResponse<Types.ExceptionReport>(fexd.Detail);
+            return WebOperationContext.Current.CreateXmlResponse<Ows100.ExceptionReport>(fexd.Detail);
         }
 
     }
