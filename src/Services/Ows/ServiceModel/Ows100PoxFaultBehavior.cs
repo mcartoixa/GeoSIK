@@ -29,10 +29,10 @@ using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
 using System.Text;
 
-namespace GeoSik.Ogc.Ows
+namespace GeoSik.Ogc.Ows.ServiceModel
 {
 
-    public class FaultBehavior:
+    public class Ows100PoxFaultBehavior:
         IServiceBehavior
     {
         public void AddBindingParameters(ServiceDescription serviceDescription, ServiceHostBase serviceHostBase, Collection<ServiceEndpoint> endpoints, BindingParameterCollection bindingParameters)
@@ -41,7 +41,7 @@ namespace GeoSik.Ogc.Ows
 
         public void ApplyDispatchBehavior(ServiceDescription serviceDescription, ServiceHostBase serviceHostBase)
         {
-            var eh=new ErrorHandler();
+            var eh=new Ows100PoxErrorHandler();
 
             foreach (ChannelDispatcherBase cdb in serviceHostBase.ChannelDispatchers)
                 ((ChannelDispatcher)cdb).ErrorHandlers.Insert(0, eh);
@@ -52,18 +52,18 @@ namespace GeoSik.Ogc.Ows
         }
     }
 
-    public class FaultBehaviorExtensionElement:
+    public class Ows100PoxFaultBehaviorExtensionElement:
         BehaviorExtensionElement
     {
 
         public override Type BehaviorType
         {
-            get { return typeof(FaultBehavior); }
+            get { return typeof(Ows100PoxFaultBehavior); }
         }
 
         protected override object CreateBehavior()
         {
-            return new FaultBehavior();
+            return new Ows100PoxFaultBehavior();
         }
     }
 

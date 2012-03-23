@@ -3,11 +3,13 @@
   <metadata>
     <id>GeoSik</id>
     <version>1.0</version>
-    <authors>Isogeo</authors>
-    <owners>Isogeo</owners>
+    <title>GeoSik</title>
+    <authors>Isogeo,mcartoixa</authors>
+    <owners>mcartoixa</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Libraries that allow the use OGC standards in .NET applications, and makes the implementation of standard OGC Web Services easier.</description>
+    <description>Library that allows the use OGC standards in .NET applications.</description>
     <projectUrl>http://geosik.codeplex.com/</projectUrl>
+    <iconUrl>http://i3.codeplex.com/Download?ProjectName=geosik&DownloadId=357596</iconUrl>
     <copyright>Copyright © 2012 Isogeo</copyright>
     <tags>GeoSik OGC Geographical Standards Library Isogeo CSW</tags>
     <dependencies>
@@ -19,20 +21,16 @@
     </dependencies>
     <references>
       <reference file="GeoSik.dll" />
-      <reference file="GeoSik.Services.dll" />
     </references>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations" />
       <frameworkAssembly assemblyName="System.Data.Linq" />
       <frameworkAssembly assemblyName="System.ServiceModel" />
-      <frameworkAssembly assemblyName="System.ServiceModel.Web" />
       <frameworkAssembly assemblyName="System.Xml.Linq" />
     </frameworkAssemblies>
   </metadata>
   <files> 
     <file src="src\GeoSik.dll" target="lib\net40" /> 
     <file src="src\GeoSik.xml" target="lib\net40" /> 
-    <file src="src\GeoSik.Services.dll" target="lib\net40" /> 
-    <file src="src\GeoSik.Services.xml" target="lib\net40" /> 
   </files> 
 </package>

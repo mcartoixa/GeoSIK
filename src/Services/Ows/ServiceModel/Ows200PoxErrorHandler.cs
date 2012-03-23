@@ -32,13 +32,25 @@ using System.Xml;
 using System.Xml.Serialization;
 using Ows100=GeoSik.Ogc.Ows.V100.Types; //TODO: should be v2.0.0
 
-namespace GeoSik.Ogc.Ows.V200
+namespace GeoSik.Ogc.Ows.ServiceModel
 {
 
-    public class PoxErrorHandler:
-        V100.PoxErrorHandler
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>WCF error handler that conforms to the OWS 2.0.0 specifications.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
+    public class Ows200PoxErrorHandler:
+        Ows100PoxErrorHandler
     {
 
+        /// <summary>Creates a fault message from the specified parameters.</summary>
+        /// <param name="fex">The fault exception to create a message from.</param>
+        /// <param name="version">The SOAP version of the message.</param>
+        /// <returns>A fault message.</returns>
         protected override Message CreateMessage(FaultException fex, MessageVersion version)
         {
             var fexd=fex as WebFaultException<Ows100.ExceptionReport>;

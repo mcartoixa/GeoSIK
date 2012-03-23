@@ -3,11 +3,13 @@
   <metadata>
     <id>GeoSik.SqlServer</id>
     <version>1.0</version>
-    <authors>Isogeo</authors>
-    <owners>Isogeo</owners>
+    <title>GeoSik for SQL Server</title>
+    <authors>Isogeo,mcartoixa</authors>
+    <owners>mcartoixa</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Library that make GeoSik interoperable with Sql Server spatial types.</description>
+    <description>Library that makes GeoSik interoperable with Sql Server spatial types.</description>
     <projectUrl>http://geosik.codeplex.com/</projectUrl>
+    <iconUrl>http://i3.codeplex.com/Download?ProjectName=geosik&DownloadId=357596</iconUrl>
     <copyright>Copyright © 2012 Isogeo</copyright>
     <tags>GeoSik SqlServer</tags>
     <dependencies>

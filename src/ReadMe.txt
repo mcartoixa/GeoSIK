@@ -4,14 +4,15 @@ PREREQUISITES
 -Build:
 	* Microsoft .NET Framework 4.0
 	* Microsoft Windows SDK 7.1
-	* MSBuild.Community.Tasks 1.3
+	* ASP.NET MVC 3 <http://www.asp.net/mvc/mvc3>
+	* MSBuild.Community.Tasks 1.3 <http://msbuildtasks.tigris.org/>
 	* FxCop 10.0
-	* [PartCover .NET4] (https://github.com/sawilde/partcover.net4)
+	* [PartCover .NET4] <https://github.com/sawilde/partcover.net4>
 
 - Development:
-	* Microsoft Visual Studio 2010
+	* Microsoft Visual Studio 2010 SP1
 	* SQL Server Express 2008 R2
-	* [Sandcastle Help File Builder 1.9.3.4 Beta 2] (http://shfb.codeplex.com/)
+	* [Sandcastle Help File Builder 1.9.3.4 Beta 2] <http://shfb.codeplex.com/>
 
 
 
@@ -28,7 +29,7 @@ DEVELOPMENT
 
 - The GeoSik.dev.sln solution is meant for development. Other solutions are used by the build scripts.
 - Serialization:
-	* Serialization objects found in the Library project have been generated with [LinqToXsd] (http://linqtoxsd.codeplex.com/) with a command line like the following:
+	* Serialization objects found in the Library project have been generated with [LinqToXsd] <http://linqtoxsd.codeplex.com/> with a command line like the following:
 LinqToXsd.exe iso\19139\20070417\gmd\gmd.xsd /config:LinqToXsd.config.xml /enableServiceReference
 	* Original XML schemas can be found online at http://schemas.opengis.net/.
 	* LinqToXsd configuration looks like the following:
