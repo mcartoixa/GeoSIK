@@ -9,7 +9,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Library that makes GeoSik interoperable with SharpMap spatial types.</description>
     <projectUrl>http://geosik.codeplex.com/</projectUrl>
-    <iconUrl>http://i3.codeplex.com/Download?ProjectName=geosik&DownloadId=357596</iconUrl>
+    <iconUrl>http://i3.codeplex.com/Download?ProjectName=geosik&amp;DownloadId=358065</iconUrl>
     <copyright>Copyright © 2012 Isogeo</copyright>
     <tags>GeoSik SharpMap</tags>
     <dependencies>
