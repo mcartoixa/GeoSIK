@@ -43,6 +43,10 @@ namespace GeoSik
         /// <param name="text">The WKT representation of the geometry.</param>
         /// <param name="system">The coordinate system of the WKT representation.</param>
         void Parse(string text, ICoordinateSystem system);
+        /// <summary>Parses the geometry defined by the specified WKB representation, in the specified coordinate system.</summary>
+        /// <param name="data">The WKB representation of the geometry.</param>
+        /// <param name="system">The coordinate system of the WKB representation.</param>
+        void Parse(byte[] data, ICoordinateSystem system);
 
         /// <summary>Returns the geometry resulting from the actions on the current <see cref="IGeometryBuilder" />.</summary>
         ISimpleGeometry ConstructedGeometry { get; }

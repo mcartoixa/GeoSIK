@@ -98,6 +98,25 @@ namespace GeoSik.SqlServer
                 _Geometry=g;
         }
 
+        /// <summary>Parses the geometry defined by the specified WKB representation, in the specified coordinate system.</summary>
+        /// <param name="data">The WKB representation of the geometry.</param>
+        /// <param name="system">The coordinate system of the WKB representation.</param>
+        public void Parse(byte[] data, ICoordinateSystem system)
+        {
+            Debug.Assert(system!=null);
+            if (system==null)
+                throw new ArgumentNullException("system");
+
+            IGeometryBuilder builder=CreateBuilder(system);
+            builder.Parse(data, system);
+            IGeometry g=(IGeometry)builder.ConstructedGeometry;
+
+            if ((TargetSystem!=null) && !system.SpatialReferenceEquals(TargetSystem))
+                g.Populate(this);
+            else
+                _Geometry=g;
+        }
+
         /// <summary>Sets the coordinate system of the geometry representation.</summary>
         /// <param name="system">The coordinate system of the geometry representation. Equivalent to <see cref="GeometryTransformerSink.TargetSystem" />.</param>
         protected override void DoSetCoordinateSystem(ICoordinateSystem system)
