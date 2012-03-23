@@ -155,6 +155,11 @@ namespace GeoSik.Ogc.Gml.V311
                 _Geometry=g;
         }
 
+        void IGeometryBuilder.Parse(byte[] data, ICoordinateSystem system)
+        {
+            throw new NotSupportedException();
+        }
+
         /// <summary>Returns the geometry resulting from the actions on the current <see cref="GmlGeometryBuilder" />.</summary>
         public _Geometry ConstructedGeometry
         {

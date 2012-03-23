@@ -255,6 +255,27 @@ namespace GeoSik.SharpMap
                 _Geometry=new SharpGeometry(g);
         }
 
+        /// <summary>Returns the geometry defined by the specified WKB representation, in the specified coordinate system.</summary>
+        /// <param name="data">The WKB representation of the geometry.</param>
+        /// <param name="system">The coordinate system of the WKB representation.</param>
+        public void Parse(byte[] data, ICoordinateSystem system)
+        {
+            Debug.Assert(system!=null);
+            if (system==null)
+                throw new ArgumentNullException("system");
+
+            var g=SmGeometries.Geometry.GeomFromWKB(data);
+            g.SpatialReference=system;
+
+            if ((TargetSystem!=null) && !system.SpatialReferenceEquals(TargetSystem))
+            {
+                _Geometry=null;
+                var orig=new SharpGeometry(g);
+                orig.Populate(this);
+            } else
+                _Geometry=new SharpGeometry(g);
+        }
+
         /// <summary>Returns the geometry resulting from the actions on the current <see cref="SharpGeometryBuilder" />.</summary>
         public SharpGeometry ConstructedGeometry
         {

@@ -124,6 +124,30 @@ namespace GeoSik.Fdo
                 _Geometry=new FdoGeometry(g, system);
         }
 
+        /// <summary>Returns the geometry defined by the specified WKB representation, in the specified coordinate system.</summary>
+        /// <param name="data">The WKB representation of the geometry.</param>
+        /// <param name="system">The coordinate system of the WKB representation.</param>
+        public void Parse(byte[] data, ICoordinateSystem system)
+        {
+            Debug.Assert(system!=null);
+            if (system==null)
+                throw new ArgumentNullException("system");
+
+            var g=Factory.CreateGeometryFromWkb(data);
+
+            if ((TargetSystem!=null) && !system.SpatialReferenceEquals(TargetSystem))
+            {
+                if (_Geometry!=null)
+                {
+                    _Geometry.Dispose();
+                    _Geometry=null;
+                }
+                using (var orig=new FdoGeometry(g, system))
+                    orig.Populate(this);
+            } else
+                _Geometry=new FdoGeometry(g, system);
+        }
+
         private void Dispose(bool disposing)
         {
             if (disposing)

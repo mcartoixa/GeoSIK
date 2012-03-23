@@ -75,6 +75,11 @@ namespace GeoSik.SqlServer
             _Geometry=new SqlGeometry(SqlTypes.SqlGeometry.STGeomFromText((SqlChars)((SqlString)text), (int)system.AuthorityCode), system);
         }
 
+        public void Parse(byte[] data, ICoordinateSystem system)
+        {
+            _Geometry=new SqlGeometry(SqlTypes.SqlGeometry.STGeomFromWKB(new SqlBytes(data), (int)system.AuthorityCode), system);
+        }
+
         public SqlGeometry ConstructedGeometry
         {
             get
