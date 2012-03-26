@@ -162,7 +162,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
 
                 // Performs the query
                 IEnumerable<IXmlSerializable> results=records.StaticCast<IRecord>()
-                    .Select<IRecord, IXmlSerializable>(r => r.GetConverter(namespaceManager).Convert(r, request.ElementSetName.TypedValue))
+                    .Select<IRecord, IXmlSerializable>(r => r.GetConverter(request.outputSchema, namespaceManager).Convert(r, request.ElementSetName.TypedValue))
                     .ToArray<IXmlSerializable>();
 
                 // Core Record types

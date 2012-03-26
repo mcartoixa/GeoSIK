@@ -34,7 +34,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
     public interface IRecord
     {
 
-        IRecordConverter GetConverter(XmlNamespaceManager namespaceManager);
+        IRecordConverter GetConverter(Uri outputSchema, XmlNamespaceManager namespaceManager);
     }
 
     public interface IRecordConverter
