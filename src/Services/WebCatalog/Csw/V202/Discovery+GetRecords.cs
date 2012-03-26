@@ -580,17 +580,17 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 if ((query!=null) && query.Untyped.Elements("{http://www.opengis.net/cat/csw/2.0.2}ElementSetName").Any<XElement>() && !string.IsNullOrEmpty(query.ElementSetName.TypedValue))
                 {
                     results=records.StaticCast<IRecord>()
-                        .Select<IRecord, IXmlSerializable>(r => r.GetConverter(_NamespaceManager).Convert(r, query.ElementSetName.TypedValue));
+                        .Select<IRecord, IXmlSerializable>(r => r.GetConverter(request.outputSchema, _NamespaceManager).Convert(r, query.ElementSetName.TypedValue));
                 } else if ((query!=null) && (query.ElementName!=null) && (query.ElementName.Count>0))
                 {
                     var elementNames=from el in query.Untyped.Descendants()
                                         where el.Name=="{http://www.opengis.net/cat/csw/2.0.2}ElementName"
                                         select el.Value;
                     results=records.StaticCast<IRecord>()
-                        .Select<IRecord, IXmlSerializable>(r => r.GetConverter(_NamespaceManager).Convert(r, elementNames, mayRootPathBeImplied));
+                        .Select<IRecord, IXmlSerializable>(r => r.GetConverter(request.outputSchema, _NamespaceManager).Convert(r, elementNames, mayRootPathBeImplied));
                 } else
                     results=records.StaticCast<IRecord>()
-                        .Select<IRecord, IXmlSerializable>(r => r.GetConverter(_NamespaceManager).Convert(r, "full"));
+                        .Select<IRecord, IXmlSerializable>(r => r.GetConverter(request.outputSchema, _NamespaceManager).Convert(r, "full"));
 
                 // Performs the query
                 results=results.ToArray<IXmlSerializable>();
