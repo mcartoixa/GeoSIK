@@ -183,6 +183,13 @@ namespace GeoSik.SqlServer
             return new SqlGeometry(_Geometry.STEnvelope(), CoordinateSystem);
         }
 
+        /// <summary>Returns a valid representation of the current geometry.</summary>
+        /// <returns>The valid representation of the current geometry.</returns>
+        public SqlGeometry MakeValid()
+        {
+            return new SqlGeometry(_Geometry.MakeValid());
+        }
+
         /// <summary>Applies a geometry type call sequence to the specified <paramref name="sink" />.</summary>
         /// <param name="sink">The sink to populate.</param>
         /// <remarks>
