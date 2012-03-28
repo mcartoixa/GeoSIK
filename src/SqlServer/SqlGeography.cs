@@ -190,7 +190,7 @@ namespace GeoSik.SqlServer
             // Transform into SqlGeometry, calculate, then back to SqlGeography
             // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
 
-            return ToGeography(SqlGeometry.ToGeometry(this).MakeValid().Envelope());
+            return ToGeography(SqlGeometry.ToGeometry(this).Envelope());
         }
 
         /// <summary>Applies a geometry type call sequence to the specified <paramref name="sink" />.</summary>
