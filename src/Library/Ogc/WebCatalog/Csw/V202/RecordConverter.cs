@@ -244,7 +244,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                     {
                         try
                         {
-                            Logger.Error(CultureInfo.InvariantCulture, m => m("Exception {0} occured while creating bounding box for geometry \"{1]\". Message: \"{2}\".", ex.GetType(), g, ex.Message));
+                            Logger.Error(CultureInfo.InvariantCulture, m => m("Exception {0} occured while creating bounding box for geometry \"{1}\". Message: \"{2}\".", ex.GetType(), g, ex.Message));
                         } catch (Exception eex)
                         {
                             Logger.Error(CultureInfo.InvariantCulture, m => m("Exception {0} occured while logging exception {1}. Message: \"{2}\".", eex.GetType(), ex.GetType(), eex.Message));
