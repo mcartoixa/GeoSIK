@@ -27,6 +27,7 @@ using ProjNet.CoordinateSystems;
 namespace GeoSik.Iso.Ts19139.Gmd
 {
 
+#pragma warning disable 3009
     partial class EX_GeographicBoundingBox
     {
 
@@ -46,7 +47,7 @@ namespace GeoSik.Iso.Ts19139.Gmd
             var lc=new List<decimal>(2);
             var uc=new List<decimal>(2);
 
-            // Make sure it is WGS 84 and a GML 3.1.1 instance
+            // Make sure it is WGS 84, and a GML 3.1.1 instance
             var builder=new Ogc.Gml.V311.GmlGeometryBuilder(GeographicCoordinateSystem.WGS84);
             g.Populate(builder);
 
@@ -71,4 +72,5 @@ namespace GeoSik.Iso.Ts19139.Gmd
             };
         }
     }
+#pragma warning restore 3009
 }
