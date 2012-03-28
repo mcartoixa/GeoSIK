@@ -97,6 +97,7 @@
     <Compile Include="GeometryTransformerSink.cs" />
     <Compile Include="GeometryType.cs" />
     <Compile Include="Iso\Ts19139\Gco\_Documentation.cs" />
+    <Compile Include="Iso\Ts19139\Gmd\EX_GeographicBoundingBox.cs" />
     <Compile Include="Iso\Ts19139\Gmd\_Documentation.cs" />
     <Compile Include="Iso\Ts19139\Gsr\_Documentation.cs" />
     <Compile Include="Iso\Ts19139\Gss\_Documentation.cs" />
