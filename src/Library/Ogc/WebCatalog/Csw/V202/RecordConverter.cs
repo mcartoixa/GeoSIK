@@ -28,6 +28,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Xml.XPath;
+using Common.Logging;
 using DC11=GeoSik.DublinCore.Elements.V11;
 using DCTerms=GeoSik.DublinCore.Terms;
 using Filter=GeoSik.Ogc.Filter;
@@ -36,15 +37,29 @@ using Ows100=GeoSik.Ogc.Ows.V100.Types;
 namespace GeoSik.Ogc.WebCatalog.Csw.V202
 {
 
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Converts a <see cref="IRecord" /> instances to CSW records.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
     public class RecordConverter:
         IRecordConverter
     {
 
+        /// <summary>Creates a new instance of the <see cref="RecordConverter" /> class.</summary>
+        /// <param name="namespaceManager">The namespace manager to use.</param>
         public RecordConverter(XmlNamespaceManager namespaceManager)
         {
             _NamespaceManager=namespaceManager;
         }
 
+        /// <summary>Converts the specified <paramref name="record" /> usig the specified element set.</summary>
+        /// <param name="record">The record to convert.</param>
+        /// <param name="elementSet">The element set to use.</param>
+        /// <returns>The converted record.</returns>
         public Types.AbstractRecord Convert(IRecord record, string elementSet)
         {
             var elements=new List<string>();
@@ -90,12 +105,17 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
             return Convert(record, elements, false, typeof(Types.Record));
         }
 
+        /// <summary>Converts the specified <paramref name="record" /> using the specified <paramref name="elements" />.</summary>
+        /// <param name="record">The record to convert.</param>
+        /// <param name="elements">The XPath definitions of the lements to return.</param>
+        /// <param name="mayRootPathBeImplied"><c>true</c> if the root path may not be part of the XPath expressions; <c>false</c> if not.</param>
+        /// <returns>The converted record.</returns>
         public Types.AbstractRecord Convert(IRecord record, IEnumerable<string> elements, bool mayRootPathBeImplied)
         {
             return Convert(record, elements, mayRootPathBeImplied, typeof(Types.Record));
         }
 
-        public Types.AbstractRecord Convert(IRecord record, IEnumerable<string> elements, bool mayRootPathBeImplied, Type recordType)
+        private Types.AbstractRecord Convert(IRecord record, IEnumerable<string> elements, bool mayRootPathBeImplied, Type recordType)
         {
             Action<Types.AbstractRecord, IRecord, Filter.XPathTypeNavigator> converter=ConvertFullRecordField;
             if (recordType==typeof(Types.BriefRecord))
@@ -215,9 +235,21 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
 
                 foreach (ISimpleGeometry g in ensg)
                 {
-                    var box=new Ows100.BoundingBox();
-                    box.InitFromGeometry(g);
-                    r.BoundingBox.Add(box);
+                    try
+                    {
+                        var box=new Ows100.BoundingBox();
+                        box.InitFromGeometry(g);
+                        r.BoundingBox.Add(box);
+                    } catch (Exception ex)
+                    {
+                        try
+                        {
+                            Logger.Error(CultureInfo.InvariantCulture, m => m("Exception {0} occured while creating bounding box for geometry \"{1]\". Message: \"{2}\".", ex.GetType(), g, ex.Message));
+                        } catch (Exception eex)
+                        {
+                            Logger.Error(CultureInfo.InvariantCulture, m => m("Exception {0} occured while logging exception {1}. Message: \"{2}\".", eex.GetType(), ex.GetType(), eex.Message));
+                        }
+                    }
                 }
 
                 return;
@@ -320,6 +352,18 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
             return ret;
         }
 
+        private ILog Logger
+        {
+            get
+            {
+                if (_Logger==null)
+                    _Logger=LogManager.GetCurrentClassLogger();
+
+                return _Logger;
+            }
+        }
+
         private XmlNamespaceManager _NamespaceManager;
+        private ILog _Logger;
     }
 }
