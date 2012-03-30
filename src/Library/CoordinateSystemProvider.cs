@@ -92,6 +92,20 @@ namespace GeoSik
             throw new InvalidOperationException();
         }
 
+        /// <summary>Creates the coordinate system from the specified WKT representation.</summary>
+        /// <param name="text">The WKT representation of the coordinate system to create.</param>
+        /// <returns>The coordinate system.</returns>
+        public ICoordinateSystem CreateFromWkt(string text)
+        {
+            ICoordinateSystem ret=_CoordinateSystemFactory.CreateFromWkt(text);
+
+            var srid=new Srid((int)ret.AuthorityCode);
+            if (!_WktDictionary.ContainsKey(srid))
+                _WktDictionary.Add(srid, text);
+
+            return ret;
+        }
+
         private void OnCreatingCoordinateSystem(CoordinateSystemCreateEventArgs e)
         {
             var eh=CreatingCoordinateSystem;
