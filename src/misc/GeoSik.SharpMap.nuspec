@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>GeoSik.SharpMap</id>
+    <version>1.0</version>
+    <title>GeoSik for SharpMap</title>
+    <authors>Isogeo,mcartoixa</authors>
+    <owners>mcartoixa</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Library that makes GeoSik interoperable with SharpMap spatial types.</description>
+    <projectUrl>http://geosik.codeplex.com/</projectUrl>
+    <iconUrl>http://i3.codeplex.com/Download?ProjectName=geosik&amp;DownloadId=358065</iconUrl>
+    <copyright>Copyright © 2012 Isogeo</copyright>
+    <tags>GeoSik SharpMap</tags>
+    <dependencies>
+      <dependency id="GeoSik" version="1.0" />
+    </dependencies>
+    <references>
+      <reference file="GeoSik.SharpMap.dll" />
+    </references>
+  </metadata>
+  <files> 
+    <file src="src\GeoSik.SharpMap.dll" target="lib\net40" /> 
+    <file src="src\GeoSik.SharpMap.xml" target="lib\net40" />
+    <file src="src\App.config.transform" target="content" />
+    <file src="src\Web.config.transform" target="content" />
+  </files> 
+</package>

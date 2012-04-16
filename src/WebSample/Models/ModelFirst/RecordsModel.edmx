@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GeoSik.WebSample.Models.ModelFirst.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="GeoSikWebSampleModelsModelFirstStoreContainer">
+          <EntitySet Name="Records" EntityType="GeoSik.WebSample.Models.ModelFirst.Store.Records" store:Type="Views" store:Schema="Ogc.Csw" store:Name="Records">
+            <DefiningQuery>SELECT 
+      [Records].[Identifier] AS [Identifier], 
+      [Records].[Title] AS [Title], 
+      [Records].[Subject] AS [Subject], 
+      [Records].[SubjectScheme] AS [SubjectScheme], 
+      [Records].[Description] AS [Description], 
+      [Records].[Date] AS [Date], 
+      [Records].[Type] AS [Type], 
+      [Records].[Format] AS [Format], 
+      [Records].[Relation] AS [Relation], 
+      [Records].[Spatial] AS [Spatial], 
+      [Records].[Coverage] AS [Coverage], 
+      [Records].[AnyText] AS [AnyText]
+      FROM [Ogc.Csw].[Records] AS [Records]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'C:\USERS\MATHIEU.CARTOIXA.HQ\DOCUMENTS\SRC\OGCTOOLKIT\WORK\SRC\WEBSAMPLE\APP_DATA\CSW202TESTDATA.MDF.Ogc.Csw.Records' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Records">
+          <Key>
+            <PropertyRef Name="Identifier" />
+          </Key>
+          <Property Name="Identifier" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="Title" Type="nvarchar" MaxLength="256" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="512" />
+          <Property Name="SubjectScheme" Type="varchar" MaxLength="256" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Date" Type="varchar" MaxLength="10" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="Format" Type="varchar" MaxLength="50" />
+          <Property Name="Relation" Type="varchar" MaxLength="45" />
+          <Property Name="Spatial" Type="varchar" MaxLength="50" />
+          <Property Name="Coverage" Type="varbinary(max)" />
+          <Property Name="AnyText" Type="nvarchar(max)" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <Function Name="Geography_STContains" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geog1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geog2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geography_STCrosses" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geog1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geog2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geography_STDisjoint" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geog1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geog2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geography_STDistance" ReturnType="float" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geog1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geog2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geography_STEquals" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geog1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geog2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geography_STIntersects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geog1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geog2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geography_STOverlaps" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geog1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geog2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geography_STTouches" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geog1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geog2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geography_STWithin" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geog1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geog2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geometry_STContains" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geom1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geom2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geometry_STCrosses" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geom1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geom2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geometry_STDisjoint" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geom1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geom2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geometry_STDistance" ReturnType="float" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geom1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geom2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geometry_STEquals" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geom1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geom2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geometry_STIntersects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geom1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geom2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geometry_STOverlaps" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geom1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geom2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geometry_STTouches" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geom1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geom2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Geometry_STWithin" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="geom1" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="geom2" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="String_Equals" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="string1" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="string2" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="comparison" Type="int" Mode="In" />
+        </Function>
+        <Function Name="String_Like" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="string" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="pattern" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="escape" Type="nchar" Mode="In" />
+          <Parameter Name="comparison" Type="int" Mode="In" />
+        </Function>
+        <Function Name="String_NotEqual" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ogc.Filter">
+          <Parameter Name="string1" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="string2" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="comparison" Type="int" Mode="In" />
+        </Function>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GeoSik.WebSample.Models.ModelFirst" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="MFConceptualEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MFRecords" EntityType="GeoSik.WebSample.Models.ModelFirst.MFRecord" />
+          <AssociationSet Name="FK_Record_Relation" Association="GeoSik.WebSample.Models.ModelFirst.FK_Record_Relation">
+            <End Role="Records" EntitySet="MFRecords" />
+            <End Role="Records1" EntitySet="MFRecords" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="MFRecord">
+          <Key>
+            <PropertyRef Name="Identifier" />
+          </Key>
+          <Property Name="Identifier" Type="String" MaxLength="45" Unicode="false" FixedLength="false" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Subject" Type="GeoSik.WebSample.Models.ModelFirst.MFRecordSubject" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Date" Type="String" />
+          <Property Name="Type" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Format" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Relation" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Spatial" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Coverage" Type="Binary" />
+          <Property Name="AnyText" Type="String" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Records1" Relationship="GeoSik.WebSample.Models.ModelFirst.FK_Record_Relation" FromRole="Records" ToRole="Records1" />
+          <NavigationProperty Name="Records2" Relationship="GeoSik.WebSample.Models.ModelFirst.FK_Record_Relation" FromRole="Records1" ToRole="Records" />
+        </EntityType>
+        <Association Name="FK_Record_Relation">
+          <End Role="Records" Type="GeoSik.WebSample.Models.ModelFirst.MFRecord" Multiplicity="0..1" />
+          <End Role="Records1" Type="GeoSik.WebSample.Models.ModelFirst.MFRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Records">
+              <PropertyRef Name="Identifier" />
+            </Principal>
+            <Dependent Role="Records1">
+              <PropertyRef Name="Relation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="MFRecordSubject">
+          <Property Type="String" Name="Subject" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SubjectScheme" MaxLength="256" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <Function Name="StringCILike" ReturnType="Edm.Boolean">
+          <Parameter Name="expression" Type="Edm.String" />
+          <Parameter Name="pattern" Type="Edm.String" />
+          <Parameter Name="unused1" Type="Edm.String" />
+          <Parameter Name="unused2" Type="Edm.Int32" />
+          <DefiningExpression>
+            expression LIKE pattern
+          </DefiningExpression>
+        </Function>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GeoSikWebSampleModelsModelFirstStoreContainer" CdmEntityContainer="MFConceptualEntities">
+          <EntitySetMapping Name="MFRecords">
+            <EntityTypeMapping TypeName="GeoSik.WebSample.Models.ModelFirst.MFRecord">
+              <MappingFragment StoreEntitySet="Records">
+                <ScalarProperty Name="Identifier" ColumnName="Identifier" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Format" ColumnName="Format" />
+                <ScalarProperty Name="Relation" ColumnName="Relation" />
+                <ScalarProperty Name="Spatial" ColumnName="Spatial" />
+                <ScalarProperty Name="Coverage" ColumnName="Coverage" />
+                <ScalarProperty Name="AnyText" ColumnName="AnyText" />
+                <ComplexProperty Name="Subject">
+                  <ScalarProperty Name="SubjectScheme" ColumnName="SubjectScheme" />
+                  <ScalarProperty Name="Subject" ColumnName="Subject" />
+                </ComplexProperty>
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="RecordsModel">
+        <EntityTypeShape EntityType="GeoSik.WebSample.Models.ModelFirst.MFRecord" Width="1.5" PointX="0.75" PointY="0.75" Height="3.3263964843749996" IsExpanded="true" />
+        <AssociationConnector Association="GeoSik.WebSample.Models.ModelFirst.FK_Record_Relation" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.2819230769230767" PointY="4.076396484375" />
+          <ConnectorPoint PointX="1.2819230769230767" PointY="4.326396484375" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="4.326396484375" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="4.076396484375" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

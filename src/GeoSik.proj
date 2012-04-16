@@ -1,0 +1,133 @@
+<Project
+  DefaultTargets="Rebuild"
+  xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+  ToolsVersion="4.0"
+>
+
+  <PropertyGroup>
+    <ProjectName Condition="'$(ProjectName)'==''">$(MSBuildProjectName)</ProjectName>
+    <WindowsSdkVersion>v7.1</WindowsSdkVersion>
+  </PropertyGroup>
+
+
+  <!-- Projects -->
+  <ItemDefinitionGroup>
+    <Projects>
+      <Configuration>Release</Configuration>
+      <Platform>Any CPU</Platform>
+      <Constants>TRACE</Constants>
+      <Library>True</Library>
+      <Packaged>True</Packaged>
+      <Released>True</Released>
+    </Projects>
+  </ItemDefinitionGroup>
+
+  <ItemGroup>
+    <Projects Include="GeoSik.sln">
+      <PartCoverExclude>[GeoSik]GeoSik.DublinCore.*;[GeoSik]GeoSik.Iso.*;[GeoSik]GeoSik.Ogc.Filter.V*;[GeoSik]GeoSik.Ogc.Gml.V*;[GeoSik]GeoSik.Ogc.Ows.V*;[GeoSik]GeoSik.Ogc.WebCatalog.Csw.V*;[GeoSik]GeoSik.W3.*;[GeoSik]GeoSik.Schemas;[GeoSik]*.SR;[GeoSik.*]*.SR"</PartCoverExclude>
+    </Projects>
+  </ItemGroup>
+
+  <!-- Import external targets -->
+  <Import Project="$(MSBuildProjectDirectory)\build\GeoSik.Common.targets" />
+
+
+
+  <!-- Version update for NuSpec files -->
+  <Target
+    Name="UpdateNuSpecFilesVersion"
+    AfterTargets="UpdateVersion"
+  >
+    <ItemGroup>
+      <NuSpecItems Include="misc\GeoSik.nuspec;misc\GeoSik.*.nuspec" />
+    </ItemGroup>
+    <XmlUpdate
+      XmlFileName="%(NuSpecItems.Identity)"
+      XPath="/package/metadata/version"
+      Value="$(VersionMajor).$(VersionMinor).$(VersionBuild).$(VersionRevision)"
+    />
+    <XmlUpdate
+      XmlFileName="%(NuSpecItems.Identity)"
+      XPath="/package/metadata/dependencies/dependency[contains(@id, 'GeoSik')]/@version"
+      Value="$(VersionMajor).$(VersionMinor).$(VersionBuild).$(VersionRevision)"
+    />
+  </Target>
+
+
+
+  <!-- Refined packaging -->
+  <Target Name="BeforePackage" DependsOnTargets="ReplaceIntellisenseFiles" />
+  <Target Name="ReplaceIntellisenseFiles">
+    <PropertyGroup>
+      <IntellisenseInputDir>$(IntermediateOutputPath)doc\GeoSikHelp\xml\</IntellisenseInputDir>
+      <IntellisenseOutputDir>$(TmpBinOutputPath)GeoSik\Release\Any CPU\</IntellisenseOutputDir>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <IntellisenseItems Include="$(IntellisenseInputDir)*.xml" />
+    </ItemGroup>
+    <Copy
+      SourceFiles="@(IntellisenseItems)"
+      DestinationFolder="$(IntellisenseOutputDir)"
+      OverwriteReadOnlyFiles="true"
+    />
+  </Target>
+
+
+
+  <!-- Refined packaging -->
+  <Target Name="AfterPackage" DependsOnTargets="NuSpecPrePackage;NuSpecPackage" />
+  <ItemGroup>
+    <NuSpecItems Include="misc\*.nuspec" />
+  </ItemGroup>
+
+  <Target Name="NuSpecPrePackage">
+    <PropertyGroup>
+      <NuSpecInputDir>$(TmpOutBinOutputPath)GeoSik_Any CPU_Release\</NuSpecInputDir>
+      <NuSpecTmpOutDir>$(IntermediateOutputPath)pack\All\</NuSpecTmpOutDir>
+    </PropertyGroup>
+    <ItemGroup>
+      <NuSpecElements Include="$(NuSpecInputDir)**\*.*" />
+    </ItemGroup>
+
+    <Copy
+      SourceFiles="@(NuSpecElements)"
+      DestinationFiles="@(NuSpecElements->'$(NuSpecTmpOutDir)src\%(RecursiveDir)%(Filename)%(Extension)')"
+    />
+    <Copy
+      SourceFiles="@(NuSpecItems)"
+      DestinationFiles="@(NuSpecItems->'$(NuSpecTmpOutDir)%(RecursiveDir)%(Filename)%(Extension)')"
+      OverwriteReadOnlyFiles="true"
+    />
+  </Target>
+
+  <Target Name="NuSpecPackage">
+    <ItemGroup>
+      <PackageSpec Include="$(IntermediateOutputPath)pack\**\*.nuspec" />
+    </ItemGroup>
+
+    <MakeDir Directories="$(TmpOutBinOutputPath)" />
+    <Exec
+      Command="&quot;$(NuGetToolPath)&quot; pack &quot;%(NuSpecItems.Filename)%(NuSpecItems.Extension)&quot; -OutputDirectory &quot;$(TmpOutBinOutputPath).&quot;"
+      WorkingDirectory="$(IntermediateOutputPath)pack\All\"
+      YieldDuringToolExecution="True"
+    />
+
+    <PropertyGroup>
+      <ZipInputDir>$(TmpOutBinOutputPath)GeoSik_Any CPU_Release\</ZipInputDir>
+    </PropertyGroup>
+    <ItemGroup>
+      <ZipItems Include="$(ZipInputDir)GeoSik.dll;$(ZipInputDir)GeoSik.xml;$(ZipInputDir)GeoSik.*.dll;$(ZipInputDir)GeoSik.*.xml" />
+      <ZipItems Include="$(ZipInputDir)Irony.dll;$(ZipInputDir)Irony.Interpreter.dll;$(ZipInputDir)ProjNet.dll;$(ZipInputDir)ProjNet.xml" />
+      <ZipItems Include="$(TmpDocOutputPath)**\*.chm" />
+    </ItemGroup>
+    <Zip
+      Files="@(ZipItems)"
+      Flatten="True"
+      ZipFileName="$(TmpOutBinOutputPath)GeoSik.$(VersionMajor).$(VersionMinor).$(VersionBuild).$(VersionRevision).zip"
+      WorkingDirectory="$(ZipInputDir)"
+      ZipLevel="9"
+    />
+  </Target>
+
+</Project>
