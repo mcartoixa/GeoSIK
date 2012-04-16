@@ -43,8 +43,8 @@ namespace GeoSik.SqlServer
     public sealed class SqlGeometryBuilder:
         GeometryTransformerSink,
         IGeometryBuilder,
-        SqlTypes.IGeographySink,
-        SqlTypes.IGeometrySink
+        SqlTypes.IGeographySink110,
+        SqlTypes.IGeometrySink110
     {
 
         /// <summary>Creates a new instance of the <see cref="SqlGeometryBuilder" /> class.</summary>
@@ -153,6 +153,11 @@ namespace GeoSik.SqlServer
                 return new SqlGeometryBuilderWrapper();
         }
 
+        void SqlTypes.IGeographySink110.AddCircularArc(double x1, double y1, double? z1, double? m1, double x2, double y2, double? z2, double? m2)
+        {
+            throw new NotSupportedException();
+        }
+
         void SqlTypes.IGeographySink.AddLine(double latitude, double longitude, double? z, double? m)
         {
             AddLine(longitude, latitude, z);
@@ -181,6 +186,11 @@ namespace GeoSik.SqlServer
         void SqlTypes.IGeographySink.SetSrid(int srid)
         {
             SetCoordinateSystem(CoordinateSystemProvider.Instance.GetById(new Srid(srid)));
+        }
+
+        void SqlTypes.IGeometrySink110.AddCircularArc(double x1, double y1, double? z1, double? m1, double x2, double y2, double? z2, double? m2)
+        {
+            throw new NotSupportedException();
         }
 
         void SqlTypes.IGeometrySink.AddLine(double x, double y, double? z, double? m)
