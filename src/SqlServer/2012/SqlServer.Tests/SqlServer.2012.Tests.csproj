@@ -6,11 +6,11 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{22ECEC42-EE00-43F5-97E6-258B7BFC752E}</ProjectGuid>
+    <ProjectGuid>{4C52E072-D774-43F8-841F-63C1C02C56D0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GeoSik.SqlServer.Tests</RootNamespace>
-    <AssemblyName>GeoSik.SqlServer.Tests</AssemblyName>
+    <AssemblyName>GeoSik.SqlServer.2012.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -101,7 +101,7 @@
       <Project>{3915ADD6-5F33-4452-89EA-8906518E2128}</Project>
       <Name>Library</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SqlServer.csproj">
+    <ProjectReference Include="..\SqlServer.2012.csproj">
       <Project>{5CFC8782-7087-4F37-AA3B-ED503E3BDAE6}</Project>
       <Name>SqlServer</Name>
     </ProjectReference>

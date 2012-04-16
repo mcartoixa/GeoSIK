@@ -232,9 +232,9 @@
       <Project>{34AECC13-2214-4FB6-B4E5-016FEE0120A5}</Project>
       <Name>Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SqlServer\SqlServer.csproj">
+    <ProjectReference Include="..\SqlServer\2008R2\SqlServer.2008R2.csproj">
       <Project>{5CFC8782-7087-4F37-AA3B-ED503E3BDAE6}</Project>
-      <Name>SqlServer</Name>
+      <Name>SqlServer.2008R2</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

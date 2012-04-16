@@ -9,9 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Tests", "Services\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Tests", "Library\Library.Tests\Library.Tests.csproj", "{551A812B-F7C6-4720-B231-0B6210BB8F18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer", "SqlServer\SqlServer.csproj", "{5CFC8782-7087-4F37-AA3B-ED503E3BDAE6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.2008R2", "SqlServer\2008R2\SqlServer.2008R2.csproj", "{5CFC8782-7087-4F37-AA3B-ED503E3BDAE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.Tests", "SqlServer\SqlServer.Tests\SqlServer.Tests.csproj", "{22ECEC42-EE00-43F5-97E6-258B7BFC752E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.2008R2.Tests", "SqlServer\2008R2\SqlServer.Tests\SqlServer.2008R2.Tests.csproj", "{22ECEC42-EE00-43F5-97E6-258B7BFC752E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
