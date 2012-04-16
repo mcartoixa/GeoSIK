@@ -37,11 +37,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "misc", "misc", "{02879CE5-7
 		misc\GeoSik.Services.nuspec = misc\GeoSik.Services.nuspec
 		misc\GeoSik.SharpMap.nuspec = misc\GeoSik.SharpMap.nuspec
 		misc\GeoSik.SqlServer.2008R2.nuspec = misc\GeoSik.SqlServer.2008R2.nuspec
+		misc\GeoSik.SqlServer.2012.nuspec = misc\GeoSik.SqlServer.2012.nuspec
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.2008R2.Tests", "SqlServer\2008R2\SqlServer.Tests\SqlServer.2008R2.Tests.csproj", "{22ECEC42-EE00-43F5-97E6-258B7BFC752E}"
 EndProject
 Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "GeoSikHelp", "doc\GeoSikHelp\GeoSikHelp.shfbproj", "{8B9DC846-D56C-4D19-9604-7D5CEE4828A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.2012", "SqlServer\2012\SqlServer.2012.csproj", "{F78E269D-382D-448D-A847-C083119EF2C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.2012.Tests", "SqlServer\2012\SqlServer.Tests\SqlServer.2012.Tests.csproj", "{4C52E072-D774-43F8-841F-63C1C02C56D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +92,14 @@ Global
 		{22ECEC42-EE00-43F5-97E6-258B7BFC752E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8B9DC846-D56C-4D19-9604-7D5CEE4828A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8B9DC846-D56C-4D19-9604-7D5CEE4828A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F78E269D-382D-448D-A847-C083119EF2C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F78E269D-382D-448D-A847-C083119EF2C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F78E269D-382D-448D-A847-C083119EF2C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F78E269D-382D-448D-A847-C083119EF2C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C52E072-D774-43F8-841F-63C1C02C56D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C52E072-D774-43F8-841F-63C1C02C56D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C52E072-D774-43F8-841F-63C1C02C56D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C52E072-D774-43F8-841F-63C1C02C56D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

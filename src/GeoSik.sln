@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fdo", "Fdo\Fdo.csproj", "{6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpMap", "SharpMap\SharpMap.csproj", "{6470553D-BFB6-40FE-92AC-B9466F129CF0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.2012", "SqlServer\2012\SqlServer.2012.csproj", "{F78E269D-382D-448D-A847-C083119EF2C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{6470553D-BFB6-40FE-92AC-B9466F129CF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6470553D-BFB6-40FE-92AC-B9466F129CF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6470553D-BFB6-40FE-92AC-B9466F129CF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F78E269D-382D-448D-A847-C083119EF2C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F78E269D-382D-448D-A847-C083119EF2C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F78E269D-382D-448D-A847-C083119EF2C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F78E269D-382D-448D-A847-C083119EF2C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

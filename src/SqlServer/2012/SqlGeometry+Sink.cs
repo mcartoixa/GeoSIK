@@ -33,7 +33,7 @@ namespace GeoSik.SqlServer
     {
 
         internal class Sink:
-            SqlTypes.IGeometrySink
+            SqlTypes.IGeometrySink110
         {
 
             public Sink(IGeometrySink sink)
@@ -43,6 +43,11 @@ namespace GeoSik.SqlServer
                     throw new ArgumentNullException("sink");
 
                 _Sink=sink;
+            }
+
+            void SqlTypes.IGeometrySink110.AddCircularArc(double x1, double y1, double? z1, double? m1, double x2, double y2, double? z2, double? m2)
+            {
+                throw new NotSupportedException();
             }
 
             public void AddLine(double x, double y, double? z, double? m)

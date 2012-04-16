@@ -200,7 +200,7 @@ namespace GeoSik.SqlServer
         /// </remarks>
         public void Populate(IGeometrySink sink)
         {
-            var sgs=sink as SqlTypes.IGeographySink;
+            var sgs=sink as SqlTypes.IGeographySink110;
             if (sgs==null)
                 sgs=new Sink(sink);
 
