@@ -41,6 +41,15 @@
     <AssemblyOriginatorKeyFile>..\build\GeoSik.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.2.6.1.841\lib\NET40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Configuration">
+      <HintPath>..\packages\Autofac.2.6.1.841\lib\NET40\Autofac.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="AutofacContrib.CommonServiceLocator">
+      <HintPath>..\packages\Autofac.CommonServiceLocator-unofficial.2.5.2.830\lib\NET40\AutofacContrib.CommonServiceLocator.dll</HintPath>
+    </Reference>
     <Reference Include="Common.Logging">
       <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
     </Reference>
@@ -226,6 +235,10 @@
     <ProjectReference Include="..\Library\Library.csproj">
       <Project>{3915ADD6-5F33-4452-89EA-8906518E2128}</Project>
       <Name>Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjNet\ProjNet.csproj">
+      <Project>{972DE56C-662A-4EC7-A363-0BEE2FC548F9}</Project>
+      <Name>ProjNet</Name>
     </ProjectReference>
     <ProjectReference Include="..\Services\Services.csproj">
       <Project>{34AECC13-2214-4FB6-B4E5-016FEE0120A5}</Project>
