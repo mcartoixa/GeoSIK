@@ -26,6 +26,9 @@ using System.ServiceModel.Web;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using Autofac;
+using AutofacContrib.CommonServiceLocator;
+using Microsoft.Practices.ServiceLocation;
 
 namespace GeoSik.WebSample
 {
@@ -36,12 +39,18 @@ namespace GeoSik.WebSample
         {
             // Code that runs on application startup
 
+            var builder=new ContainerBuilder();
+            builder.RegisterType<ProjNet.CoordinateSystemProvider>().As<ICoordinateSystemProvider>().SingleInstance();
+            var container=builder.Build();
+
+            ServiceLocator.SetLocatorProvider(() => new AutofacContrib.CommonServiceLocator.AutofacServiceLocator(container));
         }
 
         void Application_End(object sender, EventArgs e)
         {
             //  Code that runs on application shutdown
 
+            ServiceLocator.SetLocatorProvider(null);
         }
 
         void Application_Error(object sender, EventArgs e)

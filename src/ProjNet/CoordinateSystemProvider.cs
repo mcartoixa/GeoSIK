@@ -42,7 +42,7 @@ namespace GeoSik.ProjNet
         ICoordinateSystemProvider
     {
 
-        private CoordinateSystemProvider()
+        public CoordinateSystemProvider()
         {
             _CoordinateSystemFactory=new ProjNetCS.CoordinateSystemFactory();
             _WktDictionary=new Dictionary<Srid, string>();
