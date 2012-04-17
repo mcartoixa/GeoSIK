@@ -23,8 +23,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using ProjNet.CoordinateSystems;
 using SqlTypes=Microsoft.SqlServer.Types;
+using Microsoft.Practices.ServiceLocation;
 
 namespace GeoSik.SqlServer
 {
@@ -73,7 +73,7 @@ namespace GeoSik.SqlServer
             public void SetSrid(int srid)
             {
                 _Sink.SetCoordinateSystem(
-                    CoordinateSystemProvider.Instance.GetById(new Srid(srid))
+                    ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().GetById(new Srid(srid))
                 );
             }
 

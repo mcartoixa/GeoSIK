@@ -24,7 +24,6 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using ProjNet.CoordinateSystems;
 using SmGeometries=SharpMap.Geometries;
 
 namespace GeoSik.SharpMap
@@ -151,7 +150,7 @@ namespace GeoSik.SharpMap
                 _CurrentType.Pop();
 
                 if (_CurrentType.Count==0)
-                    _Figures[0].SpatialReference=_SpatialReference;
+                    _Figures[0].SpatialReference=CoordinateSystemUtils.Convert(_SpatialReference);
             }
 
             public SmGeometries.Geometry Geometry
@@ -244,9 +243,9 @@ namespace GeoSik.SharpMap
                 throw new ArgumentNullException("system");
 
             var g=SmGeometries.Geometry.GeomFromText(text);
-            g.SpatialReference=system;
+            g.SpatialReference=CoordinateSystemUtils.Convert(system);
 
-            if ((TargetSystem!=null) && !system.SpatialReferenceEquals(TargetSystem))
+            if ((TargetSystem!=null) && !system.IsEquivalentTo(TargetSystem))
             {
                 _Geometry=null;
                 var orig=new SharpGeometry(g);
@@ -265,9 +264,9 @@ namespace GeoSik.SharpMap
                 throw new ArgumentNullException("system");
 
             var g=SmGeometries.Geometry.GeomFromWKB(data);
-            g.SpatialReference=system;
+            g.SpatialReference=CoordinateSystemUtils.Convert(system);
 
-            if ((TargetSystem!=null) && !system.SpatialReferenceEquals(TargetSystem))
+            if ((TargetSystem!=null) && !system.IsEquivalentTo(TargetSystem))
             {
                 _Geometry=null;
                 var orig=new SharpGeometry(g);

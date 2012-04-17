@@ -24,7 +24,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
-using ProjNet.CoordinateSystems;
+using Microsoft.Practices.ServiceLocation;
 
 namespace GeoSik.Ogc.Gml.V311
 {
@@ -97,15 +97,15 @@ namespace GeoSik.Ogc.Gml.V311
             get
             {
                 if (srsName==null)
-                    return CoordinateSystemProvider.Instance.Wgs84;
+                    return ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().Wgs84;
 
-                return CoordinateSystemProvider.Instance.GetById(Srid.CreateFromCrs(srsName));
+                return ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().GetById(Srid.CreateFromCrs(srsName));
             }
             internal set
             {
                 if (value!=null)
                 {
-                    srsName=new Srid((int)value.AuthorityCode).Crs;
+                    srsName=new Srid((int)value.Code).Crs;
                     srsDimension=value.Dimension;
                 } else
                 {

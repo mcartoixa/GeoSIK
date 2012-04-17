@@ -24,7 +24,6 @@ using System.Data.SqlTypes;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using ProjNet.CoordinateSystems;
 using SqlTypes=Microsoft.SqlServer.Types;
 
 namespace GeoSik.SqlServer
@@ -41,7 +40,7 @@ namespace GeoSik.SqlServer
 
         public void SetCoordinateSystem(ICoordinateSystem system)
         {
-            _Builder.SetSrid((int)system.AuthorityCode);
+            _Builder.SetSrid(system.Code);
             _TargetSystem=system;
         }
 
@@ -72,12 +71,12 @@ namespace GeoSik.SqlServer
 
         public void Parse(string text, ICoordinateSystem system)
         {
-            _Geometry=new SqlGeometry(SqlTypes.SqlGeometry.STGeomFromText((SqlChars)((SqlString)text), (int)system.AuthorityCode), system);
+            _Geometry=new SqlGeometry(SqlTypes.SqlGeometry.STGeomFromText((SqlChars)((SqlString)text), system.Code), system);
         }
 
         public void Parse(byte[] data, ICoordinateSystem system)
         {
-            _Geometry=new SqlGeometry(SqlTypes.SqlGeometry.STGeomFromWKB(new SqlBytes(data), (int)system.AuthorityCode), system);
+            _Geometry=new SqlGeometry(SqlTypes.SqlGeometry.STGeomFromWKB(new SqlBytes(data), system.Code), system);
         }
 
         public SqlGeometry ConstructedGeometry

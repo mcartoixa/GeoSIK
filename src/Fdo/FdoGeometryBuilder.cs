@@ -111,7 +111,7 @@ namespace GeoSik.Fdo
 
             var g=Factory.CreateGeometry(text);
 
-            if ((TargetSystem!=null) && !system.SpatialReferenceEquals(TargetSystem))
+            if ((TargetSystem!=null) && !system.IsEquivalentTo(TargetSystem))
             {
                 if (_Geometry!=null)
                 {
@@ -135,7 +135,7 @@ namespace GeoSik.Fdo
 
             var g=Factory.CreateGeometryFromWkb(data);
 
-            if ((TargetSystem!=null) && !system.SpatialReferenceEquals(TargetSystem))
+            if ((TargetSystem!=null) && !system.IsEquivalentTo(TargetSystem))
             {
                 if (_Geometry!=null)
                 {

@@ -25,7 +25,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
-using ProjNet.CoordinateSystems;
+using Microsoft.Practices.ServiceLocation;
 
 namespace GeoSik.Ogc.Ows.V100.Types
 {
@@ -120,15 +120,15 @@ namespace GeoSik.Ogc.Ows.V100.Types
                 if (crs!=null)
                 {
                     Srid id=Srid.CreateFromCrs(crs);
-                    ret=CoordinateSystemProvider.Instance.GetById(id);
+                    ret=ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().GetById(id);
                 } else
-                    ret=CoordinateSystemProvider.Instance.Wgs84;
+                    ret=ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().Wgs84;
                 return ret;
             }
             set
             {
                 if (value!=null)
-                    crs=new Srid((int)value.AuthorityCode).Crs;
+                    crs=new Srid(value.Code).Crs;
                 else
                     crs=null;
             }
