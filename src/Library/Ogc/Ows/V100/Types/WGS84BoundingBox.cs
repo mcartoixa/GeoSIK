@@ -34,11 +34,11 @@ namespace GeoSik.Ogc.Ows.V100.Types
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().Wgs84;
+                return CommonServiceLocator.GetCoordinateSystemProvider().Wgs84;
             }
             set
             {
-                Debug.Assert(value.Equals(ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().Wgs84));
+                Debug.Assert(value.Equals(CommonServiceLocator.GetCoordinateSystemProvider().Wgs84));
                 // Do nothing
             }
         }

@@ -73,7 +73,7 @@ namespace GeoSik.SqlServer
             public void SetSrid(int srid)
             {
                 _Sink.SetCoordinateSystem(
-                    ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().GetById(new Srid(srid))
+                    CommonServiceLocator.GetCoordinateSystemProvider().GetById(new Srid(srid))
                 );
             }
 

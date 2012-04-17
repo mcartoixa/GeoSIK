@@ -77,7 +77,7 @@ namespace GeoSik
             _SourceSystem=sourceSystem;
 
             if (!_TargetSystem.IsEquivalentTo(_SourceSystem))
-                _Converter=ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().CreateTransformer(_SourceSystem, _TargetSystem);
+                _Converter=CommonServiceLocator.GetCoordinateSystemProvider().CreateTransformer(_SourceSystem, _TargetSystem);
         }
 
         /// <summary>Starts the call sequence for the specified <see cref="GeometryType" />.</summary>

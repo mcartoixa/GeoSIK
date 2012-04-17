@@ -54,7 +54,7 @@ namespace GeoSik.Ogc.SimpleFeature
             }
 
             public JsonSink(JsonWriter writer):
-                base(ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().Wgs84)
+                base(CommonServiceLocator.GetCoordinateSystemProvider().Wgs84)
             {
                 Debug.Assert(writer!=null);
                 if (writer==null)

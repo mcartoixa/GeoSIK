@@ -40,7 +40,7 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
         protected override ISimpleGeometry InitValue(AstContext context, ParseTreeNode treeNode)
         {
             var builder=new Gml.V311.GmlGeometryBuilder();
-            builder.Parse(treeNode.Token.Text, ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().Wgs84);
+            builder.Parse(treeNode.Token.Text, CommonServiceLocator.GetCoordinateSystemProvider().Wgs84);
             return builder.ConstructedGeometry;
         }
     }

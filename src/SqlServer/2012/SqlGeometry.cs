@@ -251,7 +251,7 @@ namespace GeoSik.SqlServer
             get
             {
                 if (_CoordinateSystem==null)
-                    _CoordinateSystem=ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().GetById(new Srid(_Geometry.STSrid.Value));
+                    _CoordinateSystem=CommonServiceLocator.GetCoordinateSystemProvider().GetById(new Srid(_Geometry.STSrid.Value));
 
                 return _CoordinateSystem;
             }

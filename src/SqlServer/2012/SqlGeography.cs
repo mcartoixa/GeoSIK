@@ -207,13 +207,6 @@ namespace GeoSik.SqlServer
             _Geography.Populate(sgs);
         }
 
-        /// <summary>Generates a geometry from its GML representation.</summary>
-        /// <param name="reader">The stream from which the geometry is deserialized. </param>
-        public void ReadXml(XmlReader reader)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>Converts a geometry into its GML representation.</summary>
         /// <param name="writer">The stream to which the geometry is serialized. </param>
         public void WriteXml(XmlWriter writer)
@@ -261,7 +254,7 @@ namespace GeoSik.SqlServer
             get
             {
                 if (_CoordinateSystem==null)
-                    _CoordinateSystem=ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().GetById(new Srid(_Geography.STSrid.Value));
+                    _CoordinateSystem=CommonServiceLocator.GetCoordinateSystemProvider().GetById(new Srid(_Geography.STSrid.Value));
 
                 return _CoordinateSystem;
             }
