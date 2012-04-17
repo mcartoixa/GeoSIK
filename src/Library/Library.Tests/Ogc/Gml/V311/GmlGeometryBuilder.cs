@@ -22,15 +22,38 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ProjNet.CoordinateSystems;
+using Microsoft.Practices.ServiceLocation;
+using Moq;
 using Xunit;
 using Xunit.Extensions;
 
 namespace GeoSik.Ogc.Gml.V311.Tests
 {
 
-    public class GmlGeometryBuilderTests
+    public class GmlGeometryBuilderTests:
+        IDisposable
     {
+
+        public GmlGeometryBuilderTests()
+        {
+            var wgs84Mock=new Mock<ICoordinateSystem>(MockBehavior.Loose);
+            wgs84Mock.Setup(wgs => wgs.Code).Returns(4326);
+            wgs84Mock.Setup(wgs => wgs.Equals(It.IsAny<ICoordinateSystem>())).Returns(true);
+            wgs84Mock.Setup(wgs => wgs.IsEquivalentTo(It.IsAny<ICoordinateSystem>())).Returns(true);
+            var cspMock=new Mock<ICoordinateSystemProvider>(MockBehavior.Loose);
+            cspMock.Setup(csp => csp.Wgs84).Returns(wgs84Mock.Object);
+            cspMock.Setup(csp => csp.GetById(new Srid(4326))).Returns(wgs84Mock.Object);
+
+            var serviceLocatorMock=new Mock<IServiceLocator>(MockBehavior.Loose);
+            serviceLocatorMock.Setup(x => x.GetInstance<ICoordinateSystemProvider>()).Returns(cspMock.Object);
+
+            ServiceLocator.SetLocatorProvider(() => serviceLocatorMock.Object);
+        }
+
+        public void Dispose()
+        {
+            ServiceLocator.SetLocatorProvider(null);
+        }
 
         [Theory]
         [InlineData("Point (10 10)", "POINT (10 10)")]
@@ -50,7 +73,7 @@ namespace GeoSik.Ogc.Gml.V311.Tests
         public void ShouldParseWkt(string input, string expected)
         {
             var builder=new GmlGeometryBuilder();
-            builder.Parse(input, CoordinateSystemProvider.Instance.Wgs84);
+            builder.Parse(input, ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().Wgs84);
 
             var g=builder.ConstructedGeometry;
 

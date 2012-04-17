@@ -27,7 +27,7 @@ using Irony.Ast;
 using Irony.Interpreter;
 using Irony.Interpreter.Ast;
 using Irony.Parsing;
-using ProjNet.CoordinateSystems;
+using Microsoft.Practices.ServiceLocation;
 
 namespace GeoSik.Ogc.WebCatalog.Cql.Ast
 {
@@ -40,7 +40,7 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
         protected override ISimpleGeometry InitValue(AstContext context, ParseTreeNode treeNode)
         {
             var builder=new Gml.V311.GmlGeometryBuilder();
-            builder.Parse(treeNode.Token.Text, CoordinateSystemProvider.Instance.Wgs84);
+            builder.Parse(treeNode.Token.Text, ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().Wgs84);
             return builder.ConstructedGeometry;
         }
     }

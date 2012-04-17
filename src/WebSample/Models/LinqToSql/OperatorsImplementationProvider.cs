@@ -27,7 +27,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Web;
-using ProjNet.CoordinateSystems;
+using Microsoft.Practices.ServiceLocation;
 using SqlTypes=Microsoft.SqlServer.Types;
 
 namespace GeoSik.WebSample.Models.LinqToSql
@@ -139,9 +139,9 @@ namespace GeoSik.WebSample.Models.LinqToSql
             Binary ret=null;
 
             var sgw=geometry as SqlServer.SqlGeography;
-            if ((sgw==null) || !sgw.CoordinateSystem.SpatialReferenceEquals(CoordinateSystemProvider.Instance.Wgs84))
+            if ((sgw==null) || !sgw.CoordinateSystem.IsEquivalentTo(ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().Wgs84))
             {
-                var b=new SqlServer.SqlGeometryBuilder(CoordinateSystemProvider.Instance.Wgs84);
+                var b=new SqlServer.SqlGeometryBuilder(ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().Wgs84);
                 geometry.Populate(b);
                 sgw=(SqlServer.SqlGeography)b.ConstructedGeometry;
             }

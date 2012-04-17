@@ -23,15 +23,38 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using ProjNet.CoordinateSystems;
+using Microsoft.Practices.ServiceLocation;
+using Moq;
 using Xunit;
 using Xunit.Extensions;
 
 namespace GeoSik.Ogc.Gml.V311.Tests
 {
 
-    public class PointTests
+    public class PointTests:
+        IDisposable
     {
+
+        public PointTests()
+        {
+            var wgs84Mock=new Mock<ICoordinateSystem>(MockBehavior.Loose);
+            wgs84Mock.Setup(wgs => wgs.Code).Returns(4326);
+            wgs84Mock.Setup(wgs => wgs.Equals(It.IsAny<ICoordinateSystem>())).Returns(true);
+            wgs84Mock.Setup(wgs => wgs.IsEquivalentTo(It.IsAny<ICoordinateSystem>())).Returns(true);
+            var cspMock=new Mock<ICoordinateSystemProvider>(MockBehavior.Loose);
+            cspMock.Setup(csp => csp.Wgs84).Returns(wgs84Mock.Object);
+            cspMock.Setup(csp => csp.GetById(new Srid(4326))).Returns(wgs84Mock.Object);
+
+            var serviceLocatorMock=new Mock<IServiceLocator>(MockBehavior.Loose);
+            serviceLocatorMock.Setup(x => x.GetInstance<ICoordinateSystemProvider>()).Returns(cspMock.Object);
+
+            ServiceLocator.SetLocatorProvider(() => serviceLocatorMock.Object);
+        }
+
+        public void Dispose()
+        {
+            ServiceLocator.SetLocatorProvider(null);
+        }
 
         [Theory]
         [InlineData(30, 10, null, "POINT (30 10)")]
@@ -39,13 +62,15 @@ namespace GeoSik.Ogc.Gml.V311.Tests
         [InlineData(1.2345, 9.8765, null, "POINT (1.2345 9.8765)")]
         public void ShouldSerializeToWkt(double x, double y, double? z, string expectedWkt)
         {
+            var wgs84Mock=new Mock<ICoordinateSystem>(MockBehavior.Loose);
+
             var coords=new List<double>(new double[] { x, y });
             if (z.HasValue)
                 coords.Add(z.Value);
 
             var point=new Point() {
                 pos=new pos(),
-                CoordinateSystem=CoordinateSystemProvider.Instance.Wgs84
+                CoordinateSystem=ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().Wgs84
             };
             point.pos.Untyped.Value=string.Join(
                 " ",
