@@ -31,9 +31,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpMap", "SharpMap\SharpM
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "misc", "misc", "{02879CE5-78DF-46DC-9EA1-2FABB2BFD78D}"
 	ProjectSection(SolutionItems) = preProject
+		misc\GeoSik.DotSpatial.nuspec = misc\GeoSik.DotSpatial.nuspec
 		misc\GeoSik.Externals.nuspec = misc\GeoSik.Externals.nuspec
 		misc\GeoSik.Fdo.nuspec = misc\GeoSik.Fdo.nuspec
 		misc\GeoSik.nuspec = misc\GeoSik.nuspec
+		misc\GeoSik.ProjNet.nuspec = misc\GeoSik.ProjNet.nuspec
 		misc\GeoSik.Services.nuspec = misc\GeoSik.Services.nuspec
 		misc\GeoSik.SharpMap.nuspec = misc\GeoSik.SharpMap.nuspec
 		misc\GeoSik.SqlServer.nuspec = misc\GeoSik.SqlServer.nuspec
@@ -42,6 +44,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.Tests", "SqlServer\SqlServer.Tests\SqlServer.Tests.csproj", "{22ECEC42-EE00-43F5-97E6-258B7BFC752E}"
 EndProject
 Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "GeoSikHelp", "doc\GeoSikHelp\GeoSikHelp.shfbproj", "{8B9DC846-D56C-4D19-9604-7D5CEE4828A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjNet", "ProjNet\ProjNet.csproj", "{972DE56C-662A-4EC7-A363-0BEE2FC548F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotSpatial", "DotSpatial\DotSpatial.csproj", "{0601007E-07C5-45BA-8148-EDF840E0DF8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +93,14 @@ Global
 		{22ECEC42-EE00-43F5-97E6-258B7BFC752E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8B9DC846-D56C-4D19-9604-7D5CEE4828A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8B9DC846-D56C-4D19-9604-7D5CEE4828A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{972DE56C-662A-4EC7-A363-0BEE2FC548F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{972DE56C-662A-4EC7-A363-0BEE2FC548F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{972DE56C-662A-4EC7-A363-0BEE2FC548F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{972DE56C-662A-4EC7-A363-0BEE2FC548F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0601007E-07C5-45BA-8148-EDF840E0DF8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0601007E-07C5-45BA-8148-EDF840E0DF8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0601007E-07C5-45BA-8148-EDF840E0DF8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0601007E-07C5-45BA-8148-EDF840E0DF8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

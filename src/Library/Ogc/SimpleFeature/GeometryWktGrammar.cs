@@ -29,7 +29,6 @@ using Irony;
 using Irony.Ast;
 using Irony.Parsing;
 using Irony.Interpreter.Ast;
-using ProjNet.CoordinateSystems;
 
 namespace GeoSik.Ogc.SimpleFeature
 {

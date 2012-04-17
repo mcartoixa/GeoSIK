@@ -55,13 +55,12 @@
     <Reference Include="Irony.Interpreter">
       <HintPath>..\lib\Irony\Irony.Interpreter.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.4.5.1\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="ProjNet, Version=1.2.4455.27045, Culture=neutral, PublicKeyToken=a1f5bdcd9c6f5740, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ProjNet.1.2\lib\net20\ProjNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -96,6 +95,9 @@
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="GeometryTransformerSink.cs" />
     <Compile Include="GeometryType.cs" />
+    <Compile Include="ICoordinatesTransformer.cs" />
+    <Compile Include="ICoordinateSystem.cs" />
+    <Compile Include="ICoordinateSystemProvider.cs" />
     <Compile Include="Iso\Ts19139\Gco\_Documentation.cs" />
     <Compile Include="Iso\Ts19139\Gmd\EX_GeographicBoundingBox.cs" />
     <Compile Include="Iso\Ts19139\Gmd\_Documentation.cs" />
@@ -303,7 +305,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <EmbeddedResource Include="Srid.csv" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Schemas.resx">

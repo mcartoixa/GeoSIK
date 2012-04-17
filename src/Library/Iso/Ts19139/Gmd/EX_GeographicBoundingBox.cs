@@ -22,7 +22,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ProjNet.CoordinateSystems;
+using Microsoft.Practices.ServiceLocation;
 
 namespace GeoSik.Iso.Ts19139.Gmd
 {
@@ -48,7 +48,7 @@ namespace GeoSik.Iso.Ts19139.Gmd
             var uc=new List<decimal>(2);
 
             // Make sure it is WGS 84, and a GML 3.1.1 instance
-            var builder=new Ogc.Gml.V311.GmlGeometryBuilder(GeographicCoordinateSystem.WGS84);
+            var builder=new Ogc.Gml.V311.GmlGeometryBuilder(ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().Wgs84);
             g.Populate(builder);
 
             var envelope=builder.ConstructedGeometry.Envelope() as Ogc.Gml.V311.Envelope;

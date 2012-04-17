@@ -26,8 +26,7 @@ using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using ProjNet.CoordinateSystems;
-using ProjNet.CoordinateSystems.Transformations;
+using Microsoft.Practices.ServiceLocation;
 
 namespace GeoSik
 {
@@ -77,8 +76,8 @@ namespace GeoSik
             DoSetCoordinateSystem(_TargetSystem);
             _SourceSystem=sourceSystem;
 
-            if (!_TargetSystem.SpatialReferenceEquals(_SourceSystem))
-                _Transformation=new CoordinateTransformationFactory().CreateFromCoordinateSystems(_SourceSystem, _TargetSystem);
+            if (!_TargetSystem.IsEquivalentTo(_SourceSystem))
+                _Converter=ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().CreateTransformer(_SourceSystem, _TargetSystem);
         }
 
         /// <summary>Starts the call sequence for the specified <see cref="GeometryType" />.</summary>
@@ -153,7 +152,7 @@ namespace GeoSik
         {
             Debug.Assert(_TargetSystem!=null);
             Debug.Assert(_SourceSystem!=null);
-            if ((_Transformation==null) && ((_SourceSystem==null) || (_TargetSystem==null)))
+            if ((_Converter==null) && ((_SourceSystem==null) || (_TargetSystem==null)))
                 throw new InvalidOperationException(SR.CannotBuildGeometryWithoutCoordinateSystemException);
 
             double[] ret=null;
@@ -162,8 +161,8 @@ namespace GeoSik
             else
                 ret=new double[] { x, y };
 
-            if (_Transformation!=null)
-                ret=_Transformation.MathTransform.Transform(ret);
+            if (_Converter!=null)
+                ret=_Converter.Convert(ret);
 
             return ret;
         }
@@ -179,6 +178,6 @@ namespace GeoSik
 
         private ICoordinateSystem _SourceSystem;
         private ICoordinateSystem _TargetSystem;
-        private ICoordinateTransformation _Transformation;
+        private ICoordinatesTransformer _Converter;
     }
 }
