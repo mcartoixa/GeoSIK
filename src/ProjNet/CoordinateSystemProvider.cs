@@ -42,6 +42,7 @@ namespace GeoSik.ProjNet
         ICoordinateSystemProvider
     {
 
+        /// <summary>Creates a new instance of the <see cref="CoordinateSystemProvider" /> class.</summary>
         public CoordinateSystemProvider()
         {
             _CoordinateSystemFactory=new ProjNetCS.CoordinateSystemFactory();
