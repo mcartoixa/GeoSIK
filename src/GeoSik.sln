@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpMap", "SharpMap\SharpM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.2012", "SqlServer\2012\SqlServer.2012.csproj", "{F78E269D-382D-448D-A847-C083119EF2C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjNet", "ProjNet\ProjNet.csproj", "{972DE56C-662A-4EC7-A363-0BEE2FC548F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotSpatial", "DotSpatial\DotSpatial.csproj", "{0601007E-07C5-45BA-8148-EDF840E0DF8D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +47,14 @@ Global
 		{F78E269D-382D-448D-A847-C083119EF2C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F78E269D-382D-448D-A847-C083119EF2C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F78E269D-382D-448D-A847-C083119EF2C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{972DE56C-662A-4EC7-A363-0BEE2FC548F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{972DE56C-662A-4EC7-A363-0BEE2FC548F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{972DE56C-662A-4EC7-A363-0BEE2FC548F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{972DE56C-662A-4EC7-A363-0BEE2FC548F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0601007E-07C5-45BA-8148-EDF840E0DF8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0601007E-07C5-45BA-8148-EDF840E0DF8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0601007E-07C5-45BA-8148-EDF840E0DF8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0601007E-07C5-45BA-8148-EDF840E0DF8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

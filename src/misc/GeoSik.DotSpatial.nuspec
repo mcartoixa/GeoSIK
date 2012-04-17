@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>GeoSik.DotSpatial</id>
+    <version>1.0</version>
+    <title>GeoSik for DotSpatial</title>
+    <authors>Isogeo,mcartoixa</authors>
+    <owners>mcartoixa</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Library that makes GeoSik interoperable with DotSpatial projections.</description>
+    <projectUrl>http://geosik.codeplex.com/</projectUrl>
+    <iconUrl>http://i3.codeplex.com/Download?ProjectName=geosik&amp;DownloadId=358065</iconUrl>
+    <copyright>Copyright © 2012 Isogeo</copyright>
+    <tags>GeoSik DotSpatial coordinate systems projections</tags>
+    <dependencies>
+      <dependency id="GeoSik" version="1.0" />
+      <dependency id="DotSpatial.Projections" version="1.1" />
+    </dependencies>
+    <references>
+      <reference file="GeoSik.DotSpatial.dll" />
+    </references>
+  </metadata>
+  <files>
+    <file src="src\GeoSik.DotSpatial.dll" target="lib\net40" />
+    <file src="src\GeoSik.DotSpatial.xml" target="lib\net40" />
+  </files> 
+</package>

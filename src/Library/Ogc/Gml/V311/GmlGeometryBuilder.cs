@@ -24,7 +24,6 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using ProjNet.CoordinateSystems;
 
 namespace GeoSik.Ogc.Gml.V311
 {
@@ -149,7 +148,7 @@ namespace GeoSik.Ogc.Gml.V311
             SimpleFeature.GeometryWktGrammar.Populate(builder, text, system);
             _Geometry g=(_Geometry)builder.ConstructedGeometry;
 
-            if ((TargetSystem!=null) && !system.SpatialReferenceEquals(TargetSystem))
+            if ((TargetSystem!=null) && !system.IsEquivalentTo(TargetSystem))
                 g.Populate(this);
             else
                 _Geometry=g;

@@ -23,15 +23,39 @@ using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
+using Microsoft.Practices.ServiceLocation;
+using SqlTypes=Microsoft.SqlServer.Types;
+using Moq;
 using Xunit;
 using Xunit.Extensions;
-using SqlTypes=Microsoft.SqlServer.Types;
 
 namespace GeoSik.SqlServer.Tests
 {
 
-    public class SqlGeographyTests
+    public class SqlGeographyTests:
+        IDisposable
     {
+
+        public SqlGeographyTests()
+        {
+            var wgs84Mock=new Mock<ICoordinateSystem>(MockBehavior.Loose);
+            wgs84Mock.Setup(wgs => wgs.Code).Returns(4326);
+            wgs84Mock.Setup(wgs => wgs.Equals(It.IsAny<ICoordinateSystem>())).Returns(true);
+            wgs84Mock.Setup(wgs => wgs.IsEquivalentTo(It.IsAny<ICoordinateSystem>())).Returns(true);
+            var cspMock=new Mock<ICoordinateSystemProvider>(MockBehavior.Loose);
+            cspMock.Setup(csp => csp.Wgs84).Returns(wgs84Mock.Object);
+            cspMock.Setup(csp => csp.GetById(new Srid(4326))).Returns(wgs84Mock.Object);
+
+            var serviceLocatorMock=new Mock<IServiceLocator>(MockBehavior.Loose);
+            serviceLocatorMock.Setup(x => x.GetInstance<ICoordinateSystemProvider>()).Returns(cspMock.Object);
+
+            ServiceLocator.SetLocatorProvider(() => serviceLocatorMock.Object);
+        }
+
+        public void Dispose()
+        {
+            ServiceLocator.SetLocatorProvider(null);
+        }
 
         [Theory]
         [InlineData("Point (10 10)", "POINT (10 10)")]

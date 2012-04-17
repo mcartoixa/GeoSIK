@@ -25,9 +25,8 @@ using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using ProjNet.CoordinateSystems;
-using ProjNet.CoordinateSystems.Transformations;
 using SqlTypes=Microsoft.SqlServer.Types;
+using Microsoft.Practices.ServiceLocation;
 
 namespace GeoSik.SqlServer
 {
@@ -92,7 +91,7 @@ namespace GeoSik.SqlServer
             builder.Parse(text, system);
             IGeometry g=(IGeometry)builder.ConstructedGeometry;
 
-            if ((TargetSystem!=null) && !system.SpatialReferenceEquals(TargetSystem))
+            if ((TargetSystem!=null) && !system.IsEquivalentTo(TargetSystem))
                 g.Populate(this);
             else
                 _Geometry=g;
@@ -111,7 +110,7 @@ namespace GeoSik.SqlServer
             builder.Parse(data, system);
             IGeometry g=(IGeometry)builder.ConstructedGeometry;
 
-            if ((TargetSystem!=null) && !system.SpatialReferenceEquals(TargetSystem))
+            if ((TargetSystem!=null) && !system.IsEquivalentTo(TargetSystem))
                 g.Populate(this);
             else
                 _Geometry=g;
@@ -147,10 +146,10 @@ namespace GeoSik.SqlServer
 
         private static IGeometryBuilder CreateBuilder(ICoordinateSystem system)
         {
-            if ((system is IGeographicCoordinateSystem) || (system is IGeocentricCoordinateSystem))
-                return new SqlGeographyBuilderWrapper();
-            else
+            if (system.IsProjected)
                 return new SqlGeometryBuilderWrapper();
+            else
+                return new SqlGeographyBuilderWrapper();
         }
 
         void SqlTypes.IGeographySink110.AddCircularArc(double x1, double y1, double? z1, double? m1, double x2, double y2, double? z2, double? m2)
@@ -185,7 +184,9 @@ namespace GeoSik.SqlServer
 
         void SqlTypes.IGeographySink.SetSrid(int srid)
         {
-            SetCoordinateSystem(CoordinateSystemProvider.Instance.GetById(new Srid(srid)));
+            SetCoordinateSystem(
+                ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().GetById(new Srid(srid))
+            );
         }
 
         void SqlTypes.IGeometrySink110.AddCircularArc(double x1, double y1, double? z1, double? m1, double x2, double y2, double? z2, double? m2)
@@ -220,7 +221,9 @@ namespace GeoSik.SqlServer
 
         void SqlTypes.IGeometrySink.SetSrid(int srid)
         {
-            SetCoordinateSystem(CoordinateSystemProvider.Instance.GetById(new Srid(srid)));
+            SetCoordinateSystem(
+                ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().GetById(new Srid(srid))
+            );
         }
 
         /// <summary>Returns the geometry resulting from the actions on the current <see cref="SqlGeometryBuilder" />.</summary>

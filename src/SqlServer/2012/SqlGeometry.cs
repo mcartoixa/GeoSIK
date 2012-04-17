@@ -29,8 +29,8 @@ using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
-using ProjNet.CoordinateSystems;
 using SqlTypes=Microsoft.SqlServer.Types;
+using Microsoft.Practices.ServiceLocation;
 
 namespace GeoSik.SqlServer
 {
@@ -251,7 +251,7 @@ namespace GeoSik.SqlServer
             get
             {
                 if (_CoordinateSystem==null)
-                    _CoordinateSystem=CoordinateSystemProvider.Instance.GetById(new Srid(_Geometry.STSrid.Value));
+                    _CoordinateSystem=ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().GetById(new Srid(_Geometry.STSrid.Value));
 
                 return _CoordinateSystem;
             }

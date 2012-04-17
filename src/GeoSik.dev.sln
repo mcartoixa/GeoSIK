@@ -31,9 +31,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpMap", "SharpMap\SharpM
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "misc", "misc", "{02879CE5-78DF-46DC-9EA1-2FABB2BFD78D}"
 	ProjectSection(SolutionItems) = preProject
+		misc\GeoSik.DotSpatial.nuspec = misc\GeoSik.DotSpatial.nuspec
 		misc\GeoSik.Externals.nuspec = misc\GeoSik.Externals.nuspec
 		misc\GeoSik.Fdo.nuspec = misc\GeoSik.Fdo.nuspec
 		misc\GeoSik.nuspec = misc\GeoSik.nuspec
+		misc\GeoSik.ProjNet.nuspec = misc\GeoSik.ProjNet.nuspec
 		misc\GeoSik.Services.nuspec = misc\GeoSik.Services.nuspec
 		misc\GeoSik.SharpMap.nuspec = misc\GeoSik.SharpMap.nuspec
 		misc\GeoSik.SqlServer.2008R2.nuspec = misc\GeoSik.SqlServer.2008R2.nuspec
@@ -47,6 +49,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.2012", "SqlServer\2012\SqlServer.2012.csproj", "{F78E269D-382D-448D-A847-C083119EF2C5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.2012.Tests", "SqlServer\2012\SqlServer.Tests\SqlServer.2012.Tests.csproj", "{4C52E072-D774-43F8-841F-63C1C02C56D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjNet", "ProjNet\ProjNet.csproj", "{972DE56C-662A-4EC7-A363-0BEE2FC548F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotSpatial", "DotSpatial\DotSpatial.csproj", "{0601007E-07C5-45BA-8148-EDF840E0DF8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -100,6 +106,14 @@ Global
 		{4C52E072-D774-43F8-841F-63C1C02C56D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C52E072-D774-43F8-841F-63C1C02C56D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C52E072-D774-43F8-841F-63C1C02C56D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{972DE56C-662A-4EC7-A363-0BEE2FC548F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{972DE56C-662A-4EC7-A363-0BEE2FC548F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{972DE56C-662A-4EC7-A363-0BEE2FC548F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{972DE56C-662A-4EC7-A363-0BEE2FC548F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0601007E-07C5-45BA-8148-EDF840E0DF8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0601007E-07C5-45BA-8148-EDF840E0DF8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0601007E-07C5-45BA-8148-EDF840E0DF8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0601007E-07C5-45BA-8148-EDF840E0DF8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -25,7 +25,6 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using ProjNet.CoordinateSystems;
 
 namespace GeoSik.Ogc.SimpleFeature
 {

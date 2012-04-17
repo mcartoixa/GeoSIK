@@ -27,7 +27,6 @@ using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
-using ProjNet.CoordinateSystems;
 using Gml=GeoSik.Ogc.Gml.V311;
 using SmGeometries=SharpMap.Geometries;
 
@@ -353,7 +352,7 @@ namespace GeoSik.SharpMap
         {
             get
             {
-                return _Geometry.SpatialReference;
+                return CoordinateSystemUtils.Convert(_Geometry.SpatialReference);
             }
         }
 

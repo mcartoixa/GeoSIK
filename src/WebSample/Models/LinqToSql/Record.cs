@@ -87,7 +87,7 @@ namespace GeoSik.WebSample.Models.LinqToSql
                 if (BoundingBox==null)
                     return null;
 
-                return new Srid((int)BoundingBox.CoordinateSystem.AuthorityCode).Crs.ToString();
+                return new Srid(BoundingBox.CoordinateSystem.Code).Crs.ToString();
             }
         }
     }

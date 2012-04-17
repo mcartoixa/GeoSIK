@@ -23,8 +23,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using Microsoft.Practices.ServiceLocation;
 using Newtonsoft.Json;
-using ProjNet.CoordinateSystems;
 
 namespace GeoSik.Ogc.SimpleFeature
 {
@@ -54,7 +54,7 @@ namespace GeoSik.Ogc.SimpleFeature
             }
 
             public JsonSink(JsonWriter writer):
-                base(CoordinateSystemProvider.Instance.Wgs84)
+                base(ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().Wgs84)
             {
                 Debug.Assert(writer!=null);
                 if (writer==null)
@@ -115,7 +115,7 @@ namespace GeoSik.Ogc.SimpleFeature
                     _Writer.WriteEndObject();
             }
 
-            protected override void DoSetCoordinateSystem(ProjNet.CoordinateSystems.ICoordinateSystem system)
+            protected override void DoSetCoordinateSystem(ICoordinateSystem system)
             {
                 // Do nothing (for now): crs is WGS84 by default.
                 // cf. http://geojson.org/geojson-spec.html#coordinate-reference-system-objects

@@ -17,7 +17,7 @@
 // along with GeoSIK. If not, see <http://www.gnu.org/licenses/>.
 //
 ////////////////////////////////////////////////////////////////////////////////
-
+/*
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,4 +53,4 @@ namespace GeoSik
             return left.EqualParams(right);
         }
     }
-}
+}*/

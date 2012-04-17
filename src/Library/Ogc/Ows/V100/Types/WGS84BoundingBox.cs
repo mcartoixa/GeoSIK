@@ -20,7 +20,7 @@
 
 using System;
 using System.Diagnostics;
-using ProjNet.CoordinateSystems;
+using Microsoft.Practices.ServiceLocation;
 
 namespace GeoSik.Ogc.Ows.V100.Types
 {
@@ -34,11 +34,12 @@ namespace GeoSik.Ogc.Ows.V100.Types
         {
             get
             {
-                return CoordinateSystemProvider.Instance.Wgs84;
+                return ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().Wgs84;
             }
             set
             {
-                Debug.Assert(value.SpatialReferenceEquals(CoordinateSystemProvider.Instance.Wgs84));
+                Debug.Assert(value.Equals(ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().Wgs84));
+                // Do nothing
             }
         }
     }
