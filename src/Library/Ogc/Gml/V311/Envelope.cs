@@ -173,9 +173,9 @@ namespace GeoSik.Ogc.Gml.V311
             get
             {
                 if (srsName==null)
-                    return ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().Wgs84;
+                    return CommonServiceLocator.GetCoordinateSystemProvider().Wgs84;
 
-                return ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().GetById(Srid.CreateFromCrs(srsName));
+                return CommonServiceLocator.GetCoordinateSystemProvider().GetById(Srid.CreateFromCrs(srsName));
             }
             internal set
             {

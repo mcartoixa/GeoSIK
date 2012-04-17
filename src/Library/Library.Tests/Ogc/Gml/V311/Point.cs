@@ -70,7 +70,7 @@ namespace GeoSik.Ogc.Gml.V311.Tests
 
             var point=new Point() {
                 pos=new pos(),
-                CoordinateSystem=ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().Wgs84
+                CoordinateSystem=CommonServiceLocator.GetCoordinateSystemProvider().Wgs84
             };
             point.pos.Untyped.Value=string.Join(
                 " ",

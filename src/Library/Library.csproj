@@ -86,6 +86,7 @@
     <Compile Include="..\Version.cs">
       <Link>Properties\Version.cs</Link>
     </Compile>
+    <Compile Include="CommonServiceLocator.cs" />
     <Compile Include="CoordinateSystemExtensions.cs" />
     <Compile Include="CoordinateSystemProvider.cs" />
     <Compile Include="DublinCore\Elements\V11\_Documentation.cs" />

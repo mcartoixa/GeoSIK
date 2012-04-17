@@ -120,9 +120,9 @@ namespace GeoSik.Ogc.Ows.V100.Types
                 if (crs!=null)
                 {
                     Srid id=Srid.CreateFromCrs(crs);
-                    ret=ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().GetById(id);
+                    ret=CommonServiceLocator.GetCoordinateSystemProvider().GetById(id);
                 } else
-                    ret=ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().Wgs84;
+                    ret=CommonServiceLocator.GetCoordinateSystemProvider().Wgs84;
                 return ret;
             }
             set

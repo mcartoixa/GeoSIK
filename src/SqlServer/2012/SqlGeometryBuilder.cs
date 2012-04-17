@@ -185,7 +185,7 @@ namespace GeoSik.SqlServer
         void SqlTypes.IGeographySink.SetSrid(int srid)
         {
             SetCoordinateSystem(
-                ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().GetById(new Srid(srid))
+                CommonServiceLocator.GetCoordinateSystemProvider().GetById(new Srid(srid))
             );
         }
 
@@ -222,7 +222,7 @@ namespace GeoSik.SqlServer
         void SqlTypes.IGeometrySink.SetSrid(int srid)
         {
             SetCoordinateSystem(
-                ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().GetById(new Srid(srid))
+                CommonServiceLocator.GetCoordinateSystemProvider().GetById(new Srid(srid))
             );
         }
 
