@@ -101,6 +101,14 @@ namespace GeoSik.DotSpatial
             get { return _Projection.IsLatLon; }
         }
 
+        internal DsProjections.ProjectionInfo Projection
+        {
+            get
+            {
+                return _Projection;
+            }
+        }
+
         private DsProjections.ProjectionInfo _Projection;
     }
 }

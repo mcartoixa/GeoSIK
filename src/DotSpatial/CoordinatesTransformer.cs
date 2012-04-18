@@ -85,10 +85,11 @@ namespace GeoSik.DotSpatial
             var ret=new List<double[]>(coords.Count);
             for (int i=0; i<coords.Count; ++i)
             {
-                ret[i]=new double[coords[i].Length];
-                Array.Copy(xy, i*2, ret[i], i*2, 2);
+                var r=new double[coords[i].Length];
+                Array.Copy(xy, i*2, r, i*2, 2);
                 if (coords[i].Length>2)
-                    ret[i][2]=z[i];
+                    r[2]=z[i];
+                ret.Add(r);
             }
 
             return ret;

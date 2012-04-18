@@ -22,7 +22,5 @@
   <files> 
     <file src="src\GeoSik.SharpMap.dll" target="lib\net40" /> 
     <file src="src\GeoSik.SharpMap.xml" target="lib\net40" />
-    <file src="src\App.config.transform" target="content" />
-    <file src="src\Web.config.transform" target="content" />
   </files> 
 </package>

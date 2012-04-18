@@ -18,31 +18,24 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using ProjNetCS=ProjNet.CoordinateSystems;
+using System.Reflection;
+using System.Resources;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
-namespace GeoSik.ProjNet
-{
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+[assembly: AssemblyTitle("ProjNet.Tests")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyCulture("")]
 
-    internal static class CoordinateSystemUtils
-    {
+// Setting ComVisible to false makes the types in this assembly not visible 
+// to COM components.  If you need to access a type in this assembly from 
+// COM, set the ComVisible attribute to true on that type.
+[assembly: ComVisible(false)]
 
-        public static ProjNetCS.ICoordinateSystem Convert(ICoordinateSystem system)
-        {
-            if (system==null)
-                return null;
+// The following GUID is for the ID of the typelib if this project is exposed to COM
+[assembly: Guid("c95bac57-3c7a-4131-bbea-890b7addb93d")]
 
-            var cs=system as CoordinateSystem;
-            if (cs==null)
-            {
-                var factory=new ProjNetCS.CoordinateSystemFactory();
-                return factory.CreateFromWkt(system.ToString());
-            }
-
-            return cs.System;
-        }
-    }
-}
+[assembly: NeutralResourcesLanguage("en-US")]

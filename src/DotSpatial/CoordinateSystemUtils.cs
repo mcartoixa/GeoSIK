@@ -35,11 +35,11 @@ namespace GeoSik.DotSpatial
             if (system==null)
                 return null;
 
-            var ret=system as DsProjections.ProjectionInfo;
-            if (ret==null)
-                ret=DsProjections.ProjectionInfo.FromEsriString(system.ToString());
+            var cs=system as CoordinateSystem;
+            if (cs==null)
+                return DsProjections.ProjectionInfo.FromEsriString(system.ToString());
 
-            return ret;
+            return cs.Projection;
         }
     }
 }
