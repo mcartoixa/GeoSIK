@@ -42,7 +42,8 @@ namespace GeoSik.DotSpatial
         ICoordinateSystemProvider
     {
 
-        private CoordinateSystemProvider()
+        /// <summary>Creates a new instance of the <see cref="CoordinateSystemProvider" /> class.</summary>
+        public CoordinateSystemProvider()
         {
             _WktDictionary=new Dictionary<Srid, string>();
         }

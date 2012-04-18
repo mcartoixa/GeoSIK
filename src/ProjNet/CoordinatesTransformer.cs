@@ -64,7 +64,12 @@ namespace GeoSik.ProjNet
         /// <returns>The transformed coordinates.</returns>
         public double[] Convert(double[] coordinates)
         {
-            return _Transformer.Transform(coordinates);
+            var ret=new double[coordinates.Length];
+
+            double[] result=_Transformer.Transform(coordinates);
+            Array.Copy(result, ret, coordinates.Length);
+
+            return ret;
         }
 
         /// <summary>Transforms all the specified coordinates.</summary>

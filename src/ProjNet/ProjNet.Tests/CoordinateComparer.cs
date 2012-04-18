@@ -22,27 +22,37 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ProjNetCS=ProjNet.CoordinateSystems;
 
-namespace GeoSik.ProjNet
+namespace GeoSik.ProjNet.Tests
 {
 
-    internal static class CoordinateSystemUtils
+    internal class CoordinateComparer:
+        IEqualityComparer<double>
     {
 
-        public static ProjNetCS.ICoordinateSystem Convert(ICoordinateSystem system)
+        public CoordinateComparer(int precision)
         {
-            if (system==null)
-                return null;
+            _Precision=precision;
+        }
 
-            var cs=system as CoordinateSystem;
-            if (cs==null)
+        public bool Equals(double x, double y)
+        {
+            if (_Precision.HasValue)
             {
-                var factory=new ProjNetCS.CoordinateSystemFactory();
-                return factory.CreateFromWkt(system.ToString());
+                double rx=Math.Round(x, _Precision.Value);
+                double ry=Math.Round(y, _Precision.Value);
+
+                return rx.Equals(ry);
             }
 
-            return cs.System;
+            return x.Equals(y);
         }
+
+        public int GetHashCode(double obj)
+        {
+            return obj.GetHashCode();
+        }
+
+        private int? _Precision;
     }
 }

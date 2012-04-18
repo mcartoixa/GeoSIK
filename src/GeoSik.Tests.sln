@@ -17,6 +17,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.2012", "SqlServer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.2012.Tests", "SqlServer\2012\SqlServer.Tests\SqlServer.2012.Tests.csproj", "{4C52E072-D774-43F8-841F-63C1C02C56D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjNet", "ProjNet\ProjNet.csproj", "{972DE56C-662A-4EC7-A363-0BEE2FC548F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotSpatial", "DotSpatial\DotSpatial.csproj", "{0601007E-07C5-45BA-8148-EDF840E0DF8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjNet.Tests", "ProjNet\ProjNet.Tests\ProjNet.Tests.csproj", "{299E2DF5-244D-4D32-9D86-C5730657D7A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotSpatial.Tests", "DotSpatial\DotSpatial.Tests\DotSpatial.Tests.csproj", "{2025F930-88A7-43B0-B056-85FF3D83424E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +62,22 @@ Global
 		{4C52E072-D774-43F8-841F-63C1C02C56D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4C52E072-D774-43F8-841F-63C1C02C56D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C52E072-D774-43F8-841F-63C1C02C56D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{972DE56C-662A-4EC7-A363-0BEE2FC548F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{972DE56C-662A-4EC7-A363-0BEE2FC548F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{972DE56C-662A-4EC7-A363-0BEE2FC548F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{972DE56C-662A-4EC7-A363-0BEE2FC548F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0601007E-07C5-45BA-8148-EDF840E0DF8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0601007E-07C5-45BA-8148-EDF840E0DF8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0601007E-07C5-45BA-8148-EDF840E0DF8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0601007E-07C5-45BA-8148-EDF840E0DF8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{299E2DF5-244D-4D32-9D86-C5730657D7A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{299E2DF5-244D-4D32-9D86-C5730657D7A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{299E2DF5-244D-4D32-9D86-C5730657D7A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{299E2DF5-244D-4D32-9D86-C5730657D7A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2025F930-88A7-43B0-B056-85FF3D83424E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2025F930-88A7-43B0-B056-85FF3D83424E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2025F930-88A7-43B0-B056-85FF3D83424E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2025F930-88A7-43B0-B056-85FF3D83424E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

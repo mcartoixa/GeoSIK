@@ -101,6 +101,14 @@ namespace GeoSik.ProjNet
             get { return (_System is ProjNetCS.GeographicCoordinateSystem); }
         }
 
+        internal ProjNetCS.ICoordinateSystem System
+        {
+            get
+            {
+                return _System;
+            }
+        }
+
         private ProjNetCS.ICoordinateSystem _System;
     }
 }
