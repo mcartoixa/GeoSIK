@@ -80,20 +80,37 @@ namespace GeoSik.DotSpatial
             if (id.Value==0)
                 return Wgs84;
 
+            CoordinateSystem ret=null;
+
             // Has the id already been used ?
             if (_WktDictionary.ContainsKey(id))
-                return new CoordinateSystem(DsProjections.ProjectionInfo.FromEsriString(_WktDictionary[id]));
-
-            // Try custom implementation
-            var args=new CoordinateSystemCreateEventArgs(id);
-            OnCreatingCoordinateSystem(args);
-            if (!string.IsNullOrEmpty(args.WellKnownText))
             {
-                _WktDictionary.Add(id, args.WellKnownText);
-                return new CoordinateSystem(DsProjections.ProjectionInfo.FromEsriString(args.WellKnownText));
+                ret=new CoordinateSystem(DsProjections.ProjectionInfo.FromEsriString(_WktDictionary[id]));
+            } else {
+                // Try custom implementation
+                var args=new CoordinateSystemCreateEventArgs(id);
+                OnCreatingCoordinateSystem(args);
+                if (!string.IsNullOrEmpty(args.WellKnownText))
+                {
+                    _WktDictionary.Add(id, args.WellKnownText);
+                    ret=new CoordinateSystem(DsProjections.ProjectionInfo.FromEsriString(args.WellKnownText));
+                }
             }
 
-            throw new InvalidOperationException();
+            if (ret!=null)
+            {
+                if (ret.Projection.EpsgCode==0)
+                    ret.Projection.EpsgCode=id.Value;
+                return ret;
+            }
+
+            throw new InvalidOperationException(
+                string.Format(
+                    CultureInfo.CurrentCulture,
+                    SR.CouldNotFindCoordinateSystemDefinitionException,
+                    id.Value
+                )
+            );
         }
 
         ICoordinateSystem ICoordinateSystemProvider.CreateFromWkt(string text)

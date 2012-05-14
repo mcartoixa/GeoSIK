@@ -114,7 +114,13 @@ namespace GeoSik.ProjNet
                     return new CoordinateSystem(_CoordinateSystemFactory.CreateFromWkt(_WktDictionary[id]));
             }
 
-            throw new InvalidOperationException();
+            throw new InvalidOperationException(
+                string.Format(
+                    CultureInfo.CurrentCulture,
+                    SR.CouldNotFindCoordinateSystemDefinitionException,
+                    id.Value
+                )
+            );
         }
 
         ICoordinateSystem ICoordinateSystemProvider.CreateFromWkt(string text)
