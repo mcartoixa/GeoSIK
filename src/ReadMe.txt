@@ -11,7 +11,7 @@ PREREQUISITES
 
 - Development:
 	* Microsoft Visual Studio 2010 SP1
-	* SQL Server Express 2008 R2
+	* Microsoft SQL Server 2012 Express <http://www.microsoft.com/en-us/download/details.aspx?id=29062>
 	* [Sandcastle Help File Builder 1.9.3.4 Beta 2] <http://shfb.codeplex.com/>
 
 
