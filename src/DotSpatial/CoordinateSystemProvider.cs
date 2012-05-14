@@ -59,14 +59,15 @@ namespace GeoSik.DotSpatial
 
         /// <summary>Creates the coordinate system from the specified WKT representation.</summary>
         /// <param name="text">The WKT representation of the coordinate system to create.</param>
+        /// <param name="id">The identifier of the coordinate system to get.</param>
         /// <returns>The coordinate system.</returns>
-        public ICoordinateSystem CreateFromWkt(string text)
+        public ICoordinateSystem CreateFromWkt(string text, Srid id)
         {
             var ret=new CoordinateSystem(DsProjections.ProjectionInfo.FromEsriString(text));
+            ret.Projection.EpsgCode=id.Value;
 
-            var srid=new Srid(ret.Code);
-            if (!_WktDictionary.ContainsKey(srid))
-                _WktDictionary.Add(srid, text);
+            if (!_WktDictionary.ContainsKey(id))
+                _WktDictionary.Add(id, text);
 
             return ret;
         }
@@ -115,7 +116,7 @@ namespace GeoSik.DotSpatial
 
         ICoordinateSystem ICoordinateSystemProvider.CreateFromWkt(string text)
         {
-            return CreateFromWkt(text);
+            throw new NotSupportedException(SR.CannotCreateCoordinateSystemFromWktException);
         }
 
         ICoordinatesTransformer ICoordinateSystemProvider.CreateTransformer(ICoordinateSystem source, ICoordinateSystem target)
