@@ -98,7 +98,7 @@ namespace GeoSik.DotSpatial
         /// <summary>Indicates whether the coordinate system is projected or not.</summary>
         public bool IsProjected
         {
-            get { return _Projection.IsLatLon; }
+            get { return !_Projection.IsLatLon; }
         }
 
         internal DsProjections.ProjectionInfo Projection
