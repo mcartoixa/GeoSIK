@@ -61,6 +61,15 @@ namespace GeoSik.DotSpatial {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Cannot create a coordinate system from a WKT definition: use the overload that takes a SRID as parameter.
+        /// </summary>
+        internal static string CannotCreateCoordinateSystemFromWktException {
+            get {
+                return ResourceManager.GetString("CannotCreateCoordinateSystemFromWktException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Could not find the definition of coordinate system {0}.
         /// </summary>
         internal static string CouldNotFindCoordinateSystemDefinitionException {

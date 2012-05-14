@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CannotCreateCoordinateSystemFromWktException" xml:space="preserve">
+    <value>Cannot create a coordinate system from a WKT definition: use the overload that takes a SRID as parameter</value>
+  </data>
   <data name="CouldNotFindCoordinateSystemDefinitionException" xml:space="preserve">
     <value>Could not find the definition of coordinate system {0}</value>
   </data>
