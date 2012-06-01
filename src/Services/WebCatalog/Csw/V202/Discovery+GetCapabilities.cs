@@ -206,7 +206,6 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                     IEnumerable<IXMetaData> supportedTypes=((Discovery)Service).SupportedRecordTypes;
 
                     // Creates prefixes for supported records namespaces
-                    int n=0;
                     foreach (IXMetaData st in supportedTypes)
                     {
                         string p=describeRecord.Untyped.GetPrefixOfNamespace(st.SchemaName.Namespace);
@@ -242,7 +241,6 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                     IEnumerable<IXMetaData> supportedTypes=((Discovery)Service).SupportedRecordTypes;
 
                     // Creates prefixes for supported records namespaces
-                    int n=0;
                     foreach (IXMetaData st in supportedTypes)
                     {
                         string p=getRecords.Untyped.GetPrefixOfNamespace(st.SchemaName.Namespace);
