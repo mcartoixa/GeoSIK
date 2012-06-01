@@ -25,6 +25,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using Xml.Schema.Linq;
 using GeoSik.Ogc.Ows;
@@ -92,6 +93,9 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 bool returnAll=((request.Content.Sections==null) || request.Content.Sections.Section.Contains("All"));
 
                 var ret=new Types.Capabilities();
+                ret.Untyped.Add(
+                    new XAttribute(XNamespace.Xmlns+CreateUniquePrefix(Namespaces.OgcOws, ret.Untyped, "ows"), Namespaces.OgcOws)
+                );
                 ret.Filter_Capabilities=CreateFilterCapabilitiesSection();
 
                 if (returnAll || (request.Content.Sections.Section.Contains("OperationsMetadata")))
@@ -100,7 +104,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                     if (om!=null)
                     {
                         ret.Untyped.Add(
-                            new XAttribute(XNamespace.Xmlns+"xl", Namespaces.XLinkNamespace)
+                            new XAttribute(XNamespace.Xmlns+CreateUniquePrefix(Namespaces.XLinkNamespace, ret.Untyped, "xl"), Namespaces.XLinkNamespace)
                         );
                         ret.Content.OperationsMetadata=om;
                     }
@@ -111,7 +115,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                     string xl=ret.Untyped.GetPrefixOfNamespace(Namespaces.XLinkNamespace);
                     if (string.IsNullOrEmpty(xl))
                         ret.Untyped.Add(
-                            new XAttribute(XNamespace.Xmlns+"xl", Namespaces.XLinkNamespace)
+                            new XAttribute(XNamespace.Xmlns+CreateUniquePrefix(Namespaces.XLinkNamespace, ret.Untyped, "xl"), Namespaces.XLinkNamespace)
                         );
                     ret.Content.ServiceProvider=CreateServiceProviderSection();
                 }
@@ -174,7 +178,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 };
 
                 ret.Untyped.Add(
-                    new XAttribute(XNamespace.Xmlns+"gml", Namespaces.OgcGml)
+                    new XAttribute(XNamespace.Xmlns+CreateUniquePrefix(Namespaces.OgcGml, ret.Untyped, "gml"), Namespaces.OgcGml)
                 );
 
                 return ret;
@@ -207,20 +211,9 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                     {
                         string p=describeRecord.Untyped.GetPrefixOfNamespace(st.SchemaName.Namespace);
                         if (string.IsNullOrEmpty(p))
-                        {
-                            string ns=null;
-                            do
-                            {
-                                ns=string.Format(
-                                    CultureInfo.InvariantCulture,
-                                    "ns{0}",
-                                    n++
-                                );
-                            } while (describeRecord.Untyped.GetNamespaceOfPrefix(ns)!=null);
                             describeRecord.Untyped.Add(
-                                new XAttribute(XNamespace.Xmlns+ns, st.SchemaName.Namespace)
+                                new XAttribute(XNamespace.Xmlns+CreateUniquePrefix(st.SchemaName.Namespace, describeRecord.Untyped, null), st.SchemaName.Namespace)
                             );
-                        }
                     }
 
                     describeRecord.Parameter=new Ows100.DomainType[] {
@@ -254,20 +247,9 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                     {
                         string p=getRecords.Untyped.GetPrefixOfNamespace(st.SchemaName.Namespace);
                         if (string.IsNullOrEmpty(p))
-                        {
-                            string ns=null;
-                            do
-                            {
-                                ns=string.Format(
-                                    CultureInfo.InvariantCulture,
-                                    "ns{0}",
-                                    n++
-                                );
-                            } while (getRecords.Untyped.GetNamespaceOfPrefix(ns)!=null);
                             getRecords.Untyped.Add(
-                                new XAttribute(XNamespace.Xmlns+ns, st.SchemaName.Namespace)
+                                new XAttribute(XNamespace.Xmlns+CreateUniquePrefix(st.SchemaName.Namespace, getRecords.Untyped, null), st.SchemaName.Namespace)
                             );
-                        }
                     }
                     getRecords.Parameter=new Ows100.DomainType[] {
                         new Ows100.DomainType() {
@@ -449,6 +431,42 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
 
                 return ret;
             }
+
+            internal static string CreateUniquePrefix(XNamespace ns, XElement parent, string basePrefix)
+            {
+                string ret=parent.GetPrefixOfNamespace(ns);
+                if (!string.IsNullOrEmpty(ret))
+                    throw new InvalidOperationException();
+
+                if (string.IsNullOrWhiteSpace(basePrefix))
+                {
+                    var matches=_NamespacePrefixSelector.Matches(ns.NamespaceName);
+                    if (matches.Count>0)
+                        basePrefix=matches[matches.Count-1].Value;
+                    else
+                        basePrefix="ns";
+                }
+
+                ret=basePrefix;
+                if (parent.GetNamespaceOfPrefix(ret)!=null)
+                {
+                    int n=0;
+                    string bp=basePrefix.Substring(0, 2);
+                    do
+                    {
+                        ret=string.Format(
+                            CultureInfo.InvariantCulture,
+                            "{0}{1}",
+                            basePrefix,
+                            n++
+                        );
+                    } while (parent.GetNamespaceOfPrefix(ret)!=null);
+                }
+
+                return ret;
+            }
+
+            private static Regex _NamespacePrefixSelector=new Regex(@"(?<=/)\w+(?=[/^])", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         }
 
     }
