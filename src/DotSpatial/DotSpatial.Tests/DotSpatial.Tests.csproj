@@ -43,8 +43,11 @@
     <AssemblyOriginatorKeyFile>..\..\build\GeoSik.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotSpatial.Projections">
-      <HintPath>..\..\packages\DotSpatial.Projections.1.1\lib\net40-Client\DotSpatial.Projections.dll</HintPath>
+    <Reference Include="DotSpatial.Projections, Version=0.11.9.6, Culture=neutral, PublicKeyToken=272632bddd08a38b, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DotSpatial.Projections.1.2\lib\net40-Client\DotSpatial.Projections.dll</HintPath>
+    </Reference>
+    <Reference Include="DotSpatial.Projections.Forms">
+      <HintPath>..\..\packages\DotSpatial.Projections.1.2\lib\net40-Client\DotSpatial.Projections.Forms.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
