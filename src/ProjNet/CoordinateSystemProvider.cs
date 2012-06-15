@@ -63,13 +63,7 @@ namespace GeoSik.ProjNet
         /// <returns>The coordinate system.</returns>
         public ICoordinateSystem CreateFromWkt(string text)
         {
-            var ret=new CoordinateSystem(_CoordinateSystemFactory.CreateFromWkt(text));
-
-            var srid=new Srid(ret.Code);
-            if (!_WktDictionary.ContainsKey(srid))
-                _WktDictionary.Add(srid, text);
-
-            return ret;
+            return new CoordinateSystem(_CoordinateSystemFactory.CreateFromWkt(text));
         }
 
         /// <summary>Gets the coordinate system with the specified <paramref name="id" />.</summary>
@@ -86,13 +80,10 @@ namespace GeoSik.ProjNet
                 return new CoordinateSystem(_CoordinateSystemFactory.CreateFromWkt(_WktDictionary[id]));
 
             // Try custom implementation
-            var args=new CoordinateSystemCreateEventArgs(id);
+            var args=new CreatingCoordinateSystemEventArgs(id);
             OnCreatingCoordinateSystem(args);
             if (!string.IsNullOrEmpty(args.WellKnownText))
-            {
-                _WktDictionary.Add(id, args.WellKnownText);
                 return new CoordinateSystem(_CoordinateSystemFactory.CreateFromWkt(args.WellKnownText));
-            }
 
             // Load resources in memory
             if (!_InternalRead)
@@ -138,7 +129,7 @@ namespace GeoSik.ProjNet
             return GetById(id);
         }
 
-        private void OnCreatingCoordinateSystem(CoordinateSystemCreateEventArgs e)
+        private void OnCreatingCoordinateSystem(CreatingCoordinateSystemEventArgs e)
         {
             var eh=CreatingCoordinateSystem;
             if (eh!=null)
@@ -163,44 +154,10 @@ namespace GeoSik.ProjNet
         }
 
         /// <summary>Event triggered when a coordinate system has to be created.</summary>
-        public event EventHandler<CoordinateSystemCreateEventArgs> CreatingCoordinateSystem;
+        public event EventHandler<CreatingCoordinateSystemEventArgs> CreatingCoordinateSystem;
 
         private Dictionary<Srid, string> _WktDictionary;
         private ProjNetCS.CoordinateSystemFactory _CoordinateSystemFactory;
         private bool _InternalRead;
-    }
-
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    ///
-    /// <summary>Arguments for the <see cref="CoordinateSystemProvider.CreatingCoordinateSystem" /> event.</summary>
-    ///
-    ////////////////////////////////////////////////////////////////////////////
-
-    public sealed class CoordinateSystemCreateEventArgs:
-        EventArgs
-    {
-
-        /// <summary>Creates a new instance of the <see cref="CoordinateSystemCreateEventArgs" /> class.</summary>
-        /// <param name="id">The identifier of the coordinate system being created.</param>
-        public CoordinateSystemCreateEventArgs(Srid id)
-        {
-            Id=id;
-        }
-
-        /// <summary>Gets the identifier of the coordinate system being created.</summary>
-        public Srid Id
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>Gets or sets the <see href="html/fdc71072-323b-442a-989d-651ca9a41f4d.htm#wkt">WKT</see> of the coordinate system being created.</summary>
-        public string WellKnownText
-        {
-            get;
-            set;
-        }
     }
 }

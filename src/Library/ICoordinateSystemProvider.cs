@@ -53,5 +53,46 @@ namespace GeoSik
 
         /// <summary>Gets the WGS84 coordinate system.</summary>
         ICoordinateSystem Wgs84 { get; }
+
+        /// <summary>Event triggered when a coordinate system has to be created.</summary>
+        event EventHandler<CreatingCoordinateSystemEventArgs> CreatingCoordinateSystem;
+    }
+
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Arguments for the <see cref="ICoordinateSystemProvider.CreatingCoordinateSystem" /> event.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
+    public sealed class CreatingCoordinateSystemEventArgs:
+        EventArgs
+    {
+
+        private CreatingCoordinateSystemEventArgs()
+        {
+        }
+
+        /// <summary>Creates a new instance of the <see cref="CreatingCoordinateSystemEventArgs" /> class.</summary>
+        /// <param name="id">The identifier of the coordinate system being created.</param>
+        public CreatingCoordinateSystemEventArgs(Srid id)
+        {
+            Id=id;
+        }
+
+        /// <summary>Gets the identifier of the coordinate system being created.</summary>
+        public Srid Id
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>Gets or sets the <see href="html/fdc71072-323b-442a-989d-651ca9a41f4d.htm#wkt">WKT</see> of the coordinate system being created.</summary>
+        public string WellKnownText
+        {
+            get;
+            set;
+        }
     }
 }
