@@ -45,7 +45,6 @@ namespace GeoSik.DotSpatial
         /// <summary>Creates a new instance of the <see cref="CoordinateSystemProvider" /> class.</summary>
         public CoordinateSystemProvider()
         {
-            _WktDictionary=new Dictionary<Srid, string>();
         }
 
         /// <summary>Creates a coordinate system transformer from the specified coordinate systems.</summary>
@@ -64,11 +63,8 @@ namespace GeoSik.DotSpatial
         public ICoordinateSystem CreateFromWkt(string text, Srid id)
         {
             var ret=new CoordinateSystem(DsProjections.ProjectionInfo.FromEsriString(text));
+            // DotSpatial does not fill this field automatically
             ret.Projection.EpsgCode=id.Value;
-
-            if (!_WktDictionary.ContainsKey(id))
-                _WktDictionary.Add(id, text);
-
             return ret;
         }
 
@@ -83,23 +79,14 @@ namespace GeoSik.DotSpatial
 
             CoordinateSystem ret=null;
 
-            // Has the id already been used ?
-            if (_WktDictionary.ContainsKey(id))
-            {
-                ret=new CoordinateSystem(DsProjections.ProjectionInfo.FromEsriString(_WktDictionary[id]));
-            } else {
-                // Try custom implementation
-                var args=new CoordinateSystemCreateEventArgs(id);
-                OnCreatingCoordinateSystem(args);
-                if (!string.IsNullOrEmpty(args.WellKnownText))
-                {
-                    _WktDictionary.Add(id, args.WellKnownText);
-                    ret=new CoordinateSystem(DsProjections.ProjectionInfo.FromEsriString(args.WellKnownText));
-                }
-            }
+            var args=new CreatingCoordinateSystemEventArgs(id);
+            OnCreatingCoordinateSystem(args);
+            if (!string.IsNullOrEmpty(args.WellKnownText))
+                ret=new CoordinateSystem(DsProjections.ProjectionInfo.FromEsriString(args.WellKnownText));
 
             if (ret!=null)
             {
+                // DotSpatial does not fill this field automatically
                 if (ret.Projection.EpsgCode==0)
                     ret.Projection.EpsgCode=id.Value;
                 return ret;
@@ -129,7 +116,7 @@ namespace GeoSik.DotSpatial
             return GetById(id);
         }
 
-        private void OnCreatingCoordinateSystem(CoordinateSystemCreateEventArgs e)
+        private void OnCreatingCoordinateSystem(CreatingCoordinateSystemEventArgs e)
         {
             var eh=CreatingCoordinateSystem;
             if (eh!=null)
@@ -154,42 +141,6 @@ namespace GeoSik.DotSpatial
         }
 
         /// <summary>Event triggered when a coordinate system has to be created.</summary>
-        public event EventHandler<CoordinateSystemCreateEventArgs> CreatingCoordinateSystem;
-
-        private Dictionary<Srid, string> _WktDictionary;
-    }
-
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    ///
-    /// <summary>Arguments for the <see cref="CoordinateSystemProvider.CreatingCoordinateSystem" /> event.</summary>
-    ///
-    ////////////////////////////////////////////////////////////////////////////
-
-    public sealed class CoordinateSystemCreateEventArgs:
-        EventArgs
-    {
-
-        /// <summary>Creates a new instance of the <see cref="CoordinateSystemCreateEventArgs" /> class.</summary>
-        /// <param name="id">The identifier of the coordinate system being created.</param>
-        public CoordinateSystemCreateEventArgs(Srid id)
-        {
-            Id=id;
-        }
-
-        /// <summary>Gets the identifier of the coordinate system being created.</summary>
-        public Srid Id
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>Gets or sets the <see href="html/fdc71072-323b-442a-989d-651ca9a41f4d.htm#wkt">WKT</see> of the coordinate system being created.</summary>
-        public string WellKnownText
-        {
-            get;
-            set;
-        }
+        public event EventHandler<CreatingCoordinateSystemEventArgs> CreatingCoordinateSystem;
     }
 }
