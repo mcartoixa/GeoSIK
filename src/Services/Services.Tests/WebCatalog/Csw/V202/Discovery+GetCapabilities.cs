@@ -41,6 +41,23 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202.Tests
         {
         }
 
+        public class GetCapabilitiesProcessorBaseTests
+        {
+
+            [Theory]
+            [InlineData("http://www.isotc211.org/2005/gmd", null, "gmd")]
+            [InlineData("http://www.opengis.net/cat/csw/2.0.2", null, "csw")]
+            [InlineData("http://www.opengis.net/gml", null, "gml")]
+            [InlineData("http://www.opengis.net/ows", null, "ows")]
+            public void CreateUniquePrefix_ShouldReturnCorrectPrefixes(string ns, string basePrefix, string expected)
+            {
+                XNamespace @namespace=XNamespace.Get(ns);
+                string prefix=Discovery.GetCapabilitiesProcessorBase.CreateUniquePrefix(@namespace, new XElement("Foo"), basePrefix);
+
+                Assert.Equal<string>(expected, prefix);
+            }
+        }
+
         // Gives access to protected methods
         public class GetCapabilitiesProcessorAccessor:
             Discovery.GetCapabilitiesProcessorBase
