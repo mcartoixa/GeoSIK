@@ -464,7 +464,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 return ret;
             }
 
-            private static Regex _NamespacePrefixSelector=new Regex(@"(?<=/)\w+(?=[/^])", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+            private static Regex _NamespacePrefixSelector=new Regex(@"(?<=/)[a-zA-Z]+(?=/?)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         }
 
     }
