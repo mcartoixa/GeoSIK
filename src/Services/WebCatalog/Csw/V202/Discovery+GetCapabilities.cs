@@ -226,10 +226,6 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                                 .Select<IXMetaData, string>(
                                     m => string.Concat(describeRecord.Untyped.GetPrefixOfNamespace(m.SchemaName.Namespace), ":", m.GetType().Name)
                                 ).ToArray<string>()
-                        },
-                        new Ows100.DomainType() {
-                            name=Discovery.ConstraintLanguageParameter,
-                            Value=new string[] { "FILTER", "CQL_TEXT" }
                         }
                     };
                     operations.Add(describeRecord);
@@ -264,6 +260,10 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                                 .Select<IXMetaData, string>(
                                     m => string.Concat(getRecords.Untyped.GetPrefixOfNamespace(m.SchemaName.Namespace), ":", m.GetType().Name)
                                 ).ToArray<string>()
+                        },
+                        new Ows100.DomainType() {
+                            name=Discovery.ConstraintLanguageParameter,
+                            Value=new string[] { "FILTER", "CQL_TEXT" }
                         }
                     };
                     getRecords.Constraint=new Ows100.DomainType[] {
