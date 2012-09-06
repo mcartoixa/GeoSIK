@@ -24,7 +24,7 @@
 
   <ItemGroup>
     <Projects Include="GeoSik.sln">
-      <PartCoverExclude>[GeoSik]GeoSik.DublinCore.*;[GeoSik]GeoSik.Iso.*;[GeoSik]GeoSik.Ogc.Filter.V*;[GeoSik]GeoSik.Ogc.Gml.V*;[GeoSik]GeoSik.Ogc.Ows.V*;[GeoSik]GeoSik.Ogc.WebCatalog.Csw.V*;[GeoSik]GeoSik.W3.*;[GeoSik]GeoSik.Schemas;[GeoSik]*.SR;[GeoSik.*]*.SR"</PartCoverExclude>
+      <OpenCoverFilter>-[GeoSik]GeoSik.DublinCore.*;-[GeoSik]GeoSik.Iso.*;-[GeoSik]GeoSik.Ogc.Filter.V*;-[GeoSik]GeoSik.Ogc.Gml.V*;-[GeoSik]GeoSik.Ogc.Ows.V*;-[GeoSik]GeoSik.Ogc.WebCatalog.Csw.V*;-[GeoSik]GeoSik.W3.*;-[GeoSik]GeoSik.Schemas;[GeoSik]*.SR;-[GeoSik.*]*.SR</OpenCoverFilter>
     </Projects>
   </ItemGroup>
 

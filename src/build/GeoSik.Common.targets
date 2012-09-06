@@ -14,7 +14,7 @@ It must be used with MSBuild 4.0.
 
  * @(Projects): [required]
       - The list of projects (.NET solutions) to compile.
-      - If a solution named %(Filename).Tests%(Extension) is found, it will be compiled and used for unit testing (using xUnit and PartCover)
+      - If a solution named %(Filename).Tests%(Extension) is found, it will be compiled and used for unit testing (using xUnit and OpenCover)
    * %(Configuration): [required]
         - The configuration to use to compile the project.
    * %(Platform): [required]
@@ -29,8 +29,8 @@ It must be used with MSBuild 4.0.
         - The constants to define for the project compilation (usually TRACE).
    * %(Properties): [optional]
         - The additional properties for the project compilation.
-   * %(PartCoverExclude): [optional]
-        - A list of types exclusions for PartCover.
+   * %(OpenCoverFilter): [optional]
+        - A list of type filters for OpenCover.
 
 /////////////////////////////////////////////////////////////////////////// -->
 
@@ -79,6 +79,7 @@ It must be used with MSBuild 4.0.
   </ItemGroup>
 
   <Import Project="$(MSBuildExtensionsPath32)\MSBuildCommunityTasks\MSBuild.Community.Tasks.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\OpenCover\OpenCover.targets" />
   <Import Project="$(IsogeoMSBuildTasksPath)\Isogeo.Build.Tasks.targets" />
   <UsingTask Condition="$(TransformXmlAvailable)" TaskName="TransformXml" AssemblyFile="$(TransformXmlTasksPath)" />
   <UsingTask TaskName="CompressorTask" AssemblyFile="$(MSBuildThisFileDirectory)\Yahoo.Yui.Compressor.dll" />
@@ -201,7 +202,7 @@ It must be used with MSBuild 4.0.
       <ProjectFilename>%(Projects.Filename)</ProjectFilename>
       <_OutDir>$(TestsOutputPath)%(Projects.FileName)\%(Projects.Configuration)\%(Projects.Platform)\</_OutDir>
       <_IntermediateOutputPath>$(IntermediateOutputPath)bin\%(Projects.FileName)\%(Projects.Configuration)\%(Projects.Platform)\</_IntermediateOutputPath>
-      <ProjectPartCoverExclude>%(Projects.PartCoverExclude)</ProjectPartCoverExclude>
+      <ProjectOpenCoverFilter>%(Projects.OpenCoverFilter)</ProjectOpenCoverFilter>
     </PropertyGroup>
     <MSBuild
       Condition="Exists('%(Projects.RelativeDir)%(Projects.Filename)$(UnitTestsSuffix)%(Projects.Extension)')"
@@ -234,17 +235,15 @@ It must be used with MSBuild 4.0.
 
     <!-- Tests + code coverage -->
     <ItemGroup>
-      <PartCoverInclude Include="@(TestedAssemblies->'[%(Filename)]*')" />
-      <PartCoverExclude Include="@(TestAssemblies->'[%(Filename)]*');@(TestedAssemblies->'[%(Filename)]*.Resources.*');@(TestedAssemblies->'[%(Filename)]*.NamespaceDoc')" />
+      <OpenCoverInclude Include="@(TestedAssemblies->'+[%(Filename)]*')" />
+      <OpenCoverExclude Include="@(TestAssemblies->'-[%(Filename)]*');@(TestedAssemblies->'-[%(Filename)]*.Resources.*');@(TestedAssemblies->'-[%(Filename)]*.NamespaceDoc')" />
     </ItemGroup>
-    <PartCover Condition="'@(TestAssemblies)'!=''"
-      Target="$(InputPath)\lib\xunit\xunit.console.clr4.x86.exe"
+    <OpenCover Condition="'@(TestAssemblies)'!=''"
+      Target="$(InputPath)\lib\xunit\xunit.console.clr4.exe"
       TargetArgs="&quot;$(_OutDir)$(ProjectFilename).xunit&quot; /silent"
       TargetWorkingDir="$(_OutDir)"
-      Include="@(PartCoverInclude)"
-      Exclude="[xunit.*]*;$(ProjectPartCoverExclude);@(PartCoverExclude)"
-      Output="$(TmpOutputPath)$(ProjectFilename).partcover-results.xml"
-      ToolsVersion="4.0"
+      Filter="@(OpenCoverInclude);$(ProjectOpenCoverFilter);-[xunit.*]*;@(OpenCoverExclude)"
+      Output="$(TmpOutputPath)$(ProjectFilename).opencover-results.xml"
     />
   </Target>
 

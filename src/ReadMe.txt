@@ -7,7 +7,7 @@ PREREQUISITES
 	* ASP.NET MVC 3 <http://www.asp.net/mvc/mvc3>
 	* MSBuild.Community.Tasks 1.3 <http://msbuildtasks.tigris.org/>
 	* FxCop 10.0
-	* [PartCover .NET4] <https://github.com/sawilde/partcover.net4>
+	* OpenCover 4.0 <https://github.com/sawilde/opencover>
 
 - Development:
 	* Microsoft Visual Studio 2010 SP1
