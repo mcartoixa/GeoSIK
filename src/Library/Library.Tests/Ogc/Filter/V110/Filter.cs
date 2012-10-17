@@ -34,6 +34,18 @@ namespace GeoSik.Ogc.Filter.V110.Tests
     public class FilterTests
     {
 
+        [Theory]
+        [InlineData(1)]
+        [InlineData(10)]
+        public void Filter_ShouldFilterWhenEmpty(int number)
+        {
+            var Filter=FilterTests.CreateFilter("");
+            var selected=FilterTests.CreateCollection(number).AsQueryable<FilterTests.SimpleType>().Where<FilterTests.SimpleType>(Filter);
+
+            Assert.Equal<int>(number, selected.Count<FilterTests.SimpleType>());
+            Assert.Equal<string>("0", selected.First<FilterTests.SimpleType>().String);
+        }
+
         internal static Filter CreateFilter(string constraint)
         {
             var namespaceManager=new XmlNamespaceManager(new NameTable());
@@ -44,11 +56,14 @@ namespace GeoSik.Ogc.Filter.V110.Tests
             ret.Untyped.Add(
                 new XAttribute(XNamespace.Xmlns+"ogc", "http://www.opengis.net/ogc")
             );
-            XmlParserContext context=new XmlParserContext(null, namespaceManager, null, XmlSpace.None);
-            using (var r=new XmlTextReader(constraint, XmlNodeType.Element, context))
+            if (!string.IsNullOrWhiteSpace(constraint))
             {
-                var c=XElement.Load(r);
-                ret.Untyped.AddFirst(c);
+                XmlParserContext context=new XmlParserContext(null, namespaceManager, null, XmlSpace.None);
+                using (var r=new XmlTextReader(constraint, XmlNodeType.Element, context))
+                {
+                    var c=XElement.Load(r);
+                    ret.Untyped.AddFirst(c);
+                }
             }
 
             return ret;

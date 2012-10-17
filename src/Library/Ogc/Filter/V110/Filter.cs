@@ -38,23 +38,27 @@ namespace GeoSik.Ogc.Filter.V110
 
         internal LambdaExpression CreateLambda(IQueryable source, XmlNamespaceManager namespaceManager, bool mayRootPathBeImplied, IOperatorImplementationProvider operatorImplementationProvider, Func<Type, IXmlNamespaceResolver, XPathTypeNavigator> navigatorCreator=null)
         {
+            Expression body=null;
             ParameterExpression[] parameters=new ParameterExpression[] {
                 Expression.Parameter(source.ElementType)
             };
 
-            var ebp=new ExpressionBuilderParameters(parameters, source.Provider, source.ElementType, namespaceManager, mayRootPathBeImplied, operatorImplementationProvider, navigatorCreator);
+            if( !Untyped.IsEmpty )
+            {
+                var ebp=new ExpressionBuilderParameters(parameters, source.Provider, source.ElementType, namespaceManager, mayRootPathBeImplied, operatorImplementationProvider, navigatorCreator);
 
-            Type st=typeof(bool);
-            Expression body=null;
-            if (logicOps!=null)
-                body=logicOps.CreateExpression(ebp, st, null);
-            else if (comparisonOps!=null)
-                body=comparisonOps.CreateExpression(ebp, st, null);
-            else if (spatialOps!=null)
-                body=spatialOps.CreateExpression(ebp, st, null);
+                Type st=typeof(bool);
+                if (logicOps!=null)
+                    body=logicOps.CreateExpression(ebp, st, null);
+                else if (comparisonOps!=null)
+                    body=comparisonOps.CreateExpression(ebp, st, null);
+                else if (spatialOps!=null)
+                    body=spatialOps.CreateExpression(ebp, st, null);
 
-            if (body==null)
-                throw new InvalidOperationException("Invalid filter definition");
+                if (body==null)
+                    throw new InvalidOperationException("Invalid filter definition");
+            } else
+                body=Expression.Constant(true, typeof(bool));
 
             return Expression.Lambda(body, parameters);
         }
