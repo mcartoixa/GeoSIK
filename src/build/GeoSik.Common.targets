@@ -14,7 +14,7 @@ It must be used with MSBuild 4.0.
 
  * @(Projects): [required]
       - The list of projects (.NET solutions) to compile.
-      - If a solution named %(Filename).Tests%(Extension) is found, it will be compiled and used for unit testing (using xUnit and OpenCover)
+      - If a solution named %(Filename).Tests%(Extension) is found, it will be compiled and used for unit testing (using xUnit and PartCover)
    * %(Configuration): [required]
         - The configuration to use to compile the project.
    * %(Platform): [required]
@@ -53,6 +53,7 @@ It must be used with MSBuild 4.0.
     <!-- Tools paths -->
     <BuildToolsPath Condition="'$(BuildToolsPath)'==''">$(MSBuildThisFileDirectory)</BuildToolsPath>
     <NuGetToolPath Condition="'$(NuGetToolPath)'==''">$(InputPath)\.nuget\NuGet.exe</NuGetToolPath>
+    <MSDeployToolPath Condition="'$(MSDeployToolPath)'==''">$(registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\IIS Extensions\MSDeploy\3@InstallPath)msdeploy.exe</MSDeployToolPath>
 
     <!-- Output paths -->
     <BinOutputPath>$(RootPath)\bin\</BinOutputPath>
@@ -117,9 +118,14 @@ It must be used with MSBuild 4.0.
     <ItemGroup>
       <PackageConfigFiles Include="**/packages.config" />
     </ItemGroup>
+    <SetEnvironmentVariable
+      Condition="'$(EnableNuGetPackageRestore)'==''"
+      Variable="EnableNuGetPackageRestore"
+      Value="true"
+    />
     <Exec
       Condition="'@(PackageConfigFiles)'!=''"
-      Command="&quot;$(NuGetToolPath)&quot; install &quot;%(PackageConfigFiles.Identity)&quot; -o packages -s &quot;https://go.microsoft.com/fwlink/?LinkID=230477&quot; -s &quot;$(LocalAppData)\NuGet\Cache&quot;"
+      Command="&quot;$(NuGetToolPath)&quot; install &quot;%(PackageConfigFiles.Identity)&quot; -o packages -source &quot;https://nuget.org/api/v2/&quot; -source &quot;$(LocalAppData)\NuGet\Cache&quot;"
       WorkingDirectory="$(InputPath)"
       YieldDuringToolExecution="True"
     />
@@ -318,7 +324,7 @@ It must be used with MSBuild 4.0.
       Projects="%(Projects.Identity)"
       RebaseOutputs="True"
       Targets="Build"
-      Properties="Configuration=%(Projects.Configuration);Platform=%(Projects.Platform);DefineConstants=%(Projects.Constants)%3BCODE_ANALYSIS;OutDir=$(_OutDir);IntermediateOutputPath=$(_IntermediateOutputPath);RebaseOutputs=True"
+      Properties="Configuration=%(Projects.Configuration);Platform=%(Projects.Platform);DefineConstants=%(Projects.Constants)%3BCODE_ANALYSIS;OutDir=$(_OutDir);IntermediateOutputPath=$(_IntermediateOutputPath);RebaseOutputs=True;%(Projects.Properties)"
       RunEachTargetSeparately="True"
     >
       <Output TaskParameter="TargetOutputs" ItemName="AnalysisOutputs" />
@@ -443,23 +449,23 @@ It must be used with MSBuild 4.0.
       <Output TaskParameter="Include" ItemName="ConfigTransformFiles" />
     </CreateItem>
 
-    <MakeDir Directories="$(IntermediateOutputPath)transforms\$(ProjectsFileName)\%(ProjectsConfiguration)\%(ProjectsPlatform)\%(ConfigFiles.RecursiveDir)" />
+    <MakeDir Directories="$(IntermediateOutputPath)transforms\$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\%(ConfigFiles.RecursiveDir)" />
     <Copy
       SourceFiles="@(ConfigFiles)"
-      DestinationFiles="@(ConfigFiles->'$(IntermediateOutputPath)transforms\$(ProjectsFileName)\%(ProjectsConfiguration)\%(ProjectsPlatform)\%(RecursiveDir)%(Filename)%(Extension)')"
+      DestinationFiles="@(ConfigFiles->'$(IntermediateOutputPath)transforms\$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\%(RecursiveDir)%(Filename)%(Extension)')"
     />
     <Copy
       SourceFiles="@(ConfigTransformFiles)"
-      DestinationFiles="@(ConfigTransformFiles->'$(IntermediateOutputPath)transforms\$(ProjectsFileName)\%(ProjectsConfiguration)\%(ProjectsPlatform)\%(ConfigDir)%(Filename)%(Extension)')"
+      DestinationFiles="@(ConfigTransformFiles->'$(IntermediateOutputPath)transforms\$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\%(ConfigDir)%(Filename)%(Extension)')"
     />
     <Delete
       Condition="'@(ConfigTransformFiles)'!=''"
       Files="@(ConfigTransformFiles)"
     />
     <TransformXml
-      Condition="$(TransformXmlAvailable) And Exists('$(IntermediateOutputPath)transforms\$(ProjectsFileName)\%(ProjectsConfiguration)\%(ProjectsPlatform)\%(ConfigFiles.RecursiveDir)%(ConfigFiles.Filename).$(ProjectsConfiguration)%(ConfigFiles.Extension)')"
-      Source="$(IntermediateOutputPath)transforms\$(ProjectsFileName)\%(ProjectsConfiguration)\%(ProjectsPlatform)\%(ConfigFiles.RecursiveDir)%(ConfigFiles.Filename)%(ConfigFiles.Extension)"
-      Transform="$(IntermediateOutputPath)transforms\$(ProjectsFileName)\%(ProjectsConfiguration)\%(ProjectsPlatform)\%(ConfigFiles.RecursiveDir)%(ConfigFiles.Filename).$(ProjectsConfiguration)%(ConfigFiles.Extension)"
+      Condition="$(TransformXmlAvailable) And Exists('$(IntermediateOutputPath)transforms\$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\%(ConfigFiles.RecursiveDir)%(ConfigFiles.Filename).$(ProjectsConfiguration)%(ConfigFiles.Extension)')"
+      Source="$(IntermediateOutputPath)transforms\$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\%(ConfigFiles.RecursiveDir)%(ConfigFiles.Filename)%(ConfigFiles.Extension)"
+      Transform="$(IntermediateOutputPath)transforms\$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\%(ConfigFiles.RecursiveDir)%(ConfigFiles.Filename).$(ProjectsConfiguration)%(ConfigFiles.Extension)"
       Destination="%(ConfigFiles.FullPath)"
     />
 
@@ -514,7 +520,7 @@ It must be used with MSBuild 4.0.
       <SymbolItems Include="$(PackageInputBaseDir)**\*.pdb" Exclude="$(PackageInputBaseDir)**\CodeContracts\**\*.*" />
     </ItemGroup>
 
-    <MakeDir Directories="$(PackageTmpOutDir)lib" />
+    <MakeDir Condition="$(ProjectsPackaged) And Exists('$(ProjectsFileName).nuspec')" Directories="$(PackageTmpOutDir)lib" />
     <Move
       Condition="$(ProjectsPackaged) And Exists('$(ProjectsFileName).nuspec')"
       SourceFiles="@(PackagedItems)"
@@ -527,7 +533,7 @@ It must be used with MSBuild 4.0.
       OverwriteReadOnlyFiles="true"
     />
 
-    <MakeDir Directories="$(TmpOutBinOutputPath)" />
+    <MakeDir Condition="$(ProjectsPackaged) And Exists('$(ProjectsFileName).nuspec')" Directories="$(TmpOutBinOutputPath)" />
     <Exec
       Condition="$(ProjectsPackaged) And Exists('$(ProjectsFileName).nuspec')"
       Command="&quot;$(NuGetToolPath)&quot; pack &quot;$(PackageTmpOutDir)$(ProjectsFileName).nuspec&quot; -OutputDirectory &quot;$(TmpOutBinOutputPath).&quot;"
@@ -551,13 +557,21 @@ It must be used with MSBuild 4.0.
       <ProjectsPlatform>%(Projects.Platform)</ProjectsPlatform>
       <ProjectsPackaged>%(Projects.Packaged)</ProjectsPackaged>
 
-      <PackageInputBaseDir Condition="Exists('$(TmpBinOutputPath)$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\_PublishedWebsites')">$(TmpBinOutputPath)$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\_PublishedWebsites\</PackageInputBaseDir>
-      <PackageInputBaseDir Condition="'$(PackageInputBaseDir)'==''">$(TmpBinOutputPath)$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\</PackageInputBaseDir>
+      <PackageBaseName>$(ProjectsFileName)_$(ProjectsPlatform.Replace(" ", ""))_$(ProjectsConfiguration)_$(VersionMajor).$(VersionMinor).$(VersionBuild).$(VersionRevision)</PackageBaseName>
+
+      <IsWebSite>False</IsWebSite>
+      <IsWebSite Condition="Exists('$(TmpBinOutputPath)$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\_PublishedWebsites')">True</IsWebSite>
+      <PackageInputBaseDir>$(TmpBinOutputPath)$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\</PackageInputBaseDir>
+      <PackageInputBaseDir Condition="$(IsWebSite)">$(TmpBinOutputPath)$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\_PublishedWebsites\</PackageInputBaseDir>
+      <PackageTmpOutDir>$(IntermediateOutputPath)pack\</PackageTmpOutDir>
+      <ProjectPackageTmpOutDir>$(PackageTmpOutDir)$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\</ProjectPackageTmpOutDir>
     </PropertyGroup>
     <ItemGroup>
+      <ParamFile Condition="$(IsWebSite)" Include="$(PackageInputBaseDir)*\Parameters.xml" />
+      <PackageInputDirItem Condition="$(IsWebSite)" Include="$(PackageInputBaseDir)*\Web.config" />
       <PackagedItems
-        Include="$(PackageInputBaseDir)**\*.*"
-        Exclude="$(PackageInputBaseDir)**\*.pdb;$(PackageInputBaseDir)**\*.map;$(PackageInputBaseDir)**\CodeContracts\**\*.*"
+        Include="$(PackageInputBaseDir)*\**\*.*"
+        Exclude="@(ParamFile);$(PackageInputBaseDir)**\*.pdb;$(PackageInputBaseDir)**\*.map;$(PackageInputBaseDir)**\CodeContracts\**\*.*"
       />
       <SymbolItems Include="$(PackageInputBaseDir)**\*.pdb" Exclude="$(PackageInputBaseDir)**\CodeContracts\**\*.*" />
     </ItemGroup>
@@ -565,22 +579,71 @@ It must be used with MSBuild 4.0.
     <Copy
       Condition="$(ProjectsPackaged) And !Exists('$(ProjectsFileName).nuspec') And %(Projects.Library)"
       SourceFiles="@(PackagedItems)"
-      DestinationFiles="@(PackagedItems->'$(TmpOutBinOutputPath)$(ProjectsFileName)_$(ProjectsPlatform)_$(ProjectsConfiguration)\%(RecursiveDir)%(Filename)%(Extension)')"
+      DestinationFiles="@(PackagedItems->'$(TmpOutBinOutputPath)$(PackageBaseName)\%(RecursiveDir)%(Filename)%(Extension)')"
       OverwriteReadOnlyFiles="true"
       SkipUnchangedFiles="true"
     />
     <Zip
       Condition="$(ProjectsPackaged) And !Exists('$(ProjectsFileName).nuspec') And !%(Projects.Library)"
       Files="@(PackagedItems)"
-      ZipFileName="$(TmpOutBinOutputPath)$(ProjectsFileName)_$(ProjectsPlatform)_$(ProjectsConfiguration).zip"
+      ZipFileName="$(TmpOutBinOutputPath)$(PackageBaseName).zip"
       WorkingDirectory="$(PackageInputBaseDir)"
+      ZipLevel="9"
+    />
+
+    <PropertyGroup>
+      <PackageInputDir Condition="'@(PackageInputDirItem)'!=''">@(PackageInputDirItem->'%(RootDir)%(Directory)')</PackageInputDir>
+    </PropertyGroup>
+    <MakeDir Condition="$(ProjectsPackaged) And !Exists('$(ProjectsFileName).nuspec') And !%(Projects.Library) And $(IsWebSite)" Directories="$(PackageTmpOutDir)" />
+    <Copy
+      Condition="$(ProjectsPackaged) And !Exists('$(ProjectsFileName).nuspec') And !%(Projects.Library) And $(IsWebSite)"
+      SourceFiles="$(BuildToolsPath)\Empty.manifest.xml"
+      DestinationFiles="$(PackageTmpOutDir)$(PackageBaseName).manifest.xml"
+      OverwriteReadOnlyFiles="true"
+    />
+    <XmlPoke
+      Condition="$(ProjectsPackaged) And !Exists('$(ProjectsFileName).nuspec') And !%(Projects.Library) And $(IsWebSite)"
+      XmlInputPath="$(PackageTmpOutDir)$(PackageBaseName).manifest.xml"
+      Query="/isogeoInstallManifest"
+      Value="&lt;contentPath path=&quot;$(PackageInputDir)&quot; /&gt;"
+    />
+
+    <PropertyGroup>
+      <EscapedPackageInputBaseDir>$(PackageInputDir.Replace("\", "\\"))</EscapedPackageInputBaseDir>
+      <DeclareParamFile Condition="'@(ParamFile)'!=''"> -declareParamFile:"@(ParamFile)"</DeclareParamFile>
+    </PropertyGroup>
+    <MakeDir Condition="$(ProjectsPackaged) And !Exists('$(ProjectsFileName).nuspec') And !%(Projects.Library) And $(IsWebSite)" Directories="$(ProjectPackageTmpOutDir)" />
+    <Exec
+      Condition="$(ProjectsPackaged) And !Exists('$(ProjectsFileName).nuspec') And !%(Projects.Library) And $(IsWebSite)"
+      Command="&quot;$(MSDeployToolPath)&quot; -verb:sync -source:manifest=&quot;$(PackageTmpOutDir)$(PackageBaseName).manifest.xml&quot; -dest:package=&quot;$(ProjectPackageTmpOutDir)package.zip&quot;$(DeclareParamFile) -replace:objectName=path,match=&quot;$(EscapedPackageInputBaseDir)&quot;,replace=&quot;C:\inetpub\$(ProjectsFileName)\&quot;"
+      WorkingDirectory="$(InputPath)"
+      YieldDuringToolExecution="True"
+    />
+    <ItemGroup>
+      <InstallFiles Include="$(InputPath)\install\$(ProjectsFileName)\**\*.*" />
+    </ItemGroup>
+    <Copy
+      Condition="$(ProjectsPackaged) And !Exists('$(ProjectsFileName).nuspec') And !%(Projects.Library) And $(IsWebSite)"
+      SourceFiles="@(InstallFiles)"
+      DestinationFiles="@(InstallFiles->'$(ProjectPackageTmpOutDir)%(RecursiveDir)%(Filename)%(Extension)')"
+      OverwriteReadOnlyFiles="true"
+      SkipUnchangedFiles="true"
+    />
+    <ItemGroup>
+      <DeployPackagedItems Include="$(ProjectPackageTmpOutDir)**\*.*" />
+    </ItemGroup>
+    <Zip
+      Condition="$(ProjectsPackaged) And !Exists('$(ProjectsFileName).nuspec') And !%(Projects.Library) And $(IsWebSite)"
+      Files="@(DeployPackagedItems)"
+      ZipFileName="$(TmpOutBinOutputPath)$(PackageBaseName).install.zip"
+      WorkingDirectory="$(ProjectPackageTmpOutDir)"
       ZipLevel="9"
     />
 
     <Copy
       Condition="$(ProjectsPackaged) And !Exists('$(ProjectsFileName).nuspec')"
       SourceFiles="@(SymbolItems)"
-      DestinationFiles="@(SymbolItems->'$(TmpOutPdbOutputPath)$(ProjectsFileName)_$(ProjectsPlatform)_$(ProjectsConfiguration)\%(RecursiveDir)%(Filename)%(Extension)')"
+      DestinationFiles="@(SymbolItems->'$(TmpOutPdbOutputPath)$(PackageBaseName)\%(RecursiveDir)%(Filename)%(Extension)')"
       OverwriteReadOnlyFiles="true"
       SkipUnchangedFiles="true"
     />
