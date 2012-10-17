@@ -83,7 +83,7 @@
 
   <Target Name="NuSpecPrePackage">
     <PropertyGroup>
-      <NuSpecInputDir>$(TmpOutBinOutputPath)GeoSik_Any CPU_Release\</NuSpecInputDir>
+      <NuSpecInputDir>$(TmpBinOutputPath)GeoSik\Release\Any CPU\</NuSpecInputDir>
       <NuSpecTmpOutDir>$(IntermediateOutputPath)pack\All\</NuSpecTmpOutDir>
     </PropertyGroup>
     <ItemGroup>
@@ -114,7 +114,7 @@
     />
 
     <PropertyGroup>
-      <ZipInputDir>$(TmpOutBinOutputPath)GeoSik_Any CPU_Release\</ZipInputDir>
+      <ZipInputDir>$(TmpBinOutputPath)GeoSik\Release\Any CPU\</ZipInputDir>
     </PropertyGroup>
     <ItemGroup>
       <ZipItems Include="$(ZipInputDir)GeoSik.dll;$(ZipInputDir)GeoSik.xml;$(ZipInputDir)GeoSik.*.dll;$(ZipInputDir)GeoSik.*.xml" />
