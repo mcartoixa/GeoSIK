@@ -305,6 +305,7 @@ namespace GeoSik.Ogc.WebCatalog.Cql
                 return;
 
             var astContext=new InterpreterAstContext(language, _OperatorHandler);
+            astContext.DefaultNodeType=typeof(NotSupportedNode);
             var astBuilder=new AstBuilder(astContext);
             astBuilder.BuildAst(parseTree);
         }

@@ -68,7 +68,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Xml.Schema.Linq">
       <HintPath>..\packages\LinqToXsd.2.0.2\lib\Xml.Schema.Linq.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>

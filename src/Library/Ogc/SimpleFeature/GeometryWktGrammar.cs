@@ -197,6 +197,20 @@ namespace GeoSik.Ogc.SimpleFeature
             ((IGeometryTap)tree.Root.AstNode).Populate(sink);
         }
 
+        /// <summary>Builds the AST for the specified language data and parse tree.</summary>
+        /// <param name="language">The language data.</param>
+        /// <param name="parseTree">The parse tree to build the AST against.</param>
+        public override void BuildAst(LanguageData language, ParseTree parseTree)
+        {
+            if(!LanguageFlags.IsSet(LanguageFlags.CreateAst))
+                return;
+
+            var astContext=new AstContext(language);
+            astContext.DefaultNodeType=typeof(NotSupportedNode);
+            var astBuilder=new AstBuilder(astContext);
+            astBuilder.BuildAst(parseTree);
+        }
+
         private static LanguageData LanguageData
         {
             get
