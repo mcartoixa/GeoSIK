@@ -67,7 +67,8 @@ namespace GeoSik.Ogc.WebCatalog.Cql
                             new ArgumentException(
                                 string.Format(
                                     parser.Context.Culture,
-                                    "({0},{1}): {2}: {3}",
+                                    SR.CqlSyntaxErrorException,
+                                    constraint,
                                     lm.Location.Line,
                                     lm.Location.Column,
                                     lm.Level,
