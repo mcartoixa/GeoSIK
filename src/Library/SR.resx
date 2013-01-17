@@ -123,6 +123,9 @@
   <data name="CannotBuildGeometryWithoutCoordinateSystemException" xml:space="preserve">
     <value>A geometry cannot be built without a coordinate system</value>
   </data>
+  <data name="CqlSyntaxErrorException" xml:space="preserve">
+    <value>CQL syntax error in expression "{0}" ({0},{1}): {2}: {3}</value>
+  </data>
   <data name="CqlTermNotImplementedException" xml:space="preserve">
     <value>The CQL term "{0}" has not been implemented</value>
   </data>
