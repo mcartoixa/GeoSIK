@@ -19,6 +19,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 using System;
+using System.Collections.Specialized;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
@@ -29,12 +31,34 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
         Ows.IRequest
     {
 
+        /// <summary>Transforms the current request in a collection of corresponding key-value pairs.</summary>
+        /// <returns>The collection of key-value pairs.</returns>
+        NameValueCollection Ows.IRequest.ToKeyValuePairs()
+        {
+            var ret = new NameValueCollection();
+
+            ret.Add( "request", "GetCapabilities" );
+            if( !string.IsNullOrEmpty( this.Content.service ) )
+                ret.Add( "service", this.Content.service );
+            ret.Add( "acceptVersion", "2.0.2" );
+
+            if( this.Content.AcceptVersions != null )
+                ret.Add( "acceptVersion", string.Join( ",", this.Content.AcceptVersions.Version ) );
+
+            if( this.Content.AcceptFormats != null )
+                ret.Add( "outputFormat", string.Join( ",", this.Content.AcceptFormats.OutputFormat ) );
+
+            return ret;
+        }
+
+        /// <summary>Gets the version of this request.</summary>
         [XmlIgnore]
         string Ows.IRequest.Version
         {
             get { return null; }
         }
 
+        /// <summary>Gets the name of the service concerned by this request.</summary>
         [XmlIgnore]
         string Ows.IRequest.Service
         {
