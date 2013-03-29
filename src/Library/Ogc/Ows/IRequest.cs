@@ -20,6 +20,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
@@ -27,11 +28,26 @@ using System.Xml.Serialization;
 namespace GeoSik.Ogc.Ows
 {
 
-    public interface IRequest:
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Interface implemented by an OWS request.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
+    public interface IRequest :
         IXmlSerializable
     {
+
+        /// <summary>Transforms the current request in a collection of corresponding key-value pairs.</summary>
+        /// <returns>The collection of key-value pairs.</returns>
+        NameValueCollection ToKeyValuePairs();
+
+        /// <summary>Gets the version of this request.</summary>
         [XmlIgnore]
         string Version { get; }
+        /// <summary>Gets the name of the service concerned by this request.</summary>
         [XmlIgnore]
         string Service { get; }
     }
