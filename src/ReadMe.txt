@@ -10,9 +10,9 @@ PREREQUISITES
 	* OpenCover 4.0 <https://github.com/sawilde/opencover>
 
 - Development:
-	* Microsoft Visual Studio 2010 SP1
+	* Microsoft Visual Studio 2012
 	* Microsoft SQL Server 2012 Express <http://www.microsoft.com/en-us/download/details.aspx?id=29062>
-	* [Sandcastle Help File Builder 1.9.3.4 Beta 2] <http://shfb.codeplex.com/>
+	* [Sandcastle Help File Builder 1.9.5.0] <http://shfb.codeplex.com/>
 
 
 
