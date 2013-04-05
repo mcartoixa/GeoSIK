@@ -245,7 +245,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                     {
                     case "CQL_TEXT":
                         query.Constraint=new Types.Constraint() {
-                            CqlText=constraint
+                            CqlText=constraint.Trim('\"')
                         };
                         break;
                     case "FILTER":
