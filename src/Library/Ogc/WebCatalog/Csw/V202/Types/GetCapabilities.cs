@@ -38,9 +38,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
             var ret = new NameValueCollection();
 
             ret.Add( "request", "GetCapabilities" );
-            if( !string.IsNullOrEmpty( this.Content.service ) )
-                ret.Add( "service", this.Content.service );
-            ret.Add( "acceptVersion", "2.0.2" );
+            ret.Add( "service", "CSW" );
 
             if( this.Content.AcceptVersions != null )
                 ret.Add( "acceptVersion", string.Join( ",", this.Content.AcceptVersions.Version ) );

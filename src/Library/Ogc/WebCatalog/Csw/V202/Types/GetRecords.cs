@@ -20,6 +20,10 @@
 
 using System;
 using System.Collections.Specialized;
+using System.Globalization;
+using System.Linq;
+using System.Xml;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
@@ -32,10 +36,67 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
 
         /// <summary>Transforms the current request in a collection of corresponding key-value pairs.</summary>
         /// <returns>The collection of key-value pairs.</returns>
-        NameValueCollection Ows.IRequest.ToKeyValuePairs() {
+        NameValueCollection Ows.IRequest.ToKeyValuePairs()
+        {
             var ret = new NameValueCollection();
 
-            throw new NotImplementedException();
+            ret.Add( "request", "GetRecords" );
+            ret.Add( "service", this.Content.service );
+            ret.Add( "version", this.Content.version );
+
+            // namespace
+            var namespaceManager = new XmlNamespaceManager( new NameTable() );
+            XNamespace dn = this.Untyped.GetDefaultNamespace();
+            if( dn != XNamespace.None )
+                namespaceManager.AddNamespace( string.Empty, dn.NamespaceName );
+            var namespaces = from at in this.Untyped.Attributes()
+                             where at.IsNamespaceDeclaration
+                             select new {
+                                 Prefix = at.Parent.GetPrefixOfNamespace( at.Value ),
+                                 Uri = at.Value
+                             };
+            namespaces.ToList().ForEach( n => namespaceManager.AddNamespace( n.Prefix, n.Uri ) );
+            ret.Add(
+                "namespace",
+                string.Join(
+                    ",",
+                    namespaceManager.Cast<string>().Select( s => string.Concat( "xmlns(", s != string.Empty ? string.Concat( s, "=" ) : string.Empty, namespaceManager.LookupNamespace( s ), ")" ) )
+                )
+            );
+
+            if( !string.IsNullOrEmpty( this.resultType ) )
+                ret.Add( "resulttype", this.resultType );
+            if( this.requestId != null )
+                ret.Add( "requestid", this.requestId.ToString() );
+            if( !string.IsNullOrEmpty( this.outputFormat ) )
+                ret.Add( "outputformat", this.outputFormat );
+            if( outputSchema != null )
+                ret.Add( "outputschema", outputSchema.ToString() );
+            ret.Add( "startposition", this.startPosition.ToString( "N", CultureInfo.InvariantCulture ) );
+            ret.Add( "maxrecords", this.maxRecords.ToString( "N", CultureInfo.InvariantCulture ) );
+
+            var query=this.AbstractQuery as Query;
+            if( query != null )
+            {
+                ret.Add( "typenames", string.Join( ",", query.typeNames.Select( n => n.Name ) ) );
+                if( query.ElementSetName != null )
+                    ret.Add( "elementsetname", query.ElementSetName.TypedValue );
+                if( query.ElementName != null )
+                    ret.Add( "elementname", string.Join( ",", query.ElementName.Select( n => n.Name ) ) );
+
+                if( query.Constraint != null ) {
+                    if( !string.IsNullOrWhiteSpace( query.Constraint.CqlText ) ) {
+                        ret.Add( "constraintlanguage", "CQL_TEXT" );
+                        ret.Add( "constraint", string.Concat("\"", query.Constraint.CqlText, "\"" ));
+                    }
+                    //if( !string.IsNullOrWhiteSpace( query.Constraint.Filter ) ) {
+                    //    ret.Add( "constraintlanguage", "FILTER" );
+                    //    ret.Add( "constraint", query.Constraint.Untyped. );
+                    //}
+                }
+            }
+
+            return ret;
         }
 
         /// <summary>Gets the version of this request.</summary>

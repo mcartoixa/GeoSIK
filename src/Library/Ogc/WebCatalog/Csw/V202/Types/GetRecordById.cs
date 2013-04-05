@@ -20,6 +20,7 @@
 
 using System;
 using System.Collections.Specialized;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
@@ -35,7 +36,20 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
         NameValueCollection Ows.IRequest.ToKeyValuePairs() {
             var ret = new NameValueCollection();
 
-            throw new NotImplementedException();
+            ret.Add( "request", "GetRecordById" );
+            ret.Add( "service", this.Content.service );
+            ret.Add( "version", this.Content.version );
+
+            if( !string.IsNullOrEmpty( this.outputFormat ) )
+                ret.Add( "outputformat", this.outputFormat );
+            if( outputSchema != null )
+                ret.Add( "outputschema", outputSchema.ToString() );
+            if( ElementSetName != null )
+                ret.Add( "elementsetname", ElementSetName.TypedValue );
+            if ((Id!=null) && (Id.Count>0))
+                ret.Add("id", string.Join( ",", Id ));
+
+            return ret;
         }
 
         /// <summary>Gets the version of this request.</summary>
