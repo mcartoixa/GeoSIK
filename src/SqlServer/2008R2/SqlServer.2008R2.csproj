@@ -48,6 +48,10 @@
     <Reference Include="Microsoft.SqlServer.Types, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\..\lib\SqlServer\2008R2\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -68,6 +72,7 @@
     <Compile Include="SqlGeography+Sink.cs" />
     <Compile Include="SqlGeography.cs" />
     <Compile Include="SqlGeographyBuilderWrapper.cs" />
+    <Compile Include="SqlGeographyJsonConverter.cs" />
     <Compile Include="SqlGeometry+Sink.cs" />
     <Compile Include="SqlGeometry.cs" />
     <Compile Include="SqlGeometryBuilder.cs" />

@@ -31,6 +31,7 @@ using System.Xml.Schema;
 using System.Xml.Serialization;
 using SqlTypes=Microsoft.SqlServer.Types;
 using Microsoft.Practices.ServiceLocation;
+using Newtonsoft.Json;
 
 namespace GeoSik.SqlServer
 {
@@ -43,6 +44,7 @@ namespace GeoSik.SqlServer
     ///
     ////////////////////////////////////////////////////////////////////////////
 
+    [JsonConverter(typeof(SqlGeographyJsonConverter))]
     public sealed partial class SqlGeography:
         IGeometry
     {
