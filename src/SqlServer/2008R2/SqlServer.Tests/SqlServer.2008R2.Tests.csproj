@@ -92,6 +92,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlGeography.cs" />
+    <Compile Include="SqlGeographyJsonConverter.cs" />
     <Compile Include="SqlGeometry.cs" />
   </ItemGroup>
   <ItemGroup>

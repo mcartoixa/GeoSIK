@@ -25,11 +25,13 @@ using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using Microsoft.Practices.ServiceLocation;
+using Newtonsoft.Json;
 
 namespace GeoSik.Ogc.Gml.V311
 {
 
 #pragma warning disable 3008, 3009
+    [JsonConverter(typeof(GeometryJsonConverter))]
     partial class _Geometry:
         ISimpleGeometry
     {

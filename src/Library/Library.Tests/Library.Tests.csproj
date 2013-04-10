@@ -47,6 +47,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
     </Reference>
+    <Reference Include="Irony, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ca48ace7223ead47, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Irony\Irony.dll</HintPath>
+    </Reference>
+    <Reference Include="Irony.Interpreter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ca48ace7223ead47, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Irony\Irony.Interpreter.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
@@ -95,6 +103,7 @@
     <Compile Include="Ogc\Filter\XPathTypeNode.cs" />
     <Compile Include="Ogc\Gml\V311\Point.cs" />
     <Compile Include="Ogc\Gml\V311\GmlGeometryBuilder.cs" />
+    <Compile Include="Ogc\Gml\V311\GeometryJsonConverter.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\Types\GetCapabilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
