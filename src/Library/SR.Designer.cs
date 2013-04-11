@@ -79,7 +79,7 @@ namespace GeoSik {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à CQL syntax error in expression &quot;{0}&quot; ({0},{1}): {2}: {3}.
+        ///   Recherche une chaîne localisée semblable à CQL syntax error in expression &quot;{0}&quot; ({1},{2}): {3}: {4}.
         /// </summary>
         internal static string CqlSyntaxErrorException {
             get {
@@ -102,6 +102,33 @@ namespace GeoSik {
         internal static string InvalidGeoJsonException {
             get {
                 return ResourceManager.GetString("InvalidGeoJsonException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The specified JSON value was not recognized as valid GeoJSON: expecting {2} but found {3}.
+        /// </summary>
+        internal static string InvalidGeoJsonExpectingException {
+            get {
+                return ResourceManager.GetString("InvalidGeoJsonExpectingException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The specified JSON value was not recognized as valid GeoJSON ({0},{1}).
+        /// </summary>
+        internal static string InvalidGeoJsonLineInfoException {
+            get {
+                return ResourceManager.GetString("InvalidGeoJsonLineInfoException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The specified JSON value was not recognized as valid GeoJSON ({0},{1}): expecting {2} but found {3}.
+        /// </summary>
+        internal static string InvalidGeoJsonLineInfoExpectingException {
+            get {
+                return ResourceManager.GetString("InvalidGeoJsonLineInfoExpectingException", resourceCulture);
             }
         }
         

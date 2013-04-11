@@ -30,14 +30,18 @@ namespace GeoSik.Ogc.Gml.V311.Tests
             ServiceLocator.SetLocatorProvider(() => serviceLocatorMock.Object);
         }
 
-        [Fact]
-        public void ReadJson_ShouldParsePolygon()
+        [Theory]
+        [InlineData("{ \"type\": \"Point\", \"coordinates\": [100.0, 0.0] }", typeof(Point))]
+        [InlineData("{ \"type\": \"LineString\", \"coordinates\": [ [100.0, 0.0], [101.0, 1.0] ] }", typeof(LineString))]
+        [InlineData("{ \"type\": \"MultiLineString\", \"coordinates\": [ [ [100.0, 0.0], [101.0, 1.0] ], [ [102.0, 2.0], [103.0, 3.0] ] ] }", typeof(MultiLineString))]
+        [InlineData("{ \"type\": \"Polygon\", \"coordinates\": [ [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ] ] }", typeof(Polygon))]
+        public void ReadJson_ShouldParseGeoJson(string json, Type expectedType)
         {
-            string json="{ \"type\": \"Polygon\", \"coordinates\": [ [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ] ] }";
-            var polygon=JsonConvert.DeserializeObject(json, typeof(_Geometry), new GeometryJsonConverter());
+            var g=JsonConvert.DeserializeObject(json, typeof(_Geometry), new GeometryJsonConverter());
 
-            Assert.NotNull(polygon);
-            Assert.IsAssignableFrom<Polygon>(polygon);
+            Assert.NotNull(g);
+            Assert.IsAssignableFrom(expectedType, g);
+            Console.WriteLine(g.ToString());
         }
     }
 }

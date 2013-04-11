@@ -34,9 +34,9 @@ namespace GeoSik.Ogc.SimpleFeature
 
     ////////////////////////////////////////////////////////////////////////////
     ///
-    /// <summary>Converts a <see cref="IGeometryTap" /> to JSON.</summary>
+    /// <summary>Converts a <see cref="IGeometryTap" /> to GeoJSON.</summary>
     /// <remarks>
-    ///   <para>The returned JSON is in the <see href="http://en.wikipedia.org/wiki/World_Geodetic_System">WGS84</see>
+    ///   <para>The returned GeoJSON is in the <see href="http://en.wikipedia.org/wiki/World_Geodetic_System">WGS84</see>
     /// coordinate reference system.</para>
     /// </remarks>
     ///
@@ -153,11 +153,21 @@ namespace GeoSik.Ogc.SimpleFeature
             public double? Z;
         }
 
+        /// <summary>Determines whether this instance can convert the specified object type.</summary>
+        /// <param name="objectType">The type of the object.</param>
+        /// <returns><c>true</c> if the specified <paramref name="objectType" /> is a descendant of <see cref="IGeometryTap" />.</returns>
         public override bool CanConvert(Type objectType)
         {
             return typeof(IGeometryTap).IsAssignableFrom(objectType);
         }
 
+        /// <summary>Reads the GeoJSON representation of the object. </summary>
+        /// <param name="reader">The <see cref="JsonReader" /> to read from.</param>
+        /// <param name="objectType">The type of the object.</param>
+        /// <param name="existingValue">The existing value of object being read.</param>
+        /// <param name="serializer">The calling serializer.</param>
+        /// <returns>The object value.</returns>
+        /// <exception cref="InvalidOperationException">Thrown every time as this converter cannot be used for GeoJSON deserialization.</exception>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             if (reader.TokenType==JsonToken.Null)
@@ -169,13 +179,13 @@ namespace GeoSik.Ogc.SimpleFeature
 
             builder.SetCoordinateSystem(CommonServiceLocator.GetCoordinateSystemProvider().Wgs84);
             if (reader.TokenType!=JsonToken.StartObject)
-                throw new JsonReaderException(SR.InvalidGeoJsonException);
+                throw new JsonReaderException(SR.InvalidGeoJsonLineInfoException);
 
             if (!reader.Read() || (reader.TokenType!=JsonToken.PropertyName) || (reader.Value.ToString()!="type"))
-                throw new JsonReaderException(SR.InvalidGeoJsonException);
+                throw new JsonReaderException(SR.InvalidGeoJsonLineInfoException);
 
             if (!reader.Read() || (reader.TokenType!=JsonToken.String))
-                throw new JsonReaderException(SR.InvalidGeoJsonException);
+                throw new JsonReaderException(SR.InvalidGeoJsonLineInfoException);
 
             GeometryType type=GeometryType.Point;
             try
@@ -183,31 +193,35 @@ namespace GeoSik.Ogc.SimpleFeature
                 type=(GeometryType)Enum.Parse(typeof(GeometryType), reader.Value.ToString(), false);
             } catch (Exception ex)
             {
-                throw new JsonReaderException(SR.InvalidGeoJsonException, ex);
+                throw new JsonReaderException(SR.InvalidGeoJsonLineInfoException, ex);
             }
 
             if (!reader.Read() || (reader.TokenType!=JsonToken.PropertyName))
-                throw new JsonReaderException(SR.InvalidGeoJsonException);
+                throw new JsonReaderException(SR.InvalidGeoJsonLineInfoException);
             if (type==GeometryType.GeometryCollection)
             {
                 if (reader.Value.ToString()!="geometries")
-                    throw new JsonReaderException(SR.InvalidGeoJsonException);
+                    throw new JsonReaderException(SR.InvalidGeoJsonLineInfoException);
             } else
             {
                 if (reader.Value.ToString()!="coordinates")
-                    throw new JsonReaderException(SR.InvalidGeoJsonException);
+                    throw new JsonReaderException(SR.InvalidGeoJsonLineInfoException);
             }
 
             if (!reader.Read())
-                throw new JsonReaderException(SR.InvalidGeoJsonException);
+                throw new JsonReaderException(SR.InvalidGeoJsonLineInfoException);
             _ReadGeometry(reader, builder, type);
 
             if (reader.TokenType!=JsonToken.EndObject)
-                throw new JsonReaderException(SR.InvalidGeoJsonException);
+                throw new JsonReaderException(SR.InvalidGeoJsonLineInfoException);
 
             return builder.ConstructedGeometry;
         }
 
+        /// <summary>Writes the GeoJSON representation of the object. </summary>
+        /// <param name="writer">The <see cref="JsonWriter" /> to write to.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="serializer">The calling serializer.</param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             if (value==null)
@@ -220,6 +234,8 @@ namespace GeoSik.Ogc.SimpleFeature
             ((IGeometryTap)value).Populate(sink);
         }
 
+        /// <summary>Creates a <see cref="IGeometryBuilder" /> that will be used during the GeoJSON deserialization.</summary>
+        /// <returns><c>null</c>: this class cannot be used for GeoJSON deserialization.</returns>
         protected virtual IGeometryBuilder CreateGeometryBuilder()
         {
             return null;
@@ -235,15 +251,15 @@ namespace GeoSik.Ogc.SimpleFeature
             case GeometryType.MultiPolygon:
             case GeometryType.Polygon:
                 if (reader.TokenType!=JsonToken.StartArray)
-                    throw new JsonReaderException(SR.InvalidGeoJsonException);
+                    throw new JsonReaderException(SR.InvalidGeoJsonLineInfoException);
+                if (!reader.Read())
+                    _ThrowGeoJsonException(reader, null);
                 break;
             }
             builder.BeginGeometry(type);
 
             do
             {
-                if (!reader.Read())
-                    throw new JsonReaderException(SR.InvalidGeoJsonException);
                 _ReadFigure(reader, builder, type);
             } while ((reader.TokenType!=JsonToken.EndArray) && (reader.TokenType!=JsonToken.EndObject));
 
@@ -255,9 +271,9 @@ namespace GeoSik.Ogc.SimpleFeature
             case GeometryType.MultiPolygon:
             case GeometryType.Polygon:
                 if (reader.TokenType!=JsonToken.EndArray)
-                    throw new JsonReaderException(SR.InvalidGeoJsonException);
+                    _ThrowGeoJsonException(reader, JsonToken.EndArray);
                 if (!reader.Read())
-                    throw new JsonReaderException(SR.InvalidGeoJsonException);
+                _ThrowGeoJsonException(reader, null);
                 break;
             }
             builder.EndGeometry();
@@ -268,16 +284,17 @@ namespace GeoSik.Ogc.SimpleFeature
             if (type!=GeometryType.Point)
             {
                 if (reader.TokenType!=JsonToken.StartArray)
-                    throw new JsonReaderException(SR.InvalidGeoJsonException);
+                    _ThrowGeoJsonException(reader, JsonToken.StartArray);
                 if (!reader.Read() || (reader.TokenType!=JsonToken.StartArray))
-                    throw new JsonReaderException(SR.InvalidGeoJsonException);
+                    _ThrowGeoJsonException(reader, JsonToken.StartArray);
             }
 
             bool first=true;
             do
             {
                 if (!reader.Read())
-                    throw new JsonReaderException(SR.InvalidGeoJsonException);
+                    _ThrowGeoJsonException(reader, null);
+
                 var p=_ReadPoint(reader);
                 if (first)
                 {
@@ -290,9 +307,9 @@ namespace GeoSik.Ogc.SimpleFeature
             if (type!=GeometryType.Point)
             {
                 if (reader.TokenType!=JsonToken.EndArray)
-                    throw new JsonReaderException(SR.InvalidGeoJsonException);
+                    _ThrowGeoJsonException(reader, JsonToken.EndArray);
                 if (!reader.Read())
-                    throw new JsonReaderException(SR.InvalidGeoJsonException);
+                    _ThrowGeoJsonException(reader, null);
             }
 
             builder.EndFigure();
@@ -307,28 +324,74 @@ namespace GeoSik.Ogc.SimpleFeature
             if (reader.TokenType==JsonToken.EndArray)
             {
                 if (!reader.Read())
-                    throw new JsonReaderException(SR.InvalidGeoJsonException);
+                    _ThrowGeoJsonException(reader, null);
                 return ret;
             }
             ret.Z=_ReadCoordinate(reader);
 
             if (reader.TokenType!=JsonToken.EndArray)
-                throw new JsonReaderException(SR.InvalidGeoJsonException);
+                _ThrowGeoJsonException(reader, JsonToken.EndArray);
             if (!reader.Read())
-                throw new JsonReaderException(SR.InvalidGeoJsonException);
+                _ThrowGeoJsonException(reader, null);
             return ret;
         }
 
         private double _ReadCoordinate(JsonReader reader)
         {
             if ((reader.TokenType!=JsonToken.Float) && (reader.TokenType!=JsonToken.Integer))
-                throw new JsonReaderException(SR.InvalidGeoJsonException);
+                _ThrowGeoJsonException(reader, JsonToken.Float);
 
             var ret=Convert.ToDouble(reader.Value, CultureInfo.InvariantCulture);
             if (!reader.Read())
-                throw new JsonReaderException(SR.InvalidGeoJsonException);
+                _ThrowGeoJsonException(reader, null);
 
             return ret;
+        }
+
+        private void _ThrowGeoJsonException(JsonReader reader, JsonToken? expectedToken)
+        {   
+            var li=reader as IJsonLineInfo;
+            if ((li!=null) && li.HasLineInfo())
+            {
+                if (expectedToken.HasValue)
+                    throw new JsonReaderException(
+                        string.Format(
+                            CultureInfo.CurrentCulture,
+                            SR.InvalidGeoJsonLineInfoExpectingException,
+                            li.LineNumber,
+                            li.LinePosition,
+                            expectedToken.Value,
+                            reader.TokenType
+                        )
+                    );
+                else
+                    throw new JsonReaderException(
+                        string.Format(
+                            CultureInfo.CurrentCulture,
+                            SR.InvalidGeoJsonLineInfoException,
+                            li.LineNumber,
+                            li.LinePosition
+                        )
+                    );
+            } else
+            {
+                if (expectedToken.HasValue)
+                    throw new JsonReaderException(
+                        string.Format(
+                            CultureInfo.CurrentCulture,
+                            SR.InvalidGeoJsonExpectingException,
+                            expectedToken.Value,
+                            reader.TokenType
+                        )
+                    );
+                else
+                    throw new JsonReaderException(
+                        string.Format(
+                            CultureInfo.CurrentCulture,
+                            SR.InvalidGeoJsonException
+                        )
+                    );
+            }
         }
 
         /// <summary>Gets a value indicating whether this <see cref="GeometryJsonConverter" /> can read JSON.</summary>
