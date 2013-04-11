@@ -124,13 +124,22 @@
     <value>A geometry cannot be built without a coordinate system</value>
   </data>
   <data name="CqlSyntaxErrorException" xml:space="preserve">
-    <value>CQL syntax error in expression "{0}" ({0},{1}): {2}: {3}</value>
+    <value>CQL syntax error in expression "{0}" ({1},{2}): {3}: {4}</value>
   </data>
   <data name="CqlTermNotImplementedException" xml:space="preserve">
     <value>The CQL term "{0}" has not been implemented</value>
   </data>
   <data name="InvalidGeoJsonException" xml:space="preserve">
     <value>The specified JSON value was not recognized as valid GeoJSON</value>
+  </data>
+  <data name="InvalidGeoJsonExpectingException" xml:space="preserve">
+    <value>The specified JSON value was not recognized as valid GeoJSON: expecting {2} but found {3}</value>
+  </data>
+  <data name="InvalidGeoJsonLineInfoException" xml:space="preserve">
+    <value>The specified JSON value was not recognized as valid GeoJSON ({0},{1})</value>
+  </data>
+  <data name="InvalidGeoJsonLineInfoExpectingException" xml:space="preserve">
+    <value>The specified JSON value was not recognized as valid GeoJSON ({0},{1}): expecting {2} but found {3}</value>
   </data>
   <data name="InvalidPropertyNameExpressionException" xml:space="preserve">
     <value>Invalid PropertyName expression: "{0}"</value>
