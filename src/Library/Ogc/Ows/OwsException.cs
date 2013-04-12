@@ -20,6 +20,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -38,9 +39,15 @@ namespace GeoSik.Ogc.Ows
             base()
         {}
 
-        public OwsException(string message):
+        public OwsException(string message) :
             base(message)
-        {}
+        { }
+
+        public OwsException(V100.Types.Exception ex):
+            this(_GetExceptionCode(ex), _GetExceptionText(ex))
+        {
+            Debug.Assert(ex!=null);
+        }
 
         public OwsException(OwsExceptionCode code):
             this(code, _GetMessageFromCode(code))
@@ -71,8 +78,8 @@ namespace GeoSik.Ogc.Ows
             var report=new V100.Types.ExceptionReport() {
                 version="1.2.0",
                 Exception=new V100.Types.Exception[] {
-                        new V100.Types.Exception() { ExceptionText=_GetExceptionText(ex), exceptionCode=ex.Code.ToString(), locator=ex.Locator }
-                    }
+                    new V100.Types.Exception() { ExceptionText=_GetExceptionText(ex), exceptionCode=ex.Code.ToString(), locator=ex.Locator }
+                }
             };
 
             return report;
@@ -97,6 +104,22 @@ namespace GeoSik.Ogc.Ows
             }
 
             return ret;
+        }
+
+        private static string _GetExceptionText(V100.Types.Exception ex)
+        {
+            if ((ex==null) || (ex.ExceptionText==null))
+                return string.Empty;
+
+            return string.Join("\n", ex.ExceptionText);
+        }
+
+        private static OwsExceptionCode _GetExceptionCode(V100.Types.Exception ex)
+        {
+            if ((ex==null) || string.IsNullOrEmpty(ex.exceptionCode))
+                return OwsExceptionCode.NoApplicableCode;
+
+            return (OwsExceptionCode)Enum.Parse(typeof(OwsExceptionCode), ex.exceptionCode, false);
         }
 
         private static string _GetMessageFromCode(OwsExceptionCode code)
