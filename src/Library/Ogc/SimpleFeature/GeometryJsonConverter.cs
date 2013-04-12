@@ -247,7 +247,7 @@ namespace GeoSik.Ogc.SimpleFeature
             {
             case GeometryType.GeometryCollection:
             case GeometryType.MultiLineString:
-            case GeometryType.MultiPoint:
+            //case GeometryType.MultiPoint:
             case GeometryType.MultiPolygon:
             case GeometryType.Polygon:
                 if (reader.TokenType!=JsonToken.StartArray)
@@ -267,7 +267,7 @@ namespace GeoSik.Ogc.SimpleFeature
             {
             case GeometryType.GeometryCollection:
             case GeometryType.MultiLineString:
-            case GeometryType.MultiPoint:
+            //case GeometryType.MultiPoint:
             case GeometryType.MultiPolygon:
             case GeometryType.Polygon:
                 if (reader.TokenType!=JsonToken.EndArray)

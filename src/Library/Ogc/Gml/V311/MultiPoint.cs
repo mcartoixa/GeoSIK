@@ -58,7 +58,9 @@ namespace GeoSik.Ogc.Gml.V311
 
         internal override void AddLine(double x, double y, double? z)
         {
-            throw new InvalidOperationException();
+            var p=new Point();
+            p.BeginFigure(x, y, z);
+            pointMember.Add(new pointMember() { Point=p });
         }
     }
 #pragma warning restore 3009
