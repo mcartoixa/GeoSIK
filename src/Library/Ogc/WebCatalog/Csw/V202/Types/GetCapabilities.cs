@@ -35,16 +35,19 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
         /// <returns>The collection of key-value pairs.</returns>
         NameValueCollection Ows.IRequest.ToKeyValuePairs()
         {
-            var ret = new NameValueCollection();
+            var ret=new NameValueCollection();
 
-            ret.Add( "request", "GetCapabilities" );
-            ret.Add( "service", "CSW" );
+            ret.Add("request", "GetCapabilities");
+            ret.Add("service", "CSW");
 
-            if( this.Content.AcceptVersions != null )
-                ret.Add( "acceptVersion", string.Join( ",", this.Content.AcceptVersions.Version ) );
+            if (this.Content.AcceptVersions!=null)
+                ret.Add("acceptVersion", string.Join(",", this.Content.AcceptVersions.Version));
 
-            if( this.Content.AcceptFormats != null )
-                ret.Add( "outputFormat", string.Join( ",", this.Content.AcceptFormats.OutputFormat ) );
+            if (this.Content.AcceptFormats!=null)
+                ret.Add("outputFormat", string.Join(",", this.Content.AcceptFormats.OutputFormat));
+
+            if (this.Content.Sections!=null)
+                ret.Add("sections", string.Join(",", this.Content.Sections.Section));
 
             return ret;
         }
