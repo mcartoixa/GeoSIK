@@ -78,7 +78,10 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
             var query=this.AbstractQuery as Query;
             if( query != null )
             {
-                ret.Add( "typenames", string.Join( ",", query.typeNames.Select( n => n.Name ) ) );
+                var tnElement=Content.AbstractQuery.Untyped.Attribute("typeNames");
+                if (tnElement!=null)
+                    ret.Add("typenames", string.Join(",", tnElement.Value.Split(' ')));
+
                 if( query.ElementSetName != null )
                     ret.Add( "elementsetname", query.ElementSetName.TypedValue );
                 if( query.ElementName != null )
