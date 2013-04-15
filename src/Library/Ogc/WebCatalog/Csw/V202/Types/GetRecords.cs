@@ -82,9 +82,9 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
                 if (tnElement!=null)
                     ret.Add("typenames", string.Join(",", tnElement.Value.Split(' ')));
 
-                if( query.ElementSetName != null )
+                if ( query.Untyped.Elements("{http://www.opengis.net/cat/csw/2.0.2}ElementSetName").Any<XElement>() && !string.IsNullOrEmpty(query.ElementSetName.TypedValue))
                     ret.Add( "elementsetname", query.ElementSetName.TypedValue );
-                if( query.ElementName != null )
+                if ((query.ElementName!=null) && (query.ElementName.Count>0))
                     ret.Add( "elementname", string.Join( ",", query.ElementName.Select( n => n.Name ) ) );
 
                 if( query.Constraint != null ) {
