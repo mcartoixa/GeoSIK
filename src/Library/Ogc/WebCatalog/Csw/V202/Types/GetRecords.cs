@@ -85,7 +85,12 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
                 if ( query.Untyped.Elements("{http://www.opengis.net/cat/csw/2.0.2}ElementSetName").Any<XElement>() && !string.IsNullOrEmpty(query.ElementSetName.TypedValue))
                     ret.Add( "elementsetname", query.ElementSetName.TypedValue );
                 if ((query.ElementName!=null) && (query.ElementName.Count>0))
-                    ret.Add( "elementname", string.Join( ",", query.ElementName.Select( n => n.Name ) ) );
+                {
+                    var elementNames=from el in query.Untyped.Descendants()
+                                     where el.Name=="{http://www.opengis.net/cat/csw/2.0.2}ElementName"
+                                     select el.Value;
+                    ret.Add("elementname", string.Join(",", elementNames));
+                }
 
                 if( query.Constraint != null ) {
                     if( !string.IsNullOrWhiteSpace( query.Constraint.CqlText ) ) {
