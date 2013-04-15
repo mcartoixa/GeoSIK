@@ -22,6 +22,7 @@ using System;
 using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
+using System.Web;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
@@ -60,48 +61,54 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
                 "namespace",
                 string.Join(
                     ",",
-                    namespaceManager.Cast<string>().Select( s => string.Concat( "xmlns(", s != string.Empty ? string.Concat( s, "=" ) : string.Empty, namespaceManager.LookupNamespace( s ), ")" ) )
+                    namespaceManager.Cast<string>()
+                        .Where( s => !string.IsNullOrEmpty(namespaceManager.LookupNamespace( s ?? string.Empty )))
+                        .Select( s => string.Concat( "xmlns(", !string.IsNullOrEmpty(s) ? string.Concat( s, "=" ) : string.Empty, HttpUtility.UrlEncode(namespaceManager.LookupNamespace( s ?? string.Empty )), ")" ) )
                 )
             );
 
-            if( !string.IsNullOrEmpty( this.resultType ) )
-                ret.Add( "resulttype", this.resultType );
+            if( !string.IsNullOrEmpty( this.resultType) )
+                ret.Add( "resulttype", HttpUtility.UrlEncode(this.resultType) );
             if( this.requestId != null )
-                ret.Add( "requestid", this.requestId.ToString() );
+                ret.Add( "requestid", HttpUtility.UrlEncode(this.requestId.ToString()) );
             if( !string.IsNullOrEmpty( this.outputFormat ) )
-                ret.Add( "outputformat", this.outputFormat );
+                ret.Add( "outputformat", HttpUtility.UrlEncode(this.outputFormat) );
             if( outputSchema != null )
-                ret.Add( "outputschema", outputSchema.ToString() );
-            ret.Add( "startposition", this.startPosition.ToString( "N", CultureInfo.InvariantCulture ) );
-            ret.Add( "maxrecords", this.maxRecords.ToString( "N", CultureInfo.InvariantCulture ) );
+                ret.Add( "outputschema", HttpUtility.UrlEncode(outputSchema.ToString()) );
+            if (startPosition!=1)
+                ret.Add( "startposition", this.startPosition.ToString( "F0", CultureInfo.InvariantCulture ) );
+            if (maxRecords!=10)
+                ret.Add( "maxrecords", this.maxRecords.ToString( "F0", CultureInfo.InvariantCulture ) );
 
             var query=this.AbstractQuery as Query;
             if( query != null )
             {
                 var tnElement=Content.AbstractQuery.Untyped.Attribute("typeNames");
                 if (tnElement!=null)
-                    ret.Add("typenames", string.Join(",", tnElement.Value.Split(' ')));
+                    ret.Add("typenames", string.Join(",", tnElement.Value.Split(' ').Select( s => HttpUtility.UrlEncode(s))));
 
                 if ( query.Untyped.Elements("{http://www.opengis.net/cat/csw/2.0.2}ElementSetName").Any<XElement>() && !string.IsNullOrEmpty(query.ElementSetName.TypedValue))
-                    ret.Add( "elementsetname", query.ElementSetName.TypedValue );
+                    ret.Add( "elementsetname", HttpUtility.UrlEncode(query.ElementSetName.TypedValue) );
                 if ((query.ElementName!=null) && (query.ElementName.Count>0))
                 {
                     var elementNames=from el in query.Untyped.Descendants()
                                      where el.Name=="{http://www.opengis.net/cat/csw/2.0.2}ElementName"
-                                     select el.Value;
+                                     select HttpUtility.UrlEncode(el.Value);
                     ret.Add("elementname", string.Join(",", elementNames));
                 }
 
-                //if( query.Constraint != null ) {
-                //    if( !string.IsNullOrWhiteSpace( query.Constraint.CqlText ) ) {
-                //        ret.Add( "constraintlanguage", "CQL_TEXT" );
-                //        ret.Add( "constraint", string.Concat("\"", query.Constraint.CqlText, "\"" ));
-                //    }
-                //    //if( !string.IsNullOrWhiteSpace( query.Constraint.Filter ) ) {
-                //    //    ret.Add( "constraintlanguage", "FILTER" );
-                //    //    ret.Add( "constraint", query.Constraint.Untyped. );
-                //    //}
-                //}
+                if (query.Untyped.Element("{http://www.opengis.net/cat/csw/2.0.2}Constraint")!=null)
+                {
+                    if (query.Constraint.Filter!=null)
+                    {
+                        ret.Add( "constraintlanguage", "FILTER" );
+                        ret.Add( "constraint", HttpUtility.UrlEncode(query.Constraint.Filter.Untyped.ToString(SaveOptions.OmitDuplicateNamespaces)));
+                    } else if (!string.IsNullOrWhiteSpace(query.Constraint.CqlText))
+                    {
+                        ret.Add( "constraintlanguage", "CQL_TEXT" );
+                        ret.Add( "constraint", string.Concat("\"", HttpUtility.UrlEncode(query.Constraint.CqlText), "\"" ));
+                    }
+                }
             }
 
             return ret;
