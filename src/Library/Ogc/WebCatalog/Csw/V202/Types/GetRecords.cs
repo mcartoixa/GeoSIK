@@ -92,16 +92,16 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
                     ret.Add("elementname", string.Join(",", elementNames));
                 }
 
-                if( query.Constraint != null ) {
-                    if( !string.IsNullOrWhiteSpace( query.Constraint.CqlText ) ) {
-                        ret.Add( "constraintlanguage", "CQL_TEXT" );
-                        ret.Add( "constraint", string.Concat("\"", query.Constraint.CqlText, "\"" ));
-                    }
-                    //if( !string.IsNullOrWhiteSpace( query.Constraint.Filter ) ) {
-                    //    ret.Add( "constraintlanguage", "FILTER" );
-                    //    ret.Add( "constraint", query.Constraint.Untyped. );
-                    //}
-                }
+                //if( query.Constraint != null ) {
+                //    if( !string.IsNullOrWhiteSpace( query.Constraint.CqlText ) ) {
+                //        ret.Add( "constraintlanguage", "CQL_TEXT" );
+                //        ret.Add( "constraint", string.Concat("\"", query.Constraint.CqlText, "\"" ));
+                //    }
+                //    //if( !string.IsNullOrWhiteSpace( query.Constraint.Filter ) ) {
+                //    //    ret.Add( "constraintlanguage", "FILTER" );
+                //    //    ret.Add( "constraint", query.Constraint.Untyped. );
+                //    //}
+                //}
             }
 
             return ret;
