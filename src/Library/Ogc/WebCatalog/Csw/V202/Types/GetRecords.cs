@@ -108,6 +108,8 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
                         ret.Add( "constraintlanguage", "CQL_TEXT" );
                         ret.Add( "constraint", string.Concat("\"", HttpUtility.UrlEncode(query.Constraint.CqlText), "\"" ));
                     }
+                    if (!string.IsNullOrEmpty(query.Constraint.version))
+                        ret.Add("constraint_language_version", query.Constraint.version);
                 }
             }
 
