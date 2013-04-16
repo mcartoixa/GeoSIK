@@ -37,6 +37,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
         /// <returns>The collection of key-value pairs.</returns>
         NameValueCollection Ows.IRequest.ToKeyValuePairs() {
             var ret = new NameValueCollection();
+            XNamespace csw="http://www.opengis.net/cat/csw/2.0.2";
 
             ret.Add( "request", "GetRecordById" );
             ret.Add( "service", HttpUtility.UrlEncode(this.Content.service) );
@@ -46,12 +47,11 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
                 ret.Add( "outputformat", HttpUtility.UrlEncode(this.outputFormat) );
             if( outputSchema != null )
                 ret.Add( "outputschema", HttpUtility.UrlEncode(outputSchema.ToString()) );
-            if( ElementSetName != null )
+            if (this.Content.Untyped.Element(csw+"ElementSetName")!=null)
                 ret.Add( "elementsetname", HttpUtility.UrlEncode(ElementSetName.TypedValue) );
             if ((Id!=null) && (Id.Count>0))
             {
                 // Ids may not be URIs...
-                XNamespace csw="http://www.opengis.net/cat/csw/2.0.2";
                 ret.Add("id", string.Join(",", this.Content.Untyped.Elements(csw+"Id").Select(x => HttpUtility.UrlEncode(x.Value))));
             }
 
