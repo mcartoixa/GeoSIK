@@ -42,8 +42,8 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
             var ret = new NameValueCollection();
 
             ret.Add( "request", "GetRecords" );
-            ret.Add( "service", this.Content.service );
-            ret.Add( "version", this.Content.version );
+            ret.Add( "service", HttpUtility.UrlEncode(this.Content.service) );
+            ret.Add( "version", HttpUtility.UrlEncode(this.Content.version) );
 
             // namespace
             var namespaceManager = new XmlNamespaceManager( new NameTable() );
