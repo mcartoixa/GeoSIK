@@ -47,6 +47,8 @@ namespace GeoSik.Ogc.Ows
             this(_GetExceptionCode(ex), _GetExceptionText(ex))
         {
             Debug.Assert(ex!=null);
+
+            Locator=ex.locator;
         }
 
         public OwsException(OwsExceptionCode code):
@@ -54,7 +56,7 @@ namespace GeoSik.Ogc.Ows
         {}
 
         public OwsException(OwsExceptionCode code, string message):
-            base(message)
+            base(string.IsNullOrEmpty(message) ? _GetMessageFromCode(code) : message)
         {
             Data[_CodeKey]=code;
         }
@@ -64,7 +66,7 @@ namespace GeoSik.Ogc.Ows
         {}
 
         public OwsException(OwsExceptionCode code, string message, Exception innerException):
-            base(message, innerException)
+            base(string.IsNullOrEmpty(message) ? _GetMessageFromCode(code) : message, innerException)
         {
             Data[_CodeKey]=code;
         }
@@ -109,7 +111,7 @@ namespace GeoSik.Ogc.Ows
         private static string _GetExceptionText(V100.Types.Exception ex)
         {
             if ((ex==null) || (ex.ExceptionText==null))
-                return string.Empty;
+                return null;
 
             return string.Join("\n", ex.ExceptionText);
         }
