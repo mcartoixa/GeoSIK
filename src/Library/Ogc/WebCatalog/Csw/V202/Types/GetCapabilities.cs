@@ -21,6 +21,7 @@
 using System;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Web;
 using System.Xml.Serialization;
 
 namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
@@ -41,13 +42,13 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
             ret.Add("service", "CSW");
 
             if (this.Content.AcceptVersions!=null)
-                ret.Add("acceptVersion", string.Join(",", this.Content.AcceptVersions.Version));
+                ret.Add("acceptVersion", string.Join(",", this.Content.AcceptVersions.Version.Select(s => HttpUtility.UrlEncode(s))));
 
             if (this.Content.AcceptFormats!=null)
-                ret.Add("outputFormat", string.Join(",", this.Content.AcceptFormats.OutputFormat));
+                ret.Add("outputFormat", string.Join(",", this.Content.AcceptFormats.OutputFormat.Select( s => HttpUtility.UrlEncode(s))));
 
             if (this.Content.Sections!=null)
-                ret.Add("sections", string.Join(",", this.Content.Sections.Section));
+                ret.Add("sections", string.Join(",", this.Content.Sections.Section.Select(s => HttpUtility.UrlEncode(s))));
 
             return ret;
         }

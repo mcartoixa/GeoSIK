@@ -21,6 +21,8 @@
 using System;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Web;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
@@ -37,17 +39,21 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
             var ret = new NameValueCollection();
 
             ret.Add( "request", "GetRecordById" );
-            ret.Add( "service", this.Content.service );
-            ret.Add( "version", this.Content.version );
+            ret.Add( "service", HttpUtility.UrlEncode(this.Content.service) );
+            ret.Add( "version", HttpUtility.UrlEncode(this.Content.version) );
 
             if( !string.IsNullOrEmpty( this.outputFormat ) )
-                ret.Add( "outputformat", this.outputFormat );
+                ret.Add( "outputformat", HttpUtility.UrlEncode(this.outputFormat) );
             if( outputSchema != null )
-                ret.Add( "outputschema", outputSchema.ToString() );
+                ret.Add( "outputschema", HttpUtility.UrlEncode(outputSchema.ToString()) );
             if( ElementSetName != null )
-                ret.Add( "elementsetname", ElementSetName.TypedValue );
+                ret.Add( "elementsetname", HttpUtility.UrlEncode(ElementSetName.TypedValue) );
             if ((Id!=null) && (Id.Count>0))
-                ret.Add("id", string.Join( ",", Id ));
+            {
+                // Ids may not be URIs...
+                XNamespace csw="http://www.opengis.net/cat/csw/2.0.2";
+                ret.Add("id", string.Join(",", this.Content.Untyped.Elements(csw+"Id").Select(x => HttpUtility.UrlEncode(x.Value))));
+            }
 
             return ret;
         }
