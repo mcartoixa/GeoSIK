@@ -31,7 +31,7 @@ DEVELOPMENT
 - Serialization:
 	* Serialization objects found in the Library project have been generated with [LinqToXsd] <http://linqtoxsd.codeplex.com/> with a command line like the following:
 LinqToXsd.exe iso\19139\20070417\gmd\gmd.xsd /config:LinqToXsd.config.xml /enableServiceReference
-	* Original XML schemas can be found online at http://schemas.opengis.net/.
+	* Original XML schemas can be found online at http://schemas.opengis.net/ or http://eden.ign.fr/
 	* LinqToXsd configuration looks like the following:
 <Configuration xmlns="http://www.microsoft.com/xml/schema/linq">
   <Namespaces>
@@ -46,6 +46,7 @@ LinqToXsd.exe iso\19139\20070417\gmd\gmd.xsd /config:LinqToXsd.config.xml /enabl
     <Namespace Schema="http://www.isotc211.org/2005/gsr" Clr="GeoSik.Iso.Ts19139.Gsr" />
     <Namespace Schema="http://www.isotc211.org/2005/gss" Clr="GeoSik.Iso.Ts19139.Gss" />
     <Namespace Schema="http://www.isotc211.org/2005/gts" Clr="GeoSik.Iso.Ts19139.Gts" />
+    <Namespace Schema="http://www.isotc211.org/2005/srv" Clr="GeoSik.Iso.Ts19139.Srv" />
     <Namespace Schema="http://www.w3.org/2001/SMIL20/" Clr="GeoSik.W3.Smil20" />
     <Namespace Schema="http://www.w3.org/2001/SMIL20/Language" Clr="GeoSik.W3.Smil20.Language" />
     <Namespace Schema="http://purl.org/dc/elements/1.1/" Clr="GeoSik.DublinCore.Elements.V11" />

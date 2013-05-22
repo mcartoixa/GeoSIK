@@ -104,6 +104,8 @@
     <Compile Include="Iso\Ts19139\Gsr\_Documentation.cs" />
     <Compile Include="Iso\Ts19139\Gss\_Documentation.cs" />
     <Compile Include="Iso\Ts19139\Gts\_Documentation.cs" />
+    <Compile Include="Iso\Ts19139\Srv\_Documentation.cs" />
+    <Compile Include="Iso\Ts19139\Srv\_Srv.cs" />
     <Compile Include="Iso\Ts19139\_Documentation.cs" />
     <Compile Include="Iso\_Documentation.cs" />
     <Compile Include="Ogc\Filter\V110\_Documentation.cs" />
