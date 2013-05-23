@@ -18,7 +18,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#pragma warning disable 108, 1591, 3002, 3009
+#pragma warning disable 108, 1591, 3002, 3003, 3009
 namespace GeoSik.Iso.Ts19139.Srv
 {
     using System;
@@ -40,7 +40,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_ServiceSpecification_TypeSchemaProvider")]
-    public partial class SV_ServiceSpecification_Type : global::GeoSik.Iso.Ts19139.Srv.AbstractSV_AbstractServiceSpecification_Type, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_ServiceSpecification_Type: global::GeoSik.Iso.Ts19139.Srv.AbstractSV_AbstractServiceSpecification_Type, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XTypedList<SV_PlatformNeutralServiceSpecification_PropertyType> typeSpecField;
@@ -151,7 +153,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_ServiceSpecification_PropertyTypeSchemaProvider")]
-    public partial class SV_ServiceSpecification_PropertyType : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_ServiceSpecification_PropertyType: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static string typeFixedValue = "simple";
@@ -386,7 +390,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_PlatformNeutralServiceSpecification_TypeSchemaProvider")]
-    public partial class SV_PlatformNeutralServiceSpecification_Type : global::GeoSik.Iso.Ts19139.Srv.AbstractSV_AbstractServiceSpecification_Type, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_PlatformNeutralServiceSpecification_Type: global::GeoSik.Iso.Ts19139.Srv.AbstractSV_AbstractServiceSpecification_Type, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XTypedList<SV_PlatformSpecificServiceSpecification_PropertyType> implSpecField;
@@ -516,7 +522,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_PlatformNeutralServiceSpecification_PropertyTypeSchemaProvider")]
-    public partial class SV_PlatformNeutralServiceSpecification_PropertyType : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_PlatformNeutralServiceSpecification_PropertyType: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static string typeFixedValue = "simple";
@@ -751,7 +759,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_PlatformSpecificServiceSpecification_TypeSchemaProvider")]
-    public partial class SV_PlatformSpecificServiceSpecification_Type : global::GeoSik.Iso.Ts19139.Srv.AbstractSV_AbstractServiceSpecification_Type, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_PlatformSpecificServiceSpecification_Type: global::GeoSik.Iso.Ts19139.Srv.AbstractSV_AbstractServiceSpecification_Type, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XTypedList<SV_Service_PropertyType> implementationField;
@@ -900,7 +910,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_PlatformSpecificServiceSpecification_PropertyTypeSchemaProvider")]
-    public partial class SV_PlatformSpecificServiceSpecification_PropertyType : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_PlatformSpecificServiceSpecification_PropertyType: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static string typeFixedValue = "simple";
@@ -1130,7 +1142,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     }
     
     [XmlSchemaProviderAttribute("SV_Port_TypeSchemaProvider")]
-    public partial class SV_Port_Type : global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_Port_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    {
         
          public static explicit operator SV_Port_Type(XElement xe) { return XTypedServices.ToXTypedElement<SV_Port_Type>(xe,LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
         
@@ -1178,7 +1192,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_Port_PropertyTypeSchemaProvider")]
-    public partial class SV_Port_PropertyType : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_Port_PropertyType: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static string typeFixedValue = "simple";
@@ -1413,7 +1429,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_Service_TypeSchemaProvider")]
-    public partial class SV_Service_Type : global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_Service_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XTypedList<SV_PlatformSpecificServiceSpecification_PropertyType> specificationField;
@@ -1555,7 +1573,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_Service_PropertyTypeSchemaProvider")]
-    public partial class SV_Service_PropertyType : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_Service_PropertyType: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static string typeFixedValue = "simple";
@@ -1790,7 +1810,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_Interface_TypeSchemaProvider")]
-    public partial class SV_Interface_Type : global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_Interface_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         static Dictionary<XName, System.Type> localElementDictionary = new Dictionary<XName, System.Type>();
@@ -1921,7 +1943,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_Interface_PropertyTypeSchemaProvider")]
-    public partial class SV_Interface_PropertyType : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_Interface_PropertyType: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static string typeFixedValue = "simple";
@@ -2156,7 +2180,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_Operation_TypeSchemaProvider")]
-    public partial class SV_Operation_Type : global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_Operation_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XTypedList<SV_Operation_PropertyType> dependsOnField;
@@ -2302,7 +2328,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_Operation_PropertyTypeSchemaProvider")]
-    public partial class SV_Operation_PropertyType : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_Operation_PropertyType: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static string typeFixedValue = "simple";
@@ -2537,7 +2565,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("AbstractSV_AbstractServiceSpecification_TypeSchemaProvider")]
-    public abstract partial class AbstractSV_AbstractServiceSpecification_Type : global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public abstract partial class AbstractSV_AbstractServiceSpecification_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XTypedList<SV_Interface_PropertyType> theSV_InterfaceField;
@@ -2679,7 +2709,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_AbstractServiceSpecification_PropertyTypeSchemaProvider")]
-    public partial class SV_AbstractServiceSpecification_PropertyType : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_AbstractServiceSpecification_PropertyType: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static string typeFixedValue = "simple";
@@ -2917,7 +2949,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_PortSpecification_TypeSchemaProvider")]
-    public partial class SV_PortSpecification_Type : global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_PortSpecification_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         static Dictionary<XName, System.Type> localElementDictionary = new Dictionary<XName, System.Type>();
@@ -3048,7 +3082,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_PortSpecification_PropertyTypeSchemaProvider")]
-    public partial class SV_PortSpecification_PropertyType : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_PortSpecification_PropertyType: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static string typeFixedValue = "simple";
@@ -3294,7 +3330,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_OperationModel_PropertyTypeSchemaProvider")]
-    public partial class SV_OperationModel_PropertyType : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_OperationModel_PropertyType: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         static Dictionary<XName, System.Type> localElementDictionary = new Dictionary<XName, System.Type>();
@@ -3402,7 +3440,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_ServiceType_PropertyTypeSchemaProvider")]
-    public partial class SV_ServiceType_PropertyType : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_ServiceType_PropertyType: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         static Dictionary<XName, System.Type> localElementDictionary = new Dictionary<XName, System.Type>();
@@ -3510,7 +3550,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_Parameter_TypeSchemaProvider")]
-    public partial class SV_Parameter_Type : global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_Parameter_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         static Dictionary<XName, System.Type> localElementDictionary = new Dictionary<XName, System.Type>();
@@ -3698,7 +3740,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_Parameter_PropertyTypeSchemaProvider")]
-    public partial class SV_Parameter_PropertyType : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_Parameter_PropertyType: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static string typeFixedValue = "simple";
@@ -3933,7 +3977,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_OperationMetadata_TypeSchemaProvider")]
-    public partial class SV_OperationMetadata_Type : global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_OperationMetadata_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XTypedList<DCPList_PropertyType> DCPField;
@@ -4200,7 +4246,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_OperationMetadata_PropertyTypeSchemaProvider")]
-    public partial class SV_OperationMetadata_PropertyType : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_OperationMetadata_PropertyType: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static string typeFixedValue = "simple";
@@ -4435,7 +4483,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_ServiceIdentification_TypeSchemaProvider")]
-    public partial class SV_ServiceIdentification_Type : global::GeoSik.Iso.Ts19139.Gmd.AbstractMD_Identification_Type, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_ServiceIdentification_Type: global::GeoSik.Iso.Ts19139.Gmd.AbstractMD_Identification_Type, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XTypedList<GeoSik.Iso.Ts19139.Gco.CharacterString_PropertyType> serviceTypeVersionField;
@@ -4817,7 +4867,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_ServiceIdentification_PropertyTypeSchemaProvider")]
-    public partial class SV_ServiceIdentification_PropertyType : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_ServiceIdentification_PropertyType: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static string typeFixedValue = "simple";
@@ -5052,7 +5104,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_OperationChain_TypeSchemaProvider")]
-    public partial class SV_OperationChain_Type : global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_OperationChain_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XTypedList<SV_Operation_PropertyType> operationField;
@@ -5198,7 +5252,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_OperationChain_PropertyTypeSchemaProvider")]
-    public partial class SV_OperationChain_PropertyType : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_OperationChain_PropertyType: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static string typeFixedValue = "simple";
@@ -5433,7 +5489,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_OperationChainMetadata_TypeSchemaProvider")]
-    public partial class SV_OperationChainMetadata_Type : global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_OperationChainMetadata_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XTypedList<SV_OperationMetadata_PropertyType> operationField;
@@ -5579,7 +5637,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_OperationChainMetadata_PropertyTypeSchemaProvider")]
-    public partial class SV_OperationChainMetadata_PropertyType : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_OperationChainMetadata_PropertyType: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static string typeFixedValue = "simple";
@@ -5814,7 +5874,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_CoupledResource_TypeSchemaProvider")]
-    public partial class SV_CoupledResource_Type : global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_CoupledResource_Type: global::GeoSik.Iso.Ts19139.Gco.AbstractObject_Type, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         static Dictionary<XName, System.Type> localElementDictionary = new Dictionary<XName, System.Type>();
@@ -5945,7 +6007,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_CoupledResource_PropertyTypeSchemaProvider")]
-    public partial class SV_CoupledResource_PropertyType : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_CoupledResource_PropertyType: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static string typeFixedValue = "simple";
@@ -6192,7 +6256,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_ParameterDirection_PropertyTypeSchemaProvider")]
-    public partial class SV_ParameterDirection_PropertyType : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_ParameterDirection_PropertyType: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         static Dictionary<XName, System.Type> localElementDictionary = new Dictionary<XName, System.Type>();
@@ -6300,7 +6366,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("DCPList_PropertyTypeSchemaProvider")]
-    public partial class DCPList_PropertyType : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class DCPList_PropertyType: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         static Dictionary<XName, System.Type> localElementDictionary = new Dictionary<XName, System.Type>();
@@ -6408,7 +6476,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     /// </para>
     /// </summary>
     [XmlSchemaProviderAttribute("SV_CouplingType_PropertyTypeSchemaProvider")]
-    public partial class SV_CouplingType_PropertyType : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_CouplingType_PropertyType: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         static Dictionary<XName, System.Type> localElementDictionary = new Dictionary<XName, System.Type>();
@@ -6511,7 +6581,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     }
     
     [XmlSchemaProviderAttribute("SV_ServiceSpecificationSchemaProvider")]
-    public partial class SV_ServiceSpecification : global::GeoSik.Iso.Ts19139.Srv.AbstractSV_AbstractServiceSpecification, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_ServiceSpecification: global::GeoSik.Iso.Ts19139.Srv.AbstractSV_AbstractServiceSpecification, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private SV_ServiceSpecification_Type ContentField;
@@ -6632,7 +6704,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     }
     
     [XmlSchemaProviderAttribute("SV_PlatformNeutralServiceSpecificationSchemaProvider")]
-    public partial class SV_PlatformNeutralServiceSpecification : global::GeoSik.Iso.Ts19139.Srv.AbstractSV_AbstractServiceSpecification, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_PlatformNeutralServiceSpecification: global::GeoSik.Iso.Ts19139.Srv.AbstractSV_AbstractServiceSpecification, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private SV_PlatformNeutralServiceSpecification_Type ContentField;
@@ -6770,7 +6844,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     }
     
     [XmlSchemaProviderAttribute("SV_PlatformSpecificServiceSpecificationSchemaProvider")]
-    public partial class SV_PlatformSpecificServiceSpecification : global::GeoSik.Iso.Ts19139.Srv.AbstractSV_AbstractServiceSpecification, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_PlatformSpecificServiceSpecification: global::GeoSik.Iso.Ts19139.Srv.AbstractSV_AbstractServiceSpecification, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private SV_PlatformSpecificServiceSpecification_Type ContentField;
@@ -6925,7 +7001,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     }
     
     [XmlSchemaProviderAttribute("SV_PortSchemaProvider")]
-    public partial class SV_Port : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_Port: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private SV_Port_Type ContentField;
@@ -7038,7 +7116,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     }
     
     [XmlSchemaProviderAttribute("SV_ServiceSchemaProvider")]
-    public partial class SV_Service : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_Service: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private SV_Service_Type ContentField;
@@ -7185,7 +7265,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     }
     
     [XmlSchemaProviderAttribute("SV_InterfaceSchemaProvider")]
-    public partial class SV_Interface : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_Interface: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private SV_Interface_Type ContentField;
@@ -7349,7 +7431,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     }
     
     [XmlSchemaProviderAttribute("SV_OperationSchemaProvider")]
-    public partial class SV_Operation : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_Operation: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private SV_Operation_Type ContentField;
@@ -7513,7 +7597,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     }
     
     [XmlSchemaProviderAttribute("AbstractSV_AbstractServiceSpecificationSchemaProvider")]
-    public abstract partial class AbstractSV_AbstractServiceSpecification : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public abstract partial class AbstractSV_AbstractServiceSpecification: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private AbstractSV_AbstractServiceSpecification_Type ContentField;
@@ -7682,7 +7768,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     }
     
     [XmlSchemaProviderAttribute("SV_PortSpecificationSchemaProvider")]
-    public partial class SV_PortSpecification : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_PortSpecification: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private SV_PortSpecification_Type ContentField;
@@ -7846,7 +7934,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     }
     
     [XmlSchemaProviderAttribute("SV_OperationModelSchemaProvider")]
-    public partial class SV_OperationModel : global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_OperationModel: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    {
         
          public static explicit operator SV_OperationModel(XElement xe) { return XTypedServices.ToXTypedElement<SV_OperationModel>(xe,LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
         
@@ -7919,7 +8009,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     }
     
     [XmlSchemaProviderAttribute("SV_ServiceTypeSchemaProvider")]
-    public partial class SV_ServiceType : global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_ServiceType: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
@@ -7946,7 +8038,7 @@ namespace GeoSik.Iso.Ts19139.Srv
             }
         }
         
-        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content {
+        public GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content {
             get {
                 return ContentField;
             }
@@ -8074,7 +8166,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     }
     
     [XmlSchemaProviderAttribute("SV_ParameterSchemaProvider")]
-    public partial class SV_Parameter : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_Parameter: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private SV_Parameter_Type ContentField;
@@ -8289,7 +8383,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     }
     
     [XmlSchemaProviderAttribute("SV_OperationMetadataSchemaProvider")]
-    public partial class SV_OperationMetadata : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_OperationMetadata: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private SV_OperationMetadata_Type ContentField;
@@ -8521,7 +8617,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     }
     
     [XmlSchemaProviderAttribute("SV_ServiceIdentificationSchemaProvider")]
-    public partial class SV_ServiceIdentification : global::GeoSik.Iso.Ts19139.Gmd.AbstractMD_Identification, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_ServiceIdentification: global::GeoSik.Iso.Ts19139.Gmd.AbstractMD_Identification, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private SV_ServiceIdentification_Type ContentField;
@@ -8795,7 +8893,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     }
     
     [XmlSchemaProviderAttribute("SV_OperationChainSchemaProvider")]
-    public partial class SV_OperationChain : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_OperationChain: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private SV_OperationChain_Type ContentField;
@@ -8959,7 +9059,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     }
     
     [XmlSchemaProviderAttribute("SV_OperationChainMetadataSchemaProvider")]
-    public partial class SV_OperationChainMetadata : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_OperationChainMetadata: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private SV_OperationChainMetadata_Type ContentField;
@@ -9123,7 +9225,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     }
     
     [XmlSchemaProviderAttribute("SV_CoupledResourceSchemaProvider")]
-    public partial class SV_CoupledResource : XTypedElement, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_CoupledResource: XTypedElement, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private SV_CoupledResource_Type ContentField;
@@ -9287,7 +9391,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     }
     
     [XmlSchemaProviderAttribute("SV_ParameterDirectionSchemaProvider")]
-    public partial class SV_ParameterDirection : global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_ParameterDirection: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    {
         
          public static explicit operator SV_ParameterDirection(XElement xe) { return XTypedServices.ToXTypedElement<SV_ParameterDirection>(xe,LinqToXsdTypeManager.Instance as ILinqToXsdTypeManager); }
         
@@ -9360,7 +9466,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     }
     
     [XmlSchemaProviderAttribute("DCPListSchemaProvider")]
-    public partial class DCPList : global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class DCPList: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
@@ -9387,7 +9495,7 @@ namespace GeoSik.Iso.Ts19139.Srv
             }
         }
         
-        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content {
+        public GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content {
             get {
                 return ContentField;
             }
@@ -9515,7 +9623,9 @@ namespace GeoSik.Iso.Ts19139.Srv
     }
     
     [XmlSchemaProviderAttribute("SV_CouplingTypeSchemaProvider")]
-    public partial class SV_CouplingType : global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable {
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class SV_CouplingType: global::GeoSik.Iso.Ts19139.Gco.CharacterString, IXMetaData, IXmlSerializable
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private GeoSik.Iso.Ts19139.Gco.CodeListValue_Type ContentField;
@@ -9542,7 +9652,7 @@ namespace GeoSik.Iso.Ts19139.Srv
             }
         }
         
-        public new GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content {
+        public GeoSik.Iso.Ts19139.Gco.CodeListValue_Type Content {
             get {
                 return ContentField;
             }
@@ -9668,8 +9778,10 @@ namespace GeoSik.Iso.Ts19139.Srv
             return null;
         }
     }
-    
-    public partial class XRootNamespace {
+
+    [System.CodeDom.Compiler.GeneratedCode("LinqToXsd", "2.0.2")]
+    public partial class XRootNamespace
+    {
         
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private XDocument doc;
@@ -9925,4 +10037,4 @@ namespace GeoSik.Iso.Ts19139.Srv
         }
     }
 }
-#pragma warning restore 108, 1591, 3002, 3009
+#pragma warning restore 108, 1591, 3002, 3003, 3009
