@@ -54,11 +54,11 @@ namespace GeoSik.Ogc.Filter.V110
                     body=comparisonOps.CreateExpression(ebp, st, null);
                 else if (spatialOps!=null)
                     body=spatialOps.CreateExpression(ebp, st, null);
-
-                if (body==null)
-                    throw new InvalidOperationException("Invalid filter definition");
-            } else
+            } else if (string.IsNullOrWhiteSpace(Untyped.Value))
                 body=Expression.Constant(true, typeof(bool));
+
+            if (body==null)
+                throw new ArgumentException("Invalid filter definition");
 
             return Expression.Lambda(body, parameters);
         }
