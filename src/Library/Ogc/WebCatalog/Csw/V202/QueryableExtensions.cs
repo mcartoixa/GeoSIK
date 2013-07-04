@@ -60,7 +60,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
             if (constraint.Untyped.Descendants("{http://www.opengis.net/ogc}Filter").Any<XElement>())
                 ret=Filter110.FilterQueryable.Where(ret, constraint.Filter, namespaceManager, mayRootPathBeImplied, operatorImplementationProvider, (t, r) => new XPathQueryableNavigator(t, r));
 
-            if (!string.IsNullOrEmpty(constraint.CqlText))
+            if (!string.IsNullOrWhiteSpace(constraint.CqlText))
                 ret=Cql.CqlQueryable.Where(ret, constraint.CqlText, namespaceManager, mayRootPathBeImplied, operatorImplementationProvider);
 
             return ret;

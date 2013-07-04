@@ -43,7 +43,7 @@ namespace GeoSik.Ogc.Filter.V110
                 Expression.Parameter(source.ElementType)
             };
 
-            if( !Untyped.IsEmpty )
+            if (Untyped.Elements().Any())
             {
                 var ebp=new ExpressionBuilderParameters(parameters, source.Provider, source.ElementType, namespaceManager, mayRootPathBeImplied, operatorImplementationProvider, navigatorCreator);
 
