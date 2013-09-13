@@ -56,6 +56,48 @@ namespace GeoSik
 
         /// <summary>Event triggered when a coordinate system has to be created.</summary>
         event EventHandler<CreatingCoordinateSystemEventArgs> CreatingCoordinateSystem;
+        /// <summary>Event triggered when a coordinate system has been created.</summary>
+        event EventHandler<CreatedCoordinateSystemEventArgs> CreatedCoordinateSystem;
+    }
+
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Arguments for the <see cref="ICoordinateSystemProvider.CreatedCoordinateSystem" /> event.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
+    public sealed class CreatedCoordinateSystemEventArgs:
+        EventArgs
+    {
+
+        private CreatedCoordinateSystemEventArgs()
+        {
+        }
+
+        /// <summary>Creates a new instance of the <see cref="CreatedCoordinateSystemEventArgs" /> class.</summary>
+        /// <param name="id">The identifier of the coordinate system.</param>
+        /// <param name="system">The coordinate system instance.</param>
+        public CreatedCoordinateSystemEventArgs(Srid id, ICoordinateSystem coordinateSystem)
+        {
+            Id=id;
+            CoordinateSystem=coordinateSystem;
+        }
+
+        /// <summary>Gets the identifier of the coordinate system being created.</summary>
+        public Srid Id
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>Gets the coordinate system that has been created.</summary>
+        public ICoordinateSystem CoordinateSystem
+        {
+            get;
+            private set;
+        }
     }
 
 
@@ -90,6 +132,13 @@ namespace GeoSik
 
         /// <summary>Gets or sets the <see href="html/fdc71072-323b-442a-989d-651ca9a41f4d.htm#wkt">WKT</see> of the coordinate system being created.</summary>
         public string WellKnownText
+        {
+            get;
+            set;
+        }
+
+        /// <summary>Gets or sets the coordinate system being created.</summary>
+        public ICoordinateSystem CoordinateSystem
         {
             get;
             set;

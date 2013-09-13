@@ -75,34 +75,51 @@ namespace GeoSik.ProjNet
             if (id.Value==0)
                 return Wgs84;
 
-            // Has the id already been used ?
-            if (_WktDictionary.ContainsKey(id))
-                return new CoordinateSystem(_CoordinateSystemFactory.CreateFromWkt(_WktDictionary[id]));
+            CoordinateSystem ret=null;
 
             // Try custom implementation
             var args=new CreatingCoordinateSystemEventArgs(id);
             OnCreatingCoordinateSystem(args);
-            if (!string.IsNullOrEmpty(args.WellKnownText))
-                return new CoordinateSystem(_CoordinateSystemFactory.CreateFromWkt(args.WellKnownText));
 
-            // Load resources in memory
-            if (!_InternalRead)
+            if (args.CoordinateSystem!=null)
+                ret=(CoordinateSystem)args.CoordinateSystem;
+            else if (!string.IsNullOrEmpty(args.WellKnownText))
+                ret=new CoordinateSystem(_CoordinateSystemFactory.CreateFromWkt(args.WellKnownText));
+
+            if (ret==null)
             {
-                using (StreamReader sr=new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("GeoSik.ProjNet.Srid.csv")))
-                    while (!sr.EndOfStream)
-                    {
-                        string[] def=sr.ReadLine().Split(new char[] { ';' }, 2);
-                        if (def.Length>1)
-                        {
-                            Srid srid=new Srid(int.Parse(def[0], CultureInfo.InvariantCulture));
-                            if (!_WktDictionary.ContainsKey(srid))
-                                _WktDictionary.Add(srid, def[1]);
-                        }
-                    }
-                _InternalRead=true;
-
+                // Has the id already been used ?
                 if (_WktDictionary.ContainsKey(id))
-                    return new CoordinateSystem(_CoordinateSystemFactory.CreateFromWkt(_WktDictionary[id]));
+                    ret=new CoordinateSystem(_CoordinateSystemFactory.CreateFromWkt(_WktDictionary[id]));
+            }
+
+            if (ret==null)
+            {
+                // Load resources in memory
+                if (!_InternalRead)
+                {
+                    using (StreamReader sr=new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("GeoSik.ProjNet.Srid.csv")))
+                        while (!sr.EndOfStream)
+                        {
+                            string[] def=sr.ReadLine().Split(new char[] { ';' }, 2);
+                            if (def.Length>1)
+                            {
+                                Srid srid=new Srid(int.Parse(def[0], CultureInfo.InvariantCulture));
+                                if (!_WktDictionary.ContainsKey(srid))
+                                    _WktDictionary.Add(srid, def[1]);
+                            }
+                        }
+                    _InternalRead=true;
+
+                    if (_WktDictionary.ContainsKey(id))
+                        ret=new CoordinateSystem(_CoordinateSystemFactory.CreateFromWkt(_WktDictionary[id]));
+                }
+            }
+
+            if (ret!=null)
+            {
+                OnCreatedCoordinateSystem(new CreatedCoordinateSystemEventArgs(id, ret));
+                return ret;
             }
 
             throw new InvalidOperationException(
@@ -136,6 +153,13 @@ namespace GeoSik.ProjNet
                 eh(this, e);
         }
 
+        private void OnCreatedCoordinateSystem(CreatedCoordinateSystemEventArgs e)
+        {
+            var eh=CreatedCoordinateSystem;
+            if (eh!=null)
+                eh(this, e);
+        }
+
         /// <summary>Gets the WGS84 coordinate system.</summary>
         public CoordinateSystem Wgs84
         {
@@ -155,6 +179,8 @@ namespace GeoSik.ProjNet
 
         /// <summary>Event triggered when a coordinate system has to be created.</summary>
         public event EventHandler<CreatingCoordinateSystemEventArgs> CreatingCoordinateSystem;
+        /// <summary>Event triggered when a coordinate system has been created.</summary>
+        public event EventHandler<CreatedCoordinateSystemEventArgs> CreatedCoordinateSystem;
 
         private Dictionary<Srid, string> _WktDictionary;
         private ProjNetCS.CoordinateSystemFactory _CoordinateSystemFactory;
