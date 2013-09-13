@@ -78,7 +78,7 @@ namespace GeoSik
 
         /// <summary>Creates a new instance of the <see cref="CreatedCoordinateSystemEventArgs" /> class.</summary>
         /// <param name="id">The identifier of the coordinate system.</param>
-        /// <param name="system">The coordinate system instance.</param>
+        /// <param name="coordinateSystem">The coordinate system instance.</param>
         public CreatedCoordinateSystemEventArgs(Srid id, ICoordinateSystem coordinateSystem)
         {
             Id=id;
