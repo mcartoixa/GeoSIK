@@ -81,7 +81,10 @@ namespace GeoSik.DotSpatial
 
             var args=new CreatingCoordinateSystemEventArgs(id);
             OnCreatingCoordinateSystem(args);
-            if (!string.IsNullOrEmpty(args.WellKnownText))
+
+            if (args.CoordinateSystem!=null)
+                ret=(CoordinateSystem)args.CoordinateSystem;
+            else if (!string.IsNullOrEmpty(args.WellKnownText))
                 ret=new CoordinateSystem(DsProjections.ProjectionInfo.FromEsriString(args.WellKnownText));
 
             if (ret!=null)
@@ -89,6 +92,7 @@ namespace GeoSik.DotSpatial
                 // DotSpatial does not fill this field automatically
                 if (ret.Projection.EpsgCode==0)
                     ret.Projection.EpsgCode=id.Value;
+                OnCreatedCoordinateSystem(new CreatedCoordinateSystemEventArgs(id, ret));
                 return ret;
             }
 
@@ -123,6 +127,13 @@ namespace GeoSik.DotSpatial
                 eh(this, e);
         }
 
+        private void OnCreatedCoordinateSystem(CreatedCoordinateSystemEventArgs e)
+        {
+            var eh=CreatedCoordinateSystem;
+            if (eh!=null)
+                eh(this, e);
+        }
+
         /// <summary>Gets the WGS84 coordinate system.</summary>
         public CoordinateSystem Wgs84
         {
@@ -142,5 +153,7 @@ namespace GeoSik.DotSpatial
 
         /// <summary>Event triggered when a coordinate system has to be created.</summary>
         public event EventHandler<CreatingCoordinateSystemEventArgs> CreatingCoordinateSystem;
+        /// <summary>Event triggered when a coordinate system has been created.</summary>
+        public event EventHandler<CreatedCoordinateSystemEventArgs> CreatedCoordinateSystem;
     }
 }
