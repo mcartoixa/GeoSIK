@@ -16,7 +16,7 @@
       <dependency id="CommonServiceLocator" version="1.0" />
       <dependency id="Common.Logging" version="2.1.1" />
       <dependency id="LinqToXsd" version="2.0.2" />
-      <dependency id="Newtonsoft.Json" version="4.5.10" />
+      <dependency id="Newtonsoft.Json" version="5.0.6" />
       <dependency id="GeoSik.Externals" version="1.0" />
     </dependencies>
     <references>
