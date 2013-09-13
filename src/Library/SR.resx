@@ -129,6 +129,9 @@
   <data name="CqlTermNotImplementedException" xml:space="preserve">
     <value>The CQL term "{0}" has not been implemented</value>
   </data>
+  <data name="InvalidFilterDefinitionException" xml:space="preserve">
+    <value>Invalid filter definition: "{0}"</value>
+  </data>
   <data name="InvalidGeoJsonException" xml:space="preserve">
     <value>The specified JSON value was not recognized as valid GeoJSON</value>
   </data>

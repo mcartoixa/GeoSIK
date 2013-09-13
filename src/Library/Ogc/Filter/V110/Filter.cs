@@ -58,7 +58,13 @@ namespace GeoSik.Ogc.Filter.V110
                 body=Expression.Constant(true, typeof(bool));
 
             if (body==null)
-                throw new ArgumentException("Invalid filter definition");
+                throw new ArgumentException(
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        SR.InvalidFilterDefinitionException,
+                        Untyped.Value
+                    )
+                );
 
             return Expression.Lambda(body, parameters);
         }
