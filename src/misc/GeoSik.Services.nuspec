@@ -10,7 +10,7 @@
     <description>Library that makes the implementation of standard OGC Web Services easier.</description>
     <projectUrl>http://geosik.codeplex.com/</projectUrl>
     <iconUrl>http://i3.codeplex.com/Download?ProjectName=geosik&amp;DownloadId=358065</iconUrl>
-    <copyright>Copyright © 2012 Isogeo</copyright>
+    <copyright>Copyright © 2012-2013 Isogeo</copyright>
     <tags>GeoSik OGC Geographical Standards Library Isogeo CSW WCF MVC</tags>
     <dependencies>
       <dependency id="GeoSik" version="1.0" />

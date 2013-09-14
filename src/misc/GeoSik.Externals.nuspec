@@ -10,7 +10,7 @@
     <description>External dependencies for the GeoSIK libraries. These are libraries that are not (yet?) packaged for NuGet.</description>
     <projectUrl>http://geosik.codeplex.com/</projectUrl>
     <iconUrl>http://i3.codeplex.com/Download?ProjectName=geosik&amp;DownloadId=358065</iconUrl>
-    <copyright>Copyright © 2012 Isogeo</copyright>
+    <copyright>Copyright © 2012-2013 Isogeo</copyright>
     <tags>GeoSik Irony</tags>
     <references>
       <reference file="Irony.dll" />

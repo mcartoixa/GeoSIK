@@ -10,11 +10,11 @@
     <description>Library that allows the use OGC standards in .NET applications.</description>
     <projectUrl>http://geosik.codeplex.com/</projectUrl>
     <iconUrl>http://i3.codeplex.com/Download?ProjectName=geosik&amp;DownloadId=358065</iconUrl>
-    <copyright>Copyright © 2012 Isogeo</copyright>
+    <copyright>Copyright © 2012-2013 Isogeo</copyright>
     <tags>GeoSik OGC Geographical Standards Library Isogeo CSW</tags>
     <dependencies>
       <dependency id="CommonServiceLocator" version="1.0" />
-      <dependency id="Common.Logging" version="2.1.1" />
+      <dependency id="Common.Logging" version="2.1.2" />
       <dependency id="LinqToXsd" version="2.0.2" />
       <dependency id="Newtonsoft.Json" version="5.0.6" />
       <dependency id="GeoSik.Externals" version="1.0" />
