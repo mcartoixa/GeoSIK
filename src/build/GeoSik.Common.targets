@@ -53,6 +53,7 @@ It must be used with MSBuild 4.0.
     <!-- Tools paths -->
     <BuildToolsPath Condition="'$(BuildToolsPath)'==''">$(MSBuildThisFileDirectory)</BuildToolsPath>
     <NuGetToolPath Condition="'$(NuGetToolPath)'==''">$(InputPath)\.nuget\NuGet.exe</NuGetToolPath>
+    <XUnitToolPath Condition="'$(XUnitToolPath)'==''">$(InputPath)\lib\xunit\xunit.console.clr4.x86.exe</XUnitToolPath>
     <MSDeployToolPath Condition="'$(MSDeployToolPath)'==''">$(registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\IIS Extensions\MSDeploy\3@InstallPath)msdeploy.exe</MSDeployToolPath>
 
     <!-- Output paths -->
@@ -245,7 +246,7 @@ It must be used with MSBuild 4.0.
       <OpenCoverExclude Include="@(TestAssemblies->'-[%(Filename)]*');@(TestedAssemblies->'-[%(Filename)]*.Resources.*');@(TestedAssemblies->'-[%(Filename)]*.NamespaceDoc')" />
     </ItemGroup>
     <OpenCover Condition="'@(TestAssemblies)'!=''"
-      Target="$(InputPath)\lib\xunit\xunit.console.clr4.exe"
+      Target="$(XUnitToolPath)"
       TargetArgs="&quot;$(_OutDir)$(ProjectFilename).xunit&quot; /silent"
       TargetWorkingDir="$(_OutDir)"
       Filter="@(OpenCoverInclude);$(ProjectOpenCoverFilter);-[xunit.*]*;@(OpenCoverExclude)"
