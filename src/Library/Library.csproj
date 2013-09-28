@@ -96,6 +96,7 @@
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="GeometryTransformerSink.cs" />
     <Compile Include="GeometryType.cs" />
+    <Compile Include="ReversedGeometrySink.cs" />
     <Compile Include="ICoordinatesTransformer.cs" />
     <Compile Include="ICoordinateSystem.cs" />
     <Compile Include="ICoordinateSystemProvider.cs" />

@@ -45,6 +45,9 @@ namespace GeoSik
         ISimpleGeometry
     {
 
+        /// <summary>Returns the total surface area of the current geometry.</summary>
+        /// <returns>The total surface area of the current geometry.</returns>
+        double Area();
         ///// <summary>Returns the centroid for the current geometry.</summary>
         ///// <returns>The centroid for the current geometry.</returns>
         //ISimpleGeometry Centroid();
