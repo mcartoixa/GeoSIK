@@ -96,6 +96,7 @@
     <Compile Include="..\..\Version.cs">
       <Link>Properties\Version.cs</Link>
     </Compile>
+    <Compile Include="ReversedGeometrySink.cs" />
     <Compile Include="Ogc\Filter\V110\PropertyIsEqualTo.cs" />
     <Compile Include="Ogc\Filter\V110\PropertyIsGreaterThan.cs" />
     <Compile Include="Ogc\Filter\V110\PropertyIsLike.cs" />

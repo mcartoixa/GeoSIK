@@ -102,6 +102,13 @@ namespace GeoSik.Fdo
             GC.SuppressFinalize(this);
         }
 
+        /// <summary>Returns the total surface area of the current geometry.</summary>
+        /// <returns>The total surface area of the current geometry.</returns>
+        public double Area()
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>Returns the shortest distance between any 2 points in the 2 geometries.</summary>
         /// <param name="geometry">The geometry to calculate the distance from.</param>
         /// <returns>The shortest distance between any 2 points in the 2 geometries.</returns>

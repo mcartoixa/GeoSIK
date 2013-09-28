@@ -73,6 +73,17 @@ namespace GeoSik.SharpMap
             _Geometry=geometry;
         }
 
+        /// <summary>Returns the total surface area of the current geometry.</summary>
+        /// <returns>The total surface area of the current geometry.</returns>
+        public double Area()
+        {
+            var s=_Geometry as SmGeometries.Surface;
+            if (s!=null)
+                return s.Area;
+
+            return 0;
+        }
+
         /// <summary>Returns the centroid for the current geometry.</summary>
         /// <returns>The centroid for the current geometry.</returns>
         public SharpGeometry Centroid()
