@@ -26,17 +26,35 @@ using System.Text;
 namespace GeoSik
 {
 
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Standard geometry types.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
     public enum GeometryType
     {
+        /// <summary>GeometryCollection.</summary>
         GeometryCollection,
+        /// <summary>LineString.</summary>
         LineString,
+        /// <summary>MultiPoint.</summary>
         MultiPoint,
+        /// <summary>MultiLineString.</summary>
         MultiLineString,
+        /// <summary>MultiPolygon.</summary>
         MultiPolygon,
+        /// <summary>Point.</summary>
         Point,
+        /// <summary>Polygon.</summary>
         Polygon,
+        /// <summary>PolyhedralSurface.</summary>
         PolyhedralSurface,
+        /// <summary>Tin.</summary>
         Tin,
+        /// <summary>Triangle.</summary>
         Triangle
     }
 }

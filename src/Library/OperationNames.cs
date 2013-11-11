@@ -25,20 +25,40 @@ using System.Text;
 
 namespace GeoSik
 {
+
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Holds the names for standard spatial operations.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
     public static class OperationNames
     {
-
+        /// <summary>The name of the Contains operation.</summary>
         public const string Contains="Contains";
+        /// <summary>The name of the Crosses operation.</summary>
         public const string Crosses="Crosses";
+        /// <summary>The name of the Disjoint operation.</summary>
         public const string Disjoint="Disjoint";
+        /// <summary>The name of the Distance operation.</summary>
         public const string Distance="Distance";
+        /// <summary>The name of the Equal operation.</summary>
         public const string Equal="Equal";
+        /// <summary>The name of the Intersects operation.</summary>
         public const string Intersects="Intersects";
+        /// <summary>The name of the Like operation.</summary>
         public const string Like="Like";
+        /// <summary>The name of the NotEqual operation.</summary>
         public const string NotEqual="NotEqual";
+        /// <summary>The name of the Overlaps operation.</summary>
         public const string Overlaps="Overlaps";
+        /// <summary>The name of the Relate operation.</summary>
         public const string Relate="Relate";
+        /// <summary>The name of the Touches operation.</summary>
         public const string Touches="Touches";
+        /// <summary>The name of the Within operation.</summary>
         public const string Within="Within";
     }
 }

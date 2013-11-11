@@ -120,4 +120,7 @@
   <data name="CouldNotFindNamespaceFromPrefix" xml:space="preserve">
     <value>The namespace related to the '{0}' prefix could not be found in the specified element</value>
   </data>
+  <data name="DiscoveryGetCapabilitiesDefaultAbstract" xml:space="preserve">
+    <value>A catalogue service that conforms to the OpenGIS Catalogue Service specification version {0}.</value>
+  </data>
 </root>

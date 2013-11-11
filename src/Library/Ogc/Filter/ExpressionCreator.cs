@@ -12,10 +12,21 @@ using LinqExpressionType=System.Linq.Expressions.ExpressionType;
 namespace GeoSik.Ogc.Filter
 {
 
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Interface implemented by type that can be represented as a LINQ <see cref="Expression" />.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
     public interface IExpressionCreator:
         IEnumerable<IExpressionBuilder>
     {
 
+        /// <summary>Creates the LINQ <see cref="Expression" /> that the current type represents.</summary>
+        /// <param name="parameters">The parameters used for the creation of the LINQ <see cref="Expression" />.</param>
+        /// <returns>The LINQ <see cref="Expression" /> that the current type represents.</returns>
         Expression CreateExpression(ExpressionBuilderParameters parameters);
     }
 

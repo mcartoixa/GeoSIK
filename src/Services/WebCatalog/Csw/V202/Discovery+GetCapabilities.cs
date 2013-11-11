@@ -38,15 +38,21 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
     partial class Discovery
     {
 
+        /// <summary>Base implementation of a GetCapabilities request processor.</summary>
         public class GetCapabilitiesProcessorBase:
             OgcRequestProcessor<Types.GetCapabilities, Types.Capabilities>
         {
 
+            /// <summary>Creates a new instance of the <see cref="GetCapabilitiesProcessorBase" /> type.</summary>
+            /// <param name="service">The discovery service this processor is associated to.</param>
             public GetCapabilitiesProcessorBase(Discovery service):
                 base(service)
             {
             }
 
+            /// <summary>Creates a <see cref="Types.Getcapabilities" /> instance from the specified key/value parameters.</summary>
+            /// <param name="parameters">The key/value parameters.</param>
+            /// <returns>The request.</returns>
             protected override Types.GetCapabilities CreateRequest(NameValueCollection parameters)
             {
                 var request=new Types.GetCapabilities();
@@ -75,6 +81,8 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 return request;
             }
 
+            /// <summary>Checks that the specified request is valid.</summary>
+            /// <param name="request">The request to check.</param>
             protected override void CheckRequest(Types.GetCapabilities request)
             {
                 // Do not do standard checks
@@ -85,6 +93,9 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                     throw new OwsException(OwsExceptionCode.VersionNegotiationFailed);
             }
 
+            /// <summary>Processes the specified request.</summary>
+            /// <param name="request">The request to process.</param>
+            /// <returns>The response to the specified request.</returns>
             protected override Types.Capabilities ProcessRequest(Types.GetCapabilities request)
             {
 
@@ -127,7 +138,8 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 return ret;
             }
 
-
+            /// <summary>Creates a Filter_Capabilities section for the current request.</summary>
+            /// <returns>The Filter_Capabilities section for the current request.</returns>
             protected virtual Filter110.Filter_Capabilities CreateFilterCapabilitiesSection()
             {
                 var ret=new Filter110.Filter_Capabilities() {
@@ -184,6 +196,8 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 return ret;
             }
 
+            /// <summary>Creates an OperationsMetadata section for the current request.</summary>
+            /// <returns>The OperationsMetadata section for the current request.</returns>
             protected virtual Ows100.OperationsMetadata CreateOperationsMetadataSection()
             {
                 var operations=new List<Ows100.Operation>();
@@ -307,44 +321,24 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
 
 
                 if (operations.Count>0)
-                    return new Ows100.OperationsMetadata()
-                    {
-                        Operation=operations/*,
-                    Parameter=new Ows.DomainType[] {
-                        new Ows.DomainType() {
-                            name=OgcService.ServiceParameter,
-                            Value=new string[] { Service }
-                        },
-                        new Ows.DomainType() {
-                            name=OgcService.VersionParameter,
-                            Value=new string[] { Version }
-                        }
-                    }*/
+                    return new Ows100.OperationsMetadata() {
+                        Operation=operations
                     };
 
                 return null;
             }
 
+            /// <summary>Creates a ServiceProvider section for the current request.</summary>
+            /// <returns>The ServiceProvider section for the current request.</returns>
             protected virtual Ows100.ServiceProvider CreateServiceProviderSection()
             {
                 return new Ows100.ServiceProvider() {
-                    ProviderName=((Discovery)Service).ProviderName/*,
-                ProviderSite=new Ows100.OnlineResourceType() {
-                    href=new Uri("http://www.isogeo.fr/")
-                },
-                ServiceContact=new Ows100.ResponsiblePartySubsetType() {
-                    ContactInfo=new Ows100.ContactInfo() {
-                        Address=new Ows100.AddressType() {
-                            City="Paris",
-                            Country="France",
-                            ElectronicMailAddress=new string[] { "mathieu.cartoixa@isogeo.fr" },
-                            PostalCode="75017"
-                        }
-                    }
-                }*/
+                    ProviderName=((Discovery)Service).ProviderName
                 };
             }
 
+            /// <summary>Creates a ServiceIdentification section for the current request.</summary>
+            /// <returns>The ServiceIdentification section for the current request.</returns>
             protected virtual Ows100.ServiceIdentification CreateServiceIdentificationSection()
             {
                 return new Ows100.ServiceIdentification()
@@ -359,7 +353,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                     Abstract=new Ows100.Abstract() {
                         TypedValue=string.Format(
                             CultureInfo.CurrentCulture,
-                            "A catalogue service that conforms to the OpenGIS Catalogue Service specification version {0}.",
+                            SR.DiscoveryGetCapabilitiesDefaultAbstract,
                             Service.ServiceVersion
                         )
                     },
@@ -371,6 +365,8 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 };
             }
 
+            /// <summary>Gets the end points for the current discovery service.</summary>
+            /// <returns>The end points for the current discovery service.</returns>
             protected virtual IEnumerable<OwsEndPoint> GetEndPoints()
             {
                 return new OwsEndPoint[0];

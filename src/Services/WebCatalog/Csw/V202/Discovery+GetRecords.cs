@@ -44,15 +44,21 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
     partial class Discovery
     {
 
+        /// <summary>Base implementation of a GetRecords request processor.</summary>
         public class GetRecordsProcessorBase:
             OgcRequestProcessor<Types.GetRecords, Types.IGetRecordsResponse>
         {
 
-            public GetRecordsProcessorBase(Discovery service):
+            /// <summary>Creates a new instance of the <see cref="GetRecordsProcessorBase" /> type.</summary>
+            /// <param name="service">The discovery service this processor is associated to.</param>
+            public GetRecordsProcessorBase(Discovery service) :
                 base(service)
             {
             }
 
+            /// <summary>Creates a <see cref="Types.GetRecords" /> instance from the specified key/value parameters.</summary>
+            /// <param name="parameters">The key/value parameters.</param>
+            /// <returns>The request.</returns>
             protected override Types.GetRecords CreateRequest(NameValueCollection parameters)
             {
                 var request=new Types.GetRecords();
@@ -361,6 +367,8 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 return request;
             }
 
+            /// <summary>Checks that the specified request is valid.</summary>
+            /// <param name="request">The request to check.</param>
             protected override void CheckRequest(Types.GetRecords request)
             {
                 base.CheckRequest(request);
@@ -433,6 +441,9 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 //    };
             }
 
+            /// <summary>Processes the specified request.</summary>
+            /// <param name="request">The request to process.</param>
+            /// <returns>The response to the specified request.</returns>
             public override Types.IGetRecordsResponse Process(Types.GetRecords request)
             {
                 Logger.Debug(CultureInfo.InvariantCulture, m => m("Request processing started"));
@@ -488,6 +499,9 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 }
             }
 
+            /// <summary>Processes the specified request.</summary>
+            /// <param name="request">The request to process.</param>
+            /// <returns>The response to the specified request.</returns>
             protected override Types.IGetRecordsResponse ProcessRequest(Types.GetRecords request)
             {
                 var ret=new Types.GetRecordsResponse();
@@ -615,9 +629,10 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 xws.NamespaceHandling=NamespaceHandling.OmitDuplicates;
                 xws.OmitXmlDeclaration=true;
 
+                StringBuilder sb=new StringBuilder();
                 foreach (IXmlSerializable xs in xsl)
                 {
-                    StringBuilder sb=new StringBuilder();
+                    sb.Clear();
                     using (XmlWriter xw=XmlWriter.Create(sb))
                         xs.WriteXml(xw);
 
