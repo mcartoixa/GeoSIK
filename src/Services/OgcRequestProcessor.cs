@@ -32,6 +32,14 @@ using Xml.Schema.Linq;
 namespace GeoSik.Ogc
 {
 
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///
+    /// <summary>Base implementation of an OGC service request processor.</summary>
+    ///
+    ////////////////////////////////////////////////////////////////////////////
+
     public abstract class OgcRequestProcessor<TRequest, TResponse>
         where TRequest:
             Ows.IRequest
@@ -39,10 +47,13 @@ namespace GeoSik.Ogc
             IXmlSerializable
     {
 
+        /// <summary>Creates a new instance of the <see cref="OgcRequestProcessor{TRequest,TResponse}" /> type.</summary>
         private OgcRequestProcessor()
         {
         }
 
+        /// <summary>Creates a new instance of the <see cref="OgcRequestProcessor{TRequest,TResponse}" /> type.</summary>
+        /// <param name="service">The service associated to the processor.</param>
         protected OgcRequestProcessor(OgcService service)
         {
             Debug.Assert(service!=null);
@@ -52,6 +63,9 @@ namespace GeoSik.Ogc
             _Service=service;
         }
 
+        /// <summary>Processes the request specified as key/value parameters.</summary>
+        /// <param name="parameters">The request parameters in key/value format.</param>
+        /// <returns>The response to the request.</returns>
         public TResponse Process(NameValueCollection parameters)
         {
             Debug.Assert(parameters!=null);
@@ -61,6 +75,9 @@ namespace GeoSik.Ogc
             return Process(CreateRequest(parameters));
         }
 
+        /// <summary>Processes the specified request.</summary>
+        /// <param name="request">The request to process.</param>
+        /// <returns>The response to the request.</returns>
         public virtual TResponse Process(TRequest request)
         {
             Logger.Debug(CultureInfo.InvariantCulture, m => m("Request processing started"));
@@ -79,14 +96,28 @@ namespace GeoSik.Ogc
             return args.Response;
         }
 
+        /// <summary>Checks that the specified request is valid.</summary>
+        /// <param name="request">The request to check.</param>
         protected virtual void CheckRequest(TRequest request)
         {
             Service.CheckRequest(request);
         }
 
+        /// <summary>Creates a request from the specified key/value parameters.</summary>
+        /// <param name="parameters">The request parameters in key/value format.</param>
+        /// <returns>The request.</returns>
         protected abstract TRequest CreateRequest(NameValueCollection parameters);
+        /// <summary>Processes the specified request.</summary>
+        /// <param name="request">The request to process.</param>
+        /// <returns>The response to the request.</returns>
+        /// <remarks>
+        ///   <para>The specified request should be considered as valid, as defined by the implementation
+        /// of the <see cref="OgcRequestProcessor{TRequest,TResponse}.CheckRequest" /> method.</para>
+        /// </remarks>
         protected abstract TResponse ProcessRequest(TRequest request);
 
+        /// <summary>Triggers the <see cref="OgcRequestProcessor{TRequest,TResponse}.Processed" /> event.</summary>
+        /// <param name="e">The parameters for the event.</param>
         protected virtual void OnProcessed(Ows.OwsRequestEventArgs<TRequest, TResponse> e)
         {
             var eh=Processed;
@@ -94,6 +125,7 @@ namespace GeoSik.Ogc
                 eh(this, e);
         }
 
+        /// <summary>Gets a logger for the current processor.</summary>
         protected ILog Logger
         {
             get
@@ -102,6 +134,7 @@ namespace GeoSik.Ogc
             }
         }
 
+        /// <summary>Gets the service associated to the current processor.</summary>
         protected OgcService Service
         {
             get
@@ -110,6 +143,7 @@ namespace GeoSik.Ogc
             }
         }
 
+        /// <summary>Event triggered when a request has been processed.</summary>
         public event EventHandler<Ows.OwsRequestEventArgs<TRequest, TResponse>> Processed;
 
         private OgcService _Service;

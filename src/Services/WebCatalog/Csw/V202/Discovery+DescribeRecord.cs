@@ -35,15 +35,21 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
     partial class Discovery
     {
 
+        /// <summary>Base implementation of a DescribeRecord request processor.</summary>
         public class DescribeRecordProcessorBase:
             OgcRequestProcessor<Types.DescribeRecord, Types.DescribeRecordResponse>
         {
 
-            public DescribeRecordProcessorBase(Discovery service):
+            /// <summary>Creates a new instance of the <see cref="DescribeRecordProcessorBase" /> type.</summary>
+            /// <param name="service">The discovery service this processor is associated to.</param>
+            public DescribeRecordProcessorBase(Discovery service) :
                 base(service)
             {
             }
 
+            /// <summary>Creates a <see cref="Types.DescribeRecord" /> instance from the specified key/value parameters.</summary>
+            /// <param name="parameters">The key/value parameters.</param>
+            /// <returns>The request.</returns>
             protected override Types.DescribeRecord CreateRequest(NameValueCollection parameters)
             {
                 var request=new Types.DescribeRecord();
@@ -121,6 +127,8 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 return request;
             }
 
+            /// <summary>Checks that the specified request is valid.</summary>
+            /// <param name="request">The request to check.</param>
             protected override void CheckRequest(Types.DescribeRecord request)
             {
                 base.CheckRequest(request);
@@ -138,6 +146,9 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                     };
             }
 
+            /// <summary>Processes the specified request.</summary>
+            /// <param name="request">The request to process.</param>
+            /// <returns>The response to the specified request.</returns>
             protected override Types.DescribeRecordResponse ProcessRequest(Types.DescribeRecord request)
             {
                 var ret=new Types.DescribeRecordResponse();

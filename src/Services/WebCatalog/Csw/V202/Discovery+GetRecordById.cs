@@ -44,15 +44,21 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
     partial class Discovery
     {
 
+        /// <summary>Base implementation of a GetRecordById request processor.</summary>
         public class GetRecordByIdProcessorBase:
             OgcRequestProcessor<Types.GetRecordById, Types.GetRecordByIdResponse>
         {
 
-            public GetRecordByIdProcessorBase(Discovery service):
+            /// <summary>Creates a new instance of the <see cref="GetRecordByIdProcessorBase" /> type.</summary>
+            /// <param name="service">The discovery service this processor is associated to.</param>
+            public GetRecordByIdProcessorBase(Discovery service) :
                 base(service)
             {
             }
 
+            /// <summary>Creates a <see cref="Types.GetRecordById" /> instance from the specified key/value parameters.</summary>
+            /// <param name="parameters">The key/value parameters.</param>
+            /// <returns>The request.</returns>
             protected override Types.GetRecordById CreateRequest(NameValueCollection parameters)
             {
                 var request=new Types.GetRecordById();
@@ -101,6 +107,8 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 return request;
             }
 
+            /// <summary>Checks that the specified request is valid.</summary>
+            /// <param name="request">The request to check.</param>
             protected override void CheckRequest(Types.GetRecordById request)
             {
                 base.CheckRequest(request);
@@ -134,6 +142,9 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 //TODO: implement additional checks
             }
 
+            /// <summary>Processes the specified request.</summary>
+            /// <param name="request">The request to process.</param>
+            /// <returns>The response to the specified request.</returns>
             protected override Types.GetRecordByIdResponse ProcessRequest(Types.GetRecordById request)
             {
                 var ret=new Types.GetRecordByIdResponse();
@@ -190,6 +201,9 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 return ret;
             }
 
+            /// <summary>Gets a converter between a <see cref="Uri" /> and the specified type.</summary>
+            /// <param name="destinationType">The type the converter should be able to convert <see cref="Uri" />s into.</param>
+            /// <returns>The type converter.</returns>
             protected virtual TypeConverter GetIdentifierUriConverter(Type destinationType)
             {
                 return new UriTypeConverter();

@@ -56,73 +56,112 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
         IDiscovery
     {
 
+        /// <summary>Processes the standard GetCapabilities operation for the current discovery service.</summary>
+        /// <param name="parameters">The parameters for the operation in key/value format.</param>
+        /// <returns>The <see cref="Types.Capabilities" /> for the current discovery service.</returns>
         public Types.Capabilities GetCapabilities(NameValueCollection parameters)
         {
             return CreateGetCapabilitiesProcessor().Process(parameters);
         }
 
+        /// <summary>Processes the standard GetCapabilities operation for the current discovery service.</summary>
+        /// <param name="request">The parameters for the operation.</param>
+        /// <returns>The <see cref="Types.Capabilities" /> for the current discovery service.</returns>
         public Types.Capabilities GetCapabilities(Types.GetCapabilities request)
         {
             return CreateGetCapabilitiesProcessor().Process(request);
         }
 
+        /// <summary>Processes the standard DescribeRecord operation for the current discovery service.</summary>
+        /// <param name="parameters">The parameters for the operation in key/value format.</param>
+        /// <returns>The <see cref="Types.DescribeRecordResponse" /> for the operation.</returns>
         public Types.DescribeRecordResponse DescribeRecord(NameValueCollection parameters)
         {
             return CreateDescribeRecordProcessor().Process(parameters);
         }
 
+        /// <summary>Processes the standard DescribeRecord operation for the current discovery service.</summary>
+        /// <param name="request">The parameters for the operation.</param>
+        /// <returns>The <see cref="Types.DescribeRecordResponse" /> for the operation.</returns>
         public Types.DescribeRecordResponse DescribeRecord(Types.DescribeRecord request)
         {
             return CreateDescribeRecordProcessor().Process(request);
         }
 
+        /// <summary>Processes the standard GetRecords operation for the current discovery service.</summary>
+        /// <param name="parameters">The parameters for the operation in key/value format.</param>
+        /// <returns>The <see cref="Types.IGetRecordsResponse" /> for the operation.</returns>
         public Types.IGetRecordsResponse GetRecords(NameValueCollection parameters)
         {
             return CreateGetRecordsProcessor().Process(parameters);
         }
 
+        /// <summary>Processes the standard GetRecords operation for the current discovery service.</summary>
+        /// <param name="request">The parameters for the operation.</param>
+        /// <returns>The <see cref="Types.IGetRecordsResponse" /> for the operation.</returns>
         public Types.IGetRecordsResponse GetRecords(Types.GetRecords request)
         {
             return CreateGetRecordsProcessor().Process(request);
         }
 
+        /// <summary>Processes the standard GetDomain operation for the current discovery service.</summary>
+        /// <param name="request">The parameters for the operation.</param>
+        /// <returns>The <see cref="Types.GetDomainResponse" /> for the operation.</returns>
         public Types.GetDomainResponse GetDomain(Types.GetDomain request)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>Processes the standard GetRecordById operation for the current discovery service.</summary>
+        /// <param name="parameters">The parameters for the operation in key/value format.</param>
+        /// <returns>The <see cref="Types.GetRecordByIdResponse" /> for the operation.</returns>
         public Types.GetRecordByIdResponse GetRecordById(NameValueCollection parameters)
         {
             return CreateGetRecordByIdProcessor().Process(parameters);
         }
 
+        /// <summary>Processes the standard GetRecordById operation for the current discovery service.</summary>
+        /// <param name="request">The parameters for the operation.</param>
+        /// <returns>The <see cref="Types.GetRecordByIdResponse" /> for the operation.</returns>
         public Types.GetRecordByIdResponse GetRecordById(Types.GetRecordById request)
         {
             return CreateGetRecordByIdProcessor().Process(request);
         }
 
+        /// <summary>Creates a processor for the standard GetCapabilities operation.</summary>
+        /// <returns>The processor for the standard GetCapabilities operation.</returns>
         protected virtual GetCapabilitiesProcessorBase CreateGetCapabilitiesProcessor()
         {
             return new GetCapabilitiesProcessorBase(this);
         }
 
+        /// <summary>Creates a processor for the standard DescribeRecord operation.</summary>
+        /// <returns>The processor for the standard DescribeRecord operation.</returns>
         protected virtual DescribeRecordProcessorBase CreateDescribeRecordProcessor()
         {
             return new DescribeRecordProcessorBase(this);
         }
 
+        /// <summary>Creates a processor for the standard Getrecords operation.</summary>
+        /// <returns>The processor for the standard GetRecords operation.</returns>
         protected virtual GetRecordsProcessorBase CreateGetRecordsProcessor()
         {
             return new GetRecordsProcessorBase(this);
         }
 
+        /// <summary>Creates a processor for the standard GetRecordById operation.</summary>
+        /// <returns>The processor for the standard GetrecordById operation.</returns>
         protected virtual GetRecordByIdProcessorBase CreateGetRecordByIdProcessor()
         {
             return new GetRecordByIdProcessorBase(this);
         }
 
+        /// <summary>Gets the source of CSW records for the current discovery service.</summary>
+        /// <param name="outputSchema">The schema for the CSW records.</param>
+        /// <returns>The source of CSW records for the current discovery service.</returns>
         protected abstract IQueryable GetRecordsSource(Uri outputSchema);
 
+        /// <summary>Gets the list of supported CSW record types for the current discovery service.</summary>
         public virtual IEnumerable<IXMetaData> SupportedRecordTypes
         {
             get
@@ -131,6 +170,8 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
             }
         }
 
+        /// <summary>Gets a custom <see cref="IOperatorImplementationProvider" /> for the current discovery service.</summary>
+        /// <returns>a custom <see cref="IOperatorImplementationProvider" /> for the current discovery service.</returns>
         protected virtual IOperatorImplementationProvider GetOperatorImplementationProvider()
         {
             return null;
@@ -174,46 +215,78 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
             return XName.Get(name);
         }
 
+        /// <summary>Gets the name of the discovery service.</summary>
+        /// <remarks>
+        ///   <para>A standard implementation should return <c>"CSW"</c>.</para>
+        /// </remarks>
         public override string ServiceName
         {
             get { return Service; }
         }
 
+        /// <summary>Gets the version of the discovery service.</summary>
+        /// <remarks>
+        ///   <para>An implementation based on this class should return <c>"2.0.2"</c>.</para>
+        /// </remarks>
         public override string ServiceVersion
         {
             get { return Version; }
         }
 
+        /// <summary>Gets the discovery provider name.</summary>
         public abstract string ProviderName { get; }
 
+        /// <summary>The <see cref="Uri" /> for the XML Schema namespace.</summary>
         protected static readonly Uri XmlSchemaLanguageUri=new Uri(Namespaces.XmlSchemaNamespace);
+        /// <summary>The <see cref="Uri" /> for an incorrect XML Schema namespace that is referenced in the CSW standard.</summary>
         protected static readonly Uri StrangeXmlSchemaLanguageUri=new Uri(Namespaces.StrangeXmlSchemaNamespace);
 
+        /// <summary>The name of the Constraint parameter when passed in key/value format.</summary>
         protected const string ConstraintParameter="constraint";
+        /// <summary>The name of the ConstraintLanguage parameter when passed in key/value format.</summary>
         protected const string ConstraintLanguageParameter="constraintlanguage";
+        /// <summary>The name of the DistributedSearch parameter when passed in key/value format.</summary>
         protected const string DistributedSearchParameter="distributedsearch";
+        /// <summary>The name of the ElementName parameter when passed in key/value format.</summary>
         protected const string ElementNameParameter="elementname";
+        /// <summary>The name of the ElementSetName parameter when passed in key/value format.</summary>
         protected const string ElementSetNameParameter="elementsetname";
+        /// <summary>The name of the HopCount parameter when passed in key/value format.</summary>
         protected const string HopCountParameter="hopcount";
+        /// <summary>The name of the Id parameter when passed in key/value format.</summary>
         protected const string IdParameter="id";
+        /// <summary>The name of the MaxRecords parameter when passed in key/value format.</summary>
         protected const string MaxRecordsParameter="maxrecords";
+        /// <summary>The name of the Namespace parameter when passed in key/value format.</summary>
         protected const string NamespaceParameter="namespace";
+        /// <summary>The name of the OutputFormat parameter when passed in key/value format.</summary>
         protected const string OutputFormatParameter="outputformat";
+        /// <summary>The name of the OutputSchema parameter when passed in key/value format.</summary>
         protected const string OutputSchemaParameter="outputschema";
+        /// <summary>The name of the RequestId parameter when passed in key/value format.</summary>
         protected const string RequestIdParameter="requestid";
+        /// <summary>The name of the ResponseHandler parameter when passed in key/value format.</summary>
         protected const string ResponseHandlerParameter="responsehandler";
+        /// <summary>The name of the ResultType parameter when passed in key/value format.</summary>
         protected const string ResultTypeParameter="resulttype";
+        /// <summary>The name of the SchemaLanguage parameter when passed in key/value format.</summary>
         protected const string SchemaLanguageParameter="schemalanguage";
+        /// <summary>The name of the SortBy parameter when passed in key/value format.</summary>
         protected const string SortByParameter="sortby";
+        /// <summary>The name of the StartPosition parameter when passed in key/value format.</summary>
         protected const string StartPositionParameter="startposition";
+        /// <summary>The name of the TypeName parameter when passed in key/value format.</summary>
         protected const string TypeNameParameter="typename";
+        /// <summary>The name of the TypeNames parameter when passed in key/value format.</summary>
         protected const string TypeNamesParameter="typenames";
 
         private static readonly Regex _NamespacesRegEx=new Regex(@"^xmlns\(((?<PREFIX>\w+)=)?(?<URL>.+)\)$", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.ExplicitCapture);
         private static readonly Regex _InvalidFileNameCharsRegEx=new Regex(@"\W", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         private static readonly IXMetaData[] _SupportedRecordTypesInstances=new IXMetaData[] { new Types.Record() };
 
+        /// <summary>The name for the discovery service: <c>"CSW"</c>.</summary>
         public const string Service="CSW";
+        /// <summary>The version for the discovery service: <c>"2.0.2"</c>.</summary>
         public const string Version="2.0.2";
     }
 }
