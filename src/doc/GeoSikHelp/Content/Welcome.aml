@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="ee6a078a-4b0e-4f56-8dc3-d75af24f37d7" revisionNumber="1">
+  <developerOrientationDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+      <para><application>GeoSIK</application> is a set of libraries that make the implementation of standard
+OGC web services easier in .NET.</para>
+    </introduction>
+  </developerOrientationDocument>
+</topic>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>GeoSik.Externals</id>
+    <version>1.0</version>
+    <title>GeoSik external dependencies</title>
+    <authors>Isogeo,mcartoixa</authors>
+    <owners>mcartoixa</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>External dependencies for the GeoSIK libraries. These are libraries that are not (yet?) packaged for NuGet.</description>
+    <projectUrl>http://geosik.codeplex.com/</projectUrl>
+    <iconUrl>http://i3.codeplex.com/Download?ProjectName=geosik&amp;DownloadId=358065</iconUrl>
+    <copyright>Copyright © 2012-2013 Isogeo</copyright>
+    <tags>GeoSik Irony</tags>
+    <references>
+      <reference file="Irony.dll" />
+      <reference file="Irony.Interpreter.dll" />
+    </references>
+  </metadata>
+  <files> 
+    <file src="src\Irony.dll" target="lib\net40" /> 
+    <file src="src\Irony.Interpreter.dll" target="lib\net40" /> 
+  </files> 
+</package>

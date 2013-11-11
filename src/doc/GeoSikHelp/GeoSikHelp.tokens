@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<content xml:space="preserve" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <item id="OGC"><ddue:externalLink xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5">
+    <ddue:linkText>OGC</ddue:linkText>
+    <ddue:linkUri>http://www.opengeospatial.com/</ddue:linkUri>
+</ddue:externalLink></item>
+  <item id="CSW202Spec"><ddue:externalLink xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5">
+    <ddue:linkText>OGC CSW 2.0.2 [07-006r1]</ddue:linkText>
+    <ddue:linkUri>http://portal.opengeospatial.org/files/?artifact_id=20555</ddue:linkUri>
+</ddue:externalLink></item>
+  <item id="CSW202ISOAPSpec"><ddue:externalLink xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5">
+    <ddue:linkText>OGC CSW 2.0.2 - ISO AP [07-045]</ddue:linkText>
+    <ddue:linkUri>http://portal.opengeospatial.org/files/?artifact_id=21460</ddue:linkUri>
+</ddue:externalLink></item>
+</content>
