@@ -123,4 +123,7 @@
   <data name="DiscoveryGetCapabilitiesDefaultAbstract" xml:space="preserve">
     <value>A catalogue service that conforms to the OpenGIS Catalogue Service specification version {0}.</value>
   </data>
+  <data name="InvalidParameterException" xml:space="preserve">
+    <value>The parameter '{0}' has an invalid value: '{1}'</value>
+  </data>
 </root>

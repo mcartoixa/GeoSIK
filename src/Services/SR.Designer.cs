@@ -70,11 +70,11 @@ namespace GeoSik.Ogc {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à A catalogue service that conforms to the OpenGIS Catalogue Service specification version {0}..
+        ///   Recherche une chaîne localisée semblable à The parameter &apos;{0}&apos; has an invalid value: &apos;{1}&apos;.
         /// </summary>
-        internal static string DiscoveryGetCapabilitiesDefaultAbstract {
+        internal static string InvalidParameterException {
             get {
-                return ResourceManager.GetString("DiscoveryGetCapabilitiesDefaultAbstract", resourceCulture);
+                return ResourceManager.GetString("InvalidParameterException", resourceCulture);
             }
         }
     }
