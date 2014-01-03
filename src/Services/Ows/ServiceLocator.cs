@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -133,7 +134,15 @@ namespace GeoSik.Ogc.Ows
             FindServices();
 
             if (!_Services.ContainsKey(service))
-                throw new OwsException(OwsExceptionCode.OperationNotSupported) {
+                throw new OwsException(
+                    OwsExceptionCode.OperationNotSupported,
+                    string.Format(
+                        CultureInfo.CurrentCulture,
+                        SR.InvalidParameterException,
+                        OgcService.ServiceParameter,
+                        service ?? string.Empty
+                    )
+                ) {
                     Locator=OgcService.ServiceParameter // should be service ?
                 };
             var s=_Services[service];
@@ -142,7 +151,15 @@ namespace GeoSik.Ogc.Ows
             if (!string.IsNullOrEmpty(version))
             {
                 if (!s.ContainsKey(version))
-                    throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
+                    throw new OwsException(
+                        OwsExceptionCode.InvalidParameterValue,
+                        string.Format(
+                            CultureInfo.CurrentCulture,
+                            SR.InvalidParameterException,
+                            OgcService.VersionParameter,
+                            version
+                        )
+                    ) {
                         Locator=OgcService.VersionParameter
                     };
                 t=s[version];
@@ -182,7 +199,15 @@ namespace GeoSik.Ogc.Ows
                     }
             }
 
-            throw new OwsException(OwsExceptionCode.OperationNotSupported) {
+            throw new OwsException(
+                OwsExceptionCode.OperationNotSupported,
+                string.Format(
+                    CultureInfo.CurrentCulture,
+                    SR.InvalidParameterException,
+                    OgcService.RequestParameter,
+                    request ?? string.Empty
+                )
+            ) {
                 Locator=request
             };
         }
