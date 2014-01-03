@@ -50,7 +50,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
             {
             }
 
-            /// <summary>Creates a <see cref="Types.Getcapabilities" /> instance from the specified key/value parameters.</summary>
+            /// <summary>Creates a <see cref="Types.GetCapabilities" /> instance from the specified key/value parameters.</summary>
             /// <param name="parameters">The key/value parameters.</param>
             /// <returns>The request.</returns>
             protected override Types.GetCapabilities CreateRequest(NameValueCollection parameters)
