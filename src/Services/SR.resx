@@ -120,4 +120,7 @@
   <data name="CouldNotFindNamespaceFromPrefix" xml:space="preserve">
     <value>The namespace related to the '{0}' prefix could not be found in the specified element</value>
   </data>
+  <data name="InvalidParameterException" xml:space="preserve">
+    <value>The parameter '{0}' has an invalid value: '{1}'</value>
+  </data>
 </root>
