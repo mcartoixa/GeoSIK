@@ -33,6 +33,10 @@ GOTO ARGS
 :: Builds the project
 :: -------------------------------------------------------------------
 :BUILD
+IF EXIST .nuget\packages.config (
+    .nuget\NuGet.exe install .nuget\packages.config -o packages -source "https://nuget.org/api/v2/" -source "%LOCALAPPDATA%\NuGet\Cache"
+)
+
 msbuild.exe %PROJECT% /nologo /t:%TARGET% /m:%NUMBER_OF_PROCESSORS% /p:GenerateDocumentation="%GENERATE_DOCUMENTATION%" /fl /flp:logfile=build.log;verbosity=%VERBOSITY%;encoding=UTF-8 /nr:False
 
 IF ERRORLEVEL 1 (
@@ -74,6 +78,7 @@ GOTO SETENV
 :SETENV
 CALL :SetMSBuildToolsPathHelper > nul 2>&1
 IF ERRORLEVEL 1 GOTO ERROR_MSBUILD
+ECHO SET MSBuildToolsPath=%MSBuildToolsPath%
 
 SET PATH=%CD%\misc\;%MSBuildToolsPath%;%PATH%
 GOTO BUILD
