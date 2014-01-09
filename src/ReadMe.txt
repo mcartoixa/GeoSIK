@@ -7,12 +7,11 @@ PREREQUISITES
 	* ASP.NET MVC 3 <http://www.asp.net/mvc/mvc3>
 	* MSBuild.Community.Tasks 1.3 <http://msbuildtasks.tigris.org/>
 	* FxCop 10.0
-	* OpenCover 4.0 <https://github.com/sawilde/opencover>
 
 - Development:
-	* Microsoft Visual Studio 2012
+	* Microsoft Visual Studio 2013
 	* Microsoft SQL Server 2012 Express <http://www.microsoft.com/en-us/download/details.aspx?id=29062>
-	* [Sandcastle Help File Builder 1.9.5.0] <http://shfb.codeplex.com/>
+	* [Sandcastle Help File Builder 1.9.8.0] <http://shfb.codeplex.com/>
 
 
 
