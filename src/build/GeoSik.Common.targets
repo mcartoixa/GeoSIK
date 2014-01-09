@@ -42,6 +42,7 @@ It must be used with MSBuild 4.0.
 
     <!-- Imported tasks paths -->
     <IsogeoMSBuildTasksPath Condition="'$(IsogeoMSBuildTasksPath)'==''">$(MSBuildThisFileDirectory)</IsogeoMSBuildTasksPath>
+    <OpenCoverMSBuildTasksPath Condition="'$(OpenCoverMSBuildTasksPath)'==''">$(MSBuildExtensionsPath32)\OpenCover</OpenCoverMSBuildTasksPath>
     <TransformXmlAvailable>False</TransformXmlAvailable>
     <TransformXmlAvailable Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\Web\Microsoft.Web.Publishing.Tasks.dll')">True</TransformXmlAvailable>
     <TransformXmlTasksPath Condition="$(TransformXmlAvailable)">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\Web\Microsoft.Web.Publishing.Tasks.dll</TransformXmlTasksPath>
@@ -81,7 +82,7 @@ It must be used with MSBuild 4.0.
   </ItemGroup>
 
   <Import Project="$(MSBuildExtensionsPath32)\MSBuildCommunityTasks\MSBuild.Community.Tasks.targets" />
-  <Import Project="$(MSBuildExtensionsPath32)\OpenCover\OpenCover.targets" />
+  <Import Project="$(OpenCoverMSBuildTasksPath)\OpenCover.targets" />
   <Import Project="$(IsogeoMSBuildTasksPath)\Isogeo.Build.Tasks.targets" />
   <UsingTask Condition="$(TransformXmlAvailable)" TaskName="TransformXml" AssemblyFile="$(TransformXmlTasksPath)" />
   <UsingTask TaskName="CompressorTask" AssemblyFile="$(MSBuildThisFileDirectory)\Yahoo.Yui.Compressor.dll" />
@@ -251,6 +252,7 @@ It must be used with MSBuild 4.0.
       TargetWorkingDir="$(_OutDir)"
       Filter="@(OpenCoverInclude);$(ProjectOpenCoverFilter);-[xunit.*]*;@(OpenCoverExclude)"
       Output="$(TmpOutputPath)$(ProjectFilename).opencover-results.xml"
+      ToolPath="$(OpenCoverToolPath)"
     />
   </Target>
 

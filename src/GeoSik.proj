@@ -7,6 +7,8 @@
   <PropertyGroup>
     <ProjectName Condition="'$(ProjectName)'==''">$(MSBuildProjectName)</ProjectName>
     <WindowsSdkVersion>v7.1</WindowsSdkVersion>
+    <OpenCoverMSBuildTasksPath>$(MSBuildProjectDirectory)\packages\OpenCover.4.5.2316\MSBuild</OpenCoverMSBuildTasksPath>
+    <OpenCoverToolPath>$(MSBuildProjectDirectory)\packages\OpenCover.4.5.2316</OpenCoverToolPath>
     <XUnitToolPath>$(MSBuildProjectDirectory)\packages\xunit.runners.1.9.2\tools\xunit.console.clr4.x86.exe</XUnitToolPath>
   </PropertyGroup>
 
