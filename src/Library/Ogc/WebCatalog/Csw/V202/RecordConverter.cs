@@ -23,6 +23,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
@@ -141,14 +142,18 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
             return ret;
         }
 
-        IXmlSerializable IRecordConverter.Convert(IRecord record, string elementSet)
+        Task<IXmlSerializable> IRecordConverter.ConvertAsync(IRecord record, string elementSet)
         {
-            return Convert(record, elementSet);
+            var tcs=new TaskCompletionSource<IXmlSerializable>();
+            tcs.SetResult(Convert(record, elementSet));
+            return tcs.Task;
         }
 
-        IXmlSerializable IRecordConverter.Convert(IRecord record, IEnumerable<string> elements, bool mayRootPathBeImplied)
+        Task<IXmlSerializable> IRecordConverter.ConvertAsync(IRecord record, IEnumerable<string> elements, bool mayRootPathBeImplied)
         {
-            return Convert(record, elements, mayRootPathBeImplied);
+            var tcs=new TaskCompletionSource<IXmlSerializable>();
+            tcs.SetResult(Convert(record, elements, mayRootPathBeImplied));
+            return tcs.Task;
         }
 
         private void ConvertBriefRecordField(Types.AbstractRecord briefRecord, IRecord record, Filter.XPathTypeNavigator navigator)

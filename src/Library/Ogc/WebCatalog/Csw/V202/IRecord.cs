@@ -22,6 +22,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.XPath;
 using System.Xml.Serialization;
@@ -40,7 +41,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
     public interface IRecordConverter
     {
 
-        IXmlSerializable Convert(IRecord record, string elementSet);
-        IXmlSerializable Convert(IRecord record, IEnumerable<string> elements, bool mayRootPathBeImplied);
+        Task<IXmlSerializable> ConvertAsync(IRecord record, string elementSet);
+        Task<IXmlSerializable> ConvertAsync(IRecord record, IEnumerable<string> elements, bool mayRootPathBeImplied);
     }
 }

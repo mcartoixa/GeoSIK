@@ -30,6 +30,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
@@ -172,9 +173,11 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 }
 
                 // Performs the query
-                IEnumerable<IXmlSerializable> results=records.StaticCast<IRecord>()
-                    .Select<IRecord, IXmlSerializable>(r => r.GetConverter(request.outputSchema, namespaceManager).Convert(r, request.ElementSetName.TypedValue))
-                    .ToArray<IXmlSerializable>();
+                var resultTasks=records.StaticCast<IRecord>()
+                    .Select<IRecord, Task<IXmlSerializable>>(r => r.GetConverter(request.outputSchema, namespaceManager).ConvertAsync(r, request.ElementSetName.TypedValue))
+                    .ToArray<Task<IXmlSerializable>>();
+                Task.WaitAll(resultTasks);
+                var results=resultTasks.Select( t => t.Result );
 
                 // Core Record types
                 var arl=results.OfType<Types.AbstractRecord>();
