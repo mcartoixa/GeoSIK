@@ -26,6 +26,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using Xml.Schema.Linq;
 using GeoSik.Ogc.Ows;
@@ -96,7 +97,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
             /// <summary>Processes the specified request.</summary>
             /// <param name="request">The request to process.</param>
             /// <returns>The response to the specified request.</returns>
-            protected override Types.Capabilities ProcessRequest(Types.GetCapabilities request)
+            protected override Task<Types.Capabilities> ProcessRequestAsync(Types.GetCapabilities request)
             {
 
                 // When sections is specified but empty, the abbreviated version of GetCapabilities should be returned
@@ -135,7 +136,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                     ret.Content.ServiceIdentification=CreateServiceIdentificationSection();
 
                 ret.Content.version=Version;
-                return ret;
+                return Task.FromResult(ret);
             }
 
             /// <summary>Creates a Filter_Capabilities section for the current request.</summary>

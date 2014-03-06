@@ -46,13 +46,13 @@ namespace GeoSik.WebSample.Services
         {
             NameValueCollection parameters=WebOperationContext.Current.IncomingRequest.UriTemplateMatch.QueryParameters;
 
-            IXmlSerializable response=ServiceLocatorInstance.InvokeService(parameters);
+            IXmlSerializable response=ServiceLocatorInstance.InvokeServiceAsync(parameters).Result;
             return CreateMessage(response, OperationContext.Current.IncomingMessageVersion);
         }
 
         public Message Execute(IRequest request)
         {
-            IXmlSerializable response=ServiceLocatorInstance.InvokeService(request);
+            IXmlSerializable response=ServiceLocatorInstance.InvokeServiceAsync(request).Result;
             return CreateMessage(response, OperationContext.Current.IncomingMessageVersion);
         }
 

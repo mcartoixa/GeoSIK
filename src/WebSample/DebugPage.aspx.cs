@@ -46,7 +46,7 @@ namespace GeoSik.WebSample
                 var sb=new StringBuilder();
                 using (var xw=XmlWriter.Create(sb))
                 {
-                    IXmlSerializable response=Services.Ows.ServiceLocatorInstance.InvokeService(parameters);
+                    IXmlSerializable response=Services.Ows.ServiceLocatorInstance.InvokeServiceAsync(parameters).Result;
                     response.WriteXml(xw);
                 }
                 _Label1.Text=HttpUtility.HtmlEncode(sb.ToString());

@@ -27,6 +27,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace GeoSik.Ogc.Ows
@@ -56,16 +57,16 @@ namespace GeoSik.Ogc.Ows
         /// <summary>Invokes the OWS service referenced in the specified <paramref name="parameters" />.</summary>
         /// <param name="parameters">The key/value pairs that are used as parameters of the service call.</param>
         /// <returns>The result of the call.</returns>
-        public IXmlSerializable InvokeService(NameValueCollection parameters)
+        public async Task<IXmlSerializable> InvokeServiceAsync(NameValueCollection parameters)
         {
-            return InvokeService(null, parameters);
+            return await InvokeServiceAsync(null, parameters);
         }
 
         /// <summary>Invokes the OWS service referenced in the specified <paramref name="parameters" />.</summary>
         /// <param name="arguments">The arguments to use for the service instantiation. Can be <c>null</c>.</param>
         /// <param name="parameters">The key/value pairs that are used as parameters of the service call.</param>
         /// <returns>The result of the call.</returns>
-        public IXmlSerializable InvokeService(object[] arguments, NameValueCollection parameters)
+        public async Task<IXmlSerializable> InvokeServiceAsync(object[] arguments, NameValueCollection parameters)
         {
             Debug.Assert(parameters!=null);
             if (parameters==null)
@@ -91,22 +92,22 @@ namespace GeoSik.Ogc.Ows
                     Locator=OgcService.VersionParameter
                 };
 
-            return InvokeService(arguments, parameters, service, version, request);
+            return await InvokeServiceAsync(arguments, parameters, service, version, request);
         }
 
         /// <summary>Invokes the OWS service corresponding to the specified <paramref name="request" />.</summary>
         /// <param name="request">The request that is used for the service call.</param>
         /// <returns>The result of the call.</returns>
-        public IXmlSerializable InvokeService(IRequest request)
+        public async Task<IXmlSerializable> InvokeServiceAsync(IRequest request)
         {
-            return InvokeService(null, request);
+            return await InvokeServiceAsync(null, request);
         }
 
         /// <summary>Invokes the OWS service corresponding to the specified <paramref name="request" />.</summary>
         /// <param name="arguments">The arguments to use for the service instantiation. Can be <c>null</c>.</param>
         /// <param name="request">The request that is used for the service call.</param>
         /// <returns>The result of the call.</returns>
-        public IXmlSerializable InvokeService(object[] arguments, IRequest request)
+        public async Task<IXmlSerializable> InvokeServiceAsync(object[] arguments, IRequest request)
         {
             Debug.Assert(request!=null);
             if (request==null)
@@ -126,10 +127,10 @@ namespace GeoSik.Ogc.Ows
                     Locator=OgcService.VersionParameter
                 };
 
-            return InvokeService(arguments, request, request.Service, request.Version, operation);
+            return await InvokeServiceAsync(arguments, request, request.Service, request.Version, operation);
         }
 
-        private IXmlSerializable InvokeService(object[] arguments, object input, string service, string version, string request)
+        private async Task<IXmlSerializable> InvokeServiceAsync(object[] arguments, object input, string service, string version, string request)
         {
             FindServices();
 
@@ -164,18 +165,27 @@ namespace GeoSik.Ogc.Ows
                     };
                 t=s[version];
             } else
-                t=s[s.Keys.Max<string>()]; // latest version
+                t=s[s.Keys.Max()]; // latest version
 
-            IEnumerable<MethodInfo> requests=t
-                .FindMembers(MemberTypes.Method, BindingFlags.Instance | BindingFlags.Public, _ServiceRequestFilter, request.ToUpperInvariant())
-                .Cast<MethodInfo>();
+            var requests=t
+                .FindMembers(MemberTypes.Method, BindingFlags.Instance | BindingFlags.Public, _ServiceRequestFilter, string.Join(request, "Async").ToUpperInvariant())
+                .Cast<MethodInfo>()
+                .Union(
+                    t.FindMembers(MemberTypes.Method, BindingFlags.Instance | BindingFlags.Public, _ServiceRequestFilter, request.ToUpperInvariant())
+                );
             foreach (MethodInfo r in requests)
             {
                 ParameterInfo[] pia=r.GetParameters();
                 if ((pia.Length==1) && (pia[0].ParameterType==input.GetType()))
                     try
                     {
-                        return r.Invoke(Activator.CreateInstance(t, arguments), new object[] { input }) as IXmlSerializable;
+                        var ret=r.Invoke(Activator.CreateInstance(t, arguments), new object[] { input });
+                        var rett=ret as Task;
+                        if ((rett!=null) && (ret.GetType().GetGenericTypeDefinition()==typeof(Task<>)))
+                        {
+                            await rett;
+                        }
+                        return ret as IXmlSerializable;
                     } catch (TargetInvocationException tiex)
                     {
                         var oex=tiex.InnerException as OwsException;

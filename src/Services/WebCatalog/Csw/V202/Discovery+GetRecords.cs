@@ -444,7 +444,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
             /// <summary>Processes the specified request.</summary>
             /// <param name="request">The request to process.</param>
             /// <returns>The response to the specified request.</returns>
-            public override Types.IGetRecordsResponse Process(Types.GetRecords request)
+            public override Task<Types.IGetRecordsResponse> ProcessAsync(Types.GetRecords request)
             {
                 Logger.Debug(CultureInfo.InvariantCulture, m => m("Request processing started"));
                 Logger.Debug(CultureInfo.InvariantCulture, m => m("> {0}", OgcService.ToTraceString(request)));
@@ -454,12 +454,14 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 var task=new Task<Types.IGetRecordsResponse>(
                     r => {
                         Types.GetRecords req=(Types.GetRecords)r;
-                        var response=ProcessRequest(req);
+                        var response=ProcessRequestAsync(req).Result; //TODO: ConfigureAwait(false)
 
                         var args=new Ows.OwsRequestEventArgs<Types.GetRecords, Types.IGetRecordsResponse>(req, response);
                         OnProcessed(args);
 
                         Debug.Assert(args.Response!=null);
+                        Logger.Debug(CultureInfo.InvariantCulture, m => m("< {0}", OgcService.ToTraceString(args.Response)));
+                        Logger.Debug(CultureInfo.InvariantCulture, m => m("Request processing finished"));
                         return args.Response;
                     },
                     request,
@@ -477,32 +479,24 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                     var echo=new Types.EchoedRequestType();
                     echo.Untyped.Add(request.Untyped);
 
-                    var ret=new Types.Acknowledgement() {
+                    Types.IGetRecordsResponse ret=new Types.Acknowledgement() {
                         EchoedRequest=echo,
                         timeStamp=DateTime.UtcNow
                     };
 
                     Logger.Debug(CultureInfo.InvariantCulture, m => m("< {0}", OgcService.ToTraceString(ret)));
                     Logger.Debug(CultureInfo.InvariantCulture, m => m("Request processing finished"));
-                    return ret;
+                    return Task.FromResult(ret);
                 }
 
-                // Synchronous processing
-                using (task)
-                {
-                    task.RunSynchronously();
-                    Types.IGetRecordsResponse ret=task.Result;
-
-                    Logger.Debug(CultureInfo.InvariantCulture, m => m("< {0}", OgcService.ToTraceString(ret)));
-                    Logger.Debug(CultureInfo.InvariantCulture, m => m("Request processing finished"));
-                    return ret;
-                }
+                task.Start();
+                return task;
             }
 
             /// <summary>Processes the specified request.</summary>
             /// <param name="request">The request to process.</param>
             /// <returns>The response to the specified request.</returns>
-            protected override Types.IGetRecordsResponse ProcessRequest(Types.GetRecords request)
+            protected override async Task<Types.IGetRecordsResponse> ProcessRequestAsync(Types.GetRecords request)
             {
                 var ret=new Types.GetRecordsResponse();
                 if (request.requestId!=null)
@@ -541,7 +535,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                         Logger.Debug(t);
                 }
 
-                int recordsMatched=records.Count();
+                int recordsMatched=await records.CountAsync();
                 if (string.CompareOrdinal(request.resultType, "hits")==0)
                 {
                     ret.SearchResults=new Types.SearchResultsType() {
@@ -593,7 +587,8 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 //if ((query.ElementSetName!=null) && !string.IsNullOrEmpty(query.ElementSetName.TypedValue))
                 if ((query!=null) && query.Untyped.Elements("{http://www.opengis.net/cat/csw/2.0.2}ElementSetName").Any<XElement>() && !string.IsNullOrEmpty(query.ElementSetName.TypedValue))
                 {
-                    resultTasks=records.StaticCast<IRecord>()
+                    resultTasks=(await records.ToListAsync())
+                        .Cast<IRecord>()
                         .Select<IRecord, Task<IXmlSerializable>>(r => r.GetConverter(request.outputSchema, _NamespaceManager).ConvertAsync(r, query.ElementSetName.TypedValue))
                         .ToArray();
                 } else if ((query!=null) && (query.ElementName!=null) && (query.ElementName.Count>0))
@@ -601,17 +596,18 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                     var elementNames=from el in query.Untyped.Descendants()
                                         where el.Name=="{http://www.opengis.net/cat/csw/2.0.2}ElementName"
                                         select el.Value;
-                    resultTasks=records.StaticCast<IRecord>()
+                    resultTasks=(await records.ToListAsync())
+                        .Cast<IRecord>()
                         .Select<IRecord, Task<IXmlSerializable>>(r => r.GetConverter(request.outputSchema, _NamespaceManager).ConvertAsync(r, elementNames, mayRootPathBeImplied))
                         .ToArray();
                 } else
-                    resultTasks=records.StaticCast<IRecord>()
+                    resultTasks=(await records.ToListAsync())
+                        .Cast<IRecord>()
                         .Select<IRecord, Task<IXmlSerializable>>(r => r.GetConverter(request.outputSchema, _NamespaceManager).ConvertAsync(r, "full"))
                         .ToArray();
 
                 // Performs the query
-                Task.WaitAll(resultTasks);
-                var results=resultTasks.Select( t => t.Result );
+                var results=await Task.WhenAll(resultTasks);
 
                 // Core Record types
                 var arl=results.OfType<Types.AbstractRecord>();
