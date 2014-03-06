@@ -24,7 +24,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using Csw202=GeoSik.Ogc.WebCatalog.Csw.V202.Types;
+using Csw202=GeoSik.Ogc.WebCatalog.Csw.V202;
 
 namespace GeoSik.WebSample.Services
 {
@@ -32,31 +32,31 @@ namespace GeoSik.WebSample.Services
         ICsw
     {
 
-        public Csw202.Capabilities GetCapabilities(Csw202.GetCapabilities request)
+        public Csw202.Types.Capabilities GetCapabilities(Csw202.Types.GetCapabilities request)
         {
             return _Implementation.GetCapabilities(request);
         }
 
-        public Csw202.IGetRecordsResponse GetRecords(Csw202.GetRecords request)
+        public Csw202.Types.IGetRecordsResponse GetRecords(Csw202.Types.GetRecords request)
         {
             return _Implementation.GetRecords(request);
         }
 
-        public Csw202.DescribeRecordResponse DescribeRecord(Csw202.DescribeRecord request)
+        public Csw202.Types.DescribeRecordResponse DescribeRecord(Csw202.Types.DescribeRecord request)
         {
             return _Implementation.DescribeRecord(request);
         }
 
-        public Csw202.GetDomainResponse GetDomain(Csw202.GetDomain request)
+        public Csw202.Types.GetDomainResponse GetDomain(Csw202.Types.GetDomain request)
         {
             throw new NotImplementedException();
         }
 
-        public Csw202.GetRecordByIdResponse GetRecordById(Csw202.GetRecordById request)
+        public Csw202.Types.GetRecordByIdResponse GetRecordById(Csw202.Types.GetRecordById request)
         {
             return _Implementation.GetRecordById(request);
         }
 
-        private Discovery _Implementation=new Discovery();
+        private Csw202.IDiscovery _Implementation=new Discovery();
     }
 }

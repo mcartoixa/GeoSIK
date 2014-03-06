@@ -25,6 +25,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using Xml.Schema.Linq;
@@ -149,7 +150,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
             /// <summary>Processes the specified request.</summary>
             /// <param name="request">The request to process.</param>
             /// <returns>The response to the specified request.</returns>
-            protected override Types.DescribeRecordResponse ProcessRequest(Types.DescribeRecord request)
+            protected override Task<Types.DescribeRecordResponse> ProcessRequestAsync(Types.DescribeRecord request)
             {
                 var ret=new Types.DescribeRecordResponse();
 
@@ -198,7 +199,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 if (componentTypes.Count>0)
                     ret.SchemaComponent=componentTypes;
 
-                return ret;
+                return Task.FromResult(ret);
             }
         }
 

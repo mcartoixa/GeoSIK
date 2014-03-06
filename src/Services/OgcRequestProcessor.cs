@@ -25,6 +25,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Common.Logging;
 using Xml.Schema.Linq;
@@ -66,26 +67,26 @@ namespace GeoSik.Ogc
         /// <summary>Processes the request specified as key/value parameters.</summary>
         /// <param name="parameters">The request parameters in key/value format.</param>
         /// <returns>The response to the request.</returns>
-        public TResponse Process(NameValueCollection parameters)
+        public async Task<TResponse> ProcessAsync(NameValueCollection parameters)
         {
             Debug.Assert(parameters!=null);
             if (parameters==null)
                 throw new ArgumentNullException("parameters");
 
-            return Process(CreateRequest(parameters));
+            return await ProcessAsync(CreateRequest(parameters));
         }
 
         /// <summary>Processes the specified request.</summary>
         /// <param name="request">The request to process.</param>
         /// <returns>The response to the request.</returns>
-        public virtual TResponse Process(TRequest request)
+        public virtual async Task<TResponse> ProcessAsync(TRequest request)
         {
             Logger.Debug(CultureInfo.InvariantCulture, m => m("Request processing started"));
             Logger.Debug(CultureInfo.InvariantCulture, m => m("> {0}", OgcService.ToTraceString(request)));
 
             CheckRequest(request);
 
-            TResponse ret=ProcessRequest(request);
+            TResponse ret=await ProcessRequestAsync(request);
 
             var args=new Ows.OwsRequestEventArgs<TRequest, TResponse>(request, ret);
             OnProcessed(args);
@@ -114,7 +115,7 @@ namespace GeoSik.Ogc
         ///   <para>The specified request should be considered as valid, as defined by the implementation
         /// of the <see cref="OgcRequestProcessor{TRequest,TResponse}.CheckRequest" /> method.</para>
         /// </remarks>
-        protected abstract TResponse ProcessRequest(TRequest request);
+        protected abstract Task<TResponse> ProcessRequestAsync(TRequest request);
 
         /// <summary>Triggers the <see cref="OgcRequestProcessor{TRequest,TResponse}.Processed" /> event.</summary>
         /// <param name="e">The parameters for the event.</param>

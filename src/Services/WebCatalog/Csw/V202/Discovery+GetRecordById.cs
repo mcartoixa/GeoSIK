@@ -146,7 +146,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
             /// <summary>Processes the specified request.</summary>
             /// <param name="request">The request to process.</param>
             /// <returns>The response to the specified request.</returns>
-            protected override Types.GetRecordByIdResponse ProcessRequest(Types.GetRecordById request)
+            protected override async Task<Types.GetRecordByIdResponse> ProcessRequestAsync(Types.GetRecordById request)
             {
                 var ret=new Types.GetRecordByIdResponse();
 
@@ -173,11 +173,11 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 }
 
                 // Performs the query
-                var resultTasks=records.StaticCast<IRecord>()
+                var resultTasks=(await records.ToListAsync())
+                    .StaticCast<IRecord>()
                     .Select<IRecord, Task<IXmlSerializable>>(r => r.GetConverter(request.outputSchema, namespaceManager).ConvertAsync(r, request.ElementSetName.TypedValue))
-                    .ToArray<Task<IXmlSerializable>>();
-                Task.WaitAll(resultTasks);
-                var results=resultTasks.Select( t => t.Result );
+                    .ToArray();
+                var results=await Task.WhenAll(resultTasks);
 
                 // Core Record types
                 var arl=results.OfType<Types.AbstractRecord>();

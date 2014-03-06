@@ -29,6 +29,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
@@ -59,49 +60,64 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
         /// <summary>Processes the standard GetCapabilities operation for the current discovery service.</summary>
         /// <param name="parameters">The parameters for the operation in key/value format.</param>
         /// <returns>The <see cref="Types.Capabilities" /> for the current discovery service.</returns>
-        public Types.Capabilities GetCapabilities(NameValueCollection parameters)
+        public async Task<Types.Capabilities> GetCapabilitiesAsync(NameValueCollection parameters)
         {
-            return CreateGetCapabilitiesProcessor().Process(parameters);
+            return await CreateGetCapabilitiesProcessor().ProcessAsync(parameters).ConfigureAwait(false);
         }
 
         /// <summary>Processes the standard GetCapabilities operation for the current discovery service.</summary>
         /// <param name="request">The parameters for the operation.</param>
         /// <returns>The <see cref="Types.Capabilities" /> for the current discovery service.</returns>
-        public Types.Capabilities GetCapabilities(Types.GetCapabilities request)
+        public async Task<Types.Capabilities> GetCapabilitiesAsync(Types.GetCapabilities request)
         {
-            return CreateGetCapabilitiesProcessor().Process(request);
+            return await CreateGetCapabilitiesProcessor().ProcessAsync(request).ConfigureAwait(false);
+        }
+
+        Types.Capabilities IDiscovery.GetCapabilities(Types.GetCapabilities request)
+        {
+            return GetCapabilitiesAsync(request).Result;
         }
 
         /// <summary>Processes the standard DescribeRecord operation for the current discovery service.</summary>
         /// <param name="parameters">The parameters for the operation in key/value format.</param>
         /// <returns>The <see cref="Types.DescribeRecordResponse" /> for the operation.</returns>
-        public Types.DescribeRecordResponse DescribeRecord(NameValueCollection parameters)
+        public async Task<Types.DescribeRecordResponse> DescribeRecordAsync(NameValueCollection parameters)
         {
-            return CreateDescribeRecordProcessor().Process(parameters);
+            return await CreateDescribeRecordProcessor().ProcessAsync(parameters).ConfigureAwait(false);
         }
 
         /// <summary>Processes the standard DescribeRecord operation for the current discovery service.</summary>
         /// <param name="request">The parameters for the operation.</param>
         /// <returns>The <see cref="Types.DescribeRecordResponse" /> for the operation.</returns>
-        public Types.DescribeRecordResponse DescribeRecord(Types.DescribeRecord request)
+        public async Task<Types.DescribeRecordResponse> DescribeRecordAsync(Types.DescribeRecord request)
         {
-            return CreateDescribeRecordProcessor().Process(request);
+            return await CreateDescribeRecordProcessor().ProcessAsync(request).ConfigureAwait(false);
+        }
+
+        Types.DescribeRecordResponse IDiscovery.DescribeRecord(Types.DescribeRecord request)
+        {
+            return DescribeRecordAsync(request).Result;
         }
 
         /// <summary>Processes the standard GetRecords operation for the current discovery service.</summary>
         /// <param name="parameters">The parameters for the operation in key/value format.</param>
         /// <returns>The <see cref="Types.IGetRecordsResponse" /> for the operation.</returns>
-        public Types.IGetRecordsResponse GetRecords(NameValueCollection parameters)
+        public async Task<Types.IGetRecordsResponse> GetRecordsAsync(NameValueCollection parameters)
         {
-            return CreateGetRecordsProcessor().Process(parameters);
+            return await CreateGetRecordsProcessor().ProcessAsync(parameters).ConfigureAwait(false);
         }
 
         /// <summary>Processes the standard GetRecords operation for the current discovery service.</summary>
         /// <param name="request">The parameters for the operation.</param>
         /// <returns>The <see cref="Types.IGetRecordsResponse" /> for the operation.</returns>
-        public Types.IGetRecordsResponse GetRecords(Types.GetRecords request)
+        public async Task<Types.IGetRecordsResponse> GetRecordsAsync(Types.GetRecords request)
         {
-            return CreateGetRecordsProcessor().Process(request);
+            return await CreateGetRecordsProcessor().ProcessAsync(request).ConfigureAwait(false);
+        }
+
+        Types.IGetRecordsResponse IDiscovery.GetRecords(Types.GetRecords request)
+        {
+            return GetRecordsAsync(request).Result;
         }
 
         /// <summary>Processes the standard GetDomain operation for the current discovery service.</summary>
@@ -112,20 +128,30 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
             throw new NotImplementedException();
         }
 
+        Types.GetDomainResponse IDiscovery.GetDomain(Types.GetDomain request)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>Processes the standard GetRecordById operation for the current discovery service.</summary>
         /// <param name="parameters">The parameters for the operation in key/value format.</param>
         /// <returns>The <see cref="Types.GetRecordByIdResponse" /> for the operation.</returns>
-        public Types.GetRecordByIdResponse GetRecordById(NameValueCollection parameters)
+        public async Task<Types.GetRecordByIdResponse> GetRecordByIdAsync(NameValueCollection parameters)
         {
-            return CreateGetRecordByIdProcessor().Process(parameters);
+            return await CreateGetRecordByIdProcessor().ProcessAsync(parameters).ConfigureAwait(false);
         }
 
         /// <summary>Processes the standard GetRecordById operation for the current discovery service.</summary>
         /// <param name="request">The parameters for the operation.</param>
         /// <returns>The <see cref="Types.GetRecordByIdResponse" /> for the operation.</returns>
-        public Types.GetRecordByIdResponse GetRecordById(Types.GetRecordById request)
+        public async Task<Types.GetRecordByIdResponse> GetRecordByIdAsync(Types.GetRecordById request)
         {
-            return CreateGetRecordByIdProcessor().Process(request);
+            return await CreateGetRecordByIdProcessor().ProcessAsync(request).ConfigureAwait(false);
+        }
+
+        Types.GetRecordByIdResponse IDiscovery.GetRecordById(Types.GetRecordById request)
+        {
+            return GetRecordByIdAsync(request).Result;
         }
 
         /// <summary>Creates a processor for the standard GetCapabilities operation.</summary>
