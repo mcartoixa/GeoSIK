@@ -258,10 +258,21 @@ namespace GeoSik.Ogc.SimpleFeature
             }
             builder.BeginGeometry(type);
 
-            do
+            switch (type)
             {
-                _ReadFigure(reader, builder, type);
-            } while ((reader.TokenType!=JsonToken.EndArray) && (reader.TokenType!=JsonToken.EndObject));
+            case GeometryType.MultiPolygon:
+                do
+                {
+                    _ReadGeometry(reader, builder, GeometryType.Polygon);
+                } while ((reader.TokenType!=JsonToken.EndArray) && (reader.TokenType!=JsonToken.EndObject));
+                break;
+            default:
+                do
+                {
+                    _ReadFigure(reader, builder, type);
+                } while ((reader.TokenType!=JsonToken.EndArray) && (reader.TokenType!=JsonToken.EndObject));
+                break;
+            }
 
             switch (type)
             {
