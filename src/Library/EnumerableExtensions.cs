@@ -24,6 +24,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Text;
 
 namespace GeoSik
@@ -32,29 +33,18 @@ namespace GeoSik
     internal static class EnumerableExtensions
     {
 
-        internal static int Count(this IQueryable source)
+        public static Task<List<object>> ToListAsync(this IEnumerable source)
         {
-            return (int)source.Provider.Execute(
-                Expression.Call(
-                    typeof(Queryable),
-                    "Count",
-                    new Type[] { source.ElementType },
-                    source.Expression
-                )
-            );
-        }
+            MethodInfo ami=GetAsyncMethod(source, "ToList");
+            if (ami!=null)
+            {
+                var rop=new Func<dynamic>(() => ami.Invoke(null, new object[] { source }));
+                if (ami.ReturnType.IsGenericType && ami.ReturnType.IsSubclassOf(typeof(Task)))
+                    return rop();
+                return Task.FromResult(rop());
+            }
 
-        internal static IQueryable Skip(this IQueryable source, int count)
-        {
-            return source.Provider.CreateQuery(
-                Expression.Call(
-                    typeof(Queryable),
-                    "Skip",
-                    new Type[] { source.ElementType },
-                    source.Expression,
-                    Expression.Constant(count, typeof(int))
-                )
-            );
+            return Task.FromResult(source.Cast<object>().ToList());
         }
 
         /// <summary>Performs a client side conversion of every element in the specified sequence.</summary>
@@ -67,28 +57,25 @@ namespace GeoSik
                 yield return (T)o;
         }
 
-        /// <summary>Returns a specified number of contiguous elements from the start of a sequence.</summary>
-        /// <param name="source">The sequence to return elements from.</param>
-        /// <param name="count">The number of elements to return.</param>
-        /// <returns>An <see cref="IQueryable" /> that contains the specified number of elements from the start of <paramref name="source" />.</returns>
-        internal static IQueryable Take(this IQueryable source, int count)
+        private static MethodInfo GetAsyncMethod(IEnumerable source, string name)
         {
-            return source.Provider.CreateQuery(
-                Expression.Call(
-                    typeof(Queryable),
-                    "Take",
-                    new Type[] { source.ElementType },
-                    source.Expression,
-                    Expression.Constant(count, typeof(int))
-                )
-            );
-        }
-
-        internal static string ToTraceString(this IQueryable source)
-        {
-            MethodInfo ttsmi=source.GetType().GetMethod("ToTraceString");
-            if (ttsmi!=null)
-                return (string)ttsmi.Invoke(source, null);
+            var q=source as IQueryable;
+            if (q!=null)
+            {
+                Type adpType=q.Provider.GetType().GetInterface("System.Data.Entity.Infrastructure.IDbAsyncQueryProvider");
+                if (adpType!=null)
+                {
+                    Type qType=Type.GetType("System.Data.Entity.QueryableExtensions", false);
+                    if (qType!=null)
+                        return qType.GetMethod(
+                            string.Concat(name, "Async"),
+                            BindingFlags.InvokeMethod | BindingFlags.Public,
+                            null,
+                            new Type[] { typeof(IQueryable) },
+                            null
+                        );
+                }
+            }
 
             return null;
         }
