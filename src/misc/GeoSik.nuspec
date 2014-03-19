@@ -14,7 +14,7 @@
     <tags>GeoSik OGC Geographical Standards Library Isogeo CSW</tags>
     <dependencies>
       <dependency id="CommonServiceLocator" version="1.0" />
-      <dependency id="Common.Logging" version="2.1.2" />
+      <dependency id="Common.Logging" version="2.2.0" />
       <dependency id="LinqToXsd" version="2.0.2" />
       <dependency id="Newtonsoft.Json" version="5.0" />
       <dependency id="GeoSik.Externals" version="1.0" />
