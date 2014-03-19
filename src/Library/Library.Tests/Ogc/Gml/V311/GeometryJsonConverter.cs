@@ -37,6 +37,7 @@ namespace GeoSik.Ogc.Gml.V311.Tests
         [InlineData("{ \"type\": \"MultiLineString\", \"coordinates\": [ [ [100.0, 0.0], [101.0, 1.0] ], [ [102.0, 2.0], [103.0, 3.0] ] ] }", typeof(MultiLineString), "MULTILINESTRING ((100 0, 101 1), (102 2, 103 3))")]
         [InlineData("{ \"type\": \"Polygon\", \"coordinates\": [ [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ] ] }", typeof(Polygon), "POLYGON ((100 0, 101 0, 101 1, 100 1, 100 0))")]
         [InlineData("{ \"type\": \"Polygon\", \"coordinates\": [ [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ], [ [100.2, 0.2], [100.8, 0.2], [100.8, 0.8], [100.2, 0.8], [100.2, 0.2] ] ] }", typeof(Polygon), "POLYGON ((100 0, 101 0, 101 1, 100 1, 100 0), (100.2 0.2, 100.8 0.2, 100.8 0.8, 100.2 0.8, 100.2 0.2))")]
+        [InlineData("{ \"type\": \"MultiPolygon\", \"coordinates\":[ [[[-6.0, 41.0],[10.0, 41.0],[10.0, 52.0],[-6.0, 52.0],[-6.0, 41.0]]], [[[-70.0, 10.0],[-60.0, 10.0],[-60.0, 20.0],[-70.0, 20.0],[-70.0, 10.0]]], [[[-60.0, 0.0],[-50.0, 0.0],[-50.0, 10.0],[-60.0, 10.0],[-60.0, 0.0]]], [[[60.0, -20.0],[50.0, -20.0],[50.0, -30.0],[60.0, -30.0],[60.0, -20.0]]] ]}", typeof(MultiPolygon), "MULTIPOLYGON (((-6 41, 10 41, 10 52, -6 52, -6 41)), ((-70 10, -60 10, -60 20, -70 20, -70 10)), ((-60 0, -50 0, -50 10, -60 10, -60 0)), ((60 -20, 50 -20, 50 -30, 60 -30, 60 -20)))")]
         public void ReadJson_ShouldParseValidGeoJson(string json, Type expectedType, string expectedWkt)
         {
             var g=JsonConvert.DeserializeObject(json, typeof(_Geometry), new GeometryJsonConverter());
@@ -54,6 +55,7 @@ namespace GeoSik.Ogc.Gml.V311.Tests
         [InlineData("MULTILINESTRING ((100 0, 101 1), (102 2, 103 3))", "{\"type\":\"MultiLineString\",\"coordinates\":[[[100.0,0.0],[101.0,1.0]],[[102.0,2.0],[103.0,3.0]]]}")]
         [InlineData("POLYGON ((100 0, 101 0, 101 1, 100 1, 100 0))", "{\"type\":\"Polygon\",\"coordinates\":[[[100.0,0.0],[101.0,0.0],[101.0,1.0],[100.0,1.0],[100.0,0.0]]]}")]
         [InlineData("POLYGON ((100 0, 101 0, 101 1, 100 1, 100 0), (100.2 0.2, 100.8 0.2, 100.8 0.8, 100.2 0.8, 100.2 0.2))", "{\"type\":\"Polygon\",\"coordinates\":[[[100.0,0.0],[101.0,0.0],[101.0,1.0],[100.0,1.0],[100.0,0.0]],[[100.2,0.2],[100.8,0.2],[100.8,0.8],[100.2,0.8],[100.2,0.2]]]}")]
+        [InlineData("MULTIPOLYGON (((-6 41, 10 41, 10 52, -6 52, -6 41)), ((-70 10, -60 10, -60 20, -70 20, -70 10)), ((-60 0, -50 0, -50 10, -60 10, -60 0)), ((60 -20, 50 -20, 50 -30, 60 -30, 60 -20)))", "{\"type\":\"MultiPolygon\",\"coordinates\":[[[[-6.0,41.0],[10.0,41.0],[10.0,52.0],[-6.0,52.0],[-6.0,41.0]]],[[[-70.0,10.0],[-60.0,10.0],[-60.0,20.0],[-70.0,20.0],[-70.0,10.0]]],[[[-60.0,0.0],[-50.0,0.0],[-50.0,10.0],[-60.0,10.0],[-60.0,0.0]]],[[[60.0,-20.0],[50.0,-20.0],[50.0,-30.0],[60.0,-30.0],[60.0,-20.0]]]]}")]
         public void WriteJson_ShouldGenerateValidGeoJson(string wkt, string expectedJson)
         {
             var builder=new GmlGeometryBuilder(CommonServiceLocator.GetCoordinateSystemProvider().Wgs84);
