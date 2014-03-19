@@ -20,7 +20,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Data.Objects.DataClasses;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -126,7 +126,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
             return ret;
         }
 
-        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STContains")]
+        [DbFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STContains")]
         public static int? GeographySTContains(byte[] geom1, byte[] geom2)
         {
             IGeometry g1=GetGeometry(geom1);
@@ -138,7 +138,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
             return Convert.ToInt32(g1.Contains(g2));
         }
 
-        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STCrosses")]
+        [DbFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STCrosses")]
         public static int? GeographySTCrosses(byte[] geom1, byte[] geom2)
         {
             IGeometry g1=GetGeometry(geom1);
@@ -150,7 +150,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
             return Convert.ToInt32(g1.Crosses(g2));
         }
 
-        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STDisjoint")]
+        [DbFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STDisjoint")]
         public static int? GeographySTDisjoint(byte[] geom1, byte[] geom2)
         {
             IGeometry g1=GetGeometry(geom1);
@@ -162,7 +162,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
             return Convert.ToInt32(g1.Disjoint(g2));
         }
 
-        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STDistance")]
+        [DbFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STDistance")]
         public static double? GeographySTDistance(byte[] geom1, byte[] geom2)
         {
             IGeometry g1=GetGeometry(geom1);
@@ -174,7 +174,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
             return g1.Distance(g2);
         }
 
-        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STEquals")]
+        [DbFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STEquals")]
         public static int? GeographySTEquals(byte[] geom1, byte[] geom2)
         {
             IGeometry g1=GetGeometry(geom1);
@@ -186,7 +186,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
             return Convert.ToInt32(g1.Equals(g2));
         }
 
-        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STIntersects")]
+        [DbFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STIntersects")]
         public static int? GeographySTIntersects(byte[] geom1, byte[] geom2)
         {
             IGeometry g1=GetGeometry(geom1);
@@ -198,7 +198,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
             return Convert.ToInt32(g1.Intersects(g2));
         }
 
-        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STOverlaps")]
+        [DbFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STOverlaps")]
         public static int? GeographySTOverlaps(byte[] geom1, byte[] geom2)
         {
             IGeometry g1=GetGeometry(geom1);
@@ -210,7 +210,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
             return Convert.ToInt32(g1.Overlaps(g2));
         }
 
-        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STTouches")]
+        [DbFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STTouches")]
         public static int? GeographySTTouches(byte[] geom1, byte[] geom2)
         {
             IGeometry g1=GetGeometry(geom1);
@@ -222,7 +222,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
             return Convert.ToInt32(g1.Touches(g2));
         }
 
-        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STWithin")]
+        [DbFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geography_STWithin")]
         public static int? GeographySTWithin(byte[] geom1, byte[] geom2)
         {
             IGeometry g1=GetGeometry(geom1);
@@ -234,7 +234,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
             return Convert.ToInt32(g1.Within(g2));
         }
 
-        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STContains")]
+        [DbFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STContains")]
         public static int? GeometrySTContains(byte[] geom1, byte[] geom2)
         {
             IGeometry g1=GetGeometry(geom1);
@@ -246,7 +246,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
             return Convert.ToInt32(g1.Contains(g2));
         }
 
-        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STCrosses")]
+        [DbFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STCrosses")]
         public static int? GeometrySTCrosses(byte[] geom1, byte[] geom2)
         {
             IGeometry g1=GetGeometry(geom1);
@@ -258,7 +258,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
             return Convert.ToInt32(g1.Crosses(g2));
         }
 
-        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STDisjoint")]
+        [DbFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STDisjoint")]
         public static int? GeometrySTDisjoint(byte[] geom1, byte[] geom2)
         {
             IGeometry g1=GetGeometry(geom1);
@@ -270,7 +270,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
             return Convert.ToInt32(g1.Disjoint(g2));
         }
 
-        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STDistance")]
+        [DbFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STDistance")]
         public static double? GeometrySTDistance(byte[] geom1, byte[] geom2)
         {
             IGeometry g1=GetGeometry(geom1);
@@ -282,7 +282,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
             return g1.Distance(g2);
         }
 
-        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STEquals")]
+        [DbFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STEquals")]
         public static int? GeometrySTEquals(byte[] geom1, byte[] geom2)
         {
             IGeometry g1=GetGeometry(geom1);
@@ -294,7 +294,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
             return Convert.ToInt32(g1.Equals(g2));
         }
 
-        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STIntersects")]
+        [DbFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STIntersects")]
         public static int? GeometrySTIntersects(byte[] geom1, byte[] geom2)
         {
             IGeometry g1=GetGeometry(geom1);
@@ -306,7 +306,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
             return Convert.ToInt32(g1.Intersects(g2));
         }
 
-        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STOverlaps")]
+        [DbFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STOverlaps")]
         public static int? GeometrySTOverlaps(byte[] geom1, byte[] geom2)
         {
             IGeometry g1=GetGeometry(geom1);
@@ -318,7 +318,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
             return Convert.ToInt32(g1.Overlaps(g2));
         }
 
-        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STTouches")]
+        [DbFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STTouches")]
         public static int? GeometrySTTouches(byte[] geom1, byte[] geom2)
         {
             IGeometry g1=GetGeometry(geom1);
@@ -330,7 +330,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
             return Convert.ToInt32(g1.Touches(g2));
         }
 
-        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STWithin")]
+        [DbFunction("GeoSik.WebSample.Models.ModelFirst.Store", "Geometry_STWithin")]
         public static int? GeometrySTWithin(byte[] geom1, byte[] geom2)
         {
             IGeometry g1=GetGeometry(geom1);
@@ -342,7 +342,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
             return Convert.ToInt32(g1.Within(g2));
         }
 
-        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "String_Equals")]
+        [DbFunction("GeoSik.WebSample.Models.ModelFirst.Store", "String_Equals")]
         public static int? StringEquals(string string1, string string2, int comparison)
         {
             if (string1==null)
@@ -352,19 +352,19 @@ namespace GeoSik.WebSample.Models.ModelFirst
             return Convert.ToInt32(ret);
         }
 
-        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "String_Like")]
+        [DbFunction("GeoSik.WebSample.Models.ModelFirst.Store", "String_Like")]
         public static int? StringLike(string @string, string pattern, string escape, int comparison)
         {
             throw new NotSupportedException();
         }
 
-        [EdmFunction("GeoSik.WebSample.Models.ModelFirst", "StringCILike")]
+        [DbFunction("GeoSik.WebSample.Models.ModelFirst", "StringCILike")]
         public static bool StringCILike(string @string, string pattern, string escape, int comparison)
         {
             throw new NotSupportedException();
         }
 
-        [EdmFunction("GeoSik.WebSample.Models.ModelFirst.Store", "String_NotEqual")]
+        [DbFunction("GeoSik.WebSample.Models.ModelFirst.Store", "String_NotEqual")]
         public static int? StringNotEqual(string string1, string string2, int comparison)
         {
             if (string1==null)

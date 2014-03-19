@@ -163,7 +163,7 @@ namespace GeoSik.WebSample.Services
 
         protected override IQueryable GetRecordsSource(Uri outputSchema)
         {
-            return RecordContext.MFRecords;
+            return RecordContext.Records;
         }
 
         //protected override IOperatorImplementationProvider GetOperatorImplementationProvider()

@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Csw202TestDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'C:\USERS\MATHIEU.CARTOIXA\DOCUMENTS\SRC\GEOSIK\WORK\SRC\WEBSAMPLE\APP_DATA\CSW202TESTDATA.MDF.Ogc.Csw.Records' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="Records">
+          <Key>
+            <PropertyRef Name="Identifier" />
+          </Key>
+          <Property Name="Identifier" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="256" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="512" />
+          <Property Name="SubjectScheme" Type="varchar" MaxLength="256" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Date" Type="varchar" MaxLength="10" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="Format" Type="varchar" MaxLength="50" />
+          <Property Name="Relation" Type="varchar" MaxLength="45" />
+          <Property Name="Spatial" Type="varchar" MaxLength="50" />
+          <Property Name="Coverage" Type="varbinary(max)" />
+          <Property Name="AnyText" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="Csw202TestDataModelStoreContainer">
+          <EntitySet Name="Records" EntityType="Self.Records" store:Type="Views" store:Schema="Ogc.Csw">
+            <DefiningQuery>SELECT 
+    [Records].[Identifier] AS [Identifier], 
+    [Records].[Title] AS [Title], 
+    [Records].[Subject] AS [Subject], 
+    [Records].[SubjectScheme] AS [SubjectScheme], 
+    [Records].[Description] AS [Description], 
+    [Records].[Date] AS [Date], 
+    [Records].[Type] AS [Type], 
+    [Records].[Format] AS [Format], 
+    [Records].[Relation] AS [Relation], 
+    [Records].[Spatial] AS [Spatial], 
+    [Records].[Coverage] AS [Coverage], 
+    [Records].[AnyText] AS [AnyText]
+    FROM [Ogc.Csw].[Records] AS [Records]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Csw202TestDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="MFRecord">
+          <Key>
+            <PropertyRef Name="Identifier" />
+          </Key>
+          <Property Name="Identifier" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Format" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Relation" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Spatial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Coverage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="AnyText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject" Type="Csw202TestDataModel.MFRecordSubject" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="MFConceptualEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Records" EntityType="Csw202TestDataModel.MFRecord" />
+        </EntityContainer>
+        <ComplexType Name="MFRecordSubject">
+          <Property Type="String" Name="Subject" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SubjectScheme" MaxLength="256" FixedLength="false" Unicode="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Csw202TestDataModelStoreContainer" CdmEntityContainer="MFConceptualEntities">
+          <EntitySetMapping Name="Records">
+            <EntityTypeMapping TypeName="Csw202TestDataModel.MFRecord">
+              <MappingFragment StoreEntitySet="Records">
+                <ScalarProperty Name="Identifier" ColumnName="Identifier" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Format" ColumnName="Format" />
+                <ScalarProperty Name="Relation" ColumnName="Relation" />
+                <ScalarProperty Name="Spatial" ColumnName="Spatial" />
+                <ScalarProperty Name="Coverage" ColumnName="Coverage" />
+                <ScalarProperty Name="AnyText" ColumnName="AnyText" />
+                <ComplexProperty Name="Subject">
+                  <ScalarProperty Name="SubjectScheme" ColumnName="SubjectScheme" />
+                  <ScalarProperty Name="Subject" ColumnName="Subject" />
+                </ComplexProperty>
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -73,9 +73,12 @@
     <Reference Include="Common.Logging.NLog20">
       <HintPath>..\packages\Common.Logging.NLog20.2.2.0\lib\net40\Common.Logging.NLog20.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.4.2.0.0\lib\net40\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -215,9 +218,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Records.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\ModelFirst\GeneratedCode\MFRecord.cs">
+      <DependentUpon>RecordsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelFirst\GeneratedCode\MFRecordSubject.cs">
+      <DependentUpon>RecordsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ModelFirst\MFRecord.cs" />
     <Compile Include="Models\ModelFirst\OperatorsImplementationProvider.cs" />
-    <Compile Include="Models\ModelFirst\RecordsModel.Designer.cs">
+    <Compile Include="Models\ModelFirst\GeneratedCode\RecordsModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecordsModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelFirst\GeneratedCode\RecordsModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecordsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelFirst\GeneratedCode\RecordsModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RecordsModel.edmx</DependentUpon>
@@ -275,13 +294,30 @@
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>Records.designer.cs</LastGenOutput>
     </None>
-    <EntityDeploy Include="Models\ModelFirst\RecordsModel.edmx">
+    <EntityDeploy Include="Models\ModelFirst\GeneratedCode\RecordsModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>RecordsModel.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>GeoSik.WebSample.Models.ModelFirst</CustomToolNamespace>
     </EntityDeploy>
+    <Content Include="Models\ModelFirst\GeneratedCode\RecordsModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RecordsModel.Context.cs</LastGenOutput>
+      <DependentUpon>RecordsModel.edmx</DependentUpon>
+      <CustomToolNamespace>GeoSik.WebSample.Models.ModelFirst</CustomToolNamespace>
+    </Content>
+    <Content Include="Models\ModelFirst\GeneratedCode\RecordsModel.edmx.diagram">
+      <DependentUpon>RecordsModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\ModelFirst\GeneratedCode\RecordsModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RecordsModel.edmx</DependentUpon>
+      <LastGenOutput>RecordsModel.cs</LastGenOutput>
+      <CustomToolNamespace>GeoSik.WebSample.Models.ModelFirst</CustomToolNamespace>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Models\LinqToSql\Records.dbml.layout">

@@ -65,7 +65,7 @@ namespace GeoSik
                 Type adpType=q.Provider.GetType().GetInterface("System.Data.Entity.Infrastructure.IDbAsyncQueryProvider");
                 if (adpType!=null)
                 {
-                    Type qType=Type.GetType("System.Data.Entity.QueryableExtensions", false);
+                    Type qType=Type.GetType("System.Data.Entity.QueryableExtensions, EntityFramework", false);
                     if (qType!=null)
                         return qType.GetMethod(
                             string.Concat(name, "Async"),

@@ -21,6 +21,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Objects.DataClasses;
 using System.IO;
@@ -131,13 +132,6 @@ namespace GeoSik.WebSample.Models.ModelFirst
         [XmlElement("AnyText", Namespace=Namespaces.OgcWebCatalogCswV202, DataType="string", Order=10, IsNullable=false)]
         [CoreQueryable(CoreQueryableNames.AnyText)]
         public string AnyText { get; set; }
-
-        [XmlIgnore]
-        public MFRecord Records1 { get; set; }
-        [XmlIgnore]
-        public MFRecord Records2 { get; set; }
-        [XmlIgnore]
-        public EntityReference<MFRecord> Records2Reference { get; set; }
     }
 
     public class MFRecordSubjectMetaData
