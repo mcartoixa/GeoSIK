@@ -34,12 +34,24 @@ namespace GeoSik
 
         public static Task<int> CountAsync(this IQueryable source)
         {
-            Expression exp=GetAsyncExpression(source, "Count");
-            var ret=source.Provider.Execute(exp);
-            var rett=ret as Task<int>;
-            if (rett!=null)
-                return rett;
-            return Task.FromResult((int)ret);
+            MethodInfo ami=GetAsyncMethod(source, "Count");
+            if (ami!=null)
+            {
+                var rop=new Func<dynamic>(() => ami.Invoke(null, new object[] { source }));
+                if (ami.ReturnType.IsGenericType && ami.ReturnType.IsSubclassOf(typeof(Task)))
+                    return rop();
+                return Task.FromResult(rop());
+            }
+            return Task.FromResult(
+                (int)source.Provider.Execute(
+                    Expression.Call(
+                        typeof(Queryable),
+                        "Count",
+                        new Type[] { source.ElementType },
+                        source.Expression
+                    )
+                )
+            );
         }
 
         public static IQueryable Skip(this IQueryable source, int count)
@@ -81,27 +93,23 @@ namespace GeoSik
             return null;
         }
 
-        private static Expression GetAsyncExpression(IQueryable source, string name)
+        private static MethodInfo GetAsyncMethod(IQueryable source, string name)
         {
             Type adpType=source.Provider.GetType().GetInterface("System.Data.Entity.Infrastructure.IDbAsyncQueryProvider");
             if (adpType!=null)
             {
-                Type qType=Type.GetType("System.Data.Entity.QueryableExtensions", false);
+                Type qType=Type.GetType("System.Data.Entity.QueryableExtensions, EntityFramework", false);
                 if (qType!=null)
-                    return Expression.Call(
-                        qType,
+                    return qType.GetMethod(
                         string.Concat(name, "Async"),
-                        new Type[] { source.ElementType },
-                        source.Expression
+                        BindingFlags.InvokeMethod|BindingFlags.Public,
+                        null,
+                        new Type[] { typeof(IQueryable) },
+                        null
                     );
             }
 
-            return Expression.Call(
-                typeof(Queryable),
-                name,
-                new Type[] { source.ElementType },
-                source.Expression
-            );
+            return null;
         }
 
     }
