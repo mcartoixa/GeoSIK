@@ -168,10 +168,10 @@ namespace GeoSik.Ogc.Ows
                 t=s[s.Keys.Max()]; // latest version
 
             var requests=t
-                .FindMembers(MemberTypes.Method, BindingFlags.Instance | BindingFlags.Public, _ServiceRequestFilter, string.Join(request, "Async").ToUpperInvariant())
+                .FindMembers(MemberTypes.Method, BindingFlags.Instance | BindingFlags.Public | BindingFlags.FlattenHierarchy, _ServiceRequestFilter, string.Concat(request, "Async").ToUpperInvariant())
                 .Cast<MethodInfo>()
                 .Union(
-                    t.FindMembers(MemberTypes.Method, BindingFlags.Instance | BindingFlags.Public, _ServiceRequestFilter, request.ToUpperInvariant())
+                    t.FindMembers(MemberTypes.Method, BindingFlags.Instance | BindingFlags.Public | BindingFlags.FlattenHierarchy, _ServiceRequestFilter, request.ToUpperInvariant())
                 );
             foreach (MethodInfo r in requests)
             {
@@ -179,13 +179,10 @@ namespace GeoSik.Ogc.Ows
                 if ((pia.Length==1) && (pia[0].ParameterType==input.GetType()))
                     try
                     {
-                        var ret=r.Invoke(Activator.CreateInstance(t, arguments), new object[] { input });
-                        var rett=ret as Task;
-                        if ((rett!=null) && (ret.GetType().GetGenericTypeDefinition()==typeof(Task<>)))
-                        {
-                            await rett;
-                        }
-                        return ret as IXmlSerializable;
+                        var rop=new Func<dynamic>(() => r.Invoke(Activator.CreateInstance(t, arguments), new object[] { input }));
+                        if (r.ReturnType.IsGenericType && r.ReturnType.IsSubclassOf(typeof(Task)))
+                            return (await rop()) as IXmlSerializable;
+                        return rop() as IXmlSerializable;
                     } catch (TargetInvocationException tiex)
                     {
                         var oex=tiex.InnerException as OwsException;

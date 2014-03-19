@@ -34,33 +34,74 @@ namespace GeoSik
 
         public static Task<int> CountAsync(this IQueryable source)
         {
-            MethodInfo mi=GetAsyncMethod(source.Provider, "ToList", typeof(IQueryable<>));
-            if (mi!=null)
-                return mi.Invoke(null, new object[] { source.Cast<object>() }) as Task<int>;
-
-            return Task.FromResult(System.Linq.Enumerable.Count(source.Cast<object>()));
+            Expression exp=GetAsyncExpression(source, "Count");
+            var ret=source.Provider.Execute(exp);
+            var rett=ret as Task<int>;
+            if (rett!=null)
+                return rett;
+            return Task.FromResult((int)ret);
         }
 
-        public static Task<List<object>> ToListAsync(this IQueryable source)
+        public static IQueryable Skip(this IQueryable source, int count)
         {
-            MethodInfo mi=GetAsyncMethod(source.Provider, "ToList", typeof(IQueryable));
-            if (mi!=null)
-                return mi.Invoke(null, new object[] { source }) as Task<List<object>>;
-
-            return Task.FromResult(System.Linq.Enumerable.ToList(source.Cast<object>()));
+            return source.Provider.CreateQuery(
+                Expression.Call(
+                    typeof(Queryable),
+                    "Skip",
+                    new Type[] { source.ElementType },
+                    source.Expression,
+                    Expression.Constant(count, typeof(int))
+                )
+            );
         }
 
-        private static MethodInfo GetAsyncMethod(IQueryProvider provider, string name, Type sourceType)
+        /// <summary>Returns a specified number of contiguous elements from the start of a sequence.</summary>
+        /// <param name="source">The sequence to return elements from.</param>
+        /// <param name="count">The number of elements to return.</param>
+        /// <returns>An <see cref="IQueryable" /> that contains the specified number of elements from the start of <paramref name="source" />.</returns>
+        public static IQueryable Take(this IQueryable source, int count)
         {
-            Type adpType=provider.GetType().GetInterface("System.Data.Entity.Infrastructure.IDbAsyncQueryProvider");
+            return source.Provider.CreateQuery(
+                Expression.Call(
+                    typeof(Queryable),
+                    "Take",
+                    new Type[] { source.ElementType },
+                    source.Expression,
+                    Expression.Constant(count, typeof(int))
+                )
+            );
+        }
+
+        internal static string ToTraceString(this IQueryable source)
+        {
+            MethodInfo ttsmi=source.GetType().GetMethod("ToTraceString");
+            if (ttsmi!=null)
+                return (string)ttsmi.Invoke(source, null);
+
+            return null;
+        }
+
+        private static Expression GetAsyncExpression(IQueryable source, string name)
+        {
+            Type adpType=source.Provider.GetType().GetInterface("System.Data.Entity.Infrastructure.IDbAsyncQueryProvider");
             if (adpType!=null)
             {
                 Type qType=Type.GetType("System.Data.Entity.QueryableExtensions", false);
                 if (qType!=null)
-                    return qType.GetMethod(string.Join(name, "Async"), BindingFlags.ExactBinding | BindingFlags.InvokeMethod | BindingFlags.Public, null, new Type[] { sourceType }, null);
+                    return Expression.Call(
+                        qType,
+                        string.Concat(name, "Async"),
+                        new Type[] { source.ElementType },
+                        source.Expression
+                    );
             }
 
-            return null;
+            return Expression.Call(
+                typeof(Queryable),
+                name,
+                new Type[] { source.ElementType },
+                source.Expression
+            );
         }
 
     }
