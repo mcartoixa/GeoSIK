@@ -99,7 +99,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202.Types
 
                 if (query.Untyped.Element("{http://www.opengis.net/cat/csw/2.0.2}Constraint")!=null)
                 {
-                    if (query.Constraint.Filter!=null)
+                    if (query.Constraint.Untyped.Element("{http://www.opengis.net/ogc}Filter")!=null)
                     {
                         ret.Add( "constraintlanguage", "FILTER" );
                         ret.Add( "constraint", HttpUtility.UrlEncode(query.Constraint.Filter.Untyped.ToString(SaveOptions.OmitDuplicateNamespaces)));
