@@ -33,7 +33,7 @@ namespace GeoSik.Ogc.Filter.V110
 {
 
 #pragma warning disable 3009
-    partial class BBOX:
+    partial class 1591, BBOX:
         IExpressionBuilder
     {
 
@@ -88,5 +88,5 @@ namespace GeoSik.Ogc.Filter.V110
             return new BboxExpressionCreator(this);
         }
     }
-#pragma warning restore 3009
+#pragma warning restore 1591, 3009
 }

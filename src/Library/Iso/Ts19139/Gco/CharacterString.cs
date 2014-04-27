@@ -25,7 +25,7 @@ using System.Linq;
 using System.Text;
 using Xml.Schema.Linq;
 
-#pragma warning disable 3001, 3009
+#pragma warning disable 1591, 3001, 3009
 namespace GeoSik.Iso.Ts19139.Gco
 {
     partial class CharacterString
@@ -37,4 +37,4 @@ namespace GeoSik.Iso.Ts19139.Gco
         }
     }
 }
-#pragma warning restore 3001, 3009
+#pragma warning restore 1591, 3001, 3009

@@ -27,7 +27,7 @@ using Microsoft.Practices.ServiceLocation;
 namespace GeoSik.Iso.Ts19139.Gmd
 {
 
-#pragma warning disable 3009
+#pragma warning disable 1591, 3009
     partial class EX_GeographicBoundingBox
     {
 
@@ -72,5 +72,5 @@ namespace GeoSik.Iso.Ts19139.Gmd
             };
         }
     }
-#pragma warning restore 3009
+#pragma warning restore 1591, 3009
 }

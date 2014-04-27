@@ -27,7 +27,7 @@ using System.Text;
 namespace GeoSik.Ogc.Filter.V110
 {
 
-#pragma warning disable 3009
+#pragma warning disable 1591, 3009
     partial class DWithin:
         IDistanceBufferOperator
     {
@@ -57,5 +57,5 @@ namespace GeoSik.Ogc.Filter.V110
             }
         }
     }
-#pragma warning restore 3009
+#pragma warning restore 1591, 3009
 }
