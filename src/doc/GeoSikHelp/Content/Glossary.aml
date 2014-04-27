@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="fdc71072-323b-442a-989d-651ca9a41f4d" revisionNumber="1">
+  <developerGlossaryDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <glossary>
+        <title>GeoSIK</title>
+
+        <glossaryEntry>
+          <terms>
+            <term termId="kvp">KVP</term>
+          </terms>
+          <definition>
+            <para>Stands for <legacyBold>K</legacyBold>eyword <legacyBold>V</legacyBold>alue <legacyBold>P</legacyBold>air</para>
+          </definition>
+        </glossaryEntry>
+
+        <glossaryEntry>
+          <terms>
+            <term termId="ows">OWS</term>
+          </terms>
+          <definition>
+            <para>Stands for <legacyBold>O</legacyBold>GC <legacyBold>W</legacyBold>eb <legacyBold>S</legacyBold>ervices common standard.</para>
+          </definition>
+        </glossaryEntry>
+
+        <glossaryEntry>
+          <terms>
+            <term termId="wkt">WKT</term>
+          </terms>
+          <definition>
+            <para>Stands for <legacyBold>W</legacyBold>ell-<legacyBold>K</legacyBold>nown <legacyBold>T</legacyBold>ext.</para>
+            <para>A WKT is a textual representation of a spatial geometry or of a coordinate system. It is defined in the <quoteInline>ISO/IEC 13249-3:2011</quoteInline> standard.</para>
+          </definition>
+        </glossaryEntry>
+
+    </glossary>
+  </developerGlossaryDocument>
+</topic>

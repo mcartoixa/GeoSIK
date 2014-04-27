@@ -1,0 +1,725 @@
+<!-- //////////////////////////////////////////////////////////////////////////
+This file defines the steps in the standard GeoSIK build process, specific for C# .NET projects.
+It must be used with MSBuild 4.0.
+
+[IN]
+ * $(ProjectName): [required]
+      - The name of the global project. This should be the name of the project in SVN.
+ * $(WindowsSdkVersion): [optional]
+      - The version of the Windows SDK to use.
+ * $(SetEnvironmentArguments): [optional]
+      - The arguments to the environment setting script. Defaults to "/x64 /Release /2008".
+ * $(UnitTestsSuffix): [optional]
+      - The suffix that identifies tests solutions. Defaults to ".Tests".
+
+ * @(Projects): [required]
+      - The list of projects (.NET solutions) to compile.
+      - If a solution named %(Filename).Tests%(Extension) is found, it will be compiled and used for unit testing (using xUnit and PartCover)
+   * %(Configuration): [required]
+        - The configuration to use to compile the project.
+   * %(Platform): [required]
+        - The platform to use to compile the project.
+   * %(Library): [required]
+        - true if the project generates a reusable library, or else false.
+   * %(Packaged): [required]
+        - true if the generated binaries are to be published, or else false.
+   * %(Released): [required]
+        - true if the generated binaries are to be released, or else false.
+   * %(Constants): [optional]
+        - The constants to define for the project compilation (usually TRACE).
+   * %(Properties): [optional]
+        - The additional properties for the project compilation.
+   * %(OpenCoverFilter): [optional]
+        - A list of type filters for OpenCover.
+
+/////////////////////////////////////////////////////////////////////////// -->
+
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <InputPath>$(MSBuildProjectDirectory)</InputPath>
+    <RootPath Condition="'$(RootPath)'==''">$(MSBuildProjectDirectory)\..</RootPath>
+
+    <!-- Imported tasks paths -->
+    <IsogeoMSBuildTasksPath Condition="'$(IsogeoMSBuildTasksPath)'==''">$(MSBuildThisFileDirectory)</IsogeoMSBuildTasksPath>
+    <OpenCoverMSBuildTasksPath Condition="'$(OpenCoverMSBuildTasksPath)'==''">$(MSBuildExtensionsPath32)\OpenCover</OpenCoverMSBuildTasksPath>
+    <TransformXmlAvailable>False</TransformXmlAvailable>
+    <TransformXmlAvailable Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\Web\Microsoft.Web.Publishing.Tasks.dll')">True</TransformXmlAvailable>
+    <TransformXmlTasksPath Condition="$(TransformXmlAvailable)">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\Web\Microsoft.Web.Publishing.Tasks.dll</TransformXmlTasksPath>
+
+    <UnitTests Condition="'$(UnitTests)'==''">True</UnitTests>
+    <UnitTestsSuffix Condition="'$(UnitTestsSuffix)'==''">.Tests</UnitTestsSuffix>
+    <SetEnvironmentArguments Condition="'$(SetEnvironmentArguments)'==''">/x64 /Release /2008</SetEnvironmentArguments>
+
+    <!-- Tools paths -->
+    <BuildToolsPath Condition="'$(BuildToolsPath)'==''">$(MSBuildThisFileDirectory)</BuildToolsPath>
+    <NuGetToolPath Condition="'$(NuGetToolPath)'==''">$(InputPath)\.nuget\NuGet.exe</NuGetToolPath>
+    <XUnitToolPath Condition="'$(XUnitToolPath)'==''">$(InputPath)\lib\xunit\xunit.console.clr4.x86.exe</XUnitToolPath>
+    <MSDeployToolPath Condition="'$(MSDeployToolPath)'==''">$(registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\IIS Extensions\MSDeploy\3@InstallPath)msdeploy.exe</MSDeployToolPath>
+
+    <!-- Output paths -->
+    <BinOutputPath>$(RootPath)\bin\</BinOutputPath>
+    <DocOutputPath>$(RootPath)\doc\</DocOutputPath>
+    <TmpOutputPath>$(InputPath)\tmp\</TmpOutputPath>
+
+    <TmpBinOutputPath>$(TmpOutputPath)bin\</TmpBinOutputPath>
+    <TmpDocOutputPath>$(TmpOutputPath)doc\</TmpDocOutputPath>
+    <TmpOutBinOutputPath>$(TmpOutputPath)out\bin\</TmpOutBinOutputPath>
+    <TmpOutPdbOutputPath>$(TmpOutputPath)out\pdb\</TmpOutPdbOutputPath>
+    <TmpOutDocOutputPath>$(TmpOutputPath)out\doc\</TmpOutDocOutputPath>
+    <AnalysisOutputPath>$(TmpOutputPath)analysis\</AnalysisOutputPath>
+    <TestsOutputPath>$(TmpOutputPath)tests\</TestsOutputPath>
+    <IntermediateOutputPath>$(TmpOutputPath)obj\</IntermediateOutputPath>
+
+    <BuildDependsOn Condition="$(UnitTests)">$(BuildDependsOn);Compile;Tests</BuildDependsOn>
+    <BuildDependsOn Condition="'$(BuildDependsOn)'==''">$(BuildDependsOn);Compile</BuildDependsOn>
+
+    <GenerateDocumentation Condition="'$(GenerateDocumentation)'==''">True</GenerateDocumentation>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <SandcastleProjects Include="$(InputPath)\doc\**\*.shfbproj" />
+  </ItemGroup>
+
+  <Import Project="$(MSBuildExtensionsPath32)\MSBuildCommunityTasks\MSBuild.Community.Tasks.targets" />
+  <Import Project="$(OpenCoverMSBuildTasksPath)\OpenCover.targets" />
+  <Import Project="$(IsogeoMSBuildTasksPath)\Isogeo.Build.Tasks.targets" />
+  <UsingTask Condition="$(TransformXmlAvailable)" TaskName="TransformXml" AssemblyFile="$(TransformXmlTasksPath)" />
+  <UsingTask TaskName="CompressorTask" AssemblyFile="$(MSBuildThisFileDirectory)\Yahoo.Yui.Compressor.dll" />
+
+  <!-- Main targets -->
+  <Target Name="Build" DependsOnTargets="$(BuildDependsOn);Analysis" />
+  <Target Name="Rebuild" DependsOnTargets="Clean;Build" />
+  <Target Name="Complete" DependsOnTargets="Build;Document;Package" />
+  <Target Name="Release" DependsOnTargets="Clean;Complete" />
+
+
+
+  <!-- Prepares the build -->
+  <PropertyGroup>
+    <PrepareDependsOn>BeforePrepare;PrepareEnvironment;PrepareDependencies;PrepareOutput;AfterPrepare</PrepareDependsOn>
+  </PropertyGroup>
+  <Target Name="Prepare" DependsOnTargets="$(PrepareDependsOn)" />
+
+  <Target Name="PrepareEnvironment">
+    <SetEnvironmentVariable
+      Condition="'$(WindowsSdkVersion)'!=''"
+      Variable="WindowsSdkVersion"
+      Value="$(WindowsSdkVersion)"
+    />
+    <SetEnvironmentFromBatch
+      BatchFile="$(BuildToolsPath)\SetEnv.cmd"
+      BatchArguments="$(SetEnvironmentArguments)"
+      EnableDelayedExpansion="True"
+      EnableExtensions="True"
+    />
+  </Target>
+
+  <!-- Projects should update themselves, but required because of http://nuget.codeplex.com/discussions/297078 -->
+  <Target Name="PrepareDependencies">
+    <ItemGroup>
+      <PackageConfigFiles Include="**/packages.config" />
+    </ItemGroup>
+    <SetEnvironmentVariable
+      Condition="'$(EnableNuGetPackageRestore)'==''"
+      Variable="EnableNuGetPackageRestore"
+      Value="true"
+    />
+    <Exec
+      Condition="'@(PackageConfigFiles)'!=''"
+      Command="&quot;$(NuGetToolPath)&quot; install &quot;%(PackageConfigFiles.Identity)&quot; -o packages -source &quot;https://nuget.org/api/v2/&quot; -source &quot;$(LocalAppData)\NuGet\Cache&quot;"
+      WorkingDirectory="$(InputPath)"
+      YieldDuringToolExecution="True"
+    />
+  </Target>
+
+  <Target Name="PrepareOutput">
+    <MakeDir Directories="$(TmpOutputPath)" />
+  </Target>
+
+  <Target Name="BeforePrepare" />
+  <Target Name="AfterPrepare" />
+
+
+
+  <!-- Cleans the projects -->
+  <PropertyGroup>
+    <CleanDependsOn>BeforeClean;InternalClean;AfterClean</CleanDependsOn>
+  </PropertyGroup>
+  <Target Name="Clean" DependsOnTargets="$(CleanDependsOn)" />
+
+  <Target Name="InternalClean">
+    <PropertyGroup>
+      <_OutDir>$(TmpBinOutputPath)%(Projects.FileName)\%(Projects.Configuration)\%(Projects.Platform)\</_OutDir>
+      <_IntermediateOutputPath>$(IntermediateOutputPath)bin\%(Projects.FileName)\%(Projects.Configuration)\%(Projects.Platform)\</_IntermediateOutputPath>
+    </PropertyGroup>
+    <MSBuild
+      Projects="%(Projects.Identity)"
+      RebaseOutputs="True"
+      Properties="Configuration=%(Projects.Configuration);Platform=%(Projects.Platform);OutDir=$(_OutDir);IntermediateOutputPath=$(_IntermediateOutputPath);RebaseOutputs=True;%(Projects.Properties)"
+      Targets="Clean"
+      RunEachTargetSeparately="True"
+    />
+    <RemoveDir Directories="$(TmpOutputPath)" />
+  </Target>
+
+  <Target Name="BeforeClean" />
+  <Target Name="AfterClean" />
+
+
+
+  <!-- Builds the projects -->
+  <PropertyGroup>
+    <CompileDependsOn>Prepare;BeforeCompile;InternalCompile;AfterCompile</CompileDependsOn>
+  </PropertyGroup>
+  <Target Name="Compile" DependsOnTargets="$(CompileDependsOn)" />
+
+  <Target
+    Name="InternalCompile"
+    Outputs="$(IntermediateOutputPath)bin\%(Projects.FileName)\dummy.txt"
+  >
+    <PropertyGroup>
+      <_OutDir>$(TmpBinOutputPath)%(Projects.FileName)\%(Projects.Configuration)\%(Projects.Platform)\</_OutDir>
+      <_IntermediateOutputPath>$(IntermediateOutputPath)bin\%(Projects.FileName)\%(Projects.Configuration)\%(Projects.Platform)\</_IntermediateOutputPath>
+    </PropertyGroup>
+    <MSBuild
+      Projects="%(Projects.Identity)"
+      RebaseOutputs="True"
+      Properties="Configuration=%(Projects.Configuration);Platform=%(Projects.Platform);DefineConstants=%(Projects.Constants);OutDir=$(_OutDir);IntermediateOutputPath=$(_IntermediateOutputPath);RebaseOutputs=True;%(Projects.Properties)"
+      Targets="Build"
+      RunEachTargetSeparately="True"
+    />
+  </Target>
+
+  <Target Name="BeforeCompile" />
+  <Target Name="AfterCompile" />
+
+
+
+  <!-- Tests the projects -->
+  <PropertyGroup>
+    <TestsDependsOn>Prepare;BeforeTests;InternalTests;AfterTests</TestsDependsOn>
+  </PropertyGroup>
+  <Target Name="Tests" DependsOnTargets="$(TestsDependsOn)" />
+
+  <Target Name="InternalTests"
+    Outputs="$(TestsOutputPath)%(Projects.Filename)\dummy.txt"
+  >
+    <!-- Build the tests -->
+    <PropertyGroup>
+      <ProjectFilename>%(Projects.Filename)</ProjectFilename>
+      <_OutDir>$(TestsOutputPath)%(Projects.FileName)\%(Projects.Configuration)\%(Projects.Platform)\</_OutDir>
+      <_IntermediateOutputPath>$(IntermediateOutputPath)bin\%(Projects.FileName)\%(Projects.Configuration)\%(Projects.Platform)\</_IntermediateOutputPath>
+      <ProjectOpenCoverFilter>%(Projects.OpenCoverFilter)</ProjectOpenCoverFilter>
+    </PropertyGroup>
+    <MSBuild
+      Condition="Exists('%(Projects.RelativeDir)%(Projects.Filename)$(UnitTestsSuffix)%(Projects.Extension)')"
+      Projects="%(Projects.RelativeDir)%(Projects.Filename)$(UnitTestsSuffix)%(Projects.Extension)"
+      RebaseOutputs="True"
+      Properties="Configuration=%(Projects.Configuration);Platform=%(Projects.Platform);DefineConstants=%(Projects.Constants);OutDir=$(_OutDir);IntermediateOutputPath=$(_IntermediateOutputPath);RebaseOutputs=True;%(Projects.Properties)"
+      Targets="Build"
+      RunEachTargetSeparately="True"
+    />
+    <ItemGroup>
+      <TestAssemblies Condition="Exists('$(_OutDir)')" Include="$(_OutDir)*$(UnitTestsSuffix).dll" />
+      <AllAssemblies Condition="Exists('$(_OutDir)')" Include="$(_OutDir)*.dll;$(_OutDir)*.exe" />
+      <TestedAssemblies Condition="Exists('%(AllAssemblies.RootDir)%(AllAssemblies.Directory)%(AllAssemblies.Filename)$(UnitTestsSuffix).dll')" Include="@(AllAssemblies)" />
+    </ItemGroup>
+
+    <!-- Create a xunit project file: it's the only way to test multiple assemblies in a single run -->
+    <Copy
+      SourceFiles="$(MSBuildThisFileDirectory)\Empty.xunit"
+      DestinationFiles="$(_OutDir)$(ProjectFilename).xunit"
+      OverwriteReadOnlyFiles="true"
+    />
+    <ItemGroup>
+      <XUnitAssemblies Include="&lt;assembly filename=&quot;$(_OutDir)%(TestAssemblies.Filename)%(TestAssemblies.Extension)&quot; shadow-copy=&quot;false&quot;&gt;&lt;output type=&quot;xml&quot; filename=&quot;$(TmpOutputPath)$(ProjectFilename)_%(TestAssemblies.Filename).xunit-results.xml&quot; /&gt;&lt;/assembly&gt;" />
+    </ItemGroup>
+    <XmlPoke
+      XmlInputPath="$(_OutDir)$(ProjectFilename).xunit"
+      Query="/xunit/assemblies"
+      Value="@(XUnitAssemblies->'%(Identity)', '')"
+    />
+
+    <!-- Tests + code coverage -->
+    <ItemGroup>
+      <OpenCoverInclude Include="@(TestedAssemblies->'+[%(Filename)]*')" />
+      <OpenCoverExclude Include="@(TestAssemblies->'-[%(Filename)]*');@(TestedAssemblies->'-[%(Filename)]*.Resources.*');@(TestedAssemblies->'-[%(Filename)]*.NamespaceDoc')" />
+    </ItemGroup>
+    <OpenCover Condition="'@(TestAssemblies)'!=''"
+      Target="$(XUnitToolPath)"
+      TargetArgs="&quot;$(_OutDir)$(ProjectFilename).xunit&quot; /silent"
+      TargetWorkingDir="$(_OutDir)"
+      Filter="@(OpenCoverInclude);$(ProjectOpenCoverFilter);-[xunit.*]*;@(OpenCoverExclude)"
+      Output="$(TmpOutputPath)$(ProjectFilename).opencover-results.xml"
+      ToolPath="$(OpenCoverToolPath)"
+    />
+  </Target>
+
+  <Target Name="BeforeTests" />
+  <Target Name="AfterTests" />
+
+
+
+  <!-- Performs a code analysis the project -->
+  <PropertyGroup>
+    <AnalysisDependsOn>Prepare;BeforeAnalysis;InternalStats;InternalAnalysis;AfterAnalysis</AnalysisDependsOn>
+  </PropertyGroup>
+  <Target Name="Analysis" DependsOnTargets="$(AnalysisDependsOn)" />
+
+  <Target Name="InternalAnalysis" DependsOnTargets="InternalAnalysisCompile">
+    <PropertyGroup>
+      <FxCopResultsFile>$(TmpOutputPath)fxcop-results.xml</FxCopResultsFile>
+    </PropertyGroup>
+    <ItemGroup>
+      <AnalysisDependencies Include="$(InputPath)\lib\**\*.dll" />
+      <AnalysisDependencies Include="$(InputPath)\packages\**\*.dll" />
+      <AnalysisDependenciesFolders Include="@(AnalysisDependencies->'%(RootDir)%(Directory).')" />
+    </ItemGroup>
+    <RemoveDuplicates Inputs="@(AnalysisOutputs)">
+      <Output TaskParameter="Filtered" ItemName="AnalysisItems" />
+    </RemoveDuplicates>
+    <RemoveDuplicates Inputs="@(AnalysisDependenciesFolders)">
+      <Output TaskParameter="Filtered" ItemName="AnalysisDependenciesItems" />
+    </RemoveDuplicates>
+
+    <!-- Create a FxCop project file -->
+    <Copy
+      SourceFiles="$(BuildToolsPath)\Empty.FxCop"
+      DestinationFiles="$(AnalysisOutputPath)$(ProjectName).FxCop"
+      OverwriteReadOnlyFiles="true"
+    />
+    <XmlPoke
+      XmlInputPath="$(AnalysisOutputPath)$(ProjectName).FxCop"
+      Query="/FxCopProject/@Name"
+      Value="$(ProjectName)"
+    />
+    <Copy
+      Condition="Exists('$(InputPath)\CustomDictionary.xml')"
+      SourceFiles="$(InputPath)\CustomDictionary.xml"
+      DestinationFiles="$(AnalysisOutputPath)CustomDictionary.xml"
+      OverwriteReadOnlyFiles="true"
+    />
+
+    <!-- Runs FxCop -->
+    <Isogeo.Build.Tasks.FxCop
+      Condition="'@(AnalysisItems)'!=''"
+      ProjectFile="$(AnalysisOutputPath)$(ProjectName).FxCop"
+      TargetAssemblies="@(AnalysisItems)"
+      DependencyDirectories="@(AnalysisDependenciesItems)"
+      DirectOutputToConsole="true"
+      AnalysisReportFileName="$(FxCopResultsFile)"
+      SaveResults="true"
+      FailOnError="false"
+      Verbose="false"
+    />
+  </Target>
+
+  <Target Name="InternalAnalysisCompile"
+    Outputs="$(AnalysisOutputPath)%(Projects.Filename)\ResolveAssemblyReference.cache"
+  >
+    <PropertyGroup>
+      <_OutDir>$(AnalysisOutputPath)bin\%(Projects.FileName)\%(Projects.Configuration)\%(Projects.Platform)\</_OutDir>
+      <_IntermediateOutputPath>$(IntermediateOutputPath)analysis\%(Projects.FileName)\%(Projects.Configuration)\%(Projects.Platform)\</_IntermediateOutputPath>
+    </PropertyGroup>
+
+    <MSBuild
+      Projects="%(Projects.Identity)"
+      RebaseOutputs="True"
+      Targets="Build"
+      Properties="Configuration=%(Projects.Configuration);Platform=%(Projects.Platform);DefineConstants=%(Projects.Constants)%3BCODE_ANALYSIS;OutDir=$(_OutDir);IntermediateOutputPath=$(_IntermediateOutputPath);RebaseOutputs=True;%(Projects.Properties)"
+      RunEachTargetSeparately="True"
+    >
+      <Output TaskParameter="TargetOutputs" ItemName="AnalysisOutputs" />
+    </MSBuild>
+  </Target>
+
+  <Target Name="InternalStats">
+    <PropertyGroup>
+      <ClocResultsFile>$(TmpOutputPath)cloc-results.xml</ClocResultsFile>
+    </PropertyGroup>
+    <Exec
+      Command="&quot;$(MSBuildThisFileDirectory)\cloc.exe&quot; $(InputPath) --exclude-dir=bin,build,doc,lib,obj,packages,tmp,GeneratedCode --exclude-ext=csproj,sln --not-match-f=&quot;(^jquery.*|.*?min\.js$|^_)&quot; --3 --quiet --progress-rate=0 --xml --report_file=&quot;$(ClocResultsFile)&quot;"
+      WorkingDirectory="$(InputPath)"
+      YieldDuringToolExecution="True"
+    />
+  </Target>
+
+  <Target Name="BeforeAnalysis" />
+  <Target Name="AfterAnalysis" />
+
+
+
+  <!-- Generates documentation for the project -->
+  <PropertyGroup>
+    <DocumentDependsOn>Prepare;BeforeDocument;InternalDocument;InternalDocumentPublish;AfterDocument</DocumentDependsOn>
+  </PropertyGroup>
+  <Target
+    Name="Document"
+    Condition="$(GenerateDocumentation)"
+    DependsOnTargets="$(DocumentDependsOn)"
+  />
+
+  <Target
+    Name="InternalDocument"
+    Condition="$(GenerateDocumentation) And '@(SandcastleProjects)'!=''"
+    Outputs="$(TmpDocOutputPath)%(SandcastleProjects.RecursiveDir)\%(SandcastleProjects.Filename).chm"
+  >
+    <PropertyGroup>
+      <_DocIntermediateOutputPath>$(IntermediateOutputPath)doc\</_DocIntermediateOutputPath>
+      <_DocIntermediateOutputPath Condition="'%(SandcastleProjects.RecursiveDir)'!=''">$(IntermediateOutputPath)doc\%(SandcastleProjects.RecursiveDir)</_DocIntermediateOutputPath>
+      <_DocOutputPath>$(TmpDocOutputPath)</_DocOutputPath>
+      <_DocOutputPath Condition="'%(SandcastleProjects.RecursiveDir)'!=''">$(TmpDocOutputPath)%(SandcastleProjects.RecursiveDir)</_DocOutputPath>
+
+      <VersionParameter Condition="'$(CCNetLabel)'!=''">;HelpFileVersion=$(CCNetLabel)</VersionParameter>
+
+      <PreliminaryParameterValue>True</PreliminaryParameterValue>
+      <PreliminaryParameterValue Condition="'$(BuildType)'=='Release'">False</PreliminaryParameterValue>
+    </PropertyGroup>
+
+    <!-- Did not work with MSBuild 4.0: http://shfb.codeplex.com/Thread/View.aspx?ThreadId=50652 -->
+    <!--<MSBuild
+      Projects="%(SandcastleProjects.Identity)"
+      RebaseOutputs="True"
+      Properties="Configuration=Release;Platform=AnyCPU;OutputPath=$(_DocOutputPath).;WorkingPath=$(_DocIntermediateOutputPath).;Preliminary=$(PreliminaryParameterValue);HelpFileVersion=$(CCNetLabel)"
+      Targets="Build"
+      RunEachTargetSeparately="True"
+    />-->
+    <Exec
+      Command="&quot;$([MSBuild]::GetRegistryValue('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSBuild\ToolsVersions\4.0', 'MSBuildToolsPath'))MSBuild.exe&quot; &quot;%(SandcastleProjects.Identity)&quot; /nologo /p:Configuration=Release /p:Platform=AnyCPU /p:OutputPath=&quot;$(_DocOutputPath).&quot; /p:WorkingPath=&quot;$(_DocIntermediateOutputPath).&quot; /p:Preliminary=$(PreliminaryParameterValue) /p:HelpFileVersion=$(CCNetLabel) /nr:False"
+      YieldDuringToolExecution="True"
+    />
+  </Target>
+
+  <Target Name="InternalDocumentPublish"
+    Condition="$(GenerateDocumentation)"
+    Outputs="$(DocOutputPath)%(SandcastleProjects.Filename).chm"
+  >
+    <PropertyGroup>
+      <SandcastleInputDir>%(SandcastleProjects.RecursiveDir)</SandcastleInputDir>
+    </PropertyGroup>
+    <ItemGroup>
+      <DocumentationBinFiles Include="$(TmpDocOutputPath)$(SandcastleInputDir)\*.bat" />
+      <DocumentationBinFiles Include="$(TmpDocOutputPath)$(SandcastleInputDir)\*.chm" />
+      <DocumentationBinFiles Include="$(TmpDocOutputPath)$(SandcastleInputDir)\*.exe" />
+      <DocumentationBinFiles Include="$(TmpDocOutputPath)$(SandcastleInputDir)\*.msha" />
+      <DocumentationBinFiles Include="$(TmpDocOutputPath)$(SandcastleInputDir)\*.mshc" />
+      <DocumentationWebFiles Include="$(TmpDocOutputPath)$(SandcastleInputDir)\**\*.*" Exclude="@(DocumentationBinFiles);$(TmpDocOutputPath)$(SandcastleInputDir)\*.log" />
+    </ItemGroup>
+
+    <Copy
+      SourceFiles="@(DocumentationWebFiles)"
+      DestinationFiles="@(DocumentationWebFiles->'$(TmpOutDocOutputPath)$(SandcastleInputDir)\%(RecursiveDir)%(Filename)%(Extension)')"
+      OverwriteReadOnlyFiles="true"
+      SkipUnchangedFiles="true"
+    />
+  </Target>
+
+  <Target Name="BeforeDocument" />
+  <Target Name="AfterDocument" />
+
+
+
+  <!-- Packages the projects -->
+  <PropertyGroup>
+    <PackageDependsOn>Prepare;BeforePackage;InternalPackagePrepare;InternalPackageNuGet;InternalPackageOthers;AfterPackage</PackageDependsOn>
+  </PropertyGroup>
+  <Target
+    Name="Package"
+    DependsOnTargets="$(PackageDependsOn)"
+  />
+
+  <Target Name="InternalPackagePrepare"
+    Outputs="$(TmpOutBinOutputPath)%(Projects.Filename).zip"
+  >
+    <PropertyGroup>
+      <ProjectsFileName>%(Projects.Filename)</ProjectsFileName>
+      <ProjectsConfiguration>%(Projects.Configuration)</ProjectsConfiguration>
+      <ProjectsPlatform>%(Projects.Platform)</ProjectsPlatform>
+
+      <PackageInputBaseDir Condition="Exists('$(TmpBinOutputPath)%(Projects.FileName)\%(Projects.Configuration)\%(Projects.Platform)\_PublishedWebsites')">$(TmpBinOutputPath)%(Projects.FileName)\%(Projects.Configuration)\%(Projects.Platform)\_PublishedWebsites\</PackageInputBaseDir>
+    </PropertyGroup>
+    
+    <!-- Transform configuration files -->
+    <ItemGroup>
+      <ConfigFiles Condition="'$(PackageInputBaseDir)'!=''" Include="$(PackageInputBaseDir)**\*.config" Exclude="$(PackageInputBaseDir)**\*.*.config" />
+    </ItemGroup>
+    <CreateItem
+      Condition="'@(ConfigFiles)'!=''"
+      Include="@(ConfigFiles->'%(RootDir)%(Directory)%(Filename).*%(Extension)')"
+      AdditionalMetadata="ConfigDir=%(ConfigFiles.RecursiveDir)"
+    >
+      <Output TaskParameter="Include" ItemName="ConfigTransformFiles" />
+    </CreateItem>
+
+    <MakeDir Directories="$(IntermediateOutputPath)transforms\$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\%(ConfigFiles.RecursiveDir)" />
+    <Copy
+      SourceFiles="@(ConfigFiles)"
+      DestinationFiles="@(ConfigFiles->'$(IntermediateOutputPath)transforms\$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\%(RecursiveDir)%(Filename)%(Extension)')"
+    />
+    <Copy
+      SourceFiles="@(ConfigTransformFiles)"
+      DestinationFiles="@(ConfigTransformFiles->'$(IntermediateOutputPath)transforms\$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\%(ConfigDir)%(Filename)%(Extension)')"
+    />
+    <Delete
+      Condition="'@(ConfigTransformFiles)'!=''"
+      Files="@(ConfigTransformFiles)"
+    />
+    <TransformXml
+      Condition="$(TransformXmlAvailable) And Exists('$(IntermediateOutputPath)transforms\$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\%(ConfigFiles.RecursiveDir)%(ConfigFiles.Filename).$(ProjectsConfiguration)%(ConfigFiles.Extension)')"
+      Source="$(IntermediateOutputPath)transforms\$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\%(ConfigFiles.RecursiveDir)%(ConfigFiles.Filename)%(ConfigFiles.Extension)"
+      Transform="$(IntermediateOutputPath)transforms\$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\%(ConfigFiles.RecursiveDir)%(ConfigFiles.Filename).$(ProjectsConfiguration)%(ConfigFiles.Extension)"
+      Destination="%(ConfigFiles.FullPath)"
+    />
+
+    <!-- Compress Javascript and CSS files -->
+    <ItemGroup>
+      <CSSFiles Condition="'$(PackageInputBaseDir)'!=''" Include="$(PackageInputBaseDir)**\*.css" Exclude="$(PackageInputBaseDir)**\*.min.css" />
+      <JSFiles Condition="'$(PackageInputBaseDir)'!=''" Include="$(PackageInputBaseDir)**\*.js" Exclude="$(PackageInputBaseDir)**\*.min.js" />
+    </ItemGroup>
+    <CompressorTask
+      CssFiles="%(CSSFiles.Identity)"
+      CssCompressionType="YuiStockCompression"
+      CssOutputFile="%(CSSFiles.Identity)"
+      DeleteCssFiles ="false"
+      PreserveAllSemicolons="false"
+      DisableOptimizations="false"
+      LineBreakPosition="-1"
+      LoggingType="None"
+      DoNotErrorWhenNoFilesAreProvided="True"
+    />
+    <CompressorTask
+      JavaScriptFiles="%(JSFiles.Identity)"
+      ObfuscateJavaScript="yes"
+      JavaScriptOutputFile="%(JSFiles.Identity)"
+      DeleteJavaScriptFiles="false"
+      PreserveAllSemicolons="false"
+      DisableOptimizations="false"
+      LineBreakPosition="-1"
+      LoggingType="None"
+      DoNotErrorWhenNoFilesAreProvided="True"
+    />
+  </Target>
+
+  <Target
+    Name="InternalPackageNuGet"
+    Outputs="$(TmpOutBinOutputPath)%(Projects.Filename).nupkg"
+  >
+    <PropertyGroup>
+      <ProjectsFileName>%(Projects.FileName)</ProjectsFileName>
+      <ProjectsConfiguration>%(Projects.Configuration)</ProjectsConfiguration>
+      <ProjectsPlatform>%(Projects.Platform)</ProjectsPlatform>
+      <ProjectsPackaged>%(Projects.Packaged)</ProjectsPackaged>
+
+      <PackageInputBaseDir Condition="Exists('$(TmpBinOutputPath)$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\_PublishedWebsites')">$(TmpBinOutputPath)$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\_PublishedWebsites\</PackageInputBaseDir>
+      <PackageInputBaseDir Condition="'$(PackageInputBaseDir)'==''">$(TmpBinOutputPath)$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\</PackageInputBaseDir>
+      <PackageTmpOutDir>$(IntermediateOutputPath)pack\$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\</PackageTmpOutDir>
+    </PropertyGroup>
+    <ItemGroup>
+      <PackagedItems
+        Include="$(PackageInputBaseDir)**\*.*"
+        Exclude="$(PackageInputBaseDir)**\*.pdb;$(PackageInputBaseDir)**\CodeContracts\**\*.*"
+      />
+      <SymbolItems Include="$(PackageInputBaseDir)**\*.pdb" Exclude="$(PackageInputBaseDir)**\CodeContracts\**\*.*" />
+    </ItemGroup>
+
+    <MakeDir Condition="$(ProjectsPackaged) And Exists('$(ProjectsFileName).nuspec')" Directories="$(PackageTmpOutDir)lib" />
+    <Move
+      Condition="$(ProjectsPackaged) And Exists('$(ProjectsFileName).nuspec')"
+      SourceFiles="@(PackagedItems)"
+      DestinationFiles="@(PackagedItems->'$(PackageTmpOutDir)src\%(RecursiveDir)%(Filename)%(Extension)')"
+    />
+    <Copy
+      Condition="$(ProjectsPackaged) And Exists('$(ProjectsFileName).nuspec')"
+      SourceFiles="$(ProjectsFileName).nuspec"
+      DestinationFiles="$(PackageTmpOutDir)$(ProjectsFileName).nuspec"
+      OverwriteReadOnlyFiles="true"
+    />
+
+    <MakeDir Condition="$(ProjectsPackaged) And Exists('$(ProjectsFileName).nuspec')" Directories="$(TmpOutBinOutputPath)" />
+    <Exec
+      Condition="$(ProjectsPackaged) And Exists('$(ProjectsFileName).nuspec')"
+      Command="&quot;$(NuGetToolPath)&quot; pack &quot;$(PackageTmpOutDir)$(ProjectsFileName).nuspec&quot; -OutputDirectory &quot;$(TmpOutBinOutputPath).&quot;"
+      WorkingDirectory="$(InputPath)"
+      YieldDuringToolExecution="True"
+    />
+    <ItemGroup>
+      <NuSpecReferences Remove="@(PackagedItems)" />
+      <PackagedItems Remove="@(PackagedItems)" />
+      <SymbolItems Remove="@(SymbolItems)" />
+    </ItemGroup>
+  </Target>
+
+  <Target
+    Name="InternalPackageOthers"
+    Outputs="$(TmpOutBinOutputPath)%(Projects.Filename)_%(Projects.Platform)_%(Projects.Configuration).zip"
+  >
+    <PropertyGroup>
+      <ProjectsFileName>%(Projects.FileName)</ProjectsFileName>
+      <ProjectsConfiguration>%(Projects.Configuration)</ProjectsConfiguration>
+      <ProjectsPlatform>%(Projects.Platform)</ProjectsPlatform>
+      <ProjectsPackaged>%(Projects.Packaged)</ProjectsPackaged>
+
+      <PackageBaseName>$(ProjectsFileName)_$(ProjectsPlatform.Replace(" ", ""))_$(ProjectsConfiguration)_$(VersionMajor).$(VersionMinor).$(VersionBuild).$(VersionRevision)</PackageBaseName>
+
+      <IsWebSite>False</IsWebSite>
+      <IsWebSite Condition="Exists('$(TmpBinOutputPath)$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\_PublishedWebsites')">True</IsWebSite>
+      <PackageInputBaseDir>$(TmpBinOutputPath)$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\</PackageInputBaseDir>
+      <PackageInputBaseDir Condition="$(IsWebSite)">$(TmpBinOutputPath)$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\_PublishedWebsites\</PackageInputBaseDir>
+      <PackageTmpOutDir>$(IntermediateOutputPath)pack\</PackageTmpOutDir>
+      <ProjectPackageTmpOutDir>$(PackageTmpOutDir)$(ProjectsFileName)\$(ProjectsConfiguration)\$(ProjectsPlatform)\</ProjectPackageTmpOutDir>
+    </PropertyGroup>
+    <ItemGroup>
+      <ParamFile Condition="$(IsWebSite)" Include="$(PackageInputBaseDir)*\Parameters.xml" />
+      <PackageInputDirItem Condition="$(IsWebSite)" Include="$(PackageInputBaseDir)*\Web.config" />
+      <PackagedItems
+        Include="$(PackageInputBaseDir)*\**\*.*"
+        Exclude="@(ParamFile);$(PackageInputBaseDir)**\*.pdb;$(PackageInputBaseDir)**\*.map;$(PackageInputBaseDir)**\CodeContracts\**\*.*"
+      />
+      <SymbolItems Include="$(PackageInputBaseDir)**\*.pdb" Exclude="$(PackageInputBaseDir)**\CodeContracts\**\*.*" />
+    </ItemGroup>
+
+    <Copy
+      Condition="$(ProjectsPackaged) And !Exists('$(ProjectsFileName).nuspec') And %(Projects.Library)"
+      SourceFiles="@(PackagedItems)"
+      DestinationFiles="@(PackagedItems->'$(TmpOutBinOutputPath)$(PackageBaseName)\%(RecursiveDir)%(Filename)%(Extension)')"
+      OverwriteReadOnlyFiles="true"
+      SkipUnchangedFiles="true"
+    />
+    <Zip
+      Condition="$(ProjectsPackaged) And !Exists('$(ProjectsFileName).nuspec') And !%(Projects.Library)"
+      Files="@(PackagedItems)"
+      ZipFileName="$(TmpOutBinOutputPath)$(PackageBaseName).zip"
+      WorkingDirectory="$(PackageInputBaseDir)"
+      ZipLevel="9"
+    />
+
+    <PropertyGroup>
+      <PackageInputDir Condition="'@(PackageInputDirItem)'!=''">@(PackageInputDirItem->'%(RootDir)%(Directory)')</PackageInputDir>
+    </PropertyGroup>
+    <MakeDir Condition="$(ProjectsPackaged) And !Exists('$(ProjectsFileName).nuspec') And !%(Projects.Library) And $(IsWebSite)" Directories="$(PackageTmpOutDir)" />
+    <Copy
+      Condition="$(ProjectsPackaged) And !Exists('$(ProjectsFileName).nuspec') And !%(Projects.Library) And $(IsWebSite)"
+      SourceFiles="$(BuildToolsPath)\Empty.manifest.xml"
+      DestinationFiles="$(PackageTmpOutDir)$(PackageBaseName).manifest.xml"
+      OverwriteReadOnlyFiles="true"
+    />
+    <XmlPoke
+      Condition="$(ProjectsPackaged) And !Exists('$(ProjectsFileName).nuspec') And !%(Projects.Library) And $(IsWebSite)"
+      XmlInputPath="$(PackageTmpOutDir)$(PackageBaseName).manifest.xml"
+      Query="/isogeoInstallManifest"
+      Value="&lt;contentPath path=&quot;$(PackageInputDir)&quot; /&gt;"
+    />
+
+    <PropertyGroup>
+      <EscapedPackageInputBaseDir>$(PackageInputDir.Replace("\", "\\"))</EscapedPackageInputBaseDir>
+      <DeclareParamFile Condition="'@(ParamFile)'!=''"> -declareParamFile:"@(ParamFile)"</DeclareParamFile>
+    </PropertyGroup>
+    <MakeDir Condition="$(ProjectsPackaged) And !Exists('$(ProjectsFileName).nuspec') And !%(Projects.Library) And $(IsWebSite)" Directories="$(ProjectPackageTmpOutDir)" />
+    <Exec
+      Condition="$(ProjectsPackaged) And !Exists('$(ProjectsFileName).nuspec') And !%(Projects.Library) And $(IsWebSite)"
+      Command="&quot;$(MSDeployToolPath)&quot; -verb:sync -source:manifest=&quot;$(PackageTmpOutDir)$(PackageBaseName).manifest.xml&quot; -dest:package=&quot;$(ProjectPackageTmpOutDir)package.zip&quot;$(DeclareParamFile) -replace:objectName=path,match=&quot;$(EscapedPackageInputBaseDir)&quot;,replace=&quot;C:\inetpub\$(ProjectsFileName)\&quot;"
+      WorkingDirectory="$(InputPath)"
+      YieldDuringToolExecution="True"
+    />
+    <ItemGroup>
+      <InstallFiles Include="$(InputPath)\install\$(ProjectsFileName)\**\*.*" />
+    </ItemGroup>
+    <Copy
+      Condition="$(ProjectsPackaged) And !Exists('$(ProjectsFileName).nuspec') And !%(Projects.Library) And $(IsWebSite)"
+      SourceFiles="@(InstallFiles)"
+      DestinationFiles="@(InstallFiles->'$(ProjectPackageTmpOutDir)%(RecursiveDir)%(Filename)%(Extension)')"
+      OverwriteReadOnlyFiles="true"
+      SkipUnchangedFiles="true"
+    />
+    <ItemGroup>
+      <DeployPackagedItems Include="$(ProjectPackageTmpOutDir)**\*.*" />
+    </ItemGroup>
+    <Zip
+      Condition="$(ProjectsPackaged) And !Exists('$(ProjectsFileName).nuspec') And !%(Projects.Library) And $(IsWebSite)"
+      Files="@(DeployPackagedItems)"
+      ZipFileName="$(TmpOutBinOutputPath)$(PackageBaseName).install.zip"
+      WorkingDirectory="$(ProjectPackageTmpOutDir)"
+      ZipLevel="9"
+    />
+
+    <Copy
+      Condition="$(ProjectsPackaged) And !Exists('$(ProjectsFileName).nuspec')"
+      SourceFiles="@(SymbolItems)"
+      DestinationFiles="@(SymbolItems->'$(TmpOutPdbOutputPath)$(PackageBaseName)\%(RecursiveDir)%(Filename)%(Extension)')"
+      OverwriteReadOnlyFiles="true"
+      SkipUnchangedFiles="true"
+    />
+    <ItemGroup>
+      <PackagedItems Remove="@(PackagedItems)" />
+      <SymbolItems Remove="@(SymbolItems)" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="BeforePackage" />
+  <Target Name="AfterPackage" />
+
+
+
+  <Target
+    Name="UpdateVersion"
+    Condition="'$(CCNetLabel)'!=''"
+    DependsOnTargets="InternalUpdateVersion;InternalUpdateVersionNetFiles;InternalUpdateVersionNuSpecFiles"
+  />
+
+  <Target Name="InternalUpdateVersion">
+    <VersionInfo Version="$(CCNetLabel)">
+      <Output TaskParameter="Major" PropertyName="VersionMajor" />
+      <Output TaskParameter="Minor" PropertyName="VersionMinor" />
+      <Output TaskParameter="Build" PropertyName="VersionBuild" />
+      <Output TaskParameter="Revision" PropertyName="VersionRevision" />
+    </VersionInfo>
+
+    <Version Major="$(VersionMajor)" Minor="$(VersionMinor)" RevisionType="Automatic" BuildType="Automatic">
+      <Output TaskParameter="Build" PropertyName="AutoVersionBuild" />
+      <Output TaskParameter="Revision" PropertyName="AutoVersionRevision" />
+    </Version>
+  </Target>
+
+  <Target
+    Name="InternalUpdateVersionNetFiles"
+    Condition="Exists('Version.cs')"
+  >
+    <FileUpdate
+      Files="Version.cs"
+      Regex="(?&lt;=AssemblyVersion\W{2})[\d\.]+(?=\W{2})"
+      ReplacementText="$(VersionMajor).$(VersionMinor).$(AutoVersionBuild).$(AutoVersionRevision)"
+    />
+    <FileUpdate
+      Files="Version.cs"
+      Regex="(?&lt;=AssemblyInformationalVersion\W{2})[\d\.]+(?=\W{2})"
+      ReplacementText="$(VersionMajor).$(VersionMinor).$(VersionBuild).$(VersionRevision)"
+    />
+    <FileUpdate
+      Files="Version.cs"
+      Regex="(?&lt;=AssemblyFileVersion\W{2})[\d\.]+(?=\W{2})"
+      ReplacementText="$(VersionMajor).$(VersionMinor).$(VersionBuild).$(VersionRevision)"
+    />
+  </Target>
+
+  <Target
+    Name="InternalUpdateVersionNuSpecFiles"
+    Outputs="%(Projects.Filename).nuspec"
+  >
+    <XmlUpdate
+      Condition="Exists('%(Projects.Filename).nuspec')"
+      XmlFileName="%(Projects.Filename).nuspec"
+      XPath="/package/metadata/version"
+      Value="$(VersionMajor).$(VersionMinor).$(VersionBuild).$(VersionRevision)"
+    />
+  </Target>
+
+
+
+  <!-- Commits the changes -->
+  <Target
+    Name="CommitChanges"
+    Condition="'$(BuildType)'=='Release' And '$(CCNetLabel)'!=''"
+    DependsOnTargets="UpdateVersion"
+  />
+</Project>

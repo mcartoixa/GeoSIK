@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="csw_Record"
+    targetNamespace="http://www.opengis.net/cat/csw/2.0.2"
+    elementFormDefault="qualified"
+    xmlns="http://www.opengis.net/cat/csw/2.0.2"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <!--!
+  This fails the [OGC CITE TEAMEngine csw:csw-2.0.2-DescribeRecord-tc2.1] test
+  But we don't want to hardcopy the original record.xsd for now.
+  deegree3 already does the same for gmd:MD_Metadata records <http://deegree3-demo.deegree.org/csw-workspace/services?service=CSW&version=2.0.2&request=DescribeRecord>...
+  -->
+  <xs:include schemaLocation="http://schemas.opengis.net/csw/2.0.2/record.xsd" />
+</xs:schema>
