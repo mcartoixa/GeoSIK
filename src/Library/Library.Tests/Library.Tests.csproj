@@ -103,6 +103,7 @@
     <Compile Include="..\..\Version.cs">
       <Link>Properties\Version.cs</Link>
     </Compile>
+    <Compile Include="Iso\Ts19139\Gmd\EX_GeographicBoundingBox.cs" />
     <Compile Include="ReversedGeometrySink.cs" />
     <Compile Include="Ogc\Filter\V110\PropertyIsEqualTo.cs" />
     <Compile Include="Ogc\Filter\V110\PropertyIsGreaterThan.cs" />
