@@ -26,7 +26,7 @@
     </DocumentationSources>
     <HelpFileFormat>HtmlHelp1, MSHelpViewer, Website</HelpFileFormat>
     <IndentHtml>False</IndentHtml>
-    <FrameworkVersion>.NET Framework 4.0</FrameworkVersion>
+    <FrameworkVersion>.NET Framework 4.5</FrameworkVersion>
     <KeepLogFile>True</KeepLogFile>
     <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
     <CppCommentsFixup>False</CppCommentsFixup>
@@ -121,20 +121,21 @@
     <CopyrightText>Copyright \xA9 2011-{%2540BuildDate:yyyy} Isogeo</CopyrightText>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="GeoSik.DublinCore.Elements.V11" isExposed="False" />
-<Filter entryType="Namespace" fullName="GeoSik.DublinCore.Terms" isExposed="False" />
-<Filter entryType="Namespace" fullName="GeoSik.Iso.Ts19139.Gco" isExposed="False" />
-<Filter entryType="Namespace" fullName="GeoSik.Iso.Ts19139.Gmd" isExposed="False" />
-<Filter entryType="Namespace" fullName="GeoSik.Iso.Ts19139.Gsr" isExposed="False" />
-<Filter entryType="Namespace" fullName="GeoSik.Iso.Ts19139.Gss" isExposed="False" />
-<Filter entryType="Namespace" fullName="GeoSik.Iso.Ts19139.Gts" isExposed="False" />
-<Filter entryType="Namespace" fullName="GeoSik.Iso.Ts19139.Srv" isExposed="False" />
-<Filter entryType="Namespace" fullName="GeoSik.Ogc.Filter.V110" isExposed="False" />
-<Filter entryType="Namespace" fullName="GeoSik.Ogc.Gml.V311" isExposed="False" />
-<Filter entryType="Namespace" fullName="GeoSik.Ogc.Gml.V321" isExposed="False" />
-<Filter entryType="Namespace" fullName="GeoSik.Ogc.Ows.V100.Types" isExposed="False" />
-<Filter entryType="Namespace" fullName="GeoSik.Ogc.WebCatalog.Csw.V202.Types" isExposed="False" />
-<Filter entryType="Namespace" fullName="GeoSik.W3.Smil20" isExposed="False" />
-<Filter entryType="Namespace" fullName="GeoSik.W3.Smil20.Language" isExposed="False" /></ApiFilter>
+      <Filter entryType="Namespace" fullName="GeoSik.DublinCore.Terms" isExposed="False" />
+      <Filter entryType="Namespace" fullName="GeoSik.Iso.Ts19139.Gco" isExposed="False" />
+      <Filter entryType="Namespace" fullName="GeoSik.Iso.Ts19139.Gmd" isExposed="False" />
+      <Filter entryType="Namespace" fullName="GeoSik.Iso.Ts19139.Gsr" isExposed="False" />
+      <Filter entryType="Namespace" fullName="GeoSik.Iso.Ts19139.Gss" isExposed="False" />
+      <Filter entryType="Namespace" fullName="GeoSik.Iso.Ts19139.Gts" isExposed="False" />
+      <Filter entryType="Namespace" fullName="GeoSik.Iso.Ts19139.Srv" isExposed="False" />
+      <Filter entryType="Namespace" fullName="GeoSik.Ogc.Filter.V110" isExposed="False" />
+      <Filter entryType="Namespace" fullName="GeoSik.Ogc.Gml.V311" isExposed="False" />
+      <Filter entryType="Namespace" fullName="GeoSik.Ogc.Gml.V321" isExposed="False" />
+      <Filter entryType="Namespace" fullName="GeoSik.Ogc.Ows.V100.Types" isExposed="False" />
+      <Filter entryType="Namespace" fullName="GeoSik.Ogc.WebCatalog.Csw.V202.Types" isExposed="False" />
+      <Filter entryType="Namespace" fullName="GeoSik.W3.Smil20" isExposed="False" />
+      <Filter entryType="Namespace" fullName="GeoSik.W3.Smil20.Language" isExposed="False" />
+    </ApiFilter>
     <VisibleItems>InheritedMembers, InheritedFrameworkMembers, Protected, SealedProtected</VisibleItems>
     <WorkingPath>obj\</WorkingPath>
     <RootNamespaceTitle>Reference</RootNamespaceTitle>
@@ -153,6 +154,7 @@
       <Argument Key="logoAlignment" Value="left" xmlns="" />
     </TransformComponentArguments>
     <CatalogName>VisualStudio11</CatalogName>
+    <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in
        order for Visual Studio to perform the build.  The others are optional

@@ -37,7 +37,10 @@ namespace GeoSik.Ogc.Gml.V311
         {
             var coords=new List<double>(new double[] { x, y });
             if (z.HasValue)
+            {
+                srsDimension=3;
                 coords.Add(z.Value);
+            }
 
             pos=new pos();
             pos.Untyped.Value=string.Join(
@@ -53,13 +56,19 @@ namespace GeoSik.Ogc.Gml.V311
 
         internal protected override void InternalPopulate(IGeometrySink sink)
         {
+            int dim=2;
+            if (srsDimension.HasValue)
+                dim=Convert.ToInt32(srsDimension.Value);
+            if (pos.srsDimension.HasValue)
+                dim=Convert.ToInt32(pos.srsDimension.Value);
+
             sink.BeginGeometry(GeometryType.Point);
 
             //if (pos!=null)
             if (Untyped.Descendants("{http://www.opengis.net/gml}pos").Any<XElement>())
-                if ((pos.TypedValue!=null)&&(pos.TypedValue.Count>1))
+                if ((pos.TypedValue!=null) && (pos.TypedValue.Count>=dim))
                 {
-                    sink.BeginFigure(pos.TypedValue[0], pos.TypedValue[1], null);
+                    sink.BeginFigure(pos.TypedValue[0], pos.TypedValue[1], dim>2 ? pos.TypedValue[2] : (double?)null);
                     sink.EndFigure();
                 }
 
