@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{5BD3529B-702D-46F6-8BBE-B934758A8156}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.exe = .nuget\NuGet.exe
@@ -56,6 +58,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjNet.Tests", "ProjNet\ProjNet.Tests\ProjNet.Tests.csproj", "{299E2DF5-244D-4D32-9D86-C5730657D7A5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotSpatial.Tests", "DotSpatial\DotSpatial.Tests\DotSpatial.Tests.csproj", "{2025F930-88A7-43B0-B056-85FF3D83424E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Entity", "Data.Entity\Data.Entity.csproj", "{04C3B052-9CE5-43BE-BEC0-4DC9F5154223}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -125,6 +129,10 @@ Global
 		{2025F930-88A7-43B0-B056-85FF3D83424E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2025F930-88A7-43B0-B056-85FF3D83424E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2025F930-88A7-43B0-B056-85FF3D83424E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04C3B052-9CE5-43BE-BEC0-4DC9F5154223}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04C3B052-9CE5-43BE-BEC0-4DC9F5154223}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04C3B052-9CE5-43BE-BEC0-4DC9F5154223}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04C3B052-9CE5-43BE-BEC0-4DC9F5154223}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

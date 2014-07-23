@@ -32,8 +32,8 @@ using Gml311=GeoSik.Ogc.Gml.V311;
 namespace GeoSik.Ogc.Filter.V110
 {
 
-#pragma warning disable 3009
-    partial class 1591, BBOX:
+#pragma warning disable 1591, 3009
+    partial class BBOX:
         IExpressionBuilder
     {
 
