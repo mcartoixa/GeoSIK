@@ -42,15 +42,23 @@ namespace GeoSik.Ogc.Gml.V311
         {
             posList.Untyped.Value=string.Concat(posList.Untyped.Value, " ", x.ToString(CultureInfo.InvariantCulture)).TrimStart();
             posList.Untyped.Value=string.Concat(posList.Untyped.Value, " ", y.ToString(CultureInfo.InvariantCulture));
-            if (z.HasValue)
+            if (z.HasValue) {
+                posList.srsDimension=3;
                 posList.Untyped.Value=string.Concat(posList.Untyped.Value, " ", z.Value.ToString(CultureInfo.InvariantCulture));
+            }
         }
 
         protected internal override void InternalPopulate(IGeometrySink sink)
         {
-            sink.BeginFigure(posList.TypedValue[0], posList.TypedValue[1], null);
-            for (int i=2; i<posList.TypedValue.Count; i+=2)
-                sink.AddLine(posList.TypedValue[i], posList.TypedValue[i+1], null);
+            int dim=2;
+            if (srsDimension.HasValue)
+                dim=Convert.ToInt32(srsDimension.Value);
+            if (posList.srsDimension.HasValue)
+                dim=Convert.ToInt32(posList.srsDimension.Value);
+
+            sink.BeginFigure(posList.TypedValue[0], posList.TypedValue[1], dim>2 ? posList.TypedValue[2] : (double?)null);
+            for (int i=dim; i<posList.TypedValue.Count; i+=dim)
+                sink.AddLine(posList.TypedValue[i], posList.TypedValue[i+1], dim>2 ? posList.TypedValue[i+2] : (double?)null);
             sink.EndFigure();
         }
     }
