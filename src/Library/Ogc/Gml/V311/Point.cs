@@ -59,18 +59,21 @@ namespace GeoSik.Ogc.Gml.V311
             int dim=2;
             if (srsDimension.HasValue)
                 dim=Convert.ToInt32(srsDimension.Value);
-            if (pos.srsDimension.HasValue)
-                dim=Convert.ToInt32(pos.srsDimension.Value);
 
             sink.BeginGeometry(GeometryType.Point);
 
             //if (pos!=null)
             if (Untyped.Descendants("{http://www.opengis.net/gml}pos").Any<XElement>())
+            {
+                if (pos.srsDimension.HasValue)
+                    dim=Convert.ToInt32(pos.srsDimension.Value);
+
                 if ((pos.TypedValue!=null) && (pos.TypedValue.Count>=dim))
                 {
                     sink.BeginFigure(pos.TypedValue[0], pos.TypedValue[1], dim>2 ? pos.TypedValue[2] : (double?)null);
                     sink.EndFigure();
                 }
+            }
 
             sink.EndGeometry();
         }
