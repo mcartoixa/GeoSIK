@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>GeoSik.Data.Entity</id>
+    <version>1.0</version>
+    <title>GeoSik for Entity Framework</title>
+    <authors>Isogeo,mcartoixa</authors>
+    <owners>mcartoixa</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Library that makes GeoSik interoperable with Entity Framework spatial types.</description>
+    <projectUrl>http://geosik.codeplex.com/</projectUrl>
+    <iconUrl>http://i3.codeplex.com/Download?ProjectName=geosik&amp;DownloadId=358065</iconUrl>
+    <copyright>Copyright © 2012-2014 Isogeo</copyright>
+    <tags>GeoSik EntityFramework</tags>
+    <dependencies>
+      <dependency id="GeoSik" version="1.0" />
+      <dependency id="EntityFramework" version="6.0" />
+    </dependencies>
+    <references>
+      <reference file="GeoSik.Data.Entity.dll" />
+    </references>
+  </metadata>
+  <files>
+    <file src="src\GeoSik.Data.Entity.dll" target="lib\net40" />
+    <file src="src\GeoSik.Data.Entity.xml" target="lib\net40" />
+  </files> 
+</package>
