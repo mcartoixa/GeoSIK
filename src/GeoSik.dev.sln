@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{732BF627
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "misc", "misc", "{02879CE5-78DF-46DC-9EA1-2FABB2BFD78D}"
 	ProjectSection(SolutionItems) = preProject
+		misc\GeoSik.Data.Entity.nuspec = misc\GeoSik.Data.Entity.nuspec
 		misc\GeoSik.DotSpatial.nuspec = misc\GeoSik.DotSpatial.nuspec
 		misc\GeoSik.Externals.nuspec = misc\GeoSik.Externals.nuspec
 		misc\GeoSik.Fdo.nuspec = misc\GeoSik.Fdo.nuspec
