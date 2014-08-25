@@ -45,7 +45,10 @@ namespace GeoSik.Ogc.Filter.V110
             public PropertyIsLikeExpressionCreator(PropertyIsLike op):
                 base(op)
             {
-                _EscapeChar=(!string.IsNullOrEmpty(op.escapeChar) ? (char?)op.escapeChar[0] : null);
+                if (string.IsNullOrEmpty(op.escapeChar))
+                    throw new ArgumentNullException("escapeChar");
+                _EscapeChar=op.escapeChar[0];
+
                 _Pattern=TranslateToSqlLikePattern(op.Literal.Untyped.Value, op.wildCard, op.singleChar, _EscapeChar);
                 _MatchCase=op.matchCase ? StringComparison.CurrentCulture : StringComparison.CurrentCultureIgnoreCase;
             }
@@ -58,18 +61,11 @@ namespace GeoSik.Ogc.Filter.V110
                     List<Expression> pars=new List<Expression>(subexpr);
                     pars.Add(Expression.Constant(_Pattern));
 
-                    if (_EscapeChar.HasValue)
-                    {
-                        pars.Add(Expression.Constant(_EscapeChar.Value, typeof(char)));
-                        return Expression.Call(
-                            typeof(SqlMethods).GetMethod("Like", new Type[] { typeof(string), typeof(string), typeof(char) }),
-                            pars
-                        );
-                    } else
-                        return Expression.Call(
-                            typeof(SqlMethods).GetMethod("Like", new Type[] { typeof(string), typeof(string) }),
-                            pars
-                        );
+                    pars.Add(Expression.Constant(_EscapeChar, typeof(char)));
+                    return Expression.Call(
+                        typeof(SqlMethods).GetMethod("Like", new Type[] { typeof(string), typeof(string), typeof(char) }),
+                        pars
+                    );
                 }
 
                 throw new NotSupportedException();
@@ -80,7 +76,7 @@ namespace GeoSik.Ogc.Filter.V110
                 paramTypes.Add(typeof(string));
                 paramValues.Add(_Pattern);
 
-                paramTypes.Add(typeof(char?));
+                paramTypes.Add(typeof(char));
                 paramValues.Add(_EscapeChar);
 
                 paramTypes.Add(typeof(StringComparison));
@@ -110,31 +106,26 @@ namespace GeoSik.Ogc.Filter.V110
                 return ret.GetEnumerator();
             }
 
-            internal static string TranslateToSqlLikePattern(string input, string wildCard, string singleChar, char? escapeChar)
+            internal static string TranslateToSqlLikePattern(string input, string wildCard, string singleChar, char escapeChar)
             {
+                if (string.IsNullOrEmpty(wildCard))
+                    throw new ArgumentNullException("wildCard");
+                if (string.IsNullOrEmpty(singleChar))
+                    throw new ArgumentNullException("singleChar");
+                if ((escapeChar==null) || (escapeChar=='\0'))
+                    throw new ArgumentNullException("escapeChar");
+
                 if ((wildCard=="%") && (singleChar=="_"))
                     return input;
 
-                if (escapeChar.HasValue)
-                {
-                    string translator=string.Format(
-                        CultureInfo.InvariantCulture,
-                        @"(?<!{2})((?<WILD>{0})|(?<SINGLE>{1}))",
-                        Regex.Escape(wildCard),
-                        Regex.Escape(singleChar),
-                        Regex.Escape(escapeChar.Value.ToString())
-                    );
-                    return Regex.Replace(input, translator, _PatternTranslator, RegexOptions.CultureInvariant | RegexOptions.ExplicitCapture | RegexOptions.Singleline);
-                } else
-                {
-                    string translator=string.Format(
-                        CultureInfo.InvariantCulture,
-                        @"((?<WILD>{0})|(?<SINGLE>{1}))",
-                        Regex.Escape(wildCard),
-                        Regex.Escape(singleChar)
-                    );
-                    return Regex.Replace(input, translator, _PatternTranslator, RegexOptions.CultureInvariant | RegexOptions.ExplicitCapture | RegexOptions.Singleline);
-                }
+                string translator=string.Format(
+                    CultureInfo.InvariantCulture,
+                    @"(?<!{2})((?<WILD>{0})|(?<SINGLE>{1}))",
+                    Regex.Escape(wildCard),
+                    Regex.Escape(singleChar),
+                    Regex.Escape(escapeChar.ToString())
+                );
+                return Regex.Replace(input, translator, _PatternTranslator, RegexOptions.CultureInvariant | RegexOptions.ExplicitCapture | RegexOptions.Singleline);
             }
 
             private static string _PatternTranslator(Match m)
@@ -151,7 +142,7 @@ namespace GeoSik.Ogc.Filter.V110
             }
 
             private string _Pattern;
-            private char? _EscapeChar;
+            private char _EscapeChar;
             private StringComparison _MatchCase;
         }
 
