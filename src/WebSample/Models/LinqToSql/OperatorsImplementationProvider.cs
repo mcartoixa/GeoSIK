@@ -95,7 +95,7 @@ namespace GeoSik.WebSample.Models.LinqToSql
                     StringComparison comparison=(StringComparison)values[3];
                     if (IsCaseSensitive(comparison))
                     {
-                        arguments=new Type[] { typeof(string), typeof(string), typeof(char?), typeof(int) };
+                        arguments=new Type[] { typeof(string), typeof(string), typeof(char), typeof(int) };
                         values=new object[] { values[0], values[1], values[2], (int)comparison };
                         return typeof(RecordsDataContext).GetMethod("String_Like", arguments);
                     }

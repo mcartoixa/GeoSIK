@@ -88,7 +88,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
                 {
                     StringComparison comparison=(StringComparison)values[3];
                     arguments=new Type[] { typeof(string), typeof(string), typeof(string), typeof(int) };
-                    values=new object[] { values[0], values[1], (values[2]!=null ? values[2].ToString() : null), (int)comparison };
+                    values=new object[] { values[0], values[1], values[2], (int)comparison };
 
                     // case insensitive and no escape char uses ESQL
                     if (!IsCaseSensitive(comparison) && (values[2]==null))
