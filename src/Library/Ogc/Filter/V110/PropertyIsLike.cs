@@ -112,7 +112,7 @@ namespace GeoSik.Ogc.Filter.V110
                     throw new ArgumentNullException("wildCard");
                 if (string.IsNullOrEmpty(singleChar))
                     throw new ArgumentNullException("singleChar");
-                if ((escapeChar==null) || (escapeChar=='\0'))
+                if (escapeChar=='\0')
                     throw new ArgumentNullException("escapeChar");
 
                 if ((wildCard=="%") && (singleChar=="_"))
