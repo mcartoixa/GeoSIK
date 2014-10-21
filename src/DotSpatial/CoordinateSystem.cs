@@ -86,7 +86,7 @@ namespace GeoSik.DotSpatial
         /// <summary>Gets the code associated with the current coordinate system.</summary>
         public int Code
         {
-            get { return _Projection.EpsgCode; }
+            get { return _Projection.AuthorityCode; }
         }
 
         /// <summary>Gets the dimension for the current coordinate system.</summary>
