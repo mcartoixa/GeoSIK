@@ -64,7 +64,7 @@ namespace GeoSik.DotSpatial
         {
             var ret=new CoordinateSystem(DsProjections.ProjectionInfo.FromEsriString(text));
             // DotSpatial does not fill this field automatically
-            ret.Projection.EpsgCode=id.Value;
+            ret.Projection.AuthorityCode=id.Value;
             return ret;
         }
 
@@ -90,8 +90,8 @@ namespace GeoSik.DotSpatial
             if (ret!=null)
             {
                 // DotSpatial does not fill this field automatically
-                if (ret.Projection.EpsgCode==0)
-                    ret.Projection.EpsgCode=id.Value;
+                if (ret.Projection.AuthorityCode==0)
+                    ret.Projection.AuthorityCode=id.Value;
                 OnCreatedCoordinateSystem(new CreatedCoordinateSystemEventArgs(id, ret));
                 return ret;
             }
