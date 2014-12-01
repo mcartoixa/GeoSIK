@@ -281,23 +281,6 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                             Value=new string[] { "FILTER", "CQL_TEXT" }
                         }
                     };
-                    getRecords.Constraint=new Ows100.DomainType[] {
-                        new Ows100.DomainType() {
-                            name="SupportedISOQueryables",
-                            Value=new string[] {
-                                CoreQueryableNames.Abstract,
-                                CoreQueryableNames.AnyText,
-                                CoreQueryableNames.Association,
-                                CoreQueryableNames.BoundingBox,
-                                CoreQueryableNames.Format,
-                                CoreQueryableNames.Identifier,
-                                CoreQueryableNames.Modified,
-                                CoreQueryableNames.Subject,
-                                CoreQueryableNames.Title,
-                                CoreQueryableNames.Type
-                            }
-                        }
-                    };
 
                     operations.Add(getRecords);
                 }
