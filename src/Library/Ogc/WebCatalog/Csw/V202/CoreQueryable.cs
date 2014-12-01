@@ -52,11 +52,16 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
         {
         }
 
-        internal CoreQueryable(string name, Type type):
+        protected CoreQueryable(string name, Type type):
             base()
         {
             Name=name;
             QueryableType=type;
+        }
+
+        protected static void AddQueryable(string name, CoreQueryable queryable)
+        {
+            _Queryables.Add(name, queryable);
         }
 
         public static CoreQueryable GetFromName(string name)
