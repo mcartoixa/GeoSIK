@@ -589,7 +589,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 {
                     resultTasks=(await records.ToListAsync())
                         .Cast<IRecord>()
-                        .Select<IRecord, Task<IXmlSerializable>>(r => r.GetConverter(request.outputSchema, _NamespaceManager).ConvertAsync(r, query.ElementSetName.TypedValue))
+                        .Select<IRecord, Task<IXmlSerializable>>(r => r.GetConverter(Service, request.outputSchema, _NamespaceManager).ConvertAsync(r, query.ElementSetName.TypedValue))
                         .ToArray();
                 } else if ((query!=null) && (query.ElementName!=null) && (query.ElementName.Count>0))
                 {
@@ -598,12 +598,12 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                                         select el.Value;
                     resultTasks=(await records.ToListAsync())
                         .Cast<IRecord>()
-                        .Select<IRecord, Task<IXmlSerializable>>(r => r.GetConverter(request.outputSchema, _NamespaceManager).ConvertAsync(r, elementNames, mayRootPathBeImplied))
+                        .Select<IRecord, Task<IXmlSerializable>>(r => r.GetConverter(Service, request.outputSchema, _NamespaceManager).ConvertAsync(r, elementNames, mayRootPathBeImplied))
                         .ToArray();
                 } else
                     resultTasks=(await records.ToListAsync())
                         .Cast<IRecord>()
-                        .Select<IRecord, Task<IXmlSerializable>>(r => r.GetConverter(request.outputSchema, _NamespaceManager).ConvertAsync(r, "full"))
+                        .Select<IRecord, Task<IXmlSerializable>>(r => r.GetConverter(Service, request.outputSchema, _NamespaceManager).ConvertAsync(r, "full"))
                         .ToArray();
 
                 // Performs the query

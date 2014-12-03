@@ -175,7 +175,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 // Performs the query
                 var resultTasks=(await records.ToListAsync())
                     .Cast<IRecord>()
-                    .Select<IRecord, Task<IXmlSerializable>>(r => r.GetConverter(request.outputSchema, namespaceManager).ConvertAsync(r, request.ElementSetName.TypedValue))
+                    .Select<IRecord, Task<IXmlSerializable>>(r => r.GetConverter(Service, request.outputSchema, namespaceManager).ConvertAsync(r, request.ElementSetName.TypedValue))
                     .ToArray();
                 var results=await Task.WhenAll(resultTasks);
 
