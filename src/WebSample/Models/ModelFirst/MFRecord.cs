@@ -41,7 +41,7 @@ namespace GeoSik.WebSample.Models.ModelFirst
         IRecord
     {
 
-        IRecordConverter IRecord.GetConverter(Uri outputSchema, XmlNamespaceManager namespaceManager)
+        IRecordConverter IRecord.GetConverter(object context, Uri outputSchema, XmlNamespaceManager namespaceManager)
         {
             return new RecordConverter(namespaceManager);
         }
