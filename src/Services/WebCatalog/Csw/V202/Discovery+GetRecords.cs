@@ -393,20 +393,23 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                     };
 
                 // No type name defined
-                if (!request.Content.AbstractQuery.Untyped.Attributes("typeNames").Any<XAttribute>())
+                if ((request.Content.AbstractQuery==null) || !request.Content.AbstractQuery.Untyped.Attributes("typeNames").Any<XAttribute>())
                     throw new OwsException(OwsExceptionCode.MissingParameterValue) {
                         Locator=TypeNamesParameter
                     };
-                // Invalid type name
-                string[] typeNames=request.Content.AbstractQuery.Untyped.Attribute("typeNames").Value.Split(' ');
-                if (typeNames.Any<string>(
-                    a => !((Discovery)Service).SupportedRecordTypes.Any<IXMetaData>(
-                        m => string.Compare(string.Concat(_NamespaceManager.LookupPrefix(m.SchemaName.NamespaceName), ":", m.SchemaName.LocalName), a, StringComparison.Ordinal)==0
-                    )
-                ))
-                    throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
-                        Locator=TypeNamesParameter
-                    };
+                if (request.Content.AbstractQuery!=null)
+                {
+                    // Invalid type name
+                    string[] typeNames=request.Content.AbstractQuery.Untyped.Attribute("typeNames").Value.Split(' ');
+                    if (typeNames.Any<string>(
+                        a => !((Discovery)Service).SupportedRecordTypes.Any<IXMetaData>(
+                            m => string.Compare(string.Concat(_NamespaceManager.LookupPrefix(m.SchemaName.NamespaceName), ":", m.SchemaName.LocalName), a, StringComparison.Ordinal)==0
+                        )
+                    ))
+                        throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
+                            Locator=TypeNamesParameter
+                        };
+                }
 
                 if (request.outputSchema==null)
                     request.outputSchema=new Uri(Namespaces.OgcWebCatalogCswV202);
