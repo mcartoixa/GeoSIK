@@ -43,7 +43,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>..\..\build\GeoSik.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\..\misc\GeoSik.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotSpatial.Projections, Version=1.7.0.0, Culture=neutral, PublicKeyToken=272632bddd08a38b, processorArchitecture=MSIL">
@@ -91,7 +91,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\build\GeoSik.snk">
+    <None Include="..\..\misc\GeoSik.snk">
       <Link>GeoSik.snk</Link>
     </None>
     <None Include="app.config" />
