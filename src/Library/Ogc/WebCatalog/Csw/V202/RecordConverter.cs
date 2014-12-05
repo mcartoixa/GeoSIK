@@ -156,6 +156,98 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
             return tcs.Task;
         }
 
+        protected virtual IList<DC11.DCelement> CreateRecordField(IRecord record, Filter.XPathTypeNavigator navigator)
+        {
+            var ret=new List<DC11.DCelement>();
+
+            object value=navigator.GetValue(record);
+            if (value==null)
+                return ret;
+
+            if ((value is string) || !(value is IEnumerable))
+                value=new object[] { value };
+
+            foreach (object v in (IEnumerable)value)
+            {
+                DC11.DCelement e=null;
+                switch (navigator.LocalName)
+                {
+                case "abstract":
+                    e=new DCTerms.@abstract();
+                    break;
+                case "created":
+                    e=new DCTerms.created();
+                    break;
+                case "creator":
+                    e=new DC11.creator();
+                    break;
+                case "contributor":
+                    e=new DC11.contributor();
+                    break;
+                case "date":
+                    e=new DC11.date();
+                    break;
+                case "description":
+                    e=new DC11.description();
+                    break;
+                case "format":
+                    e=new DC11.format();
+                    break;
+                case "identifier":
+                    e=new DC11.identifier();
+                    break;
+                case "language":
+                    e=new DC11.language();
+                    break;
+                case "modified":
+                    e=new DCTerms.modified();
+                    break;
+                case "publisher":
+                    e=new DC11.publisher();
+                    break;
+                case "relation":
+                    e=new DC11.relation();
+                    break;
+                case "rights":
+                    e=new DC11.rights();
+                    break;
+                case "source":
+                    e=new DC11.source();
+                    break;
+                case "spatial":
+                    e=new DCTerms.spatial();
+                    break;
+                case "subject":
+                    e=new DC11.subject();
+                    break;
+                case "title":
+                    e=new DC11.title();
+                    break;
+                case "type":
+                    e=new DC11.type();
+                    break;
+                case "valid":
+                    e=new DCTerms.valid();
+                    break;
+                }
+
+                if (e!=null)
+                {
+                    if (navigator.MoveToAttribute("scheme", string.Empty))
+                    {
+                        object sch=navigator.GetValue(record);
+                        if (sch!=null)
+                            e.scheme=new Uri(sch.ToString());
+                    }
+
+                    e.Untyped.Add(v);
+                    ret.Add(e);
+                }
+            }
+
+            return ret;
+        }
+
         private void ConvertBriefRecordField(Types.AbstractRecord briefRecord, IRecord record, Filter.XPathTypeNavigator navigator)
         {
             var r=briefRecord as Types.BriefRecord;
@@ -263,98 +355,6 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
             IList<DC11.DCelement> elements=CreateRecordField(record, navigator);
             foreach (DC11.DCelement e in elements)
                 r.Content.DCelement.Add(e);
-        }
-
-        private static IList<DC11.DCelement> CreateRecordField(IRecord record, Filter.XPathTypeNavigator navigator)
-        {
-            var ret=new List<DC11.DCelement>();
-
-            object value=navigator.GetValue(record);
-            if (value==null)
-                return ret;
-
-            if ((value is string) || !(value is IEnumerable))
-                value=new object[] { value };
-
-            foreach (object v in (IEnumerable)value)
-            {
-                DC11.DCelement e=null;
-                switch (navigator.LocalName)
-                {
-                case "abstract":
-                    e=new DCTerms.@abstract();
-                    break;
-                case "created":
-                    e=new DCTerms.created();
-                    break;
-                case "creator":
-                    e=new DC11.creator();
-                    break;
-                case "contributor":
-                    e=new DC11.contributor();
-                    break;
-                case "date":
-                    e=new DC11.date();
-                    break;
-                case "description":
-                    e=new DC11.description();
-                    break;
-                case "format":
-                    e=new DC11.format();
-                    break;
-                case "identifier":
-                    e=new DC11.identifier();
-                    break;
-                case "language":
-                    e=new DC11.language();
-                    break;
-                case "modified":
-                    e=new DCTerms.modified();
-                    break;
-                case "publisher":
-                    e=new DC11.publisher();
-                    break;
-                case "relation":
-                    e=new DC11.relation();
-                    break;
-                case "rights":
-                    e=new DC11.rights();
-                    break;
-                case "source":
-                    e=new DC11.source();
-                    break;
-                case "spatial":
-                    e=new DCTerms.spatial();
-                    break;
-                case "subject":
-                    e=new DC11.subject();
-                    break;
-                case "title":
-                    e=new DC11.title();
-                    break;
-                case "type":
-                    e=new DC11.type();
-                    break;
-                case "valid":
-                    e=new DCTerms.valid();
-                    break;
-                }
-
-                if (e!=null)
-                {
-                    if (navigator.MoveToAttribute("scheme", string.Empty))
-                    {
-                        object sch=navigator.GetValue(record);
-                        if (sch!=null)
-                            e.scheme=new Uri(sch.ToString());
-                    }
-
-                    e.Untyped.Add(v);
-                    ret.Add(e);
-                }
-            }
-
-            return ret;
         }
 
         private ILog Logger
