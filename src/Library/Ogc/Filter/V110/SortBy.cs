@@ -21,6 +21,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -49,6 +50,14 @@ namespace GeoSik.Ogc.Filter.V110
 
                 foreach (XPathTypeNavigator n in xpni)
                     selector=n.CreateExpression(arg);
+                if (selector==null)
+                    throw new InvalidOperationException(
+                        string.Format(
+                            CultureInfo.CurrentCulture,
+                            SR.InvalidPropertyNameExpressionException,
+                            spt.PropertyName.Untyped.Value
+                        )
+                    );
 
                 query=Expression.Call(
                     typeof(Queryable),
