@@ -287,13 +287,58 @@ namespace GeoSik.Ogc.WebCatalog.Cql
             oid.Add(DWITHIN.Text, ExpressionType.LessThanOrEqual, 0);
 
             // Grammar
-            Delimiters="\"%&'()*+,-./:;<=>?[]^_|{}";
             MarkMemberSelect(":");
             MarkPunctuation(left_paren, right_paren, period, comma);
             MarkTransient(argument, boolean_primary, comp_op, date_time_expression, general_literal, geometry_literal, geoop_name, literal, optional_not, predicate, relgeoop_name, search_condition);
 
             Root=search_condition;
             LanguageFlags=LanguageFlags.CreateAst;
+        }
+
+        /// <summary>Returns true if a character is whitespace or delimiter. Used in quick-scanning versions of some terminals. </summary>
+        /// <param name="ch">The character to check.</param>
+        /// <returns>True if a character is whitespace or delimiter; otherwise, false.</returns>
+        /// <remarks>Does not have to be completely accurate, should recognize most common characters that are special chars by themselves
+        /// and may never be part of other multi-character tokens. </remarks>
+        public override bool IsWhitespaceOrDelimiter(char ch)
+        {
+            switch (ch)
+            {
+            case ' ':
+            case '\t':
+            case '\r':
+            case '\n':
+            case '\v': //whitespaces
+            case '\"':
+            case '%':
+            case '&':
+            case '\'':
+            case '(':
+            case ')':
+            case '*':
+            case '+':
+            case ',':
+            case '-':
+            case '.':
+            case '/':
+            case ':':
+            case ';':
+            case '<':
+            case '=':
+            case '>':
+            case '?':
+            case '[':
+            case ']':
+            case '^':
+            case '_':
+            case '|':
+            case '{':
+            case '}':
+            case (char)0: //EOF
+                return true;
+            default:
+                return false;
+            }
         }
 
         /// <summary>Builds the AST for the specified language data and parse tree.</summary>

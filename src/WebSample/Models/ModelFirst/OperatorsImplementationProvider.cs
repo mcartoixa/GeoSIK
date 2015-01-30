@@ -386,18 +386,18 @@ namespace GeoSik.WebSample.Models.ModelFirst
 
             byte[] ret=null;
 
-            var sgw=geometry as SqlServer.SqlGeography;
+            var sgw=geometry as SqlServer.SqlGeometry;
             if ((sgw==null) || !sgw.CoordinateSystem.IsEquivalentTo(ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().Wgs84))
             {
                 var b=new SqlServer.SqlGeometryBuilder(ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>().Wgs84);
                 geometry.Populate(b);
-                sgw=(SqlServer.SqlGeography)b.ConstructedGeometry;
+                sgw=(SqlServer.SqlGeometry)b.ConstructedGeometry;
             }
 
             using (var ms=new MemoryStream())
                 using (var bw=new BinaryWriter(ms))
                 {
-                    ((SqlTypes.SqlGeography)sgw).Write(bw);
+                    ((SqlTypes.SqlGeometry)sgw).Write(bw);
                     ret=ms.ToArray();
                 }
 
