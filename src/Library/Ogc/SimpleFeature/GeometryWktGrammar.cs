@@ -128,12 +128,35 @@ namespace GeoSik.Ogc.SimpleFeature
             multipolygon_tagged_text.Rule=MULTIPOLYGON + multipolygon_text;
             geometrycollection_tagged_text.Rule=GEOMETRYCOLLECTION + geometrycollection_text;
 
-            Delimiters="(),";
             MarkPunctuation(left_paren, right_paren, comma);
             MarkTransient(geometry_tagged_text, geometrycollection_text, linestring_text, multilinestring_text, multipoint_text, multipolygon_text, point_text, polygon_text, polyhedralsurface_text, m, x, y, z);
 
             Root=geometry_tagged_text;
             LanguageFlags=LanguageFlags.CreateAst;
+        }
+
+        /// <summary>Returns true if a character is whitespace or delimiter. Used in quick-scanning versions of some terminals. </summary>
+        /// <param name="ch">The character to check.</param>
+        /// <returns>True if a character is whitespace or delimiter; otherwise, false.</returns>
+        /// <remarks>Does not have to be completely accurate, should recognize most common characters that are special chars by themselves
+        /// and may never be part of other multi-character tokens. </remarks>
+        public override bool IsWhitespaceOrDelimiter(char ch)
+        {
+            switch (ch)
+            {
+            case ' ':
+            case '\t':
+            case '\r':
+            case '\n':
+            case '\v': //whitespaces
+            case '(':
+            case ')':
+            case ',':
+            case (char)0: //EOF
+                return true;
+            default:
+                return false;
+            }
         }
 
         /// <summary>Populates the specified <paramref name="sink" /> with the specified <paramref name="text" /> and <paramref name="coordinateSystem" />.</summary>
