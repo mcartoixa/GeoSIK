@@ -81,9 +81,11 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                         request.Id=idl.Select<string, Uri>(s => new Uri(s)).ToList<Uri>();
                     } catch (UriFormatException ufex)
                     {
-                        throw new OwsException(OwsExceptionCode.InvalidParameterValue, ufex) {
+                        var ex=new OwsException(OwsExceptionCode.InvalidParameterValue, ufex) {
                             Locator=IdParameter
                         };
+                        ex.Data.Add(IdParameter, string.Join(",", idl ));
+                        throw ex;
                     }
                 }
 
@@ -100,9 +102,11 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                         request.outputSchema=new Uri(outputSchema);
                     } catch (UriFormatException ufex)
                     {
-                        throw new OwsException(OwsExceptionCode.InvalidParameterValue, ufex) {
+                        var ex=new OwsException(OwsExceptionCode.InvalidParameterValue, ufex) {
                             Locator=OutputSchemaParameter
                         };
+                        ex.Data.Add(OutputSchemaParameter, outputSchema);
+                        throw ex;
                     }
 
                 return request;

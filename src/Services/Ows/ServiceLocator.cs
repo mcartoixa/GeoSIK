@@ -200,6 +200,9 @@ namespace GeoSik.Ogc.Ows
                         throw new OwsException(OwsExceptionCode.OperationNotSupported, nsex) {
                             Locator=request
                         };
+                    } catch (OwsException)
+                    {
+                        throw;
                     } catch (Exception ex)
                     {
                         throw new OwsException(OwsExceptionCode.NoApplicableCode, ex);
