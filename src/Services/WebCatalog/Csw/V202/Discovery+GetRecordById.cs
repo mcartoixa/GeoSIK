@@ -119,9 +119,13 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 base.CheckRequest(request);
 
                 if ((request.outputFormat!=null) && (Array.IndexOf<string>(OgcService.XmlMimeTypes, request.outputFormat)<0))
-                    throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
+                {
+                    var ex=new OwsException(OwsExceptionCode.InvalidParameterValue) {
                         Locator=OutputFormatParameter
                     };
+                    ex.Data.Add(OutputFormatParameter, request.outputFormat);
+                    throw ex;
+                }
 
                 if ((request.Id==null) || (request.Id.Count==0))
                     throw new OwsException(OwsExceptionCode.MissingParameterValue) {
@@ -132,9 +136,13 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                     request.outputSchema=new Uri(Namespaces.OgcWebCatalogCswV202);
 
                 if (!((Discovery)Service).SupportedRecordTypes.Select<IXMetaData, XNamespace>(s => s.SchemaName.Namespace).Contains<XNamespace>(request.outputSchema.ToString()))
-                    throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
+                {
+                    var ex=new OwsException(OwsExceptionCode.InvalidParameterValue) {
                         Locator=OutputSchemaParameter
                     };
+                    ex.Data.Add(OutputSchemaParameter, request.outputSchema);
+                    throw ex;
+                }
 
                 //if (request.ElementSetName!=null)
                 if (!request.Untyped.Elements("{http://www.opengis.net/cat/csw/2.0.2}ElementSetName").Any<XElement>() || string.IsNullOrEmpty(request.ElementSetName.TypedValue))

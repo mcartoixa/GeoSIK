@@ -76,9 +76,13 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                         {
                             Match m=_NamespacesRegEx.Match(nsp);
                             if (!m.Success)
-                                throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
+                            {
+                                var ex=new OwsException(OwsExceptionCode.InvalidParameterValue) {
                                     Locator=NamespaceParameter
                                 };
+                                ex.Data.Add(NamespaceParameter, nsp);
+                                throw ex;
+                            }
 
                             string prefix=m.Groups["PREFIX"].Value;
                             string url=m.Groups["URL"].Value;
@@ -106,9 +110,11 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                         request.requestId=new Uri(requestId);
                     } catch (UriFormatException ufex)
                     {
-                        throw new OwsException(OwsExceptionCode.InvalidParameterValue, ufex) {
+                        var ex=new OwsException(OwsExceptionCode.InvalidParameterValue, ufex) {
                             Locator=RequestIdParameter
                         };
+                        ex.Data.Add(RequestIdParameter, requestId);
+                        throw ex;
                     }
 
                 // [OCG 07-006r1 §10.8.4.3]
@@ -129,9 +135,11 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                         request.outputSchema=new Uri(outputSchema);
                     } catch (UriFormatException ufex)
                     {
-                        throw new OwsException(OwsExceptionCode.InvalidParameterValue, ufex) {
+                        var ex=new OwsException(OwsExceptionCode.InvalidParameterValue, ufex) {
                             Locator=OutputSchemaParameter
                         };
+                        ex.Data.Add(OutputSchemaParameter, outputSchema);
+                        throw ex;
                     }
 
                 // [OCG 07-006r1 §10.8.4.6]
@@ -142,14 +150,18 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                         request.startPosition=uint.Parse(startPosition, CultureInfo.InvariantCulture);
                     } catch (FormatException fex)
                     {
-                        throw new OwsException(OwsExceptionCode.InvalidParameterValue, fex) {
+                        var ex=new OwsException(OwsExceptionCode.InvalidParameterValue, fex) {
                             Locator=StartPositionParameter
                         };
+                        ex.Data.Add(StartPositionParameter, startPosition);
+                        throw ex;
                     } catch (OverflowException oex)
                     {
-                        throw new OwsException(OwsExceptionCode.InvalidParameterValue, oex) {
+                        var ex=new OwsException(OwsExceptionCode.InvalidParameterValue, oex) {
                             Locator=StartPositionParameter
                         };
+                        ex.Data.Add(StartPositionParameter, startPosition);
+                        throw ex;
                     }
 
                 // [OCG 07-006r1 §10.8.4.7]
@@ -160,14 +172,18 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                         request.maxRecords=uint.Parse(maxRecords, CultureInfo.InvariantCulture);
                     } catch (FormatException fex)
                     {
-                        throw new OwsException(OwsExceptionCode.InvalidParameterValue, fex) {
+                        var ex=new OwsException(OwsExceptionCode.InvalidParameterValue, fex) {
                             Locator=MaxRecordsParameter
                         };
+                        ex.Data.Add(MaxRecordsParameter, maxRecords);
+                        throw ex;
                     } catch (OverflowException oex)
                     {
-                        throw new OwsException(OwsExceptionCode.InvalidParameterValue, oex) {
+                        var ex=new OwsException(OwsExceptionCode.InvalidParameterValue, oex) {
                             Locator=MaxRecordsParameter
                         };
+                        ex.Data.Add(MaxRecordsParameter, maxRecords);
+                        throw ex;
                     }
 
                 // [OCG 07-006r1 §10.8.4.8]
@@ -184,9 +200,11 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                             XName name=GetXmlNameFromString(tn, request.Untyped);
                         } catch (XmlException xex)
                         {
-                            throw new OwsException(OwsExceptionCode.InvalidParameterValue, xex) {
+                            var ex=new OwsException(OwsExceptionCode.InvalidParameterValue, xex) {
                                 Locator=TypeNamesParameter
                             };
+                            ex.Data.Add(TypeNamesParameter, tn);
+                            throw ex;
                         }
                     }
 
@@ -222,9 +240,11 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                             ren.Add(string.IsNullOrEmpty(name.NamespaceName) ? new XmlQualifiedName(name.LocalName) : new XmlQualifiedName(name.LocalName, name.NamespaceName));
                         } catch (XmlException xex)
                         {
-                            throw new OwsException(OwsExceptionCode.InvalidParameterValue, xex) {
+                            var ex=new OwsException(OwsExceptionCode.InvalidParameterValue, xex) {
                                 Locator=TypeNamesParameter
                             };
+                            ex.Data.Add(TypeNamesParameter, en);
+                            throw ex;
                         }
                     }
 
@@ -270,15 +290,21 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                             }
                         } catch (Exception ex)
                         {
-                            throw new OwsException(OwsExceptionCode.InvalidParameterValue, ex) {
+                            var ex2=new OwsException(OwsExceptionCode.InvalidParameterValue, ex) {
                                 Locator=ConstraintParameter
                             };
+                            ex2.Data.Add(ConstraintParameter, constraint);
+                            throw ex2;
                         }
                         break;
                     default:
-                        throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
-                            Locator=ConstraintLanguageParameter
-                        };
+                        {
+                            var ex=new OwsException(OwsExceptionCode.InvalidParameterValue) {
+                                Locator=ConstraintLanguageParameter
+                            };
+                            ex.Data.Add(ConstraintLanguageParameter, constraintLanguage);
+                            throw ex;
+                        }
                     }
                 }
 
@@ -325,9 +351,11 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                         isDistributedSearch=bool.Parse(distributedSearch);
                     } catch (FormatException fex)
                     {
-                        throw new OwsException(OwsExceptionCode.InvalidParameterValue, fex) {
+                        var ex=new OwsException(OwsExceptionCode.InvalidParameterValue, fex) {
                             Locator=DistributedSearchParameter
                         };
+                        ex.Data.Add(DistributedSearchParameter, distributedSearch);
+                        throw ex;
                     }
 
                 string hopCount=parameters[HopCountParameter];
@@ -340,14 +368,18 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                             };
                     } catch (FormatException fex)
                     {
-                        throw new OwsException(OwsExceptionCode.InvalidParameterValue, fex) {
+                        var ex=new OwsException(OwsExceptionCode.InvalidParameterValue, fex) {
                             Locator=HopCountParameter
                         };
+                        ex.Data.Add(HopCountParameter, hopCount);
+                        throw ex;
                     } catch (OverflowException oex)
                     {
-                        throw new OwsException(OwsExceptionCode.InvalidParameterValue, oex) {
+                        var ex=new OwsException(OwsExceptionCode.InvalidParameterValue, oex) {
                             Locator=HopCountParameter
                         };
+                        ex.Data.Add(HopCountParameter, hopCount);
+                        throw ex;
                     } else if (isDistributedSearch)
                     request.DistributedSearch=new Types.DistributedSearchType();
 
@@ -359,9 +391,11 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                         request.ResponseHandler=new Uri[] { new Uri(responseHandler) };
                     } catch (UriFormatException ufex)
                     {
-                        throw new OwsException(OwsExceptionCode.InvalidParameterValue, ufex) {
+                        var ex=new OwsException(OwsExceptionCode.InvalidParameterValue, ufex) {
                             Locator=ResponseHandlerParameter
                         };
+                        ex.Data.Add(ResponseHandlerParameter, responseHandler);
+                        throw ex;
                     }
 
                 return request;
@@ -388,9 +422,13 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
 
                 // Invalid output format
                 if ((request.outputFormat!=null) && (Array.IndexOf<string>(OgcService.XmlMimeTypes, request.outputFormat)<0))
-                    throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
+                {
+                    var ex=new OwsException(OwsExceptionCode.InvalidParameterValue) {
                         Locator=OutputFormatParameter
                     };
+                    ex.Data.Add(OutputFormatParameter, request.outputFormat);
+                    throw ex;
+                }
 
                 // No type name defined
                 if ((request.Content.AbstractQuery==null) || !request.Content.AbstractQuery.Untyped.Attributes("typeNames").Any<XAttribute>())
@@ -406,9 +444,13 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                             m => string.Compare(string.Concat(_NamespaceManager.LookupPrefix(m.SchemaName.NamespaceName), ":", m.SchemaName.LocalName), a, StringComparison.Ordinal)==0
                         )
                     ))
-                        throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
+                    {
+                        var ex=new OwsException(OwsExceptionCode.InvalidParameterValue) {
                             Locator=TypeNamesParameter
                         };
+                        ex.Data.Add(TypeNamesParameter, request.Content.AbstractQuery.Untyped.Attribute("typeNames").Value);
+                        throw ex;
+                    }
                 }
 
                 if (request.outputSchema==null)
@@ -416,9 +458,13 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
 
                 // Invalid output schema
                 if (!((Discovery)Service).SupportedRecordTypes.Select<IXMetaData, XNamespace>(s => s.SchemaName.Namespace).Contains<XNamespace>(request.outputSchema.ToString()))
-                    throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
+                {
+                    var ex=new OwsException(OwsExceptionCode.InvalidParameterValue) {
                         Locator=OutputSchemaParameter
                     };
+                    ex.Data.Add(OutputSchemaParameter, request.outputSchema);
+                    throw ex;
+                }
 
                 // We should be able to use foreach (Uri uri in request.ResponseHandler) here...
                 var rh=from el in request.Untyped.Elements()
@@ -429,9 +475,13 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                           where !uri.IsAbsoluteUri
                           select uri;
                 if (invrh.Any<Uri>())
-                    throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
+                {
+                    var ex=new OwsException(OwsExceptionCode.InvalidParameterValue) {
                         Locator=ResponseHandlerParameter
                     };
+                    ex.Data.Add(ResponseHandlerParameter, invrh.FirstOrDefault());
+                    throw ex;
+                }
 
 
                 //TODO: implement additional checks

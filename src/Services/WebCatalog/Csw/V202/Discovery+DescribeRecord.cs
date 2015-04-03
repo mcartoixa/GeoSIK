@@ -65,9 +65,13 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                         {
                             Match m=_NamespacesRegEx.Match(nsp);
                             if (!m.Success)
-                                throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
+                            {
+                                var ex=new OwsException(OwsExceptionCode.InvalidParameterValue) {
                                     Locator=NamespaceParameter
                                 };
+                                ex.Data.Add(NamespaceParameter, nsp);
+                                throw ex;
+                            }
 
                             string prefix=m.Groups["PREFIX"].Value;
                             string url=m.Groups["URL"].Value;
@@ -94,12 +98,14 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                         {
                             // Works because we have already parsed the namespaces
                             XName name=GetXmlNameFromString(tn, request.Untyped);
-                            rtn.Add(string.IsNullOrEmpty(name.NamespaceName)?new XmlQualifiedName(name.LocalName):new XmlQualifiedName(name.LocalName, name.NamespaceName));
+                            rtn.Add(string.IsNullOrEmpty(name.NamespaceName) ? new XmlQualifiedName(name.LocalName) : new XmlQualifiedName(name.LocalName, name.NamespaceName));
                         } catch (XmlException xex)
                         {
-                            throw new OwsException(OwsExceptionCode.InvalidParameterValue, xex.Message, xex) {
+                            var ex=new OwsException(OwsExceptionCode.InvalidParameterValue, xex.Message, xex) {
                                 Locator=TypeNamesParameter
                             };
+                            ex.Data.Add(TypeNamesParameter, tn);
+                            throw ex;
                         }
                     }
 
@@ -120,9 +126,11 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                         request.schemaLanguage=new Uri(schemaLanguage);
                     } catch (UriFormatException ufex)
                     {
-                        throw new OwsException(OwsExceptionCode.InvalidParameterValue, ufex) {
+                        var ex=new OwsException(OwsExceptionCode.InvalidParameterValue, ufex) {
                             Locator=SchemaLanguageParameter
                         };
+                        ex.Data.Add(SchemaLanguageParameter, schemaLanguage);
+                        throw ex;
                     }
 
                 return request;
@@ -135,16 +143,24 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 base.CheckRequest(request);
 
                 if ((request.outputFormat==null) || (Array.IndexOf<string>(XmlMimeTypes, request.outputFormat)<0))
-                    throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
+                {
+                    var ex=new OwsException(OwsExceptionCode.InvalidParameterValue) {
                         Locator=OutputFormatParameter
                     };
+                    ex.Data.Add(OutputFormatParameter, request.outputFormat);
+                    throw ex;
+                }
 
                 // The schemaLanguage property is initialized to the strange "http://www.w3.org/XML/Schema" namespace by default, so we have to consider it valid...
                 Uri[] schemaNamespaces=new Uri[] { XmlSchemaLanguageUri, StrangeXmlSchemaLanguageUri };
                 if ((request.schemaLanguage==null) || (Array.IndexOf<Uri>(schemaNamespaces, request.schemaLanguage)<0))
-                    throw new OwsException(OwsExceptionCode.InvalidParameterValue) {
+                {
+                    var ex=new OwsException(OwsExceptionCode.InvalidParameterValue) {
                         Locator=SchemaLanguageParameter
                     };
+                    ex.Data.Add(SchemaLanguageParameter, request.schemaLanguage);
+                    throw ex;
+                }
             }
 
             /// <summary>Processes the specified request.</summary>
