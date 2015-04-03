@@ -497,53 +497,67 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
             /// <summary>Processes the specified request.</summary>
             /// <param name="request">The request to process.</param>
             /// <returns>The response to the specified request.</returns>
-            public override Task<Types.IGetRecordsResponse> ProcessAsync(Types.GetRecords request)
+            public override async Task<Types.IGetRecordsResponse> ProcessAsync(Types.GetRecords request)
             {
                 Logger.Debug(CultureInfo.InvariantCulture, m => m("Request processing started"));
                 Logger.Debug(CultureInfo.InvariantCulture, m => m("> {0}", OgcService.ToTraceString(request)));
 
+                Types.IGetRecordsResponse ret=null;
+
                 CheckRequest(request);
-
-                var task=new Task<Types.IGetRecordsResponse>(
-                    r => {
-                        Types.GetRecords req=(Types.GetRecords)r;
-                        var response=ProcessRequestAsync(req).Result; //TODO: ConfigureAwait(false)
-
-                        var args=new Ows.OwsRequestEventArgs<Types.GetRecords, Types.IGetRecordsResponse>(req, response);
-                        OnProcessed(args);
-
-                        Debug.Assert(args.Response!=null);
-                        Logger.Debug(CultureInfo.InvariantCulture, m => m("< {0}", OgcService.ToTraceString(args.Response)));
-                        Logger.Debug(CultureInfo.InvariantCulture, m => m("Request processing finished"));
-                        return args.Response;
-                    },
-                    request,
-                    TaskCreationOptions.LongRunning
-                );
 
                 // Asynchronous processing
                 if ((request.ResponseHandler!=null) && (request.ResponseHandler.Count>0))
                 {
-                    task
-                        .ContinueWith(_SendRecordsResponse)
-                        .ContinueWith(_LogAsynchronousExceptions, TaskContinuationOptions.OnlyOnFaulted);
-                    task.Start();
+#pragma warning disable 4014
+                    Task.Run(
+                        async () => {
+                            IXmlSerializable response=null;
+                            try
+                            {
+                                response=await ProcessRequestAsync(request);
+                                var args=new Ows.OwsRequestEventArgs<Types.GetRecords, Types.IGetRecordsResponse>(request, (Types.IGetRecordsResponse)response);
+                                OnProcessed(args);
+                                Debug.Assert(args.Response!=null);
+
+                                response=args.Response;
+                            } catch (Exception ex)
+                            {
+                                var oex=ex as OwsException;
+                                if (oex==null)
+                                    oex=new OwsException(OwsExceptionCode.NoApplicableCode, ex);
+
+                                response=new Ows100.ExceptionReport() {
+                                    version="1.2.0",
+                                    Exception=((Ows100.ExceptionReport)oex).Exception
+                                };
+                            }
+
+                            await _SendRecordsResponse(request, response);
+                        }
+                    );
+#pragma warning restore 4014
 
                     var echo=new Types.EchoedRequestType();
                     echo.Untyped.Add(request.Untyped);
 
-                    Types.IGetRecordsResponse ret=new Types.Acknowledgement() {
+                    ret=new Types.Acknowledgement() {
                         EchoedRequest=echo,
                         timeStamp=DateTime.UtcNow
                     };
+                } else
+                {
+                    var response=await ProcessRequestAsync(request);
+                    var args=new Ows.OwsRequestEventArgs<Types.GetRecords, Types.IGetRecordsResponse>(request, response);
+                    OnProcessed(args);
+                    Debug.Assert(args.Response!=null);
 
-                    Logger.Debug(CultureInfo.InvariantCulture, m => m("< {0}", OgcService.ToTraceString(ret)));
-                    Logger.Debug(CultureInfo.InvariantCulture, m => m("Request processing finished"));
-                    return Task.FromResult(ret);
+                    ret=args.Response;
                 }
 
-                task.Start();
-                return task;
+                Logger.Debug(CultureInfo.InvariantCulture, m => m("< {0}", OgcService.ToTraceString(ret)));
+                Logger.Debug(CultureInfo.InvariantCulture, m => m("Request processing finished"));
+                return ret;
             }
 
             /// <summary>Processes the specified request.</summary>
@@ -696,28 +710,28 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 return ret;
             }
 
-            private void _SendRecordsResponse(Task<Types.IGetRecordsResponse> task)
+            private async Task _SendRecordsResponse(Types.GetRecords request, IXmlSerializable response)
             {
-                Types.GetRecords request=(Types.GetRecords)task.AsyncState;
+                //Types.GetRecords request=(Types.GetRecords)task.AsyncState;
 
-                IXmlSerializable response=task.Result;
-                if (task.Exception!=null)
-                {
-                    IList<Ows100.Exception> exceptions=task.Exception.InnerExceptions
-                        .Select<Exception, OwsException>(e => {
-                            var oex=e as OwsException;
-                            if (oex!=null)
-                                return oex;
-                            return new OwsException(OwsExceptionCode.NoApplicableCode, e);
-                        })
-                        .SelectMany<OwsException, Ows100.Exception>(e => ((Ows100.ExceptionReport)e).Exception)
-                        .ToList<Ows100.Exception>();
+                //IXmlSerializable response=task.Result;
+                //if (task.Exception!=null)
+                //{
+                //    IList<Ows100.Exception> exceptions=task.Exception.InnerExceptions
+                //        .Select<Exception, OwsException>(e => {
+                //            var oex=e as OwsException;
+                //            if (oex!=null)
+                //                return oex;
+                //            return new OwsException(OwsExceptionCode.NoApplicableCode, e);
+                //        })
+                //        .SelectMany<OwsException, Ows100.Exception>(e => ((Ows100.ExceptionReport)e).Exception)
+                //        .ToList<Ows100.Exception>();
 
-                    response=new Ows100.ExceptionReport() {
-                        version="1.2.0",
-                        Exception=exceptions
-                    };
-                }
+                //    response=new Ows100.ExceptionReport() {
+                //        version="1.2.0",
+                //        Exception=exceptions
+                //    };
+                //}
 
                 if (response==null)
                 {
@@ -728,7 +742,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 byte[] binResponse=new byte[0];
                 using (var ms=new MemoryStream())
                 {
-                    using (var xw=XmlWriter.Create(ms, new XmlWriterSettings() { CloseOutput=false }))
+                    using (var xw=XmlWriter.Create(ms, new XmlWriterSettings() { Async=true, CloseOutput=false }))
                         response.WriteXml(xw);
                     binResponse=ms.ToArray();
                 }
@@ -750,22 +764,13 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                             ftpreq.Method=WebRequestMethods.Ftp.UploadFile;
                             ftpreq.ContentLength=binResponse.Length;
 
-                            using (var grst=Task<Stream>.Factory.FromAsync(ftpreq.BeginGetRequestStream, ftpreq.EndGetRequestStream, null))
-                                using (grst.Result)
-                                {
-                                    var wt=Task.Factory.FromAsync(grst.Result.BeginWrite, grst.Result.EndWrite, binResponse, 0, binResponse.Length, null, TaskCreationOptions.AttachedToParent);
-                                    wt.Start();
-                                }
+                            var stream=await ftpreq.GetRequestStreamAsync();
+                            using (stream)
+                                await stream.WriteAsync(binResponse, 0, binResponse.Length);
                         }
                         break;
                     }
                 }
-            }
-
-            private void _LogAsynchronousExceptions(Task task)
-            {
-                if (task.Exception!=null)
-                    Logger.Error("An exception occured during an asynchronous operation", task.Exception);
             }
 
             private XmlNamespaceManager _NamespaceManager;
