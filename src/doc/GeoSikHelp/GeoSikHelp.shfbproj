@@ -56,7 +56,7 @@
   <outputPaths>{@HelpFormatOutputPaths}</outputPaths>
   <allowMissingSource value="false" />
   <removeRegionMarkers value="false" />
-  <colorizer syntaxFile="{@SHFBFolder}Colorizer\highlight.xml" styleFile="{@SHFBFolder}Colorizer\highlight.xsl" stylesheet="{@SHFBFolder}Colorizer\highlight.css" scriptFile="{@SHFBFolder}Colorizer\highlight.js" disabled="{@DisableCodeBlockComponent}" language="cs" tabSize="0" numberLines="false" outlining="false" keepSeeTags="false" defaultTitle="true" />
+  <colorizer syntaxFile="{@SHFBFolder}PresentationStyles\Colorizer\highlight.xml" styleFile="{@SHFBFolder}PresentationStyles\Colorizer\highlight.xsl" stylesheet="{@SHFBFolder}PresentationStyles\Colorizer\highlight.css" scriptFile="{@SHFBFolder}PresentationStyles\Colorizer\highlight.js" disabled="{@DisableCodeBlockComponent}" language="cs" tabSize="0" numberLines="false" outlining="false" keepSeeTags="false" defaultTitle="true" />
 </component>
       </ComponentConfig>
 <ComponentConfig id="API Token Resolution" enabled="True"><component id="API Token Resolution">{@TokenFiles}
@@ -69,13 +69,16 @@
     <PlugInConfigurations>
       <PlugInConfig id="Wildcard Assembly References" enabled="True">
         <configuration>
-  <references>
-    <reference path="..\..\lib\" wildcard="*.dll" recurse="true" />
-    <reference path="..\..\packages\" wildcard="*.dll" recurse="true" />
-  </references>
-</configuration>
+          <references>
+            <reference path="..\..\lib\" wildcard="*.dll" recurse="true" />
+            <reference path="..\..\packages\" wildcard="*.dll" recurse="true" />
+          </references>
+        </configuration>
       </PlugInConfig>
-<PlugInConfig id="Table of Contents Exclusion" enabled="True"><configuration /></PlugInConfig></PlugInConfigurations>
+      <PlugInConfig id="Table of Contents Exclusion" enabled="True">
+        <configuration />
+      </PlugInConfig>
+    </PlugInConfigurations>
     <HelpFileVersion>0.0.0.0</HelpFileVersion>
     <CopyrightHref>http://www.isogeo.com/</CopyrightHref>
     <CopyrightText>Copyright \xA9 2011-{%2540BuildDate:yyyy} Isogeo</CopyrightText>
