@@ -712,27 +712,6 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
 
             private async Task _SendRecordsResponse(Types.GetRecords request, IXmlSerializable response)
             {
-                //Types.GetRecords request=(Types.GetRecords)task.AsyncState;
-
-                //IXmlSerializable response=task.Result;
-                //if (task.Exception!=null)
-                //{
-                //    IList<Ows100.Exception> exceptions=task.Exception.InnerExceptions
-                //        .Select<Exception, OwsException>(e => {
-                //            var oex=e as OwsException;
-                //            if (oex!=null)
-                //                return oex;
-                //            return new OwsException(OwsExceptionCode.NoApplicableCode, e);
-                //        })
-                //        .SelectMany<OwsException, Ows100.Exception>(e => ((Ows100.ExceptionReport)e).Exception)
-                //        .ToList<Ows100.Exception>();
-
-                //    response=new Ows100.ExceptionReport() {
-                //        version="1.2.0",
-                //        Exception=exceptions
-                //    };
-                //}
-
                 if (response==null)
                 {
                     Logger.Warn("No response to handle");
