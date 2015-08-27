@@ -276,8 +276,10 @@ namespace GeoSik.Ogc.Ows
 
             for (int i=0; i<parameters.Count; ++i)
             {
-                string key=parameters.GetKey(i).ToLowerInvariant();
-                ret.Add(key, string.Join(",", parameters.GetValues(i)));
+                string key=parameters.GetKey(i);
+                string[] values=parameters.GetValues(i);
+                if (!string.IsNullOrWhiteSpace(key) && (values!=null))
+                    ret.Add(key.ToLowerInvariant(), string.Join(",", values));
             }
 
             return ret;
