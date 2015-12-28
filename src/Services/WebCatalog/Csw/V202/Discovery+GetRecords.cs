@@ -650,31 +650,24 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 }
 
                 // Results
-                Task<IXmlSerializable>[] resultTasks=null;
+                IEnumerable<IRecord> resultRecords=(await records.ToListAsync()).Cast<IRecord>();
+                IEnumerable<IXmlSerializable> results;
+
                 //if ((query.ElementSetName!=null) && !string.IsNullOrEmpty(query.ElementSetName.TypedValue))
                 if ((query!=null) && query.Untyped.Elements("{http://www.opengis.net/cat/csw/2.0.2}ElementSetName").Any<XElement>() && !string.IsNullOrEmpty(query.ElementSetName.TypedValue))
                 {
-                    resultTasks=(await records.ToListAsync())
-                        .Cast<IRecord>()
-                        .Select<IRecord, Task<IXmlSerializable>>(r => r.GetConverter(Service, request.outputSchema, _NamespaceManager).ConvertAsync(r, query.ElementSetName.TypedValue))
+                    results=(await ((Discovery)Service).ConvertRecords(resultRecords, request.outputSchema, _NamespaceManager, query.ElementSetName.TypedValue))
                         .ToArray();
                 } else if ((query!=null) && (query.ElementName!=null) && (query.ElementName.Count>0))
                 {
                     var elementNames=from el in query.Untyped.Descendants()
                                         where el.Name=="{http://www.opengis.net/cat/csw/2.0.2}ElementName"
                                         select el.Value;
-                    resultTasks=(await records.ToListAsync())
-                        .Cast<IRecord>()
-                        .Select<IRecord, Task<IXmlSerializable>>(r => r.GetConverter(Service, request.outputSchema, _NamespaceManager).ConvertAsync(r, elementNames, mayRootPathBeImplied))
+                    results=(await ((Discovery)Service).ConvertRecords(resultRecords, request.outputSchema, _NamespaceManager, elementNames, mayRootPathBeImplied))
                         .ToArray();
                 } else
-                    resultTasks=(await records.ToListAsync())
-                        .Cast<IRecord>()
-                        .Select<IRecord, Task<IXmlSerializable>>(r => r.GetConverter(Service, request.outputSchema, _NamespaceManager).ConvertAsync(r, "full"))
+                    results=(await ((Discovery)Service).ConvertRecords(resultRecords, request.outputSchema, _NamespaceManager, "full"))
                         .ToArray();
-
-                // Performs the query
-                var results=await Task.WhenAll(resultTasks);
 
                 // Core Record types
                 var arl=results.OfType<Types.AbstractRecord>();

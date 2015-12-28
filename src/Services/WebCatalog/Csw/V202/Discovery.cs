@@ -33,6 +33,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
+using System.Xml.Serialization;
 using Xml.Schema.Linq;
 using Gmd=GeoSik.Iso.Ts19139.Gmd;
 using Gml311=GeoSik.Ogc.Gml.V311;
@@ -186,6 +187,35 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
         /// <param name="outputSchema">The schema for the CSW records.</param>
         /// <returns>The source of CSW records for the current discovery service.</returns>
         protected abstract IQueryable GetRecordsSource(Uri outputSchema);
+
+        /// <summary>Converts the specified records into the specified XML representation.</summary>
+        /// <param name="records">The records to convert.</param>
+        /// <param name="outputSchema">The XML schema of the destination representation.</param>
+        /// <param name="namespaceManager">The current XML namespace manager.</param>
+        /// <param name="elementSet">The element set.</param>
+        /// <remarks>By default the records are converted one by one. By overriding this method, you get a chance to
+        /// convert the whole batch of records in one go.</remarks>
+        /// <returns>The converted records.</returns>
+        public virtual async Task<IEnumerable<IXmlSerializable>> ConvertRecords(IEnumerable<IRecord> records, Uri outputSchema, XmlNamespaceManager namespaceManager, string elementSet)
+        {
+            IEnumerable<Task<IXmlSerializable>> tasks=records.Select(r => r.GetConverter(this, outputSchema, namespaceManager).ConvertAsync(r, elementSet));
+            return await Task.WhenAll(tasks);
+        }
+
+        /// <summary>Converts the specified records into the specified XML representation.</summary>
+        /// <param name="records">The records to convert.</param>
+        /// <param name="outputSchema">The XML schema of the destination representation.</param>
+        /// <param name="namespaceManager">The current XML namespace manager.</param>
+        /// <param name="elements">The elements, in XPath representation.</param>
+        /// <param name="mayRootPathBeImplied">Whether the XPath elements may omit the root path, or not.</param>
+        /// <remarks>By default the records are converted one by one. By overriding this method, you get a chance to
+        /// convert the whole batch of records in one go.</remarks>
+        /// <returns>The converted records.</returns>
+        public virtual async Task<IEnumerable<IXmlSerializable>> ConvertRecords(IEnumerable<IRecord> records, Uri outputSchema, XmlNamespaceManager namespaceManager, IEnumerable<string> elements, bool mayRootPathBeImplied)
+        {
+            IEnumerable<Task<IXmlSerializable>> tasks=records.Select(r => r.GetConverter(this, outputSchema, namespaceManager).ConvertAsync(r, elements, mayRootPathBeImplied));
+            return await Task.WhenAll(tasks);
+        }
 
         /// <summary>Gets the list of supported CSW record types for the current discovery service.</summary>
         public virtual IEnumerable<IXMetaData> SupportedRecordTypes
