@@ -185,11 +185,8 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 }
 
                 // Performs the query
-                var resultTasks=(await records.ToListAsync())
-                    .Cast<IRecord>()
-                    .Select<IRecord, Task<IXmlSerializable>>(r => r.GetConverter(Service, request.outputSchema, namespaceManager).ConvertAsync(r, request.ElementSetName.TypedValue))
+                var results=(await ((Discovery)Service).ConvertRecords((await records.ToListAsync()).Cast<IRecord>(), request.outputSchema, namespaceManager, request.ElementSetName.TypedValue))
                     .ToArray();
-                var results=await Task.WhenAll(resultTasks);
 
                 // Core Record types
                 var arl=results.OfType<Types.AbstractRecord>();
