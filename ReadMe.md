@@ -1,26 +1,25 @@
 PREREQUISITES
 -------------
 
--Build:
+- Build:
 	* Microsoft .NET Framework 4.0
 	* Microsoft Windows SDK 7.1
-	* ASP.NET MVC 3 <http://www.asp.net/mvc/mvc3>
-	* MSBuild.Community.Tasks 1.3 <http://msbuildtasks.tigris.org/>
+	* [ASP.NET MVC 3](http://www.asp.net/mvc/mvc3)
+	* [MSBuild.Community.Tasks 1.3](http://msbuildtasks.tigris.org/)
 	* FxCop 10.0
 	* [PartCover.NET 4.0.20908](http://github.com/sawilde/partcover.net4)
 
 - Development:
 	* Microsoft Visual Studio 2013
-	* Microsoft SQL Server 2012 Express <http://www.microsoft.com/en-us/download/details.aspx?id=29062>
-	* [Sandcastle Help File Builder 1.9.8.0] <http://shfb.codeplex.com/>
+	* [Microsoft SQL Server 2012 Express](http://www.microsoft.com/en-us/download/details.aspx?id=29062)
+	* [Sandcastle Help File Builder 1.9.8.0](http://shfb.codeplex.com/)
 
 
 
 BUILD
 -----
 
-- Run the following command from this directory :
-build.bat
+- Run the following command from this directory: `build.bat`
 
 
 
@@ -29,10 +28,13 @@ DEVELOPMENT
 
 - The GeoSik.dev.sln solution is meant for development. Other solutions are used by the build scripts.
 - Serialization:
-	* Serialization objects found in the Library project have been generated with [LinqToXsd] <http://linqtoxsd.codeplex.com/> with a command line like the following:
-LinqToXsd.exe iso\19139\20070417\gmd\gmd.xsd /config:LinqToXsd.config.xml /enableServiceReference
+	* Serialization objects found in the Library project have been generated with [LinqToXsd](http://linqtoxsd.codeplex.com/) with a command line like the following: `LinqToXsd.exe iso\19139\20070417\gmd\gmd.xsd /config:LinqToXsd.config.xml /enableServiceReference`
 	* Original XML schemas can be found online at http://schemas.opengis.net/ or http://eden.ign.fr/
+	* Code generation has not been made part of the build as:
+		. Generation is somewhat buggy and some generated objects have been manually tweaked.
+		. Sometimes the schemas themselves have been tweaked for the generation to work...
 	* LinqToXsd configuration looks like the following:
+```xml
 <Configuration xmlns="http://www.microsoft.com/xml/schema/linq">
   <Namespaces>
     <Namespace Schema="http://www.opengis.net/gml" Clr="GeoSik.Ogc.Gml.V311" />
@@ -53,6 +55,4 @@ LinqToXsd.exe iso\19139\20070417\gmd\gmd.xsd /config:LinqToXsd.config.xml /enabl
     <Namespace Schema="http://purl.org/dc/terms/" Clr="GeoSik.DublinCore.Terms" />
   </Namespaces>
 </Configuration>
-	* Code generation has not been made part of the build as:
-		. Generation is somewhat buggy and some generated objects have been manually tweaked.
-		. Sometimes the schemas themselves have been tweaked for the generation to work...
+```
