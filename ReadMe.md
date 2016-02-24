@@ -6,11 +6,10 @@ PREREQUISITES
 	* Microsoft Windows SDK 7.1
 	* [ASP.NET MVC 3](http://www.asp.net/mvc/mvc3)
 	* [MSBuild.Community.Tasks 1.3](http://msbuildtasks.tigris.org/)
-	* FxCop 10.0
 	* [PartCover.NET 4.0.20908](http://github.com/sawilde/partcover.net4)
 
 - Development:
-	* Microsoft Visual Studio 2013
+	* Microsoft Visual Studio 2015
 	* [Microsoft SQL Server 2012 Express](http://www.microsoft.com/en-us/download/details.aspx?id=29062)
 	* [Sandcastle Help File Builder 1.9.8.0](http://shfb.codeplex.com/)
 
