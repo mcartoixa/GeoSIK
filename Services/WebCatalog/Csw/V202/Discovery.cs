@@ -217,6 +217,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
             return await Task.WhenAll(tasks);
         }
 
+#pragma warning disable 3003
         /// <summary>Gets the list of supported CSW record types for the current discovery service.</summary>
         public virtual IEnumerable<IXMetaData> SupportedRecordTypes
         {
@@ -225,6 +226,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 return _SupportedRecordTypesInstances;
             }
         }
+#pragma warning restore 3003
 
         /// <summary>Gets a custom <see cref="IOperatorImplementationProvider" /> for the current discovery service.</summary>
         /// <returns>a custom <see cref="IOperatorImplementationProvider" /> for the current discovery service.</returns>
