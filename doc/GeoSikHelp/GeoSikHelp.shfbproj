@@ -24,7 +24,7 @@
       <DocumentationSource sourceFile="..\..\tmp\bin\GeoSik\Release\Any CPU\GeoSik.Services.dll" />
       <DocumentationSource sourceFile="..\..\tmp\bin\GeoSik\Release\Any CPU\GeoSik.Services.xml" />
     </DocumentationSources>
-    <HelpFileFormat>HtmlHelp1, MSHelpViewer, Website</HelpFileFormat>
+    <HelpFileFormat>HtmlHelp1, Website</HelpFileFormat>
     <IndentHtml>False</IndentHtml>
     <FrameworkVersion>.NET Framework 4.5</FrameworkVersion>
     <KeepLogFile>True</KeepLogFile>
