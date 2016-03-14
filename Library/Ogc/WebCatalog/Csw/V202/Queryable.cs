@@ -20,31 +20,58 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Diagnostics.CodeAnalysis;
 
 namespace GeoSik.Ogc.WebCatalog.Csw.V202
 {
 
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, Inherited=true, AllowMultiple=true)]
-    public sealed class CoreQueryableAttribute:
-        Attribute
+    public abstract class Queryable
     {
 
-        private CoreQueryableAttribute(CoreQueryable queryable)
+        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
+        static Queryable()
         {
-            Queryable=queryable;
+            _Queryables=new Dictionary<string, Queryable>();
         }
 
-        public CoreQueryableAttribute(string queryableName)
+        private Queryable()
         {
-            Queryable=CoreQueryable.GetFromName(queryableName);
         }
 
-        public CoreQueryable Queryable
+        protected Queryable(string name, Type type):
+            base()
+        {
+            Name=name;
+            QueryableType=type;
+        }
+
+        protected static void AddQueryable(string name, Queryable queryable)
+        {
+            _Queryables.Add(name, queryable);
+        }
+
+        public static Queryable GetFromName(string name)
+        {
+            return _Queryables[name];
+        }
+
+        public static bool IsValidName(string name)
+        {
+            return _Queryables.ContainsKey(name);
+        }
+
+        public string Name
         {
             get;
             private set;
         }
+
+        public Type QueryableType
+        {
+            get;
+            private set;
+        }
+
+        private static Dictionary<string, Queryable> _Queryables;
     }
 }

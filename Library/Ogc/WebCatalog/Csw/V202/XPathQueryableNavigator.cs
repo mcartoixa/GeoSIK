@@ -20,12 +20,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Xml;
 using System.Xml.XPath;
-using Filter=GeoSik.Ogc.Filter;
 
 namespace GeoSik.Ogc.WebCatalog.Csw.V202
 {

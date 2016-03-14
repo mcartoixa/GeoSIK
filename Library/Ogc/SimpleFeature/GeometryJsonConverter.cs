@@ -83,7 +83,7 @@ namespace GeoSik.Ogc.SimpleFeature
 
             protected override void DoAddLine(double x, double y, double? z)
             {
-                if ((++_I % 2) == 0)
+                if (++_I==2)
                 {
                     _Writer.WriteValue(x);
                     _Writer.WriteValue(y);
@@ -127,7 +127,8 @@ namespace GeoSik.Ogc.SimpleFeature
                     _Writer.WriteValue(type.ToString("G"));
                     if (type!=GeometryType.GeometryCollection)
                     {
-                        _WriteBox();
+                        if ((type!=GeometryType.LineString) && (type!=GeometryType.Point))
+                            _WriteBox();
                         _Writer.WritePropertyName("coordinates");
                     } else
                         _Writer.WritePropertyName("geometries");
@@ -208,14 +209,18 @@ namespace GeoSik.Ogc.SimpleFeature
                 var geometry = _Tap as ISimpleGeometry;
                 if (geometry!=null)
                 {
+                    ISimpleGeometry envelope = null;
                     try
                     {
-                        var envelope = geometry.Envelope();
-                        var sink = new JsonEnvelopeSink(_Writer);
-                        envelope.Populate(sink);
+                        envelope = geometry.Envelope();
                     } catch
                     {
                         // Empty
+                    }
+                    if (envelope!=null)
+                    {
+                        var sink = new JsonEnvelopeSink(_Writer);
+                        envelope.Populate(sink);
                     }
                 }
             }

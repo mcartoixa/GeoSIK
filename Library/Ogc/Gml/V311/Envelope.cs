@@ -39,8 +39,7 @@ namespace GeoSik.Ogc.Gml.V311
 
         public void Populate(IGeometrySink sink)
         {
-            if (srsName!=null)
-                sink.SetCoordinateSystem(CoordinateSystem);
+            sink.SetCoordinateSystem(CoordinateSystem);
 
             sink.BeginGeometry(GeometryType.Polygon);
 

@@ -19,74 +19,34 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 
 namespace GeoSik.Ogc.WebCatalog.Csw.V202
 {
 
-    public class CoreQueryable
+    public sealed class CoreQueryable:
+        Queryable
     {
 
         [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
         static CoreQueryable()
         {
-            _Queryables=new Dictionary<string, CoreQueryable>(11);
-            _Queryables.Add(Subject.Name, Subject);
-            _Queryables.Add(Title.Name, Title);
-            _Queryables.Add(Abstract.Name, Abstract);
-            _Queryables.Add(AnyText.Name, AnyText);
-            _Queryables.Add(Format.Name, Format);
-            _Queryables.Add(Identifier.Name, Identifier);
-            _Queryables.Add(Modified.Name, Modified);
-            _Queryables.Add(Type.Name, Type);
-            _Queryables.Add(BoundingBox.Name, BoundingBox);
-            _Queryables.Add(Crs.Name, Crs);
-            _Queryables.Add(Association.Name, Association);
+            AddQueryable(Subject.Name, Subject);
+            AddQueryable(Title.Name, Title);
+            AddQueryable(Abstract.Name, Abstract);
+            AddQueryable(AnyText.Name, AnyText);
+            AddQueryable(Format.Name, Format);
+            AddQueryable(Identifier.Name, Identifier);
+            AddQueryable(Modified.Name, Modified);
+            AddQueryable(Type.Name, Type);
+            AddQueryable(BoundingBox.Name, BoundingBox);
+            AddQueryable(Crs.Name, Crs);
+            AddQueryable(Association.Name, Association);
         }
 
-        private CoreQueryable()
-        {
-        }
-
-        protected CoreQueryable(string name, Type type):
-            base()
-        {
-            Name=name;
-            QueryableType=type;
-        }
-
-        protected static void AddQueryable(string name, CoreQueryable queryable)
-        {
-            _Queryables.Add(name, queryable);
-        }
-
-        public static CoreQueryable GetFromName(string name)
-        {
-            return _Queryables[name];
-        }
-
-        public static bool IsValidName(string name)
-        {
-            return _Queryables.ContainsKey(name);
-        }
-
-        public string Name
-        {
-            get;
-            private set;
-        }
-
-        public Type QueryableType
-        {
-            get;
-            private set;
-        }
-
-        private static Dictionary<string, CoreQueryable> _Queryables;
+        private CoreQueryable(string name, Type type) :
+            base(name, type)
+        { }
 
         [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification="This is an immutable type")]
         public static readonly CoreQueryable Subject=new CoreQueryable(CoreQueryableNames.Subject, typeof(string));

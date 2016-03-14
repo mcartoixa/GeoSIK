@@ -22,7 +22,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using GeoSik.Ogc.Filter;
@@ -59,7 +58,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                     xpqn._InitQueryables(navigator, queryables, visited);
             }
 
-            foreach (CoreQueryable cq in AssociatedQueryables)
+            foreach (Queryable cq in AssociatedQueryables)
             {
                 if (!queryables.ContainsKey(cq.Name))
                     queryables.Add(cq.Name, new List<XPathNavigator>());
@@ -70,7 +69,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
             }
         }
 
-        internal CoreQueryable[] AssociatedQueryables
+        internal Queryable[] AssociatedQueryables
         {
             get
             {
@@ -79,11 +78,11 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                     if (MetadataMemberInfos!=null)
                     {
                         _AssociatedQueryables=MetadataMemberInfos
-                            .SelectMany<MemberInfo, CoreQueryableAttribute>(m => m.GetCustomAttributes(typeof(CoreQueryableAttribute), true).Cast<CoreQueryableAttribute>())
-                            .Select<CoreQueryableAttribute, CoreQueryable>(a => a.Queryable)
-                            .ToArray<CoreQueryable>();
+                            .SelectMany(m => m.GetCustomAttributes(typeof(QueryableAttribute), true).Cast<QueryableAttribute>())
+                            .Select(a => a.Queryable)
+                            .ToArray();
                     } else
-                        _AssociatedQueryables=new CoreQueryable[0];
+                        _AssociatedQueryables=new Queryable[0];
 
                 }
 
@@ -91,6 +90,6 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
             }
         }
 
-        private CoreQueryable[] _AssociatedQueryables;
+        private Queryable[] _AssociatedQueryables;
     }
 }

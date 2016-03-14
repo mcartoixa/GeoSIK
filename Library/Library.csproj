@@ -104,6 +104,7 @@
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="GeometryTransformerSink.cs" />
     <Compile Include="GeometryType.cs" />
+    <Compile Include="Ogc\WebCatalog\Csw\V202\Queryable.cs" />
     <Compile Include="QueryableExtensions.cs" />
     <Compile Include="ReversedGeometrySink.cs" />
     <Compile Include="ICoordinatesTransformer.cs" />
@@ -270,7 +271,7 @@
     <Compile Include="Ogc\WebCatalog\Cql\ExpressionBuilderParameter.cs" />
     <Compile Include="Ogc\WebCatalog\Cql\Ast\ExpressionCreator.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\CoreQueryable.cs" />
-    <Compile Include="Ogc\WebCatalog\Csw\V202\CoreQueryableAttribute.cs" />
+    <Compile Include="Ogc\WebCatalog\Csw\V202\QueryableAttribute.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\IDiscovery.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\IPublication.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\IRecord.cs" />

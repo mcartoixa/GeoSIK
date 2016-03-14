@@ -46,7 +46,7 @@ namespace GeoSik.WebSample.Models.LinqToSql
         }
 
         [XmlElement("BoundingBox", Namespace=Namespaces.OgcOws, Order=8, IsNullable=false)]
-        [CoreQueryable(CoreQueryableNames.BoundingBox)]
+        [Queryable(CoreQueryableNames.BoundingBox)]
         public IGeometry BoundingBox
         {
             get
@@ -79,7 +79,7 @@ namespace GeoSik.WebSample.Models.LinqToSql
             }
         }
 
-        [CoreQueryable(CoreQueryableNames.Crs)]
+        [Queryable(CoreQueryableNames.Crs)]
         public string BoundingBoxCrs
         {
             get
@@ -107,31 +107,31 @@ namespace GeoSik.WebSample.Models.LinqToSql
     {
 
         [XmlElement("identifier", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=0, IsNullable=false)]
-        [CoreQueryable(CoreQueryableNames.Identifier)]
+        [Queryable(CoreQueryableNames.Identifier)]
         public string Identifier { get; set; }
 
         [XmlElement("title", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=1, IsNullable=false)]
-        [CoreQueryable(CoreQueryableNames.Title)]
+        [Queryable(CoreQueryableNames.Title)]
         public string Title { get; set; }
 
         [XmlElement("subject", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=2, IsNullable=false)]
-        [CoreQueryable(CoreQueryableNames.Subject)]
+        [Queryable(CoreQueryableNames.Subject)]
         public string Subject { get; set; }
 
         [XmlElement("abstract", Namespace=Namespaces.DublinCoreTerms, DataType="string", Order=3, IsNullable=false)]
-        [CoreQueryable(CoreQueryableNames.Abstract)]
+        [Queryable(CoreQueryableNames.Abstract)]
         public string Description { get; set; }
 
         [XmlElement("date", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=4)]
-        [CoreQueryable(CoreQueryableNames.Modified)]
+        [Queryable(CoreQueryableNames.Modified)]
         public string Date { get; set; }
 
         [XmlElement("type", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=5, IsNullable=false)]
-        [CoreQueryable(CoreQueryableNames.Type)]
+        [Queryable(CoreQueryableNames.Type)]
         public string Type { get; set; }
 
         [XmlElement("format", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=6, IsNullable=false)]
-        [CoreQueryable(CoreQueryableNames.Format)]
+        [Queryable(CoreQueryableNames.Format)]
         public string Format { get; set; }
 
         [XmlElement("spatial", Namespace=Namespaces.DublinCoreTerms, DataType="string", Order=7, IsNullable=false)]
@@ -142,11 +142,11 @@ namespace GeoSik.WebSample.Models.LinqToSql
         public Binary Coverage { get; set; }
 
         [XmlElement("relation", Namespace=Namespaces.DublinCoreElementsV11, DataType="string", Order=9, IsNullable=false)]
-        [CoreQueryable(CoreQueryableNames.Association)]
+        [Queryable(CoreQueryableNames.Association)]
         public string RelationId { get; set; }
 
         [XmlElement("AnyText", Namespace=Namespaces.OgcWebCatalogCswV202, DataType="string", Order=10, IsNullable=false)]
-        [CoreQueryable(CoreQueryableNames.AnyText)]
+        [Queryable(CoreQueryableNames.AnyText)]
         public string AnyText { get; set; }
     }
 }
