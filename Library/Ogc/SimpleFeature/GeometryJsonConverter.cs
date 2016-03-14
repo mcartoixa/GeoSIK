@@ -22,9 +22,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using Microsoft.Practices.ServiceLocation;
 using Newtonsoft.Json;
 
 namespace GeoSik.Ogc.SimpleFeature
@@ -46,15 +43,15 @@ namespace GeoSik.Ogc.SimpleFeature
         JsonConverter
     {
 
-        internal class JsonSink:
+        internal class JsonEnvelopeSink:
             GeometryTransformerSink
         {
 
-            private JsonSink()
+            private JsonEnvelopeSink()
             {
             }
 
-            public JsonSink(JsonWriter writer):
+            public JsonEnvelopeSink(JsonWriter writer):
                 base(CommonServiceLocator.GetCoordinateSystemProvider().Wgs84)
             {
                 Debug.Assert(writer!=null);
@@ -66,15 +63,74 @@ namespace GeoSik.Ogc.SimpleFeature
 
             public override void BeginGeometry(GeometryType type)
             {
+                _Writer.WritePropertyName("bbox");
+                _Writer.WriteStartArray();
+            }
+
+            public override void EndGeometry()
+            {
+                _Writer.WriteEndArray();
+                base.EndGeometry();
+            }
+
+            protected override void DoBeginFigure(double x, double y, double? z)
+            {
+                _Writer.WriteValue(x);
+                _Writer.WriteValue(y);
+                if (z.HasValue)
+                    _Writer.WriteValue(z);
+            }
+
+            protected override void DoAddLine(double x, double y, double? z)
+            {
+                if ((++_I % 2) == 0)
+                {
+                    _Writer.WriteValue(x);
+                    _Writer.WriteValue(y);
+                    if (z.HasValue)
+                        _Writer.WriteValue(z);
+                }
+            }
+
+            private JsonWriter _Writer;
+            private int _I;
+        }
+
+        internal class JsonSink:
+            GeometryTransformerSink
+        {
+
+            private JsonSink()
+            {
+            }
+
+            public JsonSink(JsonWriter writer, IGeometryTap tap):
+                base(CommonServiceLocator.GetCoordinateSystemProvider().Wgs84)
+            {
+                Debug.Assert(writer!=null);
+                if (writer==null)
+                    throw new ArgumentNullException("writer");
+                Debug.Assert(tap!=null);
+                if (tap==null)
+                    throw new ArgumentNullException("tap");
+
+                _Writer=writer;
+                _Tap=tap;
+            }
+
+            public override void BeginGeometry(GeometryType type)
+            {
                 if ((_CurrentType.Count==0) || (_CurrentType.Peek()==GeometryType.GeometryCollection))
                 {
                     _Writer.WriteStartObject();
                     _Writer.WritePropertyName("type");
                     _Writer.WriteValue(type.ToString("G"));
-                    if (type==GeometryType.GeometryCollection)
-                        _Writer.WritePropertyName("geometries");
-                    else
+                    if (type!=GeometryType.GeometryCollection)
+                    {
+                        _WriteBox();
                         _Writer.WritePropertyName("coordinates");
+                    } else
+                        _Writer.WritePropertyName("geometries");
                 }
 
                 _CurrentType.Push(type);
@@ -116,6 +172,11 @@ namespace GeoSik.Ogc.SimpleFeature
                     _Writer.WriteEndObject();
             }
 
+            public void Populate()
+            {
+                _Tap.Populate(this);
+            }
+
             protected override void DoSetCoordinateSystem(ICoordinateSystem system)
             {
                 // Do nothing (for now): crs is WGS84 by default.
@@ -142,6 +203,24 @@ namespace GeoSik.Ogc.SimpleFeature
                 _Writer.WriteEndArray();
             }
 
+            private void _WriteBox()
+            {
+                var geometry = _Tap as ISimpleGeometry;
+                if (geometry!=null)
+                {
+                    try
+                    {
+                        var envelope = geometry.Envelope();
+                        var sink = new JsonEnvelopeSink(_Writer);
+                        envelope.Populate(sink);
+                    } catch
+                    {
+                        // Empty
+                    }
+                }
+            }
+
+            private IGeometryTap _Tap;
             private JsonWriter _Writer;
             private Stack<GeometryType> _CurrentType=new Stack<GeometryType>();
         }
@@ -229,8 +308,8 @@ namespace GeoSik.Ogc.SimpleFeature
                 return;
             }
 
-            var sink=new JsonSink(writer);
-            ((IGeometryTap)value).Populate(sink);
+            var sink=new JsonSink(writer, value as IGeometryTap);
+            sink.Populate();
         }
 
         /// <summary>Creates a <see cref="IGeometryBuilder" /> that will be used during the GeoJSON deserialization.</summary>
