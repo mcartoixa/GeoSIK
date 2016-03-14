@@ -15,6 +15,8 @@
 
 
 
+COLOR 07
+
 :: Reset ERRORLEVEL
 VERIFY OTHER 2>nul
 SETLOCAL ENABLEEXTENSIONS ENABLEDELAYEDEXPANSION
@@ -33,7 +35,7 @@ GOTO ARGS
 :: Builds the project
 :: -------------------------------------------------------------------
 :BUILD
-.nuget\NuGet.exe install ".nuget\packages.config" -o packages -source "https://nuget.org/api/v2/" -source "http://nuget.hq.isogeo.fr/nuget/" -source "%LocalAppData%\NuGet\Cache"
+.nuget\NuGet.exe install ".nuget\packages.config" -o packages -source "https://api.nuget.org/v3/index.json" -source "http://CHANTIERS.hq.isogeo.fr/nuget/nuget/" -source "http://NUGET.hq.isogeo.fr/nuget/" -source "%LocalAppData%\NuGet\Cache"
 msbuild.exe %PROJECT% /nologo /t:%TARGET% /m:%NUMBER_OF_PROCESSORS% /p:GenerateDocumentation="%GENERATE_DOCUMENTATION%" /fl /flp:logfile=build.log;verbosity=%VERBOSITY%;encoding=UTF-8 /nr:False
 
 IF ERRORLEVEL 1 (
@@ -80,7 +82,7 @@ GOTO BUILD
 
 :SetMSBuildToolsPathHelper
 SET MSBuildToolsPath=
-FOR /F "tokens=1,2*" %%i in ('REG QUERY HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSBuild\ToolsVersions\4.0 /V MSBuildToolsPath') DO (
+FOR /F "tokens=1,2*" %%i in ('REG QUERY HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSBuild\ToolsVersions\14.0 /V MSBuildToolsPath') DO (
     IF "%%i"=="MSBuildToolsPath" (
         SET "MSBuildToolsPath=%%k"
     )
