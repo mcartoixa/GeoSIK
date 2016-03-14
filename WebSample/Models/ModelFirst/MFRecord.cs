@@ -19,14 +19,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.Data.Objects.DataClasses;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Xml;
 using System.Xml.Serialization;
 using GeoSik.Ogc.WebCatalog.Csw.V202;
