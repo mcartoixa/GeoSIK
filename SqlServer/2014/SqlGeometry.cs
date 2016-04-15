@@ -19,18 +19,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.Diagnostics;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 using SqlTypes=Microsoft.SqlServer.Types;
-using Microsoft.Practices.ServiceLocation;
 
 namespace GeoSik.SqlServer
 {
@@ -103,6 +97,13 @@ namespace GeoSik.SqlServer
         public ISimpleGeometry Centroid()
         {
             return new SqlGeometry(_Geometry.STCentroid(), CoordinateSystem);
+        }
+
+        /// <summary>Returns the convex hull for the current geometry.</summary>
+        /// <returns>The convex hull for the current geometry.</returns>
+        public ISimpleGeometry ConvexHull()
+        {
+            return new SqlGeometry(_Geometry.STConvexHull(), CoordinateSystem);
         }
 
         /// <summary>Returns the shortest distance between any 2 points in the 2 geometries.</summary>

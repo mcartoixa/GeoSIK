@@ -18,14 +18,8 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using Microsoft.Practices.ServiceLocation;
 using Newtonsoft.Json;
+using SqlTypes = Microsoft.SqlServer.Types;
 
 namespace GeoSik.SqlServer
 {
@@ -45,6 +39,22 @@ namespace GeoSik.SqlServer
     public class SqlGeographyJsonConverter:
         Ogc.SimpleFeature.GeometryJsonConverter
     {
+
+        /// <summary>Writes the GeoJSON representation of the object.</summary>
+        /// <param name="writer">The <see cref="JsonWriter" /> to write to.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="serializer">The calling serializer.</param>
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            var g = value as SqlGeography;
+            if ((g!=null) && ((SqlTypes.SqlGeography)g).InstanceOf("FULLGLOBE"))
+            {
+                // ?
+                writer.WriteNull();
+                return;
+            } else
+                base.WriteJson(writer, value, serializer);
+        }
 
         /// <summary>Creates the <see cref="IGeometryBuilder" /> that will be used to deserialize the
         /// JSON input into a <see cref="SqlGeography" /> instance.</summary>

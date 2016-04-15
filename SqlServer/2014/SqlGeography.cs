@@ -19,19 +19,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.Diagnostics;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
-using SqlTypes=Microsoft.SqlServer.Types;
-using Microsoft.Practices.ServiceLocation;
 using Newtonsoft.Json;
+using SqlTypes = Microsoft.SqlServer.Types;
 
 namespace GeoSik.SqlServer
 {
@@ -108,6 +102,13 @@ namespace GeoSik.SqlServer
             // We would do this if we dealt with geometries anyway. Not sure it makes much sense, though...
 
             return ToGeography(SqlGeometry.ToGeometry(this).Centroid());
+        }
+
+        /// <summary>Returns the convex hull for the current geometry.</summary>
+        /// <returns>The convex hull for the current geometry.</returns>
+        public ISimpleGeometry ConvexHull()
+        {
+            return new SqlGeography(_Geography.STConvexHull(), CoordinateSystem);
         }
 
         /// <summary>Returns the shortest distance between any 2 points in the 2 geometries.</summary>
