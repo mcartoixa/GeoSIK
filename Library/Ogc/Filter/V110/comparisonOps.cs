@@ -45,25 +45,36 @@ namespace GeoSik.Ogc.Filter.V110
 
             protected override Expression CreateStandardExpression(IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)
             {
-                if (subType==typeof(string))
+                var exp1 = subexpr.ElementAt(0);
+                var exp2 = subexpr.ElementAt(1);
+                if (subType!=typeof(string))
+                {
+                    if (exp1.Type!=exp2.Type)
+                    {
+                        if (exp1.NodeType!=System.Linq.Expressions.ExpressionType.Constant)
+                            exp1=Expression.Convert(exp1, exp2.Type);
+                        else if (exp2.NodeType!=System.Linq.Expressions.ExpressionType.Constant)
+                            exp2=Expression.Convert(exp2, exp1.Type);
+                    }
+
+                    return Expression.MakeBinary(
+                        FilterElement.OperatorExpressionType,
+                        exp1,
+                        exp2,
+                        true,
+                        null
+                    );
+                } else
                     // string comparisons require Compare
                     return Expression.MakeBinary(
                         FilterElement.OperatorExpressionType,
                         Expression.Call(
                             typeof(string).GetMethod("Compare", new Type[] { typeof(string), typeof(string), typeof(StringComparison) }),
-                            subexpr.ElementAt<Expression>(0),
-                            subexpr.ElementAt<Expression>(1),
+                            exp1,
+                            exp2,
                             Expression.Constant(FilterElement.matchCase ? StringComparison.CurrentCulture : StringComparison.CurrentCultureIgnoreCase)
                         ),
                         Expression.Constant(0, typeof(int))
-                    );
-                else
-                    return Expression.MakeBinary(
-                        FilterElement.OperatorExpressionType,
-                        subexpr.ElementAt<Expression>(0),
-                        subexpr.ElementAt<Expression>(1),
-                        true,
-                        null
                     );
             }
 
