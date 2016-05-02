@@ -46,25 +46,36 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
 
             protected override Expression CreateStandardExpression(IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)
             {
-                if (subType==typeof(string))
+                if (subType!=typeof(string))
+                {
+                    var exp1 = subexpr.ElementAt(0);
+                    var exp2 = subexpr.ElementAt(2);
+                    if (exp1.Type!=exp2.Type)
+                    {
+                        if (exp2.NodeType==ExpressionType.Constant)
+                            exp2=Expression.Convert(exp2, exp1.Type);
+                        else if (exp1.NodeType==ExpressionType.Constant)
+                            exp1=Expression.Convert(exp1, exp2.Type);
+                    }
+
+                    return Expression.MakeBinary(
+                        Node.Op,
+                        exp1,
+                        exp2,
+                        true,
+                        null
+                    );
+                } else
                     // string comparisons require Compare
                     return Expression.MakeBinary(
                         Node.Op,
                         Expression.Call(
                             typeof(string).GetMethod("Compare", new Type[] { typeof(string), typeof(string), typeof(StringComparison) }),
-                            subexpr.ElementAt<Expression>(0),
-                            subexpr.ElementAt<Expression>(1),
+                            subexpr.ElementAt(0),
+                            subexpr.ElementAt(1),
                             Expression.Constant(StringComparison.CurrentCulture)
                         ),
                         Expression.Constant(0, typeof(int))
-                    );
-                else
-                    return Expression.MakeBinary(
-                        Node.Op,
-                        subexpr.ElementAt<Expression>(0),
-                        subexpr.ElementAt<Expression>(1),
-                        true,
-                        null
                     );
             }
 

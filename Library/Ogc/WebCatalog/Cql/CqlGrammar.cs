@@ -18,14 +18,8 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Xml;
-using System.Xml.XPath;
 using Irony.Ast;
 using Irony.Parsing;
 using Irony.Interpreter.Ast;

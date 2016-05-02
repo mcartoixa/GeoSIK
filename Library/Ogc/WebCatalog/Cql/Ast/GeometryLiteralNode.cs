@@ -18,16 +18,8 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
 using Irony.Ast;
-using Irony.Interpreter;
-using Irony.Interpreter.Ast;
 using Irony.Parsing;
-using Microsoft.Practices.ServiceLocation;
 
 namespace GeoSik.Ogc.WebCatalog.Cql.Ast
 {
