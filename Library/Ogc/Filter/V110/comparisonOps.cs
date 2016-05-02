@@ -25,10 +25,6 @@ using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
-using System.Xml;
-using Xml.Schema.Linq;
-using LinqExpressionType=System.Linq.Expressions.ExpressionType;
 
 namespace GeoSik.Ogc.Filter.V110
 {
@@ -65,7 +61,9 @@ namespace GeoSik.Ogc.Filter.V110
                     return Expression.MakeBinary(
                         FilterElement.OperatorExpressionType,
                         subexpr.ElementAt<Expression>(0),
-                        subexpr.ElementAt<Expression>(1)
+                        subexpr.ElementAt<Expression>(1),
+                        true,
+                        null
                     );
             }
 

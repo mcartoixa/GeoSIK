@@ -20,15 +20,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
-using Irony.Interpreter;
 using Irony.Interpreter.Ast;
-using Irony.Parsing;
 
 namespace GeoSik.Ogc.WebCatalog.Cql.Ast
 {
@@ -66,7 +62,9 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
                     return Expression.MakeBinary(
                         Node.Op,
                         subexpr.ElementAt<Expression>(0),
-                        subexpr.ElementAt<Expression>(1)
+                        subexpr.ElementAt<Expression>(1),
+                        true,
+                        null
                     );
             }
 
