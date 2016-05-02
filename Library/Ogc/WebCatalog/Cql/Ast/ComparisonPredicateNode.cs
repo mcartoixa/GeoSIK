@@ -46,10 +46,10 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
 
             protected override Expression CreateStandardExpression(IEnumerable<Expression> subexpr, ExpressionBuilderParameters parameters, Type subType)
             {
+                var exp1 = subexpr.ElementAt(0);
+                var exp2 = subexpr.ElementAt(1);
                 if (subType!=typeof(string))
                 {
-                    var exp1 = subexpr.ElementAt(0);
-                    var exp2 = subexpr.ElementAt(2);
                     if (exp1.Type!=exp2.Type)
                     {
                         if (exp2.NodeType==ExpressionType.Constant)
@@ -71,8 +71,8 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
                         Node.Op,
                         Expression.Call(
                             typeof(string).GetMethod("Compare", new Type[] { typeof(string), typeof(string), typeof(StringComparison) }),
-                            subexpr.ElementAt(0),
-                            subexpr.ElementAt(1),
+                            exp1,
+                            exp2,
                             Expression.Constant(StringComparison.CurrentCulture)
                         ),
                         Expression.Constant(0, typeof(int))
