@@ -52,10 +52,10 @@ namespace GeoSik.Ogc.WebCatalog.Cql.Ast
                 {
                     if (exp1.Type!=exp2.Type)
                     {
-                        if (exp2.NodeType==ExpressionType.Constant)
-                            exp2=Expression.Convert(exp2, exp1.Type);
-                        else if (exp1.NodeType==ExpressionType.Constant)
+                        if (exp1.NodeType!=ExpressionType.Constant)
                             exp1=Expression.Convert(exp1, exp2.Type);
+                        else if (exp2.NodeType!=ExpressionType.Constant)
+                            exp2=Expression.Convert(exp2, exp1.Type);
                     }
 
                     return Expression.MakeBinary(
