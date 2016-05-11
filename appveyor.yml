@@ -6,6 +6,8 @@ services:
 install:
   - cmd: mkdir tmp
   - cmd: cd tmp
+  - ps: Start-FileDownload 'https://github.com/loresoft/msbuildtasks/releases/download/v1.4.0.69/MSBuild.Community.Tasks.v1.4.0.69.msi'
+  - cmd: msiexec.exe /qn /norestart /i MSBuild.Community.Tasks.v1.4.0.69.msi ALLUSERS=1 /l*v "install-msbuildtasks.log"
   - ps: Start-FileDownload 'https://github.com/downloads/sawilde/partcover.net4/PartCover.Setup-v4.0.20908.msi'
   - cmd: msiexec.exe /qn /norestart /i PartCover.Setup-v4.0.20908.msi ALLUSERS=1 /l*v "install-partcover.log"
   - cmd: cd ..
