@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/fpurmd7uhom6endc/branch/master?svg=true)](https://ci.appveyor.com/project/mcartoixa/geosik/branch/master)
+
 PREREQUISITES
 -------------
 

@@ -1,0 +1,21 @@
+version: 1.1.1.{build}
+
+os: Windows Server 2012
+services:
+  - mssql2014
+install:
+  - cmd: mkdir tmp
+  - cmd: cd tmp
+  - ps: Start-FileDownload 'https://github.com/downloads/sawilde/partcover.net4/PartCover.Setup-v4.0.20908.msi'
+  - cmd: msiexec.exe /qn /norestart /i PartCover.Setup-v4.0.20908.msi ALLUSERS=1 /l*v "install-partcover.log"
+  - cmd: cd ..
+
+build:
+  project: GeoSik.proj
+  parallel: true
+  verbosity: detailed
+platform: Any CPU
+configuration: Release
+before_build:
+  - cmd: SET CCNetLabel=%APPVEYOR_BUILD_VERSION%
+  - cmd: .\.nuget\NuGet.exe install .\.nuget\packages.config -o packages
