@@ -15,7 +15,7 @@ install:
 build:
   project: GeoSik.proj
   parallel: true
-  verbosity: detailed
+  verbosity: normal
 platform: Any CPU
 configuration: Release
 before_build:
