@@ -171,7 +171,7 @@
   <ItemGroup>
     <Content Include="Icons\GeoSik.png">
       <ImageId>GeoSik</ImageId>
-      <AlternateText>Geo Sik</AlternateText>
+      <AlternateText>GeoSik</AlternateText>
     </Content>
   </ItemGroup>
   <!-- Import the SHFB build targets -->

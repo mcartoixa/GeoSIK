@@ -18,16 +18,15 @@ build:
   parallel: true
   verbosity: minimal
 build_script:
-  - cmd: msbuild.exe GeoSik.proj /nologo /t:UpdateVersion;Release /p:GenerateDocumentation="False" /m /l:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /v:m /fl /flp:logfile=tmp\build.log;verbosity=diagnostic;encoding=UTF-8 /nr:False
+  - cmd: msbuild.exe GeoSik.proj /nologo /t:UpdateVersion;Release /p:GenerateDocumentation="True" /m /l:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /v:m /fl /flp:logfile=tmp\build.log;verbosity=diagnostic;encoding=UTF-8 /nr:False
 platform: Any CPU
 configuration: Release
 before_build:
+  - cmd: IF "%APPVEYOR_REPO_TAG%"=="true" SET BuildType=Release
   - cmd: SET CCNetLabel=%APPVEYOR_BUILD_VERSION%
   - cmd: .\.nuget\NuGet.exe install .\.nuget\packages.config -o packages
-after_build:
-  - cmd: CD tmp\out\bin
-  - cmd: 7z a GeoSik-%APPVEYOR_BUILD_VERSION%.zip .\GeoSik_AnyCPU_Release_%APPVEYOR_BUILD_VERSION%\* -r -mx9
-  - cmd: CD ..\..\..
+  - cmd: .\.nuget\NuGet.exe install .\doc\packages.config -o packages
+  - cmd: FOR /F %i IN ('DIR .\packages\EWSoftware.SHFB.* /AD /B') DO SET SHFBROOT=%i
 
 test_script:
   - ps: (Resolve-Path tmp\*.xunit-results.xml) | ForEach-Object { (New-Object Net.WebClient).UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", $_) }
@@ -38,14 +37,14 @@ artifacts:
   - path: tmp\out\bin\*.zip
 
 deploy:
-#  - provider: NuGet
-#    server: http://CHANTIERS.hq.isogeo.fr:1080/nuget/
-#    api_key:
-#      secure: dhIRC1uq0713VuNuLt7qUw==
-#    artifact: /.*\.nupkg/
-#    skip_symbols: true
-#    on:
-#      branch: master
+  - provider: NuGet
+    server: https://www.myget.org/F/isogeo/api/v2/package
+    api_key:
+      secure: Iu8h9DYVcJWywLWAQowayV8lQzzU31p9SPyrTY7ItGxbciykN9Wy2AxuU3FE0RXT
+    artifact: /.*\.nupkg/
+    skip_symbols: true
+    on:
+      branch: master
   - provider: NuGet
     api_key:
       secure: 6qsDT4uV1HnaEVNi4hV2R9qG12o3ZVXgoZjGgxDvImFhm6d11CUTqoSXxfZ/3uAN
