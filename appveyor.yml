@@ -1,24 +1,65 @@
 version: 1.1.1.{build}
 
 os: Windows Server 2012
-services:
-  - mssql2014
 install:
-  - cmd: mkdir tmp
-  - cmd: cd tmp
+  - cmd: MKDIR tmp
+  - cmd: CD tmp
   - ps: Start-FileDownload 'https://github.com/loresoft/msbuildtasks/releases/download/v1.4.0.69/MSBuild.Community.Tasks.v1.4.0.69.msi'
   - cmd: msiexec.exe /qn /norestart /i MSBuild.Community.Tasks.v1.4.0.69.msi ALLUSERS=1 /l*v "install-msbuildtasks.log"
   - ps: Start-FileDownload 'https://github.com/downloads/sawilde/partcover.net4/PartCover.Setup-v4.0.20908.msi'
-  - cmd: msiexec.exe /qn /norestart /i PartCover.Setup-v4.0.20908.msi /l*v "install-partcover.log"
-  - cmd: type install-partcover.log
-  - cmd: cd ..
+  - cmd: msiexec.exe /qn /norestart /i PartCover.Setup-v4.0.20908.msi ALLUSERS=1 /l*v "install-partcover.log"
+  - cmd: CD ..
+  - cmd: FOR /F "tokens=1,2*" %%i in ('REG QUERY HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSBuild\ToolsVersions\14.0 /V MSBuildToolsPath') DO IF "%%i"=="MSBuildToolsPath" SET "PATH=%%k;%PATH%"
+cache:
+  - packages -> **\packages.config
 
 build:
   project: GeoSik.proj
   parallel: true
   verbosity: minimal
+build_script:
+  - cmd: msbuild.exe GeoSik.proj /nologo /t:UpdateVersion;Release /p:GenerateDocumentation="False" /m /l:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /v:m /fl /flp:logfile=tmp\build.log;verbosity=diagnostic;encoding=UTF-8 /nr:False
 platform: Any CPU
 configuration: Release
 before_build:
   - cmd: SET CCNetLabel=%APPVEYOR_BUILD_VERSION%
   - cmd: .\.nuget\NuGet.exe install .\.nuget\packages.config -o packages
+after_build:
+  - cmd: CD tmp\out\bin
+  - cmd: 7z a GeoSik-%APPVEYOR_BUILD_VERSION%.zip .\GeoSik_AnyCPU_Release_%APPVEYOR_BUILD_VERSION%\* -r -mx9
+  - cmd: CD ..\..\..
+
+test_script:
+  - ps: (Resolve-Path tmp\*.xunit-results.xml) | ForEach-Object { (New-Object Net.WebClient).UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", $_) }
+
+artifacts:
+  - path: tmp\out\bin\*.nupkg
+    type: NuGet
+  - path: tmp\out\bin\*.zip
+
+deploy:
+#  - provider: NuGet
+#    server: http://CHANTIERS.hq.isogeo.fr:1080/nuget/
+#    api_key:
+#      secure: dhIRC1uq0713VuNuLt7qUw==
+#    artifact: /.*\.nupkg/
+#    skip_symbols: true
+#    on:
+#      branch: master
+  - provider: NuGet
+    api_key:
+      secure: 6qsDT4uV1HnaEVNi4hV2R9qG12o3ZVXgoZjGgxDvImFhm6d11CUTqoSXxfZ/3uAN
+    artifact: /.*\.nupkg/
+    skip_symbols: true
+    on:
+      branch: master
+      appveyor_repo_tag: true
+  - provider: GitHub
+    auth_token:
+      secure: Rlhui0x/FJviVHpu89ZGy0PnEuzqsrMpECDjoSGb2+OkKm0UixP+LtMIEDy4XX1K
+    description: ''
+    artifact: /.*/
+    draft: true
+    on:
+      branch: master
+      appveyor_repo_tag: true
