@@ -24,9 +24,9 @@ configuration: Release
 before_build:
   - cmd: IF "%APPVEYOR_REPO_TAG%"=="true" SET BuildType=Release
   - cmd: SET CCNetLabel=%APPVEYOR_BUILD_VERSION%
-  - cmd: .\.nuget\NuGet.exe install .\.nuget\packages.config -o packages
-  - cmd: .\.nuget\NuGet.exe install .\doc\packages.config -o packages
-  - cmd: FOR /F %i IN ('DIR .\packages\EWSoftware.SHFB.* /AD /B') DO SET SHFBROOT=%i
+  - cmd: .\.nuget\NuGet.exe install .\.nuget\packages.config -o packages -configfile .\.nuget\NuGet.config
+  - cmd: .\.nuget\NuGet.exe install .\doc\packages.config -o packages -configfile .\.nuget\NuGet.config
+  - cmd: FOR /F %%i IN ('DIR .\packages\EWSoftware.SHFB.* /AD /B') DO SET SHFBROOT=%%i
 
 test_script:
   - ps: (Resolve-Path tmp\*.xunit-results.xml) | ForEach-Object { (New-Object Net.WebClient).UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", $_) }
