@@ -262,13 +262,13 @@ namespace GeoSik.Ogc.SimpleFeature
 
             builder.SetCoordinateSystem(CommonServiceLocator.GetCoordinateSystemProvider().Wgs84);
             if (reader.TokenType!=JsonToken.StartObject)
-                throw new JsonReaderException(SR.InvalidGeoJsonLineInfoException);
+                _ThrowGeoJsonException(reader, JsonToken.StartObject);
 
             if (!reader.Read() || (reader.TokenType!=JsonToken.PropertyName) || (reader.Value.ToString()!="type"))
-                throw new JsonReaderException(SR.InvalidGeoJsonLineInfoException);
+                _ThrowGeoJsonException(reader, null);
 
             if (!reader.Read() || (reader.TokenType!=JsonToken.String))
-                throw new JsonReaderException(SR.InvalidGeoJsonLineInfoException);
+                _ThrowGeoJsonException(reader, JsonToken.String);
 
             GeometryType type=GeometryType.Point;
             try
@@ -276,27 +276,37 @@ namespace GeoSik.Ogc.SimpleFeature
                 type=(GeometryType)Enum.Parse(typeof(GeometryType), reader.Value.ToString(), false);
             } catch (Exception ex)
             {
-                throw new JsonReaderException(SR.InvalidGeoJsonLineInfoException, ex);
+                throw new JsonReaderException(SR.InvalidGeoJsonException, ex);
             }
 
             if (!reader.Read() || (reader.TokenType!=JsonToken.PropertyName))
-                throw new JsonReaderException(SR.InvalidGeoJsonLineInfoException);
+                _ThrowGeoJsonException(reader, JsonToken.PropertyName);
+            if (reader.Value.ToString()=="bbox")
+            {
+                if (!reader.Read() || reader.TokenType!=JsonToken.StartArray)
+                    _ThrowGeoJsonException(reader, JsonToken.StartArray);
+                do
+                {
+                    if (!reader.Read())
+                        _ThrowGeoJsonException(reader, null);
+                } while (reader.TokenType!=JsonToken.PropertyName);
+            }
             if (type==GeometryType.GeometryCollection)
             {
                 if (reader.Value.ToString()!="geometries")
-                    throw new JsonReaderException(SR.InvalidGeoJsonLineInfoException);
+                    _ThrowGeoJsonException(reader, null);
             } else
             {
                 if (reader.Value.ToString()!="coordinates")
-                    throw new JsonReaderException(SR.InvalidGeoJsonLineInfoException);
+                    _ThrowGeoJsonException(reader, null);
             }
 
             if (!reader.Read())
-                throw new JsonReaderException(SR.InvalidGeoJsonLineInfoException);
+                _ThrowGeoJsonException(reader, null);
             _ReadGeometry(reader, builder, type);
 
             if (reader.TokenType!=JsonToken.EndObject)
-                throw new JsonReaderException(SR.InvalidGeoJsonLineInfoException);
+                _ThrowGeoJsonException(reader, JsonToken.EndObject);
 
             return builder.ConstructedGeometry;
         }

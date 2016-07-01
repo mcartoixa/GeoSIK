@@ -136,7 +136,7 @@
     <value>The specified JSON value was not recognized as valid GeoJSON</value>
   </data>
   <data name="InvalidGeoJsonExpectingException" xml:space="preserve">
-    <value>The specified JSON value was not recognized as valid GeoJSON: expecting {2} but found {3}</value>
+    <value>The specified JSON value was not recognized as valid GeoJSON: expecting {0} but found {1}</value>
   </data>
   <data name="InvalidGeoJsonLineInfoException" xml:space="preserve">
     <value>The specified JSON value was not recognized as valid GeoJSON ({0},{1})</value>
