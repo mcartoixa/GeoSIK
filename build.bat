@@ -35,7 +35,9 @@ GOTO ARGS
 :: Builds the project
 :: -------------------------------------------------------------------
 :BUILD
-.nuget\NuGet.exe install ".nuget\packages.config" -o packages -configfile ".nuget\NuGet.config"
+PUSHD .nuget
+NuGet.exe restore "packages.config" -PackagesDirectory ..\packages
+POPD
 msbuild.exe %PROJECT% /nologo /t:%TARGET% /m:%NUMBER_OF_PROCESSORS% /p:GenerateDocumentation="%GENERATE_DOCUMENTATION%" /fl /flp:logfile=build.log;verbosity=%VERBOSITY%;encoding=UTF-8 /nr:False
 
 IF ERRORLEVEL 1 (

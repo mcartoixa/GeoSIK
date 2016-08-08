@@ -57,9 +57,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\CommonServiceLocator.1.2\lib\portable-windows8+net40+sl5+windowsphone8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SqlServer.Types, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.SqlServer.Types, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\lib\SqlServer\2014\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
@@ -118,11 +119,15 @@
       <Name>Library</Name>
     </ProjectReference>
     <ProjectReference Include="..\SqlServer.2014.csproj">
-      <Project>{F78E269D-382D-448D-A847-C083119EF2C5}</Project>
-      <Name>SqlServer.2012</Name>
+      <Project>{F9B48FE5-8B23-40E3-A132-BC6656967EFB}</Project>
+      <Name>SqlServer.2014</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\lib\SqlServer\2014\msvcr100.dll">
+      <Link>msvcr100.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="..\..\..\lib\SqlServer\2014\SqlServerSpatial120.dll">
       <Link>SqlServerSpatial120.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
