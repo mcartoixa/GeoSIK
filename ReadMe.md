@@ -6,8 +6,8 @@ PREREQUISITES
 - Build:
 	* Microsoft .NET Framework 4.0
 	* [ASP.NET MVC 3](http://www.asp.net/mvc/mvc3)
-	* [MSBuild.Community.Tasks 1.3](http://msbuildtasks.tigris.org/)
-	* [PartCover.NET 4.0.20908](http://github.com/sawilde/partcover.net4)
+	* [MSBuild.Community.Tasks 1.5.0](https://github.com/loresoft/msbuildtasks)
+	* [OpenCover 4.6](https://github.com/OpenCover/opencover)
 
 - Development:
 	* Microsoft Visual Studio 2015

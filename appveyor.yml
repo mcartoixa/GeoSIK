@@ -4,10 +4,10 @@ os: Windows Server 2012
 install:
   - cmd: MKDIR tmp
   - cmd: CD tmp
-  - ps: Start-FileDownload 'https://github.com/loresoft/msbuildtasks/releases/download/v1.4.0.69/MSBuild.Community.Tasks.v1.4.0.69.msi'
-  - cmd: msiexec.exe /qn /norestart /i MSBuild.Community.Tasks.v1.4.0.69.msi ALLUSERS=1 /l*v "install-msbuildtasks.log"
-  - ps: Start-FileDownload 'https://github.com/downloads/sawilde/partcover.net4/PartCover.Setup-v4.0.20908.msi'
-  - cmd: msiexec.exe /qn /norestart /i PartCover.Setup-v4.0.20908.msi ALLUSERS=1 /l*v "install-partcover.log"
+  - ps: Start-FileDownload 'https://github.com/loresoft/msbuildtasks/releases/download/1.5.0.196/MSBuild.Community.Tasks.v1.5.0.196.msi'
+  - cmd: msiexec.exe /qn /norestart /i MSBuild.Community.Tasks.v1.5.0.196.msi ALLUSERS=1 /l*v "install-msbuildtasks.log"
+  - ps: Start-FileDownload 'https://github.com/OpenCover/opencover/releases/download/4.6.519/opencover.4.6.519.msi'
+  - cmd: msiexec.exe /qn /norestart /i opencover.4.6.519.msi ALLUSERS=1 /l*v "install-opencover.log"
   - cmd: CD ..
   - cmd: FOR /F "tokens=1,2*" %%i in ('REG QUERY HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSBuild\ToolsVersions\14.0 /V MSBuildToolsPath') DO IF "%%i"=="MSBuildToolsPath" SET "PATH=%%k;%PATH%"
 cache:
@@ -22,10 +22,11 @@ build_script:
 platform: Any CPU
 configuration: Release
 before_build:
-  - cmd: IF "%APPVEYOR_REPO_TAG%"=="true" SET BuildType=Release
   - cmd: SET CCNetLabel=%APPVEYOR_BUILD_VERSION%
-  - cmd: .\.nuget\NuGet.exe install .\.nuget\packages.config -o packages -configfile .\.nuget\NuGet.config
-  - cmd: .\.nuget\NuGet.exe install .\doc\packages.config -o packages -configfile .\.nuget\NuGet.config
+  - cmd: CD .nuget
+  - cmd: NuGet.exe restore "packages.config" -PackagesDirectory ..\packages
+  - cmd: NuGet.exe restore "..\doc\packages.config" -PackagesDirectory ..\packages
+  - cmd: CD ..
   - cmd: FOR /F %%i IN ('DIR .\packages\EWSoftware.SHFB.* /AD /B') DO SET SHFBROOT=%APPVEYOR_BUILD_FOLDER%\packages\%%i\Tools\
 
 test_script:
