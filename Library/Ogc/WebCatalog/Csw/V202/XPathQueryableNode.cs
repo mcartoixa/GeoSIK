@@ -58,7 +58,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                     xpqn._InitQueryables(navigator, queryables, visited);
             }
 
-            foreach (Queryable cq in AssociatedQueryables)
+            foreach (CswQueryable cq in AssociatedQueryables)
             {
                 if (!queryables.ContainsKey(cq.Name))
                     queryables.Add(cq.Name, new List<XPathNavigator>());
@@ -69,7 +69,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
             }
         }
 
-        internal Queryable[] AssociatedQueryables
+        internal CswQueryable[] AssociatedQueryables
         {
             get
             {
@@ -82,7 +82,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                             .Select(a => a.Queryable)
                             .ToArray();
                     } else
-                        _AssociatedQueryables=new Queryable[0];
+                        _AssociatedQueryables=new CswQueryable[0];
 
                 }
 
@@ -90,6 +90,6 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
             }
         }
 
-        private Queryable[] _AssociatedQueryables;
+        private CswQueryable[] _AssociatedQueryables;
     }
 }

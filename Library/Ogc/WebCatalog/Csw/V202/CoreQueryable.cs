@@ -25,7 +25,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
 {
 
     public sealed class CoreQueryable:
-        Queryable
+        CswQueryable
     {
 
         [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]

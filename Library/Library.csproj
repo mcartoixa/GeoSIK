@@ -104,7 +104,7 @@
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="GeometryTransformerSink.cs" />
     <Compile Include="GeometryType.cs" />
-    <Compile Include="Ogc\WebCatalog\Csw\V202\Queryable.cs" />
+    <Compile Include="Ogc\WebCatalog\Csw\V202\CswQueryable.cs" />
     <Compile Include="QueryableExtensions.cs" />
     <Compile Include="ReversedGeometrySink.cs" />
     <Compile Include="ICoordinatesTransformer.cs" />

@@ -35,10 +35,10 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
 
         public QueryableAttribute(string queryableName)
         {
-            Queryable=Queryable.GetFromName(queryableName);
+            Queryable=CswQueryable.GetFromName(queryableName);
         }
 
-        public Queryable Queryable
+        public CswQueryable Queryable
         {
             get;
             private set;
