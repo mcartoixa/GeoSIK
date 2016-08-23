@@ -1,6 +1,15 @@
 version: 1.1.1.{build}
-
 os: Windows Server 2012
+
+
+
+init:
+  - ps: iex ((New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+on_finish:
+  - ps: $blockRdp = $true; iex ((New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
+
+  
 install:
   - cmd: MKDIR tmp
   - cmd: CD tmp
@@ -12,6 +21,8 @@ install:
   - cmd: FOR /F "tokens=1,2*" %%i in ('REG QUERY HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSBuild\ToolsVersions\14.0 /V MSBuildToolsPath') DO IF "%%i"=="MSBuildToolsPath" SET "PATH=%%k;%PATH%"
 cache:
   - packages -> **\packages.config
+
+
 
 build:
   project: GeoSik.proj
@@ -29,13 +40,19 @@ before_build:
   - cmd: CD ..
   - cmd: FOR /F %%i IN ('DIR .\packages\EWSoftware.SHFB.* /AD /B') DO SET SHFBROOT=%APPVEYOR_BUILD_FOLDER%\packages\%%i\Tools\
 
+
+
 test_script:
   - ps: (Resolve-Path tmp\*.xunit-results.xml) | ForEach-Object { (New-Object Net.WebClient).UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", $_) }
+
+
 
 artifacts:
   - path: tmp\out\bin\*.nupkg
     type: NuGet
   - path: tmp\out\bin\*.zip
+
+
 
 deploy:
   - provider: NuGet
