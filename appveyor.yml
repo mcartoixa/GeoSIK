@@ -3,10 +3,10 @@ os: Windows Server 2012
 
 
 
-init:
-  - ps: iex ((New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
-on_finish:
-  - ps: $blockRdp = $true; iex ((New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+#init:
+#  - ps: iex ((New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+#on_finish:
+#  - ps: $blockRdp = $true; iex ((New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 
   
@@ -14,7 +14,7 @@ install:
   - cmd: MKDIR tmp
   - cmd: CD tmp
   - ps: Start-FileDownload 'https://github.com/loresoft/msbuildtasks/releases/download/1.5.0.196/MSBuild.Community.Tasks.v1.5.0.196.msi'
-  - cmd: msiexec.exe /qn /norestart /i MSBuild.Community.Tasks.v1.5.0.196.msi ALLUSERS=1 /l*v "install-msbuildtasks.log"
+  - cmd: msiexec.exe /qn /norestart /i MSBuild.Community.Tasks.v1.5.0.196.msi ALLUSERS=1 ADDLOCAL=MSBuildTasksFeature /l*v "install-msbuildtasks.log"
   - ps: Start-FileDownload 'https://github.com/OpenCover/opencover/releases/download/4.6.519/opencover.4.6.519.msi'
   - cmd: msiexec.exe /qn /norestart /i opencover.4.6.519.msi ALLUSERS=1 /l*v "install-opencover.log"
   - cmd: CD ..
