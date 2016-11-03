@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "misc", "misc", "{02879CE5-7
 		misc\GeoSik.SharpMap.nuspec = misc\GeoSik.SharpMap.nuspec
 		misc\GeoSik.SqlServer.2008R2.nuspec = misc\GeoSik.SqlServer.2008R2.nuspec
 		misc\GeoSik.SqlServer.2012.nuspec = misc\GeoSik.SqlServer.2012.nuspec
+		misc\GeoSik.SqlServer.2014.nuspec = misc\GeoSik.SqlServer.2014.nuspec
+		misc\GeoSik.SqlServer.2016.nuspec = misc\GeoSik.SqlServer.2016.nuspec
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library", "Library\Library.csproj", "{3915ADD6-5F33-4452-89EA-8906518E2128}"
@@ -54,6 +56,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.2014", "SqlServer\2014\SqlServer.2014.csproj", "{F9B48FE5-8B23-40E3-A132-BC6656967EFB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.2014.Tests", "SqlServer\2014\SqlServer.Tests\SqlServer.2014.Tests.csproj", "{478622F3-3B40-4094-8A89-D074544D1082}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.2016", "SqlServer\2016\SqlServer.2016.csproj", "{9BE06672-CE5E-4728-BF83-6D2577E75091}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.2016.Tests", "SqlServer\2016\SqlServer.Tests\SqlServer.2016.Tests.csproj", "{41F99061-9C6A-4D88-9821-2A484DD0F3A1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjNet", "ProjNet\ProjNet.csproj", "{972DE56C-662A-4EC7-A363-0BEE2FC548F9}"
 EndProject
@@ -125,6 +131,14 @@ Global
 		{478622F3-3B40-4094-8A89-D074544D1082}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{478622F3-3B40-4094-8A89-D074544D1082}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{478622F3-3B40-4094-8A89-D074544D1082}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BE06672-CE5E-4728-BF83-6D2577E75091}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BE06672-CE5E-4728-BF83-6D2577E75091}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BE06672-CE5E-4728-BF83-6D2577E75091}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BE06672-CE5E-4728-BF83-6D2577E75091}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41F99061-9C6A-4D88-9821-2A484DD0F3A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41F99061-9C6A-4D88-9821-2A484DD0F3A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41F99061-9C6A-4D88-9821-2A484DD0F3A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41F99061-9C6A-4D88-9821-2A484DD0F3A1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{972DE56C-662A-4EC7-A363-0BEE2FC548F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{972DE56C-662A-4EC7-A363-0BEE2FC548F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{972DE56C-662A-4EC7-A363-0BEE2FC548F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
