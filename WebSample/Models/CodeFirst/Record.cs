@@ -22,14 +22,10 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
-using System.Data.SqlTypes;
 using System.IO;
-using System.Reflection;
-using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using GeoSik.Ogc.WebCatalog.Csw.V202;
-using Csw202=GeoSik.Ogc.WebCatalog.Csw.V202.Types;
 using SqlTypes=Microsoft.SqlServer.Types;
 
 namespace GeoSik.WebSample.Models.CodeFirst

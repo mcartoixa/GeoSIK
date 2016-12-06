@@ -24,7 +24,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
@@ -32,7 +31,6 @@ using System.Xml.XPath;
 using Common.Logging;
 using DC11=GeoSik.DublinCore.Elements.V11;
 using DCTerms=GeoSik.DublinCore.Terms;
-using Filter=GeoSik.Ogc.Filter;
 using Ows100=GeoSik.Ogc.Ows.V100.Types;
 
 namespace GeoSik.Ogc.WebCatalog.Csw.V202
@@ -362,7 +360,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
             get
             {
                 if (_Logger==null)
-                    _Logger=LogManager.GetCurrentClassLogger();
+                    _Logger=LogManager.GetLogger<RecordConverter>();
 
                 return _Logger;
             }

@@ -24,7 +24,6 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Xml;
 using Common.Logging;
 using Irony;
@@ -55,7 +54,7 @@ namespace GeoSik.Ogc.WebCatalog.Cql
 
             if (tree.ParserMessages.Count>0)
             {
-                var logger=LogManager.GetCurrentClassLogger();
+                var logger = LogManager.GetLogger(typeof(CqlQueryable));
                 var exl=new List<Exception>();
 
                 foreach (LogMessage lm in tree.ParserMessages)
@@ -118,7 +117,7 @@ namespace GeoSik.Ogc.WebCatalog.Cql
 
                     if (_LanguageData.Errors.Count>0)
                     {
-                        var logger=LogManager.GetCurrentClassLogger();
+                        var logger= LogManager.GetLogger(typeof(CqlQueryable));
                         foreach (GrammarError ge in _LanguageData.Errors)
                             switch (ge.Level)
                             {

@@ -19,16 +19,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Xml;
 using Common.Logging;
-using Xml.Schema.Linq;
 
 namespace GeoSik.Ogc.Filter.V110
 {
@@ -113,7 +109,7 @@ namespace GeoSik.Ogc.Filter.V110
             get
             {
                 if (_Logger==null)
-                    return _Logger=LogManager.GetCurrentClassLogger();
+                    return _Logger=LogManager.GetLogger<expression>();
 
                 return _Logger;
             }

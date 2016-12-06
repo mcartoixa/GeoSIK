@@ -19,13 +19,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
-using System.Linq;
-using System.ServiceModel.Web;
 using System.Text;
-using System.Threading;
 using System.Xml;
 using System.Xml.Serialization;
 using Common.Logging;
@@ -48,7 +44,7 @@ namespace GeoSik.Ogc
         protected OgcService()
         {
             RequestCulture=CultureInfo.CurrentCulture;
-            _Logger=LogManager.GetCurrentClassLogger();
+            _Logger=LogManager.GetLogger<OgcService>();
         }
 
         /// <summary>Basic checks for a standard request.</summary>

@@ -19,10 +19,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
 using Common.Logging;
 using Microsoft.Practices.ServiceLocation;
 
@@ -39,7 +35,7 @@ namespace GeoSik
                 return ServiceLocator.Current.GetInstance<ICoordinateSystemProvider>();
             } catch (Exception ex)
             {
-                LogManager.GetCurrentClassLogger().ErrorFormat("Error getting CoordinateSystemProvider instance", ex);
+                LogManager.GetLogger(typeof(CommonServiceLocator)).ErrorFormat("Error getting CoordinateSystemProvider instance", ex);
 
                 throw;
             }

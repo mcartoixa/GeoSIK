@@ -22,8 +22,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using Common.Logging;
 using Irony;
 using Irony.Ast;
@@ -182,7 +180,7 @@ namespace GeoSik.Ogc.SimpleFeature
 
             if (tree.ParserMessages.Count>0)
             {
-                var logger=LogManager.GetCurrentClassLogger();
+                var logger=LogManager.GetLogger<GeometryWktGrammar>();
                 var exl=new List<Exception>();
 
                 foreach (LogMessage lm in tree.ParserMessages)
@@ -244,7 +242,7 @@ namespace GeoSik.Ogc.SimpleFeature
 
                     if (_LanguageData.Errors.Count>0)
                     {
-                        var logger=LogManager.GetCurrentClassLogger();
+                        var logger= LogManager.GetLogger<GeometryWktGrammar>();
                         foreach (GrammarError ge in _LanguageData.Errors)
                             switch (ge.Level)
                             {
