@@ -19,26 +19,20 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Xml.XPath;
-using Common.Logging;
 using Xml.Schema.Linq;
 using GeoSik.Ogc.Ows;
-using CqlQueryable=GeoSik.Ogc.WebCatalog.Cql.CqlQueryable;
+using System.Threading;
 
 namespace GeoSik.Ogc.WebCatalog.Csw.V202
 {
@@ -157,8 +151,9 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
 
             /// <summary>Processes the specified request.</summary>
             /// <param name="request">The request to process.</param>
+            /// <param name="cancellationToken">The cancellation token.</param>
             /// <returns>The response to the specified request.</returns>
-            protected override async Task<Types.GetRecordByIdResponse> ProcessRequestAsync(Types.GetRecordById request)
+            protected override async Task<Types.GetRecordByIdResponse> ProcessRequestAsync(Types.GetRecordById request, CancellationToken cancellationToken)
             {
                 var ret=new Types.GetRecordByIdResponse();
 
@@ -185,8 +180,11 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 }
 
                 // Performs the query
-                var results=(await ((Discovery)Service).ConvertRecords((await records.ToListAsync()).Cast<IRecord>(), request.outputSchema, namespaceManager, request.ElementSetName.TypedValue))
-                    .ToArray();
+                var rlist = await records.ToListAsync(cancellationToken)
+                    .ConfigureAwait(false);
+                var rrecords = await ((Discovery)Service).ConvertRecordsAsync(rlist.Cast<IRecord>(), request.outputSchema, namespaceManager, request.ElementSetName.TypedValue, cancellationToken)
+                    .ConfigureAwait(false);
+                var results=rrecords.ToArray();
 
                 // Core Record types
                 var arl=results.OfType<Types.AbstractRecord>();

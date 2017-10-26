@@ -21,10 +21,9 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
@@ -165,8 +164,9 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
 
             /// <summary>Processes the specified request.</summary>
             /// <param name="request">The request to process.</param>
+            /// <param name="cancellationToken">The cancellation token.</param>
             /// <returns>The response to the specified request.</returns>
-            protected override Task<Types.DescribeRecordResponse> ProcessRequestAsync(Types.DescribeRecord request)
+            protected override Task<Types.DescribeRecordResponse> ProcessRequestAsync(Types.DescribeRecord request, CancellationToken cancellationToken)
             {
                 var ret=new Types.DescribeRecordResponse();
 

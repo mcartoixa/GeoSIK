@@ -25,19 +25,13 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
-using System.Xml.Schema;
 using System.Xml.Serialization;
 using Xml.Schema.Linq;
-using Gmd=GeoSik.Iso.Ts19139.Gmd;
-using Gml311=GeoSik.Ogc.Gml.V311;
-using Filter=GeoSik.Ogc.Filter.V110;
 
 namespace GeoSik.Ogc.WebCatalog.Csw.V202
 {
@@ -60,99 +54,83 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
 
         /// <summary>Processes the standard GetCapabilities operation for the current discovery service.</summary>
         /// <param name="parameters">The parameters for the operation in key/value format.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The <see cref="Types.Capabilities" /> for the current discovery service.</returns>
-        public async Task<Types.Capabilities> GetCapabilitiesAsync(NameValueCollection parameters)
+        public Task<Types.Capabilities> GetCapabilitiesAsync(NameValueCollection parameters, CancellationToken cancellationToken)
         {
-            return await CreateGetCapabilitiesProcessor().ProcessAsync(parameters).ConfigureAwait(false);
+            return CreateGetCapabilitiesProcessor().ProcessAsync(parameters, cancellationToken);
         }
 
         /// <summary>Processes the standard GetCapabilities operation for the current discovery service.</summary>
         /// <param name="request">The parameters for the operation.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The <see cref="Types.Capabilities" /> for the current discovery service.</returns>
-        public async Task<Types.Capabilities> GetCapabilitiesAsync(Types.GetCapabilities request)
+        public Task<Types.Capabilities> GetCapabilitiesAsync(Types.GetCapabilities request, CancellationToken cancellationToken)
         {
-            return await CreateGetCapabilitiesProcessor().ProcessAsync(request).ConfigureAwait(false);
-        }
-
-        Types.Capabilities IDiscovery.GetCapabilities(Types.GetCapabilities request)
-        {
-            return GetCapabilitiesAsync(request).Result;
+            return CreateGetCapabilitiesProcessor().ProcessAsync(request, cancellationToken);
         }
 
         /// <summary>Processes the standard DescribeRecord operation for the current discovery service.</summary>
         /// <param name="parameters">The parameters for the operation in key/value format.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The <see cref="Types.DescribeRecordResponse" /> for the operation.</returns>
-        public async Task<Types.DescribeRecordResponse> DescribeRecordAsync(NameValueCollection parameters)
+        public Task<Types.DescribeRecordResponse> DescribeRecordAsync(NameValueCollection parameters, CancellationToken cancellationToken)
         {
-            return await CreateDescribeRecordProcessor().ProcessAsync(parameters).ConfigureAwait(false);
+            return CreateDescribeRecordProcessor().ProcessAsync(parameters, cancellationToken);
         }
 
         /// <summary>Processes the standard DescribeRecord operation for the current discovery service.</summary>
         /// <param name="request">The parameters for the operation.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The <see cref="Types.DescribeRecordResponse" /> for the operation.</returns>
-        public async Task<Types.DescribeRecordResponse> DescribeRecordAsync(Types.DescribeRecord request)
+        public Task<Types.DescribeRecordResponse> DescribeRecordAsync(Types.DescribeRecord request, CancellationToken cancellationToken)
         {
-            return await CreateDescribeRecordProcessor().ProcessAsync(request).ConfigureAwait(false);
-        }
-
-        Types.DescribeRecordResponse IDiscovery.DescribeRecord(Types.DescribeRecord request)
-        {
-            return DescribeRecordAsync(request).Result;
+            return CreateDescribeRecordProcessor().ProcessAsync(request, cancellationToken);
         }
 
         /// <summary>Processes the standard GetRecords operation for the current discovery service.</summary>
         /// <param name="parameters">The parameters for the operation in key/value format.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The <see cref="Types.IGetRecordsResponse" /> for the operation.</returns>
-        public async Task<Types.IGetRecordsResponse> GetRecordsAsync(NameValueCollection parameters)
+        public Task<Types.IGetRecordsResponse> GetRecordsAsync(NameValueCollection parameters, CancellationToken cancellationToken)
         {
-            return await CreateGetRecordsProcessor().ProcessAsync(parameters).ConfigureAwait(false);
+            return CreateGetRecordsProcessor().ProcessAsync(parameters, cancellationToken);
         }
 
         /// <summary>Processes the standard GetRecords operation for the current discovery service.</summary>
         /// <param name="request">The parameters for the operation.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The <see cref="Types.IGetRecordsResponse" /> for the operation.</returns>
-        public async Task<Types.IGetRecordsResponse> GetRecordsAsync(Types.GetRecords request)
+        public Task<Types.IGetRecordsResponse> GetRecordsAsync(Types.GetRecords request, CancellationToken cancellationToken)
         {
-            return await CreateGetRecordsProcessor().ProcessAsync(request).ConfigureAwait(false);
-        }
-
-        Types.IGetRecordsResponse IDiscovery.GetRecords(Types.GetRecords request)
-        {
-            return GetRecordsAsync(request).Result;
+            return CreateGetRecordsProcessor().ProcessAsync(request, cancellationToken);
         }
 
         /// <summary>Processes the standard GetDomain operation for the current discovery service.</summary>
         /// <param name="request">The parameters for the operation.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The <see cref="Types.GetDomainResponse" /> for the operation.</returns>
-        public Types.GetDomainResponse GetDomain(Types.GetDomain request)
-        {
-            throw new NotImplementedException();
-        }
-
-        Types.GetDomainResponse IDiscovery.GetDomain(Types.GetDomain request)
+        public Task<Types.GetDomainResponse> GetDomainAsync(Types.GetDomain request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
         /// <summary>Processes the standard GetRecordById operation for the current discovery service.</summary>
         /// <param name="parameters">The parameters for the operation in key/value format.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The <see cref="Types.GetRecordByIdResponse" /> for the operation.</returns>
-        public async Task<Types.GetRecordByIdResponse> GetRecordByIdAsync(NameValueCollection parameters)
+        public Task<Types.GetRecordByIdResponse> GetRecordByIdAsync(NameValueCollection parameters, CancellationToken cancellationToken)
         {
-            return await CreateGetRecordByIdProcessor().ProcessAsync(parameters).ConfigureAwait(false);
+            return CreateGetRecordByIdProcessor().ProcessAsync(parameters, cancellationToken);
         }
 
         /// <summary>Processes the standard GetRecordById operation for the current discovery service.</summary>
         /// <param name="request">The parameters for the operation.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The <see cref="Types.GetRecordByIdResponse" /> for the operation.</returns>
-        public async Task<Types.GetRecordByIdResponse> GetRecordByIdAsync(Types.GetRecordById request)
+        public Task<Types.GetRecordByIdResponse> GetRecordByIdAsync(Types.GetRecordById request, CancellationToken cancellationToken)
         {
-            return await CreateGetRecordByIdProcessor().ProcessAsync(request).ConfigureAwait(false);
-        }
-
-        Types.GetRecordByIdResponse IDiscovery.GetRecordById(Types.GetRecordById request)
-        {
-            return GetRecordByIdAsync(request).Result;
+            return CreateGetRecordByIdProcessor().ProcessAsync(request, cancellationToken);
         }
 
         /// <summary>Creates a processor for the standard GetCapabilities operation.</summary>
@@ -193,13 +171,15 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
         /// <param name="outputSchema">The XML schema of the destination representation.</param>
         /// <param name="namespaceManager">The current XML namespace manager.</param>
         /// <param name="elementSet">The element set.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
         /// <remarks>By default the records are converted one by one. By overriding this method, you get a chance to
         /// convert the whole batch of records in one go.</remarks>
         /// <returns>The converted records.</returns>
-        public virtual async Task<IEnumerable<IXmlSerializable>> ConvertRecords(IEnumerable<IRecord> records, Uri outputSchema, XmlNamespaceManager namespaceManager, string elementSet)
+        public virtual async Task<IEnumerable<IXmlSerializable>> ConvertRecordsAsync(IEnumerable<IRecord> records, Uri outputSchema, XmlNamespaceManager namespaceManager, string elementSet, CancellationToken cancellationToken)
         {
-            IEnumerable<Task<IXmlSerializable>> tasks=records.Select(r => r.GetConverter(this, outputSchema, namespaceManager).ConvertAsync(r, elementSet));
-            return await Task.WhenAll(tasks);
+            IEnumerable<Task<IXmlSerializable>> tasks=records.Select(r => r.GetConverter(this, outputSchema, namespaceManager).ConvertAsync(r, elementSet, cancellationToken));
+            return await Task.WhenAll(tasks)
+                .ConfigureAwait(false);
         }
 
         /// <summary>Converts the specified records into the specified XML representation.</summary>
@@ -208,13 +188,15 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
         /// <param name="namespaceManager">The current XML namespace manager.</param>
         /// <param name="elements">The elements, in XPath representation.</param>
         /// <param name="mayRootPathBeImplied">Whether the XPath elements may omit the root path, or not.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
         /// <remarks>By default the records are converted one by one. By overriding this method, you get a chance to
         /// convert the whole batch of records in one go.</remarks>
         /// <returns>The converted records.</returns>
-        public virtual async Task<IEnumerable<IXmlSerializable>> ConvertRecords(IEnumerable<IRecord> records, Uri outputSchema, XmlNamespaceManager namespaceManager, IEnumerable<string> elements, bool mayRootPathBeImplied)
+        public virtual async Task<IEnumerable<IXmlSerializable>> ConvertRecordsAsync(IEnumerable<IRecord> records, Uri outputSchema, XmlNamespaceManager namespaceManager, IEnumerable<string> elements, bool mayRootPathBeImplied, CancellationToken cancellationToken)
         {
-            IEnumerable<Task<IXmlSerializable>> tasks=records.Select(r => r.GetConverter(this, outputSchema, namespaceManager).ConvertAsync(r, elements, mayRootPathBeImplied));
-            return await Task.WhenAll(tasks);
+            IEnumerable<Task<IXmlSerializable>> tasks=records.Select(r => r.GetConverter(this, outputSchema, namespaceManager).ConvertAsync(r, elements, mayRootPathBeImplied, cancellationToken));
+            return await Task.WhenAll(tasks)
+                .ConfigureAwait(false);
         }
 
 #pragma warning disable 3003

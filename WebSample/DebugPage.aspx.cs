@@ -19,14 +19,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
-using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -46,7 +43,7 @@ namespace GeoSik.WebSample
                 var sb=new StringBuilder();
                 using (var xw=XmlWriter.Create(sb))
                 {
-                    IXmlSerializable response=Services.Ows.ServiceLocatorInstance.InvokeServiceAsync(parameters).Result;
+                    IXmlSerializable response=Services.Ows.ServiceLocatorInstance.InvokeServiceAsync(parameters, CancellationToken.None).Result;
                     response.WriteXml(xw);
                 }
                 _Label1.Text=HttpUtility.HtmlEncode(sb.ToString());

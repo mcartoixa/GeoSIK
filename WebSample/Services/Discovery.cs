@@ -23,13 +23,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.ServiceModel.Web;
-using System.Xml.Linq;
 using System.Web;
 using Xml.Schema.Linq;
 using GeoSik.Ogc;
-using GeoSik.Ogc.Ows;
-using GeoSik.Ogc.Ows.V100;
-using GeoSik.Ogc.WebCatalog.Csw;
 using Ows100=GeoSik.Ogc.Ows.V100.Types;
 using Csw202=GeoSik.Ogc.WebCatalog.Csw.V202.Types;
 
@@ -38,7 +34,7 @@ namespace GeoSik.WebSample.Services
 
     [OwsDescription(Discovery.Service, Discovery.Version)]
     public class Discovery:
-        GeoSik.Ogc.WebCatalog.Csw.V202.Discovery,
+        Ogc.WebCatalog.Csw.V202.Discovery,
         IDisposable
     {
 

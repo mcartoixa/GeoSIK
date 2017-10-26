@@ -22,10 +22,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
-using System.Text;
 
 namespace GeoSik
 {
@@ -33,15 +32,15 @@ namespace GeoSik
     internal static class EnumerableExtensions
     {
 
-        public static Task<List<object>> ToListAsync(this IEnumerable source)
+        public static Task<List<object>> ToListAsync(this IEnumerable source, CancellationToken cancellationToken)
         {
             MethodInfo ami=GetAsyncMethod(source, "ToList");
             if (ami!=null)
             {
-                var rop=new Func<dynamic>(() => ami.Invoke(null, new object[] { source }));
+                var rop=new Func<CancellationToken, dynamic>((ct) => ami.Invoke(null, new object[] { source, cancellationToken }));
                 if (ami.ReturnType.IsGenericType && ami.ReturnType.IsSubclassOf(typeof(Task)))
-                    return rop();
-                return Task.FromResult(rop());
+                    return rop(cancellationToken);
+                return Task.FromResult(rop(cancellationToken));
             }
 
             return Task.FromResult(source.Cast<object>().ToList());
@@ -71,7 +70,7 @@ namespace GeoSik
                             string.Concat(name, "Async"),
                             BindingFlags.InvokeMethod | BindingFlags.Public,
                             null,
-                            new Type[] { typeof(IQueryable) },
+                            new Type[] { typeof(IQueryable), typeof(CancellationToken) },
                             null
                         );
                 }

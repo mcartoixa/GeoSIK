@@ -23,15 +23,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Xml.XPath;
 using Common.Logging;
-using DC11=GeoSik.DublinCore.Elements.V11;
-using DCTerms=GeoSik.DublinCore.Terms;
-using Ows100=GeoSik.Ogc.Ows.V100.Types;
+using DC11 = GeoSik.DublinCore.Elements.V11;
+using DCTerms = GeoSik.DublinCore.Terms;
+using Ows100 = GeoSik.Ogc.Ows.V100.Types;
 
 namespace GeoSik.Ogc.WebCatalog.Csw.V202
 {
@@ -140,18 +141,14 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
             return ret;
         }
 
-        Task<IXmlSerializable> IRecordConverter.ConvertAsync(IRecord record, string elementSet)
+        Task<IXmlSerializable> IRecordConverter.ConvertAsync(IRecord record, string elementSet, CancellationToken cancellationToken)
         {
-            var tcs=new TaskCompletionSource<IXmlSerializable>();
-            tcs.SetResult(Convert(record, elementSet));
-            return tcs.Task;
+            return Task.FromResult((IXmlSerializable)Convert(record, elementSet));
         }
 
-        Task<IXmlSerializable> IRecordConverter.ConvertAsync(IRecord record, IEnumerable<string> elements, bool mayRootPathBeImplied)
+        Task<IXmlSerializable> IRecordConverter.ConvertAsync(IRecord record, IEnumerable<string> elements, bool mayRootPathBeImplied, CancellationToken cancellationToken)
         {
-            var tcs=new TaskCompletionSource<IXmlSerializable>();
-            tcs.SetResult(Convert(record, elements, mayRootPathBeImplied));
-            return tcs.Task;
+            return Task.FromResult((IXmlSerializable)Convert(record, elements, mayRootPathBeImplied));
         }
 
         protected virtual IList<DC11.DCelement> CreateRecordField(IRecord record, Filter.XPathTypeNavigator navigator)

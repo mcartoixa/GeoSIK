@@ -18,18 +18,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Threading;
 using System.Xml;
 using System.Xml.Serialization;
 using GeoSik.Ogc.Ows;
@@ -46,13 +42,13 @@ namespace GeoSik.WebSample.Services
         {
             NameValueCollection parameters=WebOperationContext.Current.IncomingRequest.UriTemplateMatch.QueryParameters;
 
-            IXmlSerializable response=ServiceLocatorInstance.InvokeServiceAsync(parameters).Result;
+            IXmlSerializable response=ServiceLocatorInstance.InvokeServiceAsync(parameters, CancellationToken.None).Result;
             return CreateMessage(response, OperationContext.Current.IncomingMessageVersion);
         }
 
         public Message Execute(IRequest request)
         {
-            IXmlSerializable response=ServiceLocatorInstance.InvokeServiceAsync(request).Result;
+            IXmlSerializable response=ServiceLocatorInstance.InvokeServiceAsync(request, CancellationToken.None).Result;
             return CreateMessage(response, OperationContext.Current.IncomingMessageVersion);
         }
 

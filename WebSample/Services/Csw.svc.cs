@@ -19,12 +19,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
-using Csw202=GeoSik.Ogc.WebCatalog.Csw.V202;
+using System.Threading;
+using System.Threading.Tasks;
+using Csw202 = GeoSik.Ogc.WebCatalog.Csw.V202;
 
 namespace GeoSik.WebSample.Services
 {
@@ -32,29 +29,29 @@ namespace GeoSik.WebSample.Services
         ICsw
     {
 
-        public Csw202.Types.Capabilities GetCapabilities(Csw202.Types.GetCapabilities request)
+        public Task<Csw202.Types.Capabilities> GetCapabilitiesAsync(Csw202.Types.GetCapabilities request, CancellationToken cancellationToken)
         {
-            return _Implementation.GetCapabilities(request);
+            return _Implementation.GetCapabilitiesAsync(request, CancellationToken.None);
         }
 
-        public Csw202.Types.IGetRecordsResponse GetRecords(Csw202.Types.GetRecords request)
+        public Task<Csw202.Types.IGetRecordsResponse> GetRecordsAsync(Csw202.Types.GetRecords request, CancellationToken cancellationToken)
         {
-            return _Implementation.GetRecords(request);
+            return _Implementation.GetRecordsAsync(request, cancellationToken);
         }
 
-        public Csw202.Types.DescribeRecordResponse DescribeRecord(Csw202.Types.DescribeRecord request)
+        public Task<Csw202.Types.DescribeRecordResponse> DescribeRecordAsync(Csw202.Types.DescribeRecord request, CancellationToken cancellationToken)
         {
-            return _Implementation.DescribeRecord(request);
+            return _Implementation.DescribeRecordAsync(request, cancellationToken);
         }
 
-        public Csw202.Types.GetDomainResponse GetDomain(Csw202.Types.GetDomain request)
+        public Task<Csw202.Types.GetDomainResponse> GetDomainAsync(Csw202.Types.GetDomain request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        public Csw202.Types.GetRecordByIdResponse GetRecordById(Csw202.Types.GetRecordById request)
+        public Task<Csw202.Types.GetRecordByIdResponse> GetRecordByIdAsync(Csw202.Types.GetRecordById request, CancellationToken cancellationToken)
         {
-            return _Implementation.GetRecordById(request);
+            return _Implementation.GetRecordByIdAsync(request, cancellationToken);
         }
 
         private Csw202.IDiscovery _Implementation=new Discovery();

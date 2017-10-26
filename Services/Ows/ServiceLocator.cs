@@ -27,6 +27,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
@@ -56,17 +57,19 @@ namespace GeoSik.Ogc.Ows
 
         /// <summary>Invokes the OWS service referenced in the specified <paramref name="parameters" />.</summary>
         /// <param name="parameters">The key/value pairs that are used as parameters of the service call.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The result of the call.</returns>
-        public async Task<IXmlSerializable> InvokeServiceAsync(NameValueCollection parameters)
+        public Task<IXmlSerializable> InvokeServiceAsync(NameValueCollection parameters, CancellationToken cancellationToken)
         {
-            return await InvokeServiceAsync(null, parameters);
+            return InvokeServiceAsync(null, parameters, cancellationToken);
         }
 
         /// <summary>Invokes the OWS service referenced in the specified <paramref name="parameters" />.</summary>
         /// <param name="arguments">The arguments to use for the service instantiation. Can be <c>null</c>.</param>
         /// <param name="parameters">The key/value pairs that are used as parameters of the service call.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The result of the call.</returns>
-        public async Task<IXmlSerializable> InvokeServiceAsync(object[] arguments, NameValueCollection parameters)
+        public Task<IXmlSerializable> InvokeServiceAsync(object[] arguments, NameValueCollection parameters, CancellationToken cancellationToken)
         {
             Debug.Assert(parameters!=null);
             if (parameters==null)
@@ -92,22 +95,24 @@ namespace GeoSik.Ogc.Ows
                     Locator=OgcService.VersionParameter
                 };
 
-            return await InvokeServiceAsync(arguments, parameters, service, version, request);
+            return InvokeServiceAsync(arguments, parameters, service, version, request, cancellationToken);
         }
 
         /// <summary>Invokes the OWS service corresponding to the specified <paramref name="request" />.</summary>
         /// <param name="request">The request that is used for the service call.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The result of the call.</returns>
-        public async Task<IXmlSerializable> InvokeServiceAsync(IRequest request)
+        public Task<IXmlSerializable> InvokeServiceAsync(IRequest request, CancellationToken cancellationToken)
         {
-            return await InvokeServiceAsync(null, request);
+            return InvokeServiceAsync(null, request, cancellationToken);
         }
 
         /// <summary>Invokes the OWS service corresponding to the specified <paramref name="request" />.</summary>
         /// <param name="arguments">The arguments to use for the service instantiation. Can be <c>null</c>.</param>
         /// <param name="request">The request that is used for the service call.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The result of the call.</returns>
-        public async Task<IXmlSerializable> InvokeServiceAsync(object[] arguments, IRequest request)
+        public Task<IXmlSerializable> InvokeServiceAsync(object[] arguments, IRequest request, CancellationToken cancellationToken)
         {
             Debug.Assert(request!=null);
             if (request==null)
@@ -127,10 +132,10 @@ namespace GeoSik.Ogc.Ows
                     Locator=OgcService.VersionParameter
                 };
 
-            return await InvokeServiceAsync(arguments, request, request.Service, request.Version, operation);
+            return InvokeServiceAsync(arguments, request, request.Service, request.Version, operation, cancellationToken);
         }
 
-        private async Task<IXmlSerializable> InvokeServiceAsync(object[] arguments, object input, string service, string version, string request)
+        private async Task<IXmlSerializable> InvokeServiceAsync(object[] arguments, object input, string service, string version, string request, CancellationToken cancellationToken)
         {
             FindServices();
 
@@ -176,13 +181,13 @@ namespace GeoSik.Ogc.Ows
             foreach (MethodInfo r in requests)
             {
                 ParameterInfo[] pia=r.GetParameters();
-                if ((pia.Length==1) && (pia[0].ParameterType==input.GetType()))
+                if ((pia.Length==2) && (pia[0].ParameterType==input.GetType()))
                     try
                     {
-                        var rop=new Func<dynamic>(() => r.Invoke(Activator.CreateInstance(t, arguments), new object[] { input }));
+                        var rop=new Func<CancellationToken, dynamic>((ct) => r.Invoke(Activator.CreateInstance(t, arguments), new object[] { input, ct }));
                         if (r.ReturnType.IsGenericType && r.ReturnType.IsSubclassOf(typeof(Task)))
-                            return (await rop()) as IXmlSerializable;
-                        return rop() as IXmlSerializable;
+                            return (await rop(cancellationToken)) as IXmlSerializable;
+                        return rop(cancellationToken) as IXmlSerializable;
                     } catch (TargetInvocationException tiex)
                     {
                         var oex=tiex.InnerException as OwsException;

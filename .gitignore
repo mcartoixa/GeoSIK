@@ -1,0 +1,15 @@
+.sonarqube/
+.vs/
+
+bin/
+csx/
+obj/
+packages/
+tmp/
+
+*.cache
+*.dbmdl
+*.DotSettings
+*.log
+*.suo
+*.user

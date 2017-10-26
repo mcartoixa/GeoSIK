@@ -20,13 +20,10 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
-using System.Xml.XPath;
 using System.Xml.Serialization;
-using Csw202=GeoSik.Ogc.WebCatalog.Csw.V202;
 
 namespace GeoSik.Ogc.WebCatalog.Csw.V202
 {
@@ -41,7 +38,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
     public interface IRecordConverter
     {
 
-        Task<IXmlSerializable> ConvertAsync(IRecord record, string elementSet);
-        Task<IXmlSerializable> ConvertAsync(IRecord record, IEnumerable<string> elements, bool mayRootPathBeImplied);
+        Task<IXmlSerializable> ConvertAsync(IRecord record, string elementSet, CancellationToken cancellationToken);
+        Task<IXmlSerializable> ConvertAsync(IRecord record, IEnumerable<string> elements, bool mayRootPathBeImplied, CancellationToken cancellationToken);
     }
 }

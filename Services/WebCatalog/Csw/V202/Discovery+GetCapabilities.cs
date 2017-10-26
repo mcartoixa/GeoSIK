@@ -21,17 +21,16 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Xml.Schema.Linq;
 using GeoSik.Ogc.Ows;
-using Filter110=GeoSik.Ogc.Filter.V110;
-using Ows100=GeoSik.Ogc.Ows.V100.Types;
+using Filter110 = GeoSik.Ogc.Filter.V110;
+using Ows100 = GeoSik.Ogc.Ows.V100.Types;
 
 namespace GeoSik.Ogc.WebCatalog.Csw.V202
 {
@@ -96,8 +95,9 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
 
             /// <summary>Processes the specified request.</summary>
             /// <param name="request">The request to process.</param>
+            /// <param name="cancellationToken">The cancellation token.</param>
             /// <returns>The response to the specified request.</returns>
-            protected override Task<Types.Capabilities> ProcessRequestAsync(Types.GetCapabilities request)
+            protected override Task<Types.Capabilities> ProcessRequestAsync(Types.GetCapabilities request, CancellationToken cancellationToken)
             {
 
                 // When sections is specified but empty, the abbreviated version of GetCapabilities should be returned

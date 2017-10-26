@@ -18,13 +18,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.Text;
-using Ows100=GeoSik.Ogc.Ows.V100.Types;
+using System.Threading;
+using System.Threading.Tasks;
+using Ows100 =GeoSik.Ogc.Ows.V100.Types;
 
 namespace GeoSik.Ogc.WebCatalog.Csw.V202
 {
@@ -35,24 +32,24 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
 
         [OperationContract]
         [FaultContract(typeof(Ows100.ExceptionReport))]
-        Types.Capabilities GetCapabilities(Types.GetCapabilities request);
+        Task<Types.Capabilities> GetCapabilitiesAsync(Types.GetCapabilities request, CancellationToken cancellationToken);
 
         [OperationContract]
         [FaultContract(typeof(Ows100.ExceptionReport))]
         [ServiceKnownType(typeof(Types.GetRecordsResponse))]
         [ServiceKnownType(typeof(Types.Acknowledgement))]
-        Types.IGetRecordsResponse GetRecords(Types.GetRecords request);
+        Task<Types.IGetRecordsResponse> GetRecordsAsync(Types.GetRecords request, CancellationToken cancellationToken);
 
         [OperationContract]
         [FaultContract(typeof(Ows100.ExceptionReport))]
-        Types.DescribeRecordResponse DescribeRecord(Types.DescribeRecord request);
+        Task<Types.DescribeRecordResponse> DescribeRecordAsync(Types.DescribeRecord request, CancellationToken cancellationToken);
 
         [OperationContract]
         [FaultContract(typeof(Ows100.ExceptionReport))]
-        Types.GetDomainResponse GetDomain(Types.GetDomain request);
+        Task<Types.GetDomainResponse> GetDomainAsync(Types.GetDomain request, CancellationToken cancellationToken);
 
         [OperationContract]
         [FaultContract(typeof(Ows100.ExceptionReport))]
-        Types.GetRecordByIdResponse GetRecordById(Types.GetRecordById request);
+        Task<Types.GetRecordByIdResponse> GetRecordByIdAsync(Types.GetRecordById request, CancellationToken cancellationToken);
     }
 }

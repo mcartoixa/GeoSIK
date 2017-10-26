@@ -19,7 +19,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
@@ -29,11 +28,11 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
-using Common.Logging;
 using Xml.Schema.Linq;
 using GeoSik.Ogc.Ows;
 using Filter110=GeoSik.Ogc.Filter.V110;
@@ -496,8 +495,9 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
 
             /// <summary>Processes the specified request.</summary>
             /// <param name="request">The request to process.</param>
+            /// <param name="cancellationToken">The cancellation token.</param>
             /// <returns>The response to the specified request.</returns>
-            public override async Task<Types.IGetRecordsResponse> ProcessAsync(Types.GetRecords request)
+            public override async Task<Types.IGetRecordsResponse> ProcessAsync(Types.GetRecords request, CancellationToken cancellationToken)
             {
                 Logger.Debug(CultureInfo.InvariantCulture, m => m("Request processing started"));
                 Logger.Debug(CultureInfo.InvariantCulture, m => m("> {0}", OgcService.ToTraceString(request)));
@@ -515,7 +515,8 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                             IXmlSerializable response=null;
                             try
                             {
-                                response=await ProcessRequestAsync(request);
+                                response=await ProcessRequestAsync(request, CancellationToken.None)
+                                    .ConfigureAwait(false);
                                 var args=new Ows.OwsRequestEventArgs<Types.GetRecords, Types.IGetRecordsResponse>(request, (Types.IGetRecordsResponse)response);
                                 OnProcessed(args);
                                 Debug.Assert(args.Response!=null);
@@ -533,7 +534,8 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                                 };
                             }
 
-                            await _SendRecordsResponse(request, response);
+                            await _SendRecordsResponse(request, response, CancellationToken.None)
+                                .ConfigureAwait(false);
                         }
                     );
 #pragma warning restore 4014
@@ -547,7 +549,8 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                     };
                 } else
                 {
-                    var response=await ProcessRequestAsync(request);
+                    var response=await ProcessRequestAsync(request, cancellationToken)
+                        .ConfigureAwait(false);
                     var args=new Ows.OwsRequestEventArgs<Types.GetRecords, Types.IGetRecordsResponse>(request, response);
                     OnProcessed(args);
                     Debug.Assert(args.Response!=null);
@@ -562,8 +565,9 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
 
             /// <summary>Processes the specified request.</summary>
             /// <param name="request">The request to process.</param>
+            /// <param name="cancellationToken">The cancellation token.</param>
             /// <returns>The response to the specified request.</returns>
-            protected override async Task<Types.IGetRecordsResponse> ProcessRequestAsync(Types.GetRecords request)
+            protected override async Task<Types.IGetRecordsResponse> ProcessRequestAsync(Types.GetRecords request, CancellationToken cancellationToken)
             {
                 var ret=new Types.GetRecordsResponse();
                 if (request.requestId!=null)
@@ -650,23 +654,23 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 }
 
                 // Results
-                IEnumerable<IRecord> resultRecords=(await records.ToListAsync()).Cast<IRecord>();
+                IEnumerable<IRecord> resultRecords=(await records.ToListAsync(cancellationToken).ConfigureAwait(false)).Cast<IRecord>();
                 IEnumerable<IXmlSerializable> results;
 
                 //if ((query.ElementSetName!=null) && !string.IsNullOrEmpty(query.ElementSetName.TypedValue))
                 if ((query!=null) && query.Untyped.Elements("{http://www.opengis.net/cat/csw/2.0.2}ElementSetName").Any<XElement>() && !string.IsNullOrEmpty(query.ElementSetName.TypedValue))
                 {
-                    results=(await ((Discovery)Service).ConvertRecords(resultRecords, request.outputSchema, _NamespaceManager, query.ElementSetName.TypedValue))
+                    results=(await ((Discovery)Service).ConvertRecordsAsync(resultRecords, request.outputSchema, _NamespaceManager, query.ElementSetName.TypedValue, cancellationToken).ConfigureAwait(false))
                         .ToArray();
                 } else if ((query!=null) && (query.ElementName!=null) && (query.ElementName.Count>0))
                 {
                     var elementNames=from el in query.Untyped.Descendants()
                                         where el.Name=="{http://www.opengis.net/cat/csw/2.0.2}ElementName"
                                         select el.Value;
-                    results=(await ((Discovery)Service).ConvertRecords(resultRecords, request.outputSchema, _NamespaceManager, elementNames, mayRootPathBeImplied))
+                    results=(await ((Discovery)Service).ConvertRecordsAsync(resultRecords, request.outputSchema, _NamespaceManager, elementNames, mayRootPathBeImplied, cancellationToken).ConfigureAwait(false))
                         .ToArray();
                 } else
-                    results=(await ((Discovery)Service).ConvertRecords(resultRecords, request.outputSchema, _NamespaceManager, "full"))
+                    results=(await ((Discovery)Service).ConvertRecordsAsync(resultRecords, request.outputSchema, _NamespaceManager, "full", cancellationToken).ConfigureAwait(false))
                         .ToArray();
 
                 // Core Record types
@@ -703,7 +707,7 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                 return ret;
             }
 
-            private async Task _SendRecordsResponse(Types.GetRecords request, IXmlSerializable response)
+            private async Task _SendRecordsResponse(Types.GetRecords request, IXmlSerializable response, CancellationToken cancellationToken)
             {
                 if (response==null)
                 {
@@ -736,9 +740,11 @@ namespace GeoSik.Ogc.WebCatalog.Csw.V202
                             ftpreq.Method=WebRequestMethods.Ftp.UploadFile;
                             ftpreq.ContentLength=binResponse.Length;
 
-                            var stream=await ftpreq.GetRequestStreamAsync();
+                            var stream=await ftpreq.GetRequestStreamAsync()
+                                .ConfigureAwait(false);
                             using (stream)
-                                await stream.WriteAsync(binResponse, 0, binResponse.Length);
+                                await stream.WriteAsync(binResponse, 0, binResponse.Length, cancellationToken)
+                                    .ConfigureAwait(false);
                         }
                         break;
                     }
