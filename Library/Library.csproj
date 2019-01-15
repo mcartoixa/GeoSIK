@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GeoSik</RootNamespace>
     <AssemblyName>GeoSik</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -105,6 +105,8 @@
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="GeometryTransformerSink.cs" />
     <Compile Include="GeometryType.cs" />
+    <Compile Include="Iso\Ts19139\Gmx\_Documentation.cs" />
+    <Compile Include="Iso\Ts19139\Gmx\_Gmx.cs" />
     <Compile Include="Ogc\WebCatalog\Csw\V202\CswQueryable.cs" />
     <Compile Include="QueryableExtensions.cs" />
     <Compile Include="ReversedGeometrySink.cs" />
