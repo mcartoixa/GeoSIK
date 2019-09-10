@@ -15,12 +15,20 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningLevel>3</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>..\misc\GeoSik.snk</AssemblyOriginatorKeyFile>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageProjectUrl>http://geosikdev.blogspot.com/</PackageProjectUrl>
+    <Authors>dev@isogeo.com</Authors>
+    <RepositoryUrl>https://github.com/isogeo/GeoSIK</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>GeoSik DotSpatial coordinate systems projections</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <ItemGroup>

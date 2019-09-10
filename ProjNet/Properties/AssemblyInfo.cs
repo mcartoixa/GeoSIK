@@ -27,7 +27,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("GeoSik for ProjNet")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Library that makes GeoSik interoperable with Proj.NET projections.")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

@@ -8,6 +8,12 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <DocumentationFile>bin\$(Configuration)\GeoSik.SharpMap.xml</DocumentationFile>
     <OutputPath>bin\$(Configuration)\</OutputPath>
+    <Authors>dev@isogeo.com</Authors>
+    <PackageProjectUrl>http://geosikdev.blogspot.com/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/isogeo/GeoSIK</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>GeoSik SharpMap</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>

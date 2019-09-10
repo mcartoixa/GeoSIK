@@ -21,6 +21,12 @@
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>..\misc\GeoSik.snk</AssemblyOriginatorKeyFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageTags>GeoSik ProjNet coordinate systems projections</PackageTags>
+    <RepositoryType>Git</RepositoryType>
+    <RepositoryUrl>https://github.com/isogeo/GeoSIK</RepositoryUrl>
+    <PackageProjectUrl>http://geosikdev.blogspot.com/</PackageProjectUrl>
+    <Authors>dev@isogeo.com</Authors>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <ItemGroup>

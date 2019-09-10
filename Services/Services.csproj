@@ -25,6 +25,12 @@
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>..\misc\GeoSik.snk</AssemblyOriginatorKeyFile>
+    <PackageTags>GeoSik OGC Geographical Standards Library Isogeo CSW WCF MVC</PackageTags>
+    <RepositoryUrl>https://github.com/isogeo/GeoSIK</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageProjectUrl>http://geosikdev.blogspot.com/</PackageProjectUrl>
+    <Authors>dev@isogeo.com</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <ItemGroup>

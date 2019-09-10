@@ -27,7 +27,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("GeoSik.SqlServer")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Library that makes GeoSik interoperable with Sql Server 2012 spatial types.")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

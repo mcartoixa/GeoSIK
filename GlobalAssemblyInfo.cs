@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 #else
 [assembly: AssemblyConfiguration("Release")]
 #endif
-[assembly: AssemblyCopyright("Copyright © 2011 Isogeo")]
+[assembly: AssemblyCopyright("Copyright © 2012-2019 Isogeo")]
 [assembly: AssemblyTrademark("")]

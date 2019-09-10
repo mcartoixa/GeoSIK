@@ -27,7 +27,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Services")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Library that makes the implementation of standard OGC Web Services easier.")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
