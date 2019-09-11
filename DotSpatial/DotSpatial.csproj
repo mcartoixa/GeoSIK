@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <version>2.1.1.1</version>
     <ProductVersion>8.0.30703</ProductVersion>
     <RootNamespace>GeoSik.DotSpatial</RootNamespace>
     <AssemblyName>GeoSik.DotSpatial</AssemblyName>
@@ -29,6 +30,7 @@
     <RepositoryType>Git</RepositoryType>
     <PackageTags>GeoSik DotSpatial coordinate systems projections</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <ItemGroup>

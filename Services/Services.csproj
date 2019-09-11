@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <version>2.1.1.1</version>
     <ProductVersion>8.0.50727</ProductVersion>
     <RootNamespace>GeoSik.Ogc</RootNamespace>
     <AssemblyName>GeoSik.Services</AssemblyName>

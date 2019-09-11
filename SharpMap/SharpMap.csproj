@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <version>2.1.1.1</version>
     <ProductVersion>8.0.30703</ProductVersion>
     <RootNamespace>GeoSik.SharpMap</RootNamespace>
     <AssemblyName>GeoSik.SharpMap</AssemblyName>

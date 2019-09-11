@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <version>2.1.1.1</version>
     <ProductVersion>8.0.30703</ProductVersion>
     <RootNamespace>GeoSik</RootNamespace>
     <AssemblyName>GeoSik</AssemblyName>
@@ -23,6 +24,12 @@
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>..\misc\GeoSik.snk</AssemblyOriginatorKeyFile>
+    <PackageProjectUrl>http://geosikdev.blogspot.com/</PackageProjectUrl>
+    <RepositoryType>Git</RepositoryType>
+    <RepositoryUrl>https://github.com/isogeo/GeoSIK</RepositoryUrl>
+    <PackageTags>GeoSik OGC Geographical Standards Library Isogeo CSW</PackageTags>
+    <Authors>dev@isogeo.com</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <ItemGroup>
@@ -33,6 +40,10 @@
     <PackageReference Include="Irony.Interpreter" Version="0.9.0" />
     <PackageReference Include="LinqToXsd" Version="2.0.2" />
     <PackageReference Include="Newtonsoft.Json" Version="8.0.2" />
+    <PackageReference Include="NuGet.CommandLine" Version="5.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ComponentModel.DataAnnotations" />
